@@ -1,0 +1,159 @@
+/* Figures: profile metrics, tables (profile, comparison), the glossary's dotted terms and tooltip. */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.metric {
+  display: grid;
+  align-content: start;
+  padding: 0.75rem;
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.metric-label,
+.metric-detail {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.metric-value {
+  color: var(--heading);
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  white-space: nowrap;
+}
+
+thead th {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* the key figures stand out: a tinted column in the profile, a tinted row in the comparison */
+th.key,
+td.key,
+tr.key > * {
+  background: var(--key);
+}
+
+th.key {
+  color: var(--heading);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+/* a key column's header: its title and the small button that opens its details */
+.th-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+button.col-toggle {
+  width: 1.5rem;
+  height: 1.5rem;
+  min-height: 0;
+  padding: 0;
+  font-weight: 600;
+  line-height: 1;
+}
+
+td.detail,
+th.detail {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.cell-troop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cell-troop .troop-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.cell-troop svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* the comparison: better, weaker, equal — colour, symbol and (for screen readers) a word */
+td.win {
+  color: var(--good);
+}
+
+td.lose {
+  color: var(--critical);
+}
+
+td.tie {
+  color: var(--equal);
+}
+
+.battles {
+  margin-top: 1rem;
+}
+
+.term {
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
+
+.tip {
+  position: fixed;
+  z-index: 10;
+  max-width: 20rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: var(--tip-bg);
+  color: var(--tip-text);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.tip.on {
+  opacity: 1;
+}
+
+.tip b {
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.tip .more {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-style: italic;
+}

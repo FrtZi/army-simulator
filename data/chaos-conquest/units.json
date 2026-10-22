@@ -1,0 +1,2174 @@
+[
+  {
+    "id": "khorngor",
+    "labels": {
+      "fr": "Khorngor",
+      "en": "Khorngor"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "monstrous-infantry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 58,
+      "meleeDamage": 800,
+      "morale": 72,
+      "armour": 55,
+      "health": 1950,
+      "speed": 7,
+      "load": 120
+    }
+  },
+  {
+    "id": "pestigor",
+    "labels": {
+      "fr": "Pestigor",
+      "en": "Pestigor"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "monstrous-infantry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 35,
+      "meleeDamage": 1500,
+      "rangedAttack": 9,
+      "rangedDamage": 200,
+      "morale": 60,
+      "armour": 55,
+      "health": 1550,
+      "speed": 7,
+      "load": 120
+    }
+  },
+  {
+    "id": "tzaangor",
+    "labels": {
+      "fr": "Tzaangor",
+      "en": "Tzaangor"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 4,
+    "attackType": "ranged",
+    "unitType": "monstrous-infantry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 15,
+      "meleeDamage": 200,
+      "rangedAttack": 60,
+      "rangedDamage": 1200,
+      "morale": 58,
+      "armour": 28,
+      "health": 1000,
+      "speed": 7,
+      "load": 120
+    }
+  },
+  {
+    "id": "slaangor",
+    "labels": {
+      "fr": "Slaangor",
+      "en": "Slaangor"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 4,
+    "attackType": "ranged",
+    "unitType": "monstrous-infantry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 40,
+      "meleeDamage": 1150,
+      "rangedAttack": 69,
+      "rangedDamage": 1000,
+      "morale": 55,
+      "armour": 42,
+      "health": 1400,
+      "speed": 7,
+      "load": 120
+    }
+  },
+  {
+    "id": "tzeentch-gor",
+    "labels": {
+      "fr": "Gor de Tzeentch",
+      "en": "Gor of Tzeentch"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 53,
+      "meleeDamage": 800,
+      "rangedAttack": 23,
+      "rangedDamage": 800,
+      "morale": 73,
+      "armour": 56,
+      "health": 2330,
+      "speed": 8,
+      "load": 220
+    }
+  },
+  {
+    "id": "slaanesh-gor",
+    "labels": {
+      "fr": "Gor de Slaanesh",
+      "en": "Gor of Slaanesh"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 37,
+      "meleeDamage": 1350,
+      "rangedAttack": 23,
+      "rangedDamage": 1075,
+      "morale": 70,
+      "armour": 47,
+      "health": 2750,
+      "speed": 8,
+      "load": 220
+    }
+  },
+  {
+    "id": "khorne-gor",
+    "labels": {
+      "fr": "Gor de Khorne",
+      "en": "Gor of Khorne"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 48,
+      "meleeDamage": 1500,
+      "morale": 65,
+      "armour": 45,
+      "health": 1100,
+      "speed": 8,
+      "load": 220
+    }
+  },
+  {
+    "id": "nurgle-gor",
+    "labels": {
+      "fr": "Gor de Nurgle",
+      "en": "Gor of Nurgle"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 32,
+      "meleeDamage": 900,
+      "rangedAttack": 44,
+      "rangedDamage": 1900,
+      "morale": 61,
+      "armour": 43,
+      "health": 1550,
+      "speed": 8,
+      "load": 220
+    }
+  },
+  {
+    "id": "bestigor-herd",
+    "labels": {
+      "fr": "Harde de Brays Bestigor",
+      "en": "Brayherd Bestigor"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 41,
+      "meleeDamage": 1200,
+      "rangedAttack": 25,
+      "rangedDamage": 850,
+      "morale": 68,
+      "armour": 47,
+      "health": 2650,
+      "speed": 8,
+      "load": 220
+    }
+  },
+  {
+    "id": "khorne-minotaurs",
+    "labels": {
+      "fr": "Minotaures de Khorne",
+      "en": "Minotaurs"
+    },
+    "building": "beastmen-herdstone",
+    "recruitment": "renown",
+    "alignment": "khorne",
+    "tier": 6,
+    "attackType": "melee",
+    "unitType": "monstrous-infantry",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 36,
+      "squadPower": 300,
+      "meleeAttack": 68,
+      "meleeDamage": 1750,
+      "morale": 90,
+      "armour": 50,
+      "health": 2700,
+      "speed": 9,
+      "load": 220
+    }
+  },
+  {
+    "id": "chaos-spawn",
+    "labels": {
+      "fr": "Rejeton du Chaos",
+      "en": "Chaos Spawn"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 2,
+    "attackType": "melee",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 22,
+      "meleeDamage": 360,
+      "morale": 80,
+      "armour": 32,
+      "health": 900,
+      "speed": 7,
+      "load": 35
+    }
+  },
+  {
+    "id": "tzeentch-chaos-spawn",
+    "labels": {
+      "fr": "Rejeton du Chaos de Tzeentch",
+      "en": "Chaos Spawn of Tzeentch"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 2,
+    "attackType": "ranged",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 25,
+      "meleeDamage": 210,
+      "rangedAttack": 25,
+      "rangedDamage": 210,
+      "morale": 49,
+      "armour": 30,
+      "health": 900,
+      "speed": 7,
+      "load": 35
+    }
+  },
+  {
+    "id": "khorne-chaos-spawn",
+    "labels": {
+      "fr": "Rejeton du Chaos de Khorne",
+      "en": "Chaos Spawn of Khorne"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 2,
+    "attackType": "melee",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 25,
+      "meleeDamage": 500,
+      "morale": 75,
+      "armour": 21,
+      "health": 900,
+      "speed": 7,
+      "load": 35
+    }
+  },
+  {
+    "id": "nurgle-chaos-spawn",
+    "labels": {
+      "fr": "Rejeton du Chaos de Nurgle",
+      "en": "Chaos Spawn of Nurgle"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 2,
+    "attackType": "ranged",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 10,
+      "meleeDamage": 100,
+      "rangedAttack": 50,
+      "rangedDamage": 300,
+      "morale": 49,
+      "armour": 32,
+      "health": 800,
+      "speed": 7,
+      "load": 35
+    }
+  },
+  {
+    "id": "slaanesh-chaos-spawn",
+    "labels": {
+      "fr": "Rejeton du Chaos de Slaanesh",
+      "en": "Chaos Spawn of Slaanesh"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 2,
+    "attackType": "ranged",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 10,
+      "meleeDamage": 150,
+      "rangedAttack": 31,
+      "rangedDamage": 500,
+      "morale": 40,
+      "armour": 25,
+      "health": 900,
+      "speed": 7,
+      "load": 35
+    }
+  },
+  {
+    "id": "chaos-ogres",
+    "labels": {
+      "fr": "Ogres du Chaos",
+      "en": "Chaos Ogres"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 3,
+    "attackType": "ranged",
+    "unitType": "monstrous-infantry",
+    "stats": {
+      "squadSize": 6,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 25,
+      "meleeDamage": 600,
+      "rangedAttack": 24,
+      "rangedDamage": 720,
+      "morale": 48,
+      "armour": 38,
+      "health": 1500,
+      "speed": 7,
+      "load": 70
+    }
+  },
+  {
+    "id": "slaughterbrutes",
+    "labels": {
+      "fr": "Brutes massacreuses",
+      "en": "Slaughter Brutes"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 2,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 32,
+      "meleeDamage": 655,
+      "morale": 47,
+      "armour": 50,
+      "health": 1200,
+      "speed": 7,
+      "load": 50
+    }
+  },
+  {
+    "id": "mutalith-vortex-beasts",
+    "labels": {
+      "fr": "Bêtes du Mutalithe à Vortex",
+      "en": "Mutalith Vortex Beasts"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 25,
+      "meleeDamage": 725,
+      "morale": 67,
+      "armour": 51,
+      "health": 2025,
+      "speed": 7,
+      "load": 90
+    }
+  },
+  {
+    "id": "greater-chaos-spawn",
+    "labels": {
+      "fr": "Grands rejetons du Chaos",
+      "en": "Greater Chaos Spawn"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 45,
+      "meleeDamage": 1100,
+      "rangedAttack": 5,
+      "rangedDamage": 250,
+      "morale": 64,
+      "armour": 43,
+      "health": 1750,
+      "speed": 8,
+      "load": 80
+    }
+  },
+  {
+    "id": "dragon-ogres",
+    "labels": {
+      "fr": "Dragon-Ogres",
+      "en": "Dragon Ogres"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 5,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 32,
+      "meleeDamage": 1100,
+      "morale": 64,
+      "armour": 42,
+      "health": 2100,
+      "speed": 8,
+      "load": 100
+    }
+  },
+  {
+    "id": "chaos-trolls",
+    "labels": {
+      "fr": "Trolls du Chaos",
+      "en": "Chaos Trolls"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "monstrous-infantry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 33,
+      "meleeDamage": 1200,
+      "rangedAttack": 10,
+      "rangedDamage": 700,
+      "morale": 66,
+      "armour": 43,
+      "health": 2400,
+      "speed": 7,
+      "load": 120
+    }
+  },
+  {
+    "id": "cursed-ettins",
+    "labels": {
+      "fr": "Ettins maudits Claquerunes",
+      "en": "Rune Caller Curs'd Etin"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 15,
+      "meleeDamage": 600,
+      "rangedAttack": 65,
+      "rangedDamage": 1250,
+      "morale": 58,
+      "armour": 58,
+      "health": 1475,
+      "speed": 9,
+      "load": 95
+    }
+  },
+  {
+    "id": "slaanesh-chaos-lord-on-dragon",
+    "labels": {
+      "fr": "Seigneur du Chaos de Slaanesh sur Dragon",
+      "en": "Chaos Lord of Slaanesh on Dragon"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 6,
+    "attackType": "ranged",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 1,
+      "foodUpkeep": 36,
+      "squadPower": 300,
+      "meleeAttack": 47,
+      "meleeDamage": 1520,
+      "rangedAttack": 97,
+      "rangedDamage": 2970,
+      "morale": 90,
+      "armour": 58,
+      "health": 2500,
+      "speed": 12,
+      "load": 200
+    }
+  },
+  {
+    "id": "chaos-dragons",
+    "labels": {
+      "fr": "Dragons du Chaos",
+      "en": "Chaos Dragon"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 6,
+    "attackType": "melee",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 1,
+      "foodUpkeep": 36,
+      "squadPower": 300,
+      "meleeAttack": 65,
+      "meleeDamage": 2500,
+      "rangedAttack": 70,
+      "rangedDamage": 2300,
+      "morale": 90,
+      "armour": 60,
+      "health": 3000,
+      "speed": 12,
+      "load": 200
+    }
+  },
+  {
+    "id": "khorne-chaos-lord-on-dragon",
+    "labels": {
+      "fr": "Seigneur du Chaos de Khorne sur Dragon",
+      "en": "Chaos Lord of Khorne on Dragon"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 6,
+    "attackType": "melee",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 1,
+      "foodUpkeep": 36,
+      "squadPower": 300,
+      "meleeAttack": 85,
+      "meleeDamage": 2530,
+      "rangedAttack": 52,
+      "rangedDamage": 830,
+      "morale": 90,
+      "armour": 57,
+      "health": 3130,
+      "speed": 12,
+      "load": 200
+    }
+  },
+  {
+    "id": "nurgle-chaos-lord-on-dragon",
+    "labels": {
+      "fr": "Seigneur du Chaos de Nurgle sur Dragon",
+      "en": "Chaos Lord of Nurgle on Dragon"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 6,
+    "attackType": "melee",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 1,
+      "foodUpkeep": 36,
+      "squadPower": 300,
+      "meleeAttack": 79,
+      "meleeDamage": 2780,
+      "rangedAttack": 70,
+      "rangedDamage": 1520,
+      "morale": 90,
+      "armour": 64,
+      "health": 2710,
+      "speed": 12,
+      "load": 200
+    }
+  },
+  {
+    "id": "tzeentch-chaos-lord-on-dragon",
+    "labels": {
+      "fr": "Seigneur du Chaos de Tzeentch sur Dragon",
+      "en": "Chaos Lord of Tzeentch on Dragon"
+    },
+    "building": "dungeon",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 6,
+    "attackType": "ranged",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 1,
+      "foodUpkeep": 36,
+      "squadPower": 300,
+      "meleeAttack": 50,
+      "meleeDamage": 3170,
+      "rangedAttack": 61,
+      "rangedDamage": 3870,
+      "morale": 90,
+      "armour": 62,
+      "health": 3650,
+      "speed": 12,
+      "load": 200
+    }
+  },
+  {
+    "id": "chaos-bile-trolls",
+    "labels": {
+      "fr": "Trolls bileux du Chaos",
+      "en": "Bile Trolls of Chaos"
+    },
+    "building": "dungeon",
+    "recruitment": "renown",
+    "alignment": "nurgle",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "monstrous-infantry",
+    "stats": {
+      "squadSize": 4,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 24,
+      "meleeDamage": 650,
+      "rangedAttack": 10,
+      "rangedDamage": 500,
+      "morale": 65,
+      "armour": 53,
+      "health": 1875,
+      "speed": 6,
+      "load": 60
+    }
+  },
+  {
+    "id": "slaanesh-war-altar",
+    "labels": {
+      "fr": "Autel de guerre de Slaanesh",
+      "en": "Warshrine of Slaanesh"
+    },
+    "building": "dungeon",
+    "recruitment": "renown",
+    "alignment": "slaanesh",
+    "tier": 6,
+    "attackType": "ranged",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 1,
+      "foodUpkeep": 36,
+      "squadPower": 300,
+      "meleeAttack": 50,
+      "meleeDamage": 1300,
+      "rangedAttack": 66,
+      "rangedDamage": 1500,
+      "morale": 65,
+      "armour": 60,
+      "health": 1500,
+      "speed": 8,
+      "load": 220
+    }
+  },
+  {
+    "id": "tzeentch-giant-chaos-spawn",
+    "labels": {
+      "fr": "Rejeton du Chaos géant de Tzeentch",
+      "en": "Giant Spawn of Tzeentch"
+    },
+    "building": "dungeon",
+    "recruitment": "renown",
+    "alignment": "tzeentch",
+    "tier": 6,
+    "attackType": "melee",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 1,
+      "foodUpkeep": 36,
+      "squadPower": 300,
+      "meleeAttack": 46,
+      "meleeDamage": 2175,
+      "rangedAttack": 35,
+      "rangedDamage": 2000,
+      "morale": 75,
+      "armour": 35,
+      "health": 2400,
+      "speed": 8,
+      "load": 180
+    }
+  },
+  {
+    "id": "marauders",
+    "labels": {
+      "fr": "Maraudeur",
+      "en": "Marauder"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 1,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 6,
+      "squadPower": 4,
+      "meleeAttack": 30,
+      "meleeDamage": 300,
+      "rangedAttack": 22,
+      "rangedDamage": 300,
+      "morale": 56,
+      "armour": 19,
+      "health": 1000,
+      "speed": 6,
+      "load": 20
+    }
+  },
+  {
+    "id": "forsaken",
+    "labels": {
+      "fr": "Maudits",
+      "en": "Foresaken"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 2,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 6,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 30,
+      "meleeDamage": 800,
+      "morale": 56,
+      "armour": 44,
+      "health": 800,
+      "speed": 7,
+      "load": 35
+    }
+  },
+  {
+    "id": "hellcannon",
+    "labels": {
+      "fr": "Canon infernal",
+      "en": "Hellcannon"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 3,
+    "attackType": "ranged",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 30,
+      "meleeDamage": 60,
+      "rangedAttack": 30,
+      "rangedDamage": 1000,
+      "morale": 40,
+      "armour": 45,
+      "health": 1900,
+      "speed": 5,
+      "load": 45
+    }
+  },
+  {
+    "id": "chaos-warriors",
+    "labels": {
+      "fr": "Guerriers du Chaos",
+      "en": "Chaos Warrior"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 37,
+      "meleeDamage": 1000,
+      "rangedAttack": 22,
+      "rangedDamage": 800,
+      "morale": 56,
+      "armour": 44,
+      "health": 1000,
+      "speed": 6,
+      "load": 60
+    }
+  },
+  {
+    "id": "nurgle-chaos-warriors",
+    "labels": {
+      "fr": "Guerriers du Chaos de Nurgle",
+      "en": "Chaos Warrior of Nurgle"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 32,
+      "meleeDamage": 800,
+      "rangedAttack": 18,
+      "rangedDamage": 600,
+      "morale": 62,
+      "armour": 55,
+      "health": 1500,
+      "speed": 6,
+      "load": 60
+    }
+  },
+  {
+    "id": "khorne-chaos-warriors",
+    "labels": {
+      "fr": "Guerriers du Chaos de Khorne",
+      "en": "Chaos Warrior of Khorne"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 3,
+    "attackType": "ranged",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 32,
+      "meleeDamage": 800,
+      "rangedAttack": 35,
+      "rangedDamage": 1000,
+      "morale": 53,
+      "armour": 40,
+      "health": 1000,
+      "speed": 6,
+      "load": 60
+    }
+  },
+  {
+    "id": "slaanesh-chaos-warriors",
+    "labels": {
+      "fr": "Guerriers du Chaos de Slaanesh",
+      "en": "Chaos Warrior of Slaanesh"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 3,
+    "attackType": "ranged",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 30,
+      "meleeDamage": 850,
+      "rangedAttack": 39,
+      "rangedDamage": 1050,
+      "morale": 49,
+      "armour": 36,
+      "health": 1150,
+      "speed": 6,
+      "load": 60
+    }
+  },
+  {
+    "id": "tzeentch-chaos-warriors",
+    "labels": {
+      "fr": "Guerriers du Chaos de Tzeentch",
+      "en": "Chaos Warrior of Tzeentch"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 21,
+      "meleeDamage": 900,
+      "rangedAttack": 17,
+      "rangedDamage": 200,
+      "morale": 62,
+      "armour": 60,
+      "health": 1700,
+      "speed": 6,
+      "load": 60
+    }
+  },
+  {
+    "id": "chaos-chosen",
+    "labels": {
+      "fr": "Élu du Chaos",
+      "en": "Chaos Chosen"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 15,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 45,
+      "meleeDamage": 1200,
+      "rangedAttack": 22,
+      "rangedDamage": 1000,
+      "morale": 56,
+      "armour": 50,
+      "health": 1200,
+      "speed": 6,
+      "load": 100
+    }
+  },
+  {
+    "id": "skin-wolves",
+    "labels": {
+      "fr": "Loups-Garous Écorcheurs",
+      "en": "Skin Wolves"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "monstrous-infantry",
+    "stats": {
+      "squadSize": 12,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 50,
+      "meleeDamage": 1350,
+      "morale": 64,
+      "armour": 42,
+      "health": 2250,
+      "speed": 8,
+      "load": 175
+    }
+  },
+  {
+    "id": "sons-of-nifflecht",
+    "labels": {
+      "fr": "Fils de Nifflecht",
+      "en": "Sons of Nifflecht"
+    },
+    "building": "training-ground",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 48,
+      "meleeDamage": 1500,
+      "rangedAttack": 30,
+      "rangedDamage": 1000,
+      "morale": 60,
+      "armour": 50,
+      "health": 1200,
+      "speed": 8,
+      "load": 200
+    }
+  },
+  {
+    "id": "khorne-forsaken",
+    "labels": {
+      "fr": "Maudits de Khorne",
+      "en": "Foresaken of Khorne"
+    },
+    "building": "training-ground",
+    "recruitment": "renown",
+    "alignment": "khorne",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 6,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 60,
+      "meleeDamage": 800,
+      "morale": 56,
+      "armour": 44,
+      "health": 800,
+      "speed": 7,
+      "load": 40
+    }
+  },
+  {
+    "id": "tzeentch-sorcerer",
+    "labels": {
+      "fr": "Sorcier de Tzeentch",
+      "en": "Tzeentch Sorcerer"
+    },
+    "building": "training-ground",
+    "recruitment": "renown",
+    "alignment": "tzeentch",
+    "tier": 3,
+    "attackType": "ranged",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 2,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 39,
+      "meleeDamage": 450,
+      "rangedAttack": 45,
+      "rangedDamage": 850,
+      "morale": 64,
+      "armour": 50,
+      "health": 1250,
+      "speed": 8,
+      "load": 50
+    }
+  },
+  {
+    "id": "knights-of-kaldour",
+    "labels": {
+      "fr": "Chevaliers de Kaldour",
+      "en": "Kaldour's Knights"
+    },
+    "building": "training-ground",
+    "recruitment": "renown",
+    "alignment": "tzeentch",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 44,
+      "meleeDamage": 1100,
+      "rangedAttack": 38,
+      "rangedDamage": 1150,
+      "morale": 49,
+      "armour": 48,
+      "health": 1150,
+      "speed": 6,
+      "load": 100
+    }
+  },
+  {
+    "id": "brothers-of-the-ravens-hunger",
+    "labels": {
+      "fr": "Frères de la Faim des corbeaux",
+      "en": "Crowhunger Brethren"
+    },
+    "building": "training-ground",
+    "recruitment": "renown",
+    "alignment": "nurgle",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 36,
+      "meleeDamage": 1000,
+      "rangedAttack": 7,
+      "rangedDamage": 200,
+      "morale": 55,
+      "armour": 56,
+      "health": 1900,
+      "speed": 6,
+      "load": 100
+    }
+  },
+  {
+    "id": "skulltakers",
+    "labels": {
+      "fr": "Les Preneurs de crânes",
+      "en": "The Skull Takers"
+    },
+    "building": "training-ground",
+    "recruitment": "renown",
+    "alignment": "khorne",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 48,
+      "meleeDamage": 1100,
+      "morale": 57,
+      "armour": 52,
+      "health": 1500,
+      "speed": 6,
+      "load": 100
+    }
+  },
+  {
+    "id": "chaos-warhounds",
+    "labels": {
+      "fr": "Chien de guerre du Chaos",
+      "en": "Chaos Warhounds"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 1,
+    "attackType": "melee",
+    "unitType": "war-beasts",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 6,
+      "squadPower": 4,
+      "meleeAttack": 30,
+      "meleeDamage": 300,
+      "morale": 40,
+      "armour": 19,
+      "health": 1000,
+      "speed": 8,
+      "load": 15
+    }
+  },
+  {
+    "id": "marauder-horsemen",
+    "labels": {
+      "fr": "Cavaliers Maraudeurs",
+      "en": "Marauder Horsemen"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 2,
+    "attackType": "melee",
+    "unitType": "cavalry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 30,
+      "meleeDamage": 480,
+      "rangedAttack": 22,
+      "rangedDamage": 240,
+      "morale": 48,
+      "armour": 19,
+      "health": 1600,
+      "speed": 8,
+      "load": 40
+    }
+  },
+  {
+    "id": "chaos-chariots",
+    "labels": {
+      "fr": "Char du Chaos",
+      "en": "Chaos Chariot"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 2,
+    "attackType": "ranged",
+    "unitType": "chariots",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 37,
+      "meleeDamage": 240,
+      "rangedAttack": 22,
+      "rangedDamage": 300,
+      "morale": 52,
+      "armour": 56,
+      "health": 1000,
+      "speed": 8,
+      "load": 45
+    }
+  },
+  {
+    "id": "chaos-giants",
+    "labels": {
+      "fr": "Géants du Chaos",
+      "en": "Chaos Giants"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 22,
+      "meleeDamage": 600,
+      "rangedAttack": 22,
+      "rangedDamage": 400,
+      "morale": 80,
+      "armour": 36,
+      "health": 2000,
+      "speed": 7,
+      "load": 60
+    }
+  },
+  {
+    "id": "gorebeast-chariots",
+    "labels": {
+      "fr": "Char à Éventreur",
+      "en": "Gorebeast Chariots"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "ranged",
+    "unitType": "chariots",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 18,
+      "squadPower": 60,
+      "meleeAttack": 40,
+      "meleeDamage": 310,
+      "rangedAttack": 36,
+      "rangedDamage": 700,
+      "morale": 52,
+      "armour": 63,
+      "health": 1500,
+      "speed": 7,
+      "load": 120
+    }
+  },
+  {
+    "id": "chaos-knights",
+    "labels": {
+      "fr": "Chevalier du Chaos",
+      "en": "Chaos Knight"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "cavalry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 39,
+      "meleeDamage": 1000,
+      "rangedAttack": 22,
+      "rangedDamage": 640,
+      "morale": 56,
+      "armour": 52,
+      "health": 1650,
+      "speed": 8,
+      "load": 110
+    }
+  },
+  {
+    "id": "nurgle-chaos-knights",
+    "labels": {
+      "fr": "Chevalier du Chaos de Nurgle",
+      "en": "Chaos Knight of Nurgle"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "cavalry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 25,
+      "meleeDamage": 1200,
+      "rangedAttack": 10,
+      "rangedDamage": 300,
+      "morale": 69,
+      "armour": 58,
+      "health": 1900,
+      "speed": 8,
+      "load": 110
+    }
+  },
+  {
+    "id": "khorne-chaos-knights",
+    "labels": {
+      "fr": "Chevalier du Chaos de Khorne",
+      "en": "Chaos Knight of Khorne"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "cavalry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 42,
+      "meleeDamage": 1250,
+      "rangedAttack": 22,
+      "rangedDamage": 640,
+      "morale": 50,
+      "armour": 50,
+      "health": 1600,
+      "speed": 8,
+      "load": 110
+    }
+  },
+  {
+    "id": "slaanesh-chaos-knights",
+    "labels": {
+      "fr": "Chevalier du Chaos de Slaanesh",
+      "en": "Chaos Knight of Slaanesh"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "cavalry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 45,
+      "meleeDamage": 950,
+      "rangedAttack": 40,
+      "rangedDamage": 950,
+      "morale": 45,
+      "armour": 50,
+      "health": 1800,
+      "speed": 8,
+      "load": 110
+    }
+  },
+  {
+    "id": "tzeentch-chaos-knights",
+    "labels": {
+      "fr": "Chevalier du Chaos de Tzeentch",
+      "en": "Chaos Knight of Tzeentch"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "cavalry",
+    "stats": {
+      "squadSize": 8,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 45,
+      "meleeDamage": 1070,
+      "morale": 60,
+      "armour": 50,
+      "health": 1700,
+      "speed": 8,
+      "load": 110
+    }
+  },
+  {
+    "id": "chimera",
+    "labels": {
+      "fr": "Chimère",
+      "en": "Chimera"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "ranged",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 30,
+      "meleeDamage": 980,
+      "rangedAttack": 41,
+      "rangedDamage": 1200,
+      "morale": 40,
+      "armour": 50,
+      "health": 1200,
+      "speed": 8,
+      "load": 80
+    }
+  },
+  {
+    "id": "khorne-skullcrushers",
+    "labels": {
+      "fr": "Broyeurs de crânes de Khorne",
+      "en": "Skullcrusher of Khorne"
+    },
+    "building": "bestiary",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "monstrous-cavalry",
+    "stats": {
+      "squadSize": 4,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 48,
+      "meleeDamage": 1125,
+      "rangedAttack": 22,
+      "rangedDamage": 320,
+      "morale": 74,
+      "armour": 57,
+      "health": 2300,
+      "speed": 8,
+      "load": 200
+    }
+  },
+  {
+    "id": "heralds-of-slaanesh",
+    "labels": {
+      "fr": "Héraut de Slaanesh",
+      "en": "Herald of Slaanesh*"
+    },
+    "building": "bestiary",
+    "recruitment": "renown",
+    "alignment": "slaanesh",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "cavalry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 35,
+      "meleeDamage": 700,
+      "rangedAttack": 35,
+      "rangedDamage": 700,
+      "morale": 61,
+      "armour": 32,
+      "health": 2000,
+      "speed": 10,
+      "load": 50
+    }
+  },
+  {
+    "id": "swords-of-chaos",
+    "labels": {
+      "fr": "Les Épées du Chaos",
+      "en": "The Swords of Chaos"
+    },
+    "building": "bestiary",
+    "recruitment": "renown",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "cavalry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 41,
+      "meleeDamage": 1200,
+      "morale": 56,
+      "armour": 50,
+      "health": 1600,
+      "speed": 8,
+      "load": 100
+    }
+  },
+  {
+    "id": "tormentors",
+    "labels": {
+      "fr": "Les Bourreaux",
+      "en": "The Tormentors"
+    },
+    "building": "bestiary",
+    "recruitment": "renown",
+    "alignment": "slaanesh",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "chariots",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 46,
+      "meleeDamage": 950,
+      "morale": 70,
+      "armour": 62,
+      "health": 1550,
+      "speed": 8,
+      "load": 100
+    }
+  },
+  {
+    "id": "nurgle-rot-knights",
+    "labels": {
+      "fr": "Chevaliers putréfiés de Nurgle",
+      "en": "Rot Knights of Nurgle"
+    },
+    "building": "bestiary",
+    "recruitment": "renown",
+    "alignment": "nurgle",
+    "tier": 6,
+    "attackType": "melee",
+    "unitType": "monstrous-cavalry",
+    "stats": {
+      "squadSize": 5,
+      "foodUpkeep": 36,
+      "squadPower": 300,
+      "meleeAttack": 60,
+      "meleeDamage": 1550,
+      "rangedAttack": 35,
+      "rangedDamage": 600,
+      "morale": 75,
+      "armour": 55,
+      "health": 2550,
+      "speed": 10,
+      "load": 180
+    }
+  },
+  {
+    "id": "bloodletters",
+    "labels": {
+      "fr": "Lettres-sang de Khorne",
+      "en": "Bloodletters"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 2,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 37,
+      "meleeDamage": 375,
+      "rangedAttack": 30,
+      "rangedDamage": 300,
+      "morale": 56,
+      "armour": 25,
+      "health": 900,
+      "speed": 6,
+      "load": 50
+    }
+  },
+  {
+    "id": "nurglings",
+    "labels": {
+      "fr": "Nurglings",
+      "en": "Nurglings"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 2,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 30,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 22,
+      "meleeDamage": 350,
+      "rangedAttack": 22,
+      "rangedDamage": 200,
+      "morale": 56,
+      "armour": 19,
+      "health": 1300,
+      "speed": 4,
+      "load": 30
+    }
+  },
+  {
+    "id": "blue-horrors",
+    "labels": {
+      "fr": "Horreurs Bleues",
+      "en": "Blue Horrors"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 2,
+    "attackType": "ranged",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 20,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 15,
+      "meleeDamage": 300,
+      "rangedAttack": 15,
+      "rangedDamage": 400,
+      "morale": 56,
+      "armour": 19,
+      "health": 1350,
+      "speed": 5,
+      "load": 40
+    }
+  },
+  {
+    "id": "slaanesh-serpents",
+    "labels": {
+      "fr": "Serpent de Slaanesh",
+      "en": "Serpent of Slaanesh"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 2,
+    "attackType": "melee",
+    "unitType": "war-beasts",
+    "stats": {
+      "squadSize": 10,
+      "foodUpkeep": 12,
+      "squadPower": 10,
+      "meleeAttack": 34,
+      "meleeDamage": 300,
+      "morale": 56,
+      "armour": 26,
+      "health": 950,
+      "speed": 8,
+      "load": 45
+    }
+  },
+  {
+    "id": "pink-horrors",
+    "labels": {
+      "fr": "Horreurs Roses de Tzeentch",
+      "en": "Pink Horrors"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 3,
+    "attackType": "ranged",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 13,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 25,
+      "meleeDamage": 360,
+      "rangedAttack": 49,
+      "rangedDamage": 590,
+      "morale": 56,
+      "armour": 22,
+      "health": 1300,
+      "speed": 6,
+      "load": 45
+    }
+  },
+  {
+    "id": "plaguebearers",
+    "labels": {
+      "fr": "Pestiférés de Nurgle",
+      "en": "Plaguebearers"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 13,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 32,
+      "meleeDamage": 850,
+      "rangedAttack": 24,
+      "rangedDamage": 350,
+      "morale": 60,
+      "armour": 35,
+      "health": 1600,
+      "speed": 6,
+      "load": 50
+    }
+  },
+  {
+    "id": "bloodcrushers",
+    "labels": {
+      "fr": "Équarrisseurs de Khorne",
+      "en": "Bloodcrushers"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "cavalry",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 39,
+      "meleeDamage": 650,
+      "morale": 56,
+      "armour": 56,
+      "health": 1450,
+      "speed": 8,
+      "load": 50
+    }
+  },
+  {
+    "id": "daemonettes",
+    "labels": {
+      "fr": "Démonettes de Slaanesh",
+      "en": "Daemonettes of Slaanesh"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "infantry",
+    "stats": {
+      "squadSize": 12,
+      "foodUpkeep": 18,
+      "squadPower": 25,
+      "meleeAttack": 40,
+      "meleeDamage": 700,
+      "rangedAttack": 30,
+      "rangedDamage": 500,
+      "morale": 60,
+      "armour": 30,
+      "health": 1100,
+      "speed": 7,
+      "load": 45
+    }
+  },
+  {
+    "id": "flesh-hounds",
+    "labels": {
+      "fr": "Chiens de Khorne",
+      "en": "Flesh Hounds"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "war-beasts",
+    "stats": {
+      "squadSize": 9,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 50,
+      "meleeDamage": 1200,
+      "morale": 56,
+      "armour": 31,
+      "health": 1800,
+      "speed": 9,
+      "load": 80
+    }
+  },
+  {
+    "id": "screamers",
+    "labels": {
+      "fr": "Hurleurs de Tzeentch",
+      "en": "Screamers of Tzeentch"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "war-beasts",
+    "stats": {
+      "squadSize": 7,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 44,
+      "meleeDamage": 1400,
+      "rangedAttack": 30,
+      "rangedDamage": 700,
+      "morale": 58,
+      "armour": 30,
+      "health": 1500,
+      "speed": 7,
+      "load": 85
+    }
+  },
+  {
+    "id": "plague-drones",
+    "labels": {
+      "fr": "Drone de la peste de Nurgle",
+      "en": "Plague Drones"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "monstrous-cavalry",
+    "stats": {
+      "squadSize": 5,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 40,
+      "meleeDamage": 1250,
+      "rangedAttack": 22,
+      "rangedDamage": 720,
+      "morale": 60,
+      "armour": 30,
+      "health": 2000,
+      "speed": 6,
+      "load": 80
+    }
+  },
+  {
+    "id": "slaanesh-fiends",
+    "labels": {
+      "fr": "Diablotins de Slaanesh",
+      "en": "Fiends of Slaanesh"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 6,
+      "foodUpkeep": 24,
+      "squadPower": 60,
+      "meleeAttack": 38,
+      "meleeDamage": 1100,
+      "morale": 56,
+      "armour": 35,
+      "health": 1800,
+      "speed": 10,
+      "load": 160
+    }
+  },
+  {
+    "id": "khorne-daemon-prince",
+    "labels": {
+      "fr": "Prince démon de Khorne",
+      "en": "Daemon Prince of Khorne"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 70,
+      "meleeDamage": 1000,
+      "rangedAttack": 37,
+      "rangedDamage": 300,
+      "morale": 55,
+      "armour": 53,
+      "health": 1500,
+      "speed": 9,
+      "load": 95
+    }
+  },
+  {
+    "id": "burning-chariots",
+    "labels": {
+      "fr": "Chars de feu de Tzeentch",
+      "en": "Burning Chariot of Tzeentch"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "chariots",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 20,
+      "meleeDamage": 700,
+      "rangedAttack": 65,
+      "rangedDamage": 1140,
+      "morale": 62,
+      "armour": 44,
+      "health": 1200,
+      "speed": 9,
+      "load": 180
+    }
+  },
+  {
+    "id": "beasts-of-nurgle",
+    "labels": {
+      "fr": "Bêtes de Nurgle",
+      "en": "Beasts of Nurgle"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "monstrous-beasts",
+    "stats": {
+      "squadSize": 5,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 30,
+      "meleeDamage": 1250,
+      "morale": 72,
+      "armour": 67,
+      "health": 2000,
+      "speed": 6,
+      "load": 155
+    }
+  },
+  {
+    "id": "hellflayers",
+    "labels": {
+      "fr": "Flageleurs infernaux de Slaanesh",
+      "en": "Hellflayers of Slaanesh"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "chariots",
+    "stats": {
+      "squadSize": 2,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 50,
+      "meleeDamage": 1200,
+      "rangedAttack": 22,
+      "rangedDamage": 900,
+      "morale": 69,
+      "armour": 64,
+      "health": 2100,
+      "speed": 9,
+      "load": 85
+    }
+  },
+  {
+    "id": "nurgle-daemon-prince",
+    "labels": {
+      "fr": "Prince démon de Nurgle",
+      "en": "Daemon Prince of Nurgle"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "nurgle",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 65,
+      "meleeDamage": 1100,
+      "rangedAttack": 50,
+      "rangedDamage": 550,
+      "morale": 50,
+      "armour": 60,
+      "health": 1300,
+      "speed": 9,
+      "load": 95
+    }
+  },
+  {
+    "id": "slaanesh-daemon-prince",
+    "labels": {
+      "fr": "Prince démon de Slaanesh",
+      "en": "Daemon Prince of Slaanesh"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "slaanesh",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 39,
+      "meleeDamage": 600,
+      "rangedAttack": 70,
+      "rangedDamage": 1075,
+      "morale": 55,
+      "armour": 54,
+      "health": 1200,
+      "speed": 10,
+      "load": 95
+    }
+  },
+  {
+    "id": "tzeentch-daemon-prince",
+    "labels": {
+      "fr": "Prince démon de Tzeentch",
+      "en": "Daemon Prince of Tzeentch"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "tzeentch",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "monsters",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 41,
+      "meleeDamage": 1250,
+      "rangedAttack": 44,
+      "rangedDamage": 1400,
+      "morale": 66,
+      "armour": 58,
+      "health": 1750,
+      "speed": 9,
+      "load": 95
+    }
+  },
+  {
+    "id": "khorne-skull-cannons",
+    "labels": {
+      "fr": "Canon à crânes de Khorne",
+      "en": "Skull Cannons of Khorne"
+    },
+    "building": "chaos-rift",
+    "recruitment": "training",
+    "alignment": "khorne",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "chariots",
+    "stats": {
+      "squadSize": 3,
+      "foodUpkeep": 30,
+      "squadPower": 150,
+      "meleeAttack": 22,
+      "meleeDamage": 350,
+      "rangedAttack": 51,
+      "rangedDamage": 1550,
+      "morale": 56,
+      "armour": 60,
+      "health": 1350,
+      "speed": 9,
+      "load": 150
+    }
+  }
+]

@@ -1,0 +1,11 @@
+#!/bin/sh
+# Runs the same checks as the CI before each commit (enable once per clone: git config core.hooksPath .githooks).
+# Do not bypass with --no-verify: the CI runs them again and blocks anyway.
+npm run check || exit 1
+
+# Secrets: gitleaks scans the staged changes when it is installed; the CI scans the whole history in any case.
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged --redact || exit 1
+else
+  echo "gitleaks not installed: secret scan left to the CI."
+fi

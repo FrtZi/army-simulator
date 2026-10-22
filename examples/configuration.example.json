@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "game": "chaos-conquest",
+  "name": "Example player (fictitious)",
+  "limits": {
+    "marchCapacity": 50000
+  },
+  "sources": [
+    {
+      "kind": "manual",
+      "label": "Totals copied from the in-game boost summary",
+      "effects": [
+        {
+          "stat": "meleeAttack",
+          "percent": 25,
+          "target": {
+            "attackTypes": ["melee"]
+          }
+        },
+        {
+          "stat": "health",
+          "percent": 10
+        },
+        {
+          "stat": "armour",
+          "percent": 15,
+          "target": {
+            "alignments": ["khorne"]
+          }
+        },
+        {
+          "stat": "marchCapacity",
+          "percent": 10
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "current",
+      "name": "Current army",
+      "troops": {
+        "khorngor": 20000,
+        "tzaangor": 15000,
+        "khorne-gor": 10000
+      }
+    },
+    {
+      "id": "more-ranged",
+      "name": "More ranged troops",
+      "troops": {
+        "khorngor": 10000,
+        "tzaangor": 20000,
+        "nurgle-gor": 15000
+      }
+    }
+  ]
+}

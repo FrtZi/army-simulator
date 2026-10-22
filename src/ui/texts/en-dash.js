@@ -1,0 +1,57 @@
+// The English texts of the dashboards (DASH-01 to DASH-05). fr-dash.js holds the same keys.
+export const EN_DASH = {
+  "dash.title": "Dashboards",
+  "dash.hint": "Six views of your armies. They use your bonuses, the composition being edited and the two compared.",
+  "dash.efficiency": "Efficiency per slot",
+  "dash.rounds": "Battle by round",
+  "dash.balance": "Army balance",
+  "dash.map": "Damage vs tanking",
+  "dash.pros": "Pros and cons",
+
+  "efficiency.hint":
+    "What one troop is worth in your army, with your bonuses: effective health across, damage up. Your march capacity counts troops whatever their tier, so one Marauder takes the room of one Dragon: the higher and the further right, the more each slot gives.",
+
+  "rounds.hint": "The two battles of the comparison, round by round: what each side loses, and where.",
+  "rounds.round": "Round",
+  "rounds.lost": "{name}: troops lost",
+  "rounds.byTier": "{name}: by tier",
+  "rounds.power": "{name}: power lost",
+  "rounds.broken": "{name}: broken",
+
+  "balance.hint": "How the power of composition {name} is spread, and where it is weak.",
+  "balance.tiers": "By tier",
+  "balance.alignments": "By god",
+  "balance.unitTypes": "By troop type",
+  "balance.modes": "By attack used",
+  "balance.ok": "No weak point found.",
+  "warn.thin-front": "Thin front line: tier {tier} is hit first but holds only {share} % of the effective health.",
+  "warn.unscreened-ranged": "Tier {tier}: only ranged troops, nothing in front of them: they fight in melee.",
+  "warn.one-god": "{god} carries {share} % of the power: bonuses for {god} pay the most.",
+  "warn.low-morale": "Average morale {morale}: many squads will break when they take losses.",
+
+  "map.hint":
+    "Composition {name}: each troop type by its damage per troop (up) and its effective health per troop (right). The bigger the dot, the more troops.",
+  "map.x": "Effective health per troop",
+  "map.y": "Damage per troop",
+  "map.empty": "Add troops to composition {name} to see them on the map.",
+  "map.summary": "{count} troop types plotted by damage and effective health per troop.",
+
+  "pros.hint": "Composition {a} against {b}: the figures where one is ahead by 10 % or more.",
+  "pros.strengths": "Strengths",
+  "pros.weaknesses": "Weaknesses",
+  "pros.none": "Nothing stands out.",
+  "pros.gap": "{figure}: {gap} %",
+  "efficiency.summary": "{count} troops placed by damage and effective health per troop.",
+  "efficiency.legend": "Ringed: the troops of composition {name}. Point at a dot (or tap it) to see its name.",
+  "dash.raid": "Raiding",
+  "raid.hint":
+    "What one troop brings back, with your bonuses: the load it carries home across, its speed up. Fast and roomy troops raid best; an army likely marches at its slowest troop's pace (to confirm).",
+  "raid.x": "Load per troop",
+  "raid.y": "Speed",
+  "raid.summary": "{count} troops placed by speed and load per troop.",
+  "zoom.hint": "Drag a box on the chart to zoom in.",
+  "zoom.in": "Zoom in, towards the bottom-left",
+  "zoom.out": "Zoom out",
+  "zoom.reset": "Show the whole chart",
+  "efficiency.highlight": "Highlight composition {name}",
+};

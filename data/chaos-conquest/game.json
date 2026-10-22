@@ -1,0 +1,330 @@
+{
+  "bonusPercent": {
+    "min": 0,
+    "max": 100
+  },
+  "tiers": [
+    {
+      "id": 1,
+      "labels": {
+        "fr": "I",
+        "en": "I"
+      }
+    },
+    {
+      "id": 2,
+      "labels": {
+        "fr": "II",
+        "en": "II"
+      }
+    },
+    {
+      "id": 3,
+      "labels": {
+        "fr": "III",
+        "en": "III"
+      }
+    },
+    {
+      "id": 4,
+      "labels": {
+        "fr": "IV",
+        "en": "IV"
+      }
+    },
+    {
+      "id": 5,
+      "labels": {
+        "fr": "V",
+        "en": "V"
+      }
+    },
+    {
+      "id": 6,
+      "labels": {
+        "fr": "VI",
+        "en": "VI"
+      }
+    }
+  ],
+  "recruitments": [
+    {
+      "id": "training",
+      "labels": {
+        "fr": "Entraînement",
+        "en": "Training"
+      }
+    },
+    {
+      "id": "renown",
+      "labels": {
+        "fr": "Notoriété",
+        "en": "Renown"
+      }
+    }
+  ],
+  "attackTypes": [
+    {
+      "id": "melee",
+      "labels": {
+        "fr": "Mêlée",
+        "en": "Melee"
+      }
+    },
+    {
+      "id": "ranged",
+      "labels": {
+        "fr": "À distance",
+        "en": "Ranged"
+      }
+    }
+  ],
+  "unitTypes": [
+    {
+      "id": "infantry",
+      "labels": {
+        "fr": "Infanterie",
+        "en": "Infantry"
+      }
+    },
+    {
+      "id": "monstrous-infantry",
+      "labels": {
+        "fr": "Infanterie monstrueuse",
+        "en": "Monstrous Infantry"
+      }
+    },
+    {
+      "id": "monstrous-beasts",
+      "labels": {
+        "fr": "Bêtes monstrueuses",
+        "en": "Monstrous Beasts"
+      }
+    },
+    {
+      "id": "monsters",
+      "labels": {
+        "fr": "Monstres",
+        "en": "Monster"
+      }
+    },
+    {
+      "id": "war-beasts",
+      "labels": {
+        "fr": "Bêtes de guerre",
+        "en": "War Beast"
+      }
+    },
+    {
+      "id": "cavalry",
+      "labels": {
+        "fr": "Cavalerie",
+        "en": "Cavalry"
+      }
+    },
+    {
+      "id": "chariots",
+      "labels": {
+        "fr": "Chars",
+        "en": "Chariots"
+      }
+    },
+    {
+      "id": "monstrous-cavalry",
+      "labels": {
+        "fr": "Cavalerie monstrueuse",
+        "en": "Monstrous Cavalry"
+      }
+    },
+    {
+      "id": "defences",
+      "labels": {
+        "fr": "Défenses",
+        "en": "Defences*"
+      }
+    }
+  ],
+  "alignments": [
+    {
+      "id": "undivided",
+      "labels": {
+        "fr": "Chaos Indivisible",
+        "en": "Undivided"
+      }
+    },
+    {
+      "id": "khorne",
+      "labels": {
+        "fr": "Khorne",
+        "en": "Khorne"
+      }
+    },
+    {
+      "id": "nurgle",
+      "labels": {
+        "fr": "Nurgle",
+        "en": "Nurgle"
+      }
+    },
+    {
+      "id": "slaanesh",
+      "labels": {
+        "fr": "Slaanesh",
+        "en": "Slaanesh"
+      }
+    },
+    {
+      "id": "tzeentch",
+      "labels": {
+        "fr": "Tzeentch",
+        "en": "Tzeentch"
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": "beastmen-herdstone",
+      "labels": {
+        "fr": "Pierre des hardes des Hommes-bêtes",
+        "en": "Herd Stone"
+      }
+    },
+    {
+      "id": "dungeon",
+      "labels": {
+        "fr": "Donjon",
+        "en": "Dungeon"
+      }
+    },
+    {
+      "id": "training-ground",
+      "labels": {
+        "fr": "Terrain d'entraînement",
+        "en": "Training Ground"
+      }
+    },
+    {
+      "id": "bestiary",
+      "labels": {
+        "fr": "Bestiaire",
+        "en": "Bestiary"
+      }
+    },
+    {
+      "id": "chaos-rift",
+      "labels": {
+        "fr": "Faille du Chaos",
+        "en": "Rifts"
+      }
+    },
+    {
+      "id": "fortress-walls",
+      "labels": {
+        "fr": "Murs de la Forteresse",
+        "en": "Fortress Walls*"
+      }
+    }
+  ],
+  "troopStats": [
+    {
+      "id": "squadSize",
+      "labels": {
+        "fr": "Taille de l'escouade",
+        "en": "Squad Size"
+      },
+      "boostable": false
+    },
+    {
+      "id": "foodUpkeep",
+      "unit": "food per 100 units per hour",
+      "labels": {
+        "fr": "Nourriture d'entretien",
+        "en": "Food Upkeep*"
+      },
+      "boostable": false
+    },
+    {
+      "id": "squadPower",
+      "labels": {
+        "fr": "Puissance d'escouade",
+        "en": "Squad Power"
+      },
+      "boostable": false
+    },
+    {
+      "id": "meleeAttack",
+      "labels": {
+        "fr": "Attaque de mêlée",
+        "en": "Melee Attack"
+      }
+    },
+    {
+      "id": "meleeDamage",
+      "labels": {
+        "fr": "Dégâts de mêlée",
+        "en": "Melee Damage"
+      }
+    },
+    {
+      "id": "rangedAttack",
+      "optional": true,
+      "labels": {
+        "fr": "Attaque à distance",
+        "en": "Range Attack"
+      }
+    },
+    {
+      "id": "rangedDamage",
+      "optional": true,
+      "labels": {
+        "fr": "Dégâts à distance",
+        "en": "Range Damage"
+      }
+    },
+    {
+      "id": "morale",
+      "labels": {
+        "fr": "Moral",
+        "en": "Morale"
+      }
+    },
+    {
+      "id": "armour",
+      "labels": {
+        "fr": "Armure",
+        "en": "Armour"
+      }
+    },
+    {
+      "id": "health",
+      "labels": {
+        "fr": "Santé",
+        "en": "Health"
+      }
+    },
+    {
+      "id": "speed",
+      "labels": {
+        "fr": "Vitesse",
+        "en": "Speed"
+      }
+    },
+    {
+      "id": "load",
+      "labels": {
+        "fr": "Charger",
+        "en": "Load"
+      }
+    }
+  ],
+  "armyStats": [
+    {
+      "id": "marchCapacity"
+    }
+  ],
+  "sourceKinds": [
+    {
+      "id": "manual"
+    }
+  ]
+}

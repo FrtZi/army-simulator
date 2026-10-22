@@ -1,0 +1,167 @@
+/* Dashboards: the five tabs, the efficiency table, the balance bars, the damage map, pros and cons. */
+.dash-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0.5rem 0 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.dash-tabs [role="tab"] {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 0;
+  background: none;
+  color: var(--muted);
+}
+
+.dash-tabs [role="tab"][aria-selected="true"] {
+  background: var(--field);
+  color: var(--heading);
+  box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+.dash-panel {
+  padding-top: 0.75rem;
+}
+
+.dash-field {
+  max-width: 22rem;
+  margin-bottom: 0.75rem;
+}
+
+.warnings,
+.share-list,
+.pros-list {
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.share-groups,
+.pros-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.share {
+  display: grid;
+  grid-template-columns: 9rem 1fr 4rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.share-bar {
+  height: 0.6rem;
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.share-bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+
+.share-value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.pros-list .win {
+  color: var(--good);
+}
+
+.pros-list .lose {
+  color: var(--critical);
+}
+
+.damage-map {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.map-axis,
+.map-grid {
+  stroke: var(--line);
+}
+
+.map-grid {
+  stroke-dasharray: 2 4;
+}
+
+/* "highlight": the troops outside the composition being edited fade into the background */
+.dot.dimmed {
+  opacity: 0.15;
+}
+
+.dot {
+  cursor: pointer;
+}
+
+#highlight-toggle[aria-pressed="true"] {
+  border-color: var(--accent);
+  box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+/* a troop of the composition being edited, on the efficiency and raiding charts */
+.map-ring {
+  fill: none;
+  stroke: var(--heading);
+  stroke-width: 1.5;
+}
+
+.map-name {
+  fill: var(--text);
+  /* a halo of the card's colour: a name stays readable over the dots */
+  paint-order: stroke;
+  stroke: var(--card);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.dash-filters {
+  grid-template-columns: repeat(3, minmax(0, 12rem));
+}
+
+.map-label {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+h4 {
+  margin: 0.5rem 0 0.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* zoom: the buttons above a chart, and the box being dragged on it */
+.zoom-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+
+.zoom-bar .hint {
+  margin: 0 auto 0 0;
+}
+
+.damage-map[data-frame] {
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.zoom-box {
+  fill: var(--accent);
+  fill-opacity: 0.15;
+  stroke: var(--accent);
+  stroke-dasharray: 4 3;
+}

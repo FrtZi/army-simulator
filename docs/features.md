@@ -1,0 +1,111 @@
+# Feature catalogue
+
+[← Overview](../ARCHITECTURE.md) · Why: [decisions.md](decisions.md) · What is left: [roadmap.md](roadmap.md)
+
+**What the simulator does, and what proves it.** One line per feature, with a stable id (`CATEGORY-NN`). A
+new feature enters here **before** it is coded, as _Planned_: that is its minimal spec, approved by Frantz.
+It becomes _Done_ when its proof exists.
+
+- **Type**: _Business_ (what the player sees or does), _Technical_ (how the simulator does it),
+  _Non-functional_ (quality: performance, compatibility, accessibility, reliability, security…).
+- **Proof**: a test whose name carries the feature id (`node --test --test-name-pattern=DATA-01`), a check, or
+  "manual" with its reason. _To cover_: done but no proof yet, a visible debt. _In progress_: the engine part is done and proved; the
+  page part is still to come.
+- **Categories**: functional ones follow the simulator's domains; non-functional ones follow the quality
+  characteristics of **ISO/IEC 25010:2023**, in its order.
+
+## Games (GAME)
+
+| ID      | Feature                                                                                                                                                                                                                   | Type     | Status | Proof                                      |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------ | ------------------------------------------ |
+| GAME-01 | The player picks the game first (Warhammer: Chaos & Conquest, the only one as of 2026-10-22); each game brings its own data, rules and vocabulary, and another game is added by declaring it, without changing the engine | Business | Done   | `tests/data.test.js`, `tests/page.test.js` |
+
+## Game data (DATA) — [data-model.md](data-model.md)
+
+| ID      | Feature                                                                                                                         | Type      | Status | Proof                                                                                                         |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------- | --------- | ------ | ------------------------------------------------------------------------------------------------------------- |
+| DATA-01 | Units are described once, in `data/<game>/units.json`, with the vocabulary of `data/<game>/game.json`; every commit checks them | Technical | Done   | `tests/data.test.js`                                                                                          |
+| DATA-02 | A player's configuration has one versioned format (limits, bonus sources, scenarios), with a fictitious example                 | Technical | Done   | `tests/data.test.js`                                                                                          |
+| DATA-04 | Every fortress defence is in its own catalogue, `data/<game>/defences.json`, transcribed from its in-game sheet (all 15)        | Business  | Done   | `tests/data.test.js`                                                                                          |
+| DATA-03 | Every troop type of the game is in the catalogue, transcribed from its in-game sheet (82 troops in 5 buildings)                 | Business  | Done   | `tests/data.test.js`; manual: transcribed from the sheets, cross-checked with an independent reference (D-09) |
+
+## Bonuses (BONUS) — [data-model.md](data-model.md)
+
+| ID       | Feature                                                                                                                                                                                               | Type     | Status | Proof                                        |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------ | -------------------------------------------- |
+| BONUS-01 | The player enters bonuses: a percentage from 0 to 100 on any stat but squad size, food upkeep and squad power, for all troops or by troop type, alignment, tier, attack type, building or unit (D-14) | Business | Done   | `tests/engine.test.js`, `tests/page.test.js` |
+| BONUS-02 | The simulator shows each troop's effective stats: base stats plus the bonuses that apply to it                                                                                                        | Business | Done   | `tests/engine.test.js`, `tests/page.test.js` |
+| BONUS-03 | Heroes, by level                                                                                                                                                                                      | Business | Later  | —                                            |
+| BONUS-04 | Citadel rituals: talent classes, linked skills, by level                                                                                                                                              | Business | Later  | —                                            |
+| BONUS-05 | Champion: own stats and buffs, by level                                                                                                                                                               | Business | Later  | —                                            |
+| BONUS-06 | Champion armour: pieces by level, set bonuses by number of pieces                                                                                                                                     | Business | Later  | —                                            |
+| BONUS-07 | Buildings, by level                                                                                                                                                                                   | Business | Later  | —                                            |
+
+## Armies and scenarios (ARMY)
+
+| ID      | Feature                                                                                                                                                                     | Type     | Status  | Proof                                        |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | -------------------------------------------- |
+| ARMY-01 | The player composes an army: a count per troop type, added from a picker with a search and filters by building, tier, god and type, several values each (D-15, D-23)        | Business | Done    | `tests/engine.test.js`, `tests/page.test.js` |
+| ARMY-02 | An army cannot exceed the march capacity: a fixed base plus a percentage bonus, shown split (base, bonus, total); the excess is shown                                       | Business | Done    | `tests/engine.test.js`, `tests/page.test.js` |
+| ARMY-04 | A fortress (defences, within the walls' defence capacity, plus garrison troops) defends in a battle; defences never march and never count against the march capacity (D-11) | Business | Planned | —                                            |
+| ARMY-03 | As many compositions as wanted (new, duplicate, rename, delete); any two chosen for the comparison, better in green ▲, weaker in red ▼, equal in orange = (D-19)            | Business | Done    | `tests/battle.test.js`, `tests/page.test.js` |
+
+## Simulation (SIM)
+
+| ID     | Feature                                                                                                                                                                           | Type      | Status | Proof                                                                                                           |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------ | --------------------------------------------------------------------------------------------------------------- |
+| SIM-01 | Power of an army                                                                                                                                                                  | Business  | Done   | `tests/engine.test.js`, `tests/page.test.js`                                                                    |
+| SIM-02 | Battle between two armies, under the published combat rules                                                                                                                       | Business  | Done   | `tests/battle.test.js`                                                                                          |
+| SIM-03 | Comparison of the scenarios: differences against the first, strengths and weaknesses                                                                                              | Business  | Done   | `tests/battle.test.js`, `tests/page.test.js`                                                                    |
+| SIM-04 | Calibration: the unknown parameters fitted on the player's battle reports                                                                                                         | Business  | Later  | —                                                                                                               |
+| SIM-05 | Optimiser: the best troop mix within the caps                                                                                                                                     | Business  | Later  | —                                                                                                               |
+| SIM-06 | Dashboard: pros and cons of each scenario                                                                                                                                         | Business  | Done   | see DASH-05                                                                                                     |
+| SIM-08 | Army profile: power, troops, damage per strike (melee, ranged, best), effective health (tanking), average morale, slowest speed, load, food per hour, and each troop type's share | Business  | Done   | `tests/battle.test.js`, `tests/page.test.js`                                                                    |
+| SIM-07 | Control: for the same armies and bonuses, the per-troop figures match the published formulas (community wiki); a local cross-check against an independent calculation (D-10)      | Technical | Done   | `tests/battle.test.js`; full back-test `tests/backtest.test.js`, local only (its notes stay off the repo, D-10) |
+
+## Dashboards (DASH) — six tabs (D-20, D-21)
+
+| ID      | Feature                                                                                                                                                                                                                                                                                                                                                      | Type     | Status | Proof                                             |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------ | ------------------------------------------------- |
+| DASH-01 | Efficiency per march slot: every troop of the game, with the player's bonuses, on a chart — effective health per troop across, damage per troop up; filters of several values by building, tier and god; zoom (drag a box, or + and −); names when pointing at a dot; the composition's troops ringed, and a button that darkens all the others (D-21, D-23) | Business | Done   | `tests/dashboards.test.js`, `tests/page.test.js`  |
+| DASH-02 | Battle by round: the two battles of the comparison, per round and per side, troops lost (by tier), power lost, troops broken                                                                                                                                                                                                                                 | Business | Done   | `tests/dashboards.test.js`, `tests/page.test.js`  |
+| DASH-03 | Army balance: the power of the composition being edited, by tier, god, troop type and attack used, and its weak points in words                                                                                                                                                                                                                              | Business | Done   | `tests/dashboards.test.js`, `tests/page.test.js`  |
+| DASH-04 | Damage vs tanking: each troop type as a dot, damage per troop up, effective health per troop across, size by count, in its god's colour                                                                                                                                                                                                                      | Business | Done   | `tests/page.test.js`; manual: seen in the browser |
+| DASH-05 | Pros and cons: for the two compositions compared, the figures where each is ahead or behind by 10 % or more, and who wins each battle                                                                                                                                                                                                                        | Business | Done   | `tests/dashboards.test.js`, `tests/page.test.js`  |
+| DASH-06 | Raiding: every troop on a chart of speed (up) against the load it carries home (across), per troop, with the same filters (D-21)                                                                                                                                                                                                                             | Business | Done   | `tests/dashboards.test.js`, `tests/page.test.js`  |
+
+## Configurations (CFG)
+
+| ID     | Feature                                                                         | Type     | Status | Proof                                         |
+| ------ | ------------------------------------------------------------------------------- | -------- | ------ | --------------------------------------------- |
+| CFG-01 | Several configurations saved in the player's browser                            | Business | Done   | `tests/storage.test.js`, `tests/page.test.js` |
+| CFG-02 | Export and import of a configuration as a JSON file (backup, restore, transfer) | Business | Done   | `tests/storage.test.js`, `tests/page.test.js` |
+| CFG-03 | Read-only share link, the configuration carried after the `#` of the URL        | Business | Later  | —                                             |
+
+## Interface (UI)
+
+| ID       | Feature                                                                                                                                | Type     | Status | Proof                                                                         |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------ | ----------------------------------------------------------------------------- |
+| GLOSS-01 | Dotted terms explain themselves (hover, focus or tap), in both languages; the wiki is named where it is the source                     | Business | Done   | `tests/page.test.js`                                                          |
+| THEME-01 | The Altaïra look (charter colours, light type), a light and a dark theme (the system's, or the one chosen, remembered), language flags | Business | Done   | `tests/page.test.js`, `tests/accessibility.test.js` (contrast in both themes) |
+| ICON-01  | Each troop shows an icon of its type in its god's colour, drawn for the page (no game art, D-06)                                       | Business | Done   | Manual: seen in the browser; the god is also written next to it               |
+
+## Languages (LANG)
+
+| ID      | Feature                                                                                                                                                                             | Type     | Status | Proof                |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------ | -------------------- |
+| LANG-01 | Every in-game name (units, buildings, unit types, stats) is stored in French and English, each copied from the game in that language; a name we had to translate ends with * (D-08) | Business | Done   | `tests/data.test.js` |
+| LANG-02 | The page is shown in English or French; the player switches at any time and the choice is remembered in their browser                                                               | Business | Done   | `tests/page.test.js` |
+
+## Non-functional (ISO/IEC 25010)
+
+| ID       | Feature                                                                                                  | Type           | Status  | Proof                                                                                                       |
+| -------- | -------------------------------------------------------------------------------------------------------- | -------------- | ------- | ----------------------------------------------------------------------------------------------------------- |
+| PERF-01  | A simulation answers in under 100 ms on a phone                                                          | Non-functional | Planned | —                                                                                                           |
+| COMP-01  | One self-contained file: works offline, on desktop and on mobile                                         | Non-functional | Done    | `tests/page.test.js`; manual: tried on desktop and phone width in a browser                                 |
+| ACC-01   | WCAG AA, checked automatically (axe-core); no status shown by colour alone                               | Non-functional | Done    | `tests/accessibility.test.js` (axe-core, both languages; contrast from the tokens)                          |
+| REL-01   | An exported configuration imports back identical; an older format is migrated, not rejected              | Non-functional | Done    | `tests/storage.test.js`                                                                                     |
+| REL-02   | The page shows its version next to its title (v1.0), read from package.json at build time                | Non-functional | Done    | `tests/page.test.js`                                                                                        |
+| SEC-01   | No player data leaves the browser: no server, no analytics, no cookie                                    | Non-functional | Done    | `tests/page.test.js` (no network call in the page's code); only the language choice is kept, in the browser |
+| SEC-02   | No secret in the repo: scanned at each commit and in CI                                                  | Non-functional | Done    | Check: `.githooks/pre-commit`, gitleaks step in `.github/workflows/ci.yml`                                  |
+| MAINT-01 | Formatting, lint (150 lines per file, 60 per function, complexity 12) and tests at each commit and in CI | Non-functional | Done    | Check: `npm run check`, `.githooks/pre-commit`, `.github/workflows/ci.yml`                                  |

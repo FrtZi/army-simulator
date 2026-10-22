@@ -1,0 +1,35 @@
+/* Phones and narrow windows: rows stack, the filters go two by two. Loaded last, so it wins. */
+@media (max-width: 40rem) {
+  .top {
+    flex-direction: column;
+  }
+
+  .card {
+    padding: 0.9rem;
+  }
+
+  .bonus-row {
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* the remove button stays square, at the end of the row */
+  .bonus-row button.icon {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .composition-fields,
+  .save-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .army-line {
+    grid-template-columns: auto 1fr 6rem 2.5rem;
+  }
+}

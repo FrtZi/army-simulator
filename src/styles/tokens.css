@@ -1,0 +1,59 @@
+/* Design tokens: every colour of the page, from the Altaïra charter (dark by default, light derived from the
+   light logo; not a mechanical inverse). The theme is the data-theme attribute of <html>, set before the first
+   paint by src/theme-init.js. tests/accessibility.test.js reads this file and checks every text colour on
+   every surface, in both themes (WCAG AA). */
+:root {
+  --bg: #0a0a0a;
+  --card: #171310;
+  --field: #221c17;
+  --line: #3d3428;
+  --key: #3d2510; /* the key figures: power, damage per strike, effective health (an orange tint) */
+  --heading: #faedd9;
+  --text: #e8e6e0;
+  --muted: #b8afa0;
+  --link: #ff9a3c;
+  --accent: #ff9a3c;
+  --accent-hover: #ffc37b;
+  --on-accent: #00102e;
+  --focus: #ffc37b;
+  --tip-bg: #faedd9;
+  --tip-text: #0a0a0a;
+  /* status: fixed meaning, always paired with an icon and words */
+  --good: #6fd49f;
+  --critical: #ff8a7a;
+  --equal: #ffb35c;
+  /* the gods' colours, on the troop icons only (their names are always written next to them) */
+  --undivided: #d9b26a;
+  --khorne: #ff6b5e;
+  --nurgle: #8fc46a;
+  --slaanesh: #d58bf0;
+  --tzeentch: #6fb4ff;
+  --radius: 10px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+:root[data-theme="light"] {
+  --bg: #fafafa;
+  --card: #f1eee7;
+  --field: #ffffff;
+  --line: #dcd5c6;
+  --key: #ffead2;
+  --heading: #0a0a0a;
+  --text: #3a362f;
+  --muted: #57524a;
+  --link: #a15917;
+  --accent: #ff9a3c;
+  --accent-hover: #ffc37b;
+  --on-accent: #00102e;
+  --focus: #8f4e13;
+  --tip-bg: #211d17;
+  --tip-text: #faedd9;
+  --good: #1d7346;
+  --critical: #b3261e;
+  --equal: #9a4f00;
+  --undivided: #8a6514;
+  --khorne: #b3261e;
+  --nurgle: #3d7a1f;
+  --slaanesh: #8a3fa8;
+  --tzeentch: #1f5fa8;
+}

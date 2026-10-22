@@ -1,0 +1,14 @@
+node_modules/
+dist/
+
+# In-game screenshots stay on this computer: the art belongs to the game's publishers and some screens show
+# player names (see captures/README.md and docs/decisions.md, D-06).
+captures/**
+!captures/README.md
+
+# Other people's work stays private too (D-10): no spreadsheet enters the repo, wherever it lands.
+*.xlsx
+*.xlsm
+*.xls
+*.csv
+.claude/

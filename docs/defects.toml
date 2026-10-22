@@ -1,0 +1,21 @@
+# Defect log: one entry per real defect (what cost time or may come back, and teaches something), in the
+# format shared by all our projects. Entries follow each other
+# (DEF-001, DEF-002…), are never renumbered, and are written with the fix, in the same commit.
+#
+# Fields: id, date, titre, type, etiquettes, gravite, statut, constat, cause, solution, resultat, preuve,
+# and if needed lecon, liens, reconstitue.
+
+[[defaut]]
+id = "DEF-001"
+date = 2026-10-22
+titre = "\"Charger\" transcribed as a charge, when it is the carrying capacity"
+type = "content"
+etiquettes = ["data", "translation"]
+gravite = "major"
+statut = "fixed"
+constat = "The unit sheets stat \"Charger\" was stored as charge (a combat charge bonus)."
+cause = "The French game translates \"Load\" (carrying capacity) with the verb \"Charger\"; we read it as the noun \"charge\" without checking the English game."
+solution = "Renamed load in data/game.json and data/units.json; labels fr \"Charger\", en \"Load\"."
+resultat = "All 62 values match the Load of an English-language reference; the engine will not use it in combat."
+preuve = ["Rule: a stat name is checked in the English game before any calculation uses it (decisions.md, D-08, D-09)"]
+lecon = "A translated label can mislead: every stat is confirmed in both languages before it enters a calculation."

@@ -1,0 +1,17 @@
+{
+  "source": "Official combat tips, Steam community: https://steamcommunity.com/app/1144170/discussions/0/1643178512747876992",
+  "turns": 3,
+  "firstToStrike": "attacker",
+  "damageOrderWithinTier": ["defences", "melee", "ranged", "broken"],
+  "morale": {
+    "lossThresholdPercent": 25
+  },
+  "model": {
+    "source": "Damage per unit and effective HP: the community wiki (D-16). Tier modifier and broken bonus: not published, uncalibrated",
+    "damageDivisor": 200,
+    "healthDivisor": 40,
+    "tierModifierPercent": 0,
+    "brokenRangedBonusPercent": 0
+  },
+  "wiki": "Community wiki (CC-BY-SA), Combat Mechanics: https://warhammer-cnc.fandom.com/wiki/Combat_Mechanics"
+}

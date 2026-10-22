@@ -1,0 +1,87 @@
+/* Page layout: header with the language flags and the theme button, the cards of the steps, footer. */
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 1rem;
+}
+
+.sub,
+.hint,
+.meta,
+.empty,
+footer {
+  color: var(--muted);
+}
+
+.version {
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+.switchers,
+.lang {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* flags and the theme button: discreet at rest, the current language fully visible (as on altaira.eu) */
+.lang button,
+.theme-toggle {
+  min-height: 2.25rem;
+  padding: 0.4rem;
+  background: none;
+  border: 0;
+  color: var(--text);
+  opacity: 0.55;
+}
+
+.lang button[aria-pressed="true"],
+.lang button:hover,
+.theme-toggle:hover {
+  opacity: 1;
+}
+
+.flag {
+  display: block;
+  width: 22px;
+  height: 15px;
+  background-size: cover;
+  border-radius: 2px;
+}
+
+.flag-en {
+  background-image: url("../assets/flag-en.png");
+}
+
+.flag-fr {
+  background-image: url("../assets/flag-fr.png");
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.card {
+  padding: 1rem 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+footer {
+  max-width: 64rem;
+  margin: 1.5rem auto 2rem;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+}

@@ -1,0 +1,16 @@
+# Proposes the dependency updates each month, one pull request per ecosystem (so one CI run each).
+# Security alerts arrive without waiting.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: monthly }
+    groups:
+      all:
+        patterns: ["*"]
+  - package-ecosystem: npm
+    directory: /
+    schedule: { interval: monthly }
+    groups:
+      dev-tooling:
+        patterns: ["*"]

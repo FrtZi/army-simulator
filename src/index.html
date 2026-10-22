@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Army Simulator</title>
+    <meta
+      name="description"
+      content="Unofficial army simulator: compose an army, enter your bonuses, see its power, damage and tanking, compare two compositions. Runs in your browser; your data never leaves it."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Cpath d='M32 10 L52 30 L32 54 L12 30 Z' fill='none' stroke='%23ff9a3c' stroke-width='5'/%3E%3C/svg%3E"
+    />
+    <script src="theme-init.js"></script>
+    <link rel="stylesheet" href="styles/index.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <h1><span data-text="title"></span> <span class="version" data-version></span></h1>
+        <p class="sub" data-text="subtitle"></p>
+      </div>
+      <div class="switchers">
+        <div class="lang" role="group" data-text-label="language">
+          <button type="button" data-lang="en" lang="en">
+            <span class="flag flag-en" aria-hidden="true"></span><span class="visually-hidden">English</span>
+          </button>
+          <button type="button" data-lang="fr" lang="fr">
+            <span class="flag flag-fr" aria-hidden="true"></span><span class="visually-hidden">Français</span>
+          </button>
+        </div>
+        <button type="button" id="theme-toggle" class="theme-toggle" data-text-label="theme.toLight"></button>
+      </div>
+    </header>
+
+    <main>
+      <!-- @include sections/game.html -->
+      <!-- @include sections/bonuses.html -->
+      <!-- @include sections/army.html -->
+      <!-- @include sections/profile.html -->
+      <!-- @include sections/compare.html -->
+      <!-- @include sections/dashboards.html -->
+      <!-- @include sections/saves.html -->
+    </main>
+
+    <footer>
+      <p data-text="footer.unofficial"></p>
+      <p data-text="footer.private"></p>
+      <p data-text="footer.translated"></p>
+      <p data-text="footer.wiki"></p>
+    </footer>
+
+    <div id="tip" class="tip" role="tooltip" aria-hidden="true"></div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

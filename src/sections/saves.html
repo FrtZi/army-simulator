@@ -1,0 +1,18 @@
+<section id="saves" class="card" aria-labelledby="saves-title">
+  <h2 id="saves-title" data-text="saves.title"></h2>
+  <p class="hint" data-text="saves.hint"></p>
+  <div class="save-fields">
+    <div class="field">
+      <label for="save-name" data-text="saves.name"></label>
+      <input id="save-name" type="text" maxlength="60" autocomplete="off" />
+    </div>
+    <button id="save-button" type="button" class="primary" data-text="saves.save"></button>
+  </div>
+  <p id="save-status" class="status" role="status"></p>
+  <ul id="save-list" class="save-list"></ul>
+  <div class="file-actions">
+    <button id="export-button" type="button" class="secondary" data-text="saves.export"></button>
+    <input id="import-file" class="visually-hidden" type="file" accept="application/json,.json" />
+    <label for="import-file" class="button-like" data-text="saves.import"></label>
+  </div>
+</section>

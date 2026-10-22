@@ -1,0 +1,30 @@
+// Entry point: binds every control once, sets up the glossary's tooltip, then draws the page.
+import { bindLanguage } from "./ui/steps/page/bind.js";
+import { bindThemeToggle } from "./ui/steps/page/theme.js";
+import { bindGame } from "./ui/steps/game/bind.js";
+import { bindBonuses } from "./ui/steps/bonuses/bind.js";
+import { bindArmy } from "./ui/steps/army/bind.js";
+import { bindCompositions } from "./ui/steps/army/compositions.js";
+import { bindPicker } from "./ui/steps/picker/bind.js";
+import { bindCompare } from "./ui/steps/compare/bind.js";
+import { bindProfile } from "./ui/steps/profile/bind.js";
+import { bindDashboards } from "./ui/steps/dashboards/bind.js";
+import { bindSaves } from "./ui/steps/saves/bind.js";
+import { setUpTooltip } from "./ui/glossary/tooltip.js";
+import { rememberOpenFilters } from "./ui/filters.js";
+import { renderAll } from "./ui/render.js";
+
+bindLanguage();
+bindThemeToggle();
+bindGame();
+bindBonuses();
+bindArmy();
+bindCompositions();
+bindPicker();
+bindCompare();
+bindProfile();
+bindDashboards();
+bindSaves();
+setUpTooltip();
+rememberOpenFilters();
+renderAll();

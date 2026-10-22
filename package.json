@@ -1,0 +1,31 @@
+{
+  "name": "army-simulator",
+  "version": "1.0.0",
+  "description": "Unofficial, browser-only army simulator for Warhammer: Chaos & Conquest: compare troop scenarios, with every configuration kept private in the player's browser.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "npm run build && node --test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "validate:html": "npm run build && html-validate dist/index.html",
+    "check": "npm run format:check && npm run lint && npm test && html-validate dist/index.html"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "axe-core": "^4.14.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^9.39.5",
+    "globals": "^17.12.0",
+    "html-validate": "^10.0.0",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.9.9"
+  }
+}

@@ -1,0 +1,45 @@
+<section id="army" class="card" aria-labelledby="army-title">
+  <h2 id="army-title" data-text="army.title"></h2>
+
+  <div class="capacity-fields">
+    <div class="field">
+      <label for="capacity-base" data-text="capacity.base"></label>
+      <input id="capacity-base" type="number" min="0" step="100" inputmode="numeric" />
+    </div>
+    <div class="field">
+      <label for="capacity-bonus" data-text="capacity.bonus"></label>
+      <input id="capacity-bonus" type="number" min="0" max="100" step="0.5" inputmode="decimal" />
+    </div>
+  </div>
+
+  <div class="tabs" id="composition-tabs" role="group" data-text-label="composition.tabs"></div>
+  <div class="composition-fields">
+    <div class="field">
+      <label for="composition-name" data-text="composition.name"></label>
+      <input id="composition-name" type="text" maxlength="40" autocomplete="off" />
+    </div>
+    <button id="composition-duplicate" type="button" data-text="composition.duplicate"></button>
+    <button id="composition-delete" type="button" data-text="composition.delete"></button>
+  </div>
+
+  <div id="capacity" aria-live="polite"></div>
+
+  <div id="army-lines"></div>
+
+  <button
+    id="picker-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="picker"
+    data-text="picker.open"
+  ></button>
+  <div id="picker" class="picker" hidden>
+    <div class="field">
+      <label for="picker-search" data-text="picker.search"></label>
+      <input id="picker-search" type="search" autocomplete="off" />
+    </div>
+    <div class="filters" id="picker-filters"></div>
+    <ul id="picker-list" class="picker-list"></ul>
+    <button id="picker-add" type="button" class="primary" data-text="picker.addNone"></button>
+  </div>
+</section>

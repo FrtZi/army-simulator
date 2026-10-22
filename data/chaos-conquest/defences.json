@@ -1,0 +1,300 @@
+[
+  {
+    "id": "degraded-mortar",
+    "labels": {
+      "fr": "Mortier dégradé",
+      "en": "Degraded Mortar*"
+    },
+    "building": "fortress-walls",
+    "alignment": "undivided",
+    "tier": 1,
+    "attackType": "melee",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 1,
+      "morale": 100,
+      "armour": 25,
+      "health": 1000
+    }
+  },
+  {
+    "id": "slurry-pit",
+    "labels": {
+      "fr": "Fosse à lisier",
+      "en": "Slurry Pit*"
+    },
+    "building": "fortress-walls",
+    "alignment": "nurgle",
+    "tier": 2,
+    "attackType": "melee",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 6,
+      "meleeAttack": 40,
+      "meleeDamage": 450,
+      "morale": 100,
+      "armour": 45,
+      "health": 1300
+    }
+  },
+  {
+    "id": "poisoned-arrows",
+    "labels": {
+      "fr": "Flèches intoxiquées",
+      "en": "Poisoned Arrows*"
+    },
+    "building": "fortress-walls",
+    "alignment": "nurgle",
+    "tier": 2,
+    "attackType": "ranged",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 6,
+      "rangedAttack": 30,
+      "rangedDamage": 650,
+      "morale": 100,
+      "armour": 30,
+      "health": 1000
+    }
+  },
+  {
+    "id": "grasping-barricade",
+    "labels": {
+      "fr": "Barricade agrippante",
+      "en": "Grasping Barricade*"
+    },
+    "building": "fortress-walls",
+    "alignment": "undivided",
+    "tier": 3,
+    "attackType": "melee",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 12,
+      "meleeAttack": 50,
+      "meleeDamage": 630,
+      "morale": 100,
+      "armour": 46,
+      "health": 1250
+    }
+  },
+  {
+    "id": "bewitched-arrows",
+    "labels": {
+      "fr": "Flèches ensorcelées",
+      "en": "Bewitched Arrows*"
+    },
+    "building": "fortress-walls",
+    "alignment": "tzeentch",
+    "tier": 3,
+    "attackType": "ranged",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 12,
+      "rangedAttack": 42,
+      "rangedDamage": 920,
+      "morale": 100,
+      "armour": 35,
+      "health": 1000
+    }
+  },
+  {
+    "id": "razor-walls",
+    "labels": {
+      "fr": "Murs-rasoir",
+      "en": "Razor Walls*"
+    },
+    "building": "fortress-walls",
+    "alignment": "slaanesh",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 25,
+      "meleeAttack": 60,
+      "meleeDamage": 900,
+      "morale": 100,
+      "armour": 55,
+      "health": 1400
+    }
+  },
+  {
+    "id": "infernal-trebuchet",
+    "labels": {
+      "fr": "Trébuchet infernal",
+      "en": "Infernal Trebuchet*"
+    },
+    "building": "fortress-walls",
+    "alignment": "undivided",
+    "tier": 4,
+    "attackType": "ranged",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 25,
+      "rangedAttack": 54,
+      "rangedDamage": 1000,
+      "morale": 100,
+      "armour": 50,
+      "health": 1100
+    }
+  },
+  {
+    "id": "fetid-moat",
+    "labels": {
+      "fr": "Douves fétides",
+      "en": "Fetid Moat*"
+    },
+    "building": "fortress-walls",
+    "alignment": "nurgle",
+    "tier": 4,
+    "attackType": "melee",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 25,
+      "meleeAttack": 40,
+      "meleeDamage": 1000,
+      "morale": 100,
+      "armour": 60,
+      "health": 1450
+    }
+  },
+  {
+    "id": "skull-mortar",
+    "labels": {
+      "fr": "Mortier à crânes",
+      "en": "Skull Mortar*"
+    },
+    "building": "fortress-walls",
+    "alignment": "khorne",
+    "tier": 4,
+    "attackType": "ranged",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 25,
+      "rangedAttack": 50,
+      "rangedDamage": 1100,
+      "morale": 100,
+      "armour": 47,
+      "health": 1070
+    }
+  },
+  {
+    "id": "flaming-gargoyles",
+    "labels": {
+      "fr": "Gargouilles enflammées",
+      "en": "Flaming Gargoyles*"
+    },
+    "building": "fortress-walls",
+    "alignment": "tzeentch",
+    "tier": 4,
+    "attackType": "ranged",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 25,
+      "rangedAttack": 50,
+      "rangedDamage": 950,
+      "morale": 100,
+      "armour": 51,
+      "health": 1200
+    }
+  },
+  {
+    "id": "molten-copper",
+    "labels": {
+      "fr": "Cuivre en fusion",
+      "en": "Molten Copper*"
+    },
+    "building": "fortress-walls",
+    "alignment": "khorne",
+    "tier": 5,
+    "attackType": "melee",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 50,
+      "meleeAttack": 60,
+      "meleeDamage": 1350,
+      "morale": 100,
+      "armour": 60,
+      "health": 1450
+    }
+  },
+  {
+    "id": "daemonic-ammunition",
+    "labels": {
+      "fr": "Munition démoniaque",
+      "en": "Daemonic Ammunition*"
+    },
+    "building": "fortress-walls",
+    "alignment": "undivided",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 50,
+      "rangedAttack": 58,
+      "rangedDamage": 1050,
+      "morale": 100,
+      "armour": 57,
+      "health": 1280
+    }
+  },
+  {
+    "id": "radiant-tower",
+    "labels": {
+      "fr": "Tour radieuse",
+      "en": "Radiant Tower*"
+    },
+    "building": "fortress-walls",
+    "alignment": "slaanesh",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 50,
+      "rangedAttack": 54,
+      "rangedDamage": 1050,
+      "morale": 100,
+      "armour": 57,
+      "health": 1500
+    }
+  },
+  {
+    "id": "plague-catapult",
+    "labels": {
+      "fr": "Catapulte de la peste",
+      "en": "Plague Catapult*"
+    },
+    "building": "fortress-walls",
+    "alignment": "nurgle",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 50,
+      "rangedAttack": 40,
+      "rangedDamage": 1225,
+      "morale": 100,
+      "armour": 65,
+      "health": 2000
+    }
+  },
+  {
+    "id": "bane-tower",
+    "labels": {
+      "fr": "Tour fléau",
+      "en": "Bane Tower*"
+    },
+    "building": "fortress-walls",
+    "alignment": "tzeentch",
+    "tier": 5,
+    "attackType": "ranged",
+    "unitType": "defences",
+    "stats": {
+      "squadPower": 50,
+      "rangedAttack": 65,
+      "rangedDamage": 1150,
+      "morale": 100,
+      "armour": 55,
+      "health": 1150
+    }
+  }
+]
