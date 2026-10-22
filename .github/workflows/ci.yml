@@ -22,7 +22,7 @@ jobs:
       - run: npm ci
       # formatting, lint, data, engine, page and accessibility tests (builds dist/), HTML validation
       - run: npm run check
-      - uses: gitleaks/gitleaks-action@v2
+      - uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-pages-artifact@v5
