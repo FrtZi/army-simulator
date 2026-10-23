@@ -2,9 +2,10 @@
 
 The simulator is a plain-JavaScript page with no framework, no server and no runtime dependency, built like
 the [banking churn demo](https://github.com/FrtZi/banking-churn-demo): small ES modules, bundled with the game
-data into one self-contained `dist/index.html`, published on GitHub Pages. As of 22 October 2026: the game data with their
-checks, the engine (effective stats, armies, power, profile, battle) and the first page (game, bonuses, army,
-profile); the comparison of scenarios and saving come next ([docs/roadmap.md](docs/roadmap.md)).
+data into one self-contained `dist/index.html`, published on GitHub Pages. As of 23 October 2026, version 1.0: the game data with their
+checks, the engine (effective stats, armies, power, profile, battle, comparison, dashboards' figures) and the
+page (game, bonuses, compositions, profile, comparison, six dashboards, saves); what comes next is in
+[docs/roadmap.md](docs/roadmap.md).
 
 Three rules hold the structure together:
 
@@ -64,7 +65,9 @@ src/styles/              tokens.css (colours, both themes), base, layout, forms,
 scripts/
 ├── page.mjs             assembles index.html from its sections, fills in the English texts
 ├── build.mjs            bundles and inlines everything (esbuild) → dist/index.html
-└── serve.mjs            npm run dev: serves the source page and data/ (no build)
+├── serve.mjs            npm run dev: serves the source page and data/ (no build)
+├── catalogue.mjs        reads the feature catalogue (docs/features.md)
+└── defects*.mjs         the defects register: its format, its check, its page docs/defects.md (npm run defects)
 examples/
 └── configuration.example.json   a fictitious player configuration, in the saved format
 captures/<game>/         in-game screenshots: local only, ignored by git (see captures/README.md)
@@ -72,7 +75,9 @@ docs/                    one page per subject, each linking back here
 tests/                   node --test; each test names the feature it proves
 ├── data, engine, battle, dashboards, backtest, storage   the data, the engine and the saves, in Node
 ├── page.test.js         the published page, driven in jsdom (page.js: opening it, clicking, typing)
-└── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens
+├── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens
+├── tooling.test.js      the page assembler and the dev server
+└── catalogue, defects   the catalogue against the tests (MAINT-02); the defects checker (MAINT-03)
 ```
 
 Planned, created with the features that need them:
@@ -123,7 +128,7 @@ army lines and the profile.
 | [decisions.md](docs/decisions.md)           | why these choices, and the options set aside                                                   |
 | [open-questions.md](docs/open-questions.md) | what is still to confirm, and the next steps                                                   |
 | [roadmap.md](docs/roadmap.md)               | what is left to do                                                                             |
-| [defects.toml](docs/defects.toml)           | what broke, and what we learnt                                                                 |
+| [defects.md](docs/defects.md)               | what broke, and what we learnt (generated from defects.toml)                                   |
 
 ## Where things live
 
@@ -157,7 +162,8 @@ The golden rules shared by all our projects (see CLAUDE.md), applied here with t
 
 ## Checks
 
-`npm run check` runs Prettier, ESLint, the tests (it builds `dist/` first: the page tests drive the published
+`npm run check` runs Prettier, the defects register check (it regenerates `docs/defects.md`, the only generated
+doc, ignored by Prettier), ESLint, the tests (it builds `dist/` first: the page tests drive the published
 file) and html-validate. The git hook (`.githooks/pre-commit`, enabled with `git config core.hooksPath
 .githooks`) runs it before each commit, with a secret scan (gitleaks); the CI runs both on every push, then
 deploys `dist/` to GitHub Pages from `main`.

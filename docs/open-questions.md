@@ -27,17 +27,17 @@ stronger attack; within a tier, higher morale is hit first; broken troops are on
 | --- | -------------------------------------------------------------------------------------------------------------------- | ----------------- | ---------------------------- |
 | 8   | **English names**: those from the local reference are not checked in the English game; "Foresaken" looks like a typo | copied, unchecked | Frantz (English screenshots) |
 | 9   | **Names we translated** (marked *): the Herald of Slaanesh, the 15 defences, Food Upkeep, Fortress Walls, Defences   | our translations  | Frantz (English screenshots) |
-| 10  | **Contributors** named in the README: their agreement before the repo is public                                      | to ask            | Frantz                       |
 | 11  | **Game art**: the troop pictures need the publishers' permission; the page uses its own icons meanwhile (D-06)       | own icons         | —                            |
-| 12  | **Repo name**: "army-simulator" or "army-builder", before it is published                                            | army-simulator    | Frantz                       |
+
+Settled on 2026-10-23: the contributor named in the README agreed to be credited (question 10); the
+repo is named "army-simulator" (question 12), published on 2026-10-22.
 
 ## Next steps
 
-1. **Publish** the repo on GitHub and the page on GitHub Pages (after 10 and 12).
-2. **Calibrate** on battle reports (SIM-04): questions 1 to 4. Send detailed reports, troops and losses per
+1. **Calibrate** on battle reports (SIM-04): questions 1 to 4. Send detailed reports, troops and losses per
    round, both sides.
-3. **The fortress** (ARMY-04): defences within the walls' capacity, the garrison, the fourth round.
-4. **Heroes' stats, the skill tree, the champion's stats and sets** (BONUS-03 to 06), then buildings (BONUS-07):
+2. **The fortress** (ARMY-04): defences within the walls' capacity, the garrison, the fourth round.
+3. **Heroes' stats, the skill tree, the champion's stats and sets** (BONUS-03 to 06), then buildings (BONUS-07):
    each as a source that turns levels into
    bonuses, instead of typing the totals.
-5. **Optimiser** (SIM-05): the best troop mix within the march capacity.
+4. **Optimiser** (SIM-05): the best troop mix within the march capacity.

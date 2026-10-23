@@ -71,8 +71,9 @@ export function bindZoom(container, redraw) {
     const rect = document.createElementNS(SVG_NS, "rect");
     rect.setAttribute("class", "zoom-box");
     svg.append(rect);
-    svg.setPointerCapture?.(event.pointerId);
+    // the drag is recorded before the capture, which can throw: the box then still goes away (DEF-024)
     drag = { svg, start, rect };
+    svg.setPointerCapture?.(event.pointerId);
   });
   container.addEventListener("pointermove", (event) => {
     if (!drag) return;
@@ -84,6 +85,11 @@ export function bindZoom(container, redraw) {
       width: Math.abs(x - sx),
       height: Math.abs(y - sy),
     }).forEach(([key, value]) => drag.rect.setAttribute(key, value));
+  });
+  // the browser may take a touch drag back to scroll: no pointerup then, so drop the box (DEF-018)
+  container.addEventListener("pointercancel", () => {
+    drag?.rect.remove();
+    drag = null;
   });
   container.addEventListener("pointerup", (event) => {
     if (!drag) return;

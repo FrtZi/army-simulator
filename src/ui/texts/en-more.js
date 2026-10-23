@@ -57,6 +57,7 @@ export const EN_MORE = {
   "file.capacity": "Its march capacity is not a whole number.",
   "file.several-filters": "One of its bonuses has several targets, which the page cannot show yet.",
   "file.not-json": "It is not a setup file.",
+  "file.shape": "Its content is not laid out as a setup file.",
   "composition.new": "New composition",
   "composition.duplicate": "Duplicate this composition",
   "composition.delete": "Delete this composition",

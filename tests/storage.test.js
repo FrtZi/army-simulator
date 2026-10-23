@@ -76,3 +76,25 @@ test("CFG-01 blocked storage: saving reports it, reading finds nothing, nothing 
   assert.equal(saveSetup(storage, example), false);
   assert.deepEqual(savedSetups({ getItem: () => "not json" }), []);
 });
+
+test("CFG-02 DEF-014 a file laid out wrongly is refused, never thrown on", () => {
+  const base = { schemaVersion: 1, game: GAME, limits: { marchCapacity: 1 } };
+  const shapes = [
+    { sources: {} },
+    { sources: [{ effects: [null] }] },
+    { sources: [{ effects: [{ stat: "armour", percent: 5, target: { tiers: "6" } }] }] },
+    { scenarios: [5] },
+    { scenarios: [{ troops: [] }] },
+  ];
+  for (const shape of shapes) {
+    assert.deepEqual(fromConfiguration({ ...base, ...shape }, games), { problems: [{ code: "shape" }] });
+  }
+});
+
+test("CFG-02 DEF-017 capacity bonuses add up, and their sum keeps to 0–100 %", () => {
+  const capacity = (percent) => ({ stat: "marchCapacity", percent });
+  const file = (...effects) => ({ ...example, sources: [{ kind: "manual", effects }] });
+  assert.equal(fromConfiguration(file(capacity(30), capacity(20)), games).setup.capacityBonus, 50);
+  const { problems } = fromConfiguration(file(capacity(60), capacity(60)), games);
+  assert.deepEqual(problems, [{ code: "percent-out-of-range", percent: 120, min: 0, max: 100 }]);
+});

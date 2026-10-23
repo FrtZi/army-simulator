@@ -19,3 +19,367 @@ solution = "Renamed load in data/game.json and data/units.json; labels fr \"Char
 resultat = "All 62 values match the Load of an English-language reference; the engine will not use it in combat."
 preuve = ["Rule: a stat name is checked in the English game before any calculation uses it (decisions.md, D-08, D-09)"]
 lecon = "A translated label can mislead: every stat is confirmed in both languages before it enters a calculation."
+
+[[defaut]]
+id = "DEF-002"
+date = 2026-10-22
+titre = "The chart's \"+\" button zoomed out"
+type = "code"
+etiquettes = ["charts", "page"]
+gravite = "minor"
+statut = "fixed"
+constat = "Clicking \"+\" on a dashboard chart widened the view instead of narrowing it."
+cause = "The click handler read button.dataset.action, while the buttons carry data-zoom: the action was undefined and fell through to the zoom-out branch."
+solution = "The handler reads button.dataset.zoom, the attribute the markup sets."
+resultat = "\"+\" halves both ranges; the page test counts fewer troops in view, then all 82 after \"Reset\"."
+preuve = ["tests/page.test.js"]
+lecon = "An attribute name written in two places (markup and handler) can drift: a page test that clicks the button catches it."
+liens = ["DASH-01"]
+reconstitue = true
+
+[[defaut]]
+id = "DEF-003"
+date = 2026-10-22
+titre = "The dev server crashed when the page could not be assembled"
+type = "code"
+etiquettes = ["dev-server"]
+gravite = "minor"
+statut = "fixed"
+constat = "npm run dev stopped with ERR_HTTP_HEADERS_SENT when a section used a text that did not exist."
+cause = "The 200 headers were sent before the page was assembled; when assembling threw, the error handler tried to send headers again."
+solution = "The page is assembled first (pageResponse), and an error becomes a 500 answer showing the reason; the server keeps running."
+resultat = "A missing text shows in the browser as a 500 page with its reason."
+preuve = ["tests/tooling.test.js"]
+lecon = "Build the whole answer before sending anything: headers sent cannot be taken back."
+reconstitue = true
+
+[[defaut]]
+id = "DEF-004"
+date = 2026-10-22
+titre = "Links on the light theme's key tint fell below AA contrast"
+type = "code"
+etiquettes = ["accessibility"]
+gravite = "minor"
+statut = "fixed"
+constat = "In the light theme, a link on the orange tint of the key columns read at 4.44:1, under the 4.5:1 of WCAG AA."
+cause = "The tint was darkened for looks without rechecking every text colour on it."
+solution = "The light tint (--key) lightened to #ffead2."
+resultat = "Every text colour reads at 4.5:1 or more on every surface, the tint included, in both themes."
+preuve = ["tests/accessibility.test.js"]
+lecon = "A new surface joins the contrast test's list of surfaces the moment it exists."
+liens = ["ACC-01", "THEME-01"]
+reconstitue = true
+
+[[defaut]]
+id = "DEF-005"
+date = 2026-10-22
+titre = "A leftover button with no text broke the build"
+type = "code"
+etiquettes = ["build"]
+gravite = "minor"
+statut = "fixed"
+constat = "The build stopped: src/ui/texts/en*.js had no text for a button of the profile section."
+cause = "The single details button of the profile was replaced by one per column; its markup stayed in profile.html while its text was removed."
+solution = "The leftover button removed from src/sections/profile.html."
+resultat = "The build passes; an element whose text does not exist still stops it."
+preuve = ["tests/tooling.test.js"]
+lecon = "When a control is replaced, remove its markup, its text and its binding together."
+reconstitue = true
+
+[[defaut]]
+id = "DEF-006"
+date = 2026-10-22
+titre = "Scripted edits turned \"page.$$(\" into \"page.$(\""
+type = "process"
+etiquettes = ["tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "After a scripted edit, several page tests called page.$( where page.$$( was written, and failed."
+cause = "The edit used String.replace with a replacement string, where \"$$\" stands for a single \"$\"."
+solution = "Edits are made with split/join or a replacement function; the broken lines were restored."
+resultat = "The tests read as written."
+preuve = ["Rule: CLAUDE.md, scripted edits never use a replacement string"]
+lecon = "A replacement string is a small language of its own: $$, $& and $1 are patterns."
+reconstitue = true
+
+[[defaut]]
+id = "DEF-007"
+date = 2026-10-22
+titre = "Importing a file failed in jsdom: no File.text()"
+type = "environment"
+etiquettes = ["page", "tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "The import step of the saves test failed: file.text is not a function."
+cause = "The page read the chosen file with File.text(), which jsdom (and some older browsers) lack."
+solution = "The page reads the file with FileReader, supported everywhere."
+resultat = "Import works in jsdom and in every browser."
+preuve = ["tests/page.test.js"]
+liens = ["CFG-02"]
+reconstitue = true
+
+[[defaut]]
+id = "DEF-008"
+date = 2026-10-22
+titre = "axe's empty result did not equal an empty array"
+type = "environment"
+etiquettes = ["accessibility", "tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "The accessibility test failed with no violation listed: [] was not deep-equal to []."
+cause = "axe runs inside jsdom's window, so its array belongs to another realm: deepStrictEqual compares prototypes too."
+solution = "The violations are copied into a plain array of the test's realm (Array.from)."
+resultat = "The test fails on a real violation only."
+preuve = ["tests/accessibility.test.js"]
+lecon = "Objects made inside jsdom are not of the test's realm: copy them before a strict comparison."
+reconstitue = true
+
+[[defaut]]
+id = "DEF-009"
+date = 2026-10-22
+titre = "The theme script threw where matchMedia does not exist"
+type = "environment"
+etiquettes = ["page", "tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "The theme script stopped with \"matchMedia is not a function\" when the page opened in jsdom; the tests did not notice, since jsdom only reports a page script's error to its console."
+cause = "src/theme-init.js called window.matchMedia without checking it exists."
+solution = "The script guards matchMedia; since 2026-10-23 the page tests fail on any error a page script throws while the page opens."
+resultat = "The page opens without matchMedia; a page script that throws fails every page test."
+preuve = ["tests/page.js"]
+lecon = "jsdom swallows script errors: a test helper must turn them into failures, or they pass unseen."
+liens = ["THEME-01"]
+reconstitue = true
+
+[[defaut]]
+id = "DEF-010"
+date = 2026-10-22
+titre = "A test expected the wrong troop at the top of a ranking"
+type = "process"
+etiquettes = ["tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "An efficiency test expected the Marauders to lead; the engine said the Forsaken, and the engine was right."
+cause = "The expectation was guessed from what seemed likely, not worked out from the data and the formula."
+solution = "The expectation was worked out from the data; that ranking was later replaced by the per-slot charts (D-21)."
+resultat = "Expected figures come with their working."
+preuve = ["Rule: CLAUDE.md, a test's expected figure is worked out, the working written in the test"]
+lecon = "A test is only as right as its expectation: work it out, never guess it."
+reconstitue = true
+
+[[defaut]]
+id = "DEF-011"
+date = 2026-10-23
+titre = "CI warnings: gitleaks-action on Node 20, runner image about to change"
+type = "third party"
+etiquettes = ["ci"]
+gravite = "minor"
+statut = "fixed"
+constat = "The first deploy's run warned that gitleaks-action@v2 targets the retired Node 20, and that ubuntu-latest moves to Ubuntu 26."
+cause = "v2 was the major version in the workflow we started from; ubuntu-latest follows GitHub's choice of image; Dependabot had not run yet on the new repo."
+solution = "gitleaks-action@v3 (Node 24, same inputs); runs-on pinned to ubuntu-24.04, the move to 26.04 on the roadmap."
+resultat = "The run is free of these warnings; a new Ubuntu comes as a deliberate, tried upgrade."
+preuve = [".github/workflows/ci.yml"]
+lecon = "A floating label (latest) is a dependency upgrade nobody chose: pin it, and plan the move."
+liens = ["SEC-02", "MAINT-01"]
+
+[[defaut]]
+id = "DEF-012"
+date = 2026-10-23
+titre = "Catalogue proofs cited tests that did not carry the feature"
+type = "process"
+etiquettes = ["tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "DATA-03, ARMY-03 and THEME-01 named test files as their proof, yet no test there carried the id; DASH-02 to DASH-05 were only covered by a title saying \"DASH-01 to DASH-06\"."
+cause = "The proof column was written by hand and never checked against the test names."
+solution = "A DATA-03 test (82 troops, counted per building), THEME-01 on the contrast test, the ARMY-03 proof corrected, every DASH id written out; MAINT-02 checks the catalogue against the tests."
+resultat = "Every test file a proof cites has a test carrying the feature's id, checked at each commit."
+preuve = ["tests/catalogue.test.js"]
+lecon = "A proof column written by hand drifts: check it by machine."
+liens = ["MAINT-02"]
+
+[[defaut]]
+id = "DEF-013"
+date = 2026-10-23
+titre = "Version 1.0 published with stale docs and without the reviews"
+type = "process"
+etiquettes = ["ci"]
+gravite = "minor"
+statut = "fixed"
+constat = "After publishing, the README and ARCHITECTURE.md still said comparing and saving were to come, the roadmap had publishing unticked, the defects found while building were not logged, and the code and accessibility reviews had not been run."
+cause = "No checklist for publishing a version: the checks covered the code, not the docs, the register or the reviews."
+solution = "Docs brought up to date, the defects logged with their tests, the reviews run; the checklist written in CLAUDE.md."
+resultat = "Each version is published with its docs, register and reviews up to date."
+preuve = ["Rule: CLAUDE.md, before publishing a version"]
+lecon = "Publishing is a step with its own checklist, not just a green CI."
+liens = ["REL-02"]
+
+[[defaut]]
+id = "DEF-014"
+date = 2026-10-23
+titre = "A setup file laid out wrongly made the import throw, with no message"
+type = "code"
+etiquettes = ["saves"]
+gravite = "major"
+statut = "fixed"
+constat = "Code review: a file whose sources were not a list, or whose target values were text, made fromConfiguration throw; the import stopped silently instead of refusing the file."
+cause = "The checks read the file's parts as lists and objects without first checking they were."
+solution = "The file's shape is checked first (lists, objects, a list per target filter); a wrong shape is refused with its reason."
+resultat = "Any file is either loaded or refused with words; none makes the page throw."
+preuve = ["tests/storage.test.js"]
+lecon = "A file from outside is checked for shape before its content: never trust its types."
+liens = ["CFG-02"]
+
+[[defaut]]
+id = "DEF-015"
+date = 2026-10-23
+titre = "The save list found its saves by position, which another tab can change"
+type = "code"
+etiquettes = ["saves"]
+gravite = "minor"
+statut = "fixed"
+constat = "Code review: the Load and delete buttons carried the save's position in the list drawn; with the saves changed in another tab, a click loaded another save, or threw."
+cause = "The position in a list drawn earlier was used against the list read at the click."
+solution = "Each button carries the save's name; a save no longer there redraws the list."
+resultat = "A click loads or deletes the save it shows, or nothing."
+preuve = ["tests/page.test.js"]
+liens = ["CFG-01"]
+
+[[defaut]]
+id = "DEF-016"
+date = 2026-10-23
+titre = "A malformed address crashed the dev server"
+type = "code"
+etiquettes = ["dev-server"]
+gravite = "minor"
+statut = "fixed"
+constat = "Code review: a request for /%E0 made decodeURIComponent throw, outside any guard, and stopped npm run dev."
+cause = "The request path was decoded without handling a malformed escape."
+solution = "requestPath returns no path for a malformed address, and the server answers 400."
+resultat = "The dev server keeps running whatever address it is asked."
+preuve = ["tests/tooling.test.js"]
+lecon = "Same lesson as DEF-003: everything a request brings can throw, and the server must outlive it."
+
+[[defaut]]
+id = "DEF-017"
+date = 2026-10-23
+titre = "Capacity bonuses read from a file could add up beyond 100 %"
+type = "code"
+etiquettes = ["saves"]
+gravite = "minor"
+statut = "fixed"
+constat = "Code review: two capacity bonuses of 60 % each passed the checks one by one, then loaded as 120 %, which the figures silently left out."
+cause = "Each effect was checked against 0–100 %, but the page holds their sum."
+solution = "The sum is checked against the game's limits, and a file over them is refused with the reason."
+resultat = "The capacity bonus loaded is the one the figures use."
+preuve = ["tests/storage.test.js"]
+liens = ["CFG-02", "ARMY-02"]
+
+[[defaut]]
+id = "DEF-018"
+date = 2026-10-23
+titre = "A zoom drag cancelled by the browser left its box on the chart"
+type = "code"
+etiquettes = ["charts"]
+gravite = "minor"
+statut = "fixed"
+constat = "Code review: when a phone turns a drag into a scroll, no pointerup comes: the zoom box stayed drawn, and the next move resized it."
+cause = "The drag ended on pointerup only."
+solution = "pointercancel drops the box and the drag."
+resultat = "A cancelled drag leaves the chart as it was."
+preuve = ["tests/page.test.js"]
+liens = ["DASH-01"]
+
+[[defaut]]
+id = "DEF-019"
+date = 2026-10-23
+titre = "The defects checker read a text proof letter by letter"
+type = "tool"
+etiquettes = ["tooling"]
+gravite = "minor"
+statut = "fixed"
+constat = "Code review: preuve = \"Rule: …\" written as text instead of a list gave one \"file not found\" per letter; etiquettes as text threw."
+cause = "The list fields were iterated without checking they were lists."
+solution = "etiquettes, preuve and liens must be lists, or the entry is refused with that reason."
+resultat = "A wrongly typed field is named once, clearly."
+preuve = ["tests/defects.test.js"]
+liens = ["MAINT-03"]
+
+[[defaut]]
+id = "DEF-020"
+date = 2026-10-23
+titre = "Equal figures could show one side better by a rounding digit"
+type = "code"
+etiquettes = ["page"]
+gravite = "minor"
+statut = "fixed"
+constat = "Code review: the comparison decided the better side with exact equality, so two equal sums taken in another order could show green and red instead of the same."
+cause = "Floating-point sums depend on their order; exact equality sees the last digit."
+solution = "Two figures within a billionth of each other are the same."
+resultat = "Equal figures show as the same, in orange."
+preuve = ["tests/battle.test.js"]
+lecon = "Never compare computed decimals with exact equality."
+liens = ["SIM-03"]
+
+[[defaut]]
+id = "DEF-021"
+date = 2026-10-23
+titre = "An escaped pipe in a feature's text would shift the catalogue's cells"
+type = "tool"
+etiquettes = ["tooling"]
+gravite = "minor"
+statut = "fixed"
+constat = "Code review: the catalogue reader split rows on every pipe, so a feature text with an escaped pipe would have its status and proof read from the wrong cells."
+cause = "Markdown's escaped pipe was not taken into account."
+solution = "Rows are split on pipes not preceded by a backslash."
+resultat = "Every feature is read with its own status and proof."
+preuve = ["tests/catalogue.test.js"]
+liens = ["MAINT-02"]
+
+[[defaut]]
+id = "DEF-022"
+date = 2026-10-23
+titre = "The exported file's address was revoked during the click"
+type = "code"
+etiquettes = ["saves"]
+gravite = "minor"
+statut = "fixed"
+constat = "Code review: the export revoked the file's address right after clicking the link; some browsers start the download after the click returns and then find no file."
+cause = "URL.revokeObjectURL ran in the same task as the click."
+solution = "The address is revoked in the next task, once the download has started."
+resultat = "The export downloads its file in every browser."
+preuve = ["tests/page.test.js"]
+liens = ["CFG-02"]
+
+[[defaut]]
+id = "DEF-023"
+date = 2026-10-23
+titre = "The charts' per-troop figures are reachable by pointer only"
+type = "code"
+etiquettes = ["accessibility", "charts"]
+gravite = "major"
+statut = "open"
+constat = "Accessibility review: on the three scatter charts, a troop's name and figures show on hover only; the chart is one image (role img) with a summary, so screen readers skip the dots' titles and the keyboard cannot reach them."
+cause = "The charts were designed for the pointer; axe-core does not flag it, as the image has a name."
+solution = "Proposed: a \"Show as a table\" view under each chart, with the same filters and zoom (troop, damage, health or speed, load), to be approved before it is built."
+resultat = "Open: keyboard and screen-reader users get the chart's summary, not its data."
+preuve = []
+lecon = "An automated scan passes a chart that has a name; whether its data can be reached is a manual check."
+liens = ["ACC-01", "DASH-01", "DASH-04", "DASH-06"]
+
+[[defaut]]
+id = "DEF-024"
+date = 2026-10-23
+titre = "A zoom box stayed on the chart when the pointer could not be captured"
+type = "code"
+etiquettes = ["charts"]
+gravite = "minor"
+statut = "fixed"
+constat = "Browser check: when setPointerCapture threw (no active pointer), the zoom box was already drawn but the drag not recorded, so nothing removed the box."
+cause = "The drag was recorded after the capture call, which can throw."
+solution = "The drag is recorded before the capture."
+resultat = "Whatever the capture does, a cancelled or finished drag removes its box."
+preuve = ["tests/page.test.js"]
+lecon = "Record state before calling what can throw, so the clean-up always finds it."
+liens = ["DASH-01"]

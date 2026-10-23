@@ -58,6 +58,7 @@ export const FR_MORE = {
   "file.capacity": "Sa capacité de marche n'est pas un nombre entier.",
   "file.several-filters": "Un de ses bonus a plusieurs cibles, ce que la page ne sait pas encore afficher.",
   "file.not-json": "Ce n'est pas un fichier de configuration.",
+  "file.shape": "Son contenu n'est pas organisé comme un fichier de configuration.",
   "composition.new": "Nouvelle composition",
   "composition.duplicate": "Dupliquer cette composition",
   "composition.delete": "Supprimer cette composition",

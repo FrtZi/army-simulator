@@ -11,7 +11,8 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # an explicit image: a new Ubuntu is a major upgrade, tried on a branch first (DEF-011)
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
         with:
@@ -22,7 +23,8 @@ jobs:
       - run: npm ci
       # formatting, lint, data, engine, page and accessibility tests (builds dist/), HTML validation
       - run: npm run check
-      - uses: gitleaks/gitleaks-action@v2
+      # v3 runs on Node 24; v2 targeted Node 20, which GitHub has retired (DEF-011)
+      - uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-pages-artifact@v5
@@ -32,7 +34,7 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       pages: write
       id-token: write

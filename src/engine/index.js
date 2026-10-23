@@ -10,5 +10,5 @@ export { damagePerTroop, healthPerTroop, tierFactor, attackMode, preferredMode }
 export { simulateBattle } from "./battle.js";
 export { armyDamage, armyHealth } from "./measures.js";
 export { armyProfile } from "./profile.js";
-export { COMPARED, compareArmies } from "./compare.js";
+export { COMPARED, compareArmies, verdict } from "./compare.js";
 export { efficiency, rounds, balance, prosAndCons } from "./insights.js";

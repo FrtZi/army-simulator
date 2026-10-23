@@ -18,6 +18,7 @@ import {
   simulateBattle,
   summariseArmy,
   tierFactor,
+  verdict,
 } from "../src/engine/index.js";
 
 const read = (path) => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
@@ -205,4 +206,10 @@ test("SIM-03 two armies compared: each figure, its difference, the better side, 
     oneEmpty.figures.every((entry) => entry.better === "none"),
     "nothing is better than an empty army",
   );
+});
+
+test("SIM-03 DEF-020 figures equal but for rounding are the same; a real gap picks a side", () => {
+  assert.equal(verdict(0.1 + 0.2, 0.3, "higher"), "same");
+  assert.equal(verdict(1, 2, "higher"), "b");
+  assert.equal(verdict(1, 2, "lower"), "a");
 });

@@ -111,3 +111,13 @@ test("DATA-02 the example configuration follows the configuration format", () =>
     }
   }
 });
+
+test("DATA-03 every troop type of Chaos & Conquest is in the catalogue: 82, as counted in its 5 buildings", () => {
+  // the number of troops each building lists in game, counted on its screenshots
+  const inGame = { "beastmen-herdstone": 10, dungeon: 20, "training-ground": 16, bestiary: 16, "chaos-rift": 20 };
+  const { units } = loadGame("chaos-conquest");
+  const counted = Object.fromEntries(Object.keys(inGame).map((building) => [building, 0]));
+  for (const unit of units) counted[unit.building] += 1;
+  assert.deepEqual(counted, inGame);
+  assert.equal(units.length, 82);
+});

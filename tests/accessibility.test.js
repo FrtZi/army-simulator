@@ -13,7 +13,7 @@ const AA_NON_TEXT = 3; // focus ring, bar fill, field borders against their surf
 async function violations(page) {
   page.window.eval(axe.source);
   const result = await page.window.axe.run(page.window.document, { rules: { "color-contrast": { enabled: false } } });
-  // Array.from: a plain array of this realm, not jsdom's, so deepEqual compares contents only
+  // Array.from: a plain array of this realm, not jsdom's, so deepEqual compares contents only (DEF-008)
   return Array.from(
     result.violations,
     (violation) => `${violation.id}: ${violation.nodes.map((node) => node.target).join(", ")}`,
@@ -68,10 +68,11 @@ for (const [theme, tokens] of Object.entries(THEMES)) {
       assert.ok(ratio >= minimum, `${theme}: ${colour} on ${surface}: ${ratio.toFixed(2)}`);
     }
   };
+  // the key columns' tint is a surface too: links on the light tint once fell to 4.44:1 (DEF-004)
   const surfaces = ["bg", "card", "field", "key"];
   const on = (colours) => colours.flatMap((colour) => surfaces.map((surface) => [colour, surface]));
 
-  test(`ACC-01 [${theme}] every text colour reads on every surface (WCAG AA, 4.5:1)`, () => {
+  test(`ACC-01 THEME-01 [${theme}] every text colour reads on every surface (WCAG AA, 4.5:1)`, () => {
     check(
       [
         ["on-accent", "accent"],

@@ -46,7 +46,7 @@ function exportFile() {
   link.href = URL.createObjectURL(new Blob([json], { type: "application/json" }));
   link.download = fileName(name);
   link.click();
-  URL.revokeObjectURL(link.href);
+  setTimeout(() => URL.revokeObjectURL(link.href)); // some browsers start the download after the click returns
   showStatus(t("saves.exported", { file: link.download }));
 }
 
@@ -80,13 +80,17 @@ export function bindSaves() {
   byId("save-list").addEventListener("click", (event) => {
     const button = event.target.closest("[data-load], [data-delete]");
     if (!button || !storage()) return;
-    const saves = savedSetups(storage());
-    if (button.dataset.load !== undefined) {
-      const chosen = saves[button.dataset.load];
-      if (load(chosen.configuration)) showStatus(t("saves.loaded", { name: chosen.name }));
+    // by name: another tab may have changed the list since it was drawn (DEF-015)
+    const name = button.dataset.load ?? button.dataset.delete;
+    const chosen = savedSetups(storage()).find((entry) => entry.name === name);
+    if (!chosen) {
+      drawSaves();
       return;
     }
-    const { name } = saves[button.dataset.delete];
+    if (button.dataset.load !== undefined) {
+      if (load(chosen.configuration)) showStatus(t("saves.loaded", { name }));
+      return;
+    }
     deleteSetup(storage(), name);
     drawSaves();
     showStatus(t("saves.deleted", { name }));

@@ -10,8 +10,9 @@ A browser page to evaluate an army: pick the troops, enter your bonuses, and see
 power, damage per strike, effective health (its tanking), morale, speed, load and upkeep — within the march
 capacity. In English or French. Everything stays in your browser: no account, no server, nothing sent.
 
-**Status, as of 22 October 2026:** the troop catalogue (82 troops, 15 defences), the engine (effective stats, power, battle) and the
-first page are done; comparing scenarios and saving them come next ([docs/roadmap.md](docs/roadmap.md)).
+**Status, as of 23 October 2026:** version 1.0 — the troop catalogue (82 troops, 15 defences), the engine
+(effective stats, power, battle), the page with its compositions, comparison, six dashboards and saves. Next:
+calibration on battle reports, the fortress, heroes, skill tree and champion ([docs/roadmap.md](docs/roadmap.md)).
 
 ## Using it
 
@@ -29,7 +30,7 @@ Open the published page, or save it: it is one self-contained file that also wor
 
 ## Running it locally
 
-Requires [Node.js](https://nodejs.org) 20 or later. The published page has no runtime dependency; the tools
+Requires [Node.js](https://nodejs.org) 22 or later. The published page has no runtime dependency; the tools
 below are development dependencies only.
 
 ```bash

@@ -241,6 +241,7 @@ test("CFG-01 CFG-02 a setup is saved, loaded back, and refused with reasons when
   // a file listing a defence as a troop is refused, with the reason
   const bad = { schemaVersion: 1, game: "chaos-conquest", limits: { marchCapacity: 1 }, sources: [] };
   bad.scenarios = [{ name: "x", troops: { "razor-walls": 5 } }];
+  // read with FileReader: jsdom, like some browsers, has no File.text() (DEF-007)
   const input = page.$("#import-file");
   const file = new page.window.File([JSON.stringify(bad)], "bad.json", { type: "application/json" });
   Object.defineProperty(input, "files", { value: [file] });
@@ -262,7 +263,7 @@ test("THEME-01 light and dark themes: the button switches and remembers the choi
   assert.equal(page.$("#theme-toggle").getAttribute("aria-label"), "Switch to the dark theme");
 });
 
-test("DASH-01 to DASH-06 six dashboards in tabs: efficiency, rounds, balance, map, pros and cons, raiding", () => {
+test("DASH-01 DASH-02 DASH-03 DASH-04 DASH-05 DASH-06 six dashboards in tabs: efficiency, rounds, balance, map, pros and cons, raiding", () => {
   const page = openPage();
   // efficiency per slot: every troop of the game as a dot; the filters narrow the cloud (tier VI and Khorne: the
   // Khorne Minotaurs and the Chaos Lord of Khorne on Dragon), and a small selection is named in full
@@ -282,7 +283,7 @@ test("DASH-01 to DASH-06 six dashboards in tabs: efficiency, rounds, balance, ma
   assert.equal(name.getAttribute("visibility"), "hidden");
   page.untick("#eff-filter-tier-6");
   page.untick("#eff-filter-alignment-khorne");
-  // zoom: "+" halves both ranges from the bottom-left corner, keeping the crowd and dropping the dragons;
+  // zoom (DEF-002: "+" once zoomed out): "+" halves both ranges from the bottom-left corner, keeping the crowd and dropping the dragons;
   // "Reset" brings the whole chart back
   page.click("#zoom-in");
   const zoomed = page.$$("#dash-panel circle").length;
@@ -331,4 +332,44 @@ test("REL-02 the page shows its version, major.minor of package.json", () => {
   assert.equal(page.text(".version"), `v${version.split(".").slice(0, 2).join(".")}`);
   assert.equal(page.text(".version"), "v1.0");
   assert.match(page.text("h1"), /^Simulateur d'armée v1\.0$/, "switching language keeps the version");
+});
+
+test("CFG-01 DEF-015 a save list another tab changed: a click loads nothing wrong, and the list is redrawn", () => {
+  const page = openPage();
+  page.type("#save-name", "Raid");
+  page.click("#save-button");
+  page.window.localStorage.setItem("army-simulator.saves", "[]"); // deleted in another tab
+  page.click("#load-0");
+  assert.equal(page.$$(".save-line").length, 0);
+});
+
+test("CFG-02 DEF-022 the exported file's address is revoked after the click, not during it", async () => {
+  const page = openPage();
+  const revoked = [];
+  Object.assign(page.window.URL, { createObjectURL: () => "blob:army", revokeObjectURL: (url) => revoked.push(url) });
+  page.click("#export-button");
+  assert.deepEqual(revoked, []);
+  await new Promise((resolve) => setTimeout(resolve, 10));
+  assert.deepEqual(revoked, ["blob:army"]);
+});
+
+test("DASH-01 DEF-018 a zoom drag the browser cancels leaves no box on the chart", () => {
+  const page = openPage();
+  page.click("#dash-tab-efficiency");
+  const svg = page.$("#dash-panel svg[data-frame]");
+  svg.dispatchEvent(new page.window.MouseEvent("pointerdown", { bubbles: true, button: 0 }));
+  assert.ok(page.$("#dash-panel .zoom-box"), "the box drawn while dragging");
+  svg.dispatchEvent(new page.window.MouseEvent("pointercancel", { bubbles: true }));
+  assert.equal(page.$("#dash-panel .zoom-box"), null);
+});
+
+test("DASH-01 DEF-024 a pointer the chart cannot capture still leaves no box once cancelled", () => {
+  const page = openPage();
+  const svg = page.$("#dash-panel svg[data-frame]");
+  svg.setPointerCapture = () => {
+    throw new page.window.DOMException("No active pointer", "NotFoundError");
+  };
+  svg.dispatchEvent(new page.window.MouseEvent("pointerdown", { bubbles: true, button: 0 }));
+  svg.dispatchEvent(new page.window.MouseEvent("pointercancel", { bubbles: true }));
+  assert.equal(page.$("#dash-panel .zoom-box"), null);
 });

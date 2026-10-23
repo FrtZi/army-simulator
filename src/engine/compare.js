@@ -16,9 +16,12 @@ export const COMPARED = [
   { key: "food", read: (p) => p.foodPerHour, better: "lower" },
 ];
 
+// two figures this close are the same: sums taken in another order differ in their last digits (DEF-020)
+const SAME = 1e-9;
+
 /** Which of two values is better for a figure: "a", "b" or "same". */
-function verdict(a, b, better) {
-  if (a === b) return "same";
+export function verdict(a, b, better) {
+  if (Math.abs(a - b) <= SAME * Math.max(Math.abs(a), Math.abs(b))) return "same";
   return b > a === (better === "higher") ? "b" : "a";
 }
 

@@ -28,8 +28,8 @@ export function drawSaves() {
         .map(
           (save, index) => `<li class="save-line">
             <div class="who"><span class="name">${escape(save.name)}</span><span class="meta">${escape(when(save.savedAt))}</span></div>
-            <button type="button" id="load-${index}" data-load="${index}" aria-label="${escape(t("saves.loadName", { name: save.name }))}">${escape(t("saves.load"))}</button>
-            <button type="button" class="icon" id="delete-${index}" data-delete="${index}" aria-label="${escape(t("saves.deleteName", { name: save.name }))}">${ICONS.close}</button>
+            <button type="button" id="load-${index}" data-load="${escape(save.name)}" aria-label="${escape(t("saves.loadName", { name: save.name }))}">${escape(t("saves.load"))}</button>
+            <button type="button" class="icon" id="delete-${index}" data-delete="${escape(save.name)}" aria-label="${escape(t("saves.deleteName", { name: save.name }))}">${ICONS.close}</button>
           </li>`,
         )
         .join("")

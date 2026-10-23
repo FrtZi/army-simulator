@@ -2,16 +2,18 @@
 
 [← Overview](../ARCHITECTURE.md) · Features: [features.md](features.md)
 
-## Now: troops only (roadmap as of 22 October 2026)
+## Now: troops only (roadmap as of 23 October 2026)
 
 - [x] **Catalogue of troops** (DATA-03) and of defences (DATA-04).
-- [x] **Effective stats** (BONUS-01, BONUS-02): engine done; the entry form comes with the page.
-- [x] **Armies and caps** (ARMY-01, ARMY-02), **power** (SIM-01): engine done.
+- [x] **Effective stats** (BONUS-01, BONUS-02): engine and entry form.
+- [x] **Armies and caps** (ARMY-01, ARMY-02), **power** (SIM-01).
 - [x] **Battle** (SIM-02, D-16) and the control of the formulas (SIM-07).
 - [x] **Comparison of two compositions** (ARMY-03, SIM-03).
 - [x] **Saving**, export and import (CFG-01, CFG-02, REL-01); glossary, icons, Altaïra look (GLOSS-01, ICON-01, THEME-01).
 - [x] **Dashboards** (DASH-01 to DASH-06, SIM-06): six tabs. **Version 1.0** (D-22).
 - [ ] **Open questions**: see [open-questions.md](open-questions.md).
+- [ ] **Charts as tables** (ACC-01, DEF-023): each scatter chart readable without a pointer, as a table with
+      the same filters; to approve.
 - [x] **The first page** (GAME-01, BONUS-01/02, ARMY-01/02, SIM-01, SIM-08, LANG-02, COMP-01, ACC-01): game,
       bonuses, army with the picker, capacity, profile; tested in jsdom, axe and contrast checks.
 
@@ -38,7 +40,10 @@
 
 ## Tooling to add
 
-- [ ] Generate `docs/defects.md` from `docs/defects.toml` and check each entry, as in the other repos (with
-      the first defect).
-- [ ] Generate the proof column of `features.md` from the test names.
-- [ ] Publish the repo on GitHub (MIT): the workflow deploys `dist/` to GitHub Pages from `main`.
+- [x] Generate `docs/defects.md` from `docs/defects.toml` and check each entry, as in the other repos
+      (`scripts/defects.mjs`).
+- [x] Check the proof column of `features.md` against the test names (MAINT-02).
+- [x] Publish the repo on GitHub (MIT): the workflow deploys `dist/` to GitHub Pages from `main` (22 October
+      2026).
+- [ ] Move the CI runner from `ubuntu-24.04` to `ubuntu-26.04`: a major upgrade, tried on a branch first
+      (Dependabot does not follow runner images).
