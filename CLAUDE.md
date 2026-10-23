@@ -1,10 +1,8 @@
 # Army simulator
 
-This personal project follows the same golden rules as every project we work on:
-@../Altaira/CLAUDE.md
-
-(That file sits outside this repo, next to it on the author's computer. The rules it holds are summarised in
-the "Design principles" of [ARCHITECTURE.md](ARCHITECTURE.md).)
+This personal project follows the same golden rules as every project we work on. They live in
+`Workspaces/CLAUDE.md`, one level above this repo on the author's computer, and Claude Code loads them
+automatically. The rules it holds are summarised in the "Design principles" of [ARCHITECTURE.md](ARCHITECTURE.md).
 
 Specific to this repo:
 
