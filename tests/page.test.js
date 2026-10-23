@@ -373,3 +373,31 @@ test("DASH-01 DEF-024 a pointer the chart cannot capture still leaves no box onc
   svg.dispatchEvent(new page.window.MouseEvent("pointercancel", { bubbles: true }));
   assert.equal(page.$("#dash-panel .zoom-box"), null);
 });
+
+test("ACC-01 DEF-023 each chart reads as a table: the troops it shows, filters and zoom included", async () => {
+  const page = openPage();
+  addTroops(page, ["marauders"]);
+  const rows = () => page.$$("#chart-table tbody tr");
+  const dots = () => page.$$("#dash-panel circle:not(.map-ring)").length;
+  assert.equal(rows().length, 82);
+  assert.equal(page.$("#chart-table").open, false, "closed until asked");
+  page.click("#chart-table summary");
+  await new Promise((resolve) => setTimeout(resolve, 10)); // "toggle" is fired in a later task
+  // the highest damage first; the composition's troops said in words, not only ringed
+  const damage = (row) => Number(row.querySelector("td").textContent.replace(/\D/g, ""));
+  assert.ok(damage(rows()[0]) >= damage(rows()[1]));
+  assert.equal(rows().filter((row) => /in composition/.test(row.textContent)).length, 1);
+  // a filter or a zoom redraws the chart: the table follows it, and stays open
+  page.tick("#eff-filter-tier-1");
+  assert.equal(rows().length, dots());
+  assert.ok(rows().length < 82);
+  assert.equal(page.$("#chart-table").open, true, "still open after the redraw");
+  page.untick("#eff-filter-tier-1");
+  page.click("#zoom-in");
+  assert.equal(rows().length, dots());
+  // the damage-vs-tanking map adds the troop count
+  page.click("#dash-tab-map");
+  assert.equal(rows().length, 1);
+  assert.equal(page.$$("#chart-table thead th").length, 4);
+  assert.match(rows()[0].textContent, /1,000/);
+});

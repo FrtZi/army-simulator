@@ -359,12 +359,12 @@ titre = "The charts' per-troop figures are reachable by pointer only"
 type = "code"
 etiquettes = ["accessibility", "charts"]
 gravite = "major"
-statut = "open"
+statut = "fixed"
 constat = "Accessibility review: on the three scatter charts, a troop's name and figures show on hover only; the chart is one image (role img) with a summary, so screen readers skip the dots' titles and the keyboard cannot reach them."
 cause = "The charts were designed for the pointer; axe-core does not flag it, as the image has a name."
-solution = "Proposed: a \"Show as a table\" view under each chart, with the same filters and zoom (troop, damage, health or speed, load), to be approved before it is built."
-resultat = "Open: keyboard and screen-reader users get the chart's summary, not its data."
-preuve = []
+solution = "Under each chart, a \"Show as a table\" disclosure lists the troops the chart shows, filters and zoom included, with its figures and, in words, the composition's troops (D-24, approved 2026-10-24)."
+resultat = "Every figure the pointer shows is reachable by keyboard and read by screen readers; axe-core checks the open tables."
+preuve = ["tests/page.test.js"]
 lecon = "An automated scan passes a chart that has a name; whether its data can be reached is a manual check."
 liens = ["ACC-01", "DASH-01", "DASH-04", "DASH-06"]
 

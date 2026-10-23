@@ -5,6 +5,7 @@ import { escape } from "../../dom.js";
 import { label, number } from "../../format.js";
 import { fullView, scatter } from "../../charts/scatter.js";
 import { inView, zoomControls } from "../../charts/zoom.js";
+import { chartTable } from "../../charts/table.js";
 import { currentArmy, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 
@@ -25,15 +26,22 @@ export function mapPanel() {
       alignment: line.unit.alignment,
       label: label(line.unit),
       title: `${label(line.unit)}: ${t("map.y")} ${number(y)}, ${t("map.x")} ${number(x)}, ${number(line.count)}`,
+      count: line.count,
     };
   });
   const zoom = state.chartZoom[state.dashboard];
+  const shown = points.filter((point) => inView(zoom, point.x, point.y));
+  const table = chartTable({
+    caption: t("map.summary", { count: shown.length }),
+    columns: [t("map.y"), t("map.x"), t("table.count")],
+    rows: shown.map((point) => ({ name: point.label, values: [point.y, point.x, point.count] })),
+  });
   const chart = scatter({
-    points: points.filter((point) => inView(zoom, point.x, point.y)),
+    points: shown,
     view: zoom ?? fullView(points),
     xTitle: t("map.x"),
     yTitle: t("map.y"),
     summary: t("map.summary", { count: lines.length }),
   });
-  return `<p class="hint">${escape(t("map.hint", { name }))}</p>${zoomControls(state.dashboard)}${chart}`;
+  return `<p class="hint">${escape(t("map.hint", { name }))}</p>${zoomControls(state.dashboard)}${chart}${table}`;
 }

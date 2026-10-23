@@ -32,6 +32,14 @@ export function bindDashboards() {
     show(NAMES[next]);
   });
   bindHoverNames(byId("dash-panel"));
+  // "toggle" does not bubble: caught on its way down, it keeps the table open across redraws (D-24)
+  byId("dash-panel").addEventListener(
+    "toggle",
+    (event) => {
+      if (event.target.id === "chart-table") state.chartTable = event.target.open;
+    },
+    true,
+  );
   byId("dash-panel").addEventListener("click", (event) => {
     if (!event.target.closest("#highlight-toggle")) return;
     state.highlightComposition = !state.highlightComposition;

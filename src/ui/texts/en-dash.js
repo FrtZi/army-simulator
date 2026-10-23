@@ -54,4 +54,7 @@ export const EN_DASH = {
   "zoom.out": "Zoom out",
   "zoom.reset": "Show the whole chart",
   "efficiency.highlight": "Highlight composition {name}",
+  "table.show": "Show as a table ({count} troops)",
+  "table.inComposition": "in composition {name}",
+  "table.count": "Troops",
 };

@@ -57,4 +57,7 @@ export const FR_DASH = {
   "zoom.out": "Dézoomer",
   "zoom.reset": "Voir tout le graphique",
   "efficiency.highlight": "Mettre en avant la composition {name}",
+  "table.show": "Afficher en tableau ({count} troupes)",
+  "table.inComposition": "dans la composition {name}",
+  "table.count": "Troupes",
 };

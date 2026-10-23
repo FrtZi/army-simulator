@@ -30,9 +30,13 @@ for (const language of ["en", "fr"]) {
     page.click("#composition-tab-1");
     addTroops(page, ["marauders"]);
     page.click("#picker-toggle");
+    // a closed table is not checked: open each chart's table (D-24)
+    const openTable = () => page.$("#chart-table")?.setAttribute("open", "");
+    openTable();
     assert.deepEqual(await violations(page), []);
     for (const dashboard of ["rounds", "balance", "map", "pros", "raid"]) {
       page.click(`#dash-tab-${dashboard}`);
+      openTable();
       assert.deepEqual(await violations(page), [], dashboard);
     }
   });

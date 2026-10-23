@@ -54,7 +54,7 @@ src/ui/                  the page
 ├── format.js, dom.js    numbers and names in the current language; small DOM helpers
 ├── icons.js             the page's SVG icons and the troop type pictograms (D-18)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;
-│                        hover.js: a dot's name while pointing at it
+│                        hover.js: a dot's name while pointing at it; table.js: the chart as a table (D-24)
 ├── filters.js           the troop filters (several values each) shared by the picker and the charts
 ├── glossary/            terms.js (definitions, both languages), tooltip.js (the dotted terms)
 └── steps/<part>/        draw.js (state → DOM) and bind.js (controls → state) per part:

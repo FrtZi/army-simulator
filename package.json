@@ -1,6 +1,6 @@
 {
   "name": "army-simulator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unofficial, browser-only army simulator for Warhammer: Chaos & Conquest: compare troop scenarios, with every configuration kept private in the player's browser.",
   "private": true,
   "license": "MIT",

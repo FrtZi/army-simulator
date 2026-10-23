@@ -31,6 +31,7 @@ export const state = {
   efficiencyFilters: {}, // the charts' filters: building, tier, alignment → the values ticked
   highlightComposition: false, // the charts darken the troops outside the composition being edited
   chartZoom: {}, // per dashboard: the ranges zoomed into ({ x0, x1, y0, y1 }), or nothing for the whole chart
+  chartTable: false, // the charts' "Show as a table" is open (D-24)
   openFilter: null, // the filter drop-down open, kept open across redraws
   profileDetails: new Set(), // the key columns of the profile table whose details are open
   picker: { open: false, picked: new Set(), search: "", filters: {} },

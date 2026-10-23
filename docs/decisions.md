@@ -261,3 +261,13 @@ Frantz's calls, after trying the charts:
   permanent names cluttered the crowded corner.
 - **"Highlight composition"**, on the efficiency and raiding charts, darkens every troop outside the
   composition being edited (its troops are also ringed).
+
+## D-24 · Every chart also as a table (2026-10-24)
+
+Each scatter chart (efficiency, raiding, damage vs tanking) has a "Show as a table" disclosure under it: the
+same troops as the chart, with its filters and zoom, one row per troop with the chart's two figures (and the
+troop count on the damage-vs-tanking map), highest first. Keyboard and screen-reader users so reach every
+figure the pointer shows (WCAG 1.1.1, 2.1.1), which the chart alone did not (DEF-023). The table stays open
+across redraws. Approved by Frantz as part of ACC-01. Set aside: focusable dots with arrow-key navigation
+(82 tab stops, and harder to read out than a table); per-dot titles exposed inside the image (the image's own
+name hides them from screen readers, and they cannot be reached by keyboard anyway).

@@ -12,8 +12,8 @@
 - [x] **Saving**, export and import (CFG-01, CFG-02, REL-01); glossary, icons, Altaïra look (GLOSS-01, ICON-01, THEME-01).
 - [x] **Dashboards** (DASH-01 to DASH-06, SIM-06): six tabs. **Version 1.0** (D-22).
 - [ ] **Open questions**: see [open-questions.md](open-questions.md).
-- [ ] **Charts as tables** (ACC-01, DEF-023): each scatter chart readable without a pointer, as a table with
-      the same filters; to approve.
+- [x] **Charts as tables** (ACC-01, DEF-023, D-24): each scatter chart also readable as a table, with the same
+      filters and zoom.
 - [x] **The first page** (GAME-01, BONUS-01/02, ARMY-01/02, SIM-01, SIM-08, LANG-02, COMP-01, ACC-01): game,
       bonuses, army with the picker, capacity, profile; tested in jsdom, axe and contrast checks.
 

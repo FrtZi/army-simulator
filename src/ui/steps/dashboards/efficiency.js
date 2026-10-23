@@ -8,6 +8,7 @@ import { matchesFilters, multiFilter } from "../../filters.js";
 import { label, number, troopMeta } from "../../format.js";
 import { fullView, scatter } from "../../charts/scatter.js";
 import { inView, zoomControls } from "../../charts/zoom.js";
+import { chartTable } from "../../charts/table.js";
 import { currentGame, state, validEffects } from "../../state.js";
 import { efficiency } from "../../../engine/index.js";
 import { t } from "../../texts/index.js";
@@ -39,7 +40,20 @@ function highlightButton(name) {
 
 const filters = () => FILTERS.map((field) => multiFilter("eff-filter", field, state.efficiencyFilters[field])).join("");
 
-/** A panel: the hint, the filters, the chart of two measures, the legend. */
+/** The troops the chart shows, as a table: the chart's two figures, and whether each is in the composition. */
+function table(visible, chart, name) {
+  return chartTable({
+    caption: t(chart.summary, { count: visible.length }),
+    columns: [t(chart.yTitle), t(chart.xTitle)],
+    rows: visible.map((row) => ({
+      name: label(row.unit),
+      note: row.unit.id in state.troops ? t("table.inComposition", { name }) : "",
+      values: [row[chart.y], row[chart.x]],
+    })),
+  });
+}
+
+/** A panel: the hint, the filters, the chart of two measures and its table, the legend. */
 function chartPanel(chart) {
   const { catalogue, rules } = currentGame();
   const units = [...catalogue.units.values()].filter((unit) => matchesFilters(unit, state.efficiencyFilters));
@@ -54,7 +68,7 @@ function chartPanel(chart) {
         xTitle: t(chart.xTitle),
         yTitle: t(chart.yTitle),
         summary: t(chart.summary, { count: rows.length }),
-      })
+      }) + table(visible, chart, name)
     : `<p class="empty">${escape(t("picker.none"))}</p>`;
   return `<p class="hint">${escape(t(chart.hint))}</p>
     <div class="filters dash-filters">${filters()}</div>${zoomControls(state.dashboard, highlightButton(name))}${drawn}

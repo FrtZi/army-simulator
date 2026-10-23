@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **24 defects**: 23 fixed, 0 worked around, 1 open.
+with its regression test, check or rule. **24 defects**: 24 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -35,7 +35,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-020](#def-020) | 2026-10-23 | Equal figures could show one side better by a rounding digit | code | minor | ✓ fixed |
 | [DEF-021](#def-021) | 2026-10-23 | An escaped pipe in a feature's text would shift the catalogue's cells | tool | minor | ✓ fixed |
 | [DEF-022](#def-022) | 2026-10-23 | The exported file's address was revoked during the click | code | minor | ✓ fixed |
-| [DEF-023](#def-023) | 2026-10-23 | The charts' per-troop figures are reachable by pointer only | code | major | ○ open |
+| [DEF-023](#def-023) | 2026-10-23 | The charts' per-troop figures are reachable by pointer only | code | major | ✓ fixed |
 | [DEF-024](#def-024) | 2026-10-23 | A zoom box stayed on the chart when the pointer could not be captured | code | minor | ✓ fixed |
 
 ## Entries
@@ -315,14 +315,14 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 <a id="def-023"></a>
 ### DEF-023 · The charts' per-troop figures are reachable by pointer only
 
-`2026-10-23` · code · major · ○ open · tags: `accessibility`, `charts`
+`2026-10-23` · code · major · ✓ fixed · tags: `accessibility`, `charts`
 
 - **Finding:** Accessibility review: on the three scatter charts, a troop's name and figures show on hover only; the chart is one image (role img) with a summary, so screen readers skip the dots' titles and the keyboard cannot reach them.
 - **Cause:** The charts were designed for the pointer; axe-core does not flag it, as the image has a name.
-- **Solution:** Proposed: a "Show as a table" view under each chart, with the same filters and zoom (troop, damage, health or speed, load), to be approved before it is built.
-- **Result:** Open: keyboard and screen-reader users get the chart's summary, not its data.
+- **Solution:** Under each chart, a "Show as a table" disclosure lists the troops the chart shows, filters and zoom included, with its figures and, in words, the composition's troops (D-24, approved 2026-10-24).
+- **Result:** Every figure the pointer shows is reachable by keyboard and read by screen readers; axe-core checks the open tables.
 - **Lesson:** An automated scan passes a chart that has a name; whether its data can be reached is a manual check.
-- **Proof:** to cover
+- **Proof:** `tests/page.test.js`
 - **Links:** ACC-01, DASH-01, DASH-04, DASH-06
 
 <a id="def-024"></a>
