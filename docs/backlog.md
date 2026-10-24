@@ -16,7 +16,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Milestone | Musts done | Items done | Tasks done | Reached |
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
-| Version 1.1, heroes and the player's setup | `░░░░░░░░░░░░░░░░░░░░` 0/4 | 0/5 | 3/16 | ○ not yet: 4 Musts left |
+| Version 1.1, heroes and the player's setup | `█████░░░░░░░░░░░░░░░` 1/4 | 1/5 | 5/16 | ○ not yet: 3 Musts left |
 | Version 1.2, rituals and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/4 | 0/10 | ○ not yet: 2 Musts left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 0/7 | — |
 
@@ -24,7 +24,6 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 
 Not done, and every dependency done:
 
-- [BL-05](#bl-05) Tooling majors: ESLint 10, jsdom 30, html-validate 11 (v1.1, must, ◐ doing)
 - [BL-06](#bl-06) Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels (v1.1, must, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (v1.1, could, ◐ doing)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.2, must, ○ to do)
@@ -45,7 +44,7 @@ flowchart LR
   BL03["BL-03 ✓ done<br/>Page: compositions, comparison, six dashboards, saves"]:::done
   BL02 --> BL03
   BL04["BL-04 ✓ done<br/>Framework: checks, CI, registers, publication"]:::done
-  BL05["BL-05 ◐ doing<br/>Tooling majors: ESLint 10, jsdom 30, html-validate 11"]:::doing
+  BL05["BL-05 ✓ done<br/>Tooling majors: ESLint 10, jsdom 30, html-validate 11"]:::done
   BL06["BL-06 ○ to do<br/>Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels"]:::todo
   BL07["BL-07 ○ to do<br/>Heroes in a composition: up to 3 warlords, 4 talents, at their level"]:::todo
   BL06 --> BL07
@@ -126,7 +125,7 @@ The warlords in a composition, at their level, their bonuses applied; what the p
 
 | ID | Item | MoSCoW | Module | Status | Tasks |
 |---|---|---|---|---|---|
-| [BL-05](#bl-05) | Tooling majors: ESLint 10, jsdom 30, html-validate 11 | must | framework | ◐ doing | 1/3 |
+| [BL-05](#bl-05) | Tooling majors: ESLint 10, jsdom 30, html-validate 11 | must | framework | ✓ done | 3/3 |
 | [BL-06](#bl-06) | Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels | must | [data](../data) | ○ to do | 0/3 |
 | [BL-07](#bl-07) | Heroes in a composition: up to 3 warlords, 4 talents, at their level | must | [ui](../src/ui) | ○ to do | 0/4 |
 | [BL-08](#bl-08) | The player's setup: what they have in game, entered once | must | [storage](../src/storage) | ○ to do | 0/3 |
@@ -135,13 +134,13 @@ The warlords in a composition, at their level, their bonuses applied; what the p
 <a id="bl-05"></a>
 #### BL-05 · Tooling majors: ESLint 10, jsdom 30, html-validate 11
 
-Must · framework · ◐ doing · added `2026-10-24`
+Must · framework · ✓ done · added `2026-10-24`
 
-jsdom 30 needs Node 22.22 or later; this computer has 22.9 (DEF-026). The changes wait in a git stash.
+jsdom 30 needs Node 22.22.2 or later (package.json engines); Node 22.23.4 on this computer since 2026-10-24 (DEF-026).
 
 - [x] Tried: ESLint 10 and html-validate 11 pass; the test helper moves to VirtualConsole.forwardTo
-- [ ] Node upgraded on this computer (22.22 or later)
-- [ ] The stash applied on a branch, checks green locally and in CI, merged; Dependabot's pull request closed
+- [x] Node upgraded on this computer (22.23.4)
+- [x] The stash applied on a branch, checks green locally and in CI, merged; Dependabot's pull request closed
 
 <a id="bl-06"></a>
 #### BL-06 · Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels
