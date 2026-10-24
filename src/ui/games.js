@@ -5,6 +5,7 @@ import chaosConquestGame from "../../data/chaos-conquest/game.json" with { type:
 import chaosConquestUnits from "../../data/chaos-conquest/units.json" with { type: "json" };
 import chaosConquestDefences from "../../data/chaos-conquest/defences.json" with { type: "json" };
 import chaosConquestRules from "../../data/chaos-conquest/combat-rules.json" with { type: "json" };
+import chaosConquestWarlords from "../../data/chaos-conquest/warlords.json" with { type: "json" };
 import { indexCatalogue } from "../engine/index.js";
 
 const DATA = {
@@ -13,12 +14,20 @@ const DATA = {
     units: chaosConquestUnits,
     defences: chaosConquestDefences,
     rules: chaosConquestRules,
+    heroes: chaosConquestWarlords,
   },
 };
 
-/** Each game: its id and names (games.json), its data, and its catalogue indexed once. */
+/** Each game: its id and names (games.json), its data, its catalogue and its warlords indexed once. */
 export const GAMES = gameList.map((entry) => {
   const data = DATA[entry.id];
   if (!data) throw new Error(`data/games.json lists "${entry.id}" but src/ui/games.js does not import its data`);
-  return { ...entry, ...data, catalogue: indexCatalogue(data.units, data.defences) };
+  const { warlords, talents } = data.heroes;
+  return {
+    ...entry,
+    ...data,
+    catalogue: indexCatalogue(data.units, data.defences),
+    warlords: new Map(warlords.map((warlord) => [warlord.id, warlord])),
+    talents,
+  };
 });

@@ -94,7 +94,7 @@ for (const { id: gameId } of games) {
 
 test("DATA-02 the example configuration follows the configuration format", () => {
   const example = read("examples/configuration.example.json");
-  assert.equal(example.schemaVersion, 1);
+  assert.equal(example.schemaVersion, 2);
   assert.ok(ids(games).includes(example.game), `unknown game "${example.game}"`);
   const { game, catalogue } = loadGame(example.game);
   assert.ok(isCount(example.limits.marchCapacity));

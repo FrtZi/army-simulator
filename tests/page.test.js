@@ -204,6 +204,7 @@ test("ARMY-03 SIM-03 compositions: as many as wanted, any two compared, better i
   );
   assert.equal(page.$$("#compare-battles .battle-list li").length, 2);
   // a third composition, duplicated from Swarm (named B, free again), compared with Swarm: all equal, in orange
+  // (duplicating once threw in jsdom, which has no structuredClone: DEF-029)
   page.click("#composition-duplicate");
   assert.equal(page.text("#composition-tab-2"), "Composition B", "the first free name");
   assert.equal(page.$("#count-marauders").value, "100");
@@ -400,4 +401,84 @@ test("ACC-01 DEF-023 each chart reads as a table: the troops it shows, filters a
   assert.equal(rows().length, 1);
   assert.equal(page.$$("#chart-table thead th").length, 4);
   assert.match(rows()[0].textContent, /1,000/);
+});
+
+/** Opens the hero picker, ticks these heroes, adds them. */
+function addHeroes(page, ids) {
+  page.click("#hero-picker-toggle");
+  for (const id of ids) page.tick(`#pick-hero-${id}`);
+  page.click("#hero-picker-add");
+}
+
+test("ARMY-05 the hero picker: filters, at most 3 heroes, each at its rank and level", () => {
+  const page = openPage();
+  page.click("#hero-picker-toggle");
+  page.tick("#hero-filter-alignment-slaanesh");
+  const listed = page.$$("[data-pick-hero]").map((box) => box.dataset.pickHero);
+  assert.ok(listed.length === 5 && listed.includes("azazel") && !listed.includes("karanak"), "Slaanesh heroes only");
+  page.untick("#hero-filter-alignment-slaanesh");
+  for (const id of ["azazel", "herald-of-slaanesh", "karanak"]) page.tick(`#pick-hero-${id}`);
+  assert.equal(page.$("#pick-hero-sigvald-the-magnificent").disabled, true, "a fourth cannot be ticked");
+  assert.match(page.text("#hero-picker-status"), /3 heroes/);
+  page.click("#hero-picker-add");
+  assert.equal(page.$$("#hero-lines .hero-line").length, 3);
+  assert.equal(page.$("#rank-azazel").value, "1", "a hero added starts at rank 1, level 1");
+  page.choose("#rank-azazel", 7);
+  page.choose("#level-azazel", 5);
+  assert.match(page.$("#rank-azazel").closest("li").textContent, /level 35/);
+  page.click("#remove-hero-karanak");
+  assert.equal(page.$$("#hero-lines .hero-line").length, 2);
+});
+
+test("ARMY-06 BONUS-03 SIM-10 talents: the strongest once, 4 at most, applied; heroes fight and are shown", () => {
+  const page = openPage();
+  addTroops(page, ["slaanesh-serpents"]);
+  addHeroes(page, ["azazel", "herald-of-slaanesh"]);
+  page.choose("#rank-azazel", 7);
+  page.choose("#level-azazel", 5); // Azazel at level 35 (+45 %), the Herald at level 1 (+1.5 %)
+  const health = page.$$("[data-talent]").filter((box) => box.dataset.talent === "slaanesh-health");
+  assert.equal(health.length, 1, "offered once");
+  assert.match(health[0].closest("label").textContent, /\+45 %.*Azazel, Herald of Slaanesh/s);
+  const tanking = () => Number(page.metric("health").replace(/\D/g, ""));
+  const before = tanking();
+  page.tick("#talent-slaanesh-health");
+  assert.ok(tanking() > before, "the talent raises the Slaanesh troops' health");
+  for (const box of page
+    .$$("[data-talent]")
+    .filter((item) => !item.checked)
+    .slice(0, 3)) {
+    page.tick(`#${box.id}`);
+  }
+  assert.match(page.text("#talents-title"), /4 of 4/);
+  assert.ok(
+    page
+      .$$("[data-talent]")
+      .filter((box) => !box.checked)
+      .every((box) => box.disabled),
+    "no fifth talent",
+  );
+  const heroRow = page.$$("#profile-lines tbody tr").find((row) => /Azazel/.test(row.textContent));
+  assert.match(heroRow.textContent, /Hero/);
+  page.click("#remove-hero-azazel");
+  // Azazel's own talents go with him: the count says so, and frees room for others
+  const ticked = page.$$("[data-talent]").filter((box) => box.checked).length;
+  assert.ok(ticked < 4);
+  assert.match(page.text("#talents-title"), new RegExp(`${ticked} of 4`));
+  assert.equal(page.$("#talent-slaanesh-health").checked, true, "the Herald still offers Slaanesh Health");
+});
+
+test("CFG-01 heroes and talents are saved with their composition, and loaded back", () => {
+  const page = openPage();
+  addHeroes(page, ["azazel"]);
+  page.choose("#rank-azazel", 3);
+  page.choose("#level-azazel", 2);
+  page.tick("#talent-slaanesh-health");
+  page.type("#save-name", "Heroes");
+  page.click("#save-button");
+  page.click("#remove-hero-azazel");
+  assert.equal(page.$$("#hero-lines .hero-line").length, 0);
+  page.click("#load-0");
+  assert.equal(page.$("#rank-azazel").value, "3");
+  assert.equal(page.$("#level-azazel").value, "2");
+  assert.equal(page.$("#talent-slaanesh-health").checked, true);
 });

@@ -6,10 +6,11 @@
 import { attackMode, damagePerTroop } from "./combat.js";
 import { strike, targetOrder } from "./allocate.js";
 import { rally, testMorale } from "./morale.js";
+import { fighters } from "./army.js";
 
-/** A side's fighting groups, from an army summary's lines (effective stats included). */
+/** A side's fighting groups, from an army summary's lines and heroes (effective stats included). */
 const deploy = (army) =>
-  army.lines.map((line) => ({ unit: line.unit, stats: line.stats, count: line.count, broken: 0, lostThisTurn: 0 }));
+  fighters(army).map((line) => ({ unit: line.unit, stats: line.stats, count: line.count, broken: 0, lostThisTurn: 0 }));
 
 /** One side strikes the other: each group alive and not broken, with its current attack mode. */
 function strikePhase(strikers, targets, rules) {
@@ -23,8 +24,16 @@ function strikePhase(strikers, targets, rules) {
   }
 }
 
+// what each group is, with its state: rounds() reads the tier and power per troop from here, heroes included
 const snapshot = (side) =>
-  side.map((group) => ({ id: group.unit.id, count: group.count, broken: group.broken, lost: group.lostThisTurn }));
+  side.map((group) => ({
+    id: group.unit.id,
+    tier: group.unit.tier,
+    powerPerTroop: group.unit.stats.squadPower,
+    count: group.count,
+    broken: group.broken,
+    lost: group.lostThisTurn,
+  }));
 const powerOf = (side) => side.reduce((total, group) => total + group.count * group.unit.stats.squadPower, 0);
 
 /** The power each side lost, and the winner: the side that inflicted the bigger loss ("draw" when equal). */

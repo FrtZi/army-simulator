@@ -10,7 +10,7 @@ import { t } from "../../texts/index.js";
 const SPREADS = [
   ["tiers", (key) => tierName(Number(key))],
   ["alignments", (key) => nameOf("alignments", key)],
-  ["unitTypes", (key) => nameOf("unitTypes", key)],
+  ["unitTypes", (key) => nameOf("unitTypes", key) || t("heroes.hero")], // heroes have no troop type
   ["modes", (key) => nameOf("attackTypes", key)],
 ];
 

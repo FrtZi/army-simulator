@@ -189,14 +189,17 @@ The counts are those of the 70 codes the 33 warlords use: 62 fit the effect shap
 The format of what the browser saves and what an export file holds. `examples/configuration.example.json`
 is a fictitious example, checked by the tests.
 
-| Field           | Meaning                                                                                            |
-| --------------- | -------------------------------------------------------------------------------------------------- |
-| `schemaVersion` | format version; a newer app migrates an older file instead of rejecting it                         |
-| `limits`        | the caps: `marchCapacity`, the most troops one army may hold (effects on `marchCapacity` raise it) |
-| `sources`       | the player's bonuses: one `manual` source (2026-10-22)                                             |
-| `scenarios`     | the options to compare: each a name and its troops (unit id → count)                               |
+| Field           | Meaning                                                                                                                            |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `schemaVersion` | format version; a newer app migrates an older file instead of rejecting it                                                         |
+| `limits`        | the caps: `marchCapacity`, the most troops one army may hold (effects on `marchCapacity` raise it)                                 |
+| `sources`       | the player's bonuses: one `manual` source (2026-10-22)                                                                             |
+| `scenarios`     | the options to compare: each a name, its troops (unit id → count), its `heroes` ([{ id, level }]) and its `talents` ([talent ids]) |
 
 Scenarios are a list: the player keeps as many compositions as wanted, and compares any two of them (D-19).
+Version 2 (2026-10-24) adds each scenario's heroes and talents (D-26); a version 1 file is brought up to date
+when read (`src/storage/migrate.js`: its compositions get no heroes). The reader refuses a file whose heroes
+or talents break the game's rules (`heroRules` of game.json), with the reasons.
 
 ## Combat rules: `data/<game>/combat-rules.json`
 

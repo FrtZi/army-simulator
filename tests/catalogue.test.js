@@ -8,7 +8,8 @@ import { catalogueFeatures } from "../scripts/catalogue.mjs";
 
 const features = catalogueFeatures();
 const TEST_TITLE = /\btest\(\s*(["`])([\s\S]*?)\1/g;
-const NAMED_ID = /\b[A-Z]+-\d{2}\b/g;
+// a feature's category has two letters or more: D-26, a decision, is not a feature (DEF-028)
+const NAMED_ID = /\b[A-Z]{2,}-\d{2}\b/g;
 const PROOF_FILE = /tests\/[\w.-]+\.test\.js/g;
 // a proof that is not a test says what it is: a check, a manual verification, or another feature's proof
 const STATED_PROOF = /^(Check|Manual|manual|see)\b/;

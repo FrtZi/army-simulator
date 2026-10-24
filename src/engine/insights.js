@@ -25,15 +25,14 @@ export function efficiency(units, effects, model) {
 }
 
 /** A battle (simulateBattle) round by round: per side, troops and power lost, troops broken, losses per tier. */
-export function rounds(battle, catalogue) {
+export function rounds(battle) {
   const side = (groups) =>
     groups.reduce(
       (total, group) => {
-        const unit = catalogue.units.get(group.id) ?? catalogue.defences.get(group.id);
         total.lost += group.lost;
-        total.powerLost += group.lost * unit.stats.squadPower;
+        total.powerLost += group.lost * group.powerPerTroop;
         total.broken += group.broken;
-        total.byTier[unit.tier] = (total.byTier[unit.tier] ?? 0) + group.lost;
+        total.byTier[group.tier] = (total.byTier[group.tier] ?? 0) + group.lost;
         return total;
       },
       { lost: 0, powerLost: 0, broken: 0, byTier: {} },

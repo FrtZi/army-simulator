@@ -1,0 +1,35 @@
+/* The heroes (D-26): each hero's rank and level side by side on its line; the talents as a list of tick boxes. */
+/* a troop line's third column is its count field (8rem); a hero's holds two labelled choices: sized to them */
+.army-line.hero-line {
+  grid-template-columns: auto 1fr auto 2.5rem;
+}
+
+.hero-level {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  align-items: center;
+}
+
+.hero-level select {
+  width: auto; /* fields fill their row elsewhere (base.css); here, two short choices side by side */
+  min-width: 3.5rem;
+}
+
+.hero-level label {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.talents {
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.talents legend {
+  padding: 0;
+  margin-bottom: 0.5rem;
+  color: var(--heading);
+  font-weight: 500;
+}

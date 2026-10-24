@@ -12,6 +12,7 @@ const games = {
   [GAME]: {
     game: read(`data/${GAME}/game.json`),
     catalogue: indexCatalogue(read(`data/${GAME}/units.json`), read(`data/${GAME}/defences.json`)),
+    warlords: new Map(read(`data/${GAME}/warlords.json`).warlords.map((warlord) => [warlord.id, warlord])),
   },
 };
 const example = read("examples/configuration.example.json");
@@ -37,6 +38,8 @@ test("REL-01 the example configuration reads into a setup, and writes back ident
   const written = toConfiguration(setup, example.name);
   assert.deepEqual(fromConfiguration(written, games).setup, setup);
   assert.deepEqual(written.scenarios[0].troops, example.scenarios[0].troops);
+  assert.deepEqual(written.scenarios[0].heroes, example.scenarios[0].heroes);
+  assert.deepEqual(written.scenarios[0].talents, example.scenarios[0].talents);
 });
 
 test("CFG-02 a file the game cannot use is refused, with the reasons", () => {
@@ -97,4 +100,33 @@ test("CFG-02 DEF-017 capacity bonuses add up, and their sum keeps to 0–100 %",
   assert.equal(fromConfiguration(file(capacity(30), capacity(20)), games).setup.capacityBonus, 50);
   const { problems } = fromConfiguration(file(capacity(60), capacity(60)), games);
   assert.deepEqual(problems, [{ code: "percent-out-of-range", percent: 120, min: 0, max: 100 }]);
+});
+
+test("CFG-02 a version 1 file still loads: its compositions get no heroes (migrate.js)", () => {
+  const version1 = (scenario) =>
+    Object.fromEntries(Object.entries(scenario).filter(([key]) => !["heroes", "talents"].includes(key)));
+  const old = { ...example, schemaVersion: 1, scenarios: example.scenarios.map(version1) };
+  const { setup, problems } = fromConfiguration(old, games);
+  assert.equal(problems, undefined);
+  assert.deepEqual(
+    setup.compositions.map(({ heroes, talents }) => [heroes, talents]),
+    [
+      [[], []],
+      [[], []],
+    ],
+  );
+});
+
+test("CFG-02 heroes and talents against the rules are refused, with the reasons (D-26)", () => {
+  const scenario = (heroes, talents = []) => ({ ...example, scenarios: [{ id: "x", troops: {}, heroes, talents }] });
+  const codes = (configuration) => fromConfiguration(configuration, games).problems?.map((problem) => problem.code);
+  const four = ["azazel", "karanak", "sigvald-the-magnificent", "throgg-king-of-trolls"].map((id) => ({
+    id,
+    level: 35,
+  }));
+  assert.deepEqual(codes(scenario(four)), ["too-many-heroes"]);
+  assert.deepEqual(codes(scenario([{ id: "azazel", level: 36 }])), ["hero-level"]);
+  assert.deepEqual(codes(scenario([{ id: "azazel", level: 35 }], ["march-combat"])), ["talent-not-offered"]);
+  assert.deepEqual(codes(scenario([{ id: 7 }])), ["shape"]);
+  assert.deepEqual(fromConfiguration(example, games).setup.compositions[0].heroes, [{ id: "azazel", level: 35 }]);
 });

@@ -10,6 +10,8 @@ export const CONFIG = {
   bonusFilters: ["unitTypes", "alignments", "tiers", "attackTypes", "buildings"],
   // the picker's filters: troop field → vocabulary list in game.json
   pickerFilters: { building: "buildings", tier: "tiers", alignment: "alignments", unitType: "unitTypes" },
+  heroFilters: { alignment: "alignments", rarity: "rarities" }, // the hero picker's filters (D-26)
+  newHeroLevel: 1, // a hero added starts at rank 1, level 1: the player sets its level
   percentStep: 0.5,
   compositionNames: ["A", "B"], // the compositions a new page starts with; the player adds more (D-19)
 };

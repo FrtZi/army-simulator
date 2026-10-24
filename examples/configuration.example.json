@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "game": "chaos-conquest",
   "name": "Example player (fictitious)",
   "limits": {
@@ -43,7 +43,14 @@
         "khorngor": 20000,
         "tzaangor": 15000,
         "khorne-gor": 10000
-      }
+      },
+      "heroes": [
+        {
+          "id": "azazel",
+          "level": 35
+        }
+      ],
+      "talents": ["slaanesh-health"]
     },
     {
       "id": "more-ranged",
@@ -52,7 +59,9 @@
         "khorngor": 10000,
         "tzaangor": 20000,
         "nurgle-gor": 15000
-      }
+      },
+      "heroes": [],
+      "talents": []
     }
   ]
 }

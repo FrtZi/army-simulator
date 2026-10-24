@@ -3,6 +3,7 @@
 
 import { damagePerTroop, healthPerTroop, preferredMode } from "./combat.js";
 import { armyDamage, armyHealth } from "./measures.js";
+import { fighters } from "./army.js";
 
 const PER_HOUR = 100; // food upkeep is given per 100 troops per hour
 const ATTACK_STATS = { melee: ["meleeAttack", "meleeDamage"], ranged: ["rangedAttack", "rangedDamage"] };
@@ -26,6 +27,7 @@ function lineProfiles(lines, model) {
     const [attack, damage] = ATTACK_STATS[mode];
     return {
       unit: line.unit,
+      hero: line.unit.unitType === "hero",
       count: line.count,
       power: line.power,
       powerPerTroop: line.unit.stats.squadPower,
@@ -47,11 +49,13 @@ function lineProfiles(lines, model) {
  * type; and each line's own figures.
  */
 export function armyProfile(army, model) {
-  const { lines } = army;
+  const lines = fighters(army); // the troops, then the heroes: they fight, march and carry too (D-26)
   const fielded = lines.filter((line) => line.count > 0);
-  const perTroop = (value) => (army.size > 0 ? sum(lines, value) / army.size : 0);
+  const counted = lines.reduce((total, line) => total + line.count, 0);
+  const perTroop = (value) => (counted > 0 ? sum(lines, value) / counted : 0);
   return {
     troops: army.size,
+    heroes: (army.heroes ?? []).length,
     power: army.power,
     damage: {
       melee: sum(lines, (line) => damagePerTroop(line.stats, "melee", model)),
@@ -64,7 +68,7 @@ export function armyProfile(army, model) {
     morale: perTroop((line) => line.stats.morale),
     slowestSpeed: fielded.length ? Math.min(...fielded.map((line) => line.stats.speed)) : 0,
     load: sum(lines, (line) => line.stats.load ?? 0),
-    foodPerHour: sum(lines, (line) => line.stats.foodUpkeep / PER_HOUR),
+    foodPerHour: sum(lines, (line) => (line.stats.foodUpkeep ?? 0) / PER_HOUR), // heroes eat nothing on the sheets
     byTier: spread(lines, "tier"),
     byAttackType: spread(lines, "attackType"),
     lines: lineProfiles(lines, model),

@@ -3,6 +3,7 @@
 import { CONFIG } from "./config.js";
 import { GAMES } from "./games.js";
 import { armyProfile, compareArmies, effectProblems, summariseArmy } from "../engine/index.js";
+import { heroUnits, talentsOf } from "./heroes.js";
 
 /** The language: the one remembered in this browser, else the browser's own if the page has it. */
 function startLanguage() {
@@ -16,7 +17,7 @@ function startLanguage() {
   return CONFIG.languages.includes(browser) ? browser : CONFIG.languages[0];
 }
 
-const emptyCompositions = () => CONFIG.compositionNames.map((name) => ({ name, troops: {} }));
+const emptyCompositions = () => CONFIG.compositionNames.map((name) => ({ name, troops: {}, heroes: [], talents: [] }));
 
 export const state = {
   language: startLanguage(),
@@ -24,7 +25,8 @@ export const state = {
   marchCapacity: CONFIG.defaultMarchCapacity,
   capacityBonus: 0,
   bonuses: [], // each { stat, percent, filter, value }; filter "all" or one of CONFIG.bonusFilters
-  compositions: emptyCompositions(), // each { name, troops: troop id → count, in the order added }
+  // each { name, troops: troop id → count in the order added, heroes: [{ id, level }], talents: [talent ids] }
+  compositions: emptyCompositions(),
   active: 0, // the composition being edited
   compare: [0, 1], // the two compositions compared
   dashboard: "efficiency", // the dashboard tab shown
@@ -35,13 +37,19 @@ export const state = {
   openFilter: null, // the filter drop-down open, kept open across redraws
   profileDetails: new Set(), // the key columns of the profile table whose details are open
   picker: { open: false, picked: new Set(), search: "", filters: {} },
+  heroPicker: { open: false, picked: new Set(), search: "", filters: {} }, // the same, for the heroes (D-26)
+  /** The composition being edited. */
+  get composition() {
+    return this.compositions[this.active];
+  },
   /** The troops of the composition being edited. */
   get troops() {
     return this.compositions[this.active].troops;
   },
 };
 
-const resetPicker = () => Object.assign(state.picker, { open: false, picked: new Set(), search: "", filters: {} });
+const closed = () => ({ open: false, picked: new Set(), search: "", filters: {} });
+const resetPicker = () => Object.assign(state, { picker: closed(), heroPicker: closed() });
 
 /** Starts over with a new game: its troops and bonuses would mean nothing in another one. */
 export function selectGame(id) {
@@ -79,12 +87,17 @@ export function validEffects() {
   return [...state.bonuses.map(bonusEffect), capacityEffect()].filter((effect) => !problemsOf(effect).length);
 }
 
-const summarise = (troops) =>
-  summariseArmy(troops, currentGame().catalogue, validEffects(), { marchCapacity: state.marchCapacity });
+/** A composition as the engine sees it: its troops with every bonus, its talents' included, and its heroes. */
+function summarise(composition) {
+  const game = currentGame();
+  const effects = [...validEffects(), ...talentsOf(composition, game).effects];
+  const limits = { marchCapacity: state.marchCapacity };
+  return summariseArmy(composition.troops, game.catalogue, effects, limits, heroUnits(composition, game));
+}
 
 /** The composition being edited as the engine sees it, and its profile. */
 export function currentArmy() {
-  const army = summarise(state.troops);
+  const army = summarise(state.composition);
   return { army, profile: armyProfile(army, currentGame().rules.model) };
 }
 
@@ -95,7 +108,7 @@ export const comparedNames = () => state.compare.map((index) => state.compositio
 export const comparison = () =>
   state.compare[0] === state.compare[1]
     ? null
-    : compareArmies(...state.compare.map((index) => summarise(state.compositions[index].troops)), currentGame().rules);
+    : compareArmies(...state.compare.map((index) => summarise(state.compositions[index])), currentGame().rules);
 
 /** The whole setup, in the shape the storage module saves. */
 export const currentSetup = () => ({

@@ -68,7 +68,8 @@ export function profileTable(lines) {
   const cellClass = (column) => `num${column.main ? " key" : ""}${column.detail ? " detail" : ""}`;
   const rows = lines.map((line) => {
     const cells = columns.map((column) => `<td class="${cellClass(column)}">${escape(column.value(line))}</td>`);
-    return `<tr><th scope="row"><span class="cell-troop">${troopIcon(line.unit)}${escape(label(line.unit))}</span></th>${cells.join("")}</tr>`;
+    const hero = line.hero ? ` <span class="meta">· ${escape(t("heroes.hero"))}</span>` : ""; // a hero fights too (SIM-10)
+    return `<tr><th scope="row"><span class="cell-troop">${troopIcon(line.unit)}${escape(label(line.unit))}${hero}</span></th>${cells.join("")}</tr>`;
   });
   return `<table><thead><tr><th scope="col">${escape(t("col.troop"))}</th>${header.join("")}</tr></thead><tbody>${rows.join("")}</tbody></table>`;
 }

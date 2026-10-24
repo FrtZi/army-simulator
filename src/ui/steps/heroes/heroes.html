@@ -1,0 +1,29 @@
+<section id="heroes" class="card" aria-labelledby="heroes-title">
+  <h2 id="heroes-title"><span data-text="heroes.title"></span> · <span id="heroes-composition"></span></h2>
+  <p class="hint" id="heroes-hint"></p>
+
+  <div id="hero-lines"></div>
+
+  <button
+    id="hero-picker-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="hero-picker"
+    data-text="heroes.open"
+  ></button>
+  <div id="hero-picker" class="picker" hidden>
+    <div class="field">
+      <label for="hero-picker-search" data-text="heroes.search"></label>
+      <input id="hero-picker-search" type="search" autocomplete="off" />
+    </div>
+    <div class="filters" id="hero-picker-filters"></div>
+    <p class="status" id="hero-picker-status" aria-live="polite"></p>
+    <ul id="hero-picker-list" class="picker-list"></ul>
+    <button id="hero-picker-add" type="button" class="primary" data-text="heroes.addNone"></button>
+  </div>
+
+  <fieldset id="talents" class="talents">
+    <legend id="talents-title"></legend>
+    <div id="talent-list"></div>
+  </fieldset>
+</section>

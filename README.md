@@ -23,10 +23,12 @@ Open the published page, or save it: it is one self-contained file that also wor
    applies to (all troops, a troop type, a god, a tier, melee or ranged, a building).
 3. **Your army:** the march capacity (your base plus its bonus), then "Add troops": search, filter, tick
    several, add them; type each count.
-4. **Army profile:** the figures update as you type; the key columns open their details.
-5. **Compare** any two compositions, then explore the six **dashboards**: efficiency per slot, battle by round,
+4. **Heroes:** up to three per composition, picked like troops, each at its rank and level; then four
+   talents among their bonuses. Heroes fight with their own stats, shown in the profile like a troop's.
+5. **Army profile:** the figures update as you type; the key columns open their details.
+6. **Compare** any two compositions, then explore the six **dashboards**: efficiency per slot, battle by round,
    army balance, damage vs tanking, pros and cons, raiding.
-6. **Save** your setup in the browser, or export it to a file and import it back.
+7. **Save** your setup in the browser, or export it to a file and import it back.
 
 ## Running it locally
 

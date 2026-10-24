@@ -31,7 +31,8 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 ├── sources.js           a player's bonus sources → effects (one resolver per kind; manual only, 2026-10-22)
 ├── bonuses.js           checks a bonus a player enters: stat, 0–100 %, target (D-14)
 ├── stats.js             effective stats; march capacity as base, bonus, total (D-12)
-├── army.js              an army: lines, size against the capacity, power
+├── army.js              an army: lines (troops, then heroes), size against the capacity, power
+├── heroes.js            heroes (D-26): rank and level, a hero as a unit of one, talents offered and chosen, rules
 ├── combat.js            per-troop damage and health, tier modifier, melee or ranged (D-16)
 ├── allocate.js          where a strike's damage goes: lowest tier first, then the order within a tier
 ├── morale.js            morale tests and rallying
@@ -40,7 +41,8 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 ├── profile.js           the army's profile: damage, tanking (health, armour), morale, speed, load, upkeep
 ├── compare.js           two armies: each figure, its difference and the better one, both battles (SIM-03)
 └── insights.js          the dashboards' figures: efficiency, rounds, balance and warnings, pros and cons
-src/storage/             no DOM: configuration.js (setup ↔ file format, checks), browser.js (saves)
+src/storage/             no DOM: configuration.js (setup ↔ file format version 2, checks), migrate.js (an older
+                         file brought up to date), browser.js (saves)
 src/index.html           page shell: head, header (flags, theme), footer, one include per section
 src/theme-init.js        sets the theme before the first paint (inlined in <head>)
 src/assets/              the language flags (inlined by the build)
@@ -59,7 +61,8 @@ src/ui/                  the page
 ├── glossary/            terms.js (definitions, both languages), tooltip.js (the dotted terms)
 └── steps/<part>/        everything a part of the page needs: <part>.html (its markup, included by the build),
                          draw.js (state → DOM), bind.js (controls → state), and its own styles if any:
-                         page (language, theme), game, bonuses, army (+ compositions), picker,
+                         page (language, theme), game, bonuses, army (+ compositions), picker, heroes
+                         (+ picker.js; heroes.js beside state.js works out a composition's heroes),
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
@@ -85,12 +88,6 @@ tests/                   node --test; each test names the feature it proves
 ├── warlords.test.js     the warlords: complete at every level, their talents valid bonuses (DATA-05)
 ├── crosscheck.test.js   data/ against the game's data from cctools.cc (local only, D-25)
 └── catalogue, defects, backlog   the catalogue against the tests (MAINT-02); the defects and backlog checkers
-```
-
-Planned, created with the features that need them:
-
-```
-src/storage/migrate.js   upgrading a saved file when the format changes (with its next version)
 ```
 
 ## Layers

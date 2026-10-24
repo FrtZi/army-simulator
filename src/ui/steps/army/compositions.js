@@ -4,6 +4,7 @@ import { state } from "../../state.js";
 import { addComposition, duplicateComposition, removeComposition } from "../../compositions.js";
 import { refresh } from "../../render.js";
 import { drawPicker } from "../picker/draw.js";
+import { drawHeroes } from "../heroes/draw.js";
 import { drawArmyLines, drawCompositions } from "./draw.js";
 
 function redrawEdited() {
@@ -11,6 +12,7 @@ function redrawEdited() {
     drawCompositions();
     drawArmyLines();
     drawPicker();
+    drawHeroes();
   });
   refresh();
 }

@@ -10,6 +10,7 @@ import { drawGame } from "./steps/game/draw.js";
 import { drawBonuses, drawBonusProblems } from "./steps/bonuses/draw.js";
 import { drawArmyLines, drawCapacity, drawCapacityFields, drawCompositions } from "./steps/army/draw.js";
 import { drawPicker } from "./steps/picker/draw.js";
+import { drawHeroes } from "./steps/heroes/draw.js";
 import { drawProfile } from "./steps/profile/draw.js";
 import { drawCompare } from "./steps/compare/draw.js";
 import { drawSaves } from "./steps/saves/draw.js";
@@ -33,6 +34,7 @@ export function renderAll() {
     drawCompositions();
     drawArmyLines();
     drawPicker();
+    drawHeroes();
     drawSaves();
   });
   refresh();

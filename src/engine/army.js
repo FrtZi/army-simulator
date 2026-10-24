@@ -25,22 +25,29 @@ export function indexCatalogue(units, defences = []) {
 /**
  * Everything the engine knows about an army: each troop line with its effective stats and power, the size
  * against the march capacity (base, bonus, total) with the excess, and the total power. Bonuses change stats
- * and capacity, not power.
+ * and capacity, not power. Heroes (heroUnit, D-26) fight as lines of one, with their own stats at their level:
+ * no bonus changes them (open question 14), they take no place in the march (open question 18), their power
+ * counts.
  */
-export function summariseArmy(troops, catalogue, effects, limits) {
+export function summariseArmy(troops, catalogue, effects, limits, heroUnits = []) {
   const lines = lineUp(troops, catalogue).map(({ unit, count }) => ({
     unit,
     count,
     stats: effectiveStats(unit, effects),
     power: count * unit.stats.squadPower,
   }));
+  const heroes = heroUnits.map((unit) => ({ unit, count: 1, stats: unit.stats, power: unit.stats.squadPower }));
   const size = lines.reduce((total, line) => total + line.count, 0);
   const capacity = marchCapacity(limits, effects);
   return {
     lines,
+    heroes,
     size,
     capacity,
     excess: Math.max(0, size - capacity.total),
-    power: lines.reduce((total, line) => total + line.power, 0),
+    power: [...lines, ...heroes].reduce((total, line) => total + line.power, 0),
   };
 }
+
+/** Every line that fights: the troops, then the heroes. */
+export const fighters = (army) => [...army.lines, ...(army.heroes ?? [])];

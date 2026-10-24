@@ -138,17 +138,17 @@ title = "Heroes in a composition: up to 3 warlords, 4 talents, at their level"
 moscow = "must"
 milestone = "v1.1"
 module = "ui"
-status = "to do"
+status = "done"
 added = 2026-10-24
 depends_on = ["BL-06"]
 features = ["ARMY-05", "ARMY-06", "BONUS-03", "SIM-10"]
 note = "Rules settled with Frantz (D-26): 3 heroes, 4 talents in all, the same bonus counted once at its strongest, heroes fight."
 tasks = [
-  "[ ] Engine: a hero's bonuses at its level as effects; at most 3 heroes, 4 talents in all, the same bonus once at its strongest",
-  "[ ] Battle: each hero fights as a group of one at its tier, with its stats at its level; its power counts",
-  "[ ] Picker: the heroes like the troops (search, filters, several at once); rank 1–7 and level 1–5",
-  "[ ] Their stats shown like a troop's in the profile; saved and exported with the composition (configuration format, version 2)",
-  "[ ] Page, accessibility and storage tests",
+  "[x] Engine: a hero's bonuses at its level as effects; at most 3 heroes, 4 talents in all, the same bonus once at its strongest",
+  "[x] Battle: each hero fights as a group of one at its tier, with its stats at its level; its power counts",
+  "[x] Picker: the heroes like the troops (search, filters, several at once); rank 1–7 and level 1–5",
+  "[x] Their stats shown like a troop's in the profile; saved and exported with the composition (configuration format, version 2)",
+  "[x] Page, accessibility and storage tests",
 ]
 
 [[item]]

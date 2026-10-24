@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **27 defects**: 27 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **29 defects**: 29 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -40,6 +40,8 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-025](#def-025) | 2026-10-24 | 34 English names were not the game's | content | minor | ✓ fixed |
 | [DEF-026](#def-026) | 2026-10-24 | Dependabot bundled four major upgrades into one red pull request | configuration | minor | ✓ fixed |
 | [DEF-027](#def-027) | 2026-10-24 | A data test assumed every talent positive | process | minor | ✓ fixed |
+| [DEF-028](#def-028) | 2026-10-24 | The catalogue check took a decision for a feature | tool | minor | ✓ fixed |
+| [DEF-029](#def-029) | 2026-10-24 | structuredClone is missing where the page tests run | environment | minor | ✓ fixed |
 
 ## Entries
 
@@ -379,3 +381,28 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A rule written from the first examples is a guess: run it on all the data before trusting it.
 - **Proof:** `tests/warlords.test.js`
 - **Links:** DATA-05
+
+<a id="def-028"></a>
+### DEF-028 · The catalogue check took a decision for a feature
+
+`2026-10-24` · tool · minor · ✓ fixed · tags: `tests`, `tooling`
+
+- **Finding:** Two hero test titles cite decision D-26; the catalogue check (MAINT-02) reported D-26 as an id missing from the catalogue.
+- **Cause:** Its pattern took any capitals, a dash and two digits for a feature id; a decision's single letter matched too.
+- **Solution:** A feature id has a category of two letters or more (ARMY, SIM…); D-NN is a decision.
+- **Result:** A test may cite a decision in its title; an unknown feature id still fails the check.
+- **Proof:** `tests/catalogue.test.js`
+- **Links:** MAINT-02
+
+<a id="def-029"></a>
+### DEF-029 · structuredClone is missing where the page tests run
+
+`2026-10-24` · environment · minor · ✓ fixed · tags: `page`, `tests`
+
+- **Finding:** Duplicating a composition and loading a save threw in the page tests: structuredClone is not defined.
+- **Cause:** jsdom's window has no structuredClone; the storage tests, run in Node, which has it, passed.
+- **Solution:** Plain copies of a composition's troops, heroes and talents, which every browser and jsdom run.
+- **Result:** Duplicating and loading work in the page tests, as in browsers.
+- **Lesson:** Same lesson as DEF-007: what the page runs must exist in jsdom too, or the page tests stop proving it.
+- **Proof:** `tests/page.test.js`
+- **Links:** ARMY-03, CFG-01

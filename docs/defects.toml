@@ -431,3 +431,34 @@ resultat = "All 70 talent codes of the 33 warlords pass, the debuff included; a 
 preuve = ["tests/warlords.test.js"]
 lecon = "A rule written from the first examples is a guess: run it on all the data before trusting it."
 liens = ["DATA-05"]
+
+[[defaut]]
+id = "DEF-028"
+date = 2026-10-24
+titre = "The catalogue check took a decision for a feature"
+type = "tool"
+etiquettes = ["tests", "tooling"]
+gravite = "minor"
+statut = "fixed"
+constat = "Two hero test titles cite decision D-26; the catalogue check (MAINT-02) reported D-26 as an id missing from the catalogue."
+cause = "Its pattern took any capitals, a dash and two digits for a feature id; a decision's single letter matched too."
+solution = "A feature id has a category of two letters or more (ARMY, SIM…); D-NN is a decision."
+resultat = "A test may cite a decision in its title; an unknown feature id still fails the check."
+preuve = ["tests/catalogue.test.js"]
+liens = ["MAINT-02"]
+
+[[defaut]]
+id = "DEF-029"
+date = 2026-10-24
+titre = "structuredClone is missing where the page tests run"
+type = "environment"
+etiquettes = ["page", "tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "Duplicating a composition and loading a save threw in the page tests: structuredClone is not defined."
+cause = "jsdom's window has no structuredClone; the storage tests, run in Node, which has it, passed."
+solution = "Plain copies of a composition's troops, heroes and talents, which every browser and jsdom run."
+resultat = "Duplicating and loading work in the page tests, as in browsers."
+preuve = ["tests/page.test.js"]
+lecon = "Same lesson as DEF-007: what the page runs must exist in jsdom too, or the page tests stop proving it."
+liens = ["ARMY-03", "CFG-01"]

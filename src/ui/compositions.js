@@ -13,14 +13,16 @@ function freeName() {
   }
 }
 
-/** A new composition, empty or with these troops, which becomes the one edited. */
-export function addComposition(troops = {}) {
-  state.compositions.push({ name: freeName(), troops: { ...troops } });
+/** A new composition, empty or a copy of another's troops, heroes and talents, which becomes the one edited. */
+export function addComposition({ troops = {}, heroes = [], talents = [] } = {}) {
+  // plain copies: structuredClone is missing where the page tests run (jsdom, DEF-029)
+  const copy = { troops: { ...troops }, heroes: heroes.map((hero) => ({ ...hero })), talents: [...talents] };
+  state.compositions.push({ name: freeName(), ...copy });
   state.active = state.compositions.length - 1;
 }
 
 /** A copy of the composition being edited, which becomes the one edited. */
-export const duplicateComposition = () => addComposition(state.troops);
+export const duplicateComposition = () => addComposition(state.composition);
 
 /** Removes the composition being edited (never the last one); the comparison keeps two valid choices. */
 export function removeComposition() {

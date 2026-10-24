@@ -2,7 +2,7 @@
 // power lost, troops broken.
 import { escape } from "../../dom.js";
 import { number, tierName } from "../../format.js";
-import { comparedNames, comparison, currentGame } from "../../state.js";
+import { comparedNames, comparison } from "../../state.js";
 import { rounds } from "../../../engine/index.js";
 import { t } from "../../texts/index.js";
 
@@ -20,7 +20,7 @@ function battleTable(battle, attacker, defender) {
   const head = sides.flatMap(([, name]) =>
     ["rounds.lost", "rounds.byTier", "rounds.power", "rounds.broken"].map((key) => t(key, { name })),
   );
-  const body = rounds(battle, currentGame().catalogue).map((round) => {
+  const body = rounds(battle).map((round) => {
     const cells = sides.flatMap(([side]) => {
       const data = round[side];
       return [number(data.lost), byTier(data.byTier), number(data.powerLost), number(data.broken)];

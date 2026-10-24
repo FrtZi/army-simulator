@@ -1,12 +1,14 @@
 // A setup as a configuration file (CFG-01, CFG-02), in the format of docs/data-model.md: the game, the march
 // capacity, the bonuses as one manual source, and the compositions as scenarios. Reading a file checks every
 // part against the game's data and returns problem codes instead of half a setup. No DOM, no storage here.
+// Version 2 adds each composition's heroes and talents (D-26); an older file is upgraded first (migrate.js).
 
-import { effectProblems } from "../engine/index.js";
+import { effectProblems, heroProblems } from "../engine/index.js";
+import { migrate } from "./migrate.js";
 
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
-/** A setup as a configuration: { game, capacity, bonuses (engine effects), compositions [{name, troops}] }. */
+/** A setup as a configuration: { game, capacity, bonuses (engine effects), compositions [{name, troops, heroes, talents}] }. */
 export function toConfiguration(setup, name) {
   const capacityBonus = { stat: "marchCapacity", percent: setup.capacityBonus };
   return {
@@ -19,6 +21,8 @@ export function toConfiguration(setup, name) {
       id: `composition-${index + 1}`,
       name: composition.name,
       troops: { ...composition.troops },
+      heroes: (composition.heroes ?? []).map(({ id, level }) => ({ id, level })),
+      talents: [...(composition.talents ?? [])],
     })),
   };
 }
@@ -29,7 +33,12 @@ const listOf = (value, isItem) => value === undefined || (Array.isArray(value) &
 const isTarget = (target) => target === undefined || (isObject(target) && Object.values(target).every(Array.isArray));
 const isEffect = (effect) => isObject(effect) && isTarget(effect.target);
 const isSource = (source) => isObject(source) && listOf(source.effects, isEffect);
-const isScenario = (scenario) => isObject(scenario) && (scenario.troops === undefined || isObject(scenario.troops));
+const isHero = (hero) => isObject(hero) && typeof hero.id === "string";
+const isScenario = (scenario) =>
+  isObject(scenario) &&
+  (scenario.troops === undefined || isObject(scenario.troops)) &&
+  listOf(scenario.heroes, isHero) &&
+  listOf(scenario.talents, (talent) => typeof talent === "string");
 
 /** True when every part of a file has the shape the checks below read: lists, objects, a target per effect. */
 const hasShape = (configuration) =>
@@ -43,11 +52,18 @@ function troopProblems(scenarios, catalogue) {
   );
 }
 
+/** Each composition's heroes and talents against the game's rules (D-26): at most 3 and 4, at a real level. */
+const heroesOf = (scenario) => ({ heroes: scenario.heroes ?? [], talents: scenario.talents ?? [] });
+const scenarioHeroProblems = (scenarios, target) =>
+  scenarios.flatMap((scenario) => heroProblems(heroesOf(scenario), target.warlords, target.game.heroRules));
+
 /**
- * Reads a configuration back into a setup, for the game found in `games` (id → { game, catalogue }). Returns
- * { setup } or { problems }: wrong version, unknown game, a bonus the game refuses, an unknown troop.
+ * Reads a configuration back into a setup, for the game found in `games` (id → { game, catalogue, warlords }).
+ * Returns { setup } or { problems }: wrong version, unknown game, a bonus the game refuses, an unknown troop, a
+ * hero or talent against the rules.
  */
-export function fromConfiguration(configuration, games) {
+export function fromConfiguration(saved, games) {
+  const configuration = migrate(saved);
   if (configuration?.schemaVersion !== SCHEMA_VERSION) return { problems: [{ code: "version" }] };
   const target = games[configuration.game];
   if (!target) return { problems: [{ code: "game", id: configuration.game }] };
@@ -58,6 +74,7 @@ export function fromConfiguration(configuration, games) {
   const problems = [
     ...effects.flatMap((effect) => effectProblems(effect, target.game, target.catalogue)),
     ...troopProblems(scenarios, target.catalogue),
+    ...scenarioHeroProblems(scenarios, target),
   ];
   if (!isCount(configuration.limits?.marchCapacity)) problems.push({ code: "capacity" });
   // the page holds one capacity bonus: several add up, and their sum keeps to the limits (DEF-017)
@@ -75,7 +92,12 @@ export function fromConfiguration(configuration, games) {
       marchCapacity: configuration.limits.marchCapacity,
       capacityBonus,
       bonuses: effects.filter((effect) => effect.stat !== "marchCapacity"),
-      compositions: scenarios.map((scenario) => ({ name: scenario.name ?? "", troops: { ...scenario.troops } })),
+      compositions: scenarios.map((scenario) => ({
+        name: scenario.name ?? "",
+        troops: { ...scenario.troops },
+        heroes: heroesOf(scenario).heroes.map((hero) => ({ ...hero })), // plain copies (DEF-029)
+        talents: [...heroesOf(scenario).talents],
+      })),
     },
   };
 }

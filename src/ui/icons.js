@@ -24,6 +24,7 @@ const TYPE_ICONS = {
   "monstrous-cavalry": '<path d="M4 14v-4l2-4 3-3 1 2 3 1-1 2-3-.5L8 14"/><path d="M11.5 1.5l1 1"/>',
   chariots: '<circle cx="8" cy="9" r="4.5"/><path d="M8 4.5v9M3.5 9h9M5 6l6 6M11 6l-6 6"/>',
   defences: '<path d="M3 14V5h2v2h2V5h2v2h2V5h2v9Z"/>',
+  hero: '<path d="M2 12.5 3 5l3 3 2-5 2 5 3-3 1 7.5Z"/><path d="M3 14.5h10"/>', // a crown: a warlord
 };
 
 /** The icon of a troop's type, in its god's colour (CSS class god-<alignment>). */

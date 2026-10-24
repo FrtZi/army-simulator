@@ -30,6 +30,12 @@ for (const language of ["en", "fr"]) {
     page.click("#composition-tab-1");
     addTroops(page, ["marauders"]);
     page.click("#picker-toggle");
+    // a hero with its rank, level and talents, and the hero picker open (D-26)
+    page.click("#hero-picker-toggle");
+    page.tick("#pick-hero-azazel");
+    page.click("#hero-picker-add");
+    page.tick("#talent-slaanesh-health");
+    page.click("#hero-picker-toggle");
     // a closed table is not checked: open each chart's table (D-24)
     const openTable = () => page.$("#chart-table")?.setAttribute("open", "");
     openTable();

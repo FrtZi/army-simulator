@@ -1,5 +1,5 @@
-// The troop filters shared by the picker and the charts: building, tier, god, troop type. Each is a drop-down of
-// tick boxes (several values at once); nothing ticked means all. A list stays open while its boxes are ticked,
+// The filters shared by the pickers and the charts: building, tier, god, troop type for troops; god and rarity for
+// heroes. Each is a drop-down of tick boxes (several values at once); nothing ticked means all. A list stays open while its boxes are ticked,
 // even though the part around it is redrawn.
 import { CONFIG } from "./config.js";
 import { escape } from "./dom.js";
@@ -9,13 +9,16 @@ import { t } from "./texts/index.js";
 
 const TITLES = { building: "filter.buildings", tier: "filter.tiers", alignment: "filter.alignments" };
 TITLES.unitType = "filter.unitTypes";
+TITLES.rarity = "filter.rarities";
+const LISTS = { ...CONFIG.pickerFilters, ...CONFIG.heroFilters }; // each filter → its vocabulary list
 const NAMES_SHOWN = 2; // more ticked values are summed up as "3 selected"
 
-/** The values of a filter the game's troops actually use, as [value, name] pairs. */
-function choices(field) {
-  const list = CONFIG.pickerFilters[field];
-  const units = [...currentGame().catalogue.units.values()];
-  const used = currentGame().game[list].filter((entry) => units.some((unit) => unit[field] === entry.id));
+const troops = () => [...currentGame().catalogue.units.values()];
+
+/** The values of a filter the entries (troops, or heroes) actually use, as [value, name] pairs. */
+function choices(field, entries) {
+  const list = LISTS[field];
+  const used = currentGame().game[list].filter((entry) => entries.some((item) => item[field] === entry.id));
   return used.map((entry) => [String(entry.id), field === "tier" ? tierName(entry.id) : nameOf(list, entry.id)]);
 }
 
@@ -29,10 +32,10 @@ function summary(pairs, selected) {
 }
 
 /** One filter: its title, the drop-down's summary of what is ticked, and its tick boxes. */
-export function multiFilter(prefix, field, selected = []) {
+export function multiFilter(prefix, field, selected = [], entries = troops()) {
   const id = `${prefix}-${field}`;
   const title = t(TITLES[field]);
-  const pairs = choices(field);
+  const pairs = choices(field, entries);
   const boxes = pairs.map(
     ([value, name]) =>
       `<label for="${id}-${value}"><input type="checkbox" id="${id}-${value}" data-multi="${field}" value="${escape(value)}"${selected.includes(value) ? " checked" : ""} /> ${escape(name)}</label>`,
