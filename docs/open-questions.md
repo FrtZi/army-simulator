@@ -42,12 +42,14 @@ Settled on 2026-10-24: the English names (questions 8 and 9) are the game's own,
 
 ## To confirm: heroes (D-26)
 
-| #   | Question                                                                                                                                                                                                  | What the simulator will do      | Who                                                   |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------------------------------------------------- |
-| 14  | **Talents on the heroes themselves**: does an active talent (Slaanesh Health +45 %) also raise a Slaanesh hero's stats?                                                                                   | troops only                     | Frantz                                                |
-| 15  | **Protection**: cctools gives each hero a "Protection" stat (Azazel at level 35: 1,625). What does it do in battle?                                                                                       | ignored until known             | Frantz                                                |
-| 16  | **Context bonuses** of the warlords: March Combat (5 warlords), Fortress Combat, Warband Combat, Combat vs Empire, Enemy Attack Debuff. On which stats does a "combat" bonus apply, and in which battles? | kept in the data, not applied   | Frantz                                                |
-| 17  | **French names** of the warlords: cctools gives them in English only.                                                                                                                                     | English name with a star (D-08) | Frantz (a screenshot of the heroes' screen in French) |
+| #   | Question                                                                                                                                                                                                  | What the simulator will do                                                             | Who    |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------ |
+| 14  | **Talents on the heroes themselves**: does an active talent (Slaanesh Health +45 %) also raise a Slaanesh hero's stats?                                                                                   | troops only; Frantz does not know (2026-10-24): to settle with battle reports (SIM-04) | Frantz |
+| 15  | **Protection**: cctools gives each hero a "Protection" stat (Azazel at level 35: 1,625). What does it do in battle?                                                                                       | ignored until known                                                                    | Frantz |
+| 16  | **Context bonuses** of the warlords: March Combat (5 warlords), Fortress Combat, Warband Combat, Combat vs Empire, Enemy Attack Debuff. On which stats does a "combat" bonus apply, and in which battles? | kept in the data, not applied                                                          | Frantz |
+
+Settled on 2026-10-24: the warlords' French names (question 17) are their English names with a star (D-08) until
+the game's French names are read on a screenshot.
 
 ## Next steps
 
