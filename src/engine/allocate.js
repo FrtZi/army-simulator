@@ -24,11 +24,13 @@ export function targetOrder(side, damageOrder, model) {
 
 const slotSize = ({ group, broken }) => (broken ? group.broken : group.count - group.broken);
 
-/** Applies one group's raw damage to the target side; returns the damage left once every target has fallen. */
-export function strike(striker, mode, rawDamage, targetSide, rules) {
-  const { model } = rules;
+/**
+ * Applies one group's raw damage to the target slots, in their order (targetOrder: the same for every striker of
+ * a phase, so worked out once per phase); returns the damage left once every target has fallen.
+ */
+export function strike(striker, mode, rawDamage, slots, model) {
   let remaining = rawDamage;
-  for (const slot of targetOrder(targetSide, rules.damageOrderWithinTier, model)) {
+  for (const slot of slots) {
     if (remaining <= 0) break;
     if (slot.broken && mode !== "ranged") continue; // melee cannot reach broken troops
     const brokenBonus = slot.broken ? 1 + model.brokenRangedBonusPercent / PERCENT : 1;

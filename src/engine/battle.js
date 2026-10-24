@@ -4,7 +4,7 @@
 // expected one (fractional troops), rounded only for display.
 
 import { attackMode, damagePerTroop } from "./combat.js";
-import { strike } from "./allocate.js";
+import { strike, targetOrder } from "./allocate.js";
 import { rally, testMorale } from "./morale.js";
 
 /** A side's fighting groups, from an army summary's lines (effective stats included). */
@@ -13,11 +13,13 @@ const deploy = (army) =>
 
 /** One side strikes the other: each group alive and not broken, with its current attack mode. */
 function strikePhase(strikers, targets, rules) {
+  // the order damage reaches the targets holds for the whole phase: tiers, categories and morale do not change
+  const slots = targetOrder(targets, rules.damageOrderWithinTier, rules.model);
   for (const group of strikers) {
     const fighting = group.count - group.broken;
     if (fighting <= 0) continue;
     const mode = attackMode(group, strikers, rules.model);
-    strike(group, mode, fighting * damagePerTroop(group.stats, mode, rules.model), targets, rules);
+    strike(group, mode, fighting * damagePerTroop(group.stats, mode, rules.model), slots, rules.model);
   }
 }
 

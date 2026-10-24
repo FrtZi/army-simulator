@@ -5,5 +5,5 @@
 @import "./forms.css";
 @import "./lists.css";
 @import "./figures.css";
-@import "./dashboards.css";
+@import "../ui/steps/dashboards/dashboards.css"; /* a part's own styles sit with it */
 @import "./responsive.css";

@@ -1,5 +1,5 @@
 // `npm run dev`: serves the source page without a build (edit a file, reload the page). The page is assembled
-// from its sections on each request; the ES modules, stylesheets and the game data (data/, imported by the
+// from its parts on each request; the ES modules, stylesheets and the game data (data/, imported by the
 // modules) are served as they are. Browsers refuse ES modules from file://, hence this small server.
 import { createReadStream, statSync } from "node:fs";
 import { createServer } from "node:http";

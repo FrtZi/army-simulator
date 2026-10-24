@@ -1,4 +1,4 @@
-// Builds the single self-contained page dist/index.html from src/: the page is assembled from its sections,
+// Builds the single self-contained page dist/index.html from src/: the page is assembled from its parts,
 // esbuild bundles the ES modules (src/main.js, with the game data it imports) and the stylesheets
 // (src/styles/index.css), then both are inlined so the published page is one file that works offline.
 import { mkdirSync, statSync, writeFileSync } from "node:fs";

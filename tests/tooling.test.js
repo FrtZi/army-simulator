@@ -2,7 +2,7 @@
 // dev server's answer when the page cannot be assembled (scripts/serve.mjs).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { assemblePage } from "../scripts/page.mjs";
@@ -39,4 +39,13 @@ test("MAINT-01 DEF-003 the dev server answers 500 with the reason, instead of cr
 test("MAINT-01 DEF-016 the dev server reads a malformed address as no path, instead of crashing", () => {
   assert.equal(requestPath("/%E0"), null);
   assert.equal(requestPath("/data/a%20b.json?x=1"), "/data/a b.json");
+});
+
+test("MAINT-04 the hook and the CI run the same checks, on the same Node version", () => {
+  const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+  const ci = read(".github/workflows/ci.yml");
+  const minimum = JSON.parse(read("package.json")).engines.node.match(/\d+/)[0];
+  assert.equal(ci.match(/node-version:\s*(\d+)/)?.[1], minimum, "the CI's Node major is package.json's minimum");
+  assert.match(read(".githooks/pre-commit"), /^npm run check\b/m);
+  assert.match(ci, /run: npm run check$/m);
 });

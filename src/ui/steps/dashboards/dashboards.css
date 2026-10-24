@@ -165,3 +165,20 @@ h4 {
   stroke: var(--accent);
   stroke-dasharray: 4 3;
 }
+
+/* a chart as a table (D-24): a quiet link-like toggle under the chart */
+.chart-table {
+  margin-top: 0.75rem;
+}
+
+.chart-table summary {
+  cursor: pointer;
+  color: var(--link);
+}
+
+.chart-table caption {
+  caption-side: top;
+  padding: 0.5rem 0;
+  color: var(--muted);
+  text-align: left;
+}

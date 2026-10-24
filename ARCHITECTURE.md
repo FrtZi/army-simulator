@@ -43,7 +43,6 @@ src/storage/             no DOM: configuration.js (setup ↔ file format, checks
 src/index.html           page shell: head, header (flags, theme), footer, one include per section
 src/theme-init.js        sets the theme before the first paint (inlined in <head>)
 src/assets/              the language flags (inlined by the build)
-src/sections/            the markup of each part: game, bonuses, army, profile, compare, dashboards, saves
 src/main.js              entry point: binds every control, then draws the page
 src/ui/                  the page
 ├── config.js            CONFIG: every tunable value of the interface
@@ -57,11 +56,13 @@ src/ui/                  the page
 │                        hover.js: a dot's name while pointing at it; table.js: the chart as a table (D-24)
 ├── filters.js           the troop filters (several values each) shared by the picker and the charts
 ├── glossary/            terms.js (definitions, both languages), tooltip.js (the dotted terms)
-└── steps/<part>/        draw.js (state → DOM) and bind.js (controls → state) per part:
+└── steps/<part>/        everything a part of the page needs: <part>.html (its markup, included by the build),
+                         draw.js (state → DOM), bind.js (controls → state), and its own styles if any:
                          page (language, theme), game, bonuses, army (+ compositions), picker,
                          profile (+ table.js: key columns and their details), compare, dashboards
-                         (one file per tab: efficiency + raiding, rounds, balance, map, pros), saves
-src/styles/              tokens.css (colours, both themes), base, layout, forms, lists, figures, dashboards, responsive
+                         (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves
+src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
+                         responsive
 scripts/
 ├── page.mjs             assembles index.html from its sections, fills in the English texts
 ├── build.mjs            bundles and inlines everything (esbuild) → dist/index.html
@@ -152,6 +153,13 @@ The golden rules shared by all our projects (see CLAUDE.md), applied here with t
 - **KISS.** No framework, no server, no database: JSON files, pure functions, one page.
 - **YAGNI.** The heroes, rituals, champion, armour and buildings have a documented shape, but no file and no
   code until a feature uses them. The interface comes after the engine.
+- **Package by feature.** The first level of `src/` separates the functional families — the calculation
+  (`engine/`), the access to saves (`storage/`), the screen (`ui/`) — and each part of the page keeps its
+  markup, code and own styles together in `ui/steps/<part>/`. The same names run through the tests
+  (`engine`, `battle`, `dashboards`, `storage`, `page`). `src/styles/` holds only what every part shares (the
+  tokens and common components): one design, checked for contrast in one place.
+- **Configurations aligned.** The git hook and the CI run the same command (`npm run check`); the Node
+  version of `package.json` and of the CI, and that command in both, are checked to agree (MAINT-04).
 - **Single responsibility.** One file, one job. ESLint caps files at 150 lines, functions at 60, complexity
   at 12.
 - **Open / closed.** A new source kind is declared (catalogue, resolver, `sourceKinds` entry); the engine
