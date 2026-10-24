@@ -383,3 +383,19 @@ resultat = "Whatever the capture does, a cancelled or finished drag removes its 
 preuve = ["tests/page.test.js"]
 lecon = "Record state before calling what can throw, so the clean-up always finds it."
 liens = ["DASH-01"]
+
+[[defaut]]
+id = "DEF-025"
+date = 2026-10-24
+titre = "34 English names were not the game's"
+type = "content"
+etiquettes = ["data", "translation"]
+gravite = "minor"
+statut = "fixed"
+constat = "Compared with the game's data published by cctools.cc, 29 English names differed (\"Foresaken\", \"Chaos Warrior\", \"Bloodletters\" instead of \"Bloodletters of Khorne\"…), our \"Herald of Slaanesh*\" is in fact the Hellstriders of Slaanesh, and 10 of the 15 defences we translated have other official names."
+cause = "The English names came from a local reference and our own translations, never checked against the English game (open questions 8 and 9)."
+solution = "Every troop and defence takes the game's English name (D-25), paired on tier and stats; six vocabulary labels too (Beastmen Herdstone, Chaotic Rift, Monsters, War Beasts, Ranged Attack and Damage)."
+resultat = "All 97 names and stats match the game's data; a local test keeps them so."
+preuve = ["tests/crosscheck.test.js"]
+lecon = "A name is a fact like a stat: take it from the game's data, not from a reference or a guess."
+liens = ["LANG-01", "DATA-03"]

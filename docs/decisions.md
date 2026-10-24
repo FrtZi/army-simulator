@@ -103,7 +103,7 @@ morale.
 
 - **Set aside: defences as units with a flag.** One forgotten check and a wall marches with the army.
 - **Their sheets show fewer stats:** no squad size, upkeep, speed or load; one attack type at most, none at all
-  for the Degraded Mortar (a wall that only absorbs damage). No English name is known yet: all are marked *.
+  for the Debased Mortar (a wall that only absorbs damage). English names: the game's own since D-25.
 
 ## D-12 · How bonuses combine, what power counts (2026-10-22)
 
@@ -113,7 +113,7 @@ Provisional rules of the engine (`src/engine/stats.js`, `army.js`), to confirm w
   +25 %, not 1.10 × 1.15. No flat amounts (Frantz's call, 2026-10-22). The march capacity follows the same rule, as does the
   control calculation (D-10).
 - **Power = count × "Puissance d'escouade".** Despite its name, the sheet's figure is the power each single
-  troop adds: the training screen shows 12 000 Degraded Mortars (power 1) as a power gain of 12 000.
+  troop adds: the training screen shows 12 000 Debased Mortars (power 1) as a power gain of 12 000.
 - **Bonuses change stats and capacity, not power.** The game's power reflects what is trained, not boosts.
 - **Army size is counted in troops**, like the march capacity ("Capacité de marche").
 
@@ -271,3 +271,19 @@ figure the pointer shows (WCAG 1.1.1, 2.1.1), which the chart alone did not (DEF
 across redraws. Approved by Frantz as part of ACC-01. Set aside: focusable dots with arrow-key navigation
 (82 tab stops, and harder to read out than a table); per-dot titles exposed inside the image (the image's own
 name hides them from screen readers, and they cannot be reached by keyboard anyway).
+
+## D-25 · cctools.cc as the reference for the game's data (2026-10-24)
+
+[cctools.cc](https://cctools.cc), a community toolkit, publishes the game's data with its internal codes
+(troops, warlords, rituals, champion, gear, structures). Compared on 2026-10-24 with our 82 troops and 15
+defences, transcribed from the screenshots: every combat stat, god, troop type and attack type matched, all 97.
+Only the food upkeep differs, by a constant factor of 6 (open question 13), and 34 English names.
+
+- **English names:** the game's own, from cctools.cc, replace the names of the local reference and our
+  translations (D-08's star stays only where no source gives the name: "Food Upkeep*").
+- **A cross-check, not a copy:** the troop table is saved locally (`captures/`, ignored by git) and a test
+  compares it with `data/` wherever it is present; screenshots still win for a stat (D-09).
+- **The warlords, rituals, champion and gear** (the backlog's next items) will come from cctools.cc, credited
+  in the README and the data. It publishes no licence: its author is told and asked, as a matter of principle,
+  without waiting for the answer (Frantz's call): the data are the game's, public in the game.
+- **Set aside: scraping the page markup.** Each page carries its data as JSON (Inertia), read as such.

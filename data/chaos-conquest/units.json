@@ -242,7 +242,7 @@
     "id": "khorne-minotaurs",
     "labels": {
       "fr": "Minotaures de Khorne",
-      "en": "Minotaurs"
+      "en": "Minotaurs of Khorne"
     },
     "building": "beastmen-herdstone",
     "recruitment": "renown",
@@ -554,7 +554,7 @@
     "id": "cursed-ettins",
     "labels": {
       "fr": "Ettins maudits Claquerunes",
-      "en": "Rune Caller Curs'd Etin"
+      "en": "Rune Caller Curs'd Ettin"
     },
     "building": "dungeon",
     "recruitment": "training",
@@ -608,7 +608,7 @@
     "id": "chaos-dragons",
     "labels": {
       "fr": "Dragons du Chaos",
-      "en": "Chaos Dragon"
+      "en": "Chaos Dragons"
     },
     "building": "dungeon",
     "recruitment": "training",
@@ -824,7 +824,7 @@
     "id": "forsaken",
     "labels": {
       "fr": "Maudits",
-      "en": "Foresaken"
+      "en": "Forsaken"
     },
     "building": "training-ground",
     "recruitment": "training",
@@ -876,7 +876,7 @@
     "id": "chaos-warriors",
     "labels": {
       "fr": "Guerriers du Chaos",
-      "en": "Chaos Warrior"
+      "en": "Chaos Warriors"
     },
     "building": "training-ground",
     "recruitment": "training",
@@ -903,7 +903,7 @@
     "id": "nurgle-chaos-warriors",
     "labels": {
       "fr": "Guerriers du Chaos de Nurgle",
-      "en": "Chaos Warrior of Nurgle"
+      "en": "Chaos Warriors of Nurgle"
     },
     "building": "training-ground",
     "recruitment": "training",
@@ -930,7 +930,7 @@
     "id": "khorne-chaos-warriors",
     "labels": {
       "fr": "Guerriers du Chaos de Khorne",
-      "en": "Chaos Warrior of Khorne"
+      "en": "Chaos Warriors of Khorne"
     },
     "building": "training-ground",
     "recruitment": "training",
@@ -957,7 +957,7 @@
     "id": "slaanesh-chaos-warriors",
     "labels": {
       "fr": "Guerriers du Chaos de Slaanesh",
-      "en": "Chaos Warrior of Slaanesh"
+      "en": "Chaos Warriors of Slaanesh"
     },
     "building": "training-ground",
     "recruitment": "training",
@@ -984,7 +984,7 @@
     "id": "tzeentch-chaos-warriors",
     "labels": {
       "fr": "Guerriers du Chaos de Tzeentch",
-      "en": "Chaos Warrior of Tzeentch"
+      "en": "Chaos Warriors of Tzeentch"
     },
     "building": "training-ground",
     "recruitment": "training",
@@ -1090,7 +1090,7 @@
     "id": "khorne-forsaken",
     "labels": {
       "fr": "Maudits de Khorne",
-      "en": "Foresaken of Khorne"
+      "en": "Forsaken of Khorne"
     },
     "building": "training-ground",
     "recruitment": "renown",
@@ -1327,7 +1327,7 @@
     "id": "gorebeast-chariots",
     "labels": {
       "fr": "Char à Éventreur",
-      "en": "Gorebeast Chariots"
+      "en": "Gorebeast Chariot"
     },
     "building": "bestiary",
     "recruitment": "training",
@@ -1541,7 +1541,7 @@
     "id": "heralds-of-slaanesh",
     "labels": {
       "fr": "Héraut de Slaanesh",
-      "en": "Herald of Slaanesh*"
+      "en": "Hellstriders of Slaanesh"
     },
     "building": "bestiary",
     "recruitment": "renown",
@@ -1645,7 +1645,7 @@
     "id": "bloodletters",
     "labels": {
       "fr": "Lettres-sang de Khorne",
-      "en": "Bloodletters"
+      "en": "Bloodletters of Khorne"
     },
     "building": "chaos-rift",
     "recruitment": "training",
@@ -1751,7 +1751,7 @@
     "id": "pink-horrors",
     "labels": {
       "fr": "Horreurs Roses de Tzeentch",
-      "en": "Pink Horrors"
+      "en": "Pink Horrors of Tzeentch"
     },
     "building": "chaos-rift",
     "recruitment": "training",
@@ -1778,7 +1778,7 @@
     "id": "plaguebearers",
     "labels": {
       "fr": "Pestiférés de Nurgle",
-      "en": "Plaguebearers"
+      "en": "Plaguebearers of Nurgle"
     },
     "building": "chaos-rift",
     "recruitment": "training",
@@ -1805,7 +1805,7 @@
     "id": "bloodcrushers",
     "labels": {
       "fr": "Équarrisseurs de Khorne",
-      "en": "Bloodcrushers"
+      "en": "Bloodcrushers of Khorne"
     },
     "building": "chaos-rift",
     "recruitment": "training",
@@ -1857,7 +1857,7 @@
     "id": "flesh-hounds",
     "labels": {
       "fr": "Chiens de Khorne",
-      "en": "Flesh Hounds"
+      "en": "Flesh Hounds of Khorne"
     },
     "building": "chaos-rift",
     "recruitment": "training",
@@ -1909,7 +1909,7 @@
     "id": "plague-drones",
     "labels": {
       "fr": "Drone de la peste de Nurgle",
-      "en": "Plague Drones"
+      "en": "Plague Drones of Nurgle"
     },
     "building": "chaos-rift",
     "recruitment": "training",
@@ -1988,7 +1988,7 @@
     "id": "burning-chariots",
     "labels": {
       "fr": "Chars de feu de Tzeentch",
-      "en": "Burning Chariot of Tzeentch"
+      "en": "Burning Chariots of Tzeentch"
     },
     "building": "chaos-rift",
     "recruitment": "training",

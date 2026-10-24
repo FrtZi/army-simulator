@@ -3,7 +3,7 @@
     "id": "degraded-mortar",
     "labels": {
       "fr": "Mortier dégradé",
-      "en": "Degraded Mortar*"
+      "en": "Debased Mortar"
     },
     "building": "fortress-walls",
     "alignment": "undivided",
@@ -21,7 +21,7 @@
     "id": "slurry-pit",
     "labels": {
       "fr": "Fosse à lisier",
-      "en": "Slurry Pit*"
+      "en": "Slurry Pits"
     },
     "building": "fortress-walls",
     "alignment": "nurgle",
@@ -41,7 +41,7 @@
     "id": "poisoned-arrows",
     "labels": {
       "fr": "Flèches intoxiquées",
-      "en": "Poisoned Arrows*"
+      "en": "Plagued Arrows"
     },
     "building": "fortress-walls",
     "alignment": "nurgle",
@@ -61,7 +61,7 @@
     "id": "grasping-barricade",
     "labels": {
       "fr": "Barricade agrippante",
-      "en": "Grasping Barricade*"
+      "en": "Grasping Barricade"
     },
     "building": "fortress-walls",
     "alignment": "undivided",
@@ -81,7 +81,7 @@
     "id": "bewitched-arrows",
     "labels": {
       "fr": "Flèches ensorcelées",
-      "en": "Bewitched Arrows*"
+      "en": "Ensorcelled Arrows"
     },
     "building": "fortress-walls",
     "alignment": "tzeentch",
@@ -101,7 +101,7 @@
     "id": "razor-walls",
     "labels": {
       "fr": "Murs-rasoir",
-      "en": "Razor Walls*"
+      "en": "Razorwalls"
     },
     "building": "fortress-walls",
     "alignment": "slaanesh",
@@ -121,7 +121,7 @@
     "id": "infernal-trebuchet",
     "labels": {
       "fr": "Trébuchet infernal",
-      "en": "Infernal Trebuchet*"
+      "en": "Hell Trebuchet"
     },
     "building": "fortress-walls",
     "alignment": "undivided",
@@ -141,7 +141,7 @@
     "id": "fetid-moat",
     "labels": {
       "fr": "Douves fétides",
-      "en": "Fetid Moat*"
+      "en": "Fetid Moat"
     },
     "building": "fortress-walls",
     "alignment": "nurgle",
@@ -161,7 +161,7 @@
     "id": "skull-mortar",
     "labels": {
       "fr": "Mortier à crânes",
-      "en": "Skull Mortar*"
+      "en": "Skull Mortar"
     },
     "building": "fortress-walls",
     "alignment": "khorne",
@@ -181,7 +181,7 @@
     "id": "flaming-gargoyles",
     "labels": {
       "fr": "Gargouilles enflammées",
-      "en": "Flaming Gargoyles*"
+      "en": "Flame Gargoyles"
     },
     "building": "fortress-walls",
     "alignment": "tzeentch",
@@ -201,7 +201,7 @@
     "id": "molten-copper",
     "labels": {
       "fr": "Cuivre en fusion",
-      "en": "Molten Copper*"
+      "en": "Boiling Brass"
     },
     "building": "fortress-walls",
     "alignment": "khorne",
@@ -221,7 +221,7 @@
     "id": "daemonic-ammunition",
     "labels": {
       "fr": "Munition démoniaque",
-      "en": "Daemonic Ammunition*"
+      "en": "Daemonic Ammo"
     },
     "building": "fortress-walls",
     "alignment": "undivided",
@@ -241,7 +241,7 @@
     "id": "radiant-tower",
     "labels": {
       "fr": "Tour radieuse",
-      "en": "Radiant Tower*"
+      "en": "Tower of Radiance"
     },
     "building": "fortress-walls",
     "alignment": "slaanesh",
@@ -261,7 +261,7 @@
     "id": "plague-catapult",
     "labels": {
       "fr": "Catapulte de la peste",
-      "en": "Plague Catapult*"
+      "en": "Plague Catapult"
     },
     "building": "fortress-walls",
     "alignment": "nurgle",
@@ -281,7 +281,7 @@
     "id": "bane-tower",
     "labels": {
       "fr": "Tour fléau",
-      "en": "Bane Tower*"
+      "en": "Bane Tower"
     },
     "building": "fortress-walls",
     "alignment": "tzeentch",
