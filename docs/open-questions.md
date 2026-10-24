@@ -23,14 +23,22 @@ stronger attack; within a tier, higher morale is hit first; broken troops are on
 
 ## To confirm: names and rights
 
-| #   | Question                                                                                                             | As of 2026-10-22  | Who                          |
-| --- | -------------------------------------------------------------------------------------------------------------------- | ----------------- | ---------------------------- |
-| 8   | **English names**: those from the local reference are not checked in the English game; "Foresaken" looks like a typo | copied, unchecked | Frantz (English screenshots) |
-| 9   | **Names we translated** (marked *): the Herald of Slaanesh, the 15 defences, Food Upkeep, Fortress Walls, Defences   | our translations  | Frantz (English screenshots) |
-| 11  | **Game art**: the troop pictures need the publishers' permission; the page uses its own icons meanwhile (D-06)       | own icons         | —                            |
+| #   | Question                                                                                                       | As of 2026-10-22 | Who |
+| --- | -------------------------------------------------------------------------------------------------------------- | ---------------- | --- |
+| 11  | **Game art**: the troop pictures need the publishers' permission; the page uses its own icons meanwhile (D-06) | own icons        | —   |
 
 Settled on 2026-10-23: the contributor named in the README agreed to be credited (question 10); the
 repo is named "army-simulator" (question 12), published on 2026-10-22.
+
+Settled on 2026-10-24: the English names (questions 8 and 9) are the game's own, as published by cctools.cc
+(D-25): 34 troops and defences renamed, the Herald of Slaanesh is in fact the Hellstriders of Slaanesh; only
+"Food Upkeep" keeps its star.
+
+## To confirm: data
+
+| #   | Question                                                                                                                                                               | As of 2026-10-24       | Who                          |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------- |
+| 13  | **Food upkeep**: our figures, read on the unit sheets, are exactly 6 times those of cctools.cc (Marauder 6 against 1). Which one is per hour, and per how many troops? | ours kept (the sheets) | Frantz (a unit sheet, later) |
 
 ## Next steps
 

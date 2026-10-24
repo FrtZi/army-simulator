@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **24 defects**: 24 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **25 defects**: 25 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -37,6 +37,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-022](#def-022) | 2026-10-23 | The exported file's address was revoked during the click | code | minor | ✓ fixed |
 | [DEF-023](#def-023) | 2026-10-23 | The charts' per-troop figures are reachable by pointer only | code | major | ✓ fixed |
 | [DEF-024](#def-024) | 2026-10-23 | A zoom box stayed on the chart when the pointer could not be captured | code | minor | ✓ fixed |
+| [DEF-025](#def-025) | 2026-10-24 | 34 English names were not the game's | content | minor | ✓ fixed |
 
 ## Entries
 
@@ -337,3 +338,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** Record state before calling what can throw, so the clean-up always finds it.
 - **Proof:** `tests/page.test.js`
 - **Links:** DASH-01
+
+<a id="def-025"></a>
+### DEF-025 · 34 English names were not the game's
+
+`2026-10-24` · content · minor · ✓ fixed · tags: `data`, `translation`
+
+- **Finding:** Compared with the game's data published by cctools.cc, 29 English names differed ("Foresaken", "Chaos Warrior", "Bloodletters" instead of "Bloodletters of Khorne"…), our "Herald of Slaanesh*" is in fact the Hellstriders of Slaanesh, and 10 of the 15 defences we translated have other official names.
+- **Cause:** The English names came from a local reference and our own translations, never checked against the English game (open questions 8 and 9).
+- **Solution:** Every troop and defence takes the game's English name (D-25), paired on tier and stats; six vocabulary labels too (Beastmen Herdstone, Chaotic Rift, Monsters, War Beasts, Ranged Attack and Damage).
+- **Result:** All 97 names and stats match the game's data; a local test keeps them so.
+- **Lesson:** A name is a fact like a stat: take it from the game's data, not from a reference or a guess.
+- **Proof:** `tests/crosscheck.test.js`
+- **Links:** LANG-01, DATA-03

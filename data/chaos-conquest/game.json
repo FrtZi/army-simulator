@@ -105,14 +105,14 @@
       "id": "monsters",
       "labels": {
         "fr": "Monstres",
-        "en": "Monster"
+        "en": "Monsters"
       }
     },
     {
       "id": "war-beasts",
       "labels": {
         "fr": "Bêtes de guerre",
-        "en": "War Beast"
+        "en": "War Beasts"
       }
     },
     {
@@ -140,7 +140,7 @@
       "id": "defences",
       "labels": {
         "fr": "Défenses",
-        "en": "Defences*"
+        "en": "Defences"
       }
     }
   ],
@@ -186,7 +186,7 @@
       "id": "beastmen-herdstone",
       "labels": {
         "fr": "Pierre des hardes des Hommes-bêtes",
-        "en": "Herd Stone"
+        "en": "Beastmen Herdstone"
       }
     },
     {
@@ -214,14 +214,14 @@
       "id": "chaos-rift",
       "labels": {
         "fr": "Faille du Chaos",
-        "en": "Rifts"
+        "en": "Chaotic Rift"
       }
     },
     {
       "id": "fortress-walls",
       "labels": {
         "fr": "Murs de la Forteresse",
-        "en": "Fortress Walls*"
+        "en": "Fortress Walls"
       }
     }
   ],
@@ -270,7 +270,7 @@
       "optional": true,
       "labels": {
         "fr": "Attaque à distance",
-        "en": "Range Attack"
+        "en": "Ranged Attack"
       }
     },
     {
@@ -278,7 +278,7 @@
       "optional": true,
       "labels": {
         "fr": "Dégâts à distance",
-        "en": "Range Damage"
+        "en": "Ranged Damage"
       }
     },
     {
