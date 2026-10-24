@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **25 defects**: 25 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **26 defects**: 26 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -38,6 +38,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-023](#def-023) | 2026-10-23 | The charts' per-troop figures are reachable by pointer only | code | major | ✓ fixed |
 | [DEF-024](#def-024) | 2026-10-23 | A zoom box stayed on the chart when the pointer could not be captured | code | minor | ✓ fixed |
 | [DEF-025](#def-025) | 2026-10-24 | 34 English names were not the game's | content | minor | ✓ fixed |
+| [DEF-026](#def-026) | 2026-10-24 | Dependabot bundled four major upgrades into one red pull request | configuration | minor | ✓ fixed |
 
 ## Entries
 
@@ -351,3 +352,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A name is a fact like a stat: take it from the game's data, not from a reference or a guess.
 - **Proof:** `tests/crosscheck.test.js`
 - **Links:** LANG-01, DATA-03
+
+<a id="def-026"></a>
+### DEF-026 · Dependabot bundled four major upgrades into one red pull request
+
+`2026-10-24` · configuration · minor · ✓ fixed · tags: `ci`, `tooling`
+
+- **Finding:** Dependabot's monthly pull request carried ESLint 10, jsdom 30 and html-validate 11 together; its CI was red (jsdom 30 renamed VirtualConsole.sendTo), and jsdom 30 needs Node 22.22 or later, which this computer lacks.
+- **Cause:** The groups in dependabot.yml took every update type, majors included, against the golden rule that a major version is never taken by an automatic update.
+- **Solution:** The groups take minor and patch updates only; a major comes alone, to be tried on a branch. The three majors wait on the branch for Node to be upgraded locally (the test helper already uses forwardTo).
+- **Result:** Grouped pull requests stay small and green; each major is a deliberate step.
+- **Lesson:** Group what is safe to group: a major upgrade is a change of its own.
+- **Proof:** `.github/dependabot.yml`
+- **Links:** MAINT-01
