@@ -11,8 +11,8 @@ permissions:
 
 jobs:
   build:
-    # an explicit image: a new Ubuntu is a major upgrade, tried on a branch first (DEF-011)
-    runs-on: ubuntu-24.04
+    # an explicit image: a new Ubuntu is a major upgrade, tried on a branch first (DEF-011); 26.04 since 2026-10-24
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
         with:
@@ -34,7 +34,7 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: build
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       pages: write
       id-token: write

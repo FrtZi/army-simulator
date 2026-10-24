@@ -399,3 +399,19 @@ resultat = "All 97 names and stats match the game's data; a local test keeps the
 preuve = ["tests/crosscheck.test.js"]
 lecon = "A name is a fact like a stat: take it from the game's data, not from a reference or a guess."
 liens = ["LANG-01", "DATA-03"]
+
+[[defaut]]
+id = "DEF-026"
+date = 2026-10-24
+titre = "Dependabot bundled four major upgrades into one red pull request"
+type = "configuration"
+etiquettes = ["ci", "tooling"]
+gravite = "minor"
+statut = "fixed"
+constat = "Dependabot's monthly pull request carried ESLint 10, jsdom 30 and html-validate 11 together; its CI was red (jsdom 30 renamed VirtualConsole.sendTo), and jsdom 30 needs Node 22.22 or later, which this computer lacks."
+cause = "The groups in dependabot.yml took every update type, majors included, against the golden rule that a major version is never taken by an automatic update."
+solution = "The groups take minor and patch updates only; a major comes alone, to be tried on a branch. The three majors wait on the branch for Node to be upgraded locally (the test helper already uses forwardTo)."
+resultat = "Grouped pull requests stay small and green; each major is a deliberate step."
+preuve = [".github/dependabot.yml"]
+lecon = "Group what is safe to group: a major upgrade is a change of its own."
+liens = ["MAINT-01"]

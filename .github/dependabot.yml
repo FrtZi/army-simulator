@@ -1,4 +1,5 @@
-# Proposes the dependency updates each month, one pull request per ecosystem (so one CI run each).
+# Proposes the dependency updates each month: minor and patch versions grouped, one pull request per ecosystem
+# (so one CI run each); a major version comes alone, to be tried on a branch first (golden rules, DEF-026).
 # Security alerts arrive without waiting.
 version: 2
 updates:
@@ -8,9 +9,11 @@ updates:
     groups:
       all:
         patterns: ["*"]
+        update-types: [minor, patch]
   - package-ecosystem: npm
     directory: /
     schedule: { interval: monthly }
     groups:
       dev-tooling:
         patterns: ["*"]
+        update-types: [minor, patch]
