@@ -141,12 +141,13 @@ module = "ui"
 status = "to do"
 added = 2026-10-24
 depends_on = ["BL-06"]
-features = ["ARMY-05", "ARMY-06", "BONUS-03"]
-note = "To confirm with Frantz before coding: 4 talents in all or per hero, and what a talent is in the game data."
+features = ["ARMY-05", "ARMY-06", "BONUS-03", "SIM-10"]
+note = "Rules settled with Frantz (D-26): 3 heroes, 4 talents in all, the same bonus counted once at its strongest, heroes fight."
 tasks = [
-  "[ ] Engine: a hero's bonuses at its level as effects, applied to its composition; at most 3 heroes, 4 talents",
+  "[ ] Engine: a hero's bonuses at its level as effects; at most 3 heroes, 4 talents in all, the same bonus once at its strongest",
+  "[ ] Battle: each hero fights as a group of one at its tier, with its stats at its level; its power counts",
   "[ ] Picker: the heroes like the troops (search, filters, several at once); rank 1–7 and level 1–5",
-  "[ ] Their stats in the profile; saved and exported with the composition (configuration format, version 2)",
+  "[ ] Their stats shown like a troop's in the profile; saved and exported with the composition (configuration format, version 2)",
   "[ ] Page, accessibility and storage tests",
 ]
 

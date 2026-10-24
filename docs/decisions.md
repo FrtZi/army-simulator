@@ -287,3 +287,21 @@ Only the food upkeep differs, by a constant factor of 6 (open question 13), and 
   in the README and the data. It publishes no licence: its author is told and asked, as a matter of principle,
   without waiting for the answer (Frantz's call): the data are the game's, public in the game.
 - **Set aside: scraping the page markup.** Each page carries its data as JSON (Inertia), read as such.
+
+## D-26 · Heroes: three per army, four talents in all, and they fight (2026-10-24)
+
+Frantz's rules, from the game:
+
+- **At most 3 heroes** (warlords) in a composition, each at its level: 35 levels, shown as a rank (1 to 7) and a
+  level within it (1 to 5); level 12 is rank 3, level 2.
+- **4 talents for the whole composition**, not per hero. A talent is one of the bonuses a hero gives at its
+  level (Azazel at level 35: Slaanesh Health +45 %, Slaanesh Melee Damage +50 %…). Of the bonuses the three
+  heroes offer, the player activates four; the others do nothing in this composition.
+- **The same bonus never adds up:** when two heroes offer it, it cannot be chosen twice, and only the
+  strongest value counts.
+- **Heroes fight.** Each has its own stats at its level, like a troop (attack, damage, armour, health,
+  morale, speed, load), which grow with the level: it is in the battle as a group of one at its tier, its
+  power counts, and its stats are shown like a troop's.
+
+The active talents are added to the player's own bonuses on the same stat (D-12). Set aside: four talents per
+hero (Frantz: four in all).

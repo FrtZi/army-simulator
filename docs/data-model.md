@@ -128,6 +128,57 @@ One entry per fortress defence, with the same fields as a unit except `recruitme
 and the attack and damage of its attack type, if it has one. Defences never appear in a scenario's troops
 (D-11).
 
+## Warlords: `data/<game>/warlords.json` (proposed 2026-10-24, to validate)
+
+One entry per warlord (33), imported from cctools.cc (D-25), credited in the README. Every per-level figure is a
+list of 35 values, level 1 first: the file stays small (about 84 KB, the page bundles it) and a level is one
+index. Rank and level within the rank are worked out from the level (level 12 = rank 3, level 2), never stored.
+
+```json
+{
+  "id": "azazel",
+  "labels": { "en": "Azazel", "fr": "Azazel*" },
+  "alignment": "slaanesh",
+  "rarity": "legendary",
+  "tier": [4, 4, 4, "…", 5],
+  "power": [3500, 7000, 10500, "…", 162500],
+  "stats": {
+    "meleeAttack": ["…"],
+    "meleeDamage": ["…"],
+    "armour": ["…"],
+    "health": [500, 525, "…", 1600],
+    "morale": ["…"],
+    "speed": ["…"],
+    "load": ["…"],
+    "protection": ["…"]
+  },
+  "talents": { "slaanesh-health": [1, 1.5, 2, "…", 45], "slaanesh-ranged-damage": [null, null, "…", 50] }
+}
+```
+
+| Field       | Meaning                                                                                                   |
+| ----------- | --------------------------------------------------------------------------------------------------------- |
+| `alignment` | the warlord's god, from the vocabulary (`undivided` for the Chaos star)                                   |
+| `rarity`    | core, uncommon, rare, epic, legendary: a new list `rarities` in `game.json`, labels in both languages     |
+| `tier`      | its tier at each level: it rises with the level (Azazel 4 then 5), and places it in the combat order      |
+| `power`     | the power it adds at each level (like `squadPower` for a troop, for one hero)                             |
+| `stats`     | its own fighting stats at each level, under the ids of `troopStats`, plus `protection` (open question 15) |
+| `talents`   | each bonus it can give, in % at each level; `null` until the level that unlocks it (D-26: 4 in all)       |
+
+**Talents** are named once, in a new list `talents` of `game.json`, each with the game's code (to import and
+trace) and what it does in our effect shape, so its label comes from the stat and target labels already there:
+
+| Kind (count)                     | Example code                                                                                                                        | In our effect shape                                        |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| A stat for a god's troops (36)   | `chaos_slaanesh_health_modifier`                                                                                                    | `health`, target `alignments: ["slaanesh"]`                |
+| A stat for a troop type (23)     | `chariots_health_modifier`                                                                                                          | `health`, target `unitTypes: ["chariots"]`                 |
+| The whole march (3)              | `march_speed_modifier`, `march_load_modifier`, `march_unit_capacity`                                                                | `speed`, `load`; `marchCapacity` (army stat)               |
+| Damage against broken troops (1) | `broken_offense_combat_modifier`                                                                                                    | the model's `brokenRangedBonusPercent`, raised             |
+| A context of battle (5)          | `march_combat_modifier`, `city_combat_modifier`, `rally_combat_modifier`, `empire_combat_modifier`, `city_attacker_attack_modifier` | kept, applied once its meaning is known (open question 16) |
+| Not about battle (2)             | `march_contest_modifier`, `random_reward_modifier`                                                                                  | kept and shown, never applied                              |
+
+The counts are those of the 70 codes the 33 warlords use: 62 fit the effect shape as they are (36 + 23 + 3).
+
 ## A player's configuration
 
 The format of what the browser saves and what an export file holds. `examples/configuration.example.json`

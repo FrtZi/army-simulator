@@ -16,7 +16,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Milestone | Musts done | Items done | Tasks done | Reached |
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
-| Version 1.1, heroes and the player's setup | `█████░░░░░░░░░░░░░░░` 1/4 | 1/5 | 5/16 | ○ not yet: 3 Musts left |
+| Version 1.1, heroes and the player's setup | `█████░░░░░░░░░░░░░░░` 1/4 | 1/5 | 5/17 | ○ not yet: 3 Musts left |
 | Version 1.2, rituals and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/4 | 0/10 | ○ not yet: 2 Musts left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 0/7 | — |
 
@@ -127,7 +127,7 @@ The warlords in a composition, at their level, their bonuses applied; what the p
 |---|---|---|---|---|---|
 | [BL-05](#bl-05) | Tooling majors: ESLint 10, jsdom 30, html-validate 11 | must | framework | ✓ done | 3/3 |
 | [BL-06](#bl-06) | Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels | must | [data](../data) | ○ to do | 0/3 |
-| [BL-07](#bl-07) | Heroes in a composition: up to 3 warlords, 4 talents, at their level | must | [ui](../src/ui) | ○ to do | 0/4 |
+| [BL-07](#bl-07) | Heroes in a composition: up to 3 warlords, 4 talents, at their level | must | [ui](../src/ui) | ○ to do | 0/5 |
 | [BL-08](#bl-08) | The player's setup: what they have in game, entered once | must | [storage](../src/storage) | ○ to do | 0/3 |
 | [BL-09](#bl-09) | Credit cctools.cc and tell its author | could | framework | ◐ doing | 2/3 |
 
@@ -154,13 +154,14 @@ Must · [data](../data) · ○ to do · added `2026-10-24` · features: DATA-05
 <a id="bl-07"></a>
 #### BL-07 · Heroes in a composition: up to 3 warlords, 4 talents, at their level
 
-Must · [ui](../src/ui) · ○ to do · added `2026-10-24` · after [BL-06](#bl-06) · features: ARMY-05, ARMY-06, BONUS-03
+Must · [ui](../src/ui) · ○ to do · added `2026-10-24` · after [BL-06](#bl-06) · features: ARMY-05, ARMY-06, BONUS-03, SIM-10
 
-To confirm with Frantz before coding: 4 talents in all or per hero, and what a talent is in the game data.
+Rules settled with Frantz (D-26): 3 heroes, 4 talents in all, the same bonus counted once at its strongest, heroes fight.
 
-- [ ] Engine: a hero's bonuses at its level as effects, applied to its composition; at most 3 heroes, 4 talents
+- [ ] Engine: a hero's bonuses at its level as effects; at most 3 heroes, 4 talents in all, the same bonus once at its strongest
+- [ ] Battle: each hero fights as a group of one at its tier, with its stats at its level; its power counts
 - [ ] Picker: the heroes like the troops (search, filters, several at once); rank 1–7 and level 1–5
-- [ ] Their stats in the profile; saved and exported with the composition (configuration format, version 2)
+- [ ] Their stats shown like a troop's in the profile; saved and exported with the composition (configuration format, version 2)
 - [ ] Page, accessibility and storage tests
 
 <a id="bl-08"></a>
