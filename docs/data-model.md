@@ -128,9 +128,10 @@ One entry per fortress defence, with the same fields as a unit except `recruitme
 and the attack and damage of its attack type, if it has one. Defences never appear in a scenario's troops
 (D-11).
 
-## Warlords: `data/<game>/warlords.json` (proposed 2026-10-24, to validate)
+## Warlords: `data/<game>/warlords.json` (validated 2026-10-24)
 
-One entry per warlord (33), imported from cctools.cc (D-25), credited in the README. Every per-level figure is a
+One entry per warlord (33), written by `scripts/import-warlords.mjs` from cctools.cc's pages (D-25), never by hand;
+credited in the README. The file is `{ "source", "talents", "warlords" }`; a warlord: Every per-level figure is a
 list of 35 values, level 1 first: the file stays small (about 84 KB, the page bundles it) and a level is one
 index. Rank and level within the rank are worked out from the level (level 12 = rank 3, level 2), never stored.
 
@@ -165,8 +166,12 @@ index. Rank and level within the rank are worked out from the level (level 12 = 
 | `stats`     | its own fighting stats at each level, under the ids of `troopStats`, plus `protection` (open question 15) |
 | `talents`   | each bonus it can give, in % at each level; `null` until the level that unlocks it (D-26: 4 in all)       |
 
-**Talents** are named once, in a new list `talents` of `game.json`, each with the game's code (to import and
-trace) and what it does in our effect shape, so its label comes from the stat and target labels already there:
+**Talents** are named once, with the game's code (to import and trace) and what they do in our effect shape, so
+a label comes from the stat and target labels already there. The 61 the import works out from their code
+(`chaos_slaanesh_health_modifier` → `health` for `slaanesh`) are listed at the top of `warlords.json`
+(`talents`); the 9 it cannot are named by hand in `game.json` (`talentCodes`: the march capacity, and the
+bonuses that apply only in some battles, with their labels). An unknown code stops the import. A debuff's
+values are negative (Gutrot Spume's Enemy Attack Debuff, −37 % at level 35):
 
 | Kind (count)                     | Example code                                                                                                                        | In our effect shape                                                                                                                                                                      |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

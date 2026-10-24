@@ -60,8 +60,9 @@ How it is built: [ARCHITECTURE.md](ARCHITECTURE.md). The data model: [docs/data-
 ## Sources
 
 - **Troop stats:** transcribed from the game's unit sheets, and checked against the game's data published by
-  [CCTools](https://cctools.cc), which also gives the English names. The warlords, rituals, champion and gear to
-  come will be taken from CCTools too, with thanks to its author.
+  [CCTools](https://cctools.cc), which also gives the English names. The warlords (their stats and
+  talents at every level) are imported from CCTools too, and the rituals, champion and gear will be, with
+  thanks to its author.
 - **Combat rules:** the official combat tips (Steam community) and the community wiki's
   [Combat Mechanics](https://warhammer-cnc.fandom.com/wiki/Combat_Mechanics) (CC-BY-SA).
 

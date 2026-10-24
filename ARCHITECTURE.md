@@ -23,7 +23,8 @@ data/                    each game's facts (JSON), the same for every player (D-
     ├── game.json        vocabulary: tiers, recruitments, attack types, unit types, alignments, buildings, stats, source kinds
     ├── defences.json    one entry per fortress defence (never part of an army)
     ├── units.json       one entry per troop type, from its in-game sheet
-    └── combat-rules.json  the combat rules the game publishes, with their source
+    ├── combat-rules.json  the combat rules the game publishes, with their source
+    └── warlords.json    the 33 warlords, at each of 35 levels: imported (scripts/import-warlords.mjs), never edited
 src/engine/              pure functions, no DOM, no file access: callers pass the data
 ├── index.js             public API: the only file the page and the tests import
 ├── targets.js           which troops an effect selects (TARGET_FIELDS)
@@ -68,6 +69,7 @@ scripts/
 ├── build.mjs            bundles and inlines everything (esbuild) → dist/index.html
 ├── serve.mjs            npm run dev: serves the source page and data/ (no build)
 ├── catalogue.mjs        reads the feature catalogue (docs/features.md)
+├── import-warlords.mjs  data/<game>/warlords.json from cctools.cc's saved pages (D-25)
 ├── backlog*.mjs         the product backlog: its check and its page docs/backlog.md (npm run backlog)
 └── defects*.mjs         the defects register: its format, its check, its page docs/defects.md (npm run defects)
 examples/
@@ -80,6 +82,7 @@ tests/                   node --test; each test names the feature it proves
 ├── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens
 ├── tooling.test.js      the page assembler, the dev server, configurations aligned (MAINT-04)
 ├── performance.test.js  the worst comparison against a phone's budget (PERF-01)
+├── warlords.test.js     the warlords: complete at every level, their talents valid bonuses (DATA-05)
 ├── crosscheck.test.js   data/ against the game's data from cctools.cc (local only, D-25)
 └── catalogue, defects, backlog   the catalogue against the tests (MAINT-02); the defects and backlog checkers
 ```

@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **26 defects**: 26 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **27 defects**: 27 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -39,6 +39,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-024](#def-024) | 2026-10-23 | A zoom box stayed on the chart when the pointer could not be captured | code | minor | ✓ fixed |
 | [DEF-025](#def-025) | 2026-10-24 | 34 English names were not the game's | content | minor | ✓ fixed |
 | [DEF-026](#def-026) | 2026-10-24 | Dependabot bundled four major upgrades into one red pull request | configuration | minor | ✓ fixed |
+| [DEF-027](#def-027) | 2026-10-24 | A data test assumed every talent positive | process | minor | ✓ fixed |
 
 ## Entries
 
@@ -365,3 +366,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** Group what is safe to group: a major upgrade is a change of its own.
 - **Proof:** `.github/dependabot.yml`
 - **Links:** MAINT-01
+
+<a id="def-027"></a>
+### DEF-027 · A data test assumed every talent positive
+
+`2026-10-24` · process · minor · ✓ fixed · tags: `tests`, `data`
+
+- **Finding:** The first run of the warlords' data tests refused Gutrot Spume's Enemy Attack Debuff: its values go from −0.9 % to −37 %.
+- **Cause:** The test required every talent between 0 and 100 %; a debuff lowers the enemy, so its values are negative, and the data was right.
+- **Solution:** A talent is checked on its size: one sign at every level once unlocked, never weaker, at most 100 %.
+- **Result:** All 70 talent codes of the 33 warlords pass, the debuff included; a hole or a weaker level still fails.
+- **Lesson:** A rule written from the first examples is a guess: run it on all the data before trusting it.
+- **Proof:** `tests/warlords.test.js`
+- **Links:** DATA-05

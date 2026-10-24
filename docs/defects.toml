@@ -415,3 +415,19 @@ resultat = "Grouped pull requests stay small and green; each major is a delibera
 preuve = [".github/dependabot.yml"]
 lecon = "Group what is safe to group: a major upgrade is a change of its own."
 liens = ["MAINT-01"]
+
+[[defaut]]
+id = "DEF-027"
+date = 2026-10-24
+titre = "A data test assumed every talent positive"
+type = "process"
+etiquettes = ["tests", "data"]
+gravite = "minor"
+statut = "fixed"
+constat = "The first run of the warlords' data tests refused Gutrot Spume's Enemy Attack Debuff: its values go from −0.9 % to −37 %."
+cause = "The test required every talent between 0 and 100 %; a debuff lowers the enemy, so its values are negative, and the data was right."
+solution = "A talent is checked on its size: one sign at every level once unlocked, never weaker, at most 100 %."
+resultat = "All 70 talent codes of the 33 warlords pass, the debuff included; a hole or a weaker level still fails."
+preuve = ["tests/warlords.test.js"]
+lecon = "A rule written from the first examples is a guess: run it on all the data before trusting it."
+liens = ["DATA-05"]

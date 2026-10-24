@@ -315,6 +315,15 @@
         "fr": "Charger",
         "en": "Load"
       }
+    },
+    {
+      "id": "protection",
+      "labels": {
+        "fr": "Protection*",
+        "en": "Protection"
+      },
+      "optional": true,
+      "boostable": false
     }
   ],
   "armyStats": [
@@ -325,6 +334,122 @@
   "sourceKinds": [
     {
       "id": "manual"
+    }
+  ],
+  "rarities": [
+    {
+      "id": "core",
+      "labels": {
+        "fr": "Base*",
+        "en": "Core"
+      }
+    },
+    {
+      "id": "uncommon",
+      "labels": {
+        "fr": "Peu commun*",
+        "en": "Uncommon"
+      }
+    },
+    {
+      "id": "rare",
+      "labels": {
+        "fr": "Rare*",
+        "en": "Rare"
+      }
+    },
+    {
+      "id": "epic",
+      "labels": {
+        "fr": "Épique*",
+        "en": "Epic"
+      }
+    },
+    {
+      "id": "legendary",
+      "labels": {
+        "fr": "Légendaire*",
+        "en": "Legendary"
+      }
+    }
+  ],
+  "talentCodes": [
+    {
+      "id": "march-capacity",
+      "code": "march_unit_capacity",
+      "stat": "marchCapacity"
+    },
+    {
+      "id": "march-combat",
+      "code": "march_combat_modifier",
+      "context": "march",
+      "labels": {
+        "fr": "March Combat Bonus*",
+        "en": "March Combat Bonus"
+      }
+    },
+    {
+      "id": "fortress-combat",
+      "code": "city_combat_modifier",
+      "context": "fortress",
+      "labels": {
+        "fr": "Fortress Combat Bonus*",
+        "en": "Fortress Combat Bonus"
+      }
+    },
+    {
+      "id": "warband-combat",
+      "code": "rally_combat_modifier",
+      "context": "warband",
+      "labels": {
+        "fr": "Warband Combat Bonus*",
+        "en": "Warband Combat Bonus"
+      }
+    },
+    {
+      "id": "empire-combat",
+      "code": "empire_combat_modifier",
+      "context": "empire",
+      "labels": {
+        "fr": "Combat Bonus vs. Empire*",
+        "en": "Combat Bonus vs. Empire"
+      }
+    },
+    {
+      "id": "enemy-attack-debuff",
+      "code": "city_attacker_attack_modifier",
+      "context": "fortress-defence",
+      "labels": {
+        "fr": "Enemy Attack Debuff*",
+        "en": "Enemy Attack Debuff"
+      }
+    },
+    {
+      "id": "broken-damage",
+      "code": "broken_offense_combat_modifier",
+      "context": "broken",
+      "labels": {
+        "fr": "Bonus Damage Against Broken Troops*",
+        "en": "Bonus Damage Against Broken Troops"
+      }
+    },
+    {
+      "id": "territory-contest-speed",
+      "code": "march_contest_modifier",
+      "context": "outside-battle",
+      "labels": {
+        "fr": "Territory Contest Speed*",
+        "en": "Territory Contest Speed"
+      }
+    },
+    {
+      "id": "reward-chance",
+      "code": "random_reward_modifier",
+      "context": "outside-battle",
+      "labels": {
+        "fr": "Bonus Chance of Rewards*",
+        "en": "Bonus Chance of Rewards"
+      }
     }
   ]
 }

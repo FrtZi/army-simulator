@@ -123,13 +123,13 @@ title = "Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels
 moscow = "must"
 milestone = "v1.1"
 module = "data"
-status = "to do"
+status = "done"
 added = 2026-10-24
 features = ["DATA-05"]
 tasks = [
-  "[ ] Format of data/<game>/warlords.json validated (data-model.md): bonuses as effects, the stat and target vocabulary extended where needed",
-  "[ ] An import script from cctools.cc's pages, its result checked and committed with the source credited",
-  "[ ] Data tests: every warlord complete, 35 levels, every bonus a valid effect",
+  "[x] Format of data/<game>/warlords.json validated (data-model.md): bonuses as effects, the stat and target vocabulary extended where needed",
+  "[x] An import script from cctools.cc's pages, its result checked and committed with the source credited",
+  "[x] Data tests: every warlord complete, 35 levels, every bonus a valid effect",
 ]
 
 [[item]]

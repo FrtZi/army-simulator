@@ -1,9 +1,10 @@
-// Our troops and defences against the game's data as published by cctools.cc (D-25): saved locally in
+// Our troops, defences and warlords against the game's data as published by cctools.cc (D-25): saved locally in
 // captures/chaos-conquest/sources/, never committed, so this test is skipped where the file is absent (CI).
 // Names and stats must match one for one; food upkeep differs by a constant factor (open question 13).
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
+import { buildWarlords, formatWarlords, readGame, savedPages } from "../scripts/import-warlords.mjs";
 
 const GAME = "chaos-conquest";
 const reference = new URL(`../captures/${GAME}/sources/cctools-troops.json`, import.meta.url);
@@ -32,5 +33,16 @@ test(
       return stats;
     });
     assert.deepEqual(problems, []);
+  },
+);
+
+const warlordPages = new URL(`../captures/${GAME}/sources/cctools/warlords/`, import.meta.url);
+
+test(
+  "DATA-05 the warlords file is exactly what the import makes from the saved pages",
+  { skip: !existsSync(warlordPages) },
+  () => {
+    const made = formatWarlords(buildWarlords(savedPages(warlordPages), readGame()));
+    assert.equal(readFileSync(new URL(`../data/${GAME}/warlords.json`, import.meta.url), "utf8"), made);
   },
 );
