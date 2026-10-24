@@ -13,7 +13,7 @@ const LANGUAGE_KEY = "army-simulator.language";
  */
 export function openPage({ language = "en-GB", saved } = {}) {
   const errors = [];
-  const virtualConsole = new VirtualConsole().sendTo(console, { omitJSDOMErrors: true });
+  const virtualConsole = new VirtualConsole().forwardTo(console, { jsdomErrors: "none" });
   virtualConsole.on("jsdomError", (error) => errors.push(error));
   const { window } = new JSDOM(PAGE, {
     virtualConsole,

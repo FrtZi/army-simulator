@@ -30,7 +30,7 @@ Open the published page, or save it: it is one self-contained file that also wor
 
 ## Running it locally
 
-Requires [Node.js](https://nodejs.org) 22 or later. The published page has no runtime dependency; the tools
+Requires [Node.js](https://nodejs.org) 22.22.2 or later (jsdom 30, used by the tests). The published page has no runtime dependency; the tools
 below are development dependencies only.
 
 ```bash
