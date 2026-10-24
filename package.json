@@ -17,7 +17,8 @@
     "format:check": "prettier --check .",
     "validate:html": "npm run build && html-validate dist/index.html",
     "defects": "node scripts/defects.mjs",
-    "check": "npm run format:check && npm run defects && npm run lint && npm test && html-validate dist/index.html"
+    "backlog": "node scripts/backlog.mjs",
+    "check": "npm run format:check && npm run defects && npm run backlog && npm run lint && npm test && html-validate dist/index.html"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
