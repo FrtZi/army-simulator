@@ -11,4 +11,7 @@ captures/**
 *.xlsm
 *.xls
 *.csv
+
+# The instructions for the coding assistant stay on the author's machine: never published.
+CLAUDE.md
 .claude/

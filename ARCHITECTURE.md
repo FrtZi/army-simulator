@@ -149,7 +149,7 @@ army lines and the profile.
 
 ## Design principles
 
-The golden rules shared by all our projects (see CLAUDE.md), applied here with the simplest means that work:
+The golden rules shared by all our projects, applied here with the simplest means that work:
 
 - **DRY.** Each fact exists once: the vocabulary in `data/<game>/game.json`, every bonus as the same effect shape,
   whatever its source.
