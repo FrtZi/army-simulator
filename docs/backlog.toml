@@ -361,3 +361,20 @@ tasks = [
   "[ ] Engine and tests: the modifier by tier difference, bounded at ±3",
   "[ ] Confirmed or corrected on a battle report (open question 1)",
 ]
+
+[[item]]
+id = "BL-22"
+title = "Guides: the game's blocks in detail, in a tab of their own"
+moscow = "should"
+milestone = "v1.2"
+module = "ui"
+status = "to do"
+added = 2026-11-09
+depends_on = ["BL-08"]
+features = ["GUIDE-01", "GUIDE-02", "GUIDE-03"]
+note = "Frantz, 2026-11-09: a Guides tab where each type of block (heroes, rituals, sets...) is shown in detail with its benefits. The heroes' data is complete; each other guide comes with its data."
+tasks = [
+  "[ ] Prototype validated by Frantz",
+  "[ ] The Guides tab and the heroes' guide (GUIDE-01, GUIDE-02)",
+  "[ ] Each other block's guide with its data: rituals and buildings (BL-10, BL-14), champion and gear (BL-13)",
+]

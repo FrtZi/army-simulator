@@ -99,6 +99,14 @@ It becomes _Done_ when its proof exists.
 | ICON-01  | Each troop shows an icon of its type in its god's colour, drawn for the page (no game art, D-06)                                       | Business | Done   | Manual: seen in the browser; the god is also written next to it               |
 | NAV-01   | Two page tabs: the Battle lab (the page as before) and Your setup                                                                      | Business | Done   | `tests/setup-page.test.js`                                                    |
 
+## Guides (GUIDE)
+
+| ID       | Feature                                                                                                                                               | Type     | Status  | Proof |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----- |
+| GUIDE-01 | A Guides tab: the game's blocks by type (heroes, rituals, buildings, champion and gear sets), each entry in detail with what it gives, level by level | Business | Planned | —     |
+| GUIDE-02 | The heroes' guide: each warlord's tier, power, stats and talents at every rank and level, found by god, rarity or name, marked when in your setup     | Business | Planned | —     |
+| GUIDE-03 | The guides of rituals, buildings, champion and gear sets, each with its data (BL-10, BL-14, BL-13)                                                    | Business | Planned | —     |
+
 ## Languages (LANG)
 
 | ID      | Feature                                                                                                                                                                             | Type     | Status | Proof                |
