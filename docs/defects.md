@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **30 defects**: 30 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **31 defects**: 31 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -43,6 +43,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-028](#def-028) | 2026-10-24 | The catalogue check took a decision for a feature | tool | minor | ✓ fixed |
 | [DEF-029](#def-029) | 2026-10-24 | structuredClone is missing where the page tests run | environment | minor | ✓ fixed |
 | [DEF-030](#def-030) | 2026-11-09 | The linter read the git-ignored captures | configuration | minor | ✓ fixed |
+| [DEF-031](#def-031) | 2026-11-09 | The tabs' look written a second time | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -420,3 +421,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** Two files that list the same folders drift apart unless a test compares them (MAINT-04).
 - **Proof:** `tests/tooling.test.js`
 - **Links:** MAINT-04
+
+<a id="def-031"></a>
+### DEF-031 · The tabs' look written a second time
+
+`2026-11-09` · code · minor · ✓ fixed · tags: `page`, `tooling`
+
+- **Finding:** The page tabs (NAV-01, ccbcc35) brought a `.tabs` rule into layout.css while forms.css already held the same look for the compositions' tabs: two places to change one look, the second quietly winning by the cascade's order.
+- **Cause:** The dashboards' tab styles were moved to a shared class without first searching the stylesheets for that class name; no check compared the stylesheets with one another.
+- **Solution:** One `.tabs` rule in forms.css for every row of tabs (compositions, dashboards, page), the selected tab by aria-pressed or aria-selected; layout.css keeps only what the page tabs add. A test reads every stylesheet and refuses a selector's property set in two of them.
+- **Result:** The look of tabs is in one place; the test fails on the copy as it was committed.
+- **Lesson:** Before naming a shared class, search for it: DRY holds for styles too, and only a check across files keeps it.
+- **Proof:** `tests/styles.test.js`
+- **Links:** MAINT-01, NAV-01

@@ -72,29 +72,12 @@ main {
   padding: 0 1rem;
 }
 
-/* a row of tabs (the page's, the dashboards'): the one selected underlined with the accent */
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  border-bottom: 1px solid var(--line);
+/* the page's own tabs stand out from the tabs inside a card: they change the whole page below (the look of
+   every row of tabs is in forms.css) */
+.tabs.page-tabs {
+  margin: 0;
 }
 
-.tabs [role="tab"] {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: 0;
-  background: none;
-  color: var(--muted);
-}
-
-.tabs [role="tab"][aria-selected="true"] {
-  background: var(--field);
-  color: var(--heading);
-  box-shadow: inset 0 -3px 0 var(--accent);
-}
-
-/* the page's own tabs stand out from the tabs inside a card: they change the whole page below */
 .page-tabs [role="tab"] {
   padding: 0.6rem 1.1rem;
   font-size: 1.05rem;

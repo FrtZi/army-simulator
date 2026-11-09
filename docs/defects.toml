@@ -478,3 +478,19 @@ resultat = "The check passes with the scan in place; a folder newly ignored by g
 preuve = ["tests/tooling.test.js"]
 lecon = "Two files that list the same folders drift apart unless a test compares them (MAINT-04)."
 liens = ["MAINT-04"]
+
+[[defaut]]
+id = "DEF-031"
+date = 2026-11-09
+titre = "The tabs' look written a second time"
+type = "code"
+etiquettes = ["page", "tooling"]
+gravite = "minor"
+statut = "fixed"
+constat = "The page tabs (NAV-01, ccbcc35) brought a `.tabs` rule into layout.css while forms.css already held the same look for the compositions' tabs: two places to change one look, the second quietly winning by the cascade's order."
+cause = "The dashboards' tab styles were moved to a shared class without first searching the stylesheets for that class name; no check compared the stylesheets with one another."
+solution = "One `.tabs` rule in forms.css for every row of tabs (compositions, dashboards, page), the selected tab by aria-pressed or aria-selected; layout.css keeps only what the page tabs add. A test reads every stylesheet and refuses a selector's property set in two of them."
+resultat = "The look of tabs is in one place; the test fails on the copy as it was committed."
+preuve = ["tests/styles.test.js"]
+lecon = "Before naming a shared class, search for it: DRY holds for styles too, and only a check across files keeps it."
+liens = ["MAINT-01", "NAV-01"]
