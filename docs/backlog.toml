@@ -353,12 +353,12 @@ title = "The tier modifier, from cctools.cc's table, confirmed on a battle repor
 moscow = "must"
 milestone = "v1.2"
 module = "engine"
-status = "to do"
+status = "doing"
 added = 2026-11-09
 note = "cctools.cc's armies tool (2026-11-09): damage × 0.7, 0.8, 0.9, 1, 1.75, 2.5, 3.25 for a tier difference of −3 to +3; an estimate there, to confirm (open question 1)."
 tasks = [
-  "[ ] The table in combat-rules.json, its source quoted, in place of the 0 % placeholder",
-  "[ ] Engine and tests: the modifier by tier difference, bounded at ±3",
+  "[x] The table in combat-rules.json, its source quoted, in place of the 0 % placeholder",
+  "[x] Engine and tests: the modifier by tier difference, bounded at ±3",
   "[ ] Confirmed or corrected on a battle report (open question 1)",
 ]
 

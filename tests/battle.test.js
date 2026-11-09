@@ -24,10 +24,11 @@ import {
 const read = (path) => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const GAME = "chaos-conquest";
 const catalogue = indexCatalogue(read(`data/${GAME}/units.json`), read(`data/${GAME}/defences.json`));
-const RULES = read(`data/${GAME}/combat-rules.json`);
+const GAME_RULES = read(`data/${GAME}/combat-rules.json`);
+// each mechanic is worked out by hand on its own: the tier factor, tested by itself below, is neutral elsewhere
+const RULES = { ...GAME_RULES, model: { ...GAME_RULES.model, tierFactors: { 0: 1 } } };
 const NO_MORALE = { ...RULES.morale, lossThresholdPercent: 100 };
 const oneTurn = { ...RULES, turns: 1, morale: NO_MORALE };
-const withModel = (rules, model) => ({ ...rules, model: { ...rules.model, ...model } });
 const army = (troops, effects = []) => summariseArmy(troops, catalogue, effects, { marchCapacity: 1e9 });
 const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-6, `${actual} ≠ ${expected}`);
 const lost = (state, id) => state.find((group) => group.id === id).lost;
@@ -97,17 +98,28 @@ test("SIM-02 within a tier and a category, the higher morale is hit first (wiki)
   near(lost(turn.defender, "khorne-chaos-warriors"), 0);
 });
 
-test("SIM-02 the tier modifier: a bonus per tier below the striker, a penalty per tier above", () => {
-  const model = { ...RULES.model, tierModifierPercent: 10 };
-  near(tierFactor(5, 1, model), 1.4);
-  near(tierFactor(1, 5, model), 0.6);
+test("SIM-02 the tier modifier: cctools.cc's factor by the striker's tier minus its target's, bounded at 3", () => {
+  const { model } = GAME_RULES; // combat-rules.json: ×0.7, 0.8, 0.9, 1, 1.75, 2.5, 3.25 for −3 to +3 (BL-21)
+  near(tierFactor(4, 3, model), 1.75);
+  near(tierFactor(3, 4, model), 0.9);
   near(tierFactor(3, 3, model), 1);
-  const [turn] = simulateBattle(
-    army({ "khorne-gor": 100 }),
-    army({ marauders: 1000 }),
-    withModel(oneTurn, model),
-  ).turns;
-  near(lost(turn.defender, "marauders"), (36000 * 1.4) / 475);
+  near(tierFactor(5, 1, model), 3.25); // 4 tiers above: bounded at 3
+  near(tierFactor(1, 5, model), 0.7); // 4 tiers below: bounded at −3
+  // the table: one factor per difference from −n to n, 1 for the same tier, rising with the difference
+  const differences = Object.keys(model.tierFactors)
+    .map(Number)
+    .sort((a, b) => a - b);
+  const bound = differences.at(-1);
+  assert.deepEqual(
+    differences,
+    Array.from({ length: 2 * bound + 1 }, (_, index) => index - bound),
+  );
+  assert.equal(model.tierFactors[0], 1);
+  assert.ok(differences.every((d, i) => i === 0 || model.tierFactors[d] > model.tierFactors[differences[i - 1]]));
+  // the Khorne Gor (tier 5) strike the Marauders (tier 1) for 3.25 times their damage
+  const rules = { ...GAME_RULES, turns: 1, morale: NO_MORALE };
+  const [turn] = simulateBattle(army({ "khorne-gor": 100 }), army({ marauders: 1000 }), rules).turns;
+  near(lost(turn.defender, "marauders"), (36000 * 3.25) / 475);
 });
 
 test("SIM-02 morale: heavy losses break troops, who sit out the next turn", () => {

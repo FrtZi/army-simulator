@@ -2,7 +2,6 @@
 // per troop = attack × damage / damageDivisor; effective health per troop = armour × health / healthDivisor
 // (both with their bonuses). The divisors live in data/<game>/combat-rules.json.
 
-const PERCENT = 100;
 const ATTACK = { melee: ["meleeAttack", "meleeDamage"], ranged: ["rangedAttack", "rangedDamage"] };
 
 /** Damage one troop deals with its melee or ranged attack (0 when it has none). */
@@ -16,9 +15,15 @@ export function healthPerTroop(stats, model) {
   return (stats.armour * stats.health) / model.healthDivisor;
 }
 
-/** The bonus (or penalty) for striking a lower (or higher) tier: a percentage per tier of difference. */
+/**
+ * The bonus (or penalty) for striking a lower (or higher) tier: the rules' factor for the striker's tier minus its
+ * target's, the difference bounded by the table's largest (combat-rules.json, `tierFactors`; BL-21).
+ */
 export function tierFactor(attackerTier, targetTier, model) {
-  return Math.max(0, 1 + (model.tierModifierPercent / PERCENT) * (attackerTier - targetTier));
+  const differences = Object.keys(model.tierFactors).map(Number);
+  const bound = Math.max(...differences);
+  const difference = Math.max(-bound, Math.min(bound, attackerTier - targetTier));
+  return model.tierFactors[difference] ?? 1;
 }
 
 /** The attack a troop prefers: the one that deals more damage, bonuses included (wiki); melee on a tie. */

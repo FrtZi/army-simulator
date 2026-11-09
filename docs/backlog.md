@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 17/19 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/5 | 3/15 | ○ not yet: 2 Musts left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/5 | 5/15 | ○ not yet: 2 Musts left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 0/7 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -26,7 +26,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 Not done, and every dependency done:
 
 - [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ◐ doing)
-- [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ○ to do)
+- [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
 - [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ○ to do)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
@@ -68,7 +68,7 @@ flowchart LR
   BL18["BL-18 ○ to do<br/>Food upkeep: settle the factor of 6 with cctools.cc"]:::todo
   BL19["BL-19 ○ to do<br/>The troops' pictures from the game"]:::todo
   BL20["BL-20 ○ to do<br/>PvE armies by level: the game's computer-controlled armies as opponents"]:::todo
-  BL21["BL-21 ○ to do<br/>The tier modifier, from cctools.cc's table, confirmed on a battle report"]:::todo
+  BL21["BL-21 ◐ doing<br/>The tier modifier, from cctools.cc's table, confirmed on a battle report"]:::doing
   BL22["BL-22 ◐ doing<br/>Guides: the game's blocks in detail, in a tab of their own"]:::doing
   BL08 --> BL22
   classDef done stroke-width:3px
@@ -195,7 +195,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 | [BL-10](#bl-10) | Rituals in the setup: each ritual's level, its bonuses applied | must | [ui](../src/ui) | ○ to do | 0/3 |
 | [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ○ to do | 0/1 |
 | [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ○ to do | 0/3 |
-| [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ○ to do | 0/3 |
+| [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ◐ doing | 2/3 |
 | [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ◐ doing | 3/5 |
 
 <a id="bl-10"></a>
@@ -232,12 +232,12 @@ The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13 cities)
 <a id="bl-21"></a>
 #### BL-21 · The tier modifier, from cctools.cc's table, confirmed on a battle report
 
-Must · [engine](../src/engine) · ○ to do · added `2026-11-09`
+Must · [engine](../src/engine) · ◐ doing · added `2026-11-09`
 
 cctools.cc's armies tool (2026-11-09): damage × 0.7, 0.8, 0.9, 1, 1.75, 2.5, 3.25 for a tier difference of −3 to +3; an estimate there, to confirm (open question 1).
 
-- [ ] The table in combat-rules.json, its source quoted, in place of the 0 % placeholder
-- [ ] Engine and tests: the modifier by tier difference, bounded at ±3
+- [x] The table in combat-rules.json, its source quoted, in place of the 0 % placeholder
+- [x] Engine and tests: the modifier by tier difference, bounded at ±3
 - [ ] Confirmed or corrected on a battle report (open question 1)
 
 <a id="bl-22"></a>

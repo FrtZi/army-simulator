@@ -41,7 +41,9 @@ test("DASH-01 DASH-06 efficiency per march slot: damage and effective health of 
 });
 
 test("DASH-02 a battle round by round: troops and power lost, broken, losses per tier", () => {
-  const battle = simulateBattle(army({ "khorne-gor": 100 }), army({ marauders: 200 }), { ...RULES, turns: 2 });
+  // the rounds' figures by hand, the tier factor neutral (tested on its own in battle.test.js)
+  const neutral = { ...RULES, turns: 2, model: { ...RULES.model, tierFactors: { 0: 1 } } };
+  const battle = simulateBattle(army({ "khorne-gor": 100 }), army({ marauders: 200 }), neutral);
   const [first, second] = rounds(battle);
   // round 1: 36 000 / 475 = 75.79 Marauders lost (power 4 each), then 44 % of the 124.21 left break
   near(first.defender.lost, 36000 / 475);

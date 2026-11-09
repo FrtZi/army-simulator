@@ -7,10 +7,10 @@
     "lossThresholdPercent": 25
   },
   "model": {
-    "source": "Damage per unit and effective HP: the community wiki (D-16). Tier modifier and broken bonus: not published, uncalibrated",
+    "source": "Damage per unit and effective HP: the community wiki (D-16). Tier factors: cctools.cc's armies tool, damage by the striker's tier minus its target's, bounded at 3 (an estimate there, read 2026-11-09; to confirm on a battle report, open question 1). Broken bonus: not published, uncalibrated",
     "damageDivisor": 200,
     "healthDivisor": 40,
-    "tierModifierPercent": 0,
+    "tierFactors": { "-3": 0.7, "-2": 0.8, "-1": 0.9, "0": 1, "1": 1.75, "2": 2.5, "3": 3.25 },
     "brokenRangedBonusPercent": 0
   },
   "wiki": "Community wiki (CC-BY-SA), Combat Mechanics: https://warhammer-cnc.fandom.com/wiki/Combat_Mechanics"
