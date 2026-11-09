@@ -25,10 +25,17 @@ entered once and kept, so a new composition starts from it."""
 
 [[milestone]]
 code = "v1.2"
-name = "Version 1.2, rituals and the keep"
+name = "Version 1.2, the tier table, PvE armies, rituals and buildings"
 release = "v1.2.0"
-goal = """The rituals entered once in the setup, their bonuses applied; an attack on a keep, with the \
-defences' first round."""
+goal = """The tier modifier in every battle (cctools.cc's table, confirmed on a battle report); the game's PvE \
+armies as opponents; the rituals and buildings entered in the setup, their bonuses applied."""
+
+[[milestone]]
+code = "v1.3"
+name = "Version 1.3, champion, gear and the keep"
+release = "v1.3.0"
+goal = """The champion and its gear in the setup; an attack on a keep, with the defences' first round, and a \
+fortress as the defending side."""
 
 [[milestone]]
 code = "later"
@@ -153,7 +160,7 @@ tasks = [
 
 [[item]]
 id = "BL-08"
-title = "The player's setup: what they have in game, entered once"
+title = "The player's setup: everything they have in game, entered by hand or uploaded"
 moscow = "must"
 milestone = "v1.1"
 module = "storage"
@@ -161,10 +168,15 @@ status = "to do"
 added = 2026-10-24
 depends_on = ["BL-07"]
 features = ["CFG-04"]
+note = "Frantz, 2026-11-09: it holds everything (every bonus source, shaped on cctools.cc's profile), in a format a person fills by hand or an OCR agent maps from a documented dictionary; a summary; a guide; \"use my setup\" or \"open the lab\" to play freely. Prototype first."
 tasks = [
-  "[ ] Spec: what the setup holds, where it lives (browser), how it travels with an export",
-  "[ ] Warlords owned and their levels, offered first when picking heroes",
-  "[ ] Saved, exported and imported with its checks",
+  "[ ] Prototype and spec validated: use my setup or open the lab, manual sections, upload, summary, guide",
+  "[ ] The setup's format and its dictionary: every source, field and value, in both languages, for a person or an agent",
+  "[ ] Your game: input by section (warlords first, the others as their data comes), and the summary of everything",
+  "[ ] A setup file uploaded and downloaded, checked, refused with its reasons",
+  "[ ] Use my setup or open the lab: compositions draw on the setup, or play freely",
+  "[ ] The guide: how to fill it, by hand or with an agent reading screenshots",
+  "[ ] Kept in the browser, saved, exported and imported (configuration version 3)",
 ]
 
 [[item]]
@@ -194,7 +206,7 @@ status = "to do"
 added = 2026-10-24
 depends_on = ["BL-08"]
 features = ["BONUS-04"]
-note = "Massive in game (13 categories, the military one alone has 27 rituals): the entry must be quick, category by category, as in the game."
+note = "In one request (cctools.cc, the 153 combat rituals and their levels), as a section of the setup (BL-08)."
 tasks = [
   "[ ] Rituals' data from cctools.cc, checked (as BL-06)",
   "[ ] Entry in the setup: a category at a time, levels typed or picked, totals shown",
@@ -205,7 +217,7 @@ tasks = [
 id = "BL-11"
 title = "Keep attack: the defences' first round, as a switch on a battle"
 moscow = "must"
-milestone = "v1.2"
+milestone = "v1.3"
 module = "engine"
 status = "to do"
 added = 2026-10-24
@@ -220,12 +232,13 @@ tasks = [
 id = "BL-12"
 title = "Keep defence: a fortress (defences and garrison) as the defending side"
 moscow = "should"
-milestone = "v1.2"
+milestone = "v1.3"
 module = "ui"
 status = "to do"
 added = 2026-10-22
 depends_on = ["BL-11"]
 features = ["ARMY-04"]
+note = "To correct first (cctools.cc, 2026-11-09): the defences' capacity comes from the rituals Defence Capacity I and II, not the Fortress Walls; a defending fortress has one warlord, all its stats applied."
 tasks = [
   "[ ] A fortress composition: defences within the walls' capacity, plus garrison troops",
   "[ ] Compared and fought like an army, the defences' round included",
@@ -235,12 +248,13 @@ tasks = [
 id = "BL-13"
 title = "Champion: own stats by level, gear and set bonuses"
 moscow = "should"
-milestone = "v1.2"
+milestone = "v1.3"
 module = "data"
 status = "to do"
 added = 2026-10-22
 depends_on = ["BL-08"]
 features = ["BONUS-05", "BONUS-06"]
+note = "cctools.cc: the champion's 85 levels (a unit itself: open question, does it fight?), 20 combat skills, 112 gear items by rarity, 7 combat sets (the highest tier reached counts)."
 tasks = [
   "[ ] Champion's 85 levels, gear (6 slots) and the 12 sets from cctools.cc, checked",
   "[ ] In the setup; bonuses applied",
@@ -251,12 +265,14 @@ tasks = [
 [[item]]
 id = "BL-14"
 title = "Buildings' bonuses, by level"
-moscow = "could"
-milestone = "later"
+moscow = "should"
+milestone = "v1.2"
 module = "data"
 status = "to do"
 added = 2026-10-22
 features = ["BONUS-07"]
+depends_on = ["BL-08"]
+note = "In the same request as the rituals (cctools.cc: 10 buildings with combat bonuses), as a section of the setup."
 tasks = ["[ ] Structures' bonuses from cctools.cc, into the setup"]
 
 [[item]]
@@ -318,14 +334,29 @@ tasks = ["[ ] The publishers' permission (open question 11); the page uses its o
 [[item]]
 id = "BL-20"
 title = "PvE armies by level: the game's computer-controlled armies as opponents"
-moscow = "could"
-milestone = "later"
+moscow = "should"
+milestone = "v1.2"
 module = "data"
 status = "to do"
 added = 2026-11-09
-note = "Asked by Frantz on 2026-11-09, to prioritise once cctools.cc is scanned again (what its armies and NPC troops give)."
+note = "The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13 cities) with their exact compositions through a public JSON interface; morale from the 48 NPC troops."
 tasks = [
   "[ ] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight",
   "[ ] Spec: a PvE army as the opponent of a composition, chosen by location and level",
   "[ ] Data imported and checked, as the warlords' (D-25)",
+]
+
+[[item]]
+id = "BL-21"
+title = "The tier modifier, from cctools.cc's table, confirmed on a battle report"
+moscow = "must"
+milestone = "v1.2"
+module = "engine"
+status = "to do"
+added = 2026-11-09
+note = "cctools.cc's armies tool (2026-11-09): damage × 0.7, 0.8, 0.9, 1, 1.75, 2.5, 3.25 for a tier difference of −3 to +3; an estimate there, to confirm (open question 1)."
+tasks = [
+  "[ ] The table in combat-rules.json, its source quoted, in place of the 0 % placeholder",
+  "[ ] Engine and tests: the modifier by tier difference, bounded at ±3",
+  "[ ] Confirmed or corrected on a battle report (open question 1)",
 ]

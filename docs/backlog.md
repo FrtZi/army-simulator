@@ -16,23 +16,24 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Milestone | Musts done | Items done | Tasks done | Reached |
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
-| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 11/14 | ○ not yet: 1 Must left |
-| Version 1.2, rituals and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/4 | 0/10 | ○ not yet: 2 Musts left |
-| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/8 | 2/13 | — |
+| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 11/18 | ○ not yet: 1 Must left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/4 | 0/10 | ○ not yet: 2 Musts left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 0/7 | ○ not yet: 1 Must left |
+| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
 ## Ready to start
 
 Not done, and every dependency done:
 
-- [BL-08](#bl-08) The player's setup: what they have in game, entered once (v1.1, must, ○ to do)
-- [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.2, must, ○ to do)
+- [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ○ to do)
+- [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ○ to do)
+- [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ○ to do)
+- [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
-- [BL-14](#bl-14) Buildings' bonuses, by level (later, could, ○ to do)
 - [BL-16](#bl-16) Optimiser: the best troop mix within the march capacity (later, could, ○ to do)
 - [BL-17](#bl-17) Read-only share link (later, could, ○ to do)
 - [BL-18](#bl-18) Food upkeep: settle the factor of 6 with cctools.cc (later, could, ○ to do)
-- [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (later, could, ○ to do)
 - [BL-19](#bl-19) The troops' pictures from the game (later, won't, ○ to do)
 
 ## Dependencies
@@ -49,7 +50,7 @@ flowchart LR
   BL06["BL-06 ✓ done<br/>Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels"]:::done
   BL07["BL-07 ✓ done<br/>Heroes in a composition: up to 3 warlords, 4 talents, at their level"]:::done
   BL06 --> BL07
-  BL08["BL-08 ○ to do<br/>The player's setup: what they have in game, entered once"]:::todo
+  BL08["BL-08 ○ to do<br/>The player's setup: everything they have in game, entered by hand or uploaded"]:::todo
   BL07 --> BL08
   BL09["BL-09 ◐ doing<br/>Credit cctools.cc and tell its author"]:::doing
   BL10["BL-10 ○ to do<br/>Rituals in the setup: each ritual's level, its bonuses applied"]:::todo
@@ -60,12 +61,14 @@ flowchart LR
   BL13["BL-13 ○ to do<br/>Champion: own stats by level, gear and set bonuses"]:::todo
   BL08 --> BL13
   BL14["BL-14 ○ to do<br/>Buildings' bonuses, by level"]:::todo
+  BL08 --> BL14
   BL15["BL-15 ○ to do<br/>Calibration on battle reports: tier modifier, broken bonus, morale per squad"]:::todo
   BL16["BL-16 ○ to do<br/>Optimiser: the best troop mix within the march capacity"]:::todo
   BL17["BL-17 ○ to do<br/>Read-only share link"]:::todo
   BL18["BL-18 ○ to do<br/>Food upkeep: settle the factor of 6 with cctools.cc"]:::todo
   BL19["BL-19 ○ to do<br/>The troops' pictures from the game"]:::todo
   BL20["BL-20 ○ to do<br/>PvE armies by level: the game's computer-controlled armies as opponents"]:::todo
+  BL21["BL-21 ○ to do<br/>The tier modifier, from cctools.cc's table, confirmed on a battle report"]:::todo
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -130,7 +133,7 @@ The warlords in a composition, at their level, their bonuses applied; what the p
 | [BL-05](#bl-05) | Tooling majors: ESLint 10, jsdom 30, html-validate 11 | must | framework | ✓ done | 3/3 |
 | [BL-06](#bl-06) | Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels | must | [data](../data) | ✓ done | 3/3 |
 | [BL-07](#bl-07) | Heroes in a composition: up to 3 warlords, 4 talents, at their level | must | [ui](../src/ui) | ✓ done | 5/5 |
-| [BL-08](#bl-08) | The player's setup: what they have in game, entered once | must | [storage](../src/storage) | ○ to do | 0/3 |
+| [BL-08](#bl-08) | The player's setup: everything they have in game, entered by hand or uploaded | must | [storage](../src/storage) | ○ to do | 0/7 |
 
 <a id="bl-05"></a>
 #### BL-05 · Tooling majors: ESLint 10, jsdom 30, html-validate 11
@@ -166,35 +169,82 @@ Rules settled with Frantz (D-26): 3 heroes, 4 talents in all, the same bonus cou
 - [x] Page, accessibility and storage tests
 
 <a id="bl-08"></a>
-#### BL-08 · The player's setup: what they have in game, entered once
+#### BL-08 · The player's setup: everything they have in game, entered by hand or uploaded
 
 Must · [storage](../src/storage) · ○ to do · added `2026-10-24` · after [BL-07](#bl-07) · features: CFG-04
 
-- [ ] Spec: what the setup holds, where it lives (browser), how it travels with an export
-- [ ] Warlords owned and their levels, offered first when picking heroes
-- [ ] Saved, exported and imported with its checks
+Frantz, 2026-11-09: it holds everything (every bonus source, shaped on cctools.cc's profile), in a format a person fills by hand or an OCR agent maps from a documented dictionary; a summary; a guide; "use my setup" or "open the lab" to play freely. Prototype first.
 
-### v1.2 · Version 1.2, rituals and the keep
+- [ ] Prototype and spec validated: use my setup or open the lab, manual sections, upload, summary, guide
+- [ ] The setup's format and its dictionary: every source, field and value, in both languages, for a person or an agent
+- [ ] Your game: input by section (warlords first, the others as their data comes), and the summary of everything
+- [ ] A setup file uploaded and downloaded, checked, refused with its reasons
+- [ ] Use my setup or open the lab: compositions draw on the setup, or play freely
+- [ ] The guide: how to fill it, by hand or with an agent reading screenshots
+- [ ] Kept in the browser, saved, exported and imported (configuration version 3)
 
-The rituals entered once in the setup, their bonuses applied; an attack on a keep, with the defences' first round.
+### v1.2 · Version 1.2, the tier table, PvE armies, rituals and buildings
+
+The tier modifier in every battle (cctools.cc's table, confirmed on a battle report); the game's PvE armies as opponents; the rituals and buildings entered in the setup, their bonuses applied.
 
 | ID | Item | MoSCoW | Module | Status | Tasks |
 |---|---|---|---|---|---|
 | [BL-10](#bl-10) | Rituals in the setup: each ritual's level, its bonuses applied | must | [ui](../src/ui) | ○ to do | 0/3 |
-| [BL-11](#bl-11) | Keep attack: the defences' first round, as a switch on a battle | must | [engine](../src/engine) | ○ to do | 0/3 |
-| [BL-12](#bl-12) | Keep defence: a fortress (defences and garrison) as the defending side | should | [ui](../src/ui) | ○ to do | 0/2 |
-| [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ○ to do | 0/2 |
+| [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ○ to do | 0/1 |
+| [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ○ to do | 0/3 |
+| [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ○ to do | 0/3 |
 
 <a id="bl-10"></a>
 #### BL-10 · Rituals in the setup: each ritual's level, its bonuses applied
 
 Must · [ui](../src/ui) · ○ to do · added `2026-10-24` · after [BL-08](#bl-08) · features: BONUS-04
 
-Massive in game (13 categories, the military one alone has 27 rituals): the entry must be quick, category by category, as in the game.
+In one request (cctools.cc, the 153 combat rituals and their levels), as a section of the setup (BL-08).
 
 - [ ] Rituals' data from cctools.cc, checked (as BL-06)
 - [ ] Entry in the setup: a category at a time, levels typed or picked, totals shown
 - [ ] Bonuses applied to every composition
+
+<a id="bl-14"></a>
+#### BL-14 · Buildings' bonuses, by level
+
+Should · [data](../data) · ○ to do · added `2026-10-22` · after [BL-08](#bl-08) · features: BONUS-07
+
+In the same request as the rituals (cctools.cc: 10 buildings with combat bonuses), as a section of the setup.
+
+- [ ] Structures' bonuses from cctools.cc, into the setup
+
+<a id="bl-20"></a>
+#### BL-20 · PvE armies by level: the game's computer-controlled armies as opponents
+
+Should · [data](../data) · ○ to do · added `2026-11-09`
+
+The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13 cities) with their exact compositions through a public JSON interface; morale from the 48 NPC troops.
+
+- [ ] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight
+- [ ] Spec: a PvE army as the opponent of a composition, chosen by location and level
+- [ ] Data imported and checked, as the warlords' (D-25)
+
+<a id="bl-21"></a>
+#### BL-21 · The tier modifier, from cctools.cc's table, confirmed on a battle report
+
+Must · [engine](../src/engine) · ○ to do · added `2026-11-09`
+
+cctools.cc's armies tool (2026-11-09): damage × 0.7, 0.8, 0.9, 1, 1.75, 2.5, 3.25 for a tier difference of −3 to +3; an estimate there, to confirm (open question 1).
+
+- [ ] The table in combat-rules.json, its source quoted, in place of the 0 % placeholder
+- [ ] Engine and tests: the modifier by tier difference, bounded at ±3
+- [ ] Confirmed or corrected on a battle report (open question 1)
+
+### v1.3 · Version 1.3, champion, gear and the keep
+
+The champion and its gear in the setup; an attack on a keep, with the defences' first round, and a fortress as the defending side.
+
+| ID | Item | MoSCoW | Module | Status | Tasks |
+|---|---|---|---|---|---|
+| [BL-11](#bl-11) | Keep attack: the defences' first round, as a switch on a battle | must | [engine](../src/engine) | ○ to do | 0/3 |
+| [BL-12](#bl-12) | Keep defence: a fortress (defences and garrison) as the defending side | should | [ui](../src/ui) | ○ to do | 0/2 |
+| [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ○ to do | 0/2 |
 
 <a id="bl-11"></a>
 #### BL-11 · Keep attack: the defences' first round, as a switch on a battle
@@ -210,6 +260,8 @@ Must · [engine](../src/engine) · ○ to do · added `2026-10-24` · features: 
 
 Should · [ui](../src/ui) · ○ to do · added `2026-10-22` · after [BL-11](#bl-11) · features: ARMY-04
 
+To correct first (cctools.cc, 2026-11-09): the defences' capacity comes from the rituals Defence Capacity I and II, not the Fortress Walls; a defending fortress has one warlord, all its stats applied.
+
 - [ ] A fortress composition: defences within the walls' capacity, plus garrison troops
 - [ ] Compared and fought like an army, the defences' round included
 
@@ -217,6 +269,8 @@ Should · [ui](../src/ui) · ○ to do · added `2026-10-22` · after [BL-11](#b
 #### BL-13 · Champion: own stats by level, gear and set bonuses
 
 Should · [data](../data) · ○ to do · added `2026-10-22` · after [BL-08](#bl-08) · features: BONUS-05, BONUS-06
+
+cctools.cc: the champion's 85 levels (a unit itself: open question, does it fight?), 20 combat skills, 112 gear items by rarity, 7 combat sets (the highest tier reached counts).
 
 - [ ] Champion's 85 levels, gear (6 slots) and the 12 sets from cctools.cc, checked
 - [ ] In the setup; bonuses applied
@@ -228,13 +282,11 @@ Validated as ideas, not planned yet: each one is reprioritised when a version is
 | ID | Item | MoSCoW | Module | Status | Tasks |
 |---|---|---|---|---|---|
 | [BL-09](#bl-09) | Credit cctools.cc and tell its author | could | framework | ◐ doing | 2/3 |
-| [BL-14](#bl-14) | Buildings' bonuses, by level | could | [data](../data) | ○ to do | 0/1 |
 | [BL-15](#bl-15) | Calibration on battle reports: tier modifier, broken bonus, morale per squad | should | [engine](../src/engine) | ○ to do | 0/2 |
 | [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | could | [engine](../src/engine) | ○ to do | 0/1 |
 | [BL-17](#bl-17) | Read-only share link | could | [storage](../src/storage) | ○ to do | 0/1 |
 | [BL-18](#bl-18) | Food upkeep: settle the factor of 6 with cctools.cc | could | [data](../data) | ○ to do | 0/1 |
 | [BL-19](#bl-19) | The troops' pictures from the game | won't | [ui](../src/ui) | ○ to do | 0/1 |
-| [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | could | [data](../data) | ○ to do | 0/3 |
 
 <a id="bl-09"></a>
 #### BL-09 · Credit cctools.cc and tell its author
@@ -246,13 +298,6 @@ A nice-to-have (Frantz, 2026-11-09): it waits on nothing and nothing waits on it
 - [x] Message drafted (Frantz sends it, as a matter of principle; no waiting for the answer)
 - [x] Credited in the README
 - [ ] Message sent
-
-<a id="bl-14"></a>
-#### BL-14 · Buildings' bonuses, by level
-
-Could · [data](../data) · ○ to do · added `2026-10-22` · features: BONUS-07
-
-- [ ] Structures' bonuses from cctools.cc, into the setup
 
 <a id="bl-15"></a>
 #### BL-15 · Calibration on battle reports: tier modifier, broken bonus, morale per squad
@@ -289,14 +334,3 @@ Could · [data](../data) · ○ to do · added `2026-10-24`
 Won't · [ui](../src/ui) · ○ to do · added `2026-10-22`
 
 - [ ] The publishers' permission (open question 11); the page uses its own icons meanwhile
-
-<a id="bl-20"></a>
-#### BL-20 · PvE armies by level: the game's computer-controlled armies as opponents
-
-Could · [data](../data) · ○ to do · added `2026-11-09`
-
-Asked by Frantz on 2026-11-09, to prioritise once cctools.cc is scanned again (what its armies and NPC troops give).
-
-- [ ] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight
-- [ ] Spec: a PvE army as the opponent of a composition, chosen by location and level
-- [ ] Data imported and checked, as the warlords' (D-25)
