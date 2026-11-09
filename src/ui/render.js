@@ -16,6 +16,8 @@ import { drawProfile } from "./steps/profile/draw.js";
 import { drawCompare } from "./steps/compare/draw.js";
 import { drawSaves } from "./steps/saves/draw.js";
 import { drawDashboards } from "./steps/dashboards/draw.js";
+import { drawSetupCapacityFields, drawSetupStatus } from "./steps/setup/draw.js";
+import { drawSetupWarlords } from "./steps/setup/warlords.js";
 
 export function refresh() {
   drawBonusProblems();
@@ -23,6 +25,7 @@ export function refresh() {
   drawProfile();
   drawCompare();
   drawDashboards();
+  drawSetupStatus();
 }
 
 export function renderAll() {
@@ -38,6 +41,8 @@ export function renderAll() {
     drawPicker();
     drawHeroes();
     drawSaves();
+    drawSetupWarlords();
+    drawSetupCapacityFields();
   });
   refresh();
 }

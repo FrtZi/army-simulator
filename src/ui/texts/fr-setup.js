@@ -1,9 +1,40 @@
-// The texts of the page tabs and of Your setup in French (NAV-01, D-27): the same keys as en-setup.js (tested).
+// The texts of the page tabs and of Your setup in French (NAV-01, CFG-04, D-27): the same keys as en-setup.js
+// (tested).
 export const FR_SETUP = {
   "tabs.label": "Pages",
   "tabs.lab": "Laboratoire de bataille",
   "tabs.setup": "Votre configuration",
   "setup.title": "Votre configuration",
   "setup.hint":
-    "Ce que vous avez dans le jeu : vos seigneurs de guerre et leurs niveaux, votre capacité de marche, vos bonus. Saisissez-la une fois, mettez-la à jour en progressant.",
+    "Ce que vous avez dans le jeu : vos héros et leurs niveaux, votre capacité de marche, vos bonus. Saisissez-la une fois, mettez-la à jour en progressant.",
+  "setup.summary": "Votre configuration en un coup d'œil",
+  "setup.save": "Enregistrer",
+  "setup.discard": "Annuler les modifications",
+  "setup.unsaved": "{n} modifications non enregistrées : Enregistrer les garde dans ce navigateur.",
+  "setup.unsavedOne": "1 modification non enregistrée : Enregistrer la garde dans ce navigateur.",
+  "setup.saved": "Enregistrée dans ce navigateur.",
+  "setup.never": "Rien d'enregistré pour l'instant : saisissez ce que vous avez dans le jeu, puis Enregistrer.",
+  "setup.failed": "Non enregistrée : ce navigateur refuse de garder des données (fenêtre privée ?).",
+  "tile.warlords": "Héros",
+  "tile.capacity": "Capacité de marche",
+  "tile.bonuses": "Bonus",
+  "tile.rituals": "Rituels",
+  "tile.buildings": "Bâtiments",
+  "tile.champion": "Champion et équipement",
+  "tile.owned": "{n} sur {total}",
+  "tile.entered": "Saisie faite",
+  "tile.empty": "À saisir",
+  "tile.next": "Bientôt",
+  "tile.coming": "Prévu en version {version}",
+  "setup.warlords": "Héros",
+  "setup.warlordsHint":
+    "Chaque héros que vous possédez, à son rang et son niveau tels que le jeu les affiche. La puissance indiquée est celle du site : comparez-la à celle du jeu.",
+  "setup.addWarlord": "Ajouter un héros",
+  "setup.add": "Ajouter",
+  "setup.allOwned": "Tous les héros sont dans votre configuration",
+  "setup.noWarlord": "Aucun héros pour l'instant : ajoutez ceux que vous possédez.",
+  "setup.new": "nouveau",
+  "setup.changed": "modifié",
+  "setup.removed": "Retirés depuis le dernier enregistrement : {names}.",
+  "setup.capacity": "Capacité de marche",
 };

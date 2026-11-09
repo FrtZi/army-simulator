@@ -19,6 +19,11 @@
   color: var(--good);
 }
 
+/* a state still to act on (changes not saved, nothing saved yet): neither good nor critical */
+.status.pending {
+  color: var(--text);
+}
+
 /* stat, %, target, value, then the remove button: always last, always square */
 .bonus-row {
   display: grid;

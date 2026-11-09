@@ -32,4 +32,19 @@
   .army-line {
     grid-template-columns: auto 1fr 6rem 2.5rem;
   }
+
+  /* a hero's rank and level go under its name, so the name and its details keep the width (DEF-032) */
+  .army-line.hero-line {
+    grid-template-columns: auto 1fr 2.5rem;
+  }
+
+  .hero-line .hero-level {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .hero-line button.icon {
+    grid-column: 3;
+    grid-row: 1;
+  }
 }

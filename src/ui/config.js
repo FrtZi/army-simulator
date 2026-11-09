@@ -12,6 +12,8 @@ export const CONFIG = {
   pickerFilters: { building: "buildings", tier: "tiers", alignment: "alignments", unitType: "unitTypes" },
   heroFilters: { alignment: "alignments", rarity: "rarities" }, // the hero picker's filters (D-26)
   newHeroLevel: 1, // a hero added starts at rank 1, level 1: the player sets its level
+  // the setup's sections not entered on the page yet, and the version of the site that brings each (D-27)
+  setupComing: { bonuses: "next", rituals: "1.2", buildings: "1.2", champion: "1.3" },
   percentStep: 0.5,
   compositionNames: ["A", "B"], // the compositions a new page starts with; the player adds more (D-19)
 };

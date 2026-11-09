@@ -494,3 +494,19 @@ resultat = "The look of tabs is in one place; the test fails on the copy as it w
 preuve = ["tests/styles.test.js"]
 lecon = "Before naming a shared class, search for it: DRY holds for styles too, and only a check across files keeps it."
 liens = ["MAINT-01", "NAV-01"]
+
+[[defaut]]
+id = "DEF-032"
+date = 2026-11-09
+titre = "A hero's line crushed on a phone"
+type = "code"
+etiquettes = ["page"]
+gravite = "minor"
+statut = "fixed"
+constat = "At 375 px wide, a hero's line (in the Battle lab since D-26, and in Your setup) squeezed its name and details into a narrow column, a word per line, beside its rank and level."
+cause = "The hero line gives itself four columns (heroes.css), a more specific selector than the troop line's phone layout in responsive.css, so the phone layout never reached it; jsdom lays nothing out, and no check read the stylesheets for it."
+solution = "On a phone, a hero's rank and level go on a second line under its name. A test reads the stylesheets: every grid of four columns or more, as the cascade leaves it, has its phone layout."
+resultat = "The line reads at phone width, in the lab and in Your setup, without sideways scrolling; the test fails without the phone rule."
+preuve = ["tests/styles.test.js"]
+lecon = "A more specific selector also escapes the media query written for the general one: a layout for phones is checked per selector, not assumed."
+liens = ["COMP-01", "ARMY-05", "CFG-04"]

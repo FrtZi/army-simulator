@@ -7,11 +7,12 @@ export const PAGE = readFileSync(new URL("../dist/index.html", import.meta.url),
 const LANGUAGE_KEY = "army-simulator.language";
 
 /**
- * The page in a fresh window: the browser's language, and a language saved by an earlier visit if any.
+ * The page in a fresh window: the browser's language, and a language saved by an earlier visit if any; `stored`,
+ * what an earlier visit left in the browser's storage (key → text), such as a saved setup.
  * jsdom only reports an error in a page script to its console, so a script that throws while the page opens
  * fails the test here: src/theme-init.js once threw because jsdom, like some browsers, has no matchMedia (DEF-009).
  */
-export function openPage({ language = "en-GB", saved } = {}) {
+export function openPage({ language = "en-GB", saved, stored = {} } = {}) {
   const errors = [];
   const virtualConsole = new VirtualConsole().forwardTo(console, { jsdomErrors: "none" });
   virtualConsole.on("jsdomError", (error) => errors.push(error));
@@ -23,6 +24,7 @@ export function openPage({ language = "en-GB", saved } = {}) {
     beforeParse(win) {
       Object.defineProperty(win.navigator, "language", { value: language });
       if (saved) win.localStorage.setItem(LANGUAGE_KEY, saved);
+      for (const [key, value] of Object.entries(stored)) win.localStorage.setItem(key, value);
     },
   });
   if (errors.length) throw errors[0];

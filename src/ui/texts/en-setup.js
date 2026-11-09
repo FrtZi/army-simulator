@@ -1,9 +1,40 @@
-// The texts of the page tabs and of Your setup in English (NAV-01, D-27): the same keys as fr-setup.js (tested).
+// The texts of the page tabs and of Your setup in English (NAV-01, CFG-04, D-27): the same keys as fr-setup.js
+// (tested).
 export const EN_SETUP = {
   "tabs.label": "Pages",
   "tabs.lab": "Battle lab",
   "tabs.setup": "Your setup",
   "setup.title": "Your setup",
   "setup.hint":
-    "What you have in the game: your warlords and their levels, your march capacity, your bonuses. Enter it once, update it as you progress.",
+    "What you have in the game: your heroes and their levels, your march capacity, your bonuses. Enter it once, update it as you progress.",
+  "setup.summary": "Your setup at a glance",
+  "setup.save": "Save",
+  "setup.discard": "Discard changes",
+  "setup.unsaved": "{n} unsaved changes: Save keeps them in this browser.",
+  "setup.unsavedOne": "1 unsaved change: Save keeps it in this browser.",
+  "setup.saved": "Saved in this browser.",
+  "setup.never": "Nothing saved yet: enter what you have in the game, then Save.",
+  "setup.failed": "Not saved: this browser refuses to keep data (a private window?).",
+  "tile.warlords": "Heroes",
+  "tile.capacity": "March capacity",
+  "tile.bonuses": "Bonuses",
+  "tile.rituals": "Rituals",
+  "tile.buildings": "Buildings",
+  "tile.champion": "Champion and gear",
+  "tile.owned": "{n} of {total}",
+  "tile.entered": "Entered",
+  "tile.empty": "Not entered",
+  "tile.next": "Coming next",
+  "tile.coming": "Coming in version {version}",
+  "setup.warlords": "Heroes",
+  "setup.warlordsHint":
+    "Every hero you own, at its rank and level as the game shows them. The power beside it is the site's: check it against the game's.",
+  "setup.addWarlord": "Add a hero",
+  "setup.add": "Add",
+  "setup.allOwned": "Every hero is in your setup",
+  "setup.noWarlord": "No hero yet: add the ones you own.",
+  "setup.new": "new",
+  "setup.changed": "changed",
+  "setup.removed": "Removed since the last save: {names}.",
+  "setup.capacity": "March capacity",
 };

@@ -1,4 +1,39 @@
 <section id="setup" class="card" aria-labelledby="setup-title">
   <h2 id="setup-title" data-text="setup.title"></h2>
   <p class="hint" data-text="setup.hint"></p>
+  <ul id="setup-summary" class="setup-tiles" data-text-label="setup.summary"></ul>
+  <div class="setup-bar">
+    <p id="setup-status" class="status" role="status"></p>
+    <button id="setup-save" type="button" class="primary" data-text="setup.save"></button>
+    <button id="setup-discard" type="button" data-text="setup.discard"></button>
+  </div>
+</section>
+
+<section id="setup-warlords" class="card" aria-labelledby="setup-warlords-title">
+  <h2 id="setup-warlords-title" data-text="setup.warlords"></h2>
+  <p class="hint" data-text="setup.warlordsHint"></p>
+  <div class="setup-add">
+    <div class="field">
+      <label for="setup-warlord-select" data-text="setup.addWarlord"></label>
+      <select id="setup-warlord-select"></select>
+    </div>
+    <button id="setup-warlord-add" type="button" data-text="setup.add"></button>
+  </div>
+  <ul id="setup-warlord-list" class="army-list"></ul>
+  <p id="setup-warlords-removed" class="hint"></p>
+</section>
+
+<section id="setup-capacity" class="card" aria-labelledby="setup-capacity-title">
+  <h2 id="setup-capacity-title" data-text="setup.capacity"></h2>
+  <div class="capacity-fields">
+    <div class="field">
+      <label for="setup-capacity-base" data-text="capacity.base"></label>
+      <input id="setup-capacity-base" type="number" min="0" step="100" inputmode="numeric" />
+    </div>
+    <div class="field">
+      <label for="setup-capacity-bonus" data-text="capacity.bonus"></label>
+      <input id="setup-capacity-bonus" type="number" min="0" max="100" step="0.5" inputmode="decimal" />
+    </div>
+  </div>
+  <p id="setup-capacity-total" class="capacity-total"></p>
 </section>

@@ -28,6 +28,10 @@ export const state = {
   // each { name, troops: troop id → count in the order added, heroes: [{ id, level }], talents: [talent ids] }
   compositions: emptyCompositions(),
   page: "lab", // the page tab shown: the Battle lab or Your setup (NAV-01)
+  // the player's setup (D-27): the one edited, the last one saved, and whether the last save failed
+  playerSetup: null,
+  savedPlayerSetup: null,
+  setupSaveFailed: false,
   active: 0, // the composition being edited
   compare: [0, 1], // the two compositions compared
   dashboard: "efficiency", // the dashboard tab shown

@@ -7,6 +7,7 @@ import { indexCatalogue } from "../src/engine/index.js";
 import { readSetupFile, writeSetupFile } from "../src/storage/setup-file.js";
 import { emptySetup, mergeSetup } from "../src/storage/setup-merge.js";
 import { nearestId } from "../src/storage/nearest.js";
+import { storedPlayerSetup, storePlayerSetup } from "../src/storage/player-setup.js";
 
 const read = (path) => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const GAME = "chaos-conquest";
@@ -143,4 +144,27 @@ test("CFG-05 a misread name gets the nearest id, by id or by label; a name too f
   assert.equal(nearestId("Skullhuntr", warlords), "skullhunter");
   assert.equal(nearestId("Bloodthister", warlords), "bloodthirster");
   assert.equal(nearestId("Gandalf", warlords), null);
+});
+
+/** A storage like the browser's, in memory; or one that refuses every write, as a blocked one does. */
+const memory = (items = {}) => ({
+  getItem: (key) => items[key] ?? null,
+  setItem: (key, value) => (items[key] = value),
+});
+const refusing = {
+  getItem: () => null,
+  setItem: () => {
+    throw new Error("blocked");
+  },
+};
+
+test("CFG-04 the setup kept per game in the browser, read back the same; a blocked storage says so", () => {
+  const setup = { ...emptySetup(GAME), warlords: [{ id: "azazel", level: 24 }], capacity: { base: 110000 } };
+  const items = { "army-simulator.player-setup": JSON.stringify({ "another-game": { kept: true } }) };
+  const storage = memory(items);
+  assert.equal(storePlayerSetup(storage, setup, target.game), true);
+  assert.deepEqual(storedPlayerSetup(storage, GAME, games), setup);
+  assert.deepEqual(JSON.parse(items["army-simulator.player-setup"])["another-game"], { kept: true });
+  assert.equal(storePlayerSetup(refusing, setup, target.game), false);
+  assert.deepEqual(storedPlayerSetup(null, GAME, games), emptySetup(GAME), "storage out of reach: an empty setup");
 });

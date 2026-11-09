@@ -47,7 +47,8 @@ src/storage/             no DOM: configuration.js (setup ↔ file format version
                          setup-file.js (read and checked value by value, written back), setup-merge.js (only
                          what a file holds changes), nearest.js (the id a misread name meant); its dictionary
                          (D-28): setup-dictionary.js (built from the game's data), setup-schema.js (as a JSON
-                         Schema), setup-brief.js (the brief for an agent, the whole dictionary in it)
+                         Schema), setup-brief.js (the brief for an agent, the whole dictionary in it); and
+                         player-setup.js (the setup kept in the browser, one per game, as a setup file)
 src/index.html           page shell: head, header (flags, theme), footer, one include per section
 src/theme-init.js        sets the theme before the first paint (inlined in <head>)
 src/assets/              the language flags (inlined by the build)
@@ -56,6 +57,7 @@ src/ui/                  the page
 ├── config.js            CONFIG: every tunable value of the interface
 ├── games.js             the games and their data (the JSON imports the build bundles)
 ├── state.js             the single mutable state, and what derives from it (effects, army, profile)
+├── player-setup.js      the player's setup on the page: the one edited, the last saved, what differs (D-27)
 ├── render.js            the render pipeline: what to redraw after a change
 ├── texts/               the page's texts: en.js + en-more, en-dash, en-heroes, en-setup, and the same in French
 │                        (same keys), t()
@@ -72,7 +74,8 @@ src/ui/                  the page
                          (+ picker.js; heroes.js beside state.js works out a composition's heroes),
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
-                         and Your setup's: setup (D-27)
+                         and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
+                         in warlords.js; D-27)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
 scripts/
@@ -92,6 +95,8 @@ tests/                   node --test; each test names the feature it proves
 ├── data, engine, battle, dashboards, backtest, storage, setup, setup-dictionary   the data, the engine, the saves
 │                        and the setup with its dictionary, in Node
 ├── page.test.js         the published page, driven in jsdom (page.js: opening it, clicking, typing)
+├── setup-page.test.js   the page tabs and Your setup, on the published page (NAV-01, CFG-04)
+├── styles.test.js       each selector's look in one stylesheet (DEF-031)
 ├── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens
 ├── tooling.test.js      the page assembler, the dev server, configurations aligned (MAINT-04)
 ├── performance.test.js  the worst comparison against a phone's budget (PERF-01)
@@ -151,6 +156,7 @@ army lines and the profile.
 | ----------------------------------------- | ---------------------------------------- |
 | A game fact (unit stat, rule, vocabulary) | `data/*.json`                            |
 | A player's configuration                  | their browser, and the files they export |
+| A player's setup (what they have in game) | their browser, as a setup file (D-27)    |
 | A screenshot                              | `captures/`, on this computer only       |
 | A tunable value of the interface          | `CONFIG` in `src/ui/config.js`           |
 | A text of the page                        | `src/ui/texts/en.js` and `fr.js`         |

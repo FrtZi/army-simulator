@@ -7,4 +7,5 @@
 @import "./figures.css";
 @import "../ui/steps/heroes/heroes.css"; /* a part's own styles sit with it */
 @import "../ui/steps/dashboards/dashboards.css";
+@import "../ui/steps/setup/setup.css";
 @import "./responsive.css";

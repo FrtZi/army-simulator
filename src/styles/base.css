@@ -96,6 +96,18 @@ button.primary:hover {
   background: var(--accent-hover);
 }
 
+/* a button with nothing to do yet (Save with nothing unsaved): faded, and no hover that invites a click */
+button:disabled,
+button:disabled:hover {
+  border-color: var(--line);
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.primary:disabled:hover {
+  background: var(--accent);
+}
+
 /* a square button holding one icon, centred */
 button.icon {
   flex: none;

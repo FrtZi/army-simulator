@@ -45,7 +45,11 @@ for (const language of ["en", "fr"]) {
       openTable();
       assert.deepEqual(await violations(page), [], dashboard);
     }
-    page.click("#page-tab-setup"); // Your setup (NAV-01, D-27)
+    // Your setup (NAV-01, D-27), a hero in it, marked as not saved
+    page.click("#page-tab-setup");
+    page.choose("#setup-warlord-select", "azazel");
+    page.click("#setup-warlord-add");
+    page.type("#setup-capacity-base", 110000);
     assert.deepEqual(await violations(page), [], "your setup");
   });
 }
