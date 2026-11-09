@@ -6,7 +6,7 @@ export { resolveSources } from "./sources.js";
 export { effectProblems } from "./bonuses.js";
 export { bonusPercent, applyPercent, effectiveStats, marchCapacity } from "./stats.js";
 export { fighters, indexCatalogue, summariseArmy } from "./army.js";
-export { heroProblems, heroUnit, levelOf, offeredTalents, rankOf, talentEffects } from "./heroes.js";
+export { costBetween, heroProblems, heroUnit, levelOf, offeredTalents, rankOf, talentEffects } from "./heroes.js";
 export { damagePerTroop, healthPerTroop, tierFactor, attackMode, preferredMode } from "./combat.js";
 export { simulateBattle } from "./battle.js";
 export { armyDamage, armyHealth } from "./measures.js";

@@ -6,9 +6,13 @@
 //
 // A talent's effect is worked out from its game code (chaos_slaanesh_health_modifier → health, target
 // alignments slaanesh); the codes that cannot be are named by hand in game.json's talentCodes. An unknown code,
-// stat or value stops the import: nothing is guessed.
+// stat or value stops the import: nothing is guessed. Each level's cost names its resources and items by the ids of
+// data/<game>/items.json (scripts/import-items.mjs, GUIDE-04).
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
+import { itemOf, pageData } from "./cctools.mjs";
+
+export { pageData };
 
 const GAME = "chaos-conquest";
 const root = new URL("../", import.meta.url);
@@ -17,20 +21,12 @@ const OUTPUT = new URL(`data/${GAME}/warlords.json`, root);
 const LEVELS = 35;
 const SOURCE = "cctools.cc, the warlords' pages (D-25); written by scripts/import-warlords.mjs: never edit by hand";
 const ALIASES = { defenses: "defences" }; // the game's codes spell it the American way
-const ENTITIES = { "&quot;": '"', "&#039;": "'", "&lt;": "<", "&gt;": ">", "&amp;": "&" };
 
 const camel = (snake) => snake.replace(/_(\w)/g, (_, letter) => letter.toUpperCase());
 const snake = (camelCase) => camelCase.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 const kebab = (text) => text.replace(/_/g, "-");
 const ids = (list) => list.map((entry) => entry.id);
 const percent = (modifier) => Math.round(modifier * 1000) / 10; // 0.015 → 1.5, without float noise
-
-/** A saved page's data (Inertia's data-page attribute). */
-export function pageData(html) {
-  const match = html.match(/data-page="([^"]*)"/);
-  if (!match) throw new Error("no data-page in the saved page");
-  return JSON.parse(match[1].replace(/&(quot|#039|lt|gt|amp);/g, (entity) => ENTITIES[entity])).props;
-}
 
 /** What a talent code does, as an effect shape: { id, code, stat, target? }, or the hand-named entry. */
 export function talentOf(code, game) {
@@ -59,7 +55,10 @@ export function warlordOf(data, game, talents) {
   if (levels.length !== LEVELS) throw new Error(`${warlord.slug}: ${levels.length} levels`);
   const stats = {};
   const own = {};
+  const costs = {};
   levels.forEach((level, index) => {
+    // what reaching this level costs (level 1: unlocking the warlord), one list of 35 per resource or item
+    for (const cost of level.costs) (costs[itemOf(cost).id] ??= Array(LEVELS).fill(null))[index] = cost.quantity;
     for (const { code, value } of level.attributes) {
       if (!ids(game.troopStats).includes(camel(code))) throw new Error(`${warlord.slug}: unknown stat ${code}`);
       (stats[camel(code)] ??= Array(LEVELS).fill(null))[index] = value;
@@ -80,6 +79,7 @@ export function warlordOf(data, game, talents) {
     power: levels.map((level) => level.summary.power),
     stats,
     talents: own,
+    costs,
   };
 }
 

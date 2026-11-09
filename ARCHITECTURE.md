@@ -25,6 +25,7 @@ data/                    each game's facts (JSON), the same for every player (D-
     ├── units.json       one entry per troop type, from its in-game sheet
     ├── combat-rules.json  the combat rules the game publishes, with their source
     ├── warlords.json    the 33 warlords, at each of 35 levels: imported (scripts/import-warlords.mjs), never edited
+    ├── items.json       the resources and items costs name: imported (scripts/import-items.mjs), never edited (D-29)
     └── setup.json       the setup file's words: each element's definition, reading examples, the agent brief (D-28)
 src/engine/              pure functions, no DOM, no file access: callers pass the data
 ├── index.js             public API: the only file the page and the tests import
@@ -80,7 +81,8 @@ src/ui/                  the page
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
                          in warlords.js, a file uploaded in files.js, under review in import.js, drawn in review.js; D-27);
-                         and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js)
+                         and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, their
+                         way up in costs.js)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
 scripts/
@@ -90,6 +92,8 @@ scripts/
 ├── serve.mjs            npm run dev: serves the source page and data/ (no build)
 ├── catalogue.mjs        reads the feature catalogue (docs/features.md)
 ├── import-warlords.mjs  data/<game>/warlords.json from cctools.cc's saved pages (D-25)
+├── import-items.mjs     data/<game>/items.json, the resources and items their costs name (D-29)
+├── cctools.mjs          what the imports share: a saved page's data, a cost's item
 ├── backlog*.mjs         the product backlog: its check and its page docs/backlog.md (npm run backlog)
 └── defects*.mjs         the defects register: its format, its check, its page docs/defects.md (npm run defects)
 examples/

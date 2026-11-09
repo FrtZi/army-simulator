@@ -39,4 +39,10 @@ export const FR_GUIDES = {
   "guides.atMax": "Au niveau {max}",
   "guides.ranks": "Puissance à la fin de chaque rang",
   "guides.rankEnd": "Rang {rank}",
+  "guides.costs": "Ce que coûte la montée",
+  "guides.resource": "Ressource ou objet",
+  "guides.thisLevel": "Ce niveau",
+  "guides.fromYours": "Depuis le vôtre (rang {rank}, niveau {level})",
+  "guides.fromNothing": "Depuis rien, déblocage compris",
+  "guides.reached": "Vous avez déjà atteint ce niveau : choisissez-en un plus haut pour voir ce qu'il reste.",
 };

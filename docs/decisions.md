@@ -349,3 +349,17 @@ development dependency only: the page never loads it).
   committed (they would need a freshness check, and nothing reads them from the repository); a schema
   library generating both the checks and the schema, such as Zod (a runtime dependency in the page, and the
   reader's partial acceptance, each refused value named with its reason, is not what such libraries do).
+
+## D-29 · What things cost: one list of resources and items, costs stored like stats (2026-11-09)
+
+Frantz asked for each block's way up, its prerequisites and where to get what it asks (GUIDE-04). cctools.cc's
+saved warlord pages already hold each level's cost; its other pages hold the rituals', buildings' and gear's, and
+where each item drops (`where-to-find`) and what uses it (`where-to-use`).
+
+- **One list of resources and items**, `items.json`, generated from the saved pages by its own import, which every
+  cost points at: an item is named once, in both languages, whatever block asks for it.
+- **A cost stored like a stat**: per resource, one list of values by level (`null` where that level asks none), so
+  a warlord stays one readable block and the page stays light (the 33 warlords' costs: about 70 KB).
+- **The sums are the engine's** (`costBetween`): from the player's own level, or from nothing with the unlock.
+- _Set aside:_ a list of `{ level, item, quantity }` rows (three times the size for the same facts); the items
+  written by each block's import (two writers of one file would drift).

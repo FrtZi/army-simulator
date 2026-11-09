@@ -7,6 +7,7 @@ import chaosConquestDefences from "../../data/chaos-conquest/defences.json" with
 import chaosConquestRules from "../../data/chaos-conquest/combat-rules.json" with { type: "json" };
 import chaosConquestWarlords from "../../data/chaos-conquest/warlords.json" with { type: "json" };
 import chaosConquestSetup from "../../data/chaos-conquest/setup.json" with { type: "json" };
+import chaosConquestItems from "../../data/chaos-conquest/items.json" with { type: "json" };
 import { indexCatalogue } from "../engine/index.js";
 import { setupDictionary } from "../storage/setup-dictionary.js";
 
@@ -18,6 +19,7 @@ const DATA = {
     rules: chaosConquestRules,
     heroes: chaosConquestWarlords,
     setup: chaosConquestSetup,
+    items: chaosConquestItems,
   },
 };
 
@@ -32,6 +34,7 @@ export const GAMES = gameList.map((entry) => {
     catalogue: indexCatalogue(data.units, data.defences),
     warlords: new Map(warlords.map((warlord) => [warlord.id, warlord])),
     talents,
+    items: new Map(data.items.items.map((item) => [item.id, item])),
   };
 });
 

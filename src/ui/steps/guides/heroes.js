@@ -7,6 +7,7 @@ import { label, nameOf, number, searchable, tierName } from "../../format.js";
 import { currentGame, state } from "../../state.js";
 import { levelOf, rankOf } from "../../../engine/index.js";
 import { talentName } from "../heroes/draw.js";
+import { costsHtml } from "./costs.js";
 import { t } from "../../texts/index.js";
 
 const rules = () => currentGame().game.heroRules;
@@ -107,6 +108,7 @@ export function heroDetailHtml(warlord) {
       ${figure(t("guides.tier"), tierName(warlord.tier[index]))}
       ${figure(t("guides.unlocked"), t("guides.unlockedOf", { n: unlocked, total: Object.keys(warlord.talents).length }))}
     </div>
+    ${costsHtml(warlord, level, mine)}
     <h4>${escape(t("guides.talents"))}</h4>${talentsTable(warlord, index)}
     <h4>${escape(t("guides.stats"))}</h4>${statsTable(warlord, index)}
     <h4>${escape(t("guides.ranks"))}</h4>${rankStrip(warlord, rank)}`;

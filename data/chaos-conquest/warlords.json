@@ -89,6 +89,12 @@
         "chariots-health": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "monsters-ranged-damage": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "slaanesh-ranged-damage": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "azazel-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2050, 2100, 2150, 2200, 2250],
+        "iron": [null, 80000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 36200000, 36400000, 36600000, 36800000, 37000000],
+        "carrier-xp-token": [null, 135, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 2725, 2750, 2775, 2800, 2825],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -115,6 +121,12 @@
         "khorne-melee-damage": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "khorne-ranged-damage": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "khorne-ranged-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 3, 6, 9, 12, 15, 17, 19, 21, 23, 25]
+      },
+      "costs": {
+        "bloodthirster-favour": [100, null, null, null, null, 150, null, null, null, null, 250, null, null, null, null, 350, null, null, null, null, 500, null, null, null, null, 650, 800, 950, 1100, 1250, 1300, 1350, 1400, 1450, 1500],
+        "iron": [null, 20000, 40000, 80000, 120000, null, 200000, 300000, 400000, 500000, null, 700000, 900000, 1100000, 1300000, null, 1600000, 2000000, 2400000, 2800000, null, 3600000, 4800000, 6000000, 8000000, 10000000, 12000000, 14000000, 16000000, 18000000, 18200000, 18400000, 18600000, 18800000, 19000000],
+        "carrier-xp-token": [null, 60, 90, 120, 150, null, 180, 210, 240, 270, null, 300, 330, 360, 390, null, 420, 450, 480, 510, null, 540, 570, 600, 750, 900, 1050, 1200, 1350, 1500, 1525, 1550, 1575, 1600, 1625],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 150, 250, 375, 500]
       }
     },
     {
@@ -142,6 +154,12 @@
         "monstrous-infantry-ranged-attack": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "reward-chance": [0.3, 0.5, 0.8, 1, 1.3, 1.8, 2, 2.3, 2.5, 2.8, 3.3, 3.5, 3.8, 4, 4.3, 5, 5.5, 6, 6.5, 7, 8, 8.5, 9, 9.5, 10, 11.5, 12.5, 13.5, 14.5, 15.5, 16, 16.5, 17, 17.5, 18],
         "tzeentch-melee-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "blue-scribes-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2050, 2100, 2150, 2200, 2250],
+        "iron": [null, 80000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 36200000, 36400000, 36600000, 36800000, 37000000],
+        "carrier-xp-token": [null, 135, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 2725, 2750, 2775, 2800, 2825],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -169,6 +187,12 @@
         "territory-contest-speed": [1.5, 2.1, 3, 3.9, 4.8, 5.7, 6.6, 7.5, 8.4, 9.3, 10.2, 11.1, 12, 12.9, 13.8, 14.7, 15.6, 16.5, 17.4, 18.3, 19.2, 20.1, 21, 22.8, 24, 24.6, 25.2, 25.8, 26.4, 27, 27.6, 28.2, 28.8, 29.4, 30],
         "monsters-melee-damage": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "khorne-speed": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "chaos-lord-of-khorne-favour": [300, null, null, null, null, 375, null, null, null, null, 550, null, null, null, null, 850, null, null, null, null, 1200, null, null, null, null, 1550, 1875, 2250, 2625, 3000, 3375, 3750, 4125, 4500, 4875],
+        "iron": [null, 120000, 120000, 240000, 360000, null, 600000, 900000, 1200000, 1500000, null, 2100000, 2700000, 3300000, 3900000, null, 4800000, 6000000, 7200000, 8400000, null, 10800000, 12900000, 18000000, 24000000, 30000000, 36000000, 42000000, 48000000, 54000000, 60000000, 66000000, 72000000, 78000000, 84000000],
+        "carrier-xp-token": [null, 200, 200, 275, 350, null, 400, 475, 550, 600, null, 675, 750, 800, 875, null, 950, 1000, 1075, 1150, null, 1225, 1275, 1350, 1800, 2250, 2700, 3150, 3600, 4050, 4500, 4950, 5400, 5850, 6300],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 150, 300, 525, 750, 1125]
       }
     },
     {
@@ -194,6 +218,12 @@
         "undivided-armour": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17.5, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
         "defences-health": [0.5, 0.8, 1, 1.3, 1.5, 1.8, 2, 2.3, 2.5, 2.8, 3, 3.3, 3.5, 3.8, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.8, 10, 11, 12, 13, 14, 15, 17, 19, 21, 23, 25],
         "monsters-melee-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 4, 6, 8, 10, 11, 12, 13, 14, 15]
+      },
+      "costs": {
+        "chosen-champion-favour": [20, null, null, null, null, 50, null, null, null, null, 100, null, null, null, null, 175, null, null, null, null, 275, null, null, null, null, 375, 425, 475, 525, 575, 625, 675, 725, 775, 825],
+        "iron": [null, 2500, 5000, 10000, 15000, null, 35000, 55000, 75000, 95000, null, 125000, 150000, 175000, 200000, null, 250000, 300000, 350000, 400000, null, 500000, 600000, 700000, 800000, 1000000, 1200000, 1400000, 1600000, 1800000, 2000000, 2200000, 2400000, 2600000, 2800000],
+        "carrier-xp-token": [null, 10, 15, 20, 25, null, 30, 35, 40, 45, null, 50, 55, 60, 65, null, 70, 75, 80, 85, null, 90, 95, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 15, 30, 45, 60, 75]
       }
     },
     {
@@ -219,6 +249,12 @@
         "undivided-morale": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17.5, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
         "march-capacity": [0.3, 0.4, 0.5, 0.6, 0.8, 0.9, 1, 1.1, 1.3, 1.4, 1.5, 1.6, 1.8, 1.9, 2, 2.3, 2.5, 2.8, 3, 3.3, 3.5, 3.8, 4, 4.4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20],
         "infantry-ranged-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 4, 6, 8, 10, 11, 12, 13, 14, 15]
+      },
+      "costs": {
+        "chosen-standard-bearer-favour": [20, null, null, null, null, 50, null, null, null, null, 100, null, null, null, null, 175, null, null, null, null, 275, null, null, null, null, 375, 425, 475, 525, 575, 625, 675, 725, 775, 825],
+        "iron": [null, 2500, 5000, 10000, 15000, null, 35000, 55000, 75000, 95000, null, 125000, 150000, 175000, 200000, null, 250000, 300000, 350000, 400000, null, 500000, 600000, 700000, 800000, 1000000, 1200000, 1400000, 1600000, 1800000, 2000000, 2200000, 2400000, 2600000, 2800000],
+        "carrier-xp-token": [null, 10, 15, 20, 25, null, 30, 35, 40, 45, null, 50, 55, 60, 65, null, 70, 75, 80, 85, null, 90, 95, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 15, 30, 45, 60, 75]
       }
     },
     {
@@ -244,6 +280,12 @@
         "undivided-morale": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 38.5, 39.5, 40.5, 41.5, 42.5],
         "chariots-ranged-attack": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.8, 11.5, 12.3, 13, 14, 15, 15.8, 16.5, 17.3, 18, 18.8, 19.8, 20.8, 21.8, 22.8, 23.8],
         "march-speed": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 38.5, 39.5, 40.5, 41.5, 42.5]
+      },
+      "costs": {
+        "daemon-prince-favour": [50, null, null, null, null, 100, null, null, null, null, 150, null, null, null, null, 225, null, null, null, null, 325, null, null, null, null, 425, 525, 625, 725, 825, 875, 925, 975, 1025, 1075],
+        "iron": [null, 10000, 20000, 40000, 60000, null, 100000, 150000, 200000, 250000, null, 350000, 450000, 550000, 650000, null, 800000, 1000000, 1200000, 1400000, null, 1800000, 2400000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 9200000, 9400000, 9600000, 9800000, 10000000],
+        "carrier-xp-token": [null, 40, 60, 80, 100, null, 120, 140, 160, 180, null, 200, 220, 240, 260, null, 280, 300, 320, 340, null, 360, 380, 400, 500, 600, 700, 800, 900, 1000, 1025, 1050, 1075, 1100, 1125],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 50, 100, 150, 200, 250]
       }
     },
     {
@@ -269,6 +311,12 @@
         "undivided-melee-damage": [0.5, 0.8, 1, 1.3, 1.5, 1.8, 2, 2.3, 2.5, 2.8, 3, 3.3, 3.5, 3.8, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
         "march-speed": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17.5, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
         "chariots-armour": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+      },
+      "costs": {
+        "doom-knight-favour": [20, null, null, null, null, 50, null, null, null, null, 100, null, null, null, null, 175, null, null, null, null, 275, null, null, null, null, 375, 425, 475, 525, 575, 625, 675, 725, 775, 825],
+        "iron": [null, 2500, 5000, 10000, 15000, null, 35000, 55000, 75000, 95000, null, 125000, 150000, 175000, 200000, null, 250000, 300000, 350000, 400000, null, 500000, 600000, 700000, 800000, 1000000, 1200000, 1400000, 1600000, 1800000, 2000000, 2500000, 3000000, 4000000, 5000000],
+        "carrier-xp-token": [null, 10, 15, 20, 25, null, 30, 35, 40, 45, null, 50, 55, 60, 65, null, 70, 75, 80, 85, null, 90, 95, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 15, 30, 45, 60, 75]
       }
     },
     {
@@ -294,6 +342,12 @@
         "infantry-armour": [0.5, 0.8, 1, 1.3, 1.5, 1.8, 2, 2.3, 2.5, 2.8, 3, 3.3, 3.5, 3.8, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
         "march-load": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17.5, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
         "monstrous-beasts-health": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+      },
+      "costs": {
+        "dragon-ogre-shaggoth-favour": [20, null, null, null, null, 50, null, null, null, null, 100, null, null, null, null, 175, null, null, null, null, 275, null, null, null, null, 375, 425, 475, 525, 575, 625, 675, 725, 775, 825],
+        "iron": [null, 2500, 5000, 10000, 15000, null, 35000, 55000, 75000, 95000, null, 125000, 150000, 175000, 200000, null, 250000, 300000, 350000, 400000, null, 500000, 600000, 700000, 800000, 1000000, 1200000, 1400000, 1600000, 1800000, 2000000, 2200000, 2400000, 2600000, 2800000],
+        "carrier-xp-token": [null, 10, 15, 20, 25, null, 30, 35, 40, 45, null, 50, 55, 60, 65, null, 70, 75, 80, 85, null, 90, 95, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 15, 30, 45, 60, 75]
       }
     },
     {
@@ -320,6 +374,12 @@
         "nurgle-health": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "nurgle-melee-damage": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "nurgle-ranged-damage": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 3, 6, 9, 12, 15, 16, 17, 18, 19, 20]
+      },
+      "costs": {
+        "great-unclean-one-favour": [100, null, null, null, null, 150, null, null, null, null, 250, null, null, null, null, 350, null, null, null, null, 500, null, null, null, null, 650, 800, 950, 1100, 1250, 1300, 1350, 1400, 1450, 1500],
+        "iron": [null, 20000, 40000, 80000, 120000, null, 200000, 300000, 400000, 500000, null, 700000, 900000, 1100000, 1300000, null, 1600000, 2000000, 2400000, 2800000, null, 3600000, 4800000, 6000000, 8000000, 10000000, 12000000, 14000000, 16000000, 18000000, 18200000, 18400000, 18600000, 18800000, 19000000],
+        "carrier-xp-token": [null, 60, 90, 120, 150, null, 180, 210, 240, 270, null, 300, 330, 360, 390, null, 420, 450, 480, 510, null, 540, 570, 600, 750, 900, 1050, 1200, 1350, 1500, 1525, 1550, 1575, 1600, 1625],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 150, 250, 375, 500]
       }
     },
     {
@@ -347,6 +407,12 @@
         "enemy-attack-debuff": [-0.9, -1.3, -1.9, -2.4, -3, -3.6, -4.1, -4.7, -5.2, -5.8, -6.4, -6.9, -7.5, -8.1, -8.6, -9.2, -9.7, -11, -12.5, -15, -18, -20, -22.5, -25, -27, -28, -29, -30, -31, -32, -33, -34, -35, -36, -37],
         "monstrous-beasts-armour": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "nurgle-melee-damage": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "gutrot-spume-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250],
+        "iron": [null, 40000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 40000000, 44000000, 48000000, 52000000, 56000000],
+        "carrier-xp-token": [null, 90, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600, 3900, 4200],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -374,6 +440,12 @@
         "fortress-combat": [1, 1.5, 2, 2.5, 3, 4, 4.5, 5, 5.5, 6, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11, 11.5, 12, 13, 13.5, 14, 14.5, 15, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5],
         "infantry-health": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "undivided-ranged-damage": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 10, 15, 20, 25, 30, 31, 32, 33, 34, 35]
+      },
+      "costs": {
+        "harald-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250],
+        "iron": [null, 80000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 40000000, 44000000, 48000000, 52000000, 56000000],
+        "carrier-xp-token": [null, 135, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600, 3900, 4200],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -399,6 +471,12 @@
         "khorne-melee-attack": [1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22.5, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45],
         "khorne-morale": [1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22.5, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45],
         "war-beasts-melee-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+      },
+      "costs": {
+        "herald-of-khorne-favour": [35, null, null, null, null, 75, null, null, null, null, 125, null, null, null, null, 200, null, null, null, null, 300, null, null, null, null, 400, 475, 550, 625, 700, 750, 800, 850, 900, 950],
+        "iron": [null, 5000, 10000, 20000, 30000, null, 50000, 75000, 100000, 125000, null, 175000, 225000, 275000, 325000, null, 400000, 500000, 600000, 700000, null, 900000, 1200000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 4700000, 4900000, 5100000, 5300000, 5500000],
+        "carrier-xp-token": [null, 20, 30, 40, 50, null, 60, 70, 80, 90, null, 100, 110, 120, 130, null, 140, 150, 160, 170, null, 180, 190, 200, 250, 300, 350, 400, 450, 500, 525, 550, 575, 600, 625],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 25, 50, 75, 100, 125]
       }
     },
     {
@@ -424,6 +502,12 @@
         "nurgle-armour": [1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22.5, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45],
         "nurgle-morale": [1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22.5, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45],
         "infantry-melee-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+      },
+      "costs": {
+        "herald-of-nurgle-favour": [35, null, null, null, null, 75, null, null, null, null, 125, null, null, null, null, 200, null, null, null, null, 300, null, null, null, null, 400, 475, 550, 625, 700, 750, 800, 850, 900, 950],
+        "iron": [null, 5000, 10000, 20000, 30000, null, 50000, 75000, 100000, 125000, null, 175000, 225000, 275000, 325000, null, 400000, 500000, 600000, 700000, null, 900000, 1200000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 4700000, 4900000, 5100000, 5300000, 5500000],
+        "carrier-xp-token": [null, 20, 30, 40, 50, null, 60, 70, 80, 90, null, 100, 110, 120, 130, null, 140, 150, 160, 170, null, 180, 190, 200, 250, 300, 350, 400, 450, 500, 525, 550, 575, 600, 625],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 25, 50, 75, 100, 125]
       }
     },
     {
@@ -449,6 +533,12 @@
         "slaanesh-health": [1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22.5, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45],
         "march-speed": [1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22.5, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45],
         "infantry-ranged-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+      },
+      "costs": {
+        "herald-of-slaanesh-favour": [35, null, null, null, null, 75, null, null, null, null, 125, null, null, null, null, 200, null, null, null, null, 300, null, null, null, null, 400, 475, 550, 625, 700, 750, 800, 850, 900, 950],
+        "iron": [null, 5000, 10000, 20000, 30000, null, 50000, 75000, 100000, 125000, null, 175000, 225000, 275000, 325000, null, 400000, 500000, 600000, 700000, null, 900000, 1200000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 4700000, 4900000, 5100000, 5300000, 5500000],
+        "carrier-xp-token": [null, 20, 30, 40, 50, null, 60, 70, 80, 90, null, 100, 110, 120, 130, null, 140, 150, 160, 170, null, 180, 190, 200, 250, 300, 350, 400, 450, 500, 525, 550, 575, 600, 625],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 25, 50, 75, 100, 125]
       }
     },
     {
@@ -474,6 +564,12 @@
         "tzeentch-morale": [1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22.5, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45],
         "tzeentch-ranged-attack": [1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22.5, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45],
         "cavalry-armour": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+      },
+      "costs": {
+        "herald-of-tzeentch-favour": [35, null, null, null, null, 75, null, null, null, null, 125, null, null, null, null, 200, null, null, null, null, 300, null, null, null, null, 400, 475, 550, 625, 700, 750, 800, 850, 900, 950],
+        "iron": [null, 5000, 10000, 20000, 30000, null, 50000, 75000, 100000, 125000, null, 175000, 225000, 275000, 325000, null, 400000, 500000, 600000, 700000, null, 900000, 1200000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 4700000, 4900000, 5100000, 5300000, 5500000],
+        "carrier-xp-token": [null, 20, 30, 40, 50, null, 60, 70, 80, 90, null, 100, 110, 120, 130, null, 140, 150, 160, 170, null, 180, 190, 200, 250, 300, 350, 400, 450, 500, 525, 550, 575, 600, 625],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 25, 50, 75, 100, 125]
       }
     },
     {
@@ -500,6 +596,12 @@
         "monsters-melee-damage": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "monsters-ranged-damage": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "undivided-armour": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 3, 6, 9, 12, 15, 16, 17, 18, 19, 20]
+      },
+      "costs": {
+        "jabberslythe-favour": [100, null, null, null, null, 150, null, null, null, null, 250, null, null, null, null, 350, null, null, null, null, 500, null, null, null, null, 650, 800, 950, 1100, 1250, 1400, 1550, 1700, 1850, 2000],
+        "iron": [null, 20000, 40000, 80000, 120000, null, 200000, 300000, 400000, 500000, null, 700000, 900000, 1100000, 1300000, null, 1600000, 2000000, 2400000, 2800000, null, 3600000, 4800000, 6000000, 8000000, 10000000, 12000000, 14000000, 16000000, 18000000, 20000000, 22000000, 24000000, 26000000, 28000000],
+        "carrier-xp-token": [null, 60, 90, 120, 150, null, 180, 210, 240, 270, null, 300, 330, 360, 390, null, 420, 450, 480, 510, null, 540, 570, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2100, 2250],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 150, 250, 375, 500]
       }
     },
     {
@@ -527,6 +629,12 @@
         "march-speed": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "war-beasts-melee-attack": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "khorne-melee-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "karanak-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250],
+        "iron": [null, 80000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 40000000, 44000000, 48000000, 52000000, 56000000],
+        "carrier-xp-token": [null, 135, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600, 3900, 4200],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -553,6 +661,12 @@
         "slaanesh-melee-damage": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "monstrous-beasts-melee-damage": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "slaanesh-ranged-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 3, 6, 9, 12, 15, 16, 17, 18, 19, 20]
+      },
+      "costs": {
+        "keeper-of-secrets-favour": [100, null, null, null, null, 150, null, null, null, null, 250, null, null, null, null, 350, null, null, null, null, 500, null, null, null, null, 650, 800, 950, 1100, 1250, 1300, 1350, 1400, 1450, 1500],
+        "iron": [null, 20000, 40000, 80000, 120000, null, 200000, 300000, 400000, 500000, null, 700000, 900000, 1100000, 1300000, null, 1600000, 2000000, 2400000, 2800000, null, 3600000, 4800000, 6000000, 8000000, 10000000, 12000000, 14000000, 16000000, 18000000, 18200000, 18400000, 18600000, 18800000, 19000000],
+        "carrier-xp-token": [null, 60, 90, 120, 150, null, 180, 210, 240, 270, null, 300, 330, 360, 390, null, 420, 450, 480, 510, null, 540, 570, 600, 750, 900, 1050, 1200, 1350, 1500, 1525, 1550, 1575, 1600, 1625],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 150, 250, 375, 500]
       }
     },
     {
@@ -580,6 +694,12 @@
         "march-capacity": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
         "tzeentch-armour": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50],
         "tzeentch-melee-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 3, 6, 9, 12, 15, 16, 17, 18, 19, 20]
+      },
+      "costs": {
+        "lord-of-change-favour": [100, null, null, null, null, 150, null, null, null, null, 250, null, null, null, null, 350, null, null, null, null, 500, null, null, null, null, 650, 800, 950, 1100, 1250, 1400, 1550, 1700, 1850, 2000],
+        "iron": [null, 20000, 40000, 80000, 120000, null, 200000, 300000, 400000, 500000, null, 700000, 900000, 1100000, 1300000, null, 1600000, 2000000, 2400000, 2800000, null, 3600000, 4800000, 6000000, 8000000, 10000000, 12000000, 14000000, 16000000, 18000000, 20000000, 22000000, 24000000, 26000000, 28000000],
+        "carrier-xp-token": [null, 60, 90, 120, 150, null, 180, 210, 240, 270, null, 300, 330, 360, 390, null, 420, 450, 480, 510, null, 540, 570, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2100, 2250],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 150, 250, 375, 500]
       }
     },
     {
@@ -605,6 +725,12 @@
         "slaanesh-armour": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 38.5, 39.5, 40.5, 41.5, 42.5],
         "slaanesh-melee-damage": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.8, 11.5, 12.3, 13, 14, 15, 15.8, 16.5, 17.3, 18, 18.8, 19.8, 20.8, 21.8, 22.8, 23.8],
         "war-beasts-melee-attack": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 38.5, 39.5, 40.5, 41.5, 42.5]
+      },
+      "costs": {
+        "masque-of-slaanesh-favour": [50, null, null, null, null, 100, null, null, null, null, 150, null, null, null, null, 225, null, null, null, null, 325, null, null, null, null, 425, 525, 625, 725, 825, 875, 925, 975, 1025, 1075],
+        "iron": [null, 10000, 20000, 40000, 60000, null, 100000, 150000, 200000, 250000, null, 350000, 450000, 550000, 650000, null, 800000, 1000000, 1200000, 1400000, null, 1800000, 2400000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 9200000, 9400000, 9600000, 9800000, 10000000],
+        "carrier-xp-token": [null, 40, 60, 80, 100, null, 120, 140, 160, 180, null, 200, 220, 240, 260, null, 280, 300, 320, 340, null, 360, 380, 400, 500, 600, 700, 800, 900, 1000, 1025, 1050, 1075, 1100, 1125],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 50, 100, 150, 200, 250]
       }
     },
     {
@@ -632,6 +758,12 @@
         "undivided-ranged-damage": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "cavalry-armour": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 3, 6, 9, 12, 15, 16, 17, 18, 19, 20],
         "cavalry-melee-damage": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "mounted-exalted-hero-favour": [100, null, null, null, null, 150, null, null, null, null, 250, null, null, null, null, 350, null, null, null, null, 500, null, null, null, null, 650, 800, 950, 1100, 1250, 1400, 1550, 1700, 1850, 2000],
+        "iron": [null, 20000, 40000, 80000, 120000, null, 200000, 300000, 400000, 500000, null, 700000, 900000, 1100000, 1300000, null, 1600000, 2000000, 2400000, 2800000, null, 3600000, 4800000, 6000000, 8000000, 10000000, 12000000, 14000000, 16000000, 18000000, 20000000, 22000000, 24000000, 26000000, 28000000],
+        "carrier-xp-token": [null, 60, 90, 120, 150, null, 180, 210, 240, 270, null, 300, 330, 360, 390, null, 420, 450, 480, 510, null, 540, 570, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2100, 2250],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 150, 250, 375, 500]
       }
     },
     {
@@ -659,6 +791,12 @@
         "nurgle-melee-damage": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "march-combat": [0.9, 1.3, 1.9, 2.4, 3, 3.6, 4.1, 4.7, 5.3, 5.8, 6.4, 6.9, 7.5, 8.1, 8.6, 9.2, 9.8, 10.3, 10.9, 11.4, 12, 12.6, 13.1, 14.3, 15, 15.8, 16.5, 17.3, 18, 18.8, 19.5, 20.3, 21, 21.8, 22.5],
         "nurgle-ranged-damage": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "daemonspew-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250],
+        "iron": [null, 80000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 40000000, 44000000, 48000000, 52000000, 56000000],
+        "carrier-xp-token": [null, 135, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600, 3900, 4200],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -684,6 +822,12 @@
         "nurgle-health": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 38.5, 39.5, 40.5, 41.5, 42.5],
         "nurgle-melee-attack": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.8, 11.5, 12.3, 13, 14, 15, 15.8, 16.5, 17.3, 18, 18.8, 19.8, 20.8, 21.8, 22.8, 23.8],
         "monstrous-cavalry-melee-damage": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 38.5, 39.5, 40.5, 41.5, 42.5]
+      },
+      "costs": {
+        "pox-rider-favour": [50, null, null, null, null, 100, null, null, null, null, 150, null, null, null, null, 225, null, null, null, null, 325, null, null, null, null, 425, 525, 625, 725, 825, 875, 925, 975, 1025, 1075],
+        "iron": [null, 10000, 20000, 40000, 60000, null, 100000, 150000, 200000, 250000, null, 350000, 450000, 550000, 650000, null, 800000, 1000000, 1200000, 1400000, null, 1800000, 2400000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 9200000, 9400000, 9600000, 9800000, 10000000],
+        "carrier-xp-token": [null, 40, 60, 80, 100, null, 120, 140, 160, 180, null, 200, 220, 240, 260, null, 280, 300, 320, 340, null, 360, 380, 400, 500, 600, 700, 800, 900, 1000, 1025, 1050, 1075, 1100, 1125],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 50, 100, 150, 200, 250]
       }
     },
     {
@@ -711,6 +855,12 @@
         "march-speed": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "march-capacity": [1.3, 1.8, 2.5, 3.3, 4, 4.8, 5.5, 6.3, 7, 7.8, 8.5, 9.3, 10, 10.8, 11.5, 12.3, 13, 13.8, 14.5, 15.3, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
         "slaanesh-speed": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "sigvald-the-magnificent-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250],
+        "iron": [null, 40000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 40000000, 44000000, 48000000, 52000000, 56000000],
+        "carrier-xp-token": [null, 90, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600, 3900, 4200],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -736,6 +886,12 @@
         "khorne-armour": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 39.5, 41.5, 43.5, 45.5, 47.5],
         "khorne-melee-attack": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 39.5, 41.5, 43.5, 45.5, 47.5],
         "march-speed": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.8, 11.5, 12.3, 13, 14, 15, 15.8, 16.5, 17.3, 18, 18.8, 20.8, 22.8, 24.8, 26.8, 28.8]
+      },
+      "costs": {
+        "skullhunter-favour": [50, null, null, null, null, 100, null, null, null, null, 150, null, null, null, null, 225, null, null, null, null, 325, null, null, null, null, 425, 525, 625, 725, 825, 875, 925, 975, 1025, 1075],
+        "iron": [null, 10000, 20000, 40000, 60000, null, 100000, 150000, 200000, 250000, null, 350000, 450000, 550000, 650000, null, 800000, 1000000, 1200000, 1400000, null, 1800000, 2400000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 9200000, 9400000, 9600000, 9800000, 10000000],
+        "carrier-xp-token": [null, 40, 60, 80, 100, null, 120, 140, 160, 180, null, 200, 220, 240, 260, null, 280, 300, 320, 340, null, 360, 380, 400, 500, 600, 700, 800, 900, 1000, 1025, 1050, 1075, 1100, 1125],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 50, 100, 150, 200, 250]
       }
     },
     {
@@ -763,6 +919,12 @@
         "monsters-health": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "warband-combat": [1.3, 1.8, 2.5, 3.3, 4, 4.8, 5.5, 6.3, 7, 7.8, 8.5, 9.3, 10, 10.8, 11.5, 12.3, 13, 13.8, 14.5, 15.3, 16, 16.8, 17.5, 19, 20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5, 25],
         "khorne-health": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "skulltaker-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250],
+        "iron": [null, 40000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 40000000, 44000000, 48000000, 52000000, 56000000],
+        "carrier-xp-token": [null, 90, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600, 3900, 4200],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -790,6 +952,12 @@
         "empire-combat": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "fortress-combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 6, 8, 10, 12, 18, 19, 20, 21, 22, 23],
         "infantry-melee-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 3, 6, 9, 12, 15, 16, 17, 18, 19, 20]
+      },
+      "costs": {
+        "slambo-favour": [100, null, null, null, null, 150, null, null, null, null, 250, null, null, null, null, 350, null, null, null, null, 500, null, null, null, null, 650, 800, 950, 1100, 1250, 1400, 1550, 1700, 1850, 2000],
+        "iron": [null, 20000, 40000, 80000, 120000, null, 200000, 300000, 400000, 500000, null, 700000, 900000, 1100000, 1300000, null, 1600000, 2000000, 2400000, 2800000, null, 3600000, 4800000, 6000000, 8000000, 10000000, 12000000, 14000000, 16000000, 18000000, 20000000, 22000000, 24000000, 26000000, 28000000],
+        "carrier-xp-token": [null, 60, 90, 120, 150, null, 180, 210, 240, 270, null, 300, 330, 360, 390, null, 420, 450, 480, 510, null, 540, 570, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2100, 2250],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 150, 250, 375, 500]
       }
     },
     {
@@ -815,6 +983,12 @@
         "undivided-morale": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 39.5, 41.5, 43.5, 45.5, 47.5],
         "undivided-ranged-attack": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 39.5, 41.5, 43.5, 45.5, 47.5],
         "infantry-health": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.8, 11.5, 12.3, 13, 14, 15, 15.8, 16.5, 17.3, 18, 18.8, 20.8, 22.8, 24.8, 26.8, 28.8]
+      },
+      "costs": {
+        "chaos-sorcerer-on-manticore-favour": [50, null, null, null, null, 100, null, null, null, null, 150, null, null, null, null, 225, null, null, null, null, 325, null, null, null, null, 425, 525, 625, 725, 825, 875, 925, 975, 1025, 1075],
+        "iron": [null, 10000, 20000, 40000, 60000, null, 100000, 150000, 200000, 250000, null, 350000, 450000, 550000, 650000, null, 800000, 1000000, 1200000, 1400000, null, 1800000, 2400000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 9200000, 9400000, 9600000, 9800000, 10000000],
+        "carrier-xp-token": [null, 40, 60, 80, 100, null, 120, 140, 160, 180, null, 200, 220, 240, 260, null, 280, 300, 320, 340, null, 360, 380, 400, 500, 600, 700, 800, 900, 1000, 1025, 1050, 1075, 1100, 1125],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 50, 100, 150, 200, 250]
       }
     },
     {
@@ -840,6 +1014,12 @@
         "tzeentch-armour": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 38.5, 39.5, 40.5, 41.5, 42.5],
         "tzeentch-melee-damage": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21.5, 23, 24.5, 26, 28, 30, 31.5, 33, 34.5, 36, 37.5, 38.5, 39.5, 40.5, 41.5, 42.5],
         "tzeentch-ranged-damage": [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.8, 11.5, 12.3, 13, 14, 15, 15.8, 16.5, 17.3, 18, 18.8, 19.8, 20.8, 21.8, 22.8, 23.8]
+      },
+      "costs": {
+        "the-changeling-favour": [50, null, null, null, null, 100, null, null, null, null, 150, null, null, null, null, 225, null, null, null, null, 325, null, null, null, null, 425, 525, 625, 725, 825, 875, 925, 975, 1025, 1075],
+        "iron": [null, 10000, 20000, 40000, 60000, null, 100000, 150000, 200000, 250000, null, 350000, 450000, 550000, 650000, null, 800000, 1000000, 1200000, 1400000, null, 1800000, 2400000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 9200000, 9400000, 9600000, 9800000, 10000000],
+        "carrier-xp-token": [null, 40, 60, 80, 100, null, 120, 140, 160, 180, null, 200, 220, 240, 260, null, 280, 300, 320, 340, null, 360, 380, 400, 500, 600, 700, 800, 900, 1000, 1025, 1050, 1075, 1100, 1125],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 50, 100, 150, 200, 250]
       }
     },
     {
@@ -867,6 +1047,12 @@
         "march-capacity": [1.3, 1.8, 2.5, 3.3, 4, 4.8, 5.5, 6.3, 7, 7.8, 8.5, 9.3, 10, 10.8, 11.5, 12.3, 13, 13.8, 14.5, 15.3, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
         "monstrous-infantry-melee-attack": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "undivided-ranged-attack": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "throgg-king-of-trolls-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250],
+        "iron": [null, 80000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 40000000, 44000000, 48000000, 52000000, 56000000],
+        "carrier-xp-token": [null, 135, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600, 3900, 4200],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -894,6 +1080,12 @@
         "chariots-ranged-attack": [2.5, 3.5, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
         "march-combat": [0.9, 1.3, 1.9, 2.4, 3, 3.6, 4.1, 4.7, 5.3, 5.8, 6.4, 6.9, 7.5, 8.1, 8.6, 9.2, 9.8, 10.3, 10.9, 11.4, 12, 12.6, 13.1, 14.3, 15, 15.8, 16.5, 17.3, 18, 18.8, 19.5, 20.3, 21, 21.8, 22.5],
         "tzeentch-health": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5, 10, 15, 25, 45, 46, 47, 48, 49, 50]
+      },
+      "costs": {
+        "vilitch-the-cursling-favour": [200, null, null, null, null, 250, null, null, null, null, 375, null, null, null, null, 575, null, null, null, null, 800, null, null, null, null, 1025, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250],
+        "iron": [null, 40000, 80000, 160000, 240000, null, 400000, 600000, 800000, 1000000, null, 1400000, 1800000, 2200000, 2600000, null, 3200000, 4000000, 4800000, 5600000, null, 7200000, 8600000, 12000000, 16000000, 20000000, 24000000, 28000000, 32000000, 36000000, 40000000, 44000000, 48000000, 52000000, 56000000],
+        "carrier-xp-token": [null, 90, 135, 180, 225, null, 270, 315, 360, 405, null, 450, 495, 540, 585, null, 630, 675, 720, 765, null, 810, 855, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600, 3600, 4200],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 100, 200, 350, 500, 750]
       }
     },
     {
@@ -921,6 +1113,12 @@
         "undivided-ranged-attack": [2.3, 3.5, 4.8, 6, 7.3, 8.5, 9.8, 11, 12.3, 13.5, 14.8, 16, 17.3, 18.5, 19.8, 21, 22.3, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
         "march-combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 6, 8, 10, 12, 18, 19, 20, 21, 22, 23],
         "monstrous-beasts-melee-damage": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 3, 6, 9, 12, 15, 16, 17, 18, 19, 20]
+      },
+      "costs": {
+        "war-mammoth-favour": [100, null, null, null, null, 150, null, null, null, null, 250, null, null, null, null, 350, null, null, null, null, 500, null, null, null, null, 650, 800, 950, 1100, 1250, 1400, 1550, 1700, 1850, 2000],
+        "iron": [null, 20000, 40000, 80000, 120000, null, 200000, 300000, 400000, 500000, null, 700000, 900000, 1100000, 1300000, null, 1600000, 2000000, 2400000, 2800000, null, 3600000, 4800000, 6000000, 8000000, 10000000, 12000000, 14000000, 16000000, 18000000, 20000000, 22000000, 24000000, 26000000, 28000000],
+        "carrier-xp-token": [null, 60, 90, 120, 150, null, 180, 210, 240, 270, null, 300, 330, 360, 390, null, 420, 450, 480, 510, null, 540, 570, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2100, 2250],
+        "component-item-chaos-infused-dragon-hide": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 75, 150, 250, 375, 500]
       }
     }
   ]

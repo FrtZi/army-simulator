@@ -29,6 +29,7 @@ It becomes _Done_ when its proof exists.
 | DATA-04 | Every fortress defence is in its own catalogue, `data/<game>/defences.json`, transcribed from its in-game sheet (all 15)                                                         | Business  | Done   | `tests/data.test.js`                                                                                            |
 | DATA-03 | Every troop type of the game is in the catalogue, transcribed from its in-game sheet (82 troops in 5 buildings)                                                                  | Business  | Done   | `tests/data.test.js`; manual: transcribed from the sheets, cross-checked with an independent reference (D-09)   |
 | DATA-05 | The game's warlords (33), each with its stats and bonuses at every level (35: 7 ranks of 5 levels), in `data/<game>/warlords.json`, from cctools.cc (credited, D-25) and checked | Business  | Done   | `tests/warlords.test.js`; the import checked against the saved pages in `tests/crosscheck.test.js` (local only) |
+| DATA-06 | The resources and items the game's costs name (`items.json`: code, kind, rarity, names), and what each warlord's level costs, imported from cctools.cc (D-25, D-29)              | Data      | Done   | `tests/warlords.test.js`; `tests/crosscheck.test.js` (local)                                                    |
 
 ## Bonuses (BONUS) — [data-model.md](data-model.md)
 
@@ -101,12 +102,12 @@ It becomes _Done_ when its proof exists.
 
 ## Guides (GUIDE)
 
-| ID       | Feature                                                                                                                                                                   | Type     | Status  | Proof                  |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ---------------------- |
-| GUIDE-01 | A Guides tab: the game's blocks by type (heroes, rituals, buildings, champion and gear sets), each entry in detail with what it gives, level by level                     | Business | Done    | `tests/guides.test.js` |
-| GUIDE-02 | The heroes' guide: each warlord's tier, power, stats and talents at every rank and level, found by god, rarity or name, marked when in your setup                         | Business | Done    | `tests/guides.test.js` |
-| GUIDE-04 | Each block's way up: what each level asks (resources, items, prerequisites such as a building's level) and where to get it (Frantz, 2026-11-09); its source to find first | Business | Planned | —                      |
-| GUIDE-03 | The guides of rituals, buildings, champion and gear sets, each with its data (BL-10, BL-14, BL-13)                                                                        | Business | Planned | —                      |
+| ID       | Feature                                                                                                                                                                   | Type     | Status      | Proof                                                         |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- | ------------------------------------------------------------- |
+| GUIDE-01 | A Guides tab: the game's blocks by type (heroes, rituals, buildings, champion and gear sets), each entry in detail with what it gives, level by level                     | Business | Done        | `tests/guides.test.js`                                        |
+| GUIDE-02 | The heroes' guide: each warlord's tier, power, stats and talents at every rank and level, found by god, rarity or name, marked when in your setup                         | Business | Done        | `tests/guides.test.js`                                        |
+| GUIDE-04 | Each block's way up: what each level asks (resources, items, prerequisites such as a building's level) and where to get it (Frantz, 2026-11-09); its source to find first | Business | In progress | `tests/guides.test.js`, `tests/warlords.test.js` (the heroes) |
+| GUIDE-03 | The guides of rituals, buildings, champion and gear sets, each with its data (BL-10, BL-14, BL-13)                                                                        | Business | Planned     | —                                                             |
 
 ## Languages (LANG)
 

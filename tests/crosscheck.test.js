@@ -5,6 +5,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { buildWarlords, formatWarlords, readGame, savedPages } from "../scripts/import-warlords.mjs";
+import { buildItems, formatItems } from "../scripts/import-items.mjs";
 
 const GAME = "chaos-conquest";
 const reference = new URL(`../captures/${GAME}/sources/cctools-troops.json`, import.meta.url);
@@ -44,5 +45,14 @@ test(
   () => {
     const made = formatWarlords(buildWarlords(savedPages(warlordPages), readGame()));
     assert.equal(readFileSync(new URL(`../data/${GAME}/warlords.json`, import.meta.url), "utf8"), made);
+  },
+);
+
+test(
+  "DATA-06 the items file is exactly what the import makes from the saved pages",
+  { skip: !existsSync(warlordPages) },
+  () => {
+    const made = formatItems(buildItems(savedPages(warlordPages)));
+    assert.equal(readFileSync(new URL(`../data/${GAME}/items.json`, import.meta.url), "utf8"), made);
   },
 );

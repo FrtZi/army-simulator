@@ -89,3 +89,16 @@ export function heroProblems({ heroes, talents }, warlords, rules) {
     .filter((id) => !offered.some((entry) => entry.id === id))
     .map((id) => ({ code: "talent-not-offered", id }));
 }
+
+/**
+ * What going up from one level to another costs (GUIDE-04): each resource or item, summed over the levels after
+ * `from` up to `to` (`from` 0: the warlord not owned yet, its unlock at level 1 included). Item id → quantity.
+ */
+export function costBetween(warlord, from, to) {
+  const total = {};
+  for (const [item, values] of Object.entries(warlord.costs ?? {})) {
+    const sum = values.slice(from, to).reduce((acc, quantity) => acc + (quantity ?? 0), 0);
+    if (sum) total[item] = sum;
+  }
+  return total;
+}

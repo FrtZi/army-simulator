@@ -165,6 +165,7 @@ index. Rank and level within the rank are worked out from the level (level 12 = 
 | `power`     | the power it adds at each level (like `squadPower` for a troop, for one hero)                             |
 | `stats`     | its own fighting stats at each level, under the ids of `troopStats`, plus `protection` (open question 15) |
 | `talents`   | each bonus it can give, in % at each level; `null` until the level that unlocks it (D-26: 4 in all)       |
+| `costs`     | what reaching each level costs, per resource or item of `items.json` (level 1: its unlock, in its favour) |
 
 **Talents** are named once, with the game's code (to import and trace) and what they do in our effect shape, so
 a label comes from the stat and target labels already there. The 61 the import works out from their code
@@ -207,3 +208,10 @@ The rules the game publishes (3 turns, the attacker first, the order damage foll
 test at 25 % losses), with their source. Under `model`, the parameters the game does not publish (D-16): the
 damage and health divisors (from the community wiki), the tier modifier and the extra damage on broken troops
 (0 until the calibration measures them).
+
+## Resources and items: `data/<game>/items.json` (D-29)
+
+Every resource (iron) and item (Warlord Honour, a warlord's favour) a cost names, written by
+`scripts/import-items.mjs` from cctools.cc's saved pages, never by hand; one list the warlords' costs point at, and
+the rituals', buildings' and gear's will. An entry: `{ "id", "code", "kind": "currency" | "item", "rarity", "labels" }`.
+A currency's id is its name (its code, `currency7`, says nothing); an item keeps its code (`carrier-xp-token`).
