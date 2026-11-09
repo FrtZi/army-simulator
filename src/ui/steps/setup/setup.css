@@ -57,6 +57,30 @@
   gap: 0.75rem;
 }
 
+/* what an uploaded file brings, and the way to fill the setup with an agent */
+.setup-report {
+  margin: 0.25rem 0 0.75rem;
+  padding-left: 1.25rem;
+}
+
+#setup-review h3 {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 1rem;
+}
+
+.setup-help {
+  margin-top: 0.75rem;
+}
+
+.setup-help summary {
+  cursor: pointer;
+  color: var(--heading);
+}
+
+.setup-ways {
+  padding-left: 1.25rem;
+}
+
 /* a hero added or changed since the last save: a word beside its name, and the accent along its line */
 .setup-changed {
   box-shadow: inset 3px 0 0 var(--accent);

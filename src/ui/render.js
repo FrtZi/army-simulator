@@ -18,6 +18,7 @@ import { drawSaves } from "./steps/saves/draw.js";
 import { drawDashboards } from "./steps/dashboards/draw.js";
 import { drawSetupCapacityFields, drawSetupStatus } from "./steps/setup/draw.js";
 import { drawSetupWarlords } from "./steps/setup/warlords.js";
+import { drawSetupReview } from "./steps/setup/review.js";
 
 export function refresh() {
   drawBonusProblems();
@@ -43,6 +44,7 @@ export function renderAll() {
     drawSaves();
     drawSetupWarlords();
     drawSetupCapacityFields();
+    drawSetupReview();
   });
   refresh();
 }

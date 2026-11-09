@@ -32,6 +32,7 @@ export const state = {
   playerSetup: null,
   savedPlayerSetup: null,
   setupSaveFailed: false,
+  setupImport: null, // a setup file uploaded: what it brings, before it is applied (CFG-05)
   active: 0, // the composition being edited
   compare: [0, 1], // the two compositions compared
   dashboard: "efficiency", // the dashboard tab shown

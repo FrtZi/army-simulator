@@ -4,16 +4,15 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import Ajv2020 from "ajv/dist/2020.js";
-import { GAMES } from "../src/ui/games.js";
+import { GAMES, dictionaryOf } from "../src/ui/games.js";
 import { readSetupFile } from "../src/storage/setup-file.js";
 import { exampleFile, setupDictionary } from "../src/storage/setup-dictionary.js";
 import { setupSchema } from "../src/storage/setup-schema.js";
 import { agentBrief } from "../src/storage/setup-brief.js";
-import { dictionaryData } from "../scripts/setup-files.mjs";
 
 const game = GAMES.find((entry) => entry.id === "chaos-conquest");
 const games = { [game.id]: game };
-const dictionary = setupDictionary(dictionaryData(game));
+const dictionary = dictionaryOf(game);
 const validate = new Ajv2020({ allErrors: true }).compile(setupSchema(dictionary));
 const example = exampleFile(dictionary);
 const withSection = (name, value) => ({ ...example, [name]: value });
@@ -81,11 +80,11 @@ test("CFG-06 an element without a definition, or a definition without a type, st
     elements: game.setup.elements.filter((element) => element.name !== name),
   });
   assert.throws(
-    () => setupDictionary({ ...dictionaryData(game), setup: without("warlords[].rank") }),
+    () => setupDictionary({ ...game, warlords: game.heroes.warlords, setup: without("warlords[].rank") }),
     /warlords\[\]\.rank/,
   );
   const extra = { ...game.setup, elements: [...game.setup.elements, { name: "prestige", definition: "?" }] };
-  assert.throws(() => setupDictionary({ ...dictionaryData(game), setup: extra }), /prestige/);
+  assert.throws(() => setupDictionary({ ...game, warlords: game.heroes.warlords, setup: extra }), /prestige/);
 });
 
 test("CFG-06 the build publishes the dictionary and the schema beside the page", () => {

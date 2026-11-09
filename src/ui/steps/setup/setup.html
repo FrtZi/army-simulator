@@ -9,6 +9,32 @@
   </div>
 </section>
 
+<section id="setup-files" class="card" aria-labelledby="setup-files-title">
+  <h2 id="setup-files-title" data-text="setupfile.title"></h2>
+  <p class="hint" data-text="setupfile.hint"></p>
+  <div class="file-actions">
+    <input id="setup-import" class="visually-hidden" type="file" accept="application/json,.json" />
+    <label for="setup-import" class="button-like" data-text="setupfile.upload"></label>
+    <button id="setup-export" type="button" data-text="setupfile.download"></button>
+  </div>
+  <p id="setup-files-status" class="status" role="status"></p>
+  <div id="setup-review" aria-live="polite"></div>
+  <details class="setup-help">
+    <summary data-text="setupfile.help"></summary>
+    <ol class="setup-ways">
+      <li data-text="setupfile.wayHand"></li>
+      <li data-text="setupfile.wayFile"></li>
+      <li data-text="setupfile.wayAgent"></li>
+    </ol>
+    <p class="hint" data-text="setupfile.privacy"></p>
+    <div class="file-actions">
+      <button id="setup-brief-copy" type="button" data-text="setupfile.copyBrief"></button>
+      <button id="setup-brief-download" type="button" data-text="setupfile.downloadBrief"></button>
+      <button id="setup-template" type="button" data-text="setupfile.template"></button>
+    </div>
+  </details>
+</section>
+
 <section id="setup-warlords" class="card" aria-labelledby="setup-warlords-title">
   <h2 id="setup-warlords-title" data-text="setup.warlords"></h2>
   <p class="hint" data-text="setup.warlordsHint"></p>

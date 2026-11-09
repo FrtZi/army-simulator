@@ -174,9 +174,9 @@ tasks = [
   "[x] The setup's format and its dictionary: every source, field and value, in both languages, for a person or an agent",
   "[x] Your setup: the summary of everything, the heroes at their rank and level, the march capacity; Save, Discard, unsaved changes shown",
   "[ ] The bonus rows in Your setup (the others as their data comes)",
-  "[ ] A setup file uploaded and downloaded, checked, refused with its reasons",
+  "[x] A setup file uploaded and downloaded, checked, refused with its reasons",
   "[ ] Use my setup or open the lab: compositions draw on the setup, or play freely",
-  "[ ] The guide: how to fill it, by hand or with an agent reading screenshots",
+  "[x] The guide: how to fill it, by hand or with an agent reading screenshots",
   "[ ] Kept in the browser, saved, exported and imported (configuration version 3)",
 ]
 

@@ -2,10 +2,9 @@
 // which the Battle lab will use. Save keeps the edits in this browser, Discard goes back to the save; what
 // differs between the two is counted and marked, so the player sees what is not saved yet.
 import { storedPlayerSetup, storePlayerSetup } from "../storage/player-setup.js";
-import { GAMES } from "./games.js";
+import { GAMES_BY_ID } from "./games.js";
 import { currentGame, state } from "./state.js";
 
-const BY_ID = Object.fromEntries(GAMES.map((game) => [game.id, game]));
 // a plain copy: jsdom, which runs the page tests, has no structuredClone (DEF-029)
 const copy = (value) => JSON.parse(JSON.stringify(value));
 // the same setup whatever the order its fields were written in
@@ -26,9 +25,10 @@ function storage() {
 
 /** Shows the setup saved for the current game, nothing unsaved. */
 export function loadPlayerSetup() {
-  state.savedPlayerSetup = storedPlayerSetup(storage(), state.gameId, BY_ID);
+  state.savedPlayerSetup = storedPlayerSetup(storage(), state.gameId, GAMES_BY_ID);
   state.playerSetup = copy(state.savedPlayerSetup);
   state.setupSaveFailed = false;
+  state.setupImport = null;
 }
 
 /** Keeps the edits in this browser; false (and said on the page) when the browser refuses. */

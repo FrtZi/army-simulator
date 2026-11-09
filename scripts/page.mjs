@@ -11,8 +11,9 @@ import { EN_MORE } from "../src/ui/texts/en-more.js";
 import { EN_DASH } from "../src/ui/texts/en-dash.js";
 import { EN_HEROES } from "../src/ui/texts/en-heroes.js";
 import { EN_SETUP } from "../src/ui/texts/en-setup.js";
+import { EN_SETUP_FILES } from "../src/ui/texts/en-setup-files.js";
 
-const ENGLISH = { ...EN, ...EN_MORE, ...EN_DASH, ...EN_HEROES, ...EN_SETUP };
+const ENGLISH = { ...EN, ...EN_MORE, ...EN_DASH, ...EN_HEROES, ...EN_SETUP, ...EN_SETUP_FILES };
 const { version } = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
 const VERSION = `v${version.split(".").slice(0, 2).join(".")}`; // 1.0.0 → v1.0
 

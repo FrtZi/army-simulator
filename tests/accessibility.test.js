@@ -50,6 +50,14 @@ for (const language of ["en", "fr"]) {
     page.choose("#setup-warlord-select", "azazel");
     page.click("#setup-warlord-add");
     page.type("#setup-capacity-base", 110000);
+    // a file uploaded, under review with a value left out; the help on the file open (CFG-05, CFG-06)
+    const file = { format: "army-simulator/setup", version: 1, game: "chaos-conquest", warlords: [{ id: "x" }] };
+    const input = page.$("#setup-import");
+    Object.defineProperty(input, "files", { value: [new page.window.File([JSON.stringify(file)], "mine.json")] });
+    input.dispatchEvent(new page.window.Event("change", { bubbles: true }));
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    page.$(".setup-help").setAttribute("open", "");
+    assert.ok(page.$("#setup-import-cancel"), "the review is shown");
     assert.deepEqual(await violations(page), [], "your setup");
   });
 }

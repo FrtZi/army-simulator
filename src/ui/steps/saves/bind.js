@@ -1,7 +1,8 @@
 // Saving, loading and deleting setups in this browser (CFG-01); exporting one to a JSON file and importing a
 // file back (CFG-02). A file the page cannot use is refused with its reasons; nothing is ever sent anywhere.
 import { byId } from "../../dom.js";
-import { GAMES } from "../../games.js";
+import { downloadFile, readText } from "../../files.js";
+import { GAMES_BY_ID } from "../../games.js";
 import { applySetup, currentSetup } from "../../state.js";
 import { renderAll } from "../../render.js";
 import { deleteSetup, saveSetup, savedSetups } from "../../../storage/browser.js";
@@ -9,7 +10,6 @@ import { fromConfiguration, toConfiguration } from "../../../storage/configurati
 import { t } from "../../texts/index.js";
 import { drawSaves, showStatus, storage } from "./draw.js";
 
-const GAMES_BY_ID = Object.fromEntries(GAMES.map((game) => [game.id, game]));
 const nameOrDefault = () => byId("save-name").value.trim() || t("saves.defaultName");
 /** Why a file is refused: its own text, else the same words as under a bonus row. */
 function reasonText(problem) {
@@ -42,22 +42,8 @@ function save() {
 function exportFile() {
   const name = nameOrDefault();
   const json = JSON.stringify(toConfiguration(currentSetup(), name), null, 2);
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(new Blob([json], { type: "application/json" }));
-  link.download = fileName(name);
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(link.href)); // some browsers start the download after the click returns
-  showStatus(t("saves.exported", { file: link.download }));
+  showStatus(t("saves.exported", { file: downloadFile(fileName(name), json) }));
 }
-
-/** A file's text (FileReader: supported everywhere, unlike File.text() in some environments). */
-const readText = (file) =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(reader.error);
-    reader.readAsText(file);
-  });
 
 async function importFile(input) {
   const [file] = input.files;

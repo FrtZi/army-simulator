@@ -8,6 +8,7 @@ import chaosConquestRules from "../../data/chaos-conquest/combat-rules.json" wit
 import chaosConquestWarlords from "../../data/chaos-conquest/warlords.json" with { type: "json" };
 import chaosConquestSetup from "../../data/chaos-conquest/setup.json" with { type: "json" };
 import { indexCatalogue } from "../engine/index.js";
+import { setupDictionary } from "../storage/setup-dictionary.js";
 
 const DATA = {
   "chaos-conquest": {
@@ -33,3 +34,9 @@ export const GAMES = gameList.map((entry) => {
     talents,
   };
 });
+
+/** A game's setup dictionary (CFG-06): the page's game, its warlords given as the list the dictionary reads. */
+export const dictionaryOf = (game) => setupDictionary({ ...game, warlords: game.heroes.warlords });
+
+/** The games by id, as the storage module reads files against them. */
+export const GAMES_BY_ID = Object.fromEntries(GAMES.map((game) => [game.id, game]));
