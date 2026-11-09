@@ -462,3 +462,19 @@ resultat = "Duplicating and loading work in the page tests, as in browsers."
 preuve = ["tests/page.test.js"]
 lecon = "Same lesson as DEF-007: what the page runs must exist in jsdom too, or the page tests stop proving it."
 liens = ["ARMY-03", "CFG-01"]
+
+[[defaut]]
+id = "DEF-030"
+date = 2026-11-09
+titre = "The linter read the git-ignored captures"
+type = "configuration"
+etiquettes = ["tooling"]
+gravite = "minor"
+statut = "fixed"
+constat = "After the cctools.cc scan was copied into captures/, npm run check failed on this computer with 14 672 lint errors in its minified scripts; the CI, which has no captures, would have passed."
+cause = "ESLint does not read .gitignore: its own list ignored only dist/ and node_modules/, so a git-ignored folder was linted as soon as it held scripts."
+solution = "The linter ignores every folder git ignores (captures/ and .claude/ added); a test compares the two lists."
+resultat = "The check passes with the scan in place; a folder newly ignored by git and not by the linter fails the test."
+preuve = ["tests/tooling.test.js"]
+lecon = "Two files that list the same folders drift apart unless a test compares them (MAINT-04)."
+liens = ["MAINT-04"]

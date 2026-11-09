@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **29 defects**: 29 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **30 defects**: 30 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -42,6 +42,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-027](#def-027) | 2026-10-24 | A data test assumed every talent positive | process | minor | ✓ fixed |
 | [DEF-028](#def-028) | 2026-10-24 | The catalogue check took a decision for a feature | tool | minor | ✓ fixed |
 | [DEF-029](#def-029) | 2026-10-24 | structuredClone is missing where the page tests run | environment | minor | ✓ fixed |
+| [DEF-030](#def-030) | 2026-11-09 | The linter read the git-ignored captures | configuration | minor | ✓ fixed |
 
 ## Entries
 
@@ -406,3 +407,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** Same lesson as DEF-007: what the page runs must exist in jsdom too, or the page tests stop proving it.
 - **Proof:** `tests/page.test.js`
 - **Links:** ARMY-03, CFG-01
+
+<a id="def-030"></a>
+### DEF-030 · The linter read the git-ignored captures
+
+`2026-11-09` · configuration · minor · ✓ fixed · tags: `tooling`
+
+- **Finding:** After the cctools.cc scan was copied into captures/, npm run check failed on this computer with 14 672 lint errors in its minified scripts; the CI, which has no captures, would have passed.
+- **Cause:** ESLint does not read .gitignore: its own list ignored only dist/ and node_modules/, so a git-ignored folder was linted as soon as it held scripts.
+- **Solution:** The linter ignores every folder git ignores (captures/ and .claude/ added); a test compares the two lists.
+- **Result:** The check passes with the scan in place; a folder newly ignored by git and not by the linter fails the test.
+- **Lesson:** Two files that list the same folders drift apart unless a test compares them (MAINT-04).
+- **Proof:** `tests/tooling.test.js`
+- **Links:** MAINT-04

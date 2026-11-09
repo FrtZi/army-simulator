@@ -2,7 +2,8 @@ import js from "@eslint/js";
 import globals from "globals";
 
 export default [
-  { ignores: ["dist/", "node_modules/"] },
+  // every folder git ignores, other people's files included (DEF-030, checked in tests/tooling.test.js)
+  { ignores: ["dist/", "node_modules/", "captures/", ".claude/"] },
   js.configs.recommended,
   {
     languageOptions: { sourceType: "module", ecmaVersion: "latest" },

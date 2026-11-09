@@ -49,3 +49,13 @@ test("MAINT-04 the hook and the CI run the same checks, on the same Node version
   assert.match(read(".githooks/pre-commit"), /^npm run check\b/m);
   assert.match(ci, /run: npm run check$/m);
 });
+
+// git-ignored folders hold other people's files (the cctools.cc scan's minified scripts): linting them failed the
+// hook on this computer only, the CI having no such folder (DEF-030)
+test("MAINT-04 DEF-030 the linter skips every folder git ignores", async () => {
+  const gitignore = readFileSync(new URL("../.gitignore", import.meta.url), "utf8");
+  const folders = gitignore.match(/^[^#!\s][^*\s]*\/(?=\**$)/gm);
+  const { default: config } = await import("../eslint.config.mjs");
+  const ignored = config.flatMap((entry) => entry.ignores ?? []);
+  for (const folder of folders) assert.ok(ignored.includes(folder), `${folder} is linted`);
+});
