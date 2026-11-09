@@ -3,7 +3,7 @@
 // Names and stats must match one for one; food upkeep differs by a constant factor (open question 13).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { buildWarlords, formatWarlords, readGame, savedPages } from "../scripts/import-warlords.mjs";
 import { buildItems, formatItems, searchedName } from "../scripts/import-items.mjs";
 import { buildChampion, formatChampion, savedChampion } from "../scripts/import-champion.mjs";
@@ -108,5 +108,20 @@ test(
     const { places, answers, npcTroops } = savedPve();
     const made = formatPve(buildPve(places, answers, npcTroops, readGame()));
     assert.equal(readFileSync(new URL(`../data/${GAME}/pve.json`, import.meta.url), "utf8"), made);
+  },
+);
+
+const armiesTool = new URL(`../captures/${GAME}/sources/cctools/scan-2026-11-09/js/`, import.meta.url);
+
+test(
+  "SIM-07 our damage and health divisors are cctools.cc's: attack × damage / 200, health × armour / 40",
+  { skip: !existsSync(armiesTool) },
+  () => {
+    const file = readdirSync(armiesTool).find((name) => name.startsWith("Armies-Index-"));
+    const code = readFileSync(new URL(file, armiesTool), "utf8");
+    const damage = code.match(/melee_attack\?\?0\)\*\(e\.melee_damage\?\?0\)\/(\d+)/)?.[1];
+    const health = code.match(/health\?\?0\)\*\(e\.armour\?\?0\)\/(\d+)/)?.[1];
+    const { model } = read("combat-rules.json");
+    assert.deepEqual([Number(damage), Number(health)], [model.damageDivisor, model.healthDivisor]);
   },
 );
