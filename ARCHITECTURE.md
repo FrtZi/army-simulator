@@ -57,7 +57,8 @@ src/ui/                  the page
 ├── games.js             the games and their data (the JSON imports the build bundles)
 ├── state.js             the single mutable state, and what derives from it (effects, army, profile)
 ├── render.js            the render pipeline: what to redraw after a change
-├── texts/               the page's texts: en.js + en-more.js + en-dash.js, and the same in French (same keys), t()
+├── texts/               the page's texts: en.js + en-more, en-dash, en-heroes, en-setup, and the same in French
+│                        (same keys), t()
 ├── format.js, dom.js    numbers and names in the current language; small DOM helpers
 ├── icons.js             the page's SVG icons and the troop type pictograms (D-18)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;
@@ -66,10 +67,12 @@ src/ui/                  the page
 ├── glossary/            terms.js (definitions, both languages), tooltip.js (the dotted terms)
 └── steps/<part>/        everything a part of the page needs: <part>.html (its markup, included by the build),
                          draw.js (state → DOM), bind.js (controls → state), and its own styles if any:
-                         page (language, theme), game, bonuses, army (+ compositions), picker, heroes
+                         page (language, theme, the page tabs: tabs.html, tabs.js), game, then the Battle lab's:
+                         bonuses, army (+ compositions), picker, heroes
                          (+ picker.js; heroes.js beside state.js works out a composition's heroes),
                          profile (+ table.js: key columns and their details), compare, dashboards
-                         (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves
+                         (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
+                         and Your setup's: setup (D-27)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
 scripts/

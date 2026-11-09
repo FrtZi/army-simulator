@@ -1,6 +1,7 @@
 // Entry point: binds every control once, sets up the glossary's tooltip, then draws the page.
 import { bindLanguage } from "./ui/steps/page/bind.js";
 import { bindThemeToggle } from "./ui/steps/page/theme.js";
+import { bindPageTabs } from "./ui/steps/page/tabs.js";
 import { bindGame } from "./ui/steps/game/bind.js";
 import { bindBonuses } from "./ui/steps/bonuses/bind.js";
 import { bindArmy } from "./ui/steps/army/bind.js";
@@ -17,6 +18,7 @@ import { renderAll } from "./ui/render.js";
 
 bindLanguage();
 bindThemeToggle();
+bindPageTabs();
 bindGame();
 bindBonuses();
 bindArmy();

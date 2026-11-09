@@ -45,6 +45,8 @@ for (const language of ["en", "fr"]) {
       openTable();
       assert.deepEqual(await violations(page), [], dashboard);
     }
+    page.click("#page-tab-setup"); // Your setup (NAV-01, D-27)
+    assert.deepEqual(await violations(page), [], "your setup");
   });
 }
 

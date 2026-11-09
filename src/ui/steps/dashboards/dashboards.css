@@ -1,24 +1,6 @@
 /* Dashboards: the five tabs, the efficiency table, the balance bars, the damage map, pros and cons. */
 .dash-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
   margin: 0.5rem 0 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.dash-tabs [role="tab"] {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: 0;
-  background: none;
-  color: var(--muted);
-}
-
-.dash-tabs [role="tab"][aria-selected="true"] {
-  background: var(--field);
-  color: var(--heading);
-  box-shadow: inset 0 -3px 0 var(--accent);
 }
 
 .dash-panel {

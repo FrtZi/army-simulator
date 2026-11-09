@@ -5,14 +5,16 @@ import { EN } from "./en.js";
 import { EN_MORE } from "./en-more.js";
 import { EN_DASH } from "./en-dash.js";
 import { EN_HEROES } from "./en-heroes.js";
+import { EN_SETUP } from "./en-setup.js";
 import { FR } from "./fr.js";
 import { FR_MORE } from "./fr-more.js";
 import { FR_DASH } from "./fr-dash.js";
 import { FR_HEROES } from "./fr-heroes.js";
+import { FR_SETUP } from "./fr-setup.js";
 
 export const TEXTS = {
-  en: { ...EN, ...EN_MORE, ...EN_DASH, ...EN_HEROES },
-  fr: { ...FR, ...FR_MORE, ...FR_DASH, ...FR_HEROES },
+  en: { ...EN, ...EN_MORE, ...EN_DASH, ...EN_HEROES, ...EN_SETUP },
+  fr: { ...FR, ...FR_MORE, ...FR_DASH, ...FR_HEROES, ...FR_SETUP },
 };
 
 /** The text of a key, its {placeholders} filled from vars. */

@@ -27,6 +27,7 @@ export const state = {
   bonuses: [], // each { stat, percent, filter, value }; filter "all" or one of CONFIG.bonusFilters
   // each { name, troops: troop id → count in the order added, heroes: [{ id, level }], talents: [talent ids] }
   compositions: emptyCompositions(),
+  page: "lab", // the page tab shown: the Battle lab or Your setup (NAV-01)
   active: 0, // the composition being edited
   compare: [0, 1], // the two compositions compared
   dashboard: "efficiency", // the dashboard tab shown

@@ -6,6 +6,7 @@
 import { keepingFocus } from "./dom.js";
 import { applyTexts } from "./steps/page/draw.js";
 import { drawThemeToggle } from "./steps/page/theme.js";
+import { drawPageTabs } from "./steps/page/tabs.js";
 import { drawGame } from "./steps/game/draw.js";
 import { drawBonuses, drawBonusProblems } from "./steps/bonuses/draw.js";
 import { drawArmyLines, drawCapacity, drawCapacityFields, drawCompositions } from "./steps/army/draw.js";
@@ -28,6 +29,7 @@ export function renderAll() {
   keepingFocus(() => {
     applyTexts();
     drawThemeToggle();
+    drawPageTabs();
     drawGame();
     drawBonuses();
     drawCapacityFields();

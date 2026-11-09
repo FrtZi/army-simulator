@@ -36,13 +36,19 @@
 
     <main>
       <!-- @include ui/steps/game/game.html -->
-      <!-- @include ui/steps/bonuses/bonuses.html -->
-      <!-- @include ui/steps/army/army.html -->
-      <!-- @include ui/steps/heroes/heroes.html -->
-      <!-- @include ui/steps/profile/profile.html -->
-      <!-- @include ui/steps/compare/compare.html -->
-      <!-- @include ui/steps/dashboards/dashboards.html -->
-      <!-- @include ui/steps/saves/saves.html -->
+      <!-- @include ui/steps/page/tabs.html -->
+      <div id="page-panel-lab" class="page-panel" role="tabpanel" aria-labelledby="page-tab-lab">
+        <!-- @include ui/steps/bonuses/bonuses.html -->
+        <!-- @include ui/steps/army/army.html -->
+        <!-- @include ui/steps/heroes/heroes.html -->
+        <!-- @include ui/steps/profile/profile.html -->
+        <!-- @include ui/steps/compare/compare.html -->
+        <!-- @include ui/steps/dashboards/dashboards.html -->
+        <!-- @include ui/steps/saves/saves.html -->
+      </div>
+      <div id="page-panel-setup" class="page-panel" role="tabpanel" aria-labelledby="page-tab-setup" hidden>
+        <!-- @include ui/steps/setup/setup.html -->
+      </div>
     </main>
 
     <footer>
