@@ -2,7 +2,8 @@
 // data/<game>/champion.json: the champion level by level (power, tier, the experience each level asks, its skill
 // points and its own stats), every piece of gear level by level (its bonuses, cost and requirements) and the sets
 // (their bonuses by the number of pieces worn). A bonus that reads as one of our troop effects is listed among the
-// effects; the champion's own (its march, the heroes, vanquishing) are kept by name, not applied in battle yet.
+// effects; those for the march it leads (hero_march_unit_*) among the march's; the others (the heroes, vanquishing,
+// the fortress) are kept by name, not applied in battle.
 //
 //   node scripts/import-champion.mjs   reads captures/<game>/sources/cctools/gear/ (saved pages, never committed)
 //                                      and writes data/<game>/champion.json
@@ -21,7 +22,16 @@ const SOURCE =
 const camel = (snake) => snake.replace(/_(\w)/g, (_, letter) => letter.toUpperCase());
 
 /** A bonus: one of our effects (applied in battle), else kept by name for the guides. */
+// a bonus for the troops of the march the champion leads (open question 22, settled 2026-11-09): its stat
+const MARCH = /^hero_march_unit_([a-z_]+)_modifier$/;
+
 function bonusOf(stat, context) {
+  const marchStat = stat.code.match(MARCH)?.[1]?.replace(/_(\w)/g, (_, letter) => letter.toUpperCase());
+  if (marchStat && context.game.troopStats.some((entry) => entry.id === marchStat)) {
+    const id = kebab(stat.code);
+    context.march.set(id, { id, code: stat.code, stat: marchStat });
+    return ["march", id];
+  }
   const effect = effectOf(stat.code, context.game);
   if (effect) context.effects.set(effect.id, effect);
   else context.other.set(kebab(stat.code), { id: kebab(stat.code), code: stat.code, labels: labels(stat.name) });
@@ -72,7 +82,7 @@ function pieceOf({ gear, levels }, context) {
     rarity: gear.rarity_meta.key,
     labels: labels(gear.display_name),
   };
-  const figures = { effects: {}, other: {}, costs: {}, requires: {} };
+  const figures = { effects: {}, march: {}, other: {}, costs: {}, requires: {} };
   [...levels]
     .sort((a, b) => a.level - b.level)
     .forEach((level, index) => {
@@ -112,7 +122,7 @@ function setOf(set, gearSets, context) {
 }
 
 export function buildChampion(championPage, piecePages, sets, game) {
-  const context = { game, effects: new Map(), other: new Map() };
+  const context = { game, effects: new Map(), march: new Map(), other: new Map() };
   const champion = championOf(
     [...championPage.levels].sort((a, b) => a.level - b.level),
     context,
@@ -125,6 +135,7 @@ export function buildChampion(championPage, piecePages, sets, game) {
     pieces,
     sets: sets.map((set) => setOf(set, gearSets, context)).sort((a, b) => a.id.localeCompare(b.id)),
     effects: sortedById(context.effects),
+    march: sortedById(context.march),
     other: sortedById(context.other),
   };
 }

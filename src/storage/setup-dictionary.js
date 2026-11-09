@@ -19,7 +19,10 @@ function listEntry({ id, labels }, extra = {}) {
 }
 
 /** Every list of allowed ids: the warlords, the stats a bonus may raise, and the values of each target filter. */
-function valueLists({ game, warlords, units, defences, rituals, structures }) {
+/** A piece of gear's last level: the length of its bonuses' lists. */
+const pieceLevels = (piece) => Object.values({ ...piece.effects, ...piece.march, ...piece.other })[0]?.length ?? 1;
+
+function valueLists({ game, warlords, units, defences, rituals, structures, champion }) {
   const filters = Object.fromEntries(
     Object.keys(TARGET_FIELDS)
       .filter((filter) => filter !== "units")
@@ -34,11 +37,12 @@ function valueLists({ game, warlords, units, defences, rituals, structures }) {
     // each with its last level: a level read beyond it is refused (BONUS-04, BONUS-07)
     rituals: (rituals?.rituals ?? []).map((ritual) => listEntry(ritual, { levels: ritual.power.length })),
     buildings: (structures?.structures ?? []).map((building) => listEntry(building, { levels: building.power.length })),
+    gear: (champion?.pieces ?? []).map((piece) => listEntry(piece, { levels: pieceLevels(piece) })),
   };
 }
 
 /** The data type and value domain of each element, from the game's rules. */
-function domains(game, gameId) {
+function domains(game, gameId, champion) {
   const { ranks, levelsPerRank } = game.heroRules;
   const percent = { dataType: "number", valueDomain: game.bonusPercent };
   const count = { dataType: "integer", valueDomain: { min: 0 } };
@@ -66,6 +70,10 @@ function domains(game, gameId) {
     ...levelled("buildings"),
     "buildings[].level": count,
     champion: object,
+    "champion.level": { dataType: "integer", valueDomain: { min: 1, max: champion?.champion.power.length } },
+    "champion.gear": list,
+    "champion.gear[].id": { dataType: "text", valueDomain: { list: "gear" } },
+    "champion.gear[].level": { dataType: "integer", valueDomain: { min: 1 } },
   };
 }
 
@@ -74,7 +82,7 @@ function domains(game, gameId) {
  * (setup: the words, data/<game>/setup.json). Every element of the words must have a domain, and the reverse.
  */
 export function setupDictionary(gameData) {
-  const typed = domains(gameData.game, gameData.id);
+  const typed = domains(gameData.game, gameData.id, gameData.champion);
   const elements = gameData.setup.elements.map((element) => {
     if (!typed[element.name]) throw new Error(`setup.json: no type for the element "${element.name}"`);
     return { ...element, ...typed[element.name] };
@@ -97,10 +105,13 @@ export function exampleFile(dictionary) {
   const file = {};
   for (const { name, example } of dictionary.elements) {
     if (example === undefined) continue;
-    const [section, field] = name.split(/\[\]\.|\./);
-    if (!field) file[section] = example;
-    else if (name.includes("[]")) (file[section] ??= [{}])[0][field] = example;
-    else (file[section] ??= {})[field] = example;
+    // "champion.gear[].id": champion → gear, a list of one entry → id
+    const keys = name.split(".");
+    const holder = keys.slice(0, -1).reduce((node, key) => {
+      if (!key.endsWith("[]")) return (node[key] ??= {});
+      return (node[key.slice(0, -2)] ??= [{}])[0];
+    }, file);
+    holder[keys.at(-1)] = example;
   }
   return file;
 }

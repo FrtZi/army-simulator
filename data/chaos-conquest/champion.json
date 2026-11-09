@@ -40,6 +40,7 @@
         "slaanesh-ranged-damage": [5, 15, 25, 35, 50, 60],
         "nurgle-ranged-damage": [5, 15, 25, 35, 50, 60]
       },
+      "march": {},
       "other": {
         "rally-capacity": [10, 20, 30, 40, 50, 60],
         "rally-combat-modifier": [25, 35, 45, 55, 75, 90],
@@ -88,9 +89,11 @@
         "infantry-melee-damage": [2.5, 5, 10, 17.5, 25],
         "khorne-melee-damage": [3, 6, 12, 20, 30]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-damage-modifier": [1.25, 2.5, 5, 7.5, 12.5],
-        "hero-march-unit-ranged-damage-modifier": [1.25, 2.5, 5, 7.5, 12.5],
+        "hero-march-unit-ranged-damage-modifier": [1.25, 2.5, 5, 7.5, 12.5]
+      },
+      "other": {
         "hero-monster-attack-modifier": [5, 10, 20, 32.5, 50],
         "rally-combat-modifier": [2.5, 5, 10, 17.5, 25]
       },
@@ -136,6 +139,7 @@
         "march-speed": [2.5, 5, 10, 15, 20, 30],
         "monstrous-cavalry-armour": [20, 25, 30, 35, 40, 45]
       },
+      "march": {},
       "other": {
         "march-combat-modifier": [5, 7.5, 10, 15, 20, 25]
       },
@@ -164,6 +168,7 @@
       "effects": {
         "infantry-melee-damage": [5, 10, 15, 25, 40]
       },
+      "march": {},
       "other": {
         "rally-combat-modifier": [5, 10, 15, 20, 25],
         "chariots-t5-cost-modifier": [1, 2.5, 5, 7.5, 10],
@@ -194,6 +199,7 @@
       "effects": {
         "chariots-armour": [5, 7.5, 10, 12.5, 15, 25]
       },
+      "march": {},
       "other": {
         "bonus-hospital-unit-capacity": [0, 0, 0, 0, 0, 0],
         "war-beasts-produce-speed-modifier": [10, 15, 17.5, 20, 25, 35],
@@ -228,6 +234,7 @@
         "infantry-melee-attack": [5, 10, 20, 30, 40],
         "chariots-ranged-damage": [10, 12.5, 17.5, 20, 25]
       },
+      "march": {},
       "other": {
         "march-unit-capacity": [2, 4, 6, 8, 10],
         "infantry-hospital-speed-modifier": [5, 10, 15, 20, 25]
@@ -257,6 +264,7 @@
         "chariots-ranged-attack": [10, 12.5, 17.5, 20, 25],
         "monsters-armour": [5, 10, 15, 20, 25]
       },
+      "march": {},
       "other": {
         "monstrous-cavalry-hospital-speed-modifier": [15, 20, 25, 30, 35],
         "chariots-hospital-speed-modifier": [15, 20, 25, 30, 35],
@@ -284,12 +292,14 @@
       "labels": {"en": "Helm of the Barrow", "fr": "Helm of the Barrow*"},
       "sets": ["undead-barrow-set-bonus"],
       "effects": {},
-      "other": {
-        "bonus-hospital-unit-capacity": [0, 0, 0, 0, 0, 0],
-        "monsters-hospital-speed-modifier": [1, 2.5, 5, 10, 15, 20],
+      "march": {
         "hero-march-unit-melee-attack-modifier": [2.5, 5, 7.5, 10, 15, 20],
         "hero-march-unit-melee-damage-modifier": [2.5, 5, 7.5, 10, 15, 20],
         "hero-march-unit-health-modifier": [2.5, 5, 7.5, 10, 15, 20]
+      },
+      "other": {
+        "bonus-hospital-unit-capacity": [0, 0, 0, 0, 0, 0],
+        "monsters-hospital-speed-modifier": [1, 2.5, 5, 10, 15, 20]
       },
       "costs": {
         "component-crafting-steel": [500, 700, 900, 1000, 1900, 3800],
@@ -321,6 +331,7 @@
         "chariots-health": [4, 6, 9, 12, 15],
         "monstrous-cavalry-health": [4, 6, 9, 12, 15]
       },
+      "march": {},
       "other": {},
       "costs": {
         "component-crafting-tanned-hide": [1200, null, null, null, null],
@@ -363,10 +374,12 @@
       "labels": {"en": "Blazing Talisman of the Vanquisher", "fr": "Blazing Talisman of the Vanquisher*"},
       "sets": ["vanquisher-set-bonus"],
       "effects": {},
+      "march": {
+        "hero-march-unit-load-modifier": [2.25, 4, 7.5, 12.5, 20]
+      },
       "other": {
         "hero-monster-attack-modifier": [4, 9, 16.5, 25, 35],
         "hunt-energy-modifier": [-1, -2, -3, -4, -5],
-        "hero-march-unit-load-modifier": [2.25, 4, 7.5, 12.5, 20],
         "hunt-outgoing-speed-modifier": [5, 10, 20, 30, 40]
       },
       "costs": {
@@ -395,6 +408,7 @@
         "cavalry-health": [1.66, 3.33, 6.5, 12.5, 17.5],
         "khorne-melee-attack": [2, 4.5, 9, 15, 22.5]
       },
+      "march": {},
       "other": {
         "hero-speed-modifier": [5.5, 11, 22, 37.5, 55]
       },
@@ -436,12 +450,13 @@
         "infantry-melee-damage": [1, 3, 5, 8, 12, 17],
         "undivided-morale": [-10, -16, -22, -28, -35, -42]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [1, 3, 5, 8, 12, 17],
         "hero-march-unit-ranged-attack-modifier": [1, 3, 5, 8, 12, 17],
         "hero-march-unit-health-modifier": [1, 3, 5, 8, 12, 17],
         "hero-march-unit-armour-modifier": [1.75, 3.5, 7.5, 12.5, 17.5, 22.5]
       },
+      "other": {},
       "costs": {
         "component-crafting-centigor-horn": [350, 850, 1295, 1700, 1950, 3900],
         "component-crafting-chipped-buckler": [245, 400, 645, 785, 1300, 2600],
@@ -464,6 +479,7 @@
       "labels": {"en": "Brass Greaves of Slaughter", "fr": "Brass Greaves of Slaughter*"},
       "sets": [],
       "effects": {},
+      "march": {},
       "other": {
         "hero-energy-regen": [0, 0, 0, 0, 0],
         "hunt-outgoing-speed-modifier": [5, 10, 20, 30, 40],
@@ -493,9 +509,11 @@
       "effects": {
         "war-beasts-melee-damage": [2, 5, 10, 17, 20]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [2.25, 4, 7.5, 12.5, 20],
-        "hero-march-unit-ranged-attack-modifier": [2.25, 4, 7.5, 12.5, 20],
+        "hero-march-unit-ranged-attack-modifier": [2.25, 4, 7.5, 12.5, 20]
+      },
+      "other": {
         "structure-currency3-protected-modifier": [5, 15, 25, 35, 50],
         "random-reward-modifier": [3, 5, 8, 10, 15]
       },
@@ -520,6 +538,7 @@
       "labels": {"en": "Brand of Hashut", "fr": "Brand of Hashut*"},
       "sets": [],
       "effects": {},
+      "march": {},
       "other": {
         "infantry-produce-speed-modifier": [1.5, 3.5, 8, 12, 20],
         "monstrous-infantry-produce-speed-modifier": [2.5, 5, 10, 15, 25],
@@ -549,8 +568,10 @@
       "effects": {
         "infantry-armour": [1.66, 3.33, 6.5, 12.5, 17.5]
       },
+      "march": {
+        "hero-march-unit-armour-modifier": [1.5, 3, 6, 9.5, 15]
+      },
       "other": {
-        "hero-march-unit-armour-modifier": [1.5, 3, 6, 9.5, 15],
         "hero-hunting-race-empire-modifier": [3, 6, 12, 18, 30]
       },
       "costs": {
@@ -590,8 +611,10 @@
         "monstrous-beasts-armour": [2, 4, 8, 15, 20],
         "khorne-health": [2.5, 5.25, 10.5, 17.5, 26.5]
       },
+      "march": {
+        "hero-march-unit-health-modifier": [1.5, 3, 6, 9.5, 15]
+      },
       "other": {
-        "hero-march-unit-health-modifier": [1.5, 3, 6, 9.5, 15],
         "hero-monster-attack-modifier": [4.25, 8.75, 17.5, 30, 42.5]
       },
       "costs": {
@@ -634,10 +657,12 @@
         "slaanesh-ranged-attack": [5, 10, 15, 20, 25],
         "slaanesh-ranged-damage": [5, 10, 15, 20, 25]
       },
+      "march": {
+        "hero-march-unit-health-modifier": [1.75, 3, 5, 8, 17.5]
+      },
       "other": {
         "hero-city-unit-ranged-attack-modifier": [1.5, 5, 7.5, 9, 12],
-        "hero-city-unit-ranged-damage-modifier": [1.5, 5, 7.5, 9, 12],
-        "hero-march-unit-health-modifier": [1.75, 3, 5, 8, 17.5]
+        "hero-city-unit-ranged-damage-modifier": [1.5, 5, 7.5, 9, 12]
       },
       "costs": {
         "component-crafting-centigor-horn": [395, 845, 1120, 1555, 1700],
@@ -663,9 +688,11 @@
         "monstrous-infantry-armour": [2, 4, 8, 15, 20],
         "nurgle-melee-attack": [2.5, 5.25, 10.5, 17.5, 26.25]
       },
-      "other": {
-        "hero-speed-modifier": [6.25, 12.5, 25, 45, 62.5],
+      "march": {
         "hero-march-unit-armour-modifier": [1.75, 3, 5, 8, 17.5]
+      },
+      "other": {
+        "hero-speed-modifier": [6.25, 12.5, 25, 45, 62.5]
       },
       "costs": {
         "component-crafting-salvaged-armour": [200, null, null, null, null],
@@ -707,9 +734,11 @@
         "monstrous-cavalry-armour": [2.5, 5, 10, 17.5, 25],
         "undivided-ranged-damage": [3, 6, 12, 20, 30]
       },
-      "other": {
+      "march": {
         "hero-march-unit-health-modifier": [2.25, 4, 7.5, 12.5, 20],
-        "hero-march-unit-armour-modifier": [1.75, 3.5, 7.5, 12.5, 17.5],
+        "hero-march-unit-armour-modifier": [1.75, 3.5, 7.5, 12.5, 17.5]
+      },
+      "other": {
         "structure-ranged-damage-modifier": [2.5, 5, 10, 17.5, 25]
       },
       "costs": {
@@ -752,6 +781,7 @@
         "slaanesh-ranged-damage": [2.5, 5, 10, 15, 18],
         "slaanesh-melee-damage": [1.5, 3, 6, 8, 10]
       },
+      "march": {},
       "other": {
         "random-reward-modifier": [2.5, 5, 7.5, 10, 15],
         "greenskins-combat-modifier": [1.5, 3, 6, 10, 17],
@@ -781,8 +811,10 @@
         "cavalry-armour": [2, 6, 10, 15, 20, 25],
         "monsters-health": [null, null, null, null, 20, 30]
       },
+      "march": {
+        "hero-march-unit-health-modifier": [2.5, 5, 10, 18.75, 25, 35]
+      },
       "other": {
-        "hero-march-unit-health-modifier": [2.5, 5, 10, 18.75, 25, 35],
         "capturable-combat-modifier": [1, 2, 3, 4, 5, 10],
         "capturable-tier1-unit-save-modifier": [2, 4, 6, 8, 10, 15],
         "capturable-tier2-unit-save-modifier": [2, 4, 6, 8, 10, 15],
@@ -837,9 +869,10 @@
       "effects": {
         "war-beasts-melee-attack": [1.33, 2.66, 5, 10, 15]
       },
-      "other": {
+      "march": {
         "hero-march-unit-health-modifier": [1.25, 2.5, 5, 7.5, 12.5]
       },
+      "other": {},
       "costs": {
         "component-crafting-chains": [110, null, null, null, null],
         "component-crafting-salvaged-armour": [110, null, null, null, null],
@@ -873,13 +906,14 @@
       "effects": {
         "monsters-morale": [null, null, null, null, 35, 45]
       },
-      "other": {
+      "march": {
         "hero-march-unit-health-modifier": [4, 9, 16.5, 25, 35, 45],
         "hero-march-unit-armour-modifier": [1.5, 3, 6, 10, 15, 25],
         "hero-march-unit-melee-attack-modifier": [null, null, 10, 18.75, 25, 35],
         "hero-march-unit-ranged-attack-modifier": [null, null, 10, 18.75, 25, 35],
         "hero-march-unit-morale-modifier": [null, null, null, 10, 15, 25]
       },
+      "other": {},
       "costs": {
         "component-crafting-teeth": [75, null, null, null, null, null],
         "component-crafting-salvaged-armour": [110, null, null, null, null, null],
@@ -925,9 +959,11 @@
       "effects": {
         "monstrous-infantry-health": [null, null, null, 25, 35]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [3, 6, 10, 15, 25],
-        "hero-march-unit-ranged-attack-modifier": [3, 6, 10, 15, 25],
+        "hero-march-unit-ranged-attack-modifier": [3, 6, 10, 15, 25]
+      },
+      "other": {
         "empire-combat-modifier": [3, 9, 14, 22.5, 30],
         "rally-combat-modifier": [null, null, 5, 15, 30],
         "rally-capacity": [null, null, null, null, 45]
@@ -974,13 +1010,15 @@
       "labels": {"en": "Skull Helm of the Chosen", "fr": "Skull Helm of the Chosen*"},
       "sets": ["chosen-set-bonus"],
       "effects": {},
-      "other": {
+      "march": {
         "hero-march-unit-armour-modifier": [4, 9, 16.5, 25, 35, 40],
+        "hero-march-unit-health-modifier": [null, null, null, null, 35, 40]
+      },
+      "other": {
         "carrier-melee-attack-modifier": [5, 10, 20, 37.5, 50, 55],
         "outpost-combat-modifier": [null, null, 10, 20, 35, 40],
         "carrier-melee-damage-modifier": [null, null, null, 37.5, 50, 55],
-        "carrier-ranged-damage-modifier": [null, null, null, 37.5, 50, 55],
-        "hero-march-unit-health-modifier": [null, null, null, null, 35, 40]
+        "carrier-ranged-damage-modifier": [null, null, null, 37.5, 50, 55]
       },
       "costs": {
         "component-crafting-chains": [105, null, null, null, null, null],
@@ -1028,11 +1066,13 @@
         "undivided-armour": [null, null, 16, 25, 40],
         "infantry-armour": [null, null, null, 25, 35]
       },
-      "other": {
-        "hero-speed-modifier": [8, 16, 35, 52.5, 75],
-        "hero-city-unit-morale-modifier": [5, 10, 15, 25, 40],
+      "march": {
         "hero-march-unit-load-modifier": [3, 6, 10, 15, 25],
         "hero-march-unit-speed-modifier": [null, null, null, null, 10]
+      },
+      "other": {
+        "hero-speed-modifier": [8, 16, 35, 52.5, 75],
+        "hero-city-unit-morale-modifier": [5, 10, 15, 25, 40]
       },
       "costs": {
         "component-crafting-rough-leather": [190, null, null, null, null],
@@ -1078,11 +1118,13 @@
       "effects": {
         "undivided-health": [null, null, 15, 20, 30]
       },
+      "march": {
+        "hero-march-unit-melee-damage-modifier": [null, null, null, 10, 17],
+        "hero-march-unit-ranged-damage-modifier": [null, null, null, 10, 17]
+      },
       "other": {
         "hero-monster-attack-modifier": [10, 20, 40, 65, 100],
         "hero-speed-modifier": [2, 5, 7, 10, 15],
-        "hero-march-unit-melee-damage-modifier": [null, null, null, 10, 17],
-        "hero-march-unit-ranged-damage-modifier": [null, null, null, 10, 17],
         "city-attacker-attack-modifier": [null, null, null, null, -10]
       },
       "costs": {
@@ -1127,10 +1169,12 @@
       "labels": {"en": "Great Axe of the Chosen", "fr": "Great Axe of the Chosen*"},
       "sets": ["chosen-set-bonus"],
       "effects": {},
-      "other": {
+      "march": {
         "hero-march-unit-melee-damage-modifier": [2.25, 4, 7.5, 12.5, 20, 25],
         "hero-march-unit-ranged-damage-modifier": [2.25, 4, 7.5, 12.5, 20, 25],
-        "hero-march-unit-health-modifier": [1.5, 3, 6, 10, 15, 20],
+        "hero-march-unit-health-modifier": [1.5, 3, 6, 10, 15, 20]
+      },
+      "other": {
         "carrier-armour-modifier": [4, 9, 16.5, 25, 35, 40],
         "carrier-revive-seconds-modifier": [null, null, 17.5, 26.25, 37.5, 40],
         "city-combat-modifier": [null, null, null, 10, 15, 20],
@@ -1182,11 +1226,13 @@
         "monsters-health": [2.5, 5, 10, 17.5, 25],
         "slaanesh-armour": [3, 6, 12, 20, 30]
       },
-      "other": {
-        "hero-speed-modifier": [8, 16, 35, 52.5, 75],
+      "march": {
         "hero-march-unit-melee-attack-modifier": [2.25, 4, 7.5, 12.5, 20],
         "hero-march-unit-ranged-attack-modifier": [2.25, 4, 7.5, 12.5, 20],
         "hero-march-unit-morale-modifier": [3.5, 7, 15, 25, 35]
+      },
+      "other": {
+        "hero-speed-modifier": [8, 16, 35, 52.5, 75]
       },
       "costs": {
         "component-crafting-bone": [300, null, null, null, null],
@@ -1228,9 +1274,11 @@
         "monstrous-infantry-melee-attack": [1.66, 3.33, 6.5, 12.5, 17.5],
         "nurgle-armour": [2, 4.5, 9, 15, 22.5]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-damage-modifier": [1.5, 3, 6, 9.5, 15],
-        "hero-march-unit-ranged-damage-modifier": [1.5, 3, 6, 9.5, 15],
+        "hero-march-unit-ranged-damage-modifier": [1.5, 3, 6, 9.5, 15]
+      },
+      "other": {
         "bonus-station-unit-capacity": [0, 0, 0, 0, 0]
       },
       "costs": {
@@ -1274,6 +1322,7 @@
         "slaanesh-melee-attack": [8, 10, 13, 17, 20, 25],
         "chariots-melee-damage": [10, 15, 20, 25, 35, 45]
       },
+      "march": {},
       "other": {},
       "costs": {
         "component-crafting-armour-plating": [1200, null, null, null, null, null],
@@ -1321,6 +1370,7 @@
         "monstrous-beasts-health": [2.5, 5, 10, 17.5, 25],
         "khorne-armour": [3, 6, 12, 20, 30]
       },
+      "march": {},
       "other": {
         "hero-monster-attack-modifier": [10, 20, 40, 65, 100],
         "hero-speed-modifier": [3.75, 8, 17.5, 26.25, 37.5],
@@ -1365,8 +1415,10 @@
       "effects": {
         "undivided-melee-damage": [3, 6, 12, 20, 30]
       },
+      "march": {
+        "hero-march-unit-armour-modifier": [2.25, 4, 7.5, 12.5, 20]
+      },
       "other": {
-        "hero-march-unit-armour-modifier": [2.25, 4, 7.5, 12.5, 20],
         "march-rally-speed-modifier": [2, 4, 6, 9, 12]
       },
       "costs": {
@@ -1389,8 +1441,10 @@
       "labels": {"en": "Crown of the Leper", "fr": "Crown of the Leper*"},
       "sets": [],
       "effects": {},
+      "march": {
+        "hero-march-unit-armour-modifier": [1, 2, 4, 7, 10]
+      },
       "other": {
-        "hero-march-unit-armour-modifier": [1, 2, 4, 7, 10],
         "currency6-generate-modifier": [2, 6, 10, 15, 20],
         "infantry-t1-cost-modifier": [2.5, 5, 7.5, 10, 15],
         "infantry-t2-cost-modifier": [1, 2.5, 5, 7.5, 10]
@@ -1425,6 +1479,7 @@
       "effects": {
         "march-speed": [10, 20, 30, 40, 50, 60]
       },
+      "march": {},
       "other": {
         "march-combat-modifier": [25, 35, 45, 55, 70, 85],
         "march-unit-capacity": [10, 20, 30, 40, 50, 60],
@@ -1453,10 +1508,12 @@
       "labels": {"en": "Elfslayer Bejeweled Ring", "fr": "Elfslayer Bejeweled Ring*"},
       "sets": ["elfslayer-set-bonus"],
       "effects": {},
+      "march": {
+        "hero-march-unit-health-modifier": [3, 6, 12, 20, 30],
+        "hero-march-unit-armour-modifier": [3, 6, 12, 20, 30]
+      },
       "other": {
         "hero-monster-attack-modifier": [10, 20, 40, 50, 75],
-        "hero-march-unit-health-modifier": [3, 6, 12, 20, 30],
-        "hero-march-unit-armour-modifier": [3, 6, 12, 20, 30],
         "hero-hunting-race-elves-modifier": [2.5, 5, 10, 15, 20],
         "hero-xp-modifier": [5, 8, 12, 17, 22],
         "monstrous-beasts-t5-cost-modifier": [3, 5, 7.5, 10, 15]
@@ -1504,8 +1561,10 @@
       "effects": {
         "chariots-health": [5, 10, 15, 20, 25, 35]
       },
+      "march": {
+        "hero-march-unit-health-modifier": [3, 6, 12, 20, 30, 40]
+      },
       "other": {
-        "hero-march-unit-health-modifier": [3, 6, 12, 20, 30, 40],
         "cavalry-t4-cost-modifier": [3, 5, 7.5, 10, 15, 25],
         "monstrous-cavalry-t5-cost-modifier": [3, 5, 7.5, 10, 15, 20]
       },
@@ -1556,9 +1615,11 @@
         "undivided-melee-attack": [5, 8, 12, 18, 25, 35],
         "undivided-ranged-attack": [5, 8, 12, 18, 25, 35]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-damage-modifier": [3, 6, 12, 20, 30, 40],
-        "hero-march-unit-ranged-damage-modifier": [3, 6, 12, 20, 30, 40],
+        "hero-march-unit-ranged-damage-modifier": [3, 6, 12, 20, 30, 40]
+      },
+      "other": {
         "broken-defense-combat-modifier": [2, 5, 7, 12, 20, 30],
         "war-beasts-t4-cost-modifier": [3, 5, 7.5, 10, 15, 25]
       },
@@ -1607,9 +1668,11 @@
         "defences-melee-attack": [5, 8, 12, 18, 25],
         "defences-melee-damage": [5, 8, 12, 18, 25]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [3, 6, 12, 20, 30],
-        "hero-march-unit-ranged-attack-modifier": [3, 6, 12, 20, 30],
+        "hero-march-unit-ranged-attack-modifier": [3, 6, 12, 20, 30]
+      },
+      "other": {
         "city-combat-modifier": [1, 2, 3, 5, 7],
         "defenses-t5-cost-modifier": [3, 5, 7.5, 10, 15]
       },
@@ -1656,6 +1719,7 @@
       "effects": {
         "chariots-speed": [5, 10, 15, 25, 35]
       },
+      "march": {},
       "other": {
         "hero-speed-modifier": [8, 16, 35, 52.5, 75],
         "march-rally-speed-modifier": [5, 10, 15, 20, 25],
@@ -1705,8 +1769,10 @@
       "effects": {
         "chariots-armour": [2, 5, 7, 12, 15, 20]
       },
+      "march": {
+        "hero-march-unit-armour-modifier": [3, 6, 12, 20, 30, 40]
+      },
       "other": {
-        "hero-march-unit-armour-modifier": [3, 6, 12, 20, 30, 40],
         "capturable-combat-modifier": [1, 2, 3, 4, 5, 6],
         "monsters-t5-cost-modifier": [3, 5, 7.5, 10, 15, 20],
         "chariots-t5-cost-modifier": [3, 5, 7.5, 10, 15, 20]
@@ -1755,6 +1821,7 @@
       "effects": {
         "chariots-health": [1.33, 2.66, 5, 10, 15]
       },
+      "march": {},
       "other": {
         "hero-monster-attack-modifier": [6, 12, 25, 40, 60]
       },
@@ -1793,6 +1860,7 @@
         "cavalry-morale": [2, 6, 10, 15, 20],
         "undivided-health": [null, null, null, 15, 15]
       },
+      "march": {},
       "other": {
         "hero-monster-attack-modifier": [10, 20, 40, 50, 75],
         "offensive-tier1-unit-save-modifier": [1, 2, 3, 4, 5],
@@ -1844,9 +1912,11 @@
       "labels": {"en": "Flail of Blinding Hate", "fr": "Flail of Blinding Hate*"},
       "sets": ["realm-vs-realm-set-bonus"],
       "effects": {},
-      "other": {
+      "march": {
         "hero-march-unit-melee-damage-modifier": [2.5, 5, 10, 18.75, 25, 30],
-        "hero-march-unit-ranged-damage-modifier": [2.5, 5, 10, 18.75, 25, 30],
+        "hero-march-unit-ranged-damage-modifier": [2.5, 5, 10, 18.75, 25, 30]
+      },
+      "other": {
         "attack-defender-combat-modifier": [1, 2, 3, 4, 5, 10],
         "hero-monster-attack-modifier": [5, 10, 15, 25, 50, 60],
         "hero-hunting-chain-modifier": [null, null, null, 5, 10, 20],
@@ -1897,11 +1967,13 @@
         "cavalry-melee-damage": [2.5, 5, 10, 17.5, 25],
         "tzeentch-armour": [3, 6, 12, 20, 30]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [1.25, 2.5, 5, 7.5, 12.5],
         "hero-march-unit-ranged-attack-modifier": [1.25, 2.5, 5, 7.5, 12.5],
         "hero-march-unit-melee-damage-modifier": [1.25, 2.5, 5, 7.5, 12.5],
-        "hero-march-unit-ranged-damage-modifier": [1.25, 2.5, 5, 7.5, 12.5],
+        "hero-march-unit-ranged-damage-modifier": [1.25, 2.5, 5, 7.5, 12.5]
+      },
+      "other": {
         "city-combat-modifier": [2.5, 5, 10, 17.5, 25]
       },
       "costs": {
@@ -1941,11 +2013,13 @@
       "labels": {"en": "Gauntlets of Damnation", "fr": "Gauntlets of Damnation*"},
       "sets": [],
       "effects": {},
+      "march": {
+        "hero-march-unit-ranged-attack-modifier": [2.25, 4.5, 9, 16.25, 22.5],
+        "hero-march-unit-melee-attack-modifier": [2.25, 4.5, 9, 16.25, 22.5]
+      },
       "other": {
         "infantry-hospital-speed-modifier": [3, 7, 12, 19, 25],
         "structure-speed-modifier": [1, 2, 3, 4, 5],
-        "hero-march-unit-ranged-attack-modifier": [2.25, 4.5, 9, 16.25, 22.5],
-        "hero-march-unit-melee-attack-modifier": [2.25, 4.5, 9, 16.25, 22.5],
         "cavalry-t4-cost-modifier": [1, 2, 4, 7, 10]
       },
       "costs": {
@@ -1969,10 +2043,12 @@
       "labels": {"en": "Great Helm of the Vanquisher", "fr": "Great Helm of the Vanquisher*"},
       "sets": ["vanquisher-set-bonus"],
       "effects": {},
+      "march": {
+        "hero-march-unit-armour-modifier": [2.25, 4, 7.5, 12.5, 20, 25]
+      },
       "other": {
         "hero-monster-attack-modifier": [4, 9, 16.5, 25, 35, 40],
         "hunt-defeated-energy-restore": [1, 2, 3, 4, 5, 6],
-        "hero-march-unit-armour-modifier": [2.25, 4, 7.5, 12.5, 20, 25],
         "hero-max-energy": [0, 0, 0, 0, 0, 0]
       },
       "costs": {
@@ -2002,6 +2078,7 @@
         "monstrous-infantry-speed": [1.75, 3, 5, 10, 15],
         "nurgle-armour": [3, 7, 10, 15, 20]
       },
+      "march": {},
       "other": {
         "hero-speed-modifier": [5, 10, 20, 35, 50],
         "structure-currency5-protected-modifier": [5, 15, 25, 35, 50],
@@ -2030,11 +2107,13 @@
       "effects": {
         "undivided-armour": [4, 7, 15, 20, 35]
       },
-      "other": {
-        "currency7-generate-modifier": [1, 3, 6, 10, 15],
-        "structure-speed-modifier": [2, 3, 5, 7, 10],
+      "march": {
         "hero-march-unit-ranged-attack-modifier": [2.25, 6, 10, 15, 20],
         "hero-march-unit-melee-attack-modifier": [2.25, 6, 10, 15, 20]
+      },
+      "other": {
+        "currency7-generate-modifier": [1, 3, 6, 10, 15],
+        "structure-speed-modifier": [2, 3, 5, 7, 10]
       },
       "costs": {
         "component-crafting-rune-talisman": [550, 635, 705, 1100, 1300],
@@ -2057,10 +2136,12 @@
       "labels": {"en": "Hammer of Dominion", "fr": "Hammer of Dominion*"},
       "sets": ["set-of-dominion"],
       "effects": {},
+      "march": {
+        "hero-march-unit-health-modifier": [10, 14, 18, 22, 26, 30],
+        "hero-march-unit-armour-modifier": [12, 18, 25, 32, 38, 45]
+      },
       "other": {
         "march-combat-modifier": [15, 22, 28, 33, 40, 45],
-        "hero-march-unit-health-modifier": [10, 14, 18, 22, 26, 30],
-        "hero-march-unit-armour-modifier": [12, 18, 25, 32, 38, 45],
         "rally-combat-modifier": [5, 8, 10, 13, 17, 20],
         "march-contest-modifier": [5, 8, 10, 12, 14, 15]
       },
@@ -2087,12 +2168,14 @@
       "labels": {"en": "Headsman's Skull Cloak", "fr": "Headsman's Skull Cloak*"},
       "sets": ["skulltaker-set-bonus"],
       "effects": {},
-      "other": {
+      "march": {
         "hero-march-unit-load-modifier": [2.75, 5.5, 10, 15, 25, 35],
+        "hero-march-unit-health-modifier": [3, 6, 12, 17, 25, 35]
+      },
+      "other": {
         "hunt-bonus-reward-modifier": [2, 3.5, 5, 10, 15, 25],
         "hero-execute-reward-modifier": [1.5, 3, 4.5, 7, 10, 20],
-        "hero-reward-modifier": [1, 2, 3, 4, 5, 10],
-        "hero-march-unit-health-modifier": [3, 6, 12, 17, 25, 35]
+        "hero-reward-modifier": [1, 2, 3, 4, 5, 10]
       },
       "costs": {
         "component-crafting-salvaged-armour": [750, null, null, null, null, null],
@@ -2137,11 +2220,13 @@
       "labels": {"en": "Headsman's Blazing Sword", "fr": "Headsman's Blazing Sword*"},
       "sets": ["skulltaker-set-bonus"],
       "effects": {},
-      "other": {
+      "march": {
         "hero-march-unit-ranged-attack-modifier": [2.5, 5, 10, 18.75, 25, 30],
         "hero-march-unit-melee-attack-modifier": [2.5, 5, 10, 18.75, 25, 30],
         "hero-march-unit-melee-damage-modifier": [2.5, 5, 10, 18.75, 25, 30],
-        "hero-march-unit-ranged-damage-modifier": [2.5, 5, 10, 18.75, 25, 30],
+        "hero-march-unit-ranged-damage-modifier": [2.5, 5, 10, 18.75, 25, 30]
+      },
+      "other": {
         "hero-monster-attack-modifier": [5, 10, 15, 25, 50, 60]
       },
       "costs": {
@@ -2187,6 +2272,7 @@
       "labels": {"en": "Hellfire Sword of the Vanquisher", "fr": "Hellfire Sword of the Vanquisher*"},
       "sets": ["vanquisher-set-bonus"],
       "effects": {},
+      "march": {},
       "other": {
         "hero-monster-attack-modifier": [5, 10, 15, 20, 25, 30],
         "hero-hunting-race-creature-modifier": [3, 6, 12, 18, 30, 40],
@@ -2221,10 +2307,12 @@
       "labels": {"en": "Helm of Avarice", "fr": "Helm of Avarice*"},
       "sets": [],
       "effects": {},
+      "march": {
+        "hero-march-unit-armour-modifier": [2.25, 4, 7.5, 12.5, 20]
+      },
       "other": {
         "structure-currency7-protected-modifier": [5, 15, 25, 35, 50],
         "bonus-shelter-unit-capacity": [0, 0, 0, 0, 0],
-        "hero-march-unit-armour-modifier": [2.25, 4, 7.5, 12.5, 20],
         "hunt-bonus-reward-modifier": [1.75, 6, 9, 12, 20],
         "carrier-health-modifier": [1.75, 3, 5, 8, 15]
       },
@@ -2260,11 +2348,13 @@
         "slaanesh-armour": [5, 15, 25, 30, 35, 50],
         "nurgle-armour": [5, 15, 25, 30, 35, 50]
       },
+      "march": {
+        "hero-march-unit-speed-modifier": [10, 20, 30, 40, 50, 60]
+      },
       "other": {
         "city-combat-modifier": [25, 30, 35, 40, 45, 50],
         "march-rally-speed-modifier": [10, 20, 30, 40, 50, 60],
         "city-attacker-attack-modifier": [-5, -10, -15, -20, -25, -30],
-        "hero-march-unit-speed-modifier": [10, 20, 30, 40, 50, 60],
         "infantry-t6-cost-modifier": [5, 10, 15, 20, 25, 30],
         "monsters-t6-cost-modifier": [5, 10, 15, 20, 25, 30],
         "cavalry-t6-cost-modifier": [5, 10, 15, 20, 25, 30],
@@ -2299,10 +2389,12 @@
       "effects": {
         "tzeentch-ranged-damage": [4, 8, 12, 18, 24]
       },
-      "other": {
-        "research-speed-modifier": [1, 3, 5, 7, 10],
+      "march": {
         "hero-march-unit-armour-modifier": [1.5, 3, 5, 8, 17.5],
         "hero-march-unit-health-modifier": [1.5, 3, 5, 8, 17.5]
+      },
+      "other": {
+        "research-speed-modifier": [1, 3, 5, 7, 10]
       },
       "costs": {
         "component-crafting-helm-plume": [400, 885, 1200, 1800, 2000],
@@ -2328,8 +2420,10 @@
         "khorne-health": [5, 7, 10, 13, 17, 22],
         "nurgle-melee-damage": [5, 7, 10, 13, 17, 22]
       },
+      "march": {
+        "hero-march-unit-armour-modifier": [5, 8, 11, 15, 20, 25]
+      },
       "other": {
-        "hero-march-unit-armour-modifier": [5, 8, 11, 15, 20, 25],
         "greenskins-combat-modifier": [3, 6, 10, 14, 20, 25]
       },
       "costs": {
@@ -2378,12 +2472,14 @@
       "effects": {
         "tzeentch-ranged-attack": [2, 6, 10, 15, 20]
       },
+      "march": {
+        "hero-march-unit-melee-damage-modifier": [1.5, 5, 7.5, 9, 12],
+        "hero-march-unit-ranged-damage-modifier": [1.5, 5, 7.5, 9, 12]
+      },
       "other": {
         "hero-city-unit-melee-attack-modifier": [1.5, 5, 7.5, 9, 12],
         "hero-city-unit-melee-damage-modifier": [1.5, 5, 7.5, 9, 12],
-        "hero-city-unit-armour-modifier": [1.5, 5, 7.5, 9, 12],
-        "hero-march-unit-melee-damage-modifier": [1.5, 5, 7.5, 9, 12],
-        "hero-march-unit-ranged-damage-modifier": [1.5, 5, 7.5, 9, 12]
+        "hero-city-unit-armour-modifier": [1.5, 5, 7.5, 9, 12]
       },
       "costs": {
         "component-crafting-centigor-horn": [400, 885, 1200, 1800, 2000],
@@ -2411,6 +2507,7 @@
         "undivided-ranged-attack": [8, 10, 13, 17, 20],
         "slaanesh-ranged-attack": [8, 10, 13, 17, 20]
       },
+      "march": {},
       "other": {
         "march-unit-capacity": [5, 7, 9, 12, 15]
       },
@@ -2457,9 +2554,10 @@
         "cavalry-armour": [1.33, 2.66, 5, 10, 15],
         "undivided-health": [3, 6.5, 10, 15, 20]
       },
-      "other": {
+      "march": {
         "hero-march-unit-armour-modifier": [1.25, 2.5, 5, 7.5, 12.5]
       },
+      "other": {},
       "costs": {
         "component-crafting-frayed-cloth": [120, null, null, null, null],
         "component-crafting-rope": [120, null, null, null, null],
@@ -2493,6 +2591,7 @@
       "effects": {
         "undivided-melee-attack": [2.5, 5, 8, 12, 15]
       },
+      "march": {},
       "other": {
         "hero-speed-modifier": [4, 8, 16, 25, 40],
         "currency7-generate-modifier": [2, 6, 10, 15, 20]
@@ -2527,8 +2626,10 @@
       "labels": {"en": "Jerkin of Flux", "fr": "Jerkin of Flux*"},
       "sets": [],
       "effects": {},
+      "march": {
+        "hero-march-unit-health-modifier": [1, 2, 4, 7, 10]
+      },
       "other": {
-        "hero-march-unit-health-modifier": [1, 2, 4, 7, 10],
         "currency3-generate-modifier": [2, 6, 10, 15, 20]
       },
       "costs": {
@@ -2561,6 +2662,7 @@
       "labels": {"en": "Mace of the Great Hunt", "fr": "Mace of the Great Hunt*"},
       "sets": ["great-hunt-set-bonus"],
       "effects": {},
+      "march": {},
       "other": {
         "war-beasts-produce-speed-modifier": [5, 7, 9, 12, 15, 20],
         "hero-max-energy": [0, 0, 0, 0, 0, 0],
@@ -2613,8 +2715,10 @@
         "nurgle-armour": [1.5, 3, 6, 8, 10],
         "nurgle-health": [2.5, 3.75, 6.5, 8.5, 13.75]
       },
+      "march": {
+        "hero-march-unit-health-modifier": [2.25, 4, 7.5, 12.5, 20]
+      },
       "other": {
-        "hero-march-unit-health-modifier": [2.25, 4, 7.5, 12.5, 20],
         "static-tier1-unit-save-modifier": [2, 4, 6, 8, 10],
         "static-tier2-unit-save-modifier": [null, 4, 6, 8, 10],
         "static-tier3-unit-save-modifier": [null, null, 6, 8, 10],
@@ -2644,10 +2748,12 @@
         "chariots-ranged-damage": [2, 4, 8, 15, 20],
         "nurgle-health": [2.5, 5.25, 10.5, 17.5, 26.5]
       },
-      "other": {
-        "hero-monster-attack-modifier": [8.5, 17.5, 35, 60, 85],
+      "march": {
         "hero-march-unit-melee-attack-modifier": [1.5, 3, 6, 9.5, 15],
         "hero-march-unit-ranged-attack-modifier": [1.5, 3, 6, 9.5, 15]
+      },
+      "other": {
+        "hero-monster-attack-modifier": [8.5, 17.5, 35, 60, 85]
       },
       "costs": {
         "component-crafting-teeth": [350, null, null, null, null],
@@ -2688,8 +2794,10 @@
       "effects": {
         "cavalry-melee-damage": [2, 6, 10, 15, 20, 25]
       },
+      "march": {
+        "hero-march-unit-armour-modifier": [2.5, 5, 10, 18.75, 25, 30]
+      },
       "other": {
-        "hero-march-unit-armour-modifier": [2.5, 5, 10, 18.75, 25, 30],
         "bonus-shelter-unit-capacity": [0, 0, 0, 0, 0, 0],
         "capturable-combat-modifier": [1, 2, 3, 4, 5, 6],
         "march-rally-speed-modifier": [null, null, null, 15, 20, 25],
@@ -2740,9 +2848,11 @@
         "infantry-ranged-damage": [2.5, 5, 10, 17.5, 25],
         "slaanesh-health": [3, 6, 12, 20, 30]
       },
-      "other": {
+      "march": {
         "hero-march-unit-armour-modifier": [2.25, 4, 7.5, 12.5, 20],
-        "hero-march-unit-health-modifier": [1.75, 3.5, 7.5, 12.5, 17.5],
+        "hero-march-unit-health-modifier": [1.75, 3.5, 7.5, 12.5, 17.5]
+      },
+      "other": {
         "currency7-generate-modifier": [3, 6, 12, 20, 30]
       },
       "costs": {
@@ -2784,10 +2894,12 @@
       "effects": {
         "slaanesh-melee-damage": [2.5, 5.25, 10.5, 17.5, 26.25]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [1.75, 3, 5, 8, 17.5],
         "hero-march-unit-ranged-attack-modifier": [1.75, 3, 5, 8, 17.5],
-        "hero-march-unit-health-modifier": [1.5, 3, 6, 10, 15],
+        "hero-march-unit-health-modifier": [1.5, 3, 6, 10, 15]
+      },
+      "other": {
         "march-gather-modifier": [3.5, 7, 14, 22.5, 35]
       },
       "costs": {
@@ -2829,10 +2941,11 @@
       "effects": {
         "monstrous-beasts-melee-damage": [1.33, 2.66, 5, 10, 15]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [1.25, 2.5, 5, 7.5, 12.5],
         "hero-march-unit-ranged-attack-modifier": [1.25, 2.5, 5, 7.5, 12.5]
       },
+      "other": {},
       "costs": {
         "component-crafting-bone": [130, null, null, null, null],
         "component-crafting-rock": [100, null, null, null, null],
@@ -2866,10 +2979,12 @@
       "effects": {
         "khorne-armour": [5, 7, 12, 20, 30]
       },
+      "march": {
+        "hero-march-unit-health-modifier": [2.25, 4, 7.5, 12.5, 20]
+      },
       "other": {
         "march-scout-speed-modifier": [3, 6, 12, 20, 30],
         "march-unit-capacity": [1.5, 5, 7.5, 10, 15],
-        "hero-march-unit-health-modifier": [2.25, 4, 7.5, 12.5, 20],
         "research-speed-modifier": [1, 2, 3, 4, 5]
       },
       "costs": {
@@ -2896,6 +3011,7 @@
         "defences-ranged-attack": [3, 6.5, 12, 16, 25],
         "defences-ranged-damage": [3, 6.5, 12, 16, 25]
       },
+      "march": {},
       "other": {
         "structure-ranged-damage-modifier": [10, 15, 20, 25, 30],
         "structure-ranged-attack-modifier": [2, 5, 8, 12, 20]
@@ -2920,6 +3036,7 @@
       "labels": {"en": "Pendant of Shattering", "fr": "Pendant of Shattering*"},
       "sets": [],
       "effects": {},
+      "march": {},
       "other": {
         "hero-monster-attack-modifier": [5, 10, 20, 33, 50],
         "march-gather-modifier": [2, 4, 8, 12, 20]
@@ -2955,9 +3072,11 @@
       "labels": {"en": "Plate of the Vanquisher", "fr": "Plate of the Vanquisher*"},
       "sets": ["vanquisher-set-bonus"],
       "effects": {},
+      "march": {
+        "hero-march-unit-health-modifier": [1.75, 3, 5, 8, 17.5, 25]
+      },
       "other": {
         "hero-monster-attack-modifier": [4, 9, 16.5, 25, 35, 50],
-        "hero-march-unit-health-modifier": [1.75, 3, 5, 8, 17.5, 25],
         "hero-revive-seconds-modifier": [-1.75, -3, -5, -8, -17.5, -25],
         "hunt-bonus-reward-modifier": [1.75, 3, 5, 8, 17.5, 25]
       },
@@ -2988,6 +3107,7 @@
         "monstrous-cavalry-armour": [5, 10, 15, 20, 30],
         "monsters-melee-damage": [5, 10, 15, 20, 30]
       },
+      "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5],
         "monstrous-cavalry-hospital-speed-modifier": [4, 6, 8, 10, 12.5],
@@ -3018,6 +3138,7 @@
         "monstrous-infantry-melee-damage": [1, 5, 10, 12.5, 15, 20],
         "monstrous-infantry-ranged-attack": [1, 5, 10, 12.5, 15, 20]
       },
+      "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5, 10],
         "monstrous-infantry-produce-speed-modifier": [1, 2.5, 5, 7.5, 10, 15],
@@ -3049,6 +3170,7 @@
         "infantry-health": [1, 5, 10, 12.5, 15],
         "infantry-armour": [2.5, 5, 7.5, 10, 15]
       },
+      "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5],
         "infantry-produce-speed-modifier": [1, 2, 3, 4, 5],
@@ -3079,6 +3201,7 @@
         "infantry-health": [1, 5, 10, 15, 20, 25],
         "infantry-armour": [3, 6, 9, 13, 17.5, 22.5]
       },
+      "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5, 6.5],
         "infantry-produce-speed-modifier": [2.5, 5, 7.5, 10, 15, 20],
@@ -3110,6 +3233,7 @@
         "monstrous-infantry-melee-damage": [1, 5, 10, 12.5, 15, 25],
         "monstrous-infantry-ranged-attack": [1, 5, 10, 12.5, 15, 25]
       },
+      "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5, 7.5],
         "monstrous-infantry-hospital-speed-modifier": [10, 15, 20, 25, 30, 35],
@@ -3142,6 +3266,7 @@
         "chariots-ranged-attack": [5, 10, 15, 20, 30],
         "infantry-melee-attack": [5, 10, 15, 25, 35]
       },
+      "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5],
         "chariots-t5-cost-modifier": [2.5, 5, 7.5, 10, 15]
@@ -3168,6 +3293,7 @@
       "labels": {"en": "Corrupted Runic Boots", "fr": "Corrupted Runic Boots*"},
       "sets": ["runesmith-set-bonus"],
       "effects": {},
+      "march": {},
       "other": {
         "structure-speed-modifier": [1, 2, 3, 4, 5],
         "defense-productionqueue-capacity": [0, 0, 0, 0, 0],
@@ -3200,6 +3326,7 @@
         "undivided-ranged-attack": [5, 10, 20, 30, 40, 50],
         "undivided-armour": [5, 10, 20, 30, 40, 50]
       },
+      "march": {},
       "other": {
         "structure-speed-modifier": [1, 2, 3, 4, 5, 10],
         "currency4-generate-modifier": [1, 5, 10, 15, 20, 30],
@@ -3232,6 +3359,7 @@
         "undivided-melee-damage": [5, 7.5, 10, 12.5, 15],
         "undivided-ranged-damage": [5, 7.5, 10, 12.5, 15]
       },
+      "march": {},
       "other": {
         "structure-speed-modifier": [1, 2, 3, 4, 5],
         "currency7-generate-modifier": [1, 5, 10, 15, 20]
@@ -3261,6 +3389,7 @@
         "undivided-melee-attack": [5, 10, 15, 20, 25, 30],
         "undivided-health": [5, 10, 15, 20, 25, 30]
       },
+      "march": {},
       "other": {
         "structure-speed-modifier": [1, 2, 3, 4, 5, 6.5],
         "currency6-generate-modifier": [1, 5, 10, 15, 20, 25],
@@ -3289,6 +3418,7 @@
       "labels": {"en": "Corrupted Rune", "fr": "Corrupted Rune*"},
       "sets": ["runesmith-set-bonus"],
       "effects": {},
+      "march": {},
       "other": {
         "structure-speed-modifier": [1, 2, 3, 4, 5],
         "currency5-generate-modifier": [1, 5, 10, 15, 20],
@@ -3322,6 +3452,7 @@
         "defences-health": [10, 15, 20, 25, 35, 45],
         "defences-ranged-damage": [5, 10, 15, 25, 35, 45]
       },
+      "march": {},
       "other": {
         "structure-speed-modifier": [1, 2, 3, 4, 5, 7.5],
         "city-attacker-attack-modifier": [-1, -3, -5, -7, -10, -12.5]
@@ -3352,6 +3483,7 @@
         "march-speed": [3, 6, 9, 12, 15],
         "monsters-armour": [2, 6, 10, 15, 20]
       },
+      "march": {},
       "other": {
         "hero-speed-modifier": [8, 16, 35, 52.5, 75],
         "march-gather-modifier": [5, 10, 20, 35, 50],
@@ -3404,6 +3536,7 @@
         "monstrous-infantry-armour": [1.5, 5, 7.5, 9, 12],
         "cavalry-armour": [2, 4, 11.5, 16.5, 20]
       },
+      "march": {},
       "other": {
         "hero-speed-modifier": [6.5, 13, 26.5, 47.5, 65],
         "research-speed-modifier": [1, 2, 3, 4, 5]
@@ -3428,6 +3561,7 @@
       "labels": {"en": "Sabatons of the Vanquisher", "fr": "Sabatons of the Vanquisher*"},
       "sets": ["vanquisher-set-bonus"],
       "effects": {},
+      "march": {},
       "other": {
         "hero-monster-attack-modifier": [4, 9, 16.5, 25, 35],
         "hunt-incoming-speed-modifier": [5, 10, 20, 30, 40],
@@ -3460,11 +3594,12 @@
         "infantry-health": [2, 4, 8, 15, 20],
         "tzeentch-ranged-attack": [2.5, 5.25, 10.5, 17.5, 26.25]
       },
-      "other": {
+      "march": {
         "hero-march-unit-armour-modifier": [1.5, 3, 6, 9.5, 15],
         "hero-march-unit-melee-damage-modifier": [1.5, 3, 6, 9.5, 15],
         "hero-march-unit-ranged-damage-modifier": [1.5, 3, 6, 9.5, 15]
       },
+      "other": {},
       "costs": {
         "component-crafting-bone": [250, null, null, null, null],
         "component-crafting-frayed-cloth": [200, null, null, null, null],
@@ -3506,10 +3641,11 @@
         "monstrous-cavalry-armour": [3, 6, 12, 17, 25],
         "khorne-ranged-damage": [2, 3.5, 5, 10, 15]
       },
-      "other": {
+      "march": {
         "hero-march-unit-armour-modifier": [2.5, 5, 7, 12, 18],
         "hero-march-unit-ranged-attack-modifier": [1.5, 3, 4.5, 7, 10]
       },
+      "other": {},
       "costs": {
         "component-crafting-teeth": [250, null, null, null, null],
         "component-crafting-bone": [175, null, null, null, null],
@@ -3553,9 +3689,11 @@
         "khorne-health": [2.5, 4, 7, 10, 15, 20],
         "infantry-melee-damage": [1.5, 2.5, 4, 7, 10, 15]
       },
-      "other": {
-        "war-beasts-t4-cost-modifier": [3, 5, 8, 12, 20, 25],
+      "march": {
         "hero-march-unit-melee-damage-modifier": [2, 3, 5, 8, 12, 18]
+      },
+      "other": {
+        "war-beasts-t4-cost-modifier": [3, 5, 8, 12, 20, 25]
       },
       "costs": {
         "component-crafting-salvaged-armour": [375, null, null, null, null, null],
@@ -3600,9 +3738,11 @@
         "undivided-armour": [null, null, null, 7.5, 15],
         "cavalry-health": [null, null, null, null, 20]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [2.5, 5, 10, 18.75, 25],
-        "hero-march-unit-ranged-attack-modifier": [2.5, 5, 10, 18.75, 25],
+        "hero-march-unit-ranged-attack-modifier": [2.5, 5, 10, 18.75, 25]
+      },
+      "other": {
         "attack-defender-combat-modifier": [1, 2, 3, 4, 5]
       },
       "costs": {
@@ -3648,10 +3788,11 @@
       "effects": {
         "infantry-ranged-damage": [1.33, 2.66, 5, 10, 15]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-damage-modifier": [1.25, 2.5, 5, 7.5, 12.5],
         "hero-march-unit-ranged-damage-modifier": [1.25, 2.5, 5, 7.5, 12.5]
       },
+      "other": {},
       "costs": {
         "component-crafting-chains": [120, null, null, null, null],
         "component-crafting-treated-lumber": [120, null, null, null, null],
@@ -3684,9 +3825,11 @@
       "labels": {"en": "Sundered Crown", "fr": "Sundered Crown*"},
       "sets": ["sundered-set-bonus"],
       "effects": {},
-      "other": {
+      "march": {
         "hero-march-unit-armour-modifier": [5, 10, 18, 28, 40, 50],
-        "hero-march-unit-health-modifier": [5, 10, 16, 25, 35, 45],
+        "hero-march-unit-health-modifier": [5, 10, 16, 25, 35, 45]
+      },
+      "other": {
         "capturable-combat-modifier": [3, 5, 7, 10, 13, 15],
         "march-contest-modifier": [2, 4, 6, 9, 12, 15],
         "elves-combat-modifier": [5, 8, 12, 17, 22, 25]
@@ -3734,8 +3877,10 @@
       "effects": {
         "chariots-health": [5, 10, 15, 22, 30, 35]
       },
+      "march": {
+        "hero-march-unit-health-modifier": [6, 12, 20, 30, 42, 55]
+      },
       "other": {
-        "hero-march-unit-health-modifier": [6, 12, 20, 30, 42, 55],
         "rally-combat-modifier": [5, 10, 15, 22, 30, 40],
         "rally-capacity": [5, 10, 15, 22, 30, 35],
         "infantry-t5-cost-modifier": [3, 6, 10, 14, 20, 25],
@@ -3782,11 +3927,13 @@
       "labels": {"en": "Sundered Gauntlets", "fr": "Sundered Gauntlets*"},
       "sets": ["sundered-set-bonus"],
       "effects": {},
-      "other": {
+      "march": {
         "hero-march-unit-melee-damage-modifier": [5, 10, 18, 28, 40, 50],
         "hero-march-unit-ranged-damage-modifier": [5, 10, 18, 28, 40, 50],
         "hero-march-unit-melee-attack-modifier": [5, 9, 15, 22, 30, 35],
-        "hero-march-unit-ranged-attack-modifier": [5, 9, 15, 22, 30, 35],
+        "hero-march-unit-ranged-attack-modifier": [5, 9, 15, 22, 30, 35]
+      },
+      "other": {
         "march-combat-modifier": [5, 9, 14, 20, 28, 35],
         "broken-defense-combat-modifier": [3, 6, 10, 16, 23, 30]
       },
@@ -3833,8 +3980,10 @@
       "effects": {
         "march-speed": [5, 10, 18, 28, 38, 45]
       },
+      "march": {
+        "hero-march-unit-speed-modifier": [5, 10, 20, 32, 42, 50]
+      },
       "other": {
-        "hero-march-unit-speed-modifier": [5, 10, 20, 32, 42, 50],
         "march-rally-speed-modifier": [5, 10, 16, 24, 30, 35],
         "march-contest-modifier": [2, 4, 6, 9, 12, 15],
         "monstrous-cavalry-t5-cost-modifier": [3, 6, 10, 14, 17, 20]
@@ -3882,9 +4031,11 @@
       "effects": {
         "chariots-melee-damage": [1.66, 3.33, 6.5, 12.5, 17.5]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [1.5, 3, 6, 9.5, 15],
-        "hero-march-unit-ranged-attack-modifier": [1.5, 3, 6, 9.5, 15],
+        "hero-march-unit-ranged-attack-modifier": [1.5, 3, 6, 9.5, 15]
+      },
+      "other": {
         "hero-hunting-race-dwarfs-modifier": [3, 6, 12, 18, 30]
       },
       "costs": {
@@ -3922,9 +4073,11 @@
       "labels": {"en": "Sword of Decadence", "fr": "Sword of Decadence*"},
       "sets": [],
       "effects": {},
-      "other": {
+      "march": {
         "hero-march-unit-melee-damage-modifier": [1, 2, 4, 7, 10],
-        "hero-march-unit-ranged-damage-modifier": [1, 2, 4, 7, 10],
+        "hero-march-unit-ranged-damage-modifier": [1, 2, 4, 7, 10]
+      },
+      "other": {
         "currency4-generate-modifier": [2, 6, 10, 15, 20],
         "monstrous-beasts-produce-speed-modifier": [2.5, 5, 7.5, 10, 15]
       },
@@ -3958,11 +4111,13 @@
       "labels": {"en": "Tormenting Man Catcher", "fr": "Tormenting Man Catcher*"},
       "sets": [],
       "effects": {},
-      "other": {
-        "hero-capture-chance-modifier": [4, 9, 16.5, 25, 35],
+      "march": {
         "hero-march-unit-melee-damage-modifier": [2.25, 4, 7.5, 12.5, 20],
         "hero-march-unit-ranged-damage-modifier": [2.25, 4, 7.5, 12.5, 20],
-        "hero-march-unit-speed-modifier": [1.5, 3, 4.5, 7, 10],
+        "hero-march-unit-speed-modifier": [1.5, 3, 4.5, 7, 10]
+      },
+      "other": {
+        "hero-capture-chance-modifier": [4, 9, 16.5, 25, 35],
         "monsters-produce-speed-modifier": [2, 5, 7, 10, 15]
       },
       "costs": {
@@ -3986,10 +4141,12 @@
       "labels": {"en": "Totem of Dominion", "fr": "Totem of Dominion*"},
       "sets": ["set-of-dominion"],
       "effects": {},
+      "march": {
+        "hero-march-unit-melee-damage-modifier": [12, 18, 25, 32, 38, 45],
+        "hero-march-unit-ranged-damage-modifier": [12, 18, 25, 32, 38, 45]
+      },
       "other": {
         "march-combat-modifier": [5, 8, 12, 15, 18, 20],
-        "hero-march-unit-melee-damage-modifier": [12, 18, 25, 32, 38, 45],
-        "hero-march-unit-ranged-damage-modifier": [12, 18, 25, 32, 38, 45],
         "rally-combat-modifier": [3, 5, 7, 10, 12, 15],
         "city-combat-modifier": [5, 8, 12, 16, 20, 25],
         "march-contest-modifier": [3, 5, 7, 8, 9, 10]
@@ -4020,6 +4177,7 @@
         "tzeentch-morale": [2.5, 5, 10, 15, 18],
         "tzeentch-speed": [1.5, 3, 6, 8, 10]
       },
+      "march": {},
       "other": {
         "hero-hunting-chain-modifier": [1, 2.5, 5, 7.5, 10],
         "hero-hunting-race-dwarfs-modifier": [3, 6, 12, 18, 30]
@@ -4044,6 +4202,7 @@
       "labels": {"en": "Tusk Amulet", "fr": "Tusk Amulet*"},
       "sets": [],
       "effects": {},
+      "march": {},
       "other": {
         "rally-capacity": [0, 0, 0, 0, 0],
         "rally-combat-modifier": [5, 10, 20, 30, 40],
@@ -4093,8 +4252,10 @@
       "effects": {
         "infantry-ranged-attack": [2, 6, 10, 15, 20]
       },
+      "march": {
+        "hero-march-unit-health-modifier": [1.5, 3, 6, 9.5, 15]
+      },
       "other": {
-        "hero-march-unit-health-modifier": [1.5, 3, 6, 9.5, 15],
         "hero-hunting-race-greenskins-modifier": [3, 6, 12, 18, 30]
       },
       "costs": {
@@ -4132,9 +4293,11 @@
       "effects": {
         "khorne-ranged-attack": [1, 2.5, 5, 7.5, 10]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-attack-modifier": [1, 2, 4, 7, 10],
-        "hero-march-unit-ranged-attack-modifier": [1, 2, 4, 7, 10],
+        "hero-march-unit-ranged-attack-modifier": [1, 2, 4, 7, 10]
+      },
+      "other": {
         "currency5-generate-modifier": [2, 6, 10, 15, 20]
       },
       "costs": {
@@ -4167,11 +4330,13 @@
       "labels": {"en": "Vambraces of the Vanquisher", "fr": "Vambraces of the Vanquisher*"},
       "sets": ["vanquisher-set-bonus"],
       "effects": {},
-      "other": {
-        "hero-monster-attack-modifier": [4, 9, 16.5, 25, 35],
-        "hero-hunting-chain-modifier": [1, 2.5, 5, 7.5, 10],
+      "march": {
         "hero-march-unit-ranged-attack-modifier": [2.25, 4, 7.5, 12.5, 20],
         "hero-march-unit-melee-attack-modifier": [2.25, 4, 7.5, 12.5, 20]
+      },
+      "other": {
+        "hero-monster-attack-modifier": [4, 9, 16.5, 25, 35],
+        "hero-hunting-chain-modifier": [1, 2.5, 5, 7.5, 10]
       },
       "costs": {
         "component-crafting-jabberslythe-hide": [250, 400, 680, 300, 1050],
@@ -4199,9 +4364,11 @@
         "monsters-melee-damage": [2, 4, 8, 15, 20],
         "undivided-morale": [2.5, 5.25, 10.5, 17.5, 26.5]
       },
-      "other": {
+      "march": {
         "hero-march-unit-melee-damage-modifier": [1.75, 3, 5, 8, 17.5],
-        "hero-march-unit-ranged-damage-modifier": [1.75, 3, 5, 8, 17.5],
+        "hero-march-unit-ranged-damage-modifier": [1.75, 3, 5, 8, 17.5]
+      },
+      "other": {
         "hero-speed-modifier": [3.25, 6.25, 12.5, 22.5, 31.5]
       },
       "costs": {
@@ -4243,6 +4410,7 @@
       "effects": {
         "cavalry-ranged-damage": [2, 4, 8, 15, 20]
       },
+      "march": {},
       "other": {
         "cavalry-produce-speed-modifier": [2.5, 5, 7, 10, 15],
         "chariots-produce-speed-modifier": [2.5, 5, 7, 10, 15],
@@ -4271,6 +4439,7 @@
         "tzeentch-health": [2, 4.5, 9, 15, 22.5],
         "tzeentch-melee-damage": [2, 4, 6, 10, 15]
       },
+      "march": {},
       "other": {
         "hero-monster-attack-modifier": [7, 14, 30, 47.5, 70],
         "hero-hunting-race-beastmen-modifier": [3, 6, 12, 18, 30]
@@ -4312,6 +4481,7 @@
       "effects": {
         "infantry-melee-attack": [1.33, 2.66, 5, 10, 15]
       },
+      "march": {},
       "other": {
         "hero-speed-modifier": [4.75, 9.5, 19, 32.5, 47.5]
       },
@@ -4349,9 +4519,11 @@
       "effects": {
         "tzeentch-ranged-damage": [2.5, 5.25, 10.5, 17.5, 26.5]
       },
-      "other": {
-        "hero-xp-modifier": [2.5, 5, 8, 12, 17],
+      "march": {
         "hero-march-unit-health-modifier": [2.25, 4, 7.5, 12.5, 20]
+      },
+      "other": {
+        "hero-xp-modifier": [2.5, 5, 8, 12, 17]
       },
       "costs": {
         "component-crafting-feather-fetish": [400, 800, 1200, 1800, 2200],
@@ -5126,6 +5298,17 @@
       }
     }
   ],
+  "march": [
+    {"id": "hero-march-unit-armour-modifier", "code": "hero_march_unit_armour_modifier", "stat": "armour"},
+    {"id": "hero-march-unit-health-modifier", "code": "hero_march_unit_health_modifier", "stat": "health"},
+    {"id": "hero-march-unit-load-modifier", "code": "hero_march_unit_load_modifier", "stat": "load"},
+    {"id": "hero-march-unit-melee-attack-modifier", "code": "hero_march_unit_melee_attack_modifier", "stat": "meleeAttack"},
+    {"id": "hero-march-unit-melee-damage-modifier", "code": "hero_march_unit_melee_damage_modifier", "stat": "meleeDamage"},
+    {"id": "hero-march-unit-morale-modifier", "code": "hero_march_unit_morale_modifier", "stat": "morale"},
+    {"id": "hero-march-unit-ranged-attack-modifier", "code": "hero_march_unit_ranged_attack_modifier", "stat": "rangedAttack"},
+    {"id": "hero-march-unit-ranged-damage-modifier", "code": "hero_march_unit_ranged_damage_modifier", "stat": "rangedDamage"},
+    {"id": "hero-march-unit-speed-modifier", "code": "hero_march_unit_speed_modifier", "stat": "speed"}
+  ],
   "other": [
     {
       "id": "attack-defender-combat-modifier",
@@ -5426,51 +5609,6 @@
       "id": "hero-hunting-race-undead-modifier",
       "code": "hero_hunting_race_undead_modifier",
       "labels": {"en": "Undead Vanquish Damage Bonus", "fr": "Undead Vanquish Damage Bonus*"}
-    },
-    {
-      "id": "hero-march-unit-armour-modifier",
-      "code": "hero_march_unit_armour_modifier",
-      "labels": {"en": "Champion March Armour Bonus", "fr": "Champion March Armour Bonus*"}
-    },
-    {
-      "id": "hero-march-unit-health-modifier",
-      "code": "hero_march_unit_health_modifier",
-      "labels": {"en": "Champion March Health Bonus", "fr": "Champion March Health Bonus*"}
-    },
-    {
-      "id": "hero-march-unit-load-modifier",
-      "code": "hero_march_unit_load_modifier",
-      "labels": {"en": "Champion March Load Bonus", "fr": "Champion March Load Bonus*"}
-    },
-    {
-      "id": "hero-march-unit-melee-attack-modifier",
-      "code": "hero_march_unit_melee_attack_modifier",
-      "labels": {"en": "Champion March Melee Attack Bonus", "fr": "Champion March Melee Attack Bonus*"}
-    },
-    {
-      "id": "hero-march-unit-melee-damage-modifier",
-      "code": "hero_march_unit_melee_damage_modifier",
-      "labels": {"en": "Champion March Melee Damage Bonus", "fr": "Champion March Melee Damage Bonus*"}
-    },
-    {
-      "id": "hero-march-unit-morale-modifier",
-      "code": "hero_march_unit_morale_modifier",
-      "labels": {"en": "Champion March Morale Bonus", "fr": "Champion March Morale Bonus*"}
-    },
-    {
-      "id": "hero-march-unit-ranged-attack-modifier",
-      "code": "hero_march_unit_ranged_attack_modifier",
-      "labels": {"en": "Champion March Ranged Attack Bonus", "fr": "Champion March Ranged Attack Bonus*"}
-    },
-    {
-      "id": "hero-march-unit-ranged-damage-modifier",
-      "code": "hero_march_unit_ranged_damage_modifier",
-      "labels": {"en": "Champion March Ranged Damage Bonus", "fr": "Champion March Ranged Damage Bonus*"}
-    },
-    {
-      "id": "hero-march-unit-speed-modifier",
-      "code": "hero_march_unit_speed_modifier",
-      "labels": {"en": "Champion March Speed Bonus", "fr": "Champion March Speed Bonus*"}
     },
     {
       "id": "hero-max-energy",

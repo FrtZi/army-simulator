@@ -54,6 +54,7 @@ const CHOICES = {
   "unknown-warlord": (problem, target) => parked(problem.path, problem.read, [...target.warlords.values()]),
   "unknown-ritual": (problem, target) => parked(problem.path, problem.read, target.rituals.rituals),
   "unknown-building": (problem, target) => parked(problem.path, problem.read, target.structures.structures),
+  "unknown-gear": (problem, target) => parked(problem.path, problem.read, target.champion.pieces),
   "out-of-range": rangeChoice,
   "unknown-stat": statChoice,
   "fixed-stat": statChoice,

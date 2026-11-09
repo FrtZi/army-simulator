@@ -4,17 +4,11 @@
 
 import { effectProblems, levelOf, rankOf } from "../engine/index.js";
 import { nearestId } from "./nearest.js";
+import { isObject, rangeProblem, readList, refuse } from "./setup-checks.js";
+import { readChampion } from "./setup-champion.js";
 
 export const SETUP_FORMAT = "army-simulator/setup";
 export const SETUP_VERSION = 1;
-
-const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
-const isInteger = (value, min, max) => Number.isInteger(value) && value >= min && value <= max;
-const refuse = (path, read, code, extra = {}) => ({ path, read, code, ...extra });
-
-/** A whole number in its range, or the problem saying why not. */
-const rangeProblem = (path, read, min, max) =>
-  isInteger(read, min, max) ? [] : [refuse(path, read, "out-of-range", { min, max })];
 
 function warlordEntry(entry, path, target, seen) {
   if (!isObject(entry)) return { problems: [refuse(path, entry, "not-object")] };
@@ -62,16 +56,6 @@ function levelledEntry(entry, path, entries, unknownCode) {
   return problems.length ? { problems } : { value: { id: entry.id, level: entry.level }, problems };
 }
 
-/** A list section: each entry read on its own; the refused ones reported, the others kept. */
-function readList(list, name, readEntry) {
-  if (!Array.isArray(list)) return { problems: [refuse(name, list, "not-list")] };
-  const results = list.map((entry, index) => readEntry(entry, `${name}[${index}]`));
-  return {
-    value: results.filter((result) => result.value).map((result) => result.value),
-    problems: results.flatMap((result) => result.problems),
-  };
-}
-
 function readCapacity(capacity, target) {
   if (!isObject(capacity)) return { problems: [refuse("capacity", capacity, "not-object")] };
   const { min, max } = target.game.bonusPercent;
@@ -104,8 +88,7 @@ const SECTIONS = {
     readList(list, "buildings", (entry, path) =>
       levelledEntry(entry, path, target.structures?.structures, "unknown-building"),
     ),
-  champion: (champion) =>
-    isObject(champion) ? { value: champion, problems: [] } : { problems: [refuse("champion", champion, "not-object")] },
+  champion: readChampion,
 };
 
 /**

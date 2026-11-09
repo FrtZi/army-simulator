@@ -36,6 +36,7 @@ export const FR_SETUP_FILES = {
   "setupfile.unknown-warlord": "aucun héros n'a cet identifiant.",
   "setupfile.unknown-ritual": "aucun rituel n'a cet identifiant.",
   "setupfile.unknown-building": "aucun bâtiment n'a cet identifiant.",
+  "setupfile.unknown-gear": "aucune pièce d'équipement n'a cet identifiant.",
   "setupfile.duplicate": "ce héros apparaît deux fois ; le premier est gardé.",
   "setupfile.out-of-range": "hors de {min} à {max}.",
   "setupfile.capacity-bonus": "le bonus de capacité de marche va dans capacity.bonusPercent, pas dans les bonus.",
