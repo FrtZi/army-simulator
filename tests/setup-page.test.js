@@ -7,11 +7,11 @@ const shown = (page, id) => !page.$(`#${id}`).hidden;
 const key = (page, selector, name) =>
   page.$(selector).dispatchEvent(new page.window.KeyboardEvent("keydown", { key: name, bubbles: true }));
 
-test("NAV-01 two page tabs: the Battle lab first, Your setup beside it; one panel shown at a time", () => {
+test("NAV-01 GUIDE-01 three page tabs: the Battle lab first, Your setup, the Guides; one panel shown at a time", () => {
   const page = openPage();
   assert.deepEqual(
     page.$$(".page-tabs [role=tab]").map((tab) => tab.textContent),
-    ["Battle lab", "Your setup"],
+    ["Battle lab", "Your setup", "Guides"],
   );
   assert.ok(shown(page, "page-panel-lab") && !shown(page, "page-panel-setup"));
   assert.equal(page.$("#page-tab-lab").getAttribute("aria-selected"), "true");
@@ -21,10 +21,12 @@ test("NAV-01 two page tabs: the Battle lab first, Your setup beside it; one pane
   assert.equal(page.$("#page-tab-lab").tabIndex, -1, "only the selected tab is in the tab order");
   // the keyboard, as the ARIA tabs pattern says: the arrows go round, Home and End to the ends
   key(page, "#page-tab-setup", "ArrowRight");
-  assert.ok(shown(page, "page-panel-lab"));
+  assert.ok(shown(page, "page-panel-guides") && !shown(page, "page-panel-setup"));
+  key(page, "#page-tab-guides", "ArrowRight");
+  assert.ok(shown(page, "page-panel-lab"), "the arrows go round");
   key(page, "#page-tab-lab", "End");
-  assert.ok(shown(page, "page-panel-setup"));
-  assert.equal(page.window.document.activeElement.id, "page-tab-setup");
+  assert.ok(shown(page, "page-panel-guides"));
+  assert.equal(page.window.document.activeElement.id, "page-tab-guides");
   // the game is chosen above the tabs: it applies to both
   assert.ok(!page.$("#page-panel-lab").contains(page.$("#game")));
 });

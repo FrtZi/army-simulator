@@ -59,6 +59,11 @@ for (const language of ["en", "fr"]) {
     page.$(".setup-help").setAttribute("open", "");
     assert.ok(page.$("#setup-import-cancel"), "the review is shown");
     assert.deepEqual(await violations(page), [], "your setup");
+    // the Guides, a hero in detail at a level with talents still locked (GUIDE-01, GUIDE-02)
+    page.click("#page-tab-guides");
+    page.click("#guide-hero-azazel");
+    page.choose("#guide-rank", 1);
+    assert.deepEqual(await violations(page), [], "guides");
   });
 }
 

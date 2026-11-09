@@ -65,6 +65,7 @@ src/ui/                  the page
 │                        (same keys), t()
 ├── format.js, dom.js    numbers and names in the current language; small DOM helpers
 ├── files.js             a file downloaded from the page, a picked file's text
+├── tablist.js           a row of tabs, clicks and keys (the page's, the dashboards', the guides')
 ├── icons.js             the page's SVG icons and the troop type pictograms (D-18)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;
 │                        hover.js: a dot's name while pointing at it; table.js: the chart as a table (D-24)
@@ -78,7 +79,8 @@ src/ui/                  the page
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
-                         in warlords.js, a file uploaded in files.js, under review in import.js, drawn in review.js; D-27)
+                         in warlords.js, a file uploaded in files.js, under review in import.js, drawn in review.js; D-27);
+                         and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
 scripts/
@@ -100,6 +102,7 @@ tests/                   node --test; each test names the feature it proves
 ├── page.test.js         the published page, driven in jsdom (page.js: opening it, clicking, typing)
 ├── setup-page.test.js   the page tabs and Your setup, on the published page (NAV-01, CFG-04)
 ├── setup-files.test.js  Your setup's files: uploaded and reviewed, downloaded, the brief copied (CFG-05, CFG-06)
+├── guides.test.js       the Guides: the block tabs, the heroes found and shown level by level (GUIDE-01, GUIDE-02)
 ├── styles.test.js       each selector's look in one stylesheet (DEF-031)
 ├── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens
 ├── tooling.test.js      the page assembler, the dev server, configurations aligned (MAINT-04)

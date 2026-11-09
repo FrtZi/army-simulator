@@ -1,0 +1,131 @@
+/* The Guides (GUIDE-01, GUIDE-02): the filters, the hero list beside its detail, the tables, the ranks' strip. */
+.guide-tabs {
+  margin: 0.5rem 0 0;
+}
+
+.guide-panel {
+  padding-top: 0.75rem;
+}
+
+.guide-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.guide-layout {
+  display: grid;
+  grid-template-columns: minmax(14rem, 17rem) 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.guide-list {
+  max-height: 36rem;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.guide-hero {
+  display: grid;
+  width: 100%;
+  min-height: 0;
+  justify-content: stretch;
+  padding: 0.5rem 0.7rem;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-left: 4px solid currentColor;
+  border-radius: 0;
+  text-align: left;
+}
+
+.guide-hero .name {
+  color: var(--text);
+}
+
+.guide-hero[aria-current="true"] {
+  background: var(--field);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.badge-yours {
+  justify-self: start;
+  padding: 0 0.45rem;
+  border: 1px solid var(--good);
+  border-radius: var(--radius);
+  color: var(--heading);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.guide-detail h3 {
+  margin-top: 0;
+}
+
+.guide-detail h4 {
+  margin: 1rem 0 0.4rem;
+  color: var(--heading);
+  font-weight: 500;
+}
+
+.guide-level {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.6rem;
+}
+
+.guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.guide-table th,
+.guide-table td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.guide-table th {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.guide-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.guide-table tr.locked td {
+  color: var(--muted);
+}
+
+.rank-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rank-strip li {
+  display: grid;
+  padding: 0.3rem;
+  background: var(--field);
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.rank-strip li.here {
+  outline: 2px solid var(--accent);
+}

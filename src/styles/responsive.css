@@ -52,4 +52,14 @@
   .parked-row {
     grid-template-columns: 1fr;
   }
+
+  /* the Guides: the filters one under the other, the hero list above its detail */
+  .guide-filters,
+  .guide-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-list {
+    max-height: 14rem;
+  }
 }

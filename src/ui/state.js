@@ -34,6 +34,8 @@ export const state = {
   playerSetup: null,
   savedPlayerSetup: null,
   setupSaveFailed: false,
+  // the Guides (GUIDE-01): the block shown; in the heroes' guide, the filters, the search, the hero, its level
+  guide: { kind: "heroes", god: "", rarity: "", search: "", hero: null, level: null },
   setupImport: null, // a setup file uploaded: what it brings, before it is applied (CFG-05)
   active: 0, // the composition being edited
   compare: [0, 1], // the two compositions compared

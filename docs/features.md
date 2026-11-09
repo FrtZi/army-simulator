@@ -97,15 +97,16 @@ It becomes _Done_ when its proof exists.
 | GLOSS-01 | Dotted terms explain themselves (hover, focus or tap), in both languages; the wiki is named where it is the source                     | Business | Done   | `tests/page.test.js`                                                          |
 | THEME-01 | The Altaïra look (charter colours, light type), a light and a dark theme (the system's, or the one chosen, remembered), language flags | Business | Done   | `tests/page.test.js`, `tests/accessibility.test.js` (contrast in both themes) |
 | ICON-01  | Each troop shows an icon of its type in its god's colour, drawn for the page (no game art, D-06)                                       | Business | Done   | Manual: seen in the browser; the god is also written next to it               |
-| NAV-01   | Two page tabs: the Battle lab (the page as before) and Your setup                                                                      | Business | Done   | `tests/setup-page.test.js`                                                    |
+| NAV-01   | The page's tabs: the Battle lab (the page as before), Your setup and the Guides                                                        | Business | Done   | `tests/setup-page.test.js`                                                    |
 
 ## Guides (GUIDE)
 
-| ID       | Feature                                                                                                                                               | Type     | Status  | Proof |
-| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ----- |
-| GUIDE-01 | A Guides tab: the game's blocks by type (heroes, rituals, buildings, champion and gear sets), each entry in detail with what it gives, level by level | Business | Planned | —     |
-| GUIDE-02 | The heroes' guide: each warlord's tier, power, stats and talents at every rank and level, found by god, rarity or name, marked when in your setup     | Business | Planned | —     |
-| GUIDE-03 | The guides of rituals, buildings, champion and gear sets, each with its data (BL-10, BL-14, BL-13)                                                    | Business | Planned | —     |
+| ID       | Feature                                                                                                                                                                   | Type     | Status  | Proof                  |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- | ---------------------- |
+| GUIDE-01 | A Guides tab: the game's blocks by type (heroes, rituals, buildings, champion and gear sets), each entry in detail with what it gives, level by level                     | Business | Done    | `tests/guides.test.js` |
+| GUIDE-02 | The heroes' guide: each warlord's tier, power, stats and talents at every rank and level, found by god, rarity or name, marked when in your setup                         | Business | Done    | `tests/guides.test.js` |
+| GUIDE-04 | Each block's way up: what each level asks (resources, items, prerequisites such as a building's level) and where to get it (Frantz, 2026-11-09); its source to find first | Business | Planned | —                      |
+| GUIDE-03 | The guides of rituals, buildings, champion and gear sets, each with its data (BL-10, BL-14, BL-13)                                                                        | Business | Planned | —                      |
 
 ## Languages (LANG)
 

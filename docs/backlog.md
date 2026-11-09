@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 17/19 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/5 | 0/13 | ○ not yet: 2 Musts left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/5 | 2/14 | ○ not yet: 2 Musts left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 0/7 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -69,7 +69,7 @@ flowchart LR
   BL19["BL-19 ○ to do<br/>The troops' pictures from the game"]:::todo
   BL20["BL-20 ○ to do<br/>PvE armies by level: the game's computer-controlled armies as opponents"]:::todo
   BL21["BL-21 ○ to do<br/>The tier modifier, from cctools.cc's table, confirmed on a battle report"]:::todo
-  BL22["BL-22 ○ to do<br/>Guides: the game's blocks in detail, in a tab of their own"]:::todo
+  BL22["BL-22 ◐ doing<br/>Guides: the game's blocks in detail, in a tab of their own"]:::doing
   BL08 --> BL22
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
@@ -196,7 +196,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 | [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ○ to do | 0/1 |
 | [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ○ to do | 0/3 |
 | [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ○ to do | 0/3 |
-| [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ○ to do | 0/3 |
+| [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ◐ doing | 2/4 |
 
 <a id="bl-10"></a>
 #### BL-10 · Rituals in the setup: each ritual's level, its bonuses applied
@@ -243,13 +243,14 @@ cctools.cc's armies tool (2026-11-09): damage × 0.7, 0.8, 0.9, 1, 1.75, 2.5, 3.
 <a id="bl-22"></a>
 #### BL-22 · Guides: the game's blocks in detail, in a tab of their own
 
-Should · [ui](../src/ui) · ○ to do · added `2026-11-09` · after [BL-08](#bl-08) · features: GUIDE-01, GUIDE-02, GUIDE-03
+Should · [ui](../src/ui) · ◐ doing · added `2026-11-09` · after [BL-08](#bl-08) · features: GUIDE-01, GUIDE-02, GUIDE-03, GUIDE-04
 
 Frantz, 2026-11-09: a Guides tab where each type of block (heroes, rituals, sets...) is shown in detail with its benefits. The heroes' data is complete; each other guide comes with its data.
 
-- [ ] Prototype validated by Frantz
-- [ ] The Guides tab and the heroes' guide (GUIDE-01, GUIDE-02)
+- [x] Prototype validated by Frantz
+- [x] The Guides tab and the heroes' guide (GUIDE-01, GUIDE-02)
 - [ ] Each other block's guide with its data: rituals and buildings (BL-10, BL-14), champion and gear (BL-13)
+- [ ] The way up of each block: each level's cost and prerequisites, where to get them; its source found first (GUIDE-04)
 
 ### v1.3 · Version 1.3, champion, gear and the keep
 

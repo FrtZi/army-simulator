@@ -45,7 +45,7 @@ function heroLine({ warlord, level }) {
 }
 
 /** A talent's name: its own label, or the stat and what it targets (a god's troops, a troop type, the march). */
-function talentName(id) {
+export function talentName(id) {
   const { game, talents } = currentGame();
   const shape = talents.find((entry) => entry.id === id) ?? game.talentCodes.find((entry) => entry.id === id);
   if (shape.labels) return label(shape);

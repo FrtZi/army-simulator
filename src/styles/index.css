@@ -9,4 +9,5 @@
 @import "../ui/steps/dashboards/dashboards.css";
 @import "../ui/steps/setup/setup.css";
 @import "../ui/steps/load/load.css";
+@import "../ui/steps/guides/guides.css";
 @import "./responsive.css";
