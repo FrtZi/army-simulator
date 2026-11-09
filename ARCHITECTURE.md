@@ -42,7 +42,9 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 ├── compare.js           two armies: each figure, its difference and the better one, both battles (SIM-03)
 └── insights.js          the dashboards' figures: efficiency, rounds, balance and warnings, pros and cons
 src/storage/             no DOM: configuration.js (setup ↔ file format version 2, checks), migrate.js (an older
-                         file brought up to date), browser.js (saves)
+                         file brought up to date), browser.js (saves); the player's setup file (D-27):
+                         setup-file.js (read and checked value by value, written back), setup-merge.js (only
+                         what a file holds changes), nearest.js (the id a misread name meant)
 src/index.html           page shell: head, header (flags, theme), footer, one include per section
 src/theme-init.js        sets the theme before the first paint (inlined in <head>)
 src/assets/              the language flags (inlined by the build)
@@ -80,7 +82,7 @@ examples/
 captures/<game>/         in-game screenshots: local only, ignored by git (see captures/README.md)
 docs/                    one page per subject, each linking back here
 tests/                   node --test; each test names the feature it proves
-├── data, engine, battle, dashboards, backtest, storage   the data, the engine and the saves, in Node
+├── data, engine, battle, dashboards, backtest, storage, setup   the data, the engine, the saves and the setup, in Node
 ├── page.test.js         the published page, driven in jsdom (page.js: opening it, clicking, typing)
 ├── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens
 ├── tooling.test.js      the page assembler, the dev server, configurations aligned (MAINT-04)
@@ -129,6 +131,7 @@ army lines and the profile.
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | [data-model.md](docs/data-model.md)         | units, effects, sources (hero, ritual, champion, armour, building), the player's configuration |
 | [features.md](docs/features.md)             | what the simulator does, and what proves it                                                    |
+| [spec/](docs/spec/setup.md)                 | the specs of the larger features: the player's setup, its guide and its dictionary             |
 | [decisions.md](docs/decisions.md)           | why these choices, and the options set aside                                                   |
 | [open-questions.md](docs/open-questions.md) | what is still to confirm, and the next steps                                                   |
 | [backlog.md](docs/backlog.md)               | what is left to do: milestones, priorities, dependencies (generated from backlog.toml)         |

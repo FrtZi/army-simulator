@@ -49,6 +49,14 @@ Settled on 2026-10-24: the English names (questions 8 and 9) are the game's own,
 | 16  | **Context bonuses** of the warlords. Partly answered on 2026-10-24: a "combat" bonus (March, Fortress, Warband) probably raises every fighting stat — attack, damage, armour, health — **to verify**; Combat vs Empire counts only against the Empire's troops (PvE); Enemy Attack Debuff lowers the attacking enemy's attack | kept, not applied; then March Combat on the attacking side, Fortress Combat and the debuff with the keep (BL-11, BL-12), Empire never (no PvE) | Frantz (a battle report with and without the bonus) |
 | 18  | **Heroes and the march capacity**: does a hero take a place in the march?                                                                                                                                                                                                                                                     | no: the capacity counts troops only                                                                                                            | Frantz                                              |
 
+## To confirm: the setup (BL-08, D-27)
+
+| #   | Question                                                                                                                          | As of 2026-11-09                                    | Who                          |
+| --- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ---------------------------- |
+| 19  | **Where the game shows** a warlord's rank and level, the march capacity and its bonus, the bonuses: the screens an agent is given | marked _to confirm_ in the guide and the dictionary | Frantz (screenshots)         |
+| 20  | **The French label of Load**: "Charger" reads as a verb (to charge); the game's word?                                             | kept                                                | Frantz (a French unit sheet) |
+| 21  | **"Damage" in a bonus**: does a bonus on "damage" raise both melee and ranged damage?                                             | the dictionary's example, to confirm                | Frantz (a bonus's tooltip)   |
+
 Settled on 2026-10-24: the warlords' French names (question 17) are their English names with a star (D-08) until
 the game's French names are read on a screenshot.
 

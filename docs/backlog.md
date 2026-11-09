@@ -16,7 +16,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Milestone | Musts done | Items done | Tasks done | Reached |
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
-| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 11/18 | ○ not yet: 1 Must left |
+| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 12/18 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/4 | 0/10 | ○ not yet: 2 Musts left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 0/7 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
@@ -25,7 +25,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 
 Not done, and every dependency done:
 
-- [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ○ to do)
+- [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ◐ doing)
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ○ to do)
 - [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ○ to do)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
@@ -50,7 +50,7 @@ flowchart LR
   BL06["BL-06 ✓ done<br/>Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels"]:::done
   BL07["BL-07 ✓ done<br/>Heroes in a composition: up to 3 warlords, 4 talents, at their level"]:::done
   BL06 --> BL07
-  BL08["BL-08 ○ to do<br/>The player's setup: everything they have in game, entered by hand or uploaded"]:::todo
+  BL08["BL-08 ◐ doing<br/>The player's setup: everything they have in game, entered by hand or uploaded"]:::doing
   BL07 --> BL08
   BL09["BL-09 ◐ doing<br/>Credit cctools.cc and tell its author"]:::doing
   BL10["BL-10 ○ to do<br/>Rituals in the setup: each ritual's level, its bonuses applied"]:::todo
@@ -133,7 +133,7 @@ The warlords in a composition, at their level, their bonuses applied; what the p
 | [BL-05](#bl-05) | Tooling majors: ESLint 10, jsdom 30, html-validate 11 | must | framework | ✓ done | 3/3 |
 | [BL-06](#bl-06) | Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels | must | [data](../data) | ✓ done | 3/3 |
 | [BL-07](#bl-07) | Heroes in a composition: up to 3 warlords, 4 talents, at their level | must | [ui](../src/ui) | ✓ done | 5/5 |
-| [BL-08](#bl-08) | The player's setup: everything they have in game, entered by hand or uploaded | must | [storage](../src/storage) | ○ to do | 0/7 |
+| [BL-08](#bl-08) | The player's setup: everything they have in game, entered by hand or uploaded | must | [storage](../src/storage) | ◐ doing | 1/7 |
 
 <a id="bl-05"></a>
 #### BL-05 · Tooling majors: ESLint 10, jsdom 30, html-validate 11
@@ -171,11 +171,11 @@ Rules settled with Frantz (D-26): 3 heroes, 4 talents in all, the same bonus cou
 <a id="bl-08"></a>
 #### BL-08 · The player's setup: everything they have in game, entered by hand or uploaded
 
-Must · [storage](../src/storage) · ○ to do · added `2026-10-24` · after [BL-07](#bl-07) · features: CFG-04
+Must · [storage](../src/storage) · ◐ doing · added `2026-10-24` · after [BL-07](#bl-07) · features: CFG-04, CFG-05, CFG-06, NAV-01
 
 Frantz, 2026-11-09: it holds everything (every bonus source, shaped on cctools.cc's profile), in a format a person fills by hand or an OCR agent maps from a documented dictionary; a summary; a guide; "use my setup" or "open the lab" to play freely. Prototype first.
 
-- [ ] Prototype and spec validated: use my setup or open the lab, manual sections, upload, summary, guide
+- [x] Prototype and spec validated: use my setup or open the lab, manual sections, upload, summary, guide
 - [ ] The setup's format and its dictionary: every source, field and value, in both languages, for a person or an agent
 - [ ] Your game: input by section (warlords first, the others as their data comes), and the summary of everything
 - [ ] A setup file uploaded and downloaded, checked, refused with its reasons

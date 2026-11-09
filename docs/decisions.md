@@ -305,3 +305,24 @@ Frantz's rules, from the game:
 
 The active talents are added to the player's own bonuses on the same stat (D-12). Set aside: four talents per
 hero (Frantz: four in all).
+
+## D-27 · The player's setup: a tab of its own, a file a person or an agent fills, a switch in the lab (2026-11-09)
+
+Agreed with Frantz on three prototypes ([spec](spec/setup.md)):
+
+- **It holds everything** the player has in game, shaped on cctools.cc's player profile: warlords, capacity
+  and bonuses now; rituals and buildings (1.2), champion and gear (1.3). A section the site cannot use yet is
+  kept and shown as coming, so a file filled today stays valid.
+- **A tab of its own, "Your setup"**; in the Battle lab, **one switch, "Load your setup"**: on, compositions
+  pick the warlords owned at their levels with the setup's capacity and bonuses; off, free play.
+- **One view**: what is typed and what a file brings land in the same fields. **A Save button** keeps the
+  changes (Frantz); unsaved ones are shown.
+- **The file stands alone** (`army-simulator/setup`, its own version), **partial or whole**: only what it holds
+  changes, entries matched by id, nothing removed by a file.
+- **A data dictionary for agents** (Frantz: "the semantic", close to an MCP tool's description): every element
+  per ISO/IEC 11179, generated from the game's data, published, and pasted whole into the agent brief, so
+  an agent reading screenshots maps each value without guessing.
+- _Set aside:_ one switch per composition (later, if comparing "mine" with "what if" side by side is
+  wanted); saving at every change (Frantz wants a Save button); a file removing entries (a misread
+  screenshot would delete a warlord); links in the brief instead of the dictionary itself (an agent may not
+  follow them).
