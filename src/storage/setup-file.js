@@ -48,10 +48,17 @@ function bonusEntry(entry, path, target) {
   return { value: { stat, percent, ...(troops && { target: troops }), ...(source && { source }) }, problems };
 }
 
-/** A source not used yet (rituals, buildings: BL-10, BL-14): kept as read, an id and a level per entry. */
-function levelledEntry(entry, path) {
+/**
+ * A ritual or a building at its level (BONUS-04, BONUS-07): an id of the game's list (`entries`; when the game has
+ * none, any id is kept as read) and a level from 0 to the entry's last. An unknown id gets the nearest as suggestion.
+ */
+function levelledEntry(entry, path, entries, unknownCode) {
   if (!isObject(entry) || typeof entry.id !== "string") return { problems: [refuse(path, entry, "not-object")] };
-  const problems = rangeProblem(`${path}.level`, entry.level, 0, Number.MAX_SAFE_INTEGER);
+  const known = entries?.find((candidate) => candidate.id === entry.id);
+  if (entries && !known) {
+    return { problems: [refuse(`${path}.id`, entry.id, unknownCode, { suggestion: nearestId(entry.id, entries) })] };
+  }
+  const problems = rangeProblem(`${path}.level`, entry.level, 0, known ? known.power.length : Number.MAX_SAFE_INTEGER);
   return problems.length ? { problems } : { value: { id: entry.id, level: entry.level }, problems };
 }
 
@@ -91,8 +98,12 @@ const SECTIONS = {
   },
   capacity: readCapacity,
   bonuses: (list, target) => readList(list, "bonuses", (entry, path) => bonusEntry(entry, path, target)),
-  rituals: (list) => readList(list, "rituals", levelledEntry),
-  buildings: (list) => readList(list, "buildings", levelledEntry),
+  rituals: (list, target) =>
+    readList(list, "rituals", (entry, path) => levelledEntry(entry, path, target.rituals?.rituals, "unknown-ritual")),
+  buildings: (list, target) =>
+    readList(list, "buildings", (entry, path) =>
+      levelledEntry(entry, path, target.structures?.structures, "unknown-building"),
+    ),
   champion: (champion) =>
     isObject(champion) ? { value: champion, problems: [] } : { problems: [refuse("champion", champion, "not-object")] },
 };

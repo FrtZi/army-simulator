@@ -32,7 +32,7 @@ data/                    each game's facts (JSON), the same for every player (D-
 src/engine/              pure functions, no DOM, no file access: callers pass the data
 ├── index.js             public API: the only file the page and the tests import
 ├── targets.js           which troops an effect selects (TARGET_FIELDS)
-├── sources.js           a player's bonus sources → effects (one resolver per kind; manual only, 2026-10-22)
+├── sources.js           a player's bonus sources → effects (one resolver per kind: manual, ritual, building)
 ├── bonuses.js           checks a bonus a player enters: stat, 0–100 %, target (D-14)
 ├── stats.js             effective stats; march capacity as base, bonus, total (D-12)
 ├── army.js              an army: lines (troops, then heroes), size against the capacity, power
@@ -82,7 +82,8 @@ src/ui/                  the page
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
-                         in warlords.js, a file uploaded in files.js, under review in import.js, drawn in review.js; D-27);
+                         in warlords.js, the rituals' and buildings' levels in levelled.js, a file uploaded in
+                         files.js, under review in import.js, drawn in review.js; D-27);
                          and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
                          rituals' and buildings' in levelled.js and levelled-detail.js, what going up costs in costs.js)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,

@@ -59,16 +59,16 @@ test("CFG-05 a partial file reviewed before anything changes: what it brings, in
       warlords: [{ id: "azazel", rank: 5, level: 4 }],
       capacity: { base: 110000 },
       bonuses: [{ stat: "health", percent: 150 }],
-      rituals: [{ id: "defence-capacity-1", level: 10 }],
+      rituals: [{ id: "defense-capacity-1", level: 10 }],
     }),
   );
   assert.deepEqual(rows(page), [
     "Heroes + 1 added • 1 kept",
     "March capacity ↻ 1 values changed",
     "Bonuses = nothing to apply",
-    "Rituals • kept, used from version 1.2",
+    "Rituals + 1 added",
   ]);
-  assert.equal(page.$$(".chip-added").length, 1, "an addition stands out in its colour");
+  assert.equal(page.$$(".chip-added").length, 2, "each addition stands out in its colour: a hero, a ritual");
   assert.deepEqual(page.$$(".left-list li").map(textOf), [
     'bonuses[0], read {"stat":"health","percent":150}: Enter a percentage from 0 to 100.',
   ]);
@@ -80,7 +80,7 @@ test("CFG-05 a partial file reviewed before anything changes: what it brings, in
     "added beside the one already there, which is kept",
   );
   assert.match(page.text("#setup-warlord-list li:last-child .meta"), /level 24/);
-  // a hero added, the capacity's base, the rituals (kept for 1.2): three changes not saved yet
+  // a hero added, the capacity's base, the rituals: three changes not saved yet
   assert.equal(page.text("#setup-status"), "⚠ 3 unsaved changes: Save keeps them in this browser.");
   assert.match(page.text("#setup-review"), /Applied: the changes show in your setup, not saved yet\./);
 });
@@ -116,6 +116,27 @@ test("CFG-05 a value a list can fix is parked: the nearest chosen for a misread 
     ["Skulltaker"],
   );
   assert.match(page.text("#setup-warlord-list .meta"), /level 11/); // rank 3, level 1
+});
+
+test("CFG-05 BONUS-04 a misread ritual gets the nearest, a level beyond a ritual's last waits for the player", async () => {
+  const page = openPage();
+  await upload(
+    page,
+    setupFile({
+      rituals: [
+        { id: "cavalry-and-chariot-moral", level: 4 }, // misread: the nearest is Armoured Zeal's id
+        { id: "cavalry-and-chariot-health", level: 12 }, // 10 levels (rituals.json)
+      ],
+      buildings: [{ id: "beastmen-herdstone", level: 40 }],
+    }),
+  );
+  assert.deepEqual(parked(page), [
+    'rituals[0].id, read "cavalry-and-chariot-moral": no ritual has this id. → Armoured Zeal',
+    "rituals[1].level, read 12: outside 0 to 10. → Leave it out",
+  ]);
+  assert.deepEqual(rows(page), ["Rituals + 1 added", "Buildings + 1 added"]);
+  chooseParked(page, "rituals[1].level", "10");
+  assert.deepEqual(rows(page)[0], "Rituals + 2 added");
 });
 
 test("CFG-05 Cancel leaves the setup as it was; a file that cannot be read says why in one line", async () => {

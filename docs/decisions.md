@@ -364,5 +364,9 @@ where each item drops (`where-to-find`) and what uses it (`where-to-use`).
 - **Requirements stored the same way** (rituals, structures): per ritual or structure required, the level asked
   at each level, which took the rituals' file from 490 KB to 320 KB minified. All 373 rituals are kept, not only
   the 153 combat ones: the guides show the others, and the page stays one file that works offline.
+- **Their bonuses count through the setup only**: with "Load your setup" on, each ritual and structure at its
+  saved level gives its bonuses in battle (the engine's `ritual` and `building` sources). A bonus that is not one of
+  our effects is shown, never applied: the march capacity rituals among them, whose total the player already enters
+  as the capacity's bonus (it would count twice, as DEF-017 taught).
 - _Set aside:_ a list of `{ level, item, quantity }` rows (three times the size for the same facts); the items
   written by each block's import (two writers of one file would drift).

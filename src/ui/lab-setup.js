@@ -3,6 +3,7 @@
 // capacity (base, bonus) and its bonuses count instead of those entered in the lab. What the setup does not hold,
 // the lab's own values still give. Off, the lab plays freely. Always the saved setup, never unsaved edits.
 // The state is passed in, so state.js can use these without importing back.
+import { resolveSources } from "../engine/index.js";
 
 const owned = (state) => new Map(state.savedPlayerSetup.warlords.map((warlord) => [warlord.id, warlord.level]));
 
@@ -32,8 +33,25 @@ export const capacityInPlay = (state) => ({
 /** Whether the setup's bonuses replace the lab's: when it is on and holds some. */
 export const setupBonuses = (state) => state.useSetup && state.savedPlayerSetup.bonuses.length > 0;
 
-/** Whether the switch can be turned on: something is saved in Your setup. */
+/**
+ * Whether the switch can be turned on: something is saved in Your setup, in any section, those to come included (a
+ * list of sections here once forgot the rituals and buildings: DEF-036).
+ */
 export const hasSavedSetup = (state) =>
-  state.savedPlayerSetup.warlords.length > 0 ||
-  state.savedPlayerSetup.bonuses.length > 0 ||
-  Object.keys(state.savedPlayerSetup.capacity).length > 0;
+  Object.entries(state.savedPlayerSetup).some(
+    ([section, value]) => section !== "game" && value !== null && Object.keys(value).length > 0,
+  );
+
+/** The bonuses in battle of the saved setup's rituals and buildings at their levels, with the setup on (BONUS-04, 07). */
+export function setupSourceEffects(state, game) {
+  if (!state.useSetup) return [];
+  const { rituals, buildings } = state.savedPlayerSetup;
+  return resolveSources([
+    { kind: "ritual", catalogue: { effects: game.rituals.effects, entries: game.rituals.rituals }, levels: rituals },
+    {
+      kind: "building",
+      catalogue: { effects: game.structures.effects, entries: game.structures.structures },
+      levels: buildings,
+    },
+  ]);
+}

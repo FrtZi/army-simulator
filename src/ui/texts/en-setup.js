@@ -37,6 +37,11 @@ export const EN_SETUP = {
   "setup.changed": "changed",
   "setup.removed": "Removed since the last save: {names}.",
   "setup.capacity": "March capacity",
+  "setup.rituals": "Rituals",
+  "setup.buildings": "Buildings",
+  "setup.levelsHint":
+    "Each one's level as the game shows it, 0 if not there yet. Only the bonuses in battle count in the Battle lab.",
+  "setup.levelOf": "Level of {name}, from 0 to {max}",
   "load.title": "Your setup in the lab",
   "load.label": "Load your setup",
   "load.on": "On: compositions play with your saved setup.",
@@ -48,5 +53,6 @@ export const EN_SETUP = {
   "load.labCapacity": "the march capacity entered below",
   "load.bonuses": "your setup's {n} bonuses",
   "load.labBonuses": "the bonuses entered below",
+  "load.levelled": "the bonuses in battle of your {rituals} rituals and {buildings} buildings",
   "load.notOwned": "Not in your setup, left out of the figures: {names}.",
 };

@@ -31,6 +31,37 @@ test("BONUS-01 a manual source gives its effects as entered", () => {
   assert.throws(() => resolveSources([{ kind: "hero", effects: [] }]), /Unknown bonus source kind "hero"/);
 });
 
+test("BONUS-04 BONUS-07 rituals and buildings at their levels give the bonuses in battle of those levels", () => {
+  const rituals = read(`data/${example.game}/rituals.json`);
+  const structures = read(`data/${example.game}/structures.json`);
+  // Armoured Zeal at level 4: +6 % morale for cavalry, chariots and monstrous cavalry (rituals.json, cctools.cc);
+  // the Beastmen Herdstone at 40: +15 % health for eight troop types; a level 0 or an unknown id gives nothing
+  const found = resolveSources([
+    {
+      kind: "ritual",
+      catalogue: { effects: rituals.effects, entries: rituals.rituals },
+      levels: [
+        { id: "cavalry-and-chariot-morale", level: 4 },
+        { id: "warlord-damage", level: 0 },
+        { id: "nope", level: 3 },
+      ],
+    },
+    {
+      kind: "building",
+      catalogue: { effects: structures.effects, entries: structures.structures },
+      levels: [{ id: "beastmen-herdstone", level: 40 }],
+    },
+  ]);
+  assert.deepEqual(found.slice(0, 3), [
+    { stat: "morale", percent: 6, target: { unitTypes: ["cavalry"] } },
+    { stat: "morale", percent: 6, target: { unitTypes: ["chariots"] } },
+    { stat: "morale", percent: 6, target: { unitTypes: ["monstrous-cavalry"] } },
+  ]);
+  assert.equal(found.length, 3 + 8);
+  assert.ok(found.slice(3).every((effect) => effect.stat === "health" && effect.percent === 15));
+  for (const effect of found) assert.deepEqual(effectProblems(effect, game, catalogue), [], JSON.stringify(effect));
+});
+
 test("BONUS-01 a bonus is a percentage from 0 to 100 on a stat that can be boosted", () => {
   assert.deepEqual(codes({ stat: "morale", percent: 0, target: { unitTypes: ["monsters"] } }), []);
   assert.deepEqual(codes({ stat: "armour", percent: 100, target: { alignments: ["slaanesh"] } }), []);

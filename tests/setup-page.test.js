@@ -50,10 +50,11 @@ test("CFG-04 your setup's summary: one tile per section, its figure and its stat
   const page = openPage();
   page.click("#page-tab-setup");
   const tiles = page.$$("#setup-summary [data-tile]").map((tile) => tile.dataset.tile);
-  assert.deepEqual(tiles, ["warlords", "capacity", "bonuses", "rituals", "buildings", "champion"]);
+  assert.deepEqual(tiles, ["warlords", "capacity", "rituals", "buildings", "bonuses", "champion"]);
   assert.equal(tileFigure(page, "warlords"), "0 of 33");
   assert.equal(tileState(page, "warlords"), "○ Not entered");
-  assert.equal(tileState(page, "rituals"), "◌ Coming in version 1.2");
+  assert.equal(tileState(page, "rituals"), "○ Not entered");
+  assert.equal(tileState(page, "champion"), "◌ Coming in version 1.3");
   assert.equal(status(page), "○ Nothing saved yet: enter what you have in the game, then Save.");
   assert.ok(page.$("#setup-save").disabled && page.$("#setup-discard").disabled, "nothing to save yet");
 });
@@ -178,4 +179,43 @@ test("CFG-04 with nothing saved in Your setup, the switch cannot be turned on an
 test("CFG-04 a saved setup the browser kept damaged opens empty, without an error", () => {
   const page = openPage({ stored: { [SETUP_KEY]: "{not json" } });
   assert.equal(tileFigure(page, "warlords"), "0 of 33");
+});
+
+test("BONUS-04 BONUS-07 rituals and buildings at their levels: typed, a level beyond the last refused, saved", () => {
+  const page = openPage();
+  page.click("#page-tab-setup");
+  page.choose("#setup-ritual-category", "battle");
+  page.type("#setup-ritual-cavalry-and-chariot-morale", 4);
+  page.type("#setup-building-beastmen-herdstone", 40);
+  page.type("#setup-building-bestiary", 99); // the Bestiary has 40 levels: marked, not kept
+  assert.equal(page.$("#setup-building-bestiary").getAttribute("aria-invalid"), "true");
+  assert.equal(tileFigure(page, "rituals"), "1 of 373");
+  assert.equal(tileFigure(page, "buildings"), "1 of 32");
+  assert.equal(page.text("#setup-status"), "⚠ 2 unsaved changes: Save keeps them in this browser.");
+  page.type("#setup-ritual-cavalry-and-chariot-morale", 0); // 0 takes it out
+  assert.equal(tileFigure(page, "rituals"), "0 of 373");
+  page.type("#setup-ritual-cavalry-and-chariot-morale", 4);
+  page.click("#setup-save");
+  const file = JSON.parse(page.window.localStorage.getItem(SETUP_KEY))["chaos-conquest"];
+  assert.deepEqual(file.rituals, [{ id: "cavalry-and-chariot-morale", level: 4 }]);
+  assert.deepEqual(file.buildings, [{ id: "beastmen-herdstone", level: 40 }]);
+});
+
+test("BONUS-07 DEF-036 a setup of buildings alone loads: their bonuses in battle count in the lab, and only then", () => {
+  const saved = JSON.stringify({
+    "chaos-conquest": {
+      format: "army-simulator/setup",
+      version: 1,
+      game: "chaos-conquest",
+      buildings: [{ id: "beastmen-herdstone", level: 40 }],
+    },
+  });
+  const page = openPage({ stored: { [SETUP_KEY]: saved } });
+  addTroops(page, ["marauders"]); // infantry: the Herdstone at 40 gives infantry +15 % health (structures.json)
+  const health = () => Number(page.metric("health").replace(/\D/g, ""));
+  const free = health();
+  page.tick("#load-setup-toggle");
+  assert.equal(health(), Math.round(free * 1.15));
+  page.untick("#load-setup-toggle");
+  assert.equal(health(), free);
 });

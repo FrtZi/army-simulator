@@ -43,10 +43,14 @@ function elementsText(elements) {
 
 /** A value list, one id per line with its English and French names; a name we translated is said so. */
 function listText(name, entries) {
-  const lines = entries.map(({ id, labels, translated, rarity }) => {
+  const lines = entries.map(({ id, labels, translated, rarity, levels }) => {
     const names = [...new Set([labels.en, labels.fr])].filter(Boolean).join(" / ");
     const languages = translated?.map((language) => LANGUAGES[language]).join(" and ");
-    const notes = [rarity, languages && `the ${languages} name is ours, the game's may differ`];
+    const notes = [
+      rarity,
+      levels && `levels 0 to ${levels}`,
+      languages && `the ${languages} name is ours, the game's may differ`,
+    ];
     const note = notes.filter(Boolean).join("; ");
     return `- \`${json(id)}\`: ${names}${note ? ` (${note})` : ""}`;
   });

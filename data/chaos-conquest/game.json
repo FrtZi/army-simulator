@@ -334,6 +334,12 @@
   "sourceKinds": [
     {
       "id": "manual"
+    },
+    {
+      "id": "ritual"
+    },
+    {
+      "id": "building"
     }
   ],
   "rarities": [

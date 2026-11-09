@@ -19,6 +19,7 @@ import { drawDashboards } from "./steps/dashboards/draw.js";
 import { drawSetupCapacityFields, drawSetupStatus } from "./steps/setup/draw.js";
 import { drawSetupWarlords } from "./steps/setup/warlords.js";
 import { drawSetupReview } from "./steps/setup/review.js";
+import { drawSetupLevelled } from "./steps/setup/levelled.js";
 import { drawLoadSetup } from "./steps/load/draw.js";
 import { drawGuides } from "./steps/guides/draw.js";
 
@@ -48,6 +49,7 @@ export function renderAll() {
     drawSetupWarlords();
     drawSetupCapacityFields();
     drawSetupReview();
+    drawSetupLevelled();
     drawGuides();
   });
   refresh();

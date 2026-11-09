@@ -19,7 +19,7 @@ function listEntry({ id, labels }, extra = {}) {
 }
 
 /** Every list of allowed ids: the warlords, the stats a bonus may raise, and the values of each target filter. */
-function valueLists({ game, warlords, units, defences }) {
+function valueLists({ game, warlords, units, defences, rituals, structures }) {
   const filters = Object.fromEntries(
     Object.keys(TARGET_FIELDS)
       .filter((filter) => filter !== "units")
@@ -31,6 +31,9 @@ function valueLists({ game, warlords, units, defences }) {
     stats: game.troopStats.filter((stat) => stat.boostable !== false).map((stat) => listEntry(stat)),
     ...filters,
     units: [...units, ...defences].map((unit) => listEntry(unit)),
+    // each with its last level: a level read beyond it is refused (BONUS-04, BONUS-07)
+    rituals: (rituals?.rituals ?? []).map((ritual) => listEntry(ritual, { levels: ritual.power.length })),
+    buildings: (structures?.structures ?? []).map((building) => listEntry(building, { levels: building.power.length })),
   };
 }
 
@@ -41,7 +44,7 @@ function domains(game, gameId) {
   const count = { dataType: "integer", valueDomain: { min: 0 } };
   const list = { dataType: "list", valueDomain: {} };
   const object = { dataType: "object", valueDomain: {} };
-  const levelled = (name) => ({ [name]: list, [`${name}[].id`]: { dataType: "text", valueDomain: {} } });
+  const levelled = (name) => ({ [name]: list, [`${name}[].id`]: { dataType: "text", valueDomain: { list: name } } });
   return {
     format: { dataType: "text", valueDomain: { const: SETUP_FORMAT } },
     version: { dataType: "integer", valueDomain: { const: SETUP_VERSION } },

@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **35 defects**: 35 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **36 defects**: 36 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -48,6 +48,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-033](#def-033) | 2026-11-09 | The dev server kept the texts it started with | tool | minor | ✓ fixed |
 | [DEF-034](#def-034) | 2026-11-09 | The import review scrolled sideways on a narrow screen | code | minor | ✓ fixed |
 | [DEF-035](#def-035) | 2026-11-09 | A tick box drawn as a text field | code | minor | ✓ fixed |
+| [DEF-036](#def-036) | 2026-11-09 | A setup of rituals and buildings only could not be loaded | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -490,3 +491,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A rule that every case must undo is a rule written too wide: narrow it where it is written, not in each case.
 - **Proof:** `tests/styles.test.js`
 - **Links:** COMP-01, GUIDE-03
+
+<a id="def-036"></a>
+### DEF-036 · A setup of rituals and buildings only could not be loaded
+
+`2026-11-09` · code · minor · ✓ fixed · tags: `page`
+
+- **Finding:** With only buildings saved in Your setup, "Load your setup" stayed greyed out and said nothing was saved: their bonuses never reached the lab. Caught by the new page test before the commit.
+- **Cause:** Whether something is saved was a list of the sections known when the switch was written (heroes, bonuses, capacity); the rituals and buildings, added later, were not in it.
+- **Solution:** Something is saved when any section of the setup holds anything, those to come included.
+- **Result:** A setup of buildings alone loads; the Herdstone's +15 % health reaches the infantry in the lab, and the test fails with the old list.
+- **Lesson:** A list of cases written in one place goes stale when a case is added elsewhere: ask the data, not a list.
+- **Proof:** `tests/setup-page.test.js`
+- **Links:** CFG-04, BONUS-07

@@ -30,26 +30,38 @@ const filterEntries = (filter, { game, catalogue }) =>
  * The list that fixes a value left out, where its choice is written, and the nearest entry; null when no list can
  * (a duplicate, a percentage out of range, a section of the wrong shape). `target`: { game, catalogue, warlords }.
  */
+/** A number out of range: a hero's rank or level, or a ritual's or building's level (0, not there, to its last). */
+function rangeChoice(problem, { game }) {
+  const hero = problem.path.match(/^warlords\[\d+\]\.(rank|level)$/)?.[1];
+  if (hero) return parked(problem.path, problem.read, numbers(game.heroRules[HERO_RANGES[hero]]));
+  if (!/^(rituals|buildings)\[\d+\]\.level$/.test(problem.path)) return null;
+  return parked(problem.path, problem.read, [{ id: 0, labels: { en: "0", fr: "0" } }, ...numbers(problem.max)]);
+}
+
+function statChoice(problem, { game }) {
+  const stats = game.troopStats.filter((stat) => stat.boostable !== false);
+  return parked(`${problem.path}.stat`, problem.read.stat, stats);
+}
+
+function valueChoice(problem, target) {
+  const index = problem.read.target[problem.filter].indexOf(problem.value);
+  const path = `${problem.path}.target.${problem.filter}[${index}]`;
+  return parked(path, problem.value, filterEntries(problem.filter, target));
+}
+
+/** Each kind of value left out a list can fix, and how its list is made. */
+const CHOICES = {
+  "unknown-warlord": (problem, target) => parked(problem.path, problem.read, [...target.warlords.values()]),
+  "unknown-ritual": (problem, target) => parked(problem.path, problem.read, target.rituals.rituals),
+  "unknown-building": (problem, target) => parked(problem.path, problem.read, target.structures.structures),
+  "out-of-range": rangeChoice,
+  "unknown-stat": statChoice,
+  "fixed-stat": statChoice,
+  "unknown-value": valueChoice,
+};
+
 export function parkedChoice(problem, target) {
-  const { game, warlords } = target;
-  const field = problem.path?.match(/^warlords\[\d+\]\.(rank|level)$/)?.[1];
-  if (problem.code === "unknown-warlord") return parked(problem.path, problem.read, [...warlords.values()]);
-  if (problem.code === "out-of-range" && field) {
-    return parked(problem.path, problem.read, numbers(game.heroRules[HERO_RANGES[field]]));
-  }
-  if (problem.code === "unknown-stat" || problem.code === "fixed-stat") {
-    const stats = game.troopStats.filter((stat) => stat.boostable !== false);
-    return parked(`${problem.path}.stat`, problem.read.stat, stats);
-  }
-  if (problem.code === "unknown-value") {
-    const index = problem.read.target[problem.filter].indexOf(problem.value);
-    return parked(
-      `${problem.path}.target.${problem.filter}[${index}]`,
-      problem.value,
-      filterEntries(problem.filter, target),
-    );
-  }
-  return null;
+  return CHOICES[problem.code]?.(problem, target) ?? null;
 }
 
 /** A copy of the file with one value replaced, at a path such as "warlords[1].id" or "bonuses[0].target.tiers[2]". */

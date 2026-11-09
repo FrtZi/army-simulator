@@ -35,6 +35,8 @@ export const EN_SETUP_FILES = {
   "setupfile.not-object": "not laid out as expected.",
   "setupfile.not-list": "a list was expected.",
   "setupfile.unknown-warlord": "no hero has this id.",
+  "setupfile.unknown-ritual": "no ritual has this id.",
+  "setupfile.unknown-building": "no building has this id.",
   "setupfile.duplicate": "this hero is listed twice; the first is kept.",
   "setupfile.out-of-range": "outside {min} to {max}.",
   "setupfile.capacity-bonus": "the march capacity bonus goes in capacity.bonusPercent, not in the bonuses.",

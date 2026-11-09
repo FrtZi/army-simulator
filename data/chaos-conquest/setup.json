@@ -109,24 +109,24 @@
     },
     {
       "name": "rituals",
-      "definition": "The rituals and their levels. Kept as read, used from version 1.2 of the site.",
+      "definition": "The rituals and their levels. Their bonuses in battle count in the Battle lab.",
       "obligation": "optional"
     },
     {
       "name": "rituals[].id",
       "definition": "The ritual, by its id.",
       "obligation": "required",
-      "example": "defence-capacity-1"
+      "example": "defense-capacity-1"
     },
     {
       "name": "rituals[].level",
-      "definition": "The level the ritual has reached.",
+      "definition": "The level the ritual has reached, from 0 to its last (see the list).",
       "obligation": "required",
       "example": 10
     },
     {
       "name": "buildings",
-      "definition": "The buildings and their levels. Kept as read, used from version 1.2 of the site.",
+      "definition": "The buildings and their levels. Their bonuses in battle count in the Battle lab.",
       "obligation": "optional"
     },
     {
@@ -137,7 +137,7 @@
     },
     {
       "name": "buildings[].level",
-      "definition": "The building's level.",
+      "definition": "The building's level, from 0 to its last (see the list).",
       "obligation": "required",
       "example": 25
     },

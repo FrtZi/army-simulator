@@ -9,6 +9,7 @@ import { marchCapacity } from "../../../engine/index.js";
 import { unsavedCount } from "../../player-setup.js";
 import { t } from "../../texts/index.js";
 import { drawSetupWarlords } from "./warlords.js";
+import { drawSetupLevelled } from "./levelled.js";
 
 const STATES = { entered: "✓", empty: "○", coming: "◌" };
 
@@ -37,6 +38,11 @@ function tiles() {
   return [
     tile("warlords", t("tile.owned", { n: owned, total: currentGame().warlords.size }), ...filled(owned > 0)),
     tile("capacity", capacity ? number(capacity.total) : "—", ...filled(capacity !== null)),
+    ...["rituals", "buildings"].map((section) => {
+      const entries = section === "rituals" ? currentGame().rituals.rituals : currentGame().structures.structures;
+      const n = state.playerSetup[section].length;
+      return tile(section, t("tile.owned", { n, total: entries.length }), ...filled(n > 0));
+    }),
     ...coming,
   ].join("");
 }
@@ -92,6 +98,7 @@ export function drawSetup() {
   keepingFocus(() => {
     drawSetupWarlords();
     drawSetupCapacityFields();
+    drawSetupLevelled();
   });
   drawSetupStatus();
 }

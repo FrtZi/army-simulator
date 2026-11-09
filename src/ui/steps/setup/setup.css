@@ -155,3 +155,19 @@
   color: var(--heading);
   font-size: 0.75rem;
 }
+
+/* the rituals' and buildings' levels: a name, its field and its last level on one line */
+.setup-levels {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.setup-level-row {
+  display: grid;
+  grid-template-columns: 1fr 5.5rem auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--line);
+}

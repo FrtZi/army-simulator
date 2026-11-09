@@ -558,3 +558,19 @@ resultat = "Every tick box keeps its own size, the next one included; the test f
 preuve = ["tests/styles.test.js"]
 lecon = "A rule that every case must undo is a rule written too wide: narrow it where it is written, not in each case."
 liens = ["COMP-01", "GUIDE-03"]
+
+[[defaut]]
+id = "DEF-036"
+date = 2026-11-09
+titre = "A setup of rituals and buildings only could not be loaded"
+type = "code"
+etiquettes = ["page"]
+gravite = "minor"
+statut = "fixed"
+constat = "With only buildings saved in Your setup, \"Load your setup\" stayed greyed out and said nothing was saved: their bonuses never reached the lab. Caught by the new page test before the commit."
+cause = "Whether something is saved was a list of the sections known when the switch was written (heroes, bonuses, capacity); the rituals and buildings, added later, were not in it."
+solution = "Something is saved when any section of the setup holds anything, those to come included."
+resultat = "A setup of buildings alone loads; the Herdstone's +15 % health reaches the infantry in the lab, and the test fails with the old list."
+preuve = ["tests/setup-page.test.js"]
+lecon = "A list of cases written in one place goes stale when a case is added elsewhere: ask the data, not a list."
+liens = ["CFG-04", "BONUS-07"]

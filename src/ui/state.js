@@ -4,7 +4,7 @@ import { CONFIG } from "./config.js";
 import { GAMES } from "./games.js";
 import { armyProfile, compareArmies, effectProblems, summariseArmy } from "../engine/index.js";
 import { heroUnits, talentsOf } from "./heroes.js";
-import { asPlayed, capacityInPlay, setupBonuses } from "./lab-setup.js";
+import { asPlayed, capacityInPlay, setupBonuses, setupSourceEffects } from "./lab-setup.js";
 
 /** The language: the one remembered in this browser, else the browser's own if the page has it. */
 function startLanguage() {
@@ -34,6 +34,7 @@ export const state = {
   playerSetup: null,
   savedPlayerSetup: null,
   setupSaveFailed: false,
+  setupRitualCategory: null, // the rituals' category shown in Your setup (BONUS-04)
   // the Guides (GUIDE-01): the block shown; in the heroes' guide, the filters, the search, the hero, its level
   guide: {
     kind: "heroes",
@@ -103,7 +104,8 @@ export function problemsOf(effect) {
 /** Every valid effect: a bonus with a problem is shown with it, and left out of the figures. */
 export function validEffects() {
   const bonuses = setupBonuses(state) ? state.savedPlayerSetup.bonuses : state.bonuses.map(bonusEffect);
-  return [...bonuses, capacityEffect()].filter((effect) => !problemsOf(effect).length);
+  const sources = setupSourceEffects(state, currentGame()); // rituals and buildings, with the setup loaded
+  return [...bonuses, ...sources, capacityEffect()].filter((effect) => !problemsOf(effect).length);
 }
 
 /** A composition as the engine sees it: its troops with every bonus, its talents' included, and its heroes. */

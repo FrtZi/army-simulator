@@ -17,6 +17,9 @@ function onText() {
       : t("load.labCapacity"),
     setupBonuses(state) ? t("load.bonuses", { n: saved.bonuses.length }) : t("load.labBonuses"),
   ];
+  if (saved.rituals.length || saved.buildings.length) {
+    parts.push(t("load.levelled", { rituals: saved.rituals.length, buildings: saved.buildings.length }));
+  }
   return `${t("load.on")} ${parts.join(" · ")}`;
 }
 

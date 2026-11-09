@@ -37,6 +37,11 @@ export const FR_SETUP = {
   "setup.changed": "modifié",
   "setup.removed": "Retirés depuis le dernier enregistrement : {names}.",
   "setup.capacity": "Capacité de marche",
+  "setup.rituals": "Rituels",
+  "setup.buildings": "Bâtiments",
+  "setup.levelsHint":
+    "Le niveau de chacun tel que le jeu l'affiche, 0 s'il n'y est pas encore. Seuls les bonus au combat comptent dans le Laboratoire.",
+  "setup.levelOf": "Niveau de {name}, de 0 à {max}",
   "load.title": "Votre configuration dans le laboratoire",
   "load.label": "Charger votre configuration",
   "load.on": "Activé : les compositions jouent avec votre configuration enregistrée.",
@@ -50,5 +55,6 @@ export const FR_SETUP = {
   "load.labCapacity": "la capacité de marche saisie plus bas",
   "load.bonuses": "les {n} bonus de votre configuration",
   "load.labBonuses": "les bonus saisis plus bas",
+  "load.levelled": "les bonus au combat de vos {rituals} rituels et {buildings} bâtiments",
   "load.notOwned": "Absents de votre configuration, laissés hors des chiffres : {names}.",
 };

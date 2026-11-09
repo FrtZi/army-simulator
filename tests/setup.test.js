@@ -35,7 +35,7 @@ test("CFG-05 a whole file: warlords at the game's rank and level, capacity, bonu
       warlords: [{ id: "azazel", rank: 5, level: 4 }],
       capacity: { base: 110000, bonusPercent: 35 },
       bonuses: [{ ...INFANTRY_ATTACK, source: "titles" }],
-      rituals: [{ id: "defence-capacity-1", level: 10 }],
+      rituals: [{ id: "defense-capacity-1", level: 10 }],
     }),
     games,
   );
@@ -44,7 +44,7 @@ test("CFG-05 a whole file: warlords at the game's rank and level, capacity, bonu
     warlords: [{ id: "azazel", level: 24 }],
     capacity: { base: 110000, bonusPercent: 35 },
     bonuses: [{ ...INFANTRY_ATTACK, source: "titles" }],
-    rituals: [{ id: "defence-capacity-1", level: 10 }],
+    rituals: [{ id: "defense-capacity-1", level: 10 }],
   });
 });
 

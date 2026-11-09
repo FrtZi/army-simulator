@@ -203,15 +203,14 @@ title = "Rituals in the setup: each ritual's level, its bonuses applied"
 moscow = "must"
 milestone = "v1.2"
 module = "ui"
-status = "doing"
+status = "done"
 added = 2026-10-24
-depends_on = ["BL-08"]
 features = ["BONUS-04"]
-note = "In one request (cctools.cc, the 153 combat rituals and their levels), as a section of the setup (BL-08)."
+note = "What it needed of BL-08, the Your setup tab, is in (2026-11-09); BL-08's last tasks do not hold it. In one request (cctools.cc, the 153 combat rituals and their levels), as a section of the setup (BL-08)."
 tasks = [
   "[x] Rituals' data from cctools.cc, checked (as BL-06)",
-  "[ ] Entry in the setup: a category at a time, levels typed or picked, totals shown",
-  "[ ] Bonuses applied to every composition",
+  "[x] Entry in the setup: a category at a time, levels typed or picked, totals shown",
+  "[x] Bonuses applied to every composition",
 ]
 
 [[item]]
@@ -269,14 +268,13 @@ title = "Buildings' bonuses, by level"
 moscow = "should"
 milestone = "v1.2"
 module = "data"
-status = "doing"
+status = "done"
 added = 2026-10-22
 features = ["BONUS-07"]
-depends_on = ["BL-08"]
-note = "In the same request as the rituals (cctools.cc: 10 buildings with combat bonuses), as a section of the setup."
+note = "What it needed of BL-08, the Your setup tab, is in (2026-11-09); BL-08's last tasks do not hold it. In the same request as the rituals (cctools.cc: 10 buildings with combat bonuses), as a section of the setup."
 tasks = [
   "[x] Structures' data from cctools.cc, checked: levels, costs, requirements, bonuses",
-  "[ ] Into the setup: each structure's level, its bonuses applied",
+  "[x] Into the setup: each structure's level, its bonuses applied",
 ]
 
 [[item]]
