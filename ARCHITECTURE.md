@@ -24,7 +24,8 @@ data/                    each game's facts (JSON), the same for every player (D-
     ├── defences.json    one entry per fortress defence (never part of an army)
     ├── units.json       one entry per troop type, from its in-game sheet
     ├── combat-rules.json  the combat rules the game publishes, with their source
-    └── warlords.json    the 33 warlords, at each of 35 levels: imported (scripts/import-warlords.mjs), never edited
+    ├── warlords.json    the 33 warlords, at each of 35 levels: imported (scripts/import-warlords.mjs), never edited
+    └── setup.json       the setup file's words: each element's definition, reading examples, the agent brief (D-28)
 src/engine/              pure functions, no DOM, no file access: callers pass the data
 ├── index.js             public API: the only file the page and the tests import
 ├── targets.js           which troops an effect selects (TARGET_FIELDS)
@@ -44,7 +45,9 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 src/storage/             no DOM: configuration.js (setup ↔ file format version 2, checks), migrate.js (an older
                          file brought up to date), browser.js (saves); the player's setup file (D-27):
                          setup-file.js (read and checked value by value, written back), setup-merge.js (only
-                         what a file holds changes), nearest.js (the id a misread name meant)
+                         what a file holds changes), nearest.js (the id a misread name meant); its dictionary
+                         (D-28): setup-dictionary.js (built from the game's data), setup-schema.js (as a JSON
+                         Schema), setup-brief.js (the brief for an agent, the whole dictionary in it)
 src/index.html           page shell: head, header (flags, theme), footer, one include per section
 src/theme-init.js        sets the theme before the first paint (inlined in <head>)
 src/assets/              the language flags (inlined by the build)
@@ -72,6 +75,7 @@ src/styles/              the shared design: tokens.css (colours, both themes), b
 scripts/
 ├── page.mjs             assembles index.html from its sections, fills in the English texts
 ├── build.mjs            bundles and inlines everything (esbuild) → dist/index.html
+├── setup-files.mjs      each game's setup dictionary and schema → dist/<game>/ (called by the build, D-28)
 ├── serve.mjs            npm run dev: serves the source page and data/ (no build)
 ├── catalogue.mjs        reads the feature catalogue (docs/features.md)
 ├── import-warlords.mjs  data/<game>/warlords.json from cctools.cc's saved pages (D-25)
@@ -82,7 +86,8 @@ examples/
 captures/<game>/         in-game screenshots: local only, ignored by git (see captures/README.md)
 docs/                    one page per subject, each linking back here
 tests/                   node --test; each test names the feature it proves
-├── data, engine, battle, dashboards, backtest, storage, setup   the data, the engine, the saves and the setup, in Node
+├── data, engine, battle, dashboards, backtest, storage, setup, setup-dictionary   the data, the engine, the saves
+│                        and the setup with its dictionary, in Node
 ├── page.test.js         the published page, driven in jsdom (page.js: opening it, clicking, typing)
 ├── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens
 ├── tooling.test.js      the page assembler, the dev server, configurations aligned (MAINT-04)

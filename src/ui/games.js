@@ -6,6 +6,7 @@ import chaosConquestUnits from "../../data/chaos-conquest/units.json" with { typ
 import chaosConquestDefences from "../../data/chaos-conquest/defences.json" with { type: "json" };
 import chaosConquestRules from "../../data/chaos-conquest/combat-rules.json" with { type: "json" };
 import chaosConquestWarlords from "../../data/chaos-conquest/warlords.json" with { type: "json" };
+import chaosConquestSetup from "../../data/chaos-conquest/setup.json" with { type: "json" };
 import { indexCatalogue } from "../engine/index.js";
 
 const DATA = {
@@ -15,6 +16,7 @@ const DATA = {
     defences: chaosConquestDefences,
     rules: chaosConquestRules,
     heroes: chaosConquestWarlords,
+    setup: chaosConquestSetup,
   },
 };
 

@@ -326,3 +326,21 @@ Agreed with Frantz on three prototypes ([spec](spec/setup.md)):
   wanted); saving at every change (Frantz wants a Save button); a file removing entries (a misread
   screenshot would delete a warlord); links in the brief instead of the dictionary itself (an agent may not
   follow them).
+
+## D-28 · The setup's dictionary, schema and brief: built from the game's data at each build (2026-11-09)
+
+The dictionary D-27 asks for is **built, never written by hand**: the words (each element's definition, where in
+game, the reading examples, the brief's rules) are in `data/<game>/setup.json`; every type, range and id list
+comes from the game's own data (`game.json`, `warlords.json`, `units.json`, `defences.json`) and the reader's
+format (`setup-file.js`). The JSON Schema is derived from the dictionary, and the brief renders the dictionary
+as Markdown, so the three cannot disagree. The build writes `setup-dictionary.json` and `setup.schema.json`
+to `dist/<game>/`, published with the page; the page will build the brief itself from the data it bundles.
+
+Tests read the dictionary's example file and its reading examples back without a single refusal, and check
+that what the reader refuses, the schema refuses too, with **Ajv** (the standard JSON Schema validator, a
+development dependency only: the page never loads it).
+
+- _Set aside:_ a schema written by hand (it would drift from the reader and the data); the generated files
+  committed (they would need a freshness check, and nothing reads them from the repository); a schema
+  library generating both the checks and the schema, such as Zod (a runtime dependency in the page, and the
+  reader's partial acceptance, each refused value named with its reason, is not what such libraries do).

@@ -1,11 +1,13 @@
 // Builds the single self-contained page dist/index.html from src/: the page is assembled from its parts,
 // esbuild bundles the ES modules (src/main.js, with the game data it imports) and the stylesheets
-// (src/styles/index.css), then both are inlined so the published page is one file that works offline.
+// (src/styles/index.css), then both are inlined so the published page is one file that works offline. Beside it,
+// each game's setup dictionary and schema (CFG-06).
 import { mkdirSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { build } from "esbuild";
 import { assemblePage } from "./page.mjs";
+import { writeSetupFiles } from "./setup-files.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const srcDir = join(root, "src");
@@ -43,3 +45,6 @@ const out = join(root, "dist", "index.html");
 mkdirSync(dirname(out), { recursive: true });
 writeFileSync(out, `${html}\n`);
 console.log(`${out}: scripts, styles and data bundled and inlined (${Math.round(statSync(out).size / 1024)} KB)`);
+for (const path of writeSetupFiles(dirname(out))) {
+  console.log(`${path}: the setup file described, for tools and agents`);
+}

@@ -1,0 +1,172 @@
+{
+  "brief": {
+    "intro": [
+      "You are filling in a setup file for Army Simulator, an unofficial army simulator, from the screenshots I give you.",
+      "Write one JSON file following the data dictionary below. For each element it gives the definition, the data type and value domain, whether it is required, where it appears in the game, and an example. Then come the lists of allowed ids with the names the game shows in English and French, examples turning the game's wording into the file's values, and an example file."
+    ],
+    "rules": [
+      "Start with the three required elements, format, version and game, exactly as in the example file.",
+      "Use only the ids listed in the dictionary. Match the names on screen to them through their English or French names.",
+      "Write only what you can read clearly. If a value is unreadable or not shown, leave the entry out: do not guess, and do not write zero.",
+      "Include only the sections my screenshots show; the others stay as they are in my setup.",
+      "Ignore anything else on the screens (player names, chat, alliance).",
+      "A bonus on screen that matches no stat or filter of the dictionary: leave it out and list it.",
+      "Give back the JSON file only, then a short list of what you left out and why."
+    ]
+  },
+  "elements": [
+    {
+      "name": "format",
+      "definition": "Says the file is an Army Simulator setup.",
+      "obligation": "required",
+      "example": "army-simulator/setup"
+    },
+    {
+      "name": "version",
+      "definition": "The version of the setup format.",
+      "obligation": "required",
+      "example": 1
+    },
+    {
+      "name": "game",
+      "definition": "The game the setup belongs to.",
+      "obligation": "required",
+      "example": "chaos-conquest"
+    },
+    {
+      "name": "warlords",
+      "definition": "The warlords the player owns, one entry each. Absent: the player's warlords stay as they are.",
+      "obligation": "optional"
+    },
+    {
+      "name": "warlords[].id",
+      "definition": "The warlord, by its id.",
+      "obligation": "required",
+      "whereInGame": null,
+      "example": "azazel"
+    },
+    {
+      "name": "warlords[].rank",
+      "definition": "The warlord's rank.",
+      "obligation": "required",
+      "whereInGame": null,
+      "example": 5
+    },
+    {
+      "name": "warlords[].level",
+      "definition": "The warlord's level within its rank.",
+      "obligation": "required",
+      "whereInGame": null,
+      "example": 4
+    },
+    {
+      "name": "capacity",
+      "definition": "The march capacity. Absent: the player's stays as it is.",
+      "obligation": "optional"
+    },
+    {
+      "name": "capacity.base",
+      "definition": "The march capacity before bonuses: the most troops one army takes.",
+      "obligation": "optional",
+      "whereInGame": null,
+      "example": 110000
+    },
+    {
+      "name": "capacity.bonusPercent",
+      "definition": "The march capacity bonus, every source added, in per cent.",
+      "obligation": "optional",
+      "whereInGame": null,
+      "example": 35
+    },
+    {
+      "name": "bonuses",
+      "definition": "The bonuses, one entry per bonus as the game shows it. A bonus raises one stat by a percentage, for every troop or only some. Absent: the player's bonuses stay as they are.",
+      "obligation": "optional"
+    },
+    {
+      "name": "bonuses[].stat",
+      "definition": "The stat the bonus raises.",
+      "obligation": "required",
+      "example": "meleeAttack"
+    },
+    {
+      "name": "bonuses[].percent",
+      "definition": "By how much the stat is raised, in per cent.",
+      "obligation": "required",
+      "example": 12
+    },
+    {
+      "name": "bonuses[].target",
+      "definition": "Which troops the bonus raises; absent, every troop. Each filter lists the values a troop must have; when there are several filters, a troop must match them all.",
+      "obligation": "optional",
+      "example": { "unitTypes": ["infantry"] }
+    },
+    {
+      "name": "bonuses[].source",
+      "definition": "Where the bonus comes from, for the player's memory; not used in the calculation.",
+      "obligation": "optional",
+      "example": "titles"
+    },
+    {
+      "name": "rituals",
+      "definition": "The rituals and their levels. Kept as read, used from version 1.2 of the site.",
+      "obligation": "optional"
+    },
+    {
+      "name": "rituals[].id",
+      "definition": "The ritual, by its id.",
+      "obligation": "required",
+      "example": "defence-capacity-1"
+    },
+    {
+      "name": "rituals[].level",
+      "definition": "The level the ritual has reached.",
+      "obligation": "required",
+      "example": 10
+    },
+    {
+      "name": "buildings",
+      "definition": "The buildings and their levels. Kept as read, used from version 1.2 of the site.",
+      "obligation": "optional"
+    },
+    {
+      "name": "buildings[].id",
+      "definition": "The building, by its id.",
+      "obligation": "required",
+      "example": "fortress-walls"
+    },
+    {
+      "name": "buildings[].level",
+      "definition": "The building's level.",
+      "obligation": "required",
+      "example": 25
+    },
+    {
+      "name": "champion",
+      "definition": "The champion, its skills and its gear. Kept as read, defined in version 1.3 of the site.",
+      "obligation": "optional"
+    }
+  ],
+  "readings": [
+    {
+      "onScreen": "Infantry Melee Attack +12%",
+      "inFile": [{ "stat": "meleeAttack", "percent": 12, "target": { "unitTypes": ["infantry"] } }]
+    },
+    {
+      "onScreen": "Santé des troupes +8 %",
+      "inFile": [{ "stat": "health", "percent": 8 }]
+    },
+    {
+      "onScreen": "Tier V cavalry armour +5%",
+      "inFile": [{ "stat": "armour", "percent": 5, "target": { "tiers": [5], "unitTypes": ["cavalry"] } }]
+    },
+    {
+      "onScreen": "Khorne troops' damage +10%",
+      "inFile": [
+        { "stat": "meleeDamage", "percent": 10, "target": { "alignments": ["khorne"] } },
+        { "stat": "rangedDamage", "percent": 10, "target": { "alignments": ["khorne"] } }
+      ],
+      "toConfirm": "whether the game's \"damage\" means both melee and ranged"
+    }
+  ]
+}

@@ -171,7 +171,7 @@ features = ["CFG-04", "CFG-05", "CFG-06", "NAV-01"]
 note = "Frantz, 2026-11-09: it holds everything (every bonus source, shaped on cctools.cc's profile), in a format a person fills by hand or an OCR agent maps from a documented dictionary; a summary; a guide; \"use my setup\" or \"open the lab\" to play freely. Prototype first."
 tasks = [
   "[x] Prototype and spec validated: use my setup or open the lab, manual sections, upload, summary, guide",
-  "[ ] The setup's format and its dictionary: every source, field and value, in both languages, for a person or an agent",
+  "[x] The setup's format and its dictionary: every source, field and value, in both languages, for a person or an agent",
   "[ ] Your game: input by section (warlords first, the others as their data comes), and the summary of everything",
   "[ ] A setup file uploaded and downloaded, checked, refused with its reasons",
   "[ ] Use my setup or open the lab: compositions draw on the setup, or play freely",

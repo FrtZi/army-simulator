@@ -2,8 +2,9 @@
 
 [← The spec](setup.md) · [The guide](setup-guide.md)
 
-Generated at build time from `game.json` and `warlords.json` (one source, DRY), published as
-`setup-dictionary.json` and shown in the page; **pasted whole into the agent brief**, so the agent needs
+Built at each build (D-28): the words from `data/<game>/setup.json`, every type, range and id list from the
+game's data (one source, DRY); published as `<game>/setup-dictionary.json` and `<game>/setup.schema.json` beside
+the page, and shown in the page; **pasted whole into the agent brief**, so the agent needs
 nothing else (no link to follow). Each element follows ISO/IEC 11179: name, definition, data type, value
 domain, obligation, labels on screen (EN / FR), where in game, example.
 

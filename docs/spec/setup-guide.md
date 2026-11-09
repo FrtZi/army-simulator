@@ -84,7 +84,8 @@ alliance).
 - **Empty template:** every section with empty values, to fill by hand in a text editor.
 - **Your setup, filled:** what you have today, in the same format.
 - **Dictionary:** every field, its values, its label in English and French, and where to find it in the
-  game. Also published as `setup.schema.json` (for tools) and `setup-dictionary.json`.
+  game. Also published beside the page as `chaos-conquest/setup.schema.json` (for tools) and
+  `chaos-conquest/setup-dictionary.json`.
 
 ## 7. Questions
 
