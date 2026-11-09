@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 17/19 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 3/5 | 13/17 | ○ not yet: 1 Must left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 3/5 | 15/17 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 2/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -27,7 +27,7 @@ Not done, and every dependency done:
 
 - [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ◐ doing)
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
-- [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ○ to do)
+- [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ◐ doing)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
@@ -65,7 +65,7 @@ flowchart LR
   BL17["BL-17 ○ to do<br/>Read-only share link"]:::todo
   BL18["BL-18 ○ to do<br/>Food upkeep: settle the factor of 6 with cctools.cc"]:::todo
   BL19["BL-19 ○ to do<br/>The troops' pictures from the game"]:::todo
-  BL20["BL-20 ○ to do<br/>PvE armies by level: the game's computer-controlled armies as opponents"]:::todo
+  BL20["BL-20 ◐ doing<br/>PvE armies by level: the game's computer-controlled armies as opponents"]:::doing
   BL21["BL-21 ◐ doing<br/>The tier modifier, from cctools.cc's table, confirmed on a battle report"]:::doing
   BL22["BL-22 ✓ done<br/>Guides: the game's blocks in detail, in a tab of their own"]:::done
   classDef done stroke-width:3px
@@ -191,7 +191,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 |---|---|---|---|---|---|
 | [BL-10](#bl-10) | Rituals in the setup: each ritual's level, its bonuses applied | must | [ui](../src/ui) | ✓ done | 3/3 |
 | [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ✓ done | 2/2 |
-| [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ○ to do | 0/3 |
+| [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ◐ doing | 2/3 |
 | [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ◐ doing | 2/3 |
 | [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ✓ done | 6/6 |
 
@@ -219,13 +219,13 @@ What it needed of BL-08, the Your setup tab, is in (2026-11-09); BL-08's last ta
 <a id="bl-20"></a>
 #### BL-20 · PvE armies by level: the game's computer-controlled armies as opponents
 
-Should · [data](../data) · ○ to do · added `2026-11-09`
+Should · [data](../data) · ◐ doing · added `2026-11-09`
 
 The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13 cities) with their exact compositions through a public JSON interface; morale from the 48 NPC troops.
 
-- [ ] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight
+- [x] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight
 - [ ] Spec: a PvE army as the opponent of a composition, chosen by location and level
-- [ ] Data imported and checked, as the warlords' (D-25)
+- [x] Data imported and checked, as the warlords' (D-25): data/chaos-conquest/pve.json (DATA-10)
 
 <a id="bl-21"></a>
 #### BL-21 · The tier modifier, from cctools.cc's table, confirmed on a battle report

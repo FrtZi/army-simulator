@@ -249,3 +249,11 @@ and its `other` attributes (Vanquish Damage); its skills are the rituals' Champi
 gear, its `slot`, `rarity`, `sets`, and per level its bonuses (`effects`, `other`), `costs` and `requires` (a
 structure at a level), as the rituals'. `sets`: their `pieces`, and per bonus what each number of pieces worn gives
 (a percentage, or `{ "flat": n }`). Nothing of it is applied in battle yet (open question 22).
+
+## The PvE armies: `data/<game>/pve.json` (BL-20)
+
+Written by `scripts/import-pve.mjs` from cctools.cc's saved answers, never by hand. `troops`: each troop a PvE place
+fields, its `tier` and fighting `stats` as the compositions give them, its `unitType`, `attackType`, `race` and
+`morale` from cctools.cc's PvE troops' page where it lists it (three Chaos troops of the cities are not there: `null`).
+`places`: each army, raid and city at its `level`, its `troops` (id → count). Not in the page yet: how it becomes an
+opponent is BL-20's spec, to agree first.

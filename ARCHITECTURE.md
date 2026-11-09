@@ -30,6 +30,7 @@ data/                    each game's facts (JSON), the same for every player (D-
     ├── structures.json  the 32 structures, level by level: imported (scripts/import-structures.mjs)
     ├── item-sources.json  where each item drops: imported (scripts/import-item-sources.mjs)
     ├── champion.json    the champion by level, its gear and sets: imported (scripts/import-champion.mjs)
+    ├── pve.json         the PvE places and their troops: imported (scripts/import-pve.mjs), not in the page yet
     └── setup.json       the setup file's words: each element's definition, reading examples, the agent brief (D-28)
 src/engine/              pure functions, no DOM, no file access: callers pass the data
 ├── index.js             public API: the only file the page and the tests import
@@ -102,6 +103,7 @@ scripts/
 ├── import-rituals.mjs, import-structures.mjs   rituals.json and structures.json; levels.mjs: their levels read alike
 ├── import-item-sources.mjs  item-sources.json, where each item drops
 ├── import-champion.mjs  champion.json, the champion, its gear and sets
+├── import-pve.mjs       pve.json, the PvE places and their troops
 ├── backlog*.mjs         the product backlog: its check and its page docs/backlog.md (npm run backlog)
 └── defects*.mjs         the defects register: its format, its check, its page docs/defects.md (npm run defects)
 examples/

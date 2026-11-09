@@ -340,13 +340,13 @@ title = "PvE armies by level: the game's computer-controlled armies as opponents
 moscow = "should"
 milestone = "v1.2"
 module = "data"
-status = "to do"
+status = "doing"
 added = 2026-11-09
 note = "The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13 cities) with their exact compositions through a public JSON interface; morale from the 48 NPC troops."
 tasks = [
-  "[ ] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight",
+  "[x] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight",
   "[ ] Spec: a PvE army as the opponent of a composition, chosen by location and level",
-  "[ ] Data imported and checked, as the warlords' (D-25)",
+  "[x] Data imported and checked, as the warlords' (D-25): data/chaos-conquest/pve.json (DATA-10)",
 ]
 
 [[item]]

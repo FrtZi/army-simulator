@@ -7,6 +7,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { buildWarlords, formatWarlords, readGame, savedPages } from "../scripts/import-warlords.mjs";
 import { buildItems, formatItems, searchedName } from "../scripts/import-items.mjs";
 import { buildChampion, formatChampion, savedChampion } from "../scripts/import-champion.mjs";
+import { buildPve, formatPve, savedPve } from "../scripts/import-pve.mjs";
 import { buildRituals, formatRituals, savedRituals } from "../scripts/import-rituals.mjs";
 import { buildStructures, formatStructures, savedStructures } from "../scripts/import-structures.mjs";
 import { buildItemSources, formatItemSources, readItems, savedAnswer } from "../scripts/import-item-sources.mjs";
@@ -95,5 +96,17 @@ test(
     const { championPage, piecePages, sets } = savedChampion();
     const made = formatChampion(buildChampion(championPage, piecePages, sets, readGame()));
     assert.equal(readFileSync(new URL(`../data/${GAME}/champion.json`, import.meta.url), "utf8"), made);
+  },
+);
+
+const pveAnswers = new URL(`../captures/${GAME}/sources/cctools/armies/`, import.meta.url);
+
+test(
+  "DATA-10 the PvE file is exactly what the import makes from the saved answers",
+  { skip: !existsSync(pveAnswers) },
+  () => {
+    const { places, answers, npcTroops } = savedPve();
+    const made = formatPve(buildPve(places, answers, npcTroops, readGame()));
+    assert.equal(readFileSync(new URL(`../data/${GAME}/pve.json`, import.meta.url), "utf8"), made);
   },
 );

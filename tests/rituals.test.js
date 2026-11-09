@@ -142,3 +142,24 @@ test("DATA-09 the champion and its gear: every list one value per level, costs i
     );
   }
 });
+
+test("DATA-10 the PvE places and troops: each place at a level, its composition in troops of the file with their stats", () => {
+  const { troops, places } = read("pve.json");
+  const ids = new Set(troops.map((troop) => troop.id));
+  assert.equal(ids.size, troops.length, "a troop listed once");
+  const stats = ["meleeAttack", "meleeDamage", "rangedAttack", "rangedDamage", "health", "armour"];
+  assert.deepEqual(
+    troops.filter((troop) => stats.some((stat) => !Number.isFinite(troop.stats[stat]))).map((troop) => troop.id),
+    [],
+  );
+  const problems = places.flatMap((place) => [
+    ...(["army", "raid", "city"].includes(place.kind) && Number.isInteger(place.level)
+      ? []
+      : [`${place.id}: kind or level`]),
+    ...Object.entries(place.troops)
+      .filter(([id, count]) => !ids.has(id) || !(count > 0))
+      .map(([id]) => `${place.id}: ${id}`),
+  ]);
+  assert.deepEqual(problems, []);
+  assert.equal(places.filter((place) => place.kind === "army").length, 74, "the 74 armies of the scan");
+});
