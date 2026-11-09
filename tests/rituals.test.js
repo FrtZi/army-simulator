@@ -100,3 +100,45 @@ test("DATA-08 where each item drops: a known item, a known place, a level, and h
   ]);
   assert.deepEqual(problems, []);
 });
+
+test("DATA-09 the champion and its gear: every list one value per level, costs in items.json, sets of known pieces", () => {
+  const { champion, pieces, sets, effects, other } = read("champion.json");
+  const levels = champion.power.length;
+  const lists = [
+    champion.tier,
+    champion.xp,
+    champion.skillPoints,
+    ...Object.values(champion.stats),
+    ...Object.values(champion.other),
+  ];
+  assert.ok(
+    lists.every((values) => values.length === levels),
+    "the champion: one value per level",
+  );
+  const bonuses = new Set([...effects, ...other].map((bonus) => bonus.id));
+  const ids = new Set(pieces.map((piece) => piece.id));
+  const problems = pieces.flatMap((piece) => {
+    const all = [...Object.values(piece.effects), ...Object.values(piece.other), ...Object.values(piece.costs)];
+    const size = all[0]?.length;
+    return [
+      ...(all.every((values) => values.length === size) ? [] : [`${piece.id}: lists of different lengths`]),
+      ...Object.keys(piece.costs)
+        .filter((item) => !items.has(item))
+        .map((item) => `${piece.id}: ${item}`),
+      ...[...Object.keys(piece.effects), ...Object.keys(piece.other)]
+        .filter((id) => !bonuses.has(id))
+        .map((id) => `${piece.id}: ${id}`),
+      ...Object.keys(piece.requires.structure ?? {})
+        .filter((id) => !known.structure.has(id))
+        .map((id) => `${piece.id}: needs ${id}`),
+    ];
+  });
+  assert.deepEqual(problems, []);
+  for (const set of sets) {
+    assert.deepEqual(
+      set.pieces.filter((id) => !ids.has(id)),
+      [],
+      set.id,
+    );
+  }
+});

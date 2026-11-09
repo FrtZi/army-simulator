@@ -28,7 +28,27 @@ function openGuides(options) {
 }
 const listed = (page) => page.$$("#guide-hero-list [data-guide-hero]").map((button) => button.dataset.guideHero);
 
-test("GUIDE-01 a tab per type of block: heroes, rituals and buildings drawn, the champion's says its version", () => {
+test("GUIDE-03 the champion level by level, a piece of gear at its level, a set's bonuses by pieces worn", () => {
+  const page = openGuides();
+  page.click("#guide-tab-champion");
+  // champion.json: power 200 at level 1, 550,000 at level 85; 1,000 experience to reach level 2
+  assert.equal(page.text("#guide-champion-detail .metric.key .metric-value"), "550,000");
+  page.choose("#guide-champion-level", 2);
+  assert.match(page.text("#guide-champion-detail"), /Experience to reach it\s*1,000/);
+  page.choose("#guide-champion-view", "gear");
+  page.choose("#guide-champion-slot", "weapon");
+  page.click("#guide-champion-chaos-gear-weapon");
+  assert.equal(page.text("#guide-champion-title"), "Great Axe of the Chosen");
+  assert.match(page.text("#guide-champion-detail"), /Daemonic Forge, level 15/);
+  assert.match(page.text("#guide-champion-detail"), /not applied in battle yet/);
+  page.choose("#guide-champion-view", "sets");
+  page.click("#guide-champion-chosen-set-bonus");
+  const head = page.$$("#guide-champion-detail thead th").map(textOf);
+  assert.deepEqual(head, ["Bonus", "3 pieces", "4 pieces", "5 pieces", "6 pieces"]);
+  assert.equal(page.$$("#guide-champion-detail li").length, 6, "its six pieces");
+});
+
+test("GUIDE-01 a tab per type of block: heroes, rituals, buildings, champion and items drawn", () => {
   const page = openGuides();
   assert.deepEqual(page.$$(".guide-tabs [role=tab]").map(textOf), [
     "Heroes",
@@ -43,7 +63,7 @@ test("GUIDE-01 a tab per type of block: heroes, rituals and buildings drawn, the
   page.click("#guide-tab-buildings");
   assert.equal(page.$$("#guide-buildings-list [data-guide-entry]").length, structures.length);
   page.click("#guide-tab-champion");
-  assert.match(page.text("#guide-panel"), /version 1\.3/);
+  assert.match(page.text("#guide-champion-title"), /The champion/);
 });
 
 const SAVED_RITUALS = JSON.stringify({

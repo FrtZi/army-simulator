@@ -51,11 +51,12 @@ Settled on 2026-10-24: the English names (questions 8 and 9) are the game's own,
 
 ## To confirm: the setup (BL-08, D-27)
 
-| #   | Question                                                                                                                          | As of 2026-11-09                                    | Who                          |
-| --- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ---------------------------- |
-| 19  | **Where the game shows** a warlord's rank and level, the march capacity and its bonus, the bonuses: the screens an agent is given | marked _to confirm_ in the guide and the dictionary | Frantz (screenshots)         |
-| 20  | **The French label of Load**: "Charger" reads as a verb (to charge); the game's word?                                             | kept                                                | Frantz (a French unit sheet) |
-| 21  | **"Damage" in a bonus**: does a bonus on "damage" raise both melee and ranged damage?                                             | the dictionary's example, to confirm                | Frantz (a bonus's tooltip)   |
+| #   | Question                                                                                                                                                                                               | As of 2026-11-09                                    | Who                          |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- | ---------------------------- |
+| 19  | **Where the game shows** a warlord's rank and level, the march capacity and its bonus, the bonuses: the screens an agent is given                                                                      | marked _to confirm_ in the guide and the dictionary | Frantz (screenshots)         |
+| 20  | **The French label of Load**: "Charger" reads as a verb (to charge); the game's word?                                                                                                                  | kept                                                | Frantz (a French unit sheet) |
+| 21  | **"Damage" in a bonus**: does a bonus on "damage" raise both melee and ranged damage?                                                                                                                  | the dictionary's example, to confirm                | Frantz (a bonus's tooltip)   |
+| 22  | **The champion in a composition**: its gear raises "the champion's march" and the heroes; does it lead one march (which?), does it fight as a unit, do its gear's troop bonuses count for every march? | shown in the guide, not applied (BL-13)             | Frantz                       |
 
 Settled on 2026-10-24: the warlords' French names (question 17) are their English names with a star (D-08) until
 the game's French names are read on a screenshot.

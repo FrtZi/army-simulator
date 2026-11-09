@@ -250,14 +250,15 @@ title = "Champion: own stats by level, gear and set bonuses"
 moscow = "should"
 milestone = "v1.3"
 module = "data"
-status = "to do"
+status = "doing"
 added = 2026-10-22
 depends_on = ["BL-08"]
 features = ["BONUS-05", "BONUS-06"]
 note = "cctools.cc: the champion's 85 levels (a unit itself: open question, does it fight?), 20 combat skills, 112 gear items by rarity, 7 combat sets (the highest tier reached counts)."
 tasks = [
-  "[ ] Champion's 85 levels, gear (6 slots) and the 12 sets from cctools.cc, checked",
-  "[ ] In the setup; bonuses applied",
+  "[x] Champion's 85 levels, gear (6 slots) and the 12 sets from cctools.cc, checked",
+  "[x] Its guide: the champion by level, each piece by level, the sets by pieces worn (GUIDE-03)",
+  "[ ] In the setup; bonuses applied, once open question 22 is settled",
 ]
 
 # ── Later ──────────────────────────────────────────────────────────────────────────────────────────────
@@ -369,16 +370,15 @@ title = "Guides: the game's blocks in detail, in a tab of their own"
 moscow = "should"
 milestone = "v1.2"
 module = "ui"
-status = "doing"
+status = "done"
 added = 2026-11-09
-depends_on = ["BL-08"]
 features = ["GUIDE-01", "GUIDE-02", "GUIDE-03", "GUIDE-04"]
-note = "Frantz, 2026-11-09: a Guides tab where each type of block (heroes, rituals, sets...) is shown in detail with its benefits. The heroes' data is complete; each other guide comes with its data."
+note = "What it needed of BL-08, the page tabs (NAV-01), is in. Frantz, 2026-11-09: a Guides tab where each type of block (heroes, rituals, sets...) is shown in detail with its benefits. The heroes' data is complete; each other guide comes with its data."
 tasks = [
   "[x] Prototype validated by Frantz",
   "[x] The Guides tab and the heroes' guide (GUIDE-01, GUIDE-02)",
   "[x] The rituals' and buildings' guides: found by category, battle bonuses or name; each level's bonuses, requirements and cost (GUIDE-03)",
-  "[ ] The champion's and gear's guide, with their data (BL-13)",
+  "[x] The champion's and gear's guide, with their data (BL-13)",
   "[x] The heroes' way up: what each level costs, in all from your level or from its unlock (GUIDE-04, D-29)",
   "[x] The way up of the rituals and buildings: each level's cost and requirements; each item's page, where it drops and what asks for it (GUIDE-04)",
 ]

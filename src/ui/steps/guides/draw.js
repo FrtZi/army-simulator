@@ -8,6 +8,8 @@ import { guideHeroes, heroDetailHtml, heroFiltersHtml, heroListHtml } from "./he
 import { LEVELLED, entryFiltersHtml, entryListHtml, shownEntries } from "./levelled.js";
 import { chosenEntry, entryDetailHtml } from "./levelled-detail.js";
 import { itemDetailHtml, itemFiltersHtml, itemListHtml, shownItems } from "./items.js";
+import { championDetailHtml, championFiltersHtml, pieceDetailHtml, setDetailHtml, shownPieces } from "./champion.js";
+import { label } from "../../format.js";
 
 export const GUIDES = ["heroes", "rituals", "buildings", "champion", "items"];
 
@@ -51,6 +53,37 @@ function drawLevelledGuide(panel, kind) {
   drawGuideEntries(kind);
 }
 
+/** The champion's guide below its filters: the champion alone, or a list of pieces or sets beside the one chosen. */
+export function drawGuideChampion() {
+  const guide = state.guide.champion;
+  const { champion } = currentGame();
+  const list = { champion: [], gear: shownPieces(), sets: champion.sets }[guide.view];
+  const chosen = list.find((entry) => entry.id === guide.id) ?? list[0];
+  if (chosen && chosen.id !== guide.id) Object.assign(guide, { id: chosen.id, level: null });
+  byId("guide-champion-list").hidden = guide.view === "champion";
+  byId("guide-champion-list").innerHTML = list
+    .map(
+      (entry) =>
+        `<li><button type="button" class="guide-hero" id="guide-champion-${entry.id}" data-guide-champion-entry="${entry.id}" aria-current="${entry.id === guide.id}"><span class="name">${escape(label(entry))}</span></button></li>`,
+    )
+    .join("");
+  const detail = {
+    champion: () => championDetailHtml(),
+    gear: () => pieceDetailHtml(chosen),
+    sets: () => setDetailHtml(chosen),
+  };
+  byId("guide-champion-detail").innerHTML = guide.view === "champion" || chosen ? detail[guide.view]() : "";
+}
+
+function drawChampionGuide(panel) {
+  panel.innerHTML = `${championFiltersHtml()}
+    <div class="guide-layout">
+      <ul id="guide-champion-list" class="guide-list" aria-label="${escape(t(`guides.view-${state.guide.champion.view}`))}"></ul>
+      <div id="guide-champion-detail" class="guide-detail" aria-live="polite"></div>
+    </div>`;
+  drawGuideChampion();
+}
+
 /** Only the items' list and the detail: a search typed in keeps its field. */
 export function drawGuideItems() {
   const shown = shownItems();
@@ -79,6 +112,10 @@ export function drawGuides() {
   panel.setAttribute("aria-labelledby", `guide-tab-${state.guide.kind}`);
   if (state.guide.kind === "heroes" && currentGame().warlords.size) {
     drawHeroesGuide(panel);
+    return;
+  }
+  if (state.guide.kind === "champion") {
+    drawChampionGuide(panel);
     return;
   }
   if (state.guide.kind === "items") {

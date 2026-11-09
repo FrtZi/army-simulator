@@ -240,3 +240,12 @@ army, raid, Foe and resource sources), never by hand. `places`: one per kind and
 languages; `items`: per item of `items.json`, each drop `{ "place", "level" }` and the averages that are not zero
 (`perHit`, `perChest`, `perSpoil`, `perChampion`, `perCompletion` for a resource tile's gathering). What asks for an
 item is not stored: the warlords', rituals' and structures' costs already say it, and the guide reads them.
+
+## The champion and its gear: `data/<game>/champion.json` (D-29)
+
+Written by `scripts/import-champion.mjs` from cctools.cc's saved pages, never by hand. `champion`: per level its
+`power`, `tier`, the experience (`xp`) and `skillPoints` each level brings, its own fighting `stats` (under our ids)
+and its `other` attributes (Vanquish Damage); its skills are the rituals' Champion category. `pieces`: each piece of
+gear, its `slot`, `rarity`, `sets`, and per level its bonuses (`effects`, `other`), `costs` and `requires` (a
+structure at a level), as the rituals'. `sets`: their `pieces`, and per bonus what each number of pieces worn gives
+(a percentage, or `{ "flat": n }`). Nothing of it is applied in battle yet (open question 22).

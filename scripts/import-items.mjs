@@ -10,6 +10,7 @@ import { itemOf } from "./cctools.mjs";
 import { savedPages } from "./import-warlords.mjs";
 import { savedRituals } from "./import-rituals.mjs";
 import { savedStructures } from "./import-structures.mjs";
+import { savedChampion } from "./import-champion.mjs";
 
 const GAME = "chaos-conquest";
 const SEARCHES = new URL(`../captures/${GAME}/sources/cctools/items/`, import.meta.url);
@@ -19,6 +20,9 @@ const SOURCE =
 
 /** Every cost of a warlord page, as cctools.cc writes it there ({ type, code, label, rarity }). */
 const warlordCosts = (page) => Object.values(page.levelData).flatMap((level) => level.costs);
+
+/** Every cost of a gear piece's page ({ type, code, name, rarity }). */
+const gearCosts = (page) => page.levels.flatMap((level) => level.costs.map((cost) => ({ ...cost, label: cost.name })));
 
 /** Every cost of a ritual or structure page, written there by kind ({ currency: [{ code, name }], item: […] }). */
 const levelledCosts = (page) =>
@@ -45,9 +49,14 @@ export function searchedName(code, folder = SEARCHES) {
  * Every resource and item the pages' costs name, once each, sorted by id; two codes for one id stop the import.
  * A rarity read on one page is kept when another page does not give it.
  */
-export function buildItems(warlordPages, levelledPages = [], nameOf = () => null) {
+export function buildItems(warlordPages, levelledPages = [], nameOf = () => null, gearPages = []) {
   const items = new Map();
-  for (const cost of [...warlordPages.flatMap(warlordCosts), ...levelledPages.flatMap(levelledCosts)]) {
+  const costs = [
+    ...warlordPages.flatMap(warlordCosts),
+    ...levelledPages.flatMap(levelledCosts),
+    ...gearPages.flatMap(gearCosts),
+  ];
+  for (const cost of costs) {
     const { id, code, kind, rarity, label } = itemOf(cost);
     const known = items.get(id);
     if (known && known.code !== code) throw new Error(`item ${id}: codes ${known.code} and ${code}`);
@@ -62,7 +71,8 @@ export const formatItems = ({ source, items }) =>
   `{\n  "source": ${JSON.stringify(source)},\n  "items": [\n${items.map((item) => `    ${JSON.stringify(item)}`).join(",\n")}\n  ]\n}\n`;
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
-  const data = buildItems(savedPages(), [...savedRituals().pages, ...savedStructures()], searchedName);
+  const levelled = [...savedRituals().pages, ...savedStructures()];
+  const data = buildItems(savedPages(), levelled, searchedName, savedChampion().piecePages);
   writeFileSync(OUTPUT, formatItems(data));
   console.log(`✓ ${data.items.length} resources and items`);
 }

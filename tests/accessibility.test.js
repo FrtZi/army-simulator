@@ -69,6 +69,11 @@ for (const language of ["en", "fr"]) {
     page.$(".guide-detail [data-goto-item]").click(); // an item's page, its drops open (GUIDE-04)
     page.$$(".guide-drops details").forEach((details) => details.setAttribute("open", ""));
     assert.deepEqual(await violations(page), [], "items' guide");
+    page.click("#guide-tab-champion"); // the champion's guide: a piece, then a set (BL-13)
+    page.choose("#guide-champion-view", "gear");
+    assert.deepEqual(await violations(page), [], "champion's gear");
+    page.choose("#guide-champion-view", "sets");
+    assert.deepEqual(await violations(page), [], "champion's sets");
   });
 }
 

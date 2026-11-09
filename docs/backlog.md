@@ -17,8 +17,8 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 17/19 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 2/5 | 12/17 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 0/7 | ○ not yet: 1 Must left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 3/5 | 13/17 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 2/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
 ## Ready to start
@@ -57,7 +57,7 @@ flowchart LR
   BL11["BL-11 ○ to do<br/>Keep attack: the defences' first round, as a switch on a battle"]:::todo
   BL12["BL-12 ○ to do<br/>Keep defence: a fortress (defences and garrison) as the defending side"]:::todo
   BL11 --> BL12
-  BL13["BL-13 ○ to do<br/>Champion: own stats by level, gear and set bonuses"]:::todo
+  BL13["BL-13 ◐ doing<br/>Champion: own stats by level, gear and set bonuses"]:::doing
   BL08 --> BL13
   BL14["BL-14 ✓ done<br/>Buildings' bonuses, by level"]:::done
   BL15["BL-15 ○ to do<br/>Calibration on battle reports: tier modifier, broken bonus, morale per squad"]:::todo
@@ -67,8 +67,7 @@ flowchart LR
   BL19["BL-19 ○ to do<br/>The troops' pictures from the game"]:::todo
   BL20["BL-20 ○ to do<br/>PvE armies by level: the game's computer-controlled armies as opponents"]:::todo
   BL21["BL-21 ◐ doing<br/>The tier modifier, from cctools.cc's table, confirmed on a battle report"]:::doing
-  BL22["BL-22 ◐ doing<br/>Guides: the game's blocks in detail, in a tab of their own"]:::doing
-  BL08 --> BL22
+  BL22["BL-22 ✓ done<br/>Guides: the game's blocks in detail, in a tab of their own"]:::done
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -194,7 +193,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 | [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ✓ done | 2/2 |
 | [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ○ to do | 0/3 |
 | [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ◐ doing | 2/3 |
-| [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ◐ doing | 5/6 |
+| [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ✓ done | 6/6 |
 
 <a id="bl-10"></a>
 #### BL-10 · Rituals in the setup: each ritual's level, its bonuses applied
@@ -242,14 +241,14 @@ cctools.cc's armies tool (2026-11-09): damage × 0.7, 0.8, 0.9, 1, 1.75, 2.5, 3.
 <a id="bl-22"></a>
 #### BL-22 · Guides: the game's blocks in detail, in a tab of their own
 
-Should · [ui](../src/ui) · ◐ doing · added `2026-11-09` · after [BL-08](#bl-08) · features: GUIDE-01, GUIDE-02, GUIDE-03, GUIDE-04
+Should · [ui](../src/ui) · ✓ done · added `2026-11-09` · features: GUIDE-01, GUIDE-02, GUIDE-03, GUIDE-04
 
-Frantz, 2026-11-09: a Guides tab where each type of block (heroes, rituals, sets...) is shown in detail with its benefits. The heroes' data is complete; each other guide comes with its data.
+What it needed of BL-08, the page tabs (NAV-01), is in. Frantz, 2026-11-09: a Guides tab where each type of block (heroes, rituals, sets...) is shown in detail with its benefits. The heroes' data is complete; each other guide comes with its data.
 
 - [x] Prototype validated by Frantz
 - [x] The Guides tab and the heroes' guide (GUIDE-01, GUIDE-02)
 - [x] The rituals' and buildings' guides: found by category, battle bonuses or name; each level's bonuses, requirements and cost (GUIDE-03)
-- [ ] The champion's and gear's guide, with their data (BL-13)
+- [x] The champion's and gear's guide, with their data (BL-13)
 - [x] The heroes' way up: what each level costs, in all from your level or from its unlock (GUIDE-04, D-29)
 - [x] The way up of the rituals and buildings: each level's cost and requirements; each item's page, where it drops and what asks for it (GUIDE-04)
 
@@ -261,7 +260,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 |---|---|---|---|---|---|
 | [BL-11](#bl-11) | Keep attack: the defences' first round, as a switch on a battle | must | [engine](../src/engine) | ○ to do | 0/3 |
 | [BL-12](#bl-12) | Keep defence: a fortress (defences and garrison) as the defending side | should | [ui](../src/ui) | ○ to do | 0/2 |
-| [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ○ to do | 0/2 |
+| [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ◐ doing | 2/3 |
 
 <a id="bl-11"></a>
 #### BL-11 · Keep attack: the defences' first round, as a switch on a battle
@@ -285,12 +284,13 @@ To correct first (cctools.cc, 2026-11-09): the defences' capacity comes from the
 <a id="bl-13"></a>
 #### BL-13 · Champion: own stats by level, gear and set bonuses
 
-Should · [data](../data) · ○ to do · added `2026-10-22` · after [BL-08](#bl-08) · features: BONUS-05, BONUS-06
+Should · [data](../data) · ◐ doing · added `2026-10-22` · after [BL-08](#bl-08) · features: BONUS-05, BONUS-06
 
 cctools.cc: the champion's 85 levels (a unit itself: open question, does it fight?), 20 combat skills, 112 gear items by rarity, 7 combat sets (the highest tier reached counts).
 
-- [ ] Champion's 85 levels, gear (6 slots) and the 12 sets from cctools.cc, checked
-- [ ] In the setup; bonuses applied
+- [x] Champion's 85 levels, gear (6 slots) and the 12 sets from cctools.cc, checked
+- [x] Its guide: the champion by level, each piece by level, the sets by pieces worn (GUIDE-03)
+- [ ] In the setup; bonuses applied, once open question 22 is settled
 
 ### later · Later, ideas kept
 

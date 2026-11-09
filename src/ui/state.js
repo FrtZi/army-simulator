@@ -45,6 +45,7 @@ export const state = {
       buildings: { group: "", battle: false, search: "", id: null, level: null },
     },
     items: { kind: "", search: "", id: null }, // the items' guide (GUIDE-04)
+    champion: { view: "champion", slot: "", search: "", id: null, level: null }, // the champion's (BL-13)
   },
   setupImport: null, // a setup file uploaded: what it brings, before it is applied (CFG-05)
   active: 0, // the composition being edited

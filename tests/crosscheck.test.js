@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { buildWarlords, formatWarlords, readGame, savedPages } from "../scripts/import-warlords.mjs";
 import { buildItems, formatItems, searchedName } from "../scripts/import-items.mjs";
+import { buildChampion, formatChampion, savedChampion } from "../scripts/import-champion.mjs";
 import { buildRituals, formatRituals, savedRituals } from "../scripts/import-rituals.mjs";
 import { buildStructures, formatStructures, savedStructures } from "../scripts/import-structures.mjs";
 import { buildItemSources, formatItemSources, readItems, savedAnswer } from "../scripts/import-item-sources.mjs";
@@ -40,6 +41,7 @@ test(
   },
 );
 
+const gearPages = new URL(`../captures/${GAME}/sources/cctools/gear/pieces/`, import.meta.url);
 const warlordPages = new URL(`../captures/${GAME}/sources/cctools/warlords/`, import.meta.url);
 
 test(
@@ -56,7 +58,8 @@ test(
   { skip: !existsSync(warlordPages) },
   () => {
     const levelled = existsSync(ritualPages) ? [...savedRituals().pages, ...savedStructures()] : [];
-    const made = formatItems(buildItems(savedPages(warlordPages), levelled, searchedName));
+    const gear = existsSync(gearPages) ? savedChampion().piecePages : [];
+    const made = formatItems(buildItems(savedPages(warlordPages), levelled, searchedName, gear));
     assert.equal(readFileSync(new URL(`../data/${GAME}/items.json`, import.meta.url), "utf8"), made);
   },
 );
@@ -82,5 +85,15 @@ test(
   () => {
     const made = formatItemSources(buildItemSources(readItems(), savedAnswer));
     assert.equal(readFileSync(new URL(`../data/${GAME}/item-sources.json`, import.meta.url), "utf8"), made);
+  },
+);
+
+test(
+  "DATA-09 the champion file is exactly what the import makes from the saved pages",
+  { skip: !existsSync(gearPages) },
+  () => {
+    const { championPage, piecePages, sets } = savedChampion();
+    const made = formatChampion(buildChampion(championPage, piecePages, sets, readGame()));
+    assert.equal(readFileSync(new URL(`../data/${GAME}/champion.json`, import.meta.url), "utf8"), made);
   },
 );

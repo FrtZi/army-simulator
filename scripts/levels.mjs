@@ -13,7 +13,7 @@ export const kebab = (text) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 export const labels = (name) => ({ en: name, fr: `${name}*` }); // English until read in French (D-08)
-const percent = (modifier) => Math.round(modifier * 10000) / 100; // 0.015 → 1.5, without float noise
+export const percent = (modifier) => Math.round(modifier * 10000) / 100; // 0.015 → 1.5, without float noise
 
 /** The building of game.json of this English name, if any: its id and its names in both languages are ours. */
 const knownBuilding = (name, game) => game.buildings.find((building) => building.labels.en === name);
@@ -37,7 +37,7 @@ function putRequirement(requires, need, size, index) {
 }
 
 /** A bonus code as one of our effects, or null when it is not about battle (kept, never applied). */
-function effectOf(code, game) {
+export function effectOf(code, game) {
   try {
     const talent = talentOf(code, game);
     return talent.stat ? talent : null;
@@ -47,7 +47,7 @@ function effectOf(code, game) {
 }
 
 /** Fills `table[key][index]`, the table's lists `size` long. */
-const put = (table, key, size, index, value) => ((table[key] ??= Array(size).fill(null))[index] = value);
+export const put = (table, key, size, index, value) => ((table[key] ??= Array(size).fill(null))[index] = value);
 
 function readStats(level, index, size, figures, context) {
   for (const stat of level.stats) {
