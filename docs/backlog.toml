@@ -171,10 +171,11 @@ tasks = [
 id = "BL-09"
 title = "Credit cctools.cc and tell its author"
 moscow = "could"
-milestone = "v1.1"
+milestone = "later"
 module = "framework"
 status = "doing"
 added = 2026-10-24
+note = "A nice-to-have (Frantz, 2026-11-09): it waits on nothing and nothing waits on it."
 tasks = [
   "[x] Message drafted (Frantz sends it, as a matter of principle; no waiting for the answer)",
   "[x] Credited in the README",
@@ -313,3 +314,18 @@ module = "ui"
 status = "to do"
 added = 2026-10-22
 tasks = ["[ ] The publishers' permission (open question 11); the page uses its own icons meanwhile"]
+
+[[item]]
+id = "BL-20"
+title = "PvE armies by level: the game's computer-controlled armies as opponents"
+moscow = "could"
+milestone = "later"
+module = "data"
+status = "to do"
+added = 2026-11-09
+note = "Asked by Frantz on 2026-11-09, to prioritise once cctools.cc is scanned again (what its armies and NPC troops give)."
+tasks = [
+  "[ ] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight",
+  "[ ] Spec: a PvE army as the opponent of a composition, chosen by location and level",
+  "[ ] Data imported and checked, as the warlords' (D-25)",
+]

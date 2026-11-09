@@ -16,22 +16,23 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Milestone | Musts done | Items done | Tasks done | Reached |
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
-| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/5 | 13/17 | ○ not yet: 1 Must left |
+| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 11/14 | ○ not yet: 1 Must left |
 | Version 1.2, rituals and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/4 | 0/10 | ○ not yet: 2 Musts left |
-| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 0/7 | — |
+| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/8 | 2/13 | — |
 
 ## Ready to start
 
 Not done, and every dependency done:
 
 - [BL-08](#bl-08) The player's setup: what they have in game, entered once (v1.1, must, ○ to do)
-- [BL-09](#bl-09) Credit cctools.cc and tell its author (v1.1, could, ◐ doing)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.2, must, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
+- [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
 - [BL-14](#bl-14) Buildings' bonuses, by level (later, could, ○ to do)
 - [BL-16](#bl-16) Optimiser: the best troop mix within the march capacity (later, could, ○ to do)
 - [BL-17](#bl-17) Read-only share link (later, could, ○ to do)
 - [BL-18](#bl-18) Food upkeep: settle the factor of 6 with cctools.cc (later, could, ○ to do)
+- [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (later, could, ○ to do)
 - [BL-19](#bl-19) The troops' pictures from the game (later, won't, ○ to do)
 
 ## Dependencies
@@ -64,6 +65,7 @@ flowchart LR
   BL17["BL-17 ○ to do<br/>Read-only share link"]:::todo
   BL18["BL-18 ○ to do<br/>Food upkeep: settle the factor of 6 with cctools.cc"]:::todo
   BL19["BL-19 ○ to do<br/>The troops' pictures from the game"]:::todo
+  BL20["BL-20 ○ to do<br/>PvE armies by level: the game's computer-controlled armies as opponents"]:::todo
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -129,7 +131,6 @@ The warlords in a composition, at their level, their bonuses applied; what the p
 | [BL-06](#bl-06) | Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels | must | [data](../data) | ✓ done | 3/3 |
 | [BL-07](#bl-07) | Heroes in a composition: up to 3 warlords, 4 talents, at their level | must | [ui](../src/ui) | ✓ done | 5/5 |
 | [BL-08](#bl-08) | The player's setup: what they have in game, entered once | must | [storage](../src/storage) | ○ to do | 0/3 |
-| [BL-09](#bl-09) | Credit cctools.cc and tell its author | could | framework | ◐ doing | 2/3 |
 
 <a id="bl-05"></a>
 #### BL-05 · Tooling majors: ESLint 10, jsdom 30, html-validate 11
@@ -172,15 +173,6 @@ Must · [storage](../src/storage) · ○ to do · added `2026-10-24` · after [B
 - [ ] Spec: what the setup holds, where it lives (browser), how it travels with an export
 - [ ] Warlords owned and their levels, offered first when picking heroes
 - [ ] Saved, exported and imported with its checks
-
-<a id="bl-09"></a>
-#### BL-09 · Credit cctools.cc and tell its author
-
-Could · framework · ◐ doing · added `2026-10-24`
-
-- [x] Message drafted (Frantz sends it, as a matter of principle; no waiting for the answer)
-- [x] Credited in the README
-- [ ] Message sent
 
 ### v1.2 · Version 1.2, rituals and the keep
 
@@ -235,12 +227,25 @@ Validated as ideas, not planned yet: each one is reprioritised when a version is
 
 | ID | Item | MoSCoW | Module | Status | Tasks |
 |---|---|---|---|---|---|
+| [BL-09](#bl-09) | Credit cctools.cc and tell its author | could | framework | ◐ doing | 2/3 |
 | [BL-14](#bl-14) | Buildings' bonuses, by level | could | [data](../data) | ○ to do | 0/1 |
 | [BL-15](#bl-15) | Calibration on battle reports: tier modifier, broken bonus, morale per squad | should | [engine](../src/engine) | ○ to do | 0/2 |
 | [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | could | [engine](../src/engine) | ○ to do | 0/1 |
 | [BL-17](#bl-17) | Read-only share link | could | [storage](../src/storage) | ○ to do | 0/1 |
 | [BL-18](#bl-18) | Food upkeep: settle the factor of 6 with cctools.cc | could | [data](../data) | ○ to do | 0/1 |
 | [BL-19](#bl-19) | The troops' pictures from the game | won't | [ui](../src/ui) | ○ to do | 0/1 |
+| [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | could | [data](../data) | ○ to do | 0/3 |
+
+<a id="bl-09"></a>
+#### BL-09 · Credit cctools.cc and tell its author
+
+Could · framework · ◐ doing · added `2026-10-24`
+
+A nice-to-have (Frantz, 2026-11-09): it waits on nothing and nothing waits on it.
+
+- [x] Message drafted (Frantz sends it, as a matter of principle; no waiting for the answer)
+- [x] Credited in the README
+- [ ] Message sent
 
 <a id="bl-14"></a>
 #### BL-14 · Buildings' bonuses, by level
@@ -284,3 +289,14 @@ Could · [data](../data) · ○ to do · added `2026-10-24`
 Won't · [ui](../src/ui) · ○ to do · added `2026-10-22`
 
 - [ ] The publishers' permission (open question 11); the page uses its own icons meanwhile
+
+<a id="bl-20"></a>
+#### BL-20 · PvE armies by level: the game's computer-controlled armies as opponents
+
+Could · [data](../data) · ○ to do · added `2026-11-09`
+
+Asked by Frantz on 2026-11-09, to prioritise once cctools.cc is scanned again (what its armies and NPC troops give).
+
+- [ ] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight
+- [ ] Spec: a PvE army as the opponent of a composition, chosen by location and level
+- [ ] Data imported and checked, as the warlords' (D-25)
