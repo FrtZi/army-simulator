@@ -63,7 +63,29 @@ test("MAINT-01 DEF-031 a selector's property is set in one stylesheet only", () 
   assert.ok(STYLESHEETS.length > 5, "the stylesheets are found");
 });
 
-test("COMP-01 DEF-032 every grid of four columns or more has its own layout on a phone", () => {
+/** How many columns a grid sets: repeat(4, 1fr) is four; one that fills the row by itself (auto-fill) wraps, so 0. */
+function columnCount(value) {
+  if (/repeat\(\s*auto-(fill|fit)/.test(value)) return 0;
+  const flat = value.replace(/minmax\([^)]*\)/g, "column"); // no nested brackets left inside a repeat()
+  const repeated = [...flat.matchAll(/repeat\(\s*(\d+)\s*,[^)]*\)/g)].reduce((sum, [, n]) => sum + Number(n), 0);
+  const rest = flat.replace(/repeat\([^)]*\)/g, "");
+  return repeated + rest.split(/\s+/).filter(Boolean).length;
+}
+
+/** Whether a grid needs its own phone layout: four columns or more, or a column that will not shrink below a width. */
+const needsPhoneLayout = (value) =>
+  columnCount(value) >= MANY_COLUMNS || (columnCount(value) > 1 && /minmax\(\s*[1-9]/.test(value));
+
+test("COMP-01 DEF-032 DEF-034 every wide or unshrinkable grid has its own layout on a phone", () => {
+  assert.deepEqual(
+    [
+      "repeat(4, 1fr)",
+      "1fr minmax(10rem, 16rem)",
+      "repeat(auto-fill, minmax(9rem, 1fr))",
+      "repeat(3, minmax(0, 12rem))",
+    ].map(needsPhoneLayout),
+    [true, true, false, false],
+  );
   const phone = new Set(
     SHEETS.flatMap((sheet) => declarations(sheet.phone))
       .filter(({ property }) => property === "grid-template-columns")
@@ -77,7 +99,7 @@ test("COMP-01 DEF-032 every grid of four columns or more has its own layout on a
       .map(({ selector, value }) => [selector, value]),
   );
   const crushed = [...columns]
-    .filter(([selector, value]) => value.split(/\s+/).length >= MANY_COLUMNS && !phone.has(selector))
+    .filter(([selector, value]) => needsPhoneLayout(value) && !phone.has(selector))
     .map(([selector, value]) => `${selector}: ${value}`);
   assert.deepEqual(crushed, []);
 });

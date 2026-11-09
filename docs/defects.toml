@@ -510,3 +510,35 @@ resultat = "The line reads at phone width, in the lab and in Your setup, without
 preuve = ["tests/styles.test.js"]
 lecon = "A more specific selector also escapes the media query written for the general one: a layout for phones is checked per selector, not assumed."
 liens = ["COMP-01", "ARMY-05", "CFG-04"]
+
+[[defaut]]
+id = "DEF-033"
+date = 2026-11-09
+titre = "The dev server kept the texts it started with"
+type = "tool"
+etiquettes = ["dev-server"]
+gravite = "minor"
+statut = "fixed"
+constat = "Three times in one day, after a text was added to src/ui/texts, npm run dev answered 500 \"have no text\" on the page until it was restarted, though the build and the tests passed."
+cause = "The page assembler imported the English text files statically: the dev server, a Node process running for hours, kept the modules it loaded at its start. The assembler also listed the text files itself, a second list to keep beside texts/index.js."
+solution = "The assembler reads every en*.js of the source's texts folder at each assembly, each reading under its own module address, so Node loads it afresh; no list of files in it any more. A test edits a text file between two assemblies; another checks that texts/index.js imports every text file of the folder, in both languages."
+resultat = "The dev server serves a text added while it runs; a new text file needs one line in texts/index.js, which a test checks."
+preuve = ["tests/tooling.test.js"]
+lecon = "A long-running process keeps what it loaded: what it must see change is read at each use, and tested by changing it between two uses."
+liens = ["MAINT-01", "LANG-02"]
+
+[[defaut]]
+id = "DEF-034"
+date = 2026-11-09
+titre = "The import review scrolled sideways on a narrow screen"
+type = "code"
+etiquettes = ["page", "tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "In the browser at about 440 px wide, the review of an uploaded file made the whole page scroll sideways: a parked value's list kept its 10 rem beside a path such as bonuses[0].target.unitTypes[0], which has no space to break at. Seen in the browser before the commit."
+cause = "The parked row's grid had two columns, one that would not shrink, and no phone layout; the phone-layout check (DEF-032) only looked at grids of four columns or more, and it counted repeat(4, 1fr) as two."
+solution = "On a phone, a parked value's list goes under what was read; a line of the review breaks anywhere rather than overflow. The check counts repeat() columns and also asks a phone layout of any grid with a column that will not shrink below a width."
+resultat = "No sideways scroll at a narrow width; the check fails without the parked row's phone layout."
+preuve = ["tests/styles.test.js"]
+lecon = "Same lesson as DEF-032, widened: a check that only knows one way a layout breaks lets the next one through; it was looked at in the browser, and the check grew with it."
+liens = ["COMP-01", "CFG-05"]

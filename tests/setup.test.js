@@ -8,6 +8,7 @@ import { readSetupFile, writeSetupFile } from "../src/storage/setup-file.js";
 import { emptySetup, mergeSetup } from "../src/storage/setup-merge.js";
 import { nearestId } from "../src/storage/nearest.js";
 import { storedPlayerSetup, storePlayerSetup } from "../src/storage/player-setup.js";
+import { parkedChoice, readWithChoices, withValue } from "../src/storage/setup-parked.js";
 
 const read = (path) => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const GAME = "chaos-conquest";
@@ -167,4 +168,45 @@ test("CFG-04 the setup kept per game in the browser, read back the same; a block
   assert.deepEqual(JSON.parse(items["army-simulator.player-setup"])["another-game"], { kept: true });
   assert.equal(storePlayerSetup(refusing, setup, target.game), false);
   assert.deepEqual(storedPlayerSetup(null, GAME, games), emptySetup(GAME), "storage out of reach: an empty setup");
+});
+
+test("CFG-05 a value a list can fix: its list, where the choice goes, the nearest for a misread name only", () => {
+  const { problems } = readSetupFile(
+    file({
+      warlords: [
+        { id: "Skulltakr", rank: 1, level: 1 },
+        { id: "karanak", rank: 9, level: 1 },
+      ],
+      bonuses: [
+        { stat: "squadPower", percent: 5, target: { tiers: [7] } },
+        { stat: "health", percent: 150 },
+      ],
+    }),
+    games,
+  );
+  const choices = problems.map((problem) => parkedChoice(problem, target));
+  const shown = choices.map((choice) => choice && `${choice.path} ${choice.entries.length} ${choice.suggestion}`);
+  assert.deepEqual(shown, [
+    "warlords[0].id 33 skulltaker",
+    "warlords[1].rank 7 null",
+    "bonuses[0].stat 9 null",
+    "bonuses[0].target.tiers[0] 6 null",
+    null, // a percentage out of range: no list fixes it, it is left out
+  ]);
+  assert.deepEqual(withValue({ a: [{ b: [1, 2] }] }, "a[0].b[1]", 3), { a: [{ b: [1, 3] }] });
+  const chosen = { "warlords[0].id": "skulltaker", "warlords[1].rank": 2, "bonuses[0].stat": null };
+  const withChoices = readWithChoices(
+    file({
+      warlords: [
+        { id: "Skulltakr", rank: 1, level: 1 },
+        { id: "karanak", rank: 9, level: 1 },
+      ],
+    }),
+    chosen,
+    games,
+  );
+  assert.deepEqual(withChoices.sections.warlords, [
+    { id: "skulltaker", level: 1 },
+    { id: "karanak", level: 6 },
+  ]);
 });

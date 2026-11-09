@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **32 defects**: 32 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **34 defects**: 34 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -45,6 +45,8 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-030](#def-030) | 2026-11-09 | The linter read the git-ignored captures | configuration | minor | ✓ fixed |
 | [DEF-031](#def-031) | 2026-11-09 | The tabs' look written a second time | code | minor | ✓ fixed |
 | [DEF-032](#def-032) | 2026-11-09 | A hero's line crushed on a phone | code | minor | ✓ fixed |
+| [DEF-033](#def-033) | 2026-11-09 | The dev server kept the texts it started with | tool | minor | ✓ fixed |
+| [DEF-034](#def-034) | 2026-11-09 | The import review scrolled sideways on a narrow screen | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -448,3 +450,29 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A more specific selector also escapes the media query written for the general one: a layout for phones is checked per selector, not assumed.
 - **Proof:** `tests/styles.test.js`
 - **Links:** COMP-01, ARMY-05, CFG-04
+
+<a id="def-033"></a>
+### DEF-033 · The dev server kept the texts it started with
+
+`2026-11-09` · tool · minor · ✓ fixed · tags: `dev-server`
+
+- **Finding:** Three times in one day, after a text was added to src/ui/texts, npm run dev answered 500 "have no text" on the page until it was restarted, though the build and the tests passed.
+- **Cause:** The page assembler imported the English text files statically: the dev server, a Node process running for hours, kept the modules it loaded at its start. The assembler also listed the text files itself, a second list to keep beside texts/index.js.
+- **Solution:** The assembler reads every en*.js of the source's texts folder at each assembly, each reading under its own module address, so Node loads it afresh; no list of files in it any more. A test edits a text file between two assemblies; another checks that texts/index.js imports every text file of the folder, in both languages.
+- **Result:** The dev server serves a text added while it runs; a new text file needs one line in texts/index.js, which a test checks.
+- **Lesson:** A long-running process keeps what it loaded: what it must see change is read at each use, and tested by changing it between two uses.
+- **Proof:** `tests/tooling.test.js`
+- **Links:** MAINT-01, LANG-02
+
+<a id="def-034"></a>
+### DEF-034 · The import review scrolled sideways on a narrow screen
+
+`2026-11-09` · code · minor · ✓ fixed · tags: `page`, `tests`
+
+- **Finding:** In the browser at about 440 px wide, the review of an uploaded file made the whole page scroll sideways: a parked value's list kept its 10 rem beside a path such as bonuses[0].target.unitTypes[0], which has no space to break at. Seen in the browser before the commit.
+- **Cause:** The parked row's grid had two columns, one that would not shrink, and no phone layout; the phone-layout check (DEF-032) only looked at grids of four columns or more, and it counted repeat(4, 1fr) as two.
+- **Solution:** On a phone, a parked value's list goes under what was read; a line of the review breaks anywhere rather than overflow. The check counts repeat() columns and also asks a phone layout of any grid with a column that will not shrink below a width.
+- **Result:** No sideways scroll at a narrow width; the check fails without the parked row's phone layout.
+- **Lesson:** Same lesson as DEF-032, widened: a check that only knows one way a layout breaks lets the next one through; it was looked at in the browser, and the check grew with it.
+- **Proof:** `tests/styles.test.js`
+- **Links:** COMP-01, CFG-05

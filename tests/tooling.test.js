@@ -2,37 +2,64 @@
 // dev server's answer when the page cannot be assembled (scripts/serve.mjs).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { assemblePage } from "../scripts/page.mjs";
 import { pageResponse, requestPath } from "../scripts/serve.mjs";
 
-// a page shell with an element whose text was removed from the texts, as a leftover button once was (DEF-005)
-const withSourcePage = (html, use) => {
+// a source folder: a page shell and its English texts (file name → texts), removed after use
+const withSourcePage = async (html, use, texts = {}) => {
   const dir = mkdtempSync(join(tmpdir(), "army-page-"));
   try {
+    mkdirSync(join(dir, "ui", "texts"), { recursive: true });
     writeFileSync(join(dir, "index.html"), html);
-    return use(dir);
+    for (const [file, content] of Object.entries(texts)) writeTexts(dir, file, content);
+    return await use(dir);
   } finally {
     rmSync(dir, { recursive: true });
   }
 };
+const writeTexts = (dir, file, content) =>
+  writeFileSync(join(dir, "ui", "texts", file), `export const TEXTS = ${JSON.stringify(content)};\n`);
+// an element whose text was removed from the texts, as a leftover button once was (DEF-005)
 const LEFTOVER = '<button data-text="no-such-text"></button>';
 
-test("MAINT-01 DEF-005 the build refuses an element whose text does not exist", () => {
-  withSourcePage(LEFTOVER, (dir) => assert.throws(() => assemblePage(dir), /no text "no-such-text"/));
+test("MAINT-01 DEF-005 the build refuses an element whose text does not exist", async () => {
+  await withSourcePage(LEFTOVER, (dir) => assert.rejects(assemblePage(dir), /no text "no-such-text"/));
 });
 
-test("MAINT-01 DEF-003 the dev server answers 500 with the reason, instead of crashing", () => {
-  withSourcePage(LEFTOVER, (dir) => {
-    const { status, body } = pageResponse(() => assemblePage(dir));
+test("MAINT-01 DEF-003 the dev server answers 500 with the reason, instead of crashing", async () => {
+  await withSourcePage(LEFTOVER, async (dir) => {
+    const { status, body } = await pageResponse(() => assemblePage(dir));
     assert.equal(status, 500);
     assert.match(body, /^<pre>.*no text "no-such-text".*<\/pre>$/);
   });
-  assert.deepEqual(
-    pageResponse(() => "<p>page</p>"),
-    { status: 200, body: "<p>page</p>" },
+  assert.deepEqual(await pageResponse(() => "<p>page</p>"), { status: 200, body: "<p>page</p>" });
+});
+
+test("MAINT-01 DEF-033 the page is assembled with the texts as they are now, a text added since included", async () => {
+  const page = (key) => `<p data-text="${key}"></p>`;
+  await withSourcePage(
+    page("a.one"),
+    async (dir) => {
+      assert.match(await assemblePage(dir), /One/);
+      writeTexts(dir, "en-a.js", { "a.one": "One", "a.two": "Two" }); // edited while the server runs
+      writeFileSync(join(dir, "index.html"), page("a.two"));
+      assert.match(await assemblePage(dir), /Two/);
+    },
+    { "en-a.js": { "a.one": "One" } },
+  );
+});
+
+test("LANG-02 DEF-033 every text file of the folder is in the page's texts, in both languages", () => {
+  const folder = new URL("../src/ui/texts/", import.meta.url);
+  const index = readFileSync(new URL("index.js", folder), "utf8");
+  const files = readdirSync(folder).filter((file) => /^(en|fr)(-[\w-]+)?\.js$/.test(file));
+  for (const file of files) assert.ok(index.includes(`"./${file}"`), `${file} is not imported by texts/index.js`);
+  assert.equal(
+    files.filter((file) => file.startsWith("en")).length,
+    files.filter((file) => file.startsWith("fr")).length,
   );
 });
 

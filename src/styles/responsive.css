@@ -47,4 +47,9 @@
     grid-column: 3;
     grid-row: 1;
   }
+
+  /* a parked value of an uploaded file: what was read, then its list under it */
+  .parked-row {
+    grid-template-columns: 1fr;
+  }
 }

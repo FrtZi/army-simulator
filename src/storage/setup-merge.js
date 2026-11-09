@@ -36,10 +36,11 @@ function mergeList(current, incoming, keyOf) {
   return { value: [...merged, ...read.values()], report };
 }
 
-/** An object section: each field the file holds replaces the player's. */
+/** An object section: each field the file holds replaces the player's; counted as updated or unchanged. */
 function mergeFields(current, incoming) {
   const changed = Object.keys(incoming).filter((field) => !same(current?.[field], incoming[field]));
-  return { value: { ...current, ...incoming }, report: { updated: changed.length } };
+  const unchanged = Object.keys(incoming).length - changed.length;
+  return { value: { ...current, ...incoming }, report: { updated: changed.length, unchanged } };
 }
 
 const MERGES = {

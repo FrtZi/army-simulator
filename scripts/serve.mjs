@@ -19,9 +19,9 @@ const resolve = (path) => (path.startsWith("/data/") ? [dataDir, path.slice("/da
 
 // The page is assembled before any header is sent: an error must not follow sent headers, which crashed the
 // server (DEF-003). A missing text or section is shown in the browser, and the server keeps running.
-export function pageResponse(assemble) {
+export async function pageResponse(assemble) {
   try {
-    return { status: 200, body: assemble() };
+    return { status: 200, body: await assemble() };
   } catch (error) {
     return { status: 500, body: `<pre>${String(error.message).replace(/</g, "&lt;")}</pre>` };
   }
@@ -36,14 +36,14 @@ export function requestPath(url) {
   }
 }
 
-function handle(req, res) {
+async function handle(req, res) {
   const path = requestPath(req.url);
   if (path === null) {
     res.writeHead(400).end("Bad request");
     return;
   }
   if (path === "/" || path === "/index.html") {
-    const { status, body } = pageResponse(() => assemblePage(srcDir));
+    const { status, body } = await pageResponse(() => assemblePage(srcDir));
     res.writeHead(status, HTML).end(body);
     return;
   }

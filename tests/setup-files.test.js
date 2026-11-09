@@ -34,7 +34,21 @@ function downloads(page) {
   return files;
 }
 
-test("CFG-05 a partial file reviewed before anything changes: what it brings, each value left out and why", async () => {
+const textOf = (element) => element.textContent.replace(/\s+/g, " ").trim();
+const rows = (page) => page.$$("#setup-review .report-row").map(textOf);
+/** Each parked value: what was read, and what its list has chosen. */
+const parked = (page) =>
+  page
+    .$$(".parked-row")
+    .map((row) => `${textOf(row.querySelector("span"))} → ${textOf(row.querySelector("option:checked"))}`);
+const chooseParked = (page, path, name) => {
+  const select = page.$(`[data-parked="${path}"]`);
+  const option = [...select.options].find((entry) => entry.textContent === name);
+  select.focus(); // as the player does: the list rebuilt under it must keep the focus
+  page.choose(`#${select.id}`, option.value);
+};
+
+test("CFG-05 a partial file reviewed before anything changes: what it brings, in colour with its words", async () => {
   const page = openPage();
   page.choose("#setup-warlord-select", "karanak");
   page.click("#setup-warlord-add");
@@ -42,22 +56,21 @@ test("CFG-05 a partial file reviewed before anything changes: what it brings, ea
   await upload(
     page,
     setupFile({
-      warlords: [
-        { id: "azazel", rank: 5, level: 4 },
-        { id: "Azazael", rank: 1, level: 1 },
-        { id: "skulltaker", rank: 8, level: 1 },
-      ],
+      warlords: [{ id: "azazel", rank: 5, level: 4 }],
       capacity: { base: 110000 },
+      bonuses: [{ stat: "health", percent: 150 }],
       rituals: [{ id: "defence-capacity-1", level: 10 }],
     }),
   );
-  const lines = page.$$("#setup-review li").map((line) => line.textContent);
-  assert.deepEqual(lines, [
-    "Heroes: 1 added, 0 updated, 0 unchanged, 1 kept",
-    "March capacity: 1 values changed",
-    "Rituals: kept, used from version 1.2",
-    'warlords[1].id, read "Azazael": no hero has this id; did you mean Azazel (azazel)?',
-    "warlords[2].rank, read 8: outside 1 to 7.",
+  assert.deepEqual(rows(page), [
+    "Heroes + 1 added • 1 kept",
+    "March capacity ↻ 1 values changed",
+    "Bonuses = nothing to apply",
+    "Rituals • kept, used from version 1.2",
+  ]);
+  assert.equal(page.$$(".chip-added").length, 1, "an addition stands out in its colour");
+  assert.deepEqual(page.$$(".left-list li").map(textOf), [
+    'bonuses[0], read {"stat":"health","percent":150}: Enter a percentage from 0 to 100.',
   ]);
   assert.equal(page.$$("#setup-warlord-list .name").length, 1, "nothing changes before Apply");
   page.click("#setup-import-apply");
@@ -70,6 +83,39 @@ test("CFG-05 a partial file reviewed before anything changes: what it brings, ea
   // a hero added, the capacity's base, the rituals (kept for 1.2): three changes not saved yet
   assert.equal(page.text("#setup-status"), "⚠ 3 unsaved changes: Save keeps them in this browser.");
   assert.match(page.text("#setup-review"), /Applied: the changes show in your setup, not saved yet\./);
+});
+
+test("CFG-05 a value a list can fix is parked: the nearest chosen for a misread name, the player chooses or leaves it out", async () => {
+  const page = openPage();
+  page.click("#page-tab-setup"); // shown: its controls can take the focus
+  await upload(
+    page,
+    setupFile({
+      warlords: [
+        { id: "Azazael", rank: 5, level: 4 },
+        { id: "skulltaker", rank: 8, level: 1 },
+      ],
+      bonuses: [{ stat: "meleeAtack", percent: 10, target: { unitTypes: ["infantery"] } }],
+    }),
+  );
+  assert.deepEqual(parked(page), [
+    'warlords[0].id, read "Azazael": no hero has this id. → Azazel',
+    "warlords[1].rank, read 8: outside 1 to 7. → Leave it out",
+    'bonuses[0].stat, read "meleeAtack": Unknown stat. → Melee Attack',
+    'bonuses[0].target.unitTypes[0], read "infantery": Choose a value. → Infantry',
+  ]);
+  assert.deepEqual(rows(page), ["Heroes + 1 added", "Bonuses + 1 added"], "the nearest values count already");
+  chooseParked(page, "warlords[1].rank", "3");
+  assert.deepEqual(rows(page)[0], "Heroes + 2 added");
+  assert.equal(page.$("[data-parked='warlords[1].rank']").id, page.window.document.activeElement.id, "focus kept");
+  chooseParked(page, "warlords[0].id", "Leave it out");
+  assert.deepEqual(rows(page)[0], "Heroes + 1 added");
+  page.click("#setup-import-apply");
+  assert.deepEqual(
+    page.$$("#setup-warlord-list .name").map((name) => name.textContent),
+    ["Skulltaker"],
+  );
+  assert.match(page.text("#setup-warlord-list .meta"), /level 11/); // rank 3, level 1
 });
 
 test("CFG-05 Cancel leaves the setup as it was; a file that cannot be read says why in one line", async () => {
@@ -110,7 +156,9 @@ test("CFG-05 CFG-06 the setup, an empty file and the brief downloaded; the setup
   assert.equal(page.text("#setup-files-status"), `Downloaded: army-simulator-brief-${GAME}.md.`);
   // the downloaded file uploaded again changes nothing
   await upload(page, setup.text);
-  assert.match(page.text("#setup-review"), /Heroes: 0 added, 0 updated, 1 unchanged, 0 kept/);
+  assert.deepEqual(rows(page).slice(0, 2), ["Heroes = 1 unchanged", "March capacity = nothing to apply"]);
+  assert.match(page.text("#setup-review"), /Nothing in this file changes your setup\./);
+  assert.equal(page.$("#setup-import-apply"), null, "nothing to apply");
 });
 
 test("CFG-06 the brief is copied where the browser allows it; elsewhere the page says to download it", async () => {

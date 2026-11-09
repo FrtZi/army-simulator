@@ -63,6 +63,67 @@
   padding-left: 1.25rem;
 }
 
+/* the review in colour, never by colour alone: each chip and heading has its icon and its word */
+.report-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.3rem;
+}
+
+.report-section {
+  min-width: 8rem;
+  color: var(--heading);
+  font-weight: 600;
+}
+
+.chip {
+  padding: 0.05rem 0.5rem;
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+.chip-added {
+  border-color: var(--good);
+}
+
+.chip-updated {
+  border-color: var(--accent);
+}
+
+.report-parked,
+.parked-list {
+  border-left: 4px solid var(--accent);
+  padding-left: 0.6rem;
+}
+
+.report-left,
+.left-list {
+  border-left: 4px solid var(--critical);
+  padding-left: 0.6rem;
+}
+
+/* a path such as bonuses[0].target.unitTypes[0] has no space to break at: it breaks anywhere rather than overflow */
+.setup-report li {
+  overflow-wrap: anywhere;
+}
+
+.setup-report.parked-list,
+.setup-report.left-list {
+  list-style: none;
+}
+
+.parked-row {
+  display: grid;
+  grid-template-columns: 1fr minmax(10rem, 16rem);
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
 #setup-review h3 {
   margin: 0.75rem 0 0.25rem;
   font-size: 1rem;

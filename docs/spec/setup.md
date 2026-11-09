@@ -36,7 +36,10 @@ The file carries every section from the start; a section the site cannot use yet
   file brings land in the same fields, each editable; a row says whether it came by hand or from a file.
 - **Import and export:** upload a whole or partial file; only what it holds changes (sections absent are
   left alone, list entries matched by id, nothing removed by a file). Before applying: added, updated,
-  kept, unchanged, and every refused value with where, what and why. Download the whole setup.
+  kept, unchanged, in colour with an icon and a word, and every refused value with where, what and why. A
+  value a list can fix (a hero's id, rank or level, a bonus's stat, a target's value) is parked with its list,
+  the nearest chosen for a misread name: the player chooses another or leaves it out (Frantz, 2026-11-09).
+  Download the whole setup.
 - **Under import, the file:** the empty template or the setup filled (download either), the guide, the
   brief for an agent (copied by a button) and the dictionary; `setup.schema.json` and
   `setup-dictionary.json` published with the site.

@@ -36,7 +36,7 @@ const replaceOnce = (html, tag, replacement) => {
   return html.replace(tag, () => replacement); // a function, so "$" in the bundle is never interpreted
 };
 
-let html = assemblePage(srcDir);
+let html = await assemblePage(srcDir);
 html = replaceOnce(html, '<script src="theme-init.js"></script>', `<script>\n${init}\n</script>`);
 html = replaceOnce(html, '<link rel="stylesheet" href="styles/index.css" />', `<style>\n${css}\n</style>`);
 html = replaceOnce(html, '<script type="module" src="main.js"></script>', `<script>\n${js}\n</script>`);

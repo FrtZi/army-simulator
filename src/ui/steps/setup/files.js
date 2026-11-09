@@ -1,41 +1,28 @@
 // Your setup's files (CFG-05, CFG-06, D-27): a file uploaded is read and reviewed before anything changes, then
 // applied to the setup shown (unsaved: Save keeps it); the setup, an empty file and the brief for an agent are
 // downloaded; the brief is copied where the browser allows it. Nothing is ever sent anywhere.
-import { byId } from "../../dom.js";
+import { byId, keepingFocus } from "../../dom.js";
 import { downloadFile, readText } from "../../files.js";
-import { GAMES_BY_ID, dictionaryOf } from "../../games.js";
+import { dictionaryOf } from "../../games.js";
 import { currentGame, state } from "../../state.js";
-import { readSetupFile, writeSetupFile } from "../../../storage/setup-file.js";
+import { writeSetupFile } from "../../../storage/setup-file.js";
 import { emptySetup, mergeSetup } from "../../../storage/setup-merge.js";
 import { agentBrief } from "../../../storage/setup-brief.js";
 import { t } from "../../texts/index.js";
 import { drawSetup } from "./draw.js";
 import { drawSetupReview } from "./review.js";
+import { choose, reviewOf } from "./import.js";
 
 const json = (value) => JSON.stringify(value, null, 2);
 const showStatus = (text) => {
   byId("setup-files-status").textContent = text;
 };
 
-/** The review of a file's text: what it brings to the setup shown, or why it cannot be read at all. */
-function review(file, text) {
-  let parsed;
-  try {
-    parsed = JSON.parse(text);
-  } catch {
-    return { file, unreadable: { code: "not-json" } };
-  }
-  const { game, sections, problems } = readSetupFile(parsed, GAMES_BY_ID);
-  if (!sections) return { file, unreadable: problems[0] };
-  if (game !== state.gameId) return { file, unreadable: { code: "game", read: game } };
-  return { file, sections, problems, report: mergeSetup(state.playerSetup, sections).report };
-}
-
 async function upload(input) {
   const [file] = input.files;
   input.value = ""; // the same file chosen again is read again
   if (!file) return;
-  state.setupImport = review(file.name, await readText(file));
+  state.setupImport = reviewOf(file.name, await readText(file));
   drawSetupReview();
 }
 
@@ -62,6 +49,13 @@ async function copyBrief() {
 
 export function bindSetupFiles() {
   byId("setup-import").addEventListener("change", (event) => upload(event.target));
+  byId("setup-review").addEventListener("change", (event) => {
+    const { parked: path } = event.target.dataset;
+    if (!path) return;
+    const entry = state.setupImport.parked[path].entries[event.target.value];
+    state.setupImport = choose(state.setupImport, path, entry ? entry.id : null);
+    keepingFocus(drawSetupReview);
+  });
   byId("setup-review").addEventListener("click", (event) => {
     if (event.target.id === "setup-import-apply") close(true);
     if (event.target.id === "setup-import-cancel") close(false);

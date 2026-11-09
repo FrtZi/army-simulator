@@ -48,7 +48,8 @@ src/storage/             no DOM: configuration.js (setup ↔ file format version
                          what a file holds changes), nearest.js (the id a misread name meant); its dictionary
                          (D-28): setup-dictionary.js (built from the game's data), setup-schema.js (as a JSON
                          Schema), setup-brief.js (the brief for an agent, the whole dictionary in it); and
-                         player-setup.js (the setup kept in the browser, one per game, as a setup file)
+                         player-setup.js (the setup kept in the browser, one per game, as a setup file),
+                         setup-parked.js (a value a list can fix, parked until the player chooses)
 src/index.html           page shell: head, header (flags, theme), footer, one include per section
 src/theme-init.js        sets the theme before the first paint (inlined in <head>)
 src/assets/              the language flags (inlined by the build)
@@ -77,7 +78,7 @@ src/ui/                  the page
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
-                         in warlords.js, a file uploaded and what it brings in files.js and review.js; D-27)
+                         in warlords.js, a file uploaded in files.js, under review in import.js, drawn in review.js; D-27)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
 scripts/

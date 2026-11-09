@@ -326,6 +326,11 @@ Agreed with Frantz on three prototypes ([spec](spec/setup.md)):
   wanted); saving at every change (Frantz wants a Save button); a file removing entries (a misread
   screenshot would delete a warlord); links in the brief instead of the dictionary itself (an agent may not
   follow them).
+- **A value the page can fix is parked, the player chooses** (Frantz, 2026-11-09, on the first import
+  screen): the list of what it may be, the nearest chosen for a misread name by a small fuzzy match
+  (`nearest.js`); the choice is written into the file, which is read again whole. _Set aside:_ an AI fixing
+  them at Apply (no agent stands behind the page), and an error alone with "did you mean" (the player
+  then had to edit the file).
 
 ## D-28 · The setup's dictionary, schema and brief: built from the game's data at each build (2026-11-09)
 
