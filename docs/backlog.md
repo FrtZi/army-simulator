@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 17/19 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/5 | 5/15 | ○ not yet: 2 Musts left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/5 | 7/16 | ○ not yet: 2 Musts left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 0/7 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -53,14 +53,14 @@ flowchart LR
   BL08["BL-08 ◐ doing<br/>The player's setup: everything they have in game, entered by hand or uploaded"]:::doing
   BL07 --> BL08
   BL09["BL-09 ◐ doing<br/>Credit cctools.cc and tell its author"]:::doing
-  BL10["BL-10 ○ to do<br/>Rituals in the setup: each ritual's level, its bonuses applied"]:::todo
+  BL10["BL-10 ◐ doing<br/>Rituals in the setup: each ritual's level, its bonuses applied"]:::doing
   BL08 --> BL10
   BL11["BL-11 ○ to do<br/>Keep attack: the defences' first round, as a switch on a battle"]:::todo
   BL12["BL-12 ○ to do<br/>Keep defence: a fortress (defences and garrison) as the defending side"]:::todo
   BL11 --> BL12
   BL13["BL-13 ○ to do<br/>Champion: own stats by level, gear and set bonuses"]:::todo
   BL08 --> BL13
-  BL14["BL-14 ○ to do<br/>Buildings' bonuses, by level"]:::todo
+  BL14["BL-14 ◐ doing<br/>Buildings' bonuses, by level"]:::doing
   BL08 --> BL14
   BL15["BL-15 ○ to do<br/>Calibration on battle reports: tier modifier, broken bonus, morale per squad"]:::todo
   BL16["BL-16 ○ to do<br/>Optimiser: the best troop mix within the march capacity"]:::todo
@@ -192,8 +192,8 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 
 | ID | Item | MoSCoW | Module | Status | Tasks |
 |---|---|---|---|---|---|
-| [BL-10](#bl-10) | Rituals in the setup: each ritual's level, its bonuses applied | must | [ui](../src/ui) | ○ to do | 0/3 |
-| [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ○ to do | 0/1 |
+| [BL-10](#bl-10) | Rituals in the setup: each ritual's level, its bonuses applied | must | [ui](../src/ui) | ◐ doing | 1/3 |
+| [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ◐ doing | 1/2 |
 | [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ○ to do | 0/3 |
 | [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ◐ doing | 2/3 |
 | [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ◐ doing | 3/5 |
@@ -201,22 +201,23 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 <a id="bl-10"></a>
 #### BL-10 · Rituals in the setup: each ritual's level, its bonuses applied
 
-Must · [ui](../src/ui) · ○ to do · added `2026-10-24` · after [BL-08](#bl-08) · features: BONUS-04
+Must · [ui](../src/ui) · ◐ doing · added `2026-10-24` · after [BL-08](#bl-08) · features: BONUS-04
 
 In one request (cctools.cc, the 153 combat rituals and their levels), as a section of the setup (BL-08).
 
-- [ ] Rituals' data from cctools.cc, checked (as BL-06)
+- [x] Rituals' data from cctools.cc, checked (as BL-06)
 - [ ] Entry in the setup: a category at a time, levels typed or picked, totals shown
 - [ ] Bonuses applied to every composition
 
 <a id="bl-14"></a>
 #### BL-14 · Buildings' bonuses, by level
 
-Should · [data](../data) · ○ to do · added `2026-10-22` · after [BL-08](#bl-08) · features: BONUS-07
+Should · [data](../data) · ◐ doing · added `2026-10-22` · after [BL-08](#bl-08) · features: BONUS-07
 
 In the same request as the rituals (cctools.cc: 10 buildings with combat bonuses), as a section of the setup.
 
-- [ ] Structures' bonuses from cctools.cc, into the setup
+- [x] Structures' data from cctools.cc, checked: levels, costs, requirements, bonuses
+- [ ] Into the setup: each structure's level, its bonuses applied
 
 <a id="bl-20"></a>
 #### BL-20 · PvE armies by level: the game's computer-controlled armies as opponents

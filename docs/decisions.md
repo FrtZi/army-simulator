@@ -361,5 +361,8 @@ where each item drops (`where-to-find`) and what uses it (`where-to-use`).
 - **A cost stored like a stat**: per resource, one list of values by level (`null` where that level asks none), so
   a warlord stays one readable block and the page stays light (the 33 warlords' costs: about 70 KB).
 - **The sums are the engine's** (`costBetween`): from the player's own level, or from nothing with the unlock.
+- **Requirements stored the same way** (rituals, structures): per ritual or structure required, the level asked
+  at each level, which took the rituals' file from 490 KB to 320 KB minified. All 373 rituals are kept, not only
+  the 153 combat ones: the guides show the others, and the page stays one file that works offline.
 - _Set aside:_ a list of `{ level, item, quantity }` rows (three times the size for the same facts); the items
   written by each block's import (two writers of one file would drift).

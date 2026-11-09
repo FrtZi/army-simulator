@@ -79,14 +79,14 @@ Most sources share one building block, a **levelled entry**: the effects it give
 }
 ```
 
-| Kind       | Catalogue (`data/`)                                                                                                        | Player state                          | Status  |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------- |
-| `manual`   | none                                                                                                                       | a list of effects                     | in use  |
-| `hero`     | `heroes.json`: levelled entries                                                                                            | hero id → level                       | planned |
-| `ritual`   | `rituals.json`: talent classes; each holds skills (levelled entries) with `requires`: the skills that must be learnt first | skill id → level                      | planned |
-| `champion` | `champion.json`: levelled entry with the champion's own stats and the buffs it gives                                       | level                                 | planned |
-| `armour`   | `armour.json`: pieces (slot, set, levelled entry) and sets (`bonuses`: effects from N pieces of the set)                   | piece id → level, for equipped pieces | planned |
-| `building` | `buildings.json`: levelled entries                                                                                         | building id → level                   | planned |
+| Kind       | Catalogue (`data/`)                                                                                                     | Player state                          | Status  |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------- |
+| `manual`   | none                                                                                                                    | a list of effects                     | in use  |
+| `hero`     | `heroes.json`: levelled entries                                                                                         | hero id → level                       | planned |
+| `ritual`   | `rituals.json`: categories; each ritual a levelled entry with `requires`: the rituals and structures it needs, by level | ritual id → level                     | data in |
+| `champion` | `champion.json`: levelled entry with the champion's own stats and the buffs it gives                                    | level                                 | planned |
+| `armour`   | `armour.json`: pieces (slot, set, levelled entry) and sets (`bonuses`: effects from N pieces of the set)                | piece id → level, for equipped pieces | planned |
+| `building` | `structures.json`: levelled entries, as the rituals                                                                     | structure id → level                  | data in |
 
 ## Units: `data/<game>/units.json`
 
@@ -215,3 +215,20 @@ Every resource (iron) and item (Warlord Honour, a warlord's favour) a cost names
 `scripts/import-items.mjs` from cctools.cc's saved pages, never by hand; one list the warlords' costs point at, and
 the rituals', buildings' and gear's will. An entry: `{ "id", "code", "kind": "currency" | "item", "rarity", "labels" }`.
 A currency's id is its name (its code, `currency7`, says nothing); an item keeps its code (`carrier-xp-token`).
+
+## Rituals and structures: `data/<game>/rituals.json`, `structures.json` (D-29)
+
+Written by `scripts/import-rituals.mjs` and `scripts/import-structures.mjs` from cctools.cc's saved pages, never by
+hand; both read their levels the same way (`scripts/levels.mjs`). The 373 rituals sit in 13 categories (`categories`,
+in the game's order); the 32 structures take their id from their name, and game.json's six troop buildings keep their
+id and their names read in both languages (Chaotic Rift is `chaos-rift`). Each entry, level 1 first:
+
+| Field      | Meaning                                                                                                              |
+| ---------- | -------------------------------------------------------------------------------------------------------------------- |
+| `power`    | the power each level adds                                                                                            |
+| `costs`    | what reaching each level costs, per resource or item of `items.json`                                                 |
+| `effects`  | the bonuses applied in battle, in % by level, under the ids of the file's `effects` (the warlords' reading of codes) |
+| `other`    | the bonuses not about battle (production speed, gathering…), in % by level, kept for the guides, never applied       |
+| `requires` | per kind (`ritual`, `structure`) and id, the level it asks at each level; `null` where that level asks nothing       |
+
+cctools.cc's `upgrade_cost` is not imported: what it counts is not known yet.

@@ -6,6 +6,8 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { buildWarlords, formatWarlords, readGame, savedPages } from "../scripts/import-warlords.mjs";
 import { buildItems, formatItems } from "../scripts/import-items.mjs";
+import { buildRituals, formatRituals, savedRituals } from "../scripts/import-rituals.mjs";
+import { buildStructures, formatStructures, savedStructures } from "../scripts/import-structures.mjs";
 
 const GAME = "chaos-conquest";
 const reference = new URL(`../captures/${GAME}/sources/cctools-troops.json`, import.meta.url);
@@ -52,7 +54,21 @@ test(
   "DATA-06 the items file is exactly what the import makes from the saved pages",
   { skip: !existsSync(warlordPages) },
   () => {
-    const made = formatItems(buildItems(savedPages(warlordPages)));
+    const levelled = existsSync(ritualPages) ? [...savedRituals().pages, ...savedStructures()] : [];
+    const made = formatItems(buildItems(savedPages(warlordPages), levelled));
     assert.equal(readFileSync(new URL(`../data/${GAME}/items.json`, import.meta.url), "utf8"), made);
+  },
+);
+
+const ritualPages = new URL(`../captures/${GAME}/sources/cctools/rituals/`, import.meta.url);
+
+test(
+  "DATA-07 the rituals and structures files are exactly what the imports make from the saved pages",
+  { skip: !existsSync(ritualPages) },
+  () => {
+    const { categories, pages } = savedRituals();
+    const file = (name) => readFileSync(new URL(`../data/${GAME}/${name}`, import.meta.url), "utf8");
+    assert.equal(file("rituals.json"), formatRituals(buildRituals(categories, pages, readGame())));
+    assert.equal(file("structures.json"), formatStructures(buildStructures(savedStructures(), readGame())));
   },
 );
