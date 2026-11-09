@@ -103,3 +103,16 @@ test("COMP-01 DEF-032 DEF-034 every wide or unshrinkable grid has its own layout
     .map(([selector, value]) => `${selector}: ${value}`);
   assert.deepEqual(crushed, []);
 });
+
+test("COMP-01 DEF-035 a tick box keeps its own size: the fields' full width is undone for it, once, in base.css", () => {
+  const all = SHEETS.flatMap((sheet) => declarations(sheet.outside).map((entry) => ({ ...entry, path: sheet.path })));
+  const field = all.find(({ selector, property }) => selector === "input" && property === "width");
+  assert.equal(field?.value, "100%", "base.css sizes every field to its row");
+  const box = all.filter(({ selector }) => selector === 'input[type="checkbox"]');
+  assert.deepEqual(
+    box
+      .filter(({ property }) => ["width", "min-height"].includes(property))
+      .map(({ property, value, path }) => `${path} ${property} ${value}`),
+    ["styles/base.css width auto", "styles/base.css min-height 0"],
+  );
+});

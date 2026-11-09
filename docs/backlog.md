@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 17/19 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/5 | 7/16 | ○ not yet: 2 Musts left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/5 | 8/17 | ○ not yet: 2 Musts left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 0/7 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -196,7 +196,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 | [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ◐ doing | 1/2 |
 | [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ○ to do | 0/3 |
 | [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ◐ doing | 2/3 |
-| [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ◐ doing | 3/5 |
+| [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ◐ doing | 4/6 |
 
 <a id="bl-10"></a>
 #### BL-10 · Rituals in the setup: each ritual's level, its bonuses applied
@@ -250,7 +250,8 @@ Frantz, 2026-11-09: a Guides tab where each type of block (heroes, rituals, sets
 
 - [x] Prototype validated by Frantz
 - [x] The Guides tab and the heroes' guide (GUIDE-01, GUIDE-02)
-- [ ] Each other block's guide with its data: rituals and buildings (BL-10, BL-14), champion and gear (BL-13)
+- [x] The rituals' and buildings' guides: found by category, battle bonuses or name; each level's bonuses, requirements and cost (GUIDE-03)
+- [ ] The champion's and gear's guide, with their data (BL-13)
 - [x] The heroes' way up: what each level costs, in all from your level or from its unlock (GUIDE-04, D-29)
 - [ ] The way up of the other blocks: each level's cost and prerequisites, where to get each item (GUIDE-04)
 

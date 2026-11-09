@@ -62,6 +62,14 @@ select {
   border-radius: var(--radius);
 }
 
+/* a tick box is not a text field: its own size, the accent when ticked (DEF-035) */
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  min-height: 0;
+  accent-color: var(--accent);
+}
+
 input[aria-invalid="true"] {
   border-color: var(--critical);
 }

@@ -8,6 +8,8 @@ import chaosConquestRules from "../../data/chaos-conquest/combat-rules.json" wit
 import chaosConquestWarlords from "../../data/chaos-conquest/warlords.json" with { type: "json" };
 import chaosConquestSetup from "../../data/chaos-conquest/setup.json" with { type: "json" };
 import chaosConquestItems from "../../data/chaos-conquest/items.json" with { type: "json" };
+import chaosConquestRituals from "../../data/chaos-conquest/rituals.json" with { type: "json" };
+import chaosConquestStructures from "../../data/chaos-conquest/structures.json" with { type: "json" };
 import { indexCatalogue } from "../engine/index.js";
 import { setupDictionary } from "../storage/setup-dictionary.js";
 
@@ -20,6 +22,8 @@ const DATA = {
     heroes: chaosConquestWarlords,
     setup: chaosConquestSetup,
     items: chaosConquestItems,
+    rituals: chaosConquestRituals,
+    structures: chaosConquestStructures,
   },
 };
 

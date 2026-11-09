@@ -83,8 +83,8 @@ src/ui/                  the page
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
                          in warlords.js, a file uploaded in files.js, under review in import.js, drawn in review.js; D-27);
-                         and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, their
-                         way up in costs.js)
+                         and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
+                         rituals' and buildings' in levelled.js and levelled-detail.js, what going up costs in costs.js)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
 scripts/

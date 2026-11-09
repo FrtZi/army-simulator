@@ -129,3 +129,29 @@
 .rank-strip li.here {
   outline: 2px solid var(--accent);
 }
+
+/* the ritual and structure guides: a tick box among the filters; each requirement met or not, by an icon and words */
+.guide-check label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+}
+
+.guide-requires {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-requires li {
+  padding: 0.25rem 0;
+}
+
+.guide-requires .met [aria-hidden] {
+  color: var(--good);
+}
+
+.guide-requires .not-met [aria-hidden] {
+  color: var(--critical);
+}

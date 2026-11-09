@@ -7,6 +7,9 @@ import { openPage } from "./page.js";
 
 const { warlords } = JSON.parse(readFileSync(new URL("../data/chaos-conquest/warlords.json", import.meta.url), "utf8"));
 const azazel = warlords.find((warlord) => warlord.id === "azazel");
+const data = (file) => JSON.parse(readFileSync(new URL(`../data/chaos-conquest/${file}`, import.meta.url), "utf8"));
+const { rituals } = data("rituals.json");
+const { structures } = data("structures.json");
 const textOf = (element) => element.textContent.replace(/\s+/g, " ").trim();
 const SETUP_KEY = "army-simulator.player-setup";
 const SAVED = JSON.stringify({
@@ -25,7 +28,7 @@ function openGuides(options) {
 }
 const listed = (page) => page.$$("#guide-hero-list [data-guide-hero]").map((button) => button.dataset.guideHero);
 
-test("GUIDE-01 a tab per type of block: the heroes' guide drawn, each other says the version that brings its data", () => {
+test("GUIDE-01 a tab per type of block: heroes, rituals and buildings drawn, the champion's says its version", () => {
   const page = openGuides();
   assert.deepEqual(page.$$(".guide-tabs [role=tab]").map(textOf), [
     "Heroes",
@@ -35,9 +38,48 @@ test("GUIDE-01 a tab per type of block: the heroes' guide drawn, each other says
   ]);
   assert.equal(listed(page).length, warlords.length);
   page.click("#guide-tab-rituals");
-  assert.match(page.text("#guide-panel"), /^Comes with its data in version 1\.2: the 153 combat rituals/);
+  assert.equal(page.$$("#guide-rituals-list [data-guide-entry]").length, rituals.length);
+  page.click("#guide-tab-buildings");
+  assert.equal(page.$$("#guide-buildings-list [data-guide-entry]").length, structures.length);
   page.click("#guide-tab-champion");
   assert.match(page.text("#guide-panel"), /version 1\.3/);
+});
+
+const SAVED_RITUALS = JSON.stringify({
+  "chaos-conquest": {
+    format: "army-simulator/setup",
+    version: 1,
+    game: "chaos-conquest",
+    rituals: [
+      { id: "cavalry-and-chariot-morale", level: 2 },
+      { id: "cavalry-and-chariot-health", level: 2 },
+    ],
+    buildings: [{ id: "sorcerers-citadel", level: 20 }],
+  },
+});
+
+test("GUIDE-03 the rituals found by category, battle bonuses or name; one in detail with what each level requires", () => {
+  const page = openGuides({ stored: { [SETUP_KEY]: SAVED_RITUALS } });
+  page.click("#guide-tab-rituals");
+  page.choose("#guide-rituals-group", "battle");
+  const battle = rituals.filter((ritual) => ritual.category === "battle");
+  assert.equal(page.$$("#guide-rituals-list [data-guide-entry]").length, battle.length);
+  page.tick("#guide-rituals-battle");
+  const fighting = battle.filter((ritual) => Object.keys(ritual.effects).length > 0);
+  assert.equal(page.$$("#guide-rituals-list [data-guide-entry]").length, fighting.length);
+  page.type("#guide-rituals-search", "armoured");
+  page.click("#guide-rituals-cavalry-and-chariot-morale");
+  // Armoured Zeal, in the setup at level 2: shown at level 2 (rituals.json, from cctools.cc)
+  assert.match(page.text("#guide-rituals-title"), /Armoured Zeal ✓ in your setup, level 2/);
+  assert.match(page.text(".guide-detail"), /Cavalry Morale|Morale, Cavalry/);
+  page.choose("#guide-rituals-level", 3);
+  const needs = page.$$(".guide-requires li").map(textOf);
+  // level 3 asks Chaos Infused Construction at level 2 (met: level 2 in the setup) and Sorcerer's Citadel 21 (not: 20)
+  assert.deepEqual(needs, [
+    "✓ Chaos Infused Construction, level 2 met in your setup",
+    "✗ Sorcerer's Citadel, level 21 not met in your setup",
+  ]);
+  assert.match(page.text(".guide-detail"), /From yours \(level 2\)/);
 });
 
 test("GUIDE-02 the heroes found by god, rarity or name, in either language", () => {

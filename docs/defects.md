@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **34 defects**: 34 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **35 defects**: 35 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -47,6 +47,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-032](#def-032) | 2026-11-09 | A hero's line crushed on a phone | code | minor | ✓ fixed |
 | [DEF-033](#def-033) | 2026-11-09 | The dev server kept the texts it started with | tool | minor | ✓ fixed |
 | [DEF-034](#def-034) | 2026-11-09 | The import review scrolled sideways on a narrow screen | code | minor | ✓ fixed |
+| [DEF-035](#def-035) | 2026-11-09 | A tick box drawn as a text field | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -476,3 +477,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** Same lesson as DEF-032, widened: a check that only knows one way a layout breaks lets the next one through; it was looked at in the browser, and the check grew with it.
 - **Proof:** `tests/styles.test.js`
 - **Links:** COMP-01, CFG-05
+
+<a id="def-035"></a>
+### DEF-035 · A tick box drawn as a text field
+
+`2026-11-09` · code · minor · ✓ fixed · tags: `page`
+
+- **Finding:** In the rituals' guide, the tick box "With bonuses in battle only" showed as a large empty field beside its words. Seen in the browser before the commit.
+- **Cause:** base.css gives every input the full width of its row and a field's height; each list of tick boxes undid it on its own (the filters, the pickers, the switch), and the new one did not.
+- **Solution:** base.css undoes it once for every tick box and radio button, with the accent when ticked; the three copies are gone. A test reads the stylesheets: the fields' width is undone for tick boxes, once, in base.css.
+- **Result:** Every tick box keeps its own size, the next one included; the test fails without the rule.
+- **Lesson:** A rule that every case must undo is a rule written too wide: narrow it where it is written, not in each case.
+- **Proof:** `tests/styles.test.js`
+- **Links:** COMP-01, GUIDE-03

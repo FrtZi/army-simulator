@@ -1,10 +1,12 @@
-// The Guides (GUIDE-01): one tab per type of block. The heroes' guide is drawn from their complete data; each other
-// block says what it will show and the version that brings its data (CONFIG.setupComing, the same as Your setup).
+// The Guides (GUIDE-01): one tab per type of block. The heroes', rituals' and structures' guides are drawn from their
+// data; the champion's says what it will show and the version that brings its data (CONFIG.setupComing).
 import { byId, escape } from "../../dom.js";
 import { CONFIG } from "../../config.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { guideHeroes, heroDetailHtml, heroFiltersHtml, heroListHtml } from "./heroes.js";
+import { LEVELLED, entryFiltersHtml, entryListHtml, shownEntries } from "./levelled.js";
+import { chosenEntry, entryDetailHtml } from "./levelled-detail.js";
 
 export const GUIDES = ["heroes", "rituals", "buildings", "champion"];
 
@@ -32,6 +34,22 @@ function drawHeroesGuide(panel) {
   drawGuideHeroes();
 }
 
+/** Only a ritual or structure list and the detail: a search typed in keeps its field. */
+export function drawGuideEntries(kind) {
+  const entry = chosenEntry(kind, shownEntries(kind));
+  byId(`guide-${kind}-list`).innerHTML = entryListHtml(kind);
+  byId(`guide-${kind}-detail`).innerHTML = entry ? entryDetailHtml(kind, entry) : "";
+}
+
+function drawLevelledGuide(panel, kind) {
+  panel.innerHTML = `${entryFiltersHtml(kind)}
+    <div class="guide-layout">
+      <ul id="guide-${kind}-list" class="guide-list" aria-label="${escape(t(`guides.${kind}`))}"></ul>
+      <div id="guide-${kind}-detail" class="guide-detail" aria-live="polite"></div>
+    </div>`;
+  drawGuideEntries(kind);
+}
+
 export function drawGuides() {
   for (const kind of GUIDES) {
     const tab = byId(`guide-tab-${kind}`);
@@ -42,6 +60,10 @@ export function drawGuides() {
   panel.setAttribute("aria-labelledby", `guide-tab-${state.guide.kind}`);
   if (state.guide.kind === "heroes" && currentGame().warlords.size) {
     drawHeroesGuide(panel);
+    return;
+  }
+  if (state.guide.kind in LEVELLED) {
+    drawLevelledGuide(panel, state.guide.kind);
     return;
   }
   const what = t(`guides.${state.guide.kind}What`);

@@ -187,8 +187,3 @@
 .multi-options label:hover {
   background: var(--field);
 }
-
-.multi-options input {
-  width: auto;
-  min-height: 0;
-}

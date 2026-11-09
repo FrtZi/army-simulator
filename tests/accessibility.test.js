@@ -64,6 +64,8 @@ for (const language of ["en", "fr"]) {
     page.click("#guide-hero-azazel");
     page.choose("#guide-rank", 1);
     assert.deepEqual(await violations(page), [], "guides");
+    page.click("#guide-tab-rituals"); // a ritual in detail: its bonuses, requirements, costs (GUIDE-03)
+    assert.deepEqual(await violations(page), [], "rituals' guide");
   });
 }
 

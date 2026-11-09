@@ -88,11 +88,6 @@
   cursor: pointer;
 }
 
-.picker-list input {
-  width: auto;
-  min-height: 0;
-}
-
 .battle-list li {
   display: grid;
   gap: 0.1rem;
