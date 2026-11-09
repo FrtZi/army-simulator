@@ -66,6 +66,9 @@ for (const language of ["en", "fr"]) {
     assert.deepEqual(await violations(page), [], "guides");
     page.click("#guide-tab-rituals"); // a ritual in detail: its bonuses, requirements, costs (GUIDE-03)
     assert.deepEqual(await violations(page), [], "rituals' guide");
+    page.$(".guide-detail [data-goto-item]").click(); // an item's page, its drops open (GUIDE-04)
+    page.$$(".guide-drops details").forEach((details) => details.setAttribute("open", ""));
+    assert.deepEqual(await violations(page), [], "items' guide");
   });
 }
 

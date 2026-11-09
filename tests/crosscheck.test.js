@@ -5,9 +5,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { buildWarlords, formatWarlords, readGame, savedPages } from "../scripts/import-warlords.mjs";
-import { buildItems, formatItems } from "../scripts/import-items.mjs";
+import { buildItems, formatItems, searchedName } from "../scripts/import-items.mjs";
 import { buildRituals, formatRituals, savedRituals } from "../scripts/import-rituals.mjs";
 import { buildStructures, formatStructures, savedStructures } from "../scripts/import-structures.mjs";
+import { buildItemSources, formatItemSources, readItems, savedAnswer } from "../scripts/import-item-sources.mjs";
 
 const GAME = "chaos-conquest";
 const reference = new URL(`../captures/${GAME}/sources/cctools-troops.json`, import.meta.url);
@@ -55,7 +56,7 @@ test(
   { skip: !existsSync(warlordPages) },
   () => {
     const levelled = existsSync(ritualPages) ? [...savedRituals().pages, ...savedStructures()] : [];
-    const made = formatItems(buildItems(savedPages(warlordPages), levelled));
+    const made = formatItems(buildItems(savedPages(warlordPages), levelled, searchedName));
     assert.equal(readFileSync(new URL(`../data/${GAME}/items.json`, import.meta.url), "utf8"), made);
   },
 );
@@ -70,5 +71,16 @@ test(
     const file = (name) => readFileSync(new URL(`../data/${GAME}/${name}`, import.meta.url), "utf8");
     assert.equal(file("rituals.json"), formatRituals(buildRituals(categories, pages, readGame())));
     assert.equal(file("structures.json"), formatStructures(buildStructures(savedStructures(), readGame())));
+  },
+);
+
+const itemAnswers = new URL(`../captures/${GAME}/sources/cctools/items/`, import.meta.url);
+
+test(
+  "DATA-08 the item sources file is exactly what the import makes from the saved answers",
+  { skip: !existsSync(itemAnswers) },
+  () => {
+    const made = formatItemSources(buildItemSources(readItems(), savedAnswer));
+    assert.equal(readFileSync(new URL(`../data/${GAME}/item-sources.json`, import.meta.url), "utf8"), made);
   },
 );

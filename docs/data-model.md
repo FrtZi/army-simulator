@@ -232,3 +232,11 @@ id and their names read in both languages (Chaotic Rift is `chaos-rift`). Each e
 | `requires` | per kind (`ritual`, `structure`) and id, the level it asks at each level; `null` where that level asks nothing       |
 
 cctools.cc's `upgrade_cost` is not imported: what it counts is not known yet.
+
+## Where items drop: `data/<game>/item-sources.json` (D-29)
+
+Written by `scripts/import-item-sources.mjs` from cctools.cc's saved answers (its item search, then each item's
+army, raid, Foe and resource sources), never by hand. `places`: one per kind and name (`foe-vampire-lord`), in both
+languages; `items`: per item of `items.json`, each drop `{ "place", "level" }` and the averages that are not zero
+(`perHit`, `perChest`, `perSpoil`, `perChampion`, `perCompletion` for a resource tile's gathering). What asks for an
+item is not stored: the warlords', rituals' and structures' costs already say it, and the guide reads them.

@@ -380,5 +380,5 @@ tasks = [
   "[x] The rituals' and buildings' guides: found by category, battle bonuses or name; each level's bonuses, requirements and cost (GUIDE-03)",
   "[ ] The champion's and gear's guide, with their data (BL-13)",
   "[x] The heroes' way up: what each level costs, in all from your level or from its unlock (GUIDE-04, D-29)",
-  "[ ] The way up of the other blocks: each level's cost and prerequisites, where to get each item (GUIDE-04)",
+  "[x] The way up of the rituals and buildings: each level's cost and requirements; each item's page, where it drops and what asks for it (GUIDE-04)",
 ]

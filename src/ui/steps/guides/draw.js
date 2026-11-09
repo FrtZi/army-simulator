@@ -7,8 +7,9 @@ import { t } from "../../texts/index.js";
 import { guideHeroes, heroDetailHtml, heroFiltersHtml, heroListHtml } from "./heroes.js";
 import { LEVELLED, entryFiltersHtml, entryListHtml, shownEntries } from "./levelled.js";
 import { chosenEntry, entryDetailHtml } from "./levelled-detail.js";
+import { itemDetailHtml, itemFiltersHtml, itemListHtml, shownItems } from "./items.js";
 
-export const GUIDES = ["heroes", "rituals", "buildings", "champion"];
+export const GUIDES = ["heroes", "rituals", "buildings", "champion", "items"];
 
 /** The hero shown: the one chosen if the filters still let it through, else the first they do. */
 function shownHero() {
@@ -50,6 +51,24 @@ function drawLevelledGuide(panel, kind) {
   drawGuideEntries(kind);
 }
 
+/** Only the items' list and the detail: a search typed in keeps its field. */
+export function drawGuideItems() {
+  const shown = shownItems();
+  const item = shown.find((entry) => entry.id === state.guide.items.id) ?? shown[0];
+  state.guide.items.id = item?.id ?? state.guide.items.id;
+  byId("guide-items-list").innerHTML = itemListHtml();
+  byId("guide-items-detail").innerHTML = item ? itemDetailHtml(item) : "";
+}
+
+function drawItemsGuide(panel) {
+  panel.innerHTML = `${itemFiltersHtml()}
+    <div class="guide-layout">
+      <ul id="guide-items-list" class="guide-list" aria-label="${escape(t("guides.items"))}"></ul>
+      <div id="guide-items-detail" class="guide-detail" aria-live="polite"></div>
+    </div>`;
+  drawGuideItems();
+}
+
 export function drawGuides() {
   for (const kind of GUIDES) {
     const tab = byId(`guide-tab-${kind}`);
@@ -60,6 +79,10 @@ export function drawGuides() {
   panel.setAttribute("aria-labelledby", `guide-tab-${state.guide.kind}`);
   if (state.guide.kind === "heroes" && currentGame().warlords.size) {
     drawHeroesGuide(panel);
+    return;
+  }
+  if (state.guide.kind === "items") {
+    drawItemsGuide(panel);
     return;
   }
   if (state.guide.kind in LEVELLED) {

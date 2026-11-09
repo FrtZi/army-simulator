@@ -28,6 +28,7 @@ data/                    each game's facts (JSON), the same for every player (D-
     ├── items.json       the resources and items costs name: imported (scripts/import-items.mjs), never edited (D-29)
     ├── rituals.json     the 373 rituals in 13 categories, level by level: imported (scripts/import-rituals.mjs)
     ├── structures.json  the 32 structures, level by level: imported (scripts/import-structures.mjs)
+    ├── item-sources.json  where each item drops: imported (scripts/import-item-sources.mjs)
     └── setup.json       the setup file's words: each element's definition, reading examples, the agent brief (D-28)
 src/engine/              pure functions, no DOM, no file access: callers pass the data
 ├── index.js             public API: the only file the page and the tests import
@@ -85,7 +86,7 @@ src/ui/                  the page
                          in warlords.js, the rituals' and buildings' levels in levelled.js, a file uploaded in
                          files.js, under review in import.js, drawn in review.js; D-27);
                          and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
-                         rituals' and buildings' in levelled.js and levelled-detail.js, what going up costs in costs.js)
+                         rituals' and buildings' in levelled.js and levelled-detail.js, the items' in items.js, what going up costs in costs.js)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
 scripts/
@@ -98,6 +99,7 @@ scripts/
 ├── import-items.mjs     data/<game>/items.json, the resources and items their costs name (D-29)
 ├── cctools.mjs          what the imports share: a saved page's data, a cost's item
 ├── import-rituals.mjs, import-structures.mjs   rituals.json and structures.json; levels.mjs: their levels read alike
+├── import-item-sources.mjs  item-sources.json, where each item drops
 ├── backlog*.mjs         the product backlog: its check and its page docs/backlog.md (npm run backlog)
 └── defects*.mjs         the defects register: its format, its check, its page docs/defects.md (npm run defects)
 examples/

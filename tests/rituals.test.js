@@ -83,3 +83,20 @@ test("DATA-07 every ritual in a category of the file; game.json's buildings amon
     assert.deepEqual(structure.labels, building.labels, `${building.id}: the names read in the game are kept`);
   }
 });
+
+test("DATA-08 where each item drops: a known item, a known place, a level, and how many on average", () => {
+  const sources = read("item-sources.json");
+  const places = new Set(sources.places.map((place) => place.id));
+  assert.equal(places.size, sources.places.length, "a place listed once");
+  for (const place of sources.places) {
+    assert.ok(["army", "raid", "foe", "resource"].includes(place.kind), place.id);
+    assert.ok(place.labels.en && place.labels.fr, place.id);
+  }
+  const problems = Object.entries(sources.items).flatMap(([item, drops]) => [
+    ...(items.has(item) ? [] : [`${item} is not in items.json`]),
+    ...drops
+      .filter((drop) => !places.has(drop.place) || !Number.isInteger(drop.level) || Object.keys(drop).length < 3)
+      .map((drop) => `${item}: ${JSON.stringify(drop)}`),
+  ]);
+  assert.deepEqual(problems, []);
+});

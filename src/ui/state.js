@@ -44,6 +44,7 @@ export const state = {
       rituals: { group: "", battle: false, search: "", id: null, level: null },
       buildings: { group: "", battle: false, search: "", id: null, level: null },
     },
+    items: { kind: "", search: "", id: null }, // the items' guide (GUIDE-04)
   },
   setupImport: null, // a setup file uploaded: what it brings, before it is applied (CFG-05)
   active: 0, // the composition being edited

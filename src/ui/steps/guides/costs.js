@@ -8,6 +8,9 @@ import { costBetween, rankOf } from "../../../engine/index.js";
 import { t } from "../../texts/index.js";
 
 const itemName = (id) => label(currentGame().items.get(id)) || id;
+// the item's name opens its page in the items' guide: where it drops, what asks for it (GUIDE-04)
+const itemLink = (id) =>
+  `<button type="button" class="link-button" data-goto-item="${id}">${escape(itemName(id))}</button>`;
 
 /** The cost table of the level shown; `from` names where the total starts (the player's level, or nothing). */
 export function costsTable(entry, level, mine, from) {
@@ -18,9 +21,7 @@ export function costsTable(entry, level, mine, from) {
     (text, column) => `<th scope="col"${column ? ' class="num"' : ""}>${escape(text)}</th>`,
   );
   const cell = (costs, item) => `<td class="num">${costs[item] ? number(costs[item]) : "—"}</td>`;
-  const rows = items.map(
-    (item) => `<tr><td>${escape(itemName(item))}</td>${cell(step, item)}${cell(total, item)}</tr>`,
-  );
+  const rows = items.map((item) => `<tr><td>${itemLink(item)}</td>${cell(step, item)}${cell(total, item)}</tr>`);
   const reached = mine >= level ? `<p class="hint">${escape(t("guides.reached"))}</p>` : "";
   const body = rows.length ? rows.join("") : `<tr><td colspan="3">${escape(t("guides.free"))}</td></tr>`;
   return `<h4>${escape(t("guides.costs"))}</h4>${reached}

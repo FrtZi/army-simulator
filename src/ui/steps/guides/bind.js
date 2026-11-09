@@ -4,7 +4,7 @@ import { byId, keepingFocus } from "../../dom.js";
 import { currentGame, state } from "../../state.js";
 import { levelOf } from "../../../engine/index.js";
 import { bindTablist } from "../../tablist.js";
-import { GUIDES, drawGuideEntries, drawGuideHeroes, drawGuides } from "./draw.js";
+import { GUIDES, drawGuideEntries, drawGuideHeroes, drawGuideItems, drawGuides } from "./draw.js";
 import { LEVELLED, guideOf } from "./levelled.js";
 
 /** A ritual or structure guide's filter, search or level changed, or an entry chosen. */
@@ -33,6 +33,34 @@ function bindLevelled(panel) {
   });
 }
 
+/** The items' guide: its filters, an item chosen; and from any cost table, an item's name opens its page here. */
+function bindItems(panel) {
+  panel.addEventListener("change", (event) => {
+    const { guideItems: field } = event.target.dataset;
+    if (field !== "kind") return;
+    state.guide.items.kind = event.target.value;
+    keepingFocus(drawGuideItems);
+  });
+  panel.addEventListener("input", (event) => {
+    if (event.target.dataset.guideItems !== "search") return;
+    state.guide.items.search = event.target.value;
+    drawGuideItems();
+  });
+  panel.addEventListener("click", (event) => {
+    const chosen = event.target.closest("[data-guide-item]");
+    const goTo = event.target.closest("[data-goto-item]");
+    if (chosen) {
+      state.guide.items.id = chosen.dataset.guideItem;
+      keepingFocus(drawGuideItems);
+    } else if (goTo) {
+      Object.assign(state.guide.items, { id: goTo.dataset.gotoItem, kind: "", search: "" });
+      state.guide.kind = "items";
+      drawGuides();
+      byId("guide-items-title").focus();
+    }
+  });
+}
+
 function show(kind) {
   state.guide.kind = kind;
   drawGuides();
@@ -43,6 +71,7 @@ export function bindGuides() {
   bindTablist(document.querySelector(".guide-tabs"), GUIDES, () => state.guide.kind, show, "guide");
   const panel = byId("guide-panel");
   bindLevelled(panel);
+  bindItems(panel);
   panel.addEventListener("change", (event) => {
     const { id, value } = event.target;
     if (id === "guide-god" || id === "guide-rarity") state.guide[id.slice("guide-".length)] = value;

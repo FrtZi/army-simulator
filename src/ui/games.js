@@ -10,6 +10,7 @@ import chaosConquestSetup from "../../data/chaos-conquest/setup.json" with { typ
 import chaosConquestItems from "../../data/chaos-conquest/items.json" with { type: "json" };
 import chaosConquestRituals from "../../data/chaos-conquest/rituals.json" with { type: "json" };
 import chaosConquestStructures from "../../data/chaos-conquest/structures.json" with { type: "json" };
+import chaosConquestItemSources from "../../data/chaos-conquest/item-sources.json" with { type: "json" };
 import { indexCatalogue } from "../engine/index.js";
 import { setupDictionary } from "../storage/setup-dictionary.js";
 
@@ -24,6 +25,7 @@ const DATA = {
     items: chaosConquestItems,
     rituals: chaosConquestRituals,
     structures: chaosConquestStructures,
+    itemSources: chaosConquestItemSources,
   },
 };
 

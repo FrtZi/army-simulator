@@ -35,6 +35,7 @@ test("GUIDE-01 a tab per type of block: heroes, rituals and buildings drawn, the
     "Rituals",
     "Buildings",
     "Champion and gear",
+    "Items",
   ]);
   assert.equal(listed(page).length, warlords.length);
   page.click("#guide-tab-rituals");
@@ -147,4 +148,21 @@ test("GUIDE-01 the guides read in French", () => {
   const page = openGuides({ saved: "fr" });
   assert.equal(page.text("#page-tab-guides"), "Guides");
   assert.equal(page.text("#guide-tab-heroes"), "Héros");
+});
+
+test("GUIDE-04 an item's page: where it drops, what asks for it; reached from a cost table, the focus on it", () => {
+  const page = openGuides();
+  page.click("#guide-hero-azazel");
+  page.$('.guide-detail [data-goto-item="azazel-favour"]').click();
+  assert.equal(page.$("#guide-tab-items").getAttribute("aria-selected"), "true");
+  assert.equal(page.text("#guide-items-title"), "Azazel Favour");
+  assert.equal(page.window.document.activeElement.id, "guide-items-title");
+  // item-sources.json: the Vampire Lord Foe, levels 8 to 12, up to 1.6 per chest at level 12
+  assert.equal(textOf(page.$(".guide-drops summary")), "Vampire Lord (Foe), levels 8 to 12: up to 1.6 per chest");
+  // warlords.json: Azazel's favours over its 35 levels, 200 + 250 + … + 2,250 = 20,475
+  assert.equal(textOf(page.$(".guide-uses li")), "Azazel (Heroes): 20,475 over all its levels");
+  page.choose("#guide-items-kind", "currency");
+  assert.ok(page.$$("#guide-items-list [data-guide-item]").length >= 5, "the resources: food, stone, lead, wood, iron");
+  page.click("#guide-item-iron");
+  assert.match(page.text(".guide-detail"), /No drop known/);
 });
