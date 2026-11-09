@@ -4,6 +4,7 @@ import { CONFIG } from "./config.js";
 import { GAMES } from "./games.js";
 import { armyProfile, compareArmies, effectProblems, summariseArmy } from "../engine/index.js";
 import { heroUnits, talentsOf } from "./heroes.js";
+import { asPlayed, capacityInPlay, setupBonuses } from "./lab-setup.js";
 
 /** The language: the one remembered in this browser, else the browser's own if the page has it. */
 function startLanguage() {
@@ -28,6 +29,7 @@ export const state = {
   // each { name, troops: troop id → count in the order added, heroes: [{ id, level }], talents: [talent ids] }
   compositions: emptyCompositions(),
   page: "lab", // the page tab shown: the Battle lab or Your setup (NAV-01)
+  useSetup: false, // "Load your setup" in the Battle lab: the saved setup replaces what it holds (D-27)
   // the player's setup (D-27): the one edited, the last one saved, and whether the last save failed
   playerSetup: null,
   savedPlayerSetup: null,
@@ -80,7 +82,7 @@ export function bonusRow(effect) {
   return { stat: effect.stat, percent: effect.percent, filter, value: String(value) };
 }
 
-export const capacityEffect = () => ({ stat: "marchCapacity", percent: state.capacityBonus });
+export const capacityEffect = () => ({ stat: "marchCapacity", percent: capacityInPlay(state).percent });
 
 /** The problems of an effect in the current game (empty when it is valid). */
 export function problemsOf(effect) {
@@ -90,15 +92,17 @@ export function problemsOf(effect) {
 
 /** Every valid effect: a bonus with a problem is shown with it, and left out of the figures. */
 export function validEffects() {
-  return [...state.bonuses.map(bonusEffect), capacityEffect()].filter((effect) => !problemsOf(effect).length);
+  const bonuses = setupBonuses(state) ? state.savedPlayerSetup.bonuses : state.bonuses.map(bonusEffect);
+  return [...bonuses, capacityEffect()].filter((effect) => !problemsOf(effect).length);
 }
 
 /** A composition as the engine sees it: its troops with every bonus, its talents' included, and its heroes. */
 function summarise(composition) {
   const game = currentGame();
-  const effects = [...validEffects(), ...talentsOf(composition, game).effects];
-  const limits = { marchCapacity: state.marchCapacity };
-  return summariseArmy(composition.troops, game.catalogue, effects, limits, heroUnits(composition, game));
+  const played = asPlayed(composition, state);
+  const effects = [...validEffects(), ...talentsOf(played, game).effects];
+  const limits = { marchCapacity: capacityInPlay(state).base };
+  return summariseArmy(composition.troops, game.catalogue, effects, limits, heroUnits(played, game));
 }
 
 /** The composition being edited as the engine sees it, and its profile. */

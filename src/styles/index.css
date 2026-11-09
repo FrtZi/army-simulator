@@ -8,4 +8,5 @@
 @import "../ui/steps/heroes/heroes.css"; /* a part's own styles sit with it */
 @import "../ui/steps/dashboards/dashboards.css";
 @import "../ui/steps/setup/setup.css";
+@import "../ui/steps/load/load.css";
 @import "./responsive.css";

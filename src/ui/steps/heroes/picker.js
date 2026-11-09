@@ -9,7 +9,10 @@ import { troopIcon } from "../../icons.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 
-const warlords = () => [...currentGame().warlords.values()];
+// with the setup loaded, only the heroes owned can join a composition (D-27)
+const owned = () => new Set(state.savedPlayerSetup.warlords.map((warlord) => warlord.id));
+const warlords = () =>
+  [...currentGame().warlords.values()].filter((warlord) => !state.useSetup || owned().has(warlord.id));
 const inComposition = (id) => state.composition.heroes.some((hero) => hero.id === id);
 
 /** The warlords matching the search (in either language) and every filter set. */

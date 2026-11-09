@@ -58,6 +58,7 @@ src/ui/                  the page
 ├── games.js             the games and their data (the JSON imports the build bundles)
 ├── state.js             the single mutable state, and what derives from it (effects, army, profile)
 ├── player-setup.js      the player's setup on the page: the one edited, the last saved, what differs (D-27)
+├── lab-setup.js         the saved setup in the Battle lab: heroes owned at their levels, capacity, bonuses
 ├── render.js            the render pipeline: what to redraw after a change
 ├── texts/               the page's texts: en.js + en-more, en-dash, en-heroes, en-setup, and the same in French
 │                        (same keys), t()
@@ -71,7 +72,7 @@ src/ui/                  the page
 └── steps/<part>/        everything a part of the page needs: <part>.html (its markup, included by the build),
                          draw.js (state → DOM), bind.js (controls → state), and its own styles if any:
                          page (language, theme, the page tabs: tabs.html, tabs.js), game, then the Battle lab's:
-                         bonuses, army (+ compositions), picker, heroes
+                         load (the "Load your setup" switch), bonuses, army (+ compositions), picker, heroes
                          (+ picker.js; heroes.js beside state.js works out a composition's heroes),
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;

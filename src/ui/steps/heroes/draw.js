@@ -5,6 +5,7 @@ import { byId, escape } from "../../dom.js";
 import { label, nameOf, number, tierName } from "../../format.js";
 import { ICONS, troopIcon } from "../../icons.js";
 import { heroesOf, talentsOf } from "../../heroes.js";
+import { asPlayed, notOwned } from "../../lab-setup.js";
 import { currentGame, state } from "../../state.js";
 import { heroUnit, rankOf } from "../../../engine/index.js";
 import { t } from "../../texts/index.js";
@@ -26,7 +27,7 @@ const options = (count, selected) =>
 function choice(key, id, name, count, selected) {
   const field = `${key}-${id}`;
   return `<label for="${field}"><span aria-hidden="true">${escape(t(`heroes.${key}`))}</span><span class="visually-hidden">${escape(t(`heroes.${key}Of`, { name }))}</span></label>
-    <select id="${field}" data-${key}="${id}">${options(count, selected)}</select>`;
+    <select id="${field}" data-${key}="${id}"${state.useSetup ? " disabled" : ""}>${options(count, selected)}</select>`;
 }
 
 function heroLine({ warlord, level }) {
@@ -67,7 +68,7 @@ function talentItem(talent, chosen, full, inactive) {
 
 export function drawTalents() {
   const game = currentGame();
-  const { offered, chosen } = talentsOf(state.composition, game);
+  const { offered, chosen } = talentsOf(asPlayed(state.composition, state), game);
   const max = game.game.heroRules.talentsPerArmy;
   byId("talents-title").textContent = t("talents.title", { n: chosen.length, max });
   if (!offered.length) {
@@ -85,10 +86,14 @@ export function drawTalents() {
 }
 
 export function drawHeroLines() {
-  const heroes = heroesOf(state.composition, currentGame());
+  const heroes = heroesOf(asPlayed(state.composition, state), currentGame());
+  const left = notOwned(state.composition, state).map(({ id }) => label(currentGame().warlords.get(id)));
+  const leftOut = left.length
+    ? `<p class="problem"><span aria-hidden="true">⚠</span> ${escape(t("load.notOwned", { names: left.join(", ") }))}</p>`
+    : "";
   byId("hero-lines").innerHTML = heroes.length
-    ? `<ul class="army-list">${heroes.map(heroLine).join("")}</ul>`
-    : `<p class="empty">${escape(t("heroes.empty", { name: state.composition.name || state.active + 1 }))}</p>`;
+    ? `<ul class="army-list">${heroes.map(heroLine).join("")}</ul>${leftOut}`
+    : `<p class="empty">${escape(t("heroes.empty", { name: state.composition.name || state.active + 1 }))}</p>${leftOut}`;
 }
 
 export function drawHeroes() {

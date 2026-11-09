@@ -37,4 +37,18 @@ export const FR_SETUP = {
   "setup.changed": "modifié",
   "setup.removed": "Retirés depuis le dernier enregistrement : {names}.",
   "setup.capacity": "Capacité de marche",
+  "load.title": "Votre configuration dans le laboratoire",
+  "load.label": "Charger votre configuration",
+  "load.on": "Activé : les compositions jouent avec votre configuration enregistrée.",
+  "load.off":
+    "Désactivé : jeu libre, n'importe quel héros à n'importe quel niveau, la capacité et les bonus saisis plus bas.",
+  "load.none":
+    "Rien n'est encore enregistré dans Votre configuration : saisissez-y ce que vous avez dans le jeu, puis Enregistrer.",
+  "load.open": "Ouvrir Votre configuration",
+  "load.heroes": "seulement vos héros ({n} sur {total}), à leurs niveaux",
+  "load.capacity": "capacité de marche {base} + {percent} %",
+  "load.labCapacity": "la capacité de marche saisie plus bas",
+  "load.bonuses": "les {n} bonus de votre configuration",
+  "load.labBonuses": "les bonus saisis plus bas",
+  "load.notOwned": "Absents de votre configuration, laissés hors des chiffres : {names}.",
 };

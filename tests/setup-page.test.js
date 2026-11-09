@@ -1,7 +1,7 @@
 // The page's tabs and Your setup, on the published page in jsdom (NAV-01, CFG-04, D-27).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { openPage } from "./page.js";
+import { addTroops, openPage } from "./page.js";
 
 const shown = (page, id) => !page.$(`#${id}`).hidden;
 const key = (page, selector, name) =>
@@ -108,6 +108,69 @@ test("CFG-04 the saved setup is there on the next visit, kept as a setup file; l
   const next = openPage({ stored: { [SETUP_KEY]: stored } });
   assert.match(next.text("#setup-warlord-list .meta"), /level 24/);
   assert.equal(status(next), "✓ Saved in this browser.");
+});
+
+const SAVED = JSON.stringify({
+  "chaos-conquest": {
+    format: "army-simulator/setup",
+    version: 1,
+    game: "chaos-conquest",
+    warlords: [{ id: "azazel", rank: 5, level: 4 }],
+    capacity: { base: 110000, bonusPercent: 35 },
+    bonuses: [{ stat: "meleeAttack", percent: 12, target: { unitTypes: ["infantry"] } }],
+  },
+});
+const heroNames = (page) => page.$$("#hero-lines .name").map((name) => name.textContent);
+
+test("CFG-04 Load your setup: only the heroes owned at their levels, the setup's capacity and bonuses; off, free play", () => {
+  const page = openPage({ stored: { [SETUP_KEY]: SAVED } });
+  for (const id of ["azazel", "bloodthirster"]) {
+    page.click("#hero-picker-toggle");
+    page.tick(`#pick-hero-${id}`);
+    page.click("#hero-picker-add");
+  }
+  assert.equal(page.$("#load-setup-toggle").checked, false, "off by default: free play");
+  page.tick("#load-setup-toggle");
+  assert.deepEqual(heroNames(page), ["Azazel"]);
+  assert.match(page.text("#hero-lines"), /level 24 · power 95,000/); // rank 5, level 4: warlords.json
+  assert.match(page.text("#hero-lines"), /Not in your setup, left out of the figures: Bloodthirster\./);
+  assert.ok(page.$("#rank-azazel").disabled, "the level is the setup's");
+  assert.equal(page.$("#capacity-base").value, "110000");
+  assert.ok(page.$("#capacity-base").disabled && page.$("#capacity-bonus").disabled);
+  assert.match(page.text("#capacity .capacity-total"), /= 148,500/); // 110,000 + 35 %
+  assert.match(page.text("#bonus-list"), /your setup's 1 bonuses/);
+  assert.match(page.text("#load-setup-status"), /^On: compositions play with your saved setup\./);
+  page.click("#hero-picker-toggle");
+  assert.deepEqual(
+    page.$$("#hero-picker-list [data-pick-hero]").map((box) => box.dataset.pickHero),
+    ["azazel"],
+    "only the heroes owned can be picked",
+  );
+  page.click("#hero-picker-toggle");
+  page.untick("#load-setup-toggle");
+  assert.deepEqual(heroNames(page), ["Azazel", "Bloodthirster"]);
+  assert.match(page.text("#hero-lines"), /level 1 ·/);
+  assert.equal(page.$("#capacity-base").value, "50000");
+  assert.ok(!page.$("#capacity-base").disabled);
+});
+
+test("CFG-04 the setup's bonuses count in the figures once loaded, and only then", () => {
+  const page = openPage({ stored: { [SETUP_KEY]: SAVED } });
+  addTroops(page, ["marauders"]); // infantry, no hero: only the setup's +12 % melee attack on infantry differs
+  const free = page.metric("damage");
+  page.tick("#load-setup-toggle");
+  const loaded = page.metric("damage");
+  assert.ok(Number(loaded.replace(/\D/g, "")) > Number(free.replace(/\D/g, "")), `${loaded} > ${free}`);
+  page.untick("#load-setup-toggle");
+  assert.equal(page.metric("damage"), free);
+});
+
+test("CFG-04 with nothing saved in Your setup, the switch cannot be turned on and says where to go", () => {
+  const page = openPage();
+  assert.ok(page.$("#load-setup-toggle").disabled);
+  assert.match(page.text("#load-setup-status"), /^Nothing is saved in Your setup yet/);
+  page.click("#load-setup-open");
+  assert.ok(!page.$("#page-panel-setup").hidden);
 });
 
 test("CFG-04 a saved setup the browser kept damaged opens empty, without an error", () => {

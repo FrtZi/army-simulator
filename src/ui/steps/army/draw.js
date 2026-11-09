@@ -6,13 +6,18 @@ import { label, number, troopMeta } from "../../format.js";
 import { ICONS, troopIcon } from "../../icons.js";
 import { term } from "../../glossary/tooltip.js";
 import { capacityEffect, currentArmy, currentGame, problemsOf, state } from "../../state.js";
+import { capacityInPlay, fromSetup } from "../../lab-setup.js";
 import { t } from "../../texts/index.js";
 
 const PERCENT = 100;
 
+/** The capacity's fields: the lab's values, or the setup's, shown and locked, when it is loaded and holds them. */
 export function drawCapacityFields() {
-  byId("capacity-base").value = state.marchCapacity;
-  byId("capacity-bonus").value = Number.isFinite(state.capacityBonus) ? state.capacityBonus : "";
+  const { base, percent } = capacityInPlay(state);
+  byId("capacity-base").value = base;
+  byId("capacity-bonus").value = Number.isFinite(percent) ? percent : "";
+  byId("capacity-base").disabled = fromSetup(state, "base");
+  byId("capacity-bonus").disabled = fromSetup(state, "bonusPercent");
 }
 
 /** The tabs of the compositions and the "new" one, the name of the one being edited; delete only if not alone. */

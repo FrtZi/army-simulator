@@ -19,6 +19,7 @@ import { drawDashboards } from "./steps/dashboards/draw.js";
 import { drawSetupCapacityFields, drawSetupStatus } from "./steps/setup/draw.js";
 import { drawSetupWarlords } from "./steps/setup/warlords.js";
 import { drawSetupReview } from "./steps/setup/review.js";
+import { drawLoadSetup } from "./steps/load/draw.js";
 
 export function refresh() {
   drawBonusProblems();
@@ -34,6 +35,7 @@ export function renderAll() {
     applyTexts();
     drawThemeToggle();
     drawPageTabs();
+    drawLoadSetup();
     drawGame();
     drawBonuses();
     drawCapacityFields();

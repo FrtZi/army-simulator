@@ -6,6 +6,7 @@ import { currentGame, state } from "../../state.js";
 import { levelOf } from "../../../engine/index.js";
 import { discardSetupChanges, savePlayerSetup, unsavedCount } from "../../player-setup.js";
 import { drawSetup, drawSetupStatus } from "./draw.js";
+import { renderAll } from "../../render.js";
 
 function bindWarlords() {
   byId("setup-warlord-add").addEventListener("click", () => {
@@ -49,7 +50,7 @@ export function bindSetup() {
   bindCapacity("setup-capacity-bonus", "bonusPercent");
   byId("setup-save").addEventListener("click", () => {
     savePlayerSetup();
-    drawSetup();
+    renderAll(); // the Battle lab plays with the saved setup when it is loaded
   });
   byId("setup-discard").addEventListener("click", () => {
     discardSetupChanges();

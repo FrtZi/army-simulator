@@ -28,7 +28,9 @@ The file carries every section from the start; a section the site cannot use yet
 - **Two page tabs:** "Battle lab" (the page as it is today) and **"Your setup"**.
 - **In the Battle lab, a switch "Load your setup"**, above the compositions: on, compositions pick only the
   warlords owned, at their levels, with the setup's capacity and bonuses; off, free play (any warlord at
-  any level, capacity and bonuses entered in the lab). The setup is kept either way.
+  any level, capacity and bonuses entered in the lab). The setup is kept either way. Each thing the saved
+  setup holds replaces the lab's; what it does not hold (no capacity entered, no bonus yet) is taken from the
+  lab, and the switch says which. A composition's hero the setup does not own is named and left out.
 - **Your setup, one view:** a summary of everything (one tile per section, its key figure, its state with
   an icon and a word, and where the last change came from), then the sections. What is typed and what a
   file brings land in the same fields, each editable; a row says whether it came by hand or from a file.

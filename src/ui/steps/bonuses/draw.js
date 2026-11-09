@@ -5,6 +5,7 @@ import { byId, escape, options } from "../../dom.js";
 import { label, tierName } from "../../format.js";
 import { ICONS } from "../../icons.js";
 import { bonusEffect, currentGame, problemsOf, state } from "../../state.js";
+import { setupBonuses } from "../../lab-setup.js";
 import { t } from "../../texts/index.js";
 
 const field = (id, text, control) => `<div class="field"><label for="${id}">${escape(text)}</label>${control}</div>`;
@@ -41,6 +42,13 @@ function bonusRow(bonus, index) {
 }
 
 export function drawBonuses() {
+  byId("bonus-add").disabled = setupBonuses(state);
+  if (setupBonuses(state)) {
+    const n = state.savedPlayerSetup.bonuses.length;
+    byId("bonus-list").innerHTML =
+      `<p class="status"><span aria-hidden="true">✓</span> ${escape(t("load.bonuses", { n }))}</p>`;
+    return;
+  }
   byId("bonus-list").innerHTML = state.bonuses.length
     ? state.bonuses.map(bonusRow).join("")
     : `<p class="empty">${escape(t("bonuses.empty"))}</p>`;

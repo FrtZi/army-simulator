@@ -16,7 +16,8 @@ export const heroUnits = (composition, game) =>
 /** The talents the heroes offer, and the chosen ones as effects (or inactive: open question 16). */
 export function talentsOf(composition, game) {
   const offered = offeredTalents(heroesOf(composition, game));
-  const chosen = composition.talents ?? [];
+  // a chosen talent no hero offers at the level in play (the setup's may be lower) is not counted
+  const chosen = (composition.talents ?? []).filter((id) => offered.some((talent) => talent.id === id));
   return { offered, chosen, ...talentEffects(chosen, offered, game.talents, game.game.talentCodes) };
 }
 

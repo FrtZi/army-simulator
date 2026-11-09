@@ -16,7 +16,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Milestone | Musts done | Items done | Tasks done | Reached |
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
-| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 16/19 | ○ not yet: 1 Must left |
+| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 17/19 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `░░░░░░░░░░░░░░░░░░░░` 0/2 | 0/4 | 0/10 | ○ not yet: 2 Musts left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 0/7 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
@@ -133,7 +133,7 @@ The warlords in a composition, at their level, their bonuses applied; what the p
 | [BL-05](#bl-05) | Tooling majors: ESLint 10, jsdom 30, html-validate 11 | must | framework | ✓ done | 3/3 |
 | [BL-06](#bl-06) | Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels | must | [data](../data) | ✓ done | 3/3 |
 | [BL-07](#bl-07) | Heroes in a composition: up to 3 warlords, 4 talents, at their level | must | [ui](../src/ui) | ✓ done | 5/5 |
-| [BL-08](#bl-08) | The player's setup: everything they have in game, entered by hand or uploaded | must | [storage](../src/storage) | ◐ doing | 5/8 |
+| [BL-08](#bl-08) | The player's setup: everything they have in game, entered by hand or uploaded | must | [storage](../src/storage) | ◐ doing | 6/8 |
 
 <a id="bl-05"></a>
 #### BL-05 · Tooling majors: ESLint 10, jsdom 30, html-validate 11
@@ -180,7 +180,7 @@ Frantz, 2026-11-09: it holds everything (every bonus source, shaped on cctools.c
 - [x] Your setup: the summary of everything, the heroes at their rank and level, the march capacity; Save, Discard, unsaved changes shown
 - [ ] The bonus rows in Your setup (the others as their data comes)
 - [x] A setup file uploaded and downloaded, checked, refused with its reasons
-- [ ] Use my setup or open the lab: compositions draw on the setup, or play freely
+- [x] Use my setup or open the lab: compositions draw on the setup, or play freely
 - [x] The guide: how to fill it, by hand or with an agent reading screenshots
 - [ ] Kept in the browser, saved, exported and imported (configuration version 3)
 
