@@ -104,6 +104,53 @@ test("GUIDE-06 a piece shows its set, what it gives by pieces worn, and a way to
   assert.match(alone.text("#guide-champion-detail"), /Not part of a set/);
 });
 
+function openLab(options) {
+  const page = openPage(options);
+  page.click("#page-tab-guides");
+  page.click("#guide-tab-champion");
+  page.choose("#guide-champion-view", "lab");
+  return page;
+}
+
+test("GUIDE-09 the set lab: a set chosen puts its pieces in their slots and filters the lists; level and rarity in one list", () => {
+  const page = openLab();
+  assert.equal(page.$$(".lab-slot .slot-icon svg").length, 6, "a pictogram per slot");
+  assert.equal(page.$("#lab-piece-weapon").value, "", "nothing worn: no setup saved");
+  page.choose("#lab-set", "chosen-set-bonus");
+  // champion.json: the Chosen Set Bonus, a piece for each of the six slots
+  assert.equal(page.$("#lab-piece-head").value, "chaos-gear-helm");
+  assert.equal(page.$("#lab-piece-boots").value, "chaos-gear-legs");
+  assert.deepEqual(optionsOf(page, "#lab-piece-head"), ["None", "Skull Helm of the Chosen"], "only the set's piece");
+  assert.equal(page.$("#lab-level-weapon option:checked").textContent, "◆ 1 · Core");
+  assert.ok(page.$("#lab-level-weapon").classList.contains("rarity-core"));
+  page.choose("#lab-level-weapon", 6);
+  assert.ok(page.$("#lab-level-weapon").classList.contains("rarity-eternal"));
+  assert.match(page.text("#guide-champion-detail"), /Chosen Set Bonus: 6 of 6 pieces worn, its 6-piece bonus reached/);
+  assert.match(page.text("#guide-champion-detail"), /Champion's march: Health/);
+  assert.match(page.text("#guide-champion-detail"), /What it asks, from nothing/);
+  page.choose("#lab-set", "");
+  assert.ok(optionsOf(page, "#lab-piece-head").length > 2, "every piece again");
+  assert.equal(page.$("#lab-piece-head").value, "chaos-gear-helm", "the pieces chosen stay");
+});
+
+test("GUIDE-09 the set lab starts from the saved setup's gear; what it asks adds each piece's costs from nothing", () => {
+  const saved = JSON.stringify({
+    "chaos-conquest": {
+      format: "army-simulator/setup",
+      version: 1,
+      game: "chaos-conquest",
+      champion: { gear: [{ id: "vambraces-of-gore", level: 2 }] },
+    },
+  });
+  const page = openLab({ stored: { [SETUP_KEY]: saved } });
+  assert.equal(page.$("#lab-piece-gloves").value, "vambraces-of-gore");
+  // Vambraces of Gore: iron 10,000 at Core, 40,000 at Uncommon (the game's forge, Frantz's screenshots)
+  const iron = page.$$("#guide-champion-detail tr").find((row) => row.cells[0]?.textContent.includes("Iron"));
+  assert.equal(textOf(iron.cells[1]), "50,000");
+  iron.querySelector("[data-goto-item]").click();
+  assert.equal(page.text("#guide-items-title"), "Iron");
+});
+
 test("BONUS-08 Your setup shows the champion's own stats at its level and what its gear gives in all", () => {
   const page = openPage();
   page.click("#page-tab-setup");

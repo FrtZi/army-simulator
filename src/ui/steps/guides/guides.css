@@ -273,3 +273,30 @@
 .map-node.goal {
   background: var(--key);
 }
+
+/* the set lab (GUIDE-09): a slot per line, its pictogram, its piece, its level and rarity in one list */
+.lab-slots {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.75rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lab-slot {
+  display: grid;
+  grid-template-columns: 7rem 1fr minmax(9rem, 12rem);
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lab-slot label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.slot-icon {
+  display: inline-flex;
+  color: var(--muted);
+}

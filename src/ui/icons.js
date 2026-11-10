@@ -29,6 +29,20 @@ const TYPE_ICONS = {
   hero: '<path d="M2 12.5 3 5l3 3 2-5 2 5 3-3 1 7.5Z"/><path d="M3 14.5h10"/>', // a crown: a warlord
 };
 
+// one pictogram per slot of the champion's gear, in the game's order (GUIDE-09)
+const SLOT_ICONS = {
+  head: '<path d="M3 10a5 5 0 0 1 10 0v3H3Z"/><path d="M6 10v3M10 10v3"/>',
+  chest: '<path d="M3 3l3-1 2 2 2-2 3 1-1 5 1 6H3l1-6Z"/>',
+  gloves: '<path d="M5 14V6l1-3 1 3V3l1 3V2.5l1 3.5V4l1 3v3l-2 4Z"/>',
+  weapon: '<path d="M3 13 11 5M9 3l4 4-2 2-4-4Z"/>',
+  boots: '<path d="M5 2h4v8l4 2v2H4Z"/>',
+  relic: '<path d="M8 2v3"/><circle cx="8" cy="9.5" r="4"/><path d="M8 7.5v4M6 9.5h4"/>',
+};
+
+/** The pictogram of a slot of the champion's gear; decorative, its name is written beside it. */
+export const slotIcon = (slot) =>
+  `<span class="slot-icon" aria-hidden="true">${svg(SLOT_ICONS[slot] ?? SLOT_ICONS.relic)}</span>`;
+
 /** The icon of a troop's type, in its god's colour (CSS class god-<alignment>). */
 export const troopIcon = (unit) =>
   `<span class="troop-icon god-${unit.alignment}">${svg(TYPE_ICONS[unit.unitType] ?? TYPE_ICONS.infantry, { size: 20 })}</span>`;

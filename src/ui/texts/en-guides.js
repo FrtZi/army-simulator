@@ -117,6 +117,12 @@ export const EN_GUIDES = {
   "map.stepsTitle": "The steps left, in order",
   "map.step": "from {from} to {to}",
   "map.reached": "Nothing left: your saved setup already reaches it.",
+  "guides.view-lab": "Try a set",
+  "lab.hint":
+    "A piece per slot, at a rarity: what the gear gives in all and what it asks from nothing. It starts from your saved setup's gear; nothing here is saved.",
+  "lab.set": "A set",
+  "lab.everySet": "Every piece",
+  "lab.asks": "What it asks, from nothing",
   "guides.setPieces": "Its pieces",
   "guides.setBonuses": "What it gives, by the number of pieces worn",
   "guides.piecesWorn": "{n} pieces",

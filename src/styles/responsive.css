@@ -64,7 +64,8 @@
   }
 
   /* the champion's gear: the slot's piece, then its level under it */
-  .setup-gear-row {
+  .setup-gear-row,
+  .lab-slot {
     grid-template-columns: 1fr;
   }
 }

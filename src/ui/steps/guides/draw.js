@@ -10,6 +10,7 @@ import { chosenEntry, entryDetailHtml } from "./levelled-detail.js";
 import { itemDetailHtml, itemFiltersHtml, itemListHtml, shownItems } from "./items.js";
 import { championDetailHtml, championFiltersHtml, pieceDetailHtml, setDetailHtml, shownPieces } from "./champion.js";
 import { label } from "../../format.js";
+import { setLabHtml } from "./set-lab.js";
 
 export const GUIDES = ["heroes", "rituals", "buildings", "champion", "items"];
 
@@ -57,10 +58,11 @@ function drawLevelledGuide(panel, kind) {
 export function drawGuideChampion() {
   const guide = state.guide.champion;
   const { champion } = currentGame();
-  const list = { champion: [], gear: shownPieces(), sets: champion.sets }[guide.view];
+  const list = { champion: [], gear: shownPieces(), sets: champion.sets, lab: [] }[guide.view];
   const chosen = list.find((entry) => entry.id === guide.id) ?? list[0];
   if (chosen && chosen.id !== guide.id) Object.assign(guide, { id: chosen.id, level: null });
-  byId("guide-champion-list").hidden = guide.view === "champion";
+  const alone = guide.view === "champion" || guide.view === "lab"; // no list beside them
+  byId("guide-champion-list").hidden = alone;
   byId("guide-champion-list").innerHTML = list
     .map(
       (entry) =>
@@ -71,8 +73,9 @@ export function drawGuideChampion() {
     champion: () => championDetailHtml(),
     gear: () => pieceDetailHtml(chosen),
     sets: () => setDetailHtml(chosen),
+    lab: setLabHtml,
   };
-  byId("guide-champion-detail").innerHTML = guide.view === "champion" || chosen ? detail[guide.view]() : "";
+  byId("guide-champion-detail").innerHTML = alone || chosen ? detail[guide.view]() : "";
 }
 
 function drawChampionGuide(panel) {

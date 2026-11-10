@@ -2,6 +2,7 @@
 // game shows them. A choice shows at once, unsaved until Save; no level and no piece leave the champion out.
 import { byId, escape, keepingFocus, options } from "../../dom.js";
 import { label } from "../../format.js";
+import { slotIcon } from "../../icons.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { drawSetupStatus } from "./draw.js";
@@ -26,7 +27,7 @@ function slotRow(slot) {
   const levels = piece ? options(gearLevelOptions(pieceLevels(piece)), current.level) : "";
   const name = t(`guides.slot-${slot}`);
   return `<li class="setup-gear-row">
-    <div class="field"><label for="setup-gear-${slot}">${escape(name)}</label><select id="setup-gear-${slot}" data-setup-gear="${slot}">${choice}</select></div>
+    <div class="field"><label for="setup-gear-${slot}">${slotIcon(slot)} ${escape(name)}</label><select id="setup-gear-${slot}" data-setup-gear="${slot}">${choice}</select></div>
     <div class="field"><label for="setup-gear-level-${slot}">${escape(t("setup.pieceLevel", { slot: name }))}</label><select id="setup-gear-level-${slot}" data-setup-gear-level="${slot}"${piece ? "" : " disabled"}>${levels}</select></div>
     ${piece ? rarityBadge(gearRarity(current.level)) : ""}
   </li>`;

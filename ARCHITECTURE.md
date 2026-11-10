@@ -93,7 +93,7 @@ src/ui/                  the page
                          champion.js, a file uploaded in
                          files.js, under review in import.js, drawn in review.js; D-27);
                          and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
-                         rituals' and buildings' in levelled.js and levelled-detail.js, the items' in items.js, the champion's in champion.js, what going up costs in costs.js, the map to reach a ritual in ritual-map.js)
+                         rituals' and buildings' in levelled.js and levelled-detail.js, the items' in items.js, the champion's in champion.js, what going up costs in costs.js, the map to reach a ritual in ritual-map.js, the set lab in set-lab.js)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
 scripts/
@@ -122,7 +122,7 @@ tests/                   node --test; each test names the feature it proves
 ├── setup-page.test.js   the page tabs and Your setup, on the published page (NAV-01, CFG-04)
 ├── setup-files.test.js  Your setup's files: uploaded and reviewed, downloaded, the brief copied (CFG-05, CFG-06)
 ├── guides.test.js       the Guides: the block tabs, the heroes found and shown level by level (GUIDE-01, GUIDE-02)
-├── gear.test.js         the gear's rarities, a piece's set, the champion's figures (GUIDE-05, GUIDE-06, BONUS-08)
+├── gear.test.js         the gear's rarities, a piece's set, the champion's figures, the set lab (GUIDE-05, 06, 09, BONUS-08)
 ├── ritual-map.test.js   the map to reach a ritual: prerequisites, states, the way, the steps (GUIDE-07)
 ├── styles.test.js       each selector's look in one stylesheet (DEF-031)
 ├── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens

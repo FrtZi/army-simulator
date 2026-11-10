@@ -1,6 +1,7 @@
 // The Guides' controls (GUIDE-01, GUIDE-02): the block tabs; in the heroes' guide, the filters, the search, a hero
 // chosen in the list, and the rank and level it is shown at.
 import { byId, keepingFocus } from "../../dom.js";
+import { chooseInSlot, chooseSet } from "./set-lab.js";
 import { currentGame, state } from "../../state.js";
 import { levelOf } from "../../../engine/index.js";
 import { bindTablist } from "../../tablist.js";
@@ -65,7 +66,13 @@ function bindItems(panel) {
 function bindChampion(panel) {
   const guide = () => state.guide.champion;
   panel.addEventListener("change", (event) => {
-    const { guideChampion: field } = event.target.dataset;
+    const { guideChampion: field, setLab, slot } = event.target.dataset;
+    if (setLab) {
+      if (setLab === "set") chooseSet(event.target.value);
+      else chooseInSlot(slot, setLab, event.target.value);
+      keepingFocus(drawGuideChampion);
+      return;
+    }
     if (!field || field === "search") return;
     guide()[field] = field === "level" ? Number(event.target.value) : event.target.value;
     if (field === "view") Object.assign(guide(), { id: null, level: null });

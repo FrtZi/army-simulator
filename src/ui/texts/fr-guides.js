@@ -117,6 +117,12 @@ export const FR_GUIDES = {
   "map.stepsTitle": "Les étapes restantes, dans l'ordre",
   "map.step": "de {from} à {to}",
   "map.reached": "Plus rien : votre configuration enregistrée l'atteint déjà.",
+  "guides.view-lab": "Essayer un ensemble",
+  "lab.hint":
+    "Une pièce par emplacement, à une rareté : ce que l'équipement apporte au total et ce qu'il demande depuis zéro. Il part de l'équipement de votre configuration enregistrée ; rien ici n'est enregistré.",
+  "lab.set": "Un ensemble",
+  "lab.everySet": "Toutes les pièces",
+  "lab.asks": "Ce qu'il demande, depuis zéro",
   "guides.setPieces": "Ses pièces",
   "guides.setBonuses": "Ce qu'il apporte, selon le nombre de pièces portées",
   "guides.piecesWorn": "{n} pièces",

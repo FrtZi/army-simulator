@@ -10,7 +10,7 @@ import { rarityBadge } from "../../rarity.js";
 
 const itemName = (id) => label(currentGame().items.get(id)) || id;
 // the item's name opens its page in the items' guide: where it drops, what asks for it (GUIDE-04)
-const itemLink = (id) =>
+export const itemLink = (id) =>
   `<button type="button" class="link-button" data-goto-item="${id}">${escape(itemName(id))}</button>`;
 
 /** The cost table of the level shown; `from` names where the total starts (the player's level, or nothing). */

@@ -413,7 +413,7 @@ tasks = [
   "[x] Prototype validated by Frantz (2026-11-10): the map first, then the set lab",
   "[x] The map to reach a ritual (GUIDE-07, D-32)",
   "[ ] The items by category (GUIDE-08)",
-  "[ ] The set lab (GUIDE-09)",
+  "[x] The set lab (GUIDE-09): a set chosen as a filter, a pictogram per slot, level and rarity in one list",
 ]
 
 [[item]]
