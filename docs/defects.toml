@@ -623,3 +623,19 @@ preuve = ["tests/performance.test.js"]
 lecon = "A timing check on shared machines measures the machine as much as the code: assert on the best run, not a typical one."
 liens = ["PERF-01"]
 
+[[defaut]]
+id = "DEF-040"
+date = 2026-11-10
+titre = "The level fields of Your setup's rituals and buildings did not line up"
+type = "code"
+etiquettes = ["page"]
+gravite = "minor"
+statut = "fixed"
+constat = "In Your setup's rituals, the level fields stood further right for a ritual of 3 levels (\"/ 3\") than for one of 10 (\"/ 10\"), a ragged column. Seen by Frantz on the page."
+cause = "Each row is its own grid, and the column after the field was sized by its text: \"/ 10\" is wider than \"/ 3\", so the flexible column before it, and the field, moved row by row."
+solution = "That column has a set width, the same in every row. A test reads the stylesheets: a row's or line's column after its flexible one is never sized by its content, unless that content is the same in every row (named, with why)."
+resultat = "The fields form one column; the test fails with the old width."
+preuve = ["tests/styles.test.js"]
+lecon = "Rows drawn as separate grids line up only when every column but the flexible one has a set width."
+liens = ["BONUS-04", "BONUS-07"]
+

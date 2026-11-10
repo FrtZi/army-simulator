@@ -116,3 +116,24 @@ test("COMP-01 DEF-035 a tick box keeps its own size: the fields' full width is u
     ["styles/base.css width auto", "styles/base.css min-height 0"],
   );
 });
+
+// rows whose columns after the flexible one hold the same content in every row, so a content-sized column lines up
+const SAME_CONTENT_ROWS = {
+  ".save-line": "its buttons, the same in every line",
+  ".army-line.hero-line": "a hero's rank and level lists, the same in every line",
+};
+
+test("MAINT-01 DEF-040 a row's columns after its flexible one have a set width, so its fields line up from row to row", () => {
+  // each row is its own grid: a column sized by its content ("/ 3" or "/ 10") moves the fields beside it
+  const shifting = SHEETS.flatMap(({ path, outside, phone }) =>
+    declarations(outside + phone)
+      .filter(({ selector, property }) => property === "grid-template-columns" && /-(row|line)\b/.test(selector))
+      .filter(({ selector, value }) => {
+        const columns = value.split(/\s+(?![^(]*\))/);
+        const flexible = columns.findIndex((column) => /fr$/.test(column));
+        return flexible >= 0 && columns.slice(flexible + 1).includes("auto") && !SAME_CONTENT_ROWS[selector];
+      })
+      .map(({ selector, value }) => `${path} ${selector}: ${value}`),
+  );
+  assert.deepEqual(shifting, []);
+});

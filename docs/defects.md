@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **39 defects**: 39 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **40 defects**: 40 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -52,6 +52,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-037](#def-037) | 2026-11-10 | The champion's guide left out the gear's bonuses for its march | code | minor | ✓ fixed |
 | [DEF-038](#def-038) | 2026-11-10 | An item's row showed a text key, and its detail left the gear out of what asks for it | code | minor | ✓ fixed |
 | [DEF-039](#def-039) | 2026-11-10 | The performance check failed on a busy CI runner, the code unchanged | code | minor | ✓ fixed |
+| [DEF-040](#def-040) | 2026-11-10 | The level fields of Your setup's rituals and buildings did not line up | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -546,3 +547,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A timing check on shared machines measures the machine as much as the code: assert on the best run, not a typical one.
 - **Proof:** `tests/performance.test.js`
 - **Links:** PERF-01
+
+<a id="def-040"></a>
+### DEF-040 · The level fields of Your setup's rituals and buildings did not line up
+
+`2026-11-10` · code · minor · ✓ fixed · tags: `page`
+
+- **Finding:** In Your setup's rituals, the level fields stood further right for a ritual of 3 levels ("/ 3") than for one of 10 ("/ 10"), a ragged column. Seen by Frantz on the page.
+- **Cause:** Each row is its own grid, and the column after the field was sized by its text: "/ 10" is wider than "/ 3", so the flexible column before it, and the field, moved row by row.
+- **Solution:** That column has a set width, the same in every row. A test reads the stylesheets: a row's or line's column after its flexible one is never sized by its content, unless that content is the same in every row (named, with why).
+- **Result:** The fields form one column; the test fails with the old width.
+- **Lesson:** Rows drawn as separate grids line up only when every column but the flexible one has a set width.
+- **Proof:** `tests/styles.test.js`
+- **Links:** BONUS-04, BONUS-07

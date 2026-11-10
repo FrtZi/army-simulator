@@ -165,7 +165,7 @@
 
 .setup-level-row {
   display: grid;
-  grid-template-columns: 1fr 5.5rem auto;
+  grid-template-columns: 1fr 5.5rem 2.5rem;
   align-items: center;
   gap: 0.5rem;
   padding: 0.3rem 0;
