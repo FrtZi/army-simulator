@@ -8,6 +8,7 @@ import { CONFIG } from "../../config.js";
 import { currentGame, state } from "../../state.js";
 import { marchCapacity } from "../../../engine/index.js";
 import { unsavedCount } from "../../player-setup.js";
+import { hasSavedSetup } from "../../lab-setup.js";
 import { t } from "../../texts/index.js";
 import { drawSetupWarlords } from "./warlords.js";
 import { drawSetupLevelled } from "./levelled.js";
@@ -71,7 +72,7 @@ function tiles() {
 /** The save state in words with its icon, and the buttons usable only when there is something to save. */
 function drawStatus() {
   const count = unsavedCount();
-  const nothingSaved = !state.savedPlayerSetup.warlords.length && state.savedPlayerSetup.capacity.base === undefined;
+  const nothingSaved = !hasSavedSetup(state); // any section, the troops and those to come included (DEF-041)
   const [icon, words, tone] = state.setupSaveFailed
     ? ["⚠", t("setup.failed"), "critical"]
     : count > 0

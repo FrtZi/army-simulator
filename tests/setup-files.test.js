@@ -202,6 +202,21 @@ test("CFG-07 an example file and the dictionary downloaded; the brief names the 
   assert.match(brief.text, /Do not copy the Chaos Keep's Combat tab/, "its totals mix every source (question 24)");
   assert.match(brief.text, /a node bright and ticked is at its top level/);
   assert.match(brief.text, /Chaos Keep \(in French Donjon du Chaos\), Army tab: each line is a troop/);
+  // Frantz, 2026-11-10: the example and the dictionary helped the agent correct itself
+  assert.match(brief.text, /Write your file in the shape of the example file/);
+  assert.match(brief.text, /check each value against the data dictionary/);
+  // the guide on the page: four steps, the files to give in the second, what each file is for
+  assert.equal(page.$$(".setup-steps > li").length, 4);
+  const second = page.$(".setup-steps > li:nth-child(2)");
+  assert.deepEqual(
+    [...second.querySelectorAll("button")].map((button) => button.id),
+    ["setup-brief-copy", "setup-brief-download", "setup-example", "setup-dictionary-download"],
+  );
+  assert.equal(
+    page.$$(".setup-files-table tbody tr").length,
+    5,
+    "the brief, example, dictionary, empty file, your setup",
+  );
   // the example is a file the page reads without refusing anything
   await upload(page, example.text);
   assert.doesNotMatch(page.text("#setup-review"), /left out|to check/i);

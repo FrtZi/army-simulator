@@ -75,7 +75,7 @@ test("CFG-04 heroes entered at the game's rank and level, with the site's power,
   assert.equal(tileState(page, "warlords"), "✓ Entered");
   assert.equal(status(page), "⚠ 4 unsaved changes: Save keeps them in this browser.");
   page.click("#setup-save");
-  assert.equal(status(page), "✓ Saved in this browser.");
+  assert.equal(status(page), "✓ Saved in this browser: the Battle lab loads it with Load your setup.");
   assert.equal(page.$$(".setup-mark").length, 0, "nothing is marked once saved");
   assert.ok(page.$("#setup-save").disabled);
   // a change after the save: marked, counted, and gone back to by Discard
@@ -89,7 +89,7 @@ test("CFG-04 heroes entered at the game's rank and level, with the site's power,
     page.$$("#setup-warlord-list .name").map((name) => name.textContent),
     ["Azazel", "Bloodthirster"],
   );
-  assert.equal(status(page), "✓ Saved in this browser.");
+  assert.equal(status(page), "✓ Saved in this browser: the Battle lab loads it with Load your setup.");
 });
 
 test("CFG-04 the saved setup is there on the next visit, kept as a setup file; leaving unsaved asks first", () => {
@@ -111,7 +111,7 @@ test("CFG-04 the saved setup is there on the next visit, kept as a setup file; l
   assert.deepEqual(file.warlords, [{ id: "azazel", rank: 5, level: 4 }]);
   const next = openPage({ stored: { [SETUP_KEY]: stored } });
   assert.match(next.text("#setup-warlord-list .meta"), /level 24/);
-  assert.equal(status(next), "✓ Saved in this browser.");
+  assert.equal(status(next), "✓ Saved in this browser: the Battle lab loads it with Load your setup.");
 });
 
 const SAVED = JSON.stringify({

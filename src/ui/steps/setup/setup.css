@@ -138,7 +138,7 @@
   color: var(--heading);
 }
 
-.setup-ways {
+.setup-steps {
   padding-left: 1.25rem;
 }
 
@@ -199,4 +199,9 @@
 
 .setup-copy {
   width: 4.5rem;
+}
+
+/* the agent's guide (CFG-07): the screens under their step */
+.setup-screens {
+  margin: 0.25rem 0 0.5rem;
 }

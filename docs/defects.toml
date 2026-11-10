@@ -639,3 +639,19 @@ preuve = ["tests/styles.test.js"]
 lecon = "Rows drawn as separate grids line up only when every column but the flexible one has a set width."
 liens = ["BONUS-04", "BONUS-07"]
 
+[[defaut]]
+id = "DEF-041"
+date = 2026-11-10
+titre = "A setup of troops only, once saved, said nothing was saved"
+type = "code"
+etiquettes = ["page"]
+gravite = "minor"
+statut = "fixed"
+constat = "Frantz uploaded the troops an agent read from his Army tab, applied them and saved: the status said \"Nothing saved yet: enter what you have in the game, then Save\"."
+cause = "The status decided \"nothing saved\" from the heroes and the capacity only, a list written when they were the setup's only sections; DEF-036 had fixed the same list in the lab's switch, not this second copy of it."
+solution = "The status asks the same question as the switch, whether any section of the saved setup holds anything; the saved message says where it is and how the lab loads it."
+resultat = "A setup of troops alone, saved, says it is saved; the test fails with the old list."
+preuve = ["tests/troops.test.js"]
+lecon = "When a defect comes from a list of cases, look for every copy of the list before closing it (DEF-036 had a twin)."
+liens = ["CFG-04", "CFG-08"]
+

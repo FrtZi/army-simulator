@@ -76,7 +76,8 @@ An AI agent (one that reads images) can read your game's screens and write the f
 
    Not the Chaos Keep's Combat tab: its totals mix every source (they would count twice).
 
-2. Copy the brief (button below) and give it to the agent with your screenshots.
+2. Give the agent the brief, the example file, the dictionary (all three downloaded from Your setup) and your
+   screenshots. The brief holds the other two, but given apart they help an agent correct itself (Frantz, 2026-11-10).
 3. Upload the file it gives back. Check the refused values and correct them by hand.
 
 The agent has what it needs in the brief, which holds the whole data dictionary: what each field means,

@@ -12,7 +12,7 @@ export const FR_SETUP = {
   "setup.discard": "Annuler les modifications",
   "setup.unsaved": "{n} modifications non enregistrées : Enregistrer les garde dans ce navigateur.",
   "setup.unsavedOne": "1 modification non enregistrée : Enregistrer la garde dans ce navigateur.",
-  "setup.saved": "Enregistrée dans ce navigateur.",
+  "setup.saved": "Enregistrée dans ce navigateur : le laboratoire la charge avec Charger votre configuration.",
   "setup.never": "Rien d'enregistré pour l'instant : saisissez ce que vous avez dans le jeu, puis Enregistrer.",
   "setup.failed": "Non enregistrée : ce navigateur refuse de garder des données (fenêtre privée ?).",
   "tile.warlords": "Héros",

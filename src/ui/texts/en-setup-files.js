@@ -44,13 +44,39 @@ export const EN_SETUP_FILES = {
   "setupfile.duplicate-troop": "this troop is listed twice; the first is kept.",
   "setupfile.out-of-range": "outside {min} to {max}.",
   "setupfile.capacity-bonus": "the march capacity bonus goes in capacity.bonusPercent, not in the bonuses.",
-  "setupfile.help": "The file: three ways to fill your setup, and the brief for an agent",
-  "setupfile.wayHand": "By hand: in the sections above, as the game shows each value.",
-  "setupfile.wayFile": "From a file: one you downloaded here earlier, on another device for instance.",
-  "setupfile.wayAgent":
-    "With an agent that reads images: give it your screenshots and the brief below, which holds everything it needs (each field, every id with its English and French names, examples), then upload the file it gives back and check what it left out.",
-  "setupfile.privacy":
-    "Before sharing screenshots with an agent, crop out what you would rather not share (player names, chat, alliance).",
+  "setupfile.help": "With an agent reading your screenshots: what to give it, and what each file is for",
+  "setupfile.ways":
+    "Three ways to fill your setup: by hand, in the sections below; from a file downloaded here earlier; or with an agent that reads images (Mistral, ChatGPT, Claude…), in four steps.",
+  "setupfile.agentTitle": "With an agent, in four steps",
+  "setupfile.step1":
+    "Take screenshots of these screens, and crop out what you would rather not share (player names, chat, alliance):",
+  "setupfile.screenTroops": "the Chaos Keep, Army tab: the troops and defences you own;",
+  "setupfile.screenRituals": "each rituals category's tree, one screenshot per branch;",
+  "setupfile.screenBuildings": "your buildings' levels, each copy's;",
+  "setupfile.screenChampion": "your champion's screen, and each piece's forge;",
+  "setupfile.screenWarlords": "your warlords' cards, each with its rank and level.",
+  "setupfile.step2":
+    "Give the agent the brief, the example file, the dictionary and your screenshots. The brief alone holds the other two, but given apart they help an agent correct itself.",
+  "setupfile.step3":
+    "Upload the file it gives back, with Upload a setup file above: you see what it brings before anything changes.",
+  "setupfile.step4": "Check the values set aside, choose in their lists, apply, then Save.",
+  "setupfile.filesTitle": "What each file is for",
+  "setupfile.fileCol": "File",
+  "setupfile.forCol": "What it is for",
+  "setupfile.briefName": "The brief (.md)",
+  "setupfile.briefFor":
+    "For the agent: what to read on each screen, the rules, the dictionary and an example, in one text.",
+  "setupfile.exampleName": "The example file (.json)",
+  "setupfile.exampleFor":
+    "For the agent, and for you: every section filled with one example, the shape its file must have.",
+  "setupfile.dictionaryName": "The dictionary (.md)",
+  "setupfile.dictionaryFor":
+    "For the agent, and for you: every field with its meaning and range, the ids allowed with their English and French names.",
+  "setupfile.emptyName": "The empty file (.json)",
+  "setupfile.emptyFor": "For you: the shape with nothing in it, to fill by hand in a text editor.",
+  "setupfile.setupName": "Your setup (.json)",
+  "setupfile.setupFor":
+    "For you: everything saved, to keep or to open on another device (Download your setup, above). The agent needs it not: what it writes is added to yours, nothing removed.",
   "setupfile.copyBrief": "Copy the brief for an agent",
   "setupfile.downloadBrief": "Download the brief",
   "setupfile.template": "Download an empty file",

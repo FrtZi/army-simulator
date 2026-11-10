@@ -6,6 +6,7 @@
     ],
     "rules": [
       "Start with the three required elements, format, version and game, exactly as in the example file.",
+      "Write your file in the shape of the example file (at the end of this brief, or given to you apart): the same sections, names and nesting. Before giving it back, check each value against the data dictionary: its type, its range, an id from its list.",
       "Use only the ids listed in the dictionary. Match the names on screen to them through their English or French names.",
       "Write only what you can read clearly. If a value is unreadable or not shown, leave the entry out: do not guess, and do not write zero.",
       "Include only the sections my screenshots show; the others stay as they are in my setup.",

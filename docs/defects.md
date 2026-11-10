@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **40 defects**: 40 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **41 defects**: 41 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -53,6 +53,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-038](#def-038) | 2026-11-10 | An item's row showed a text key, and its detail left the gear out of what asks for it | code | minor | ✓ fixed |
 | [DEF-039](#def-039) | 2026-11-10 | The performance check failed on a busy CI runner, the code unchanged | code | minor | ✓ fixed |
 | [DEF-040](#def-040) | 2026-11-10 | The level fields of Your setup's rituals and buildings did not line up | code | minor | ✓ fixed |
+| [DEF-041](#def-041) | 2026-11-10 | A setup of troops only, once saved, said nothing was saved | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -560,3 +561,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** Rows drawn as separate grids line up only when every column but the flexible one has a set width.
 - **Proof:** `tests/styles.test.js`
 - **Links:** BONUS-04, BONUS-07
+
+<a id="def-041"></a>
+### DEF-041 · A setup of troops only, once saved, said nothing was saved
+
+`2026-11-10` · code · minor · ✓ fixed · tags: `page`
+
+- **Finding:** Frantz uploaded the troops an agent read from his Army tab, applied them and saved: the status said "Nothing saved yet: enter what you have in the game, then Save".
+- **Cause:** The status decided "nothing saved" from the heroes and the capacity only, a list written when they were the setup's only sections; DEF-036 had fixed the same list in the lab's switch, not this second copy of it.
+- **Solution:** The status asks the same question as the switch, whether any section of the saved setup holds anything; the saved message says where it is and how the lab loads it.
+- **Result:** A setup of troops alone, saved, says it is saved; the test fails with the old list.
+- **Lesson:** When a defect comes from a list of cases, look for every copy of the list before closing it (DEF-036 had a twin).
+- **Proof:** `tests/troops.test.js`
+- **Links:** CFG-04, CFG-08

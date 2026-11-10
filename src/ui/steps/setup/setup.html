@@ -21,19 +21,65 @@
   <div id="setup-review" aria-live="polite"></div>
   <details class="setup-help">
     <summary data-text="setupfile.help"></summary>
-    <ol class="setup-ways">
-      <li data-text="setupfile.wayHand"></li>
-      <li data-text="setupfile.wayFile"></li>
-      <li data-text="setupfile.wayAgent"></li>
+    <p data-text="setupfile.ways"></p>
+    <h3 data-text="setupfile.agentTitle"></h3>
+    <ol class="setup-steps">
+      <li>
+        <span data-text="setupfile.step1"></span>
+        <ul class="setup-screens">
+          <li data-text="setupfile.screenTroops"></li>
+          <li data-text="setupfile.screenRituals"></li>
+          <li data-text="setupfile.screenBuildings"></li>
+          <li data-text="setupfile.screenChampion"></li>
+          <li data-text="setupfile.screenWarlords"></li>
+        </ul>
+      </li>
+      <li>
+        <span data-text="setupfile.step2"></span>
+        <div class="file-actions">
+          <button id="setup-brief-copy" type="button" data-text="setupfile.copyBrief"></button>
+          <button id="setup-brief-download" type="button" data-text="setupfile.downloadBrief"></button>
+          <button id="setup-example" type="button" data-text="setupfile.example"></button>
+          <button id="setup-dictionary-download" type="button" data-text="setupfile.dictionary"></button>
+        </div>
+      </li>
+      <li data-text="setupfile.step3"></li>
+      <li data-text="setupfile.step4"></li>
     </ol>
-    <p class="hint" data-text="setupfile.privacy"></p>
-    <div class="file-actions">
-      <button id="setup-brief-copy" type="button" data-text="setupfile.copyBrief"></button>
-      <button id="setup-brief-download" type="button" data-text="setupfile.downloadBrief"></button>
-      <button id="setup-template" type="button" data-text="setupfile.template"></button>
-      <button id="setup-example" type="button" data-text="setupfile.example"></button>
-      <button id="setup-dictionary-download" type="button" data-text="setupfile.dictionary"></button>
-    </div>
+    <h3 data-text="setupfile.filesTitle"></h3>
+    <table class="guide-table setup-files-table">
+      <thead>
+        <tr>
+          <th scope="col" data-text="setupfile.fileCol"></th>
+          <th scope="col" data-text="setupfile.forCol"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" data-text="setupfile.briefName"></th>
+          <td data-text="setupfile.briefFor"></td>
+        </tr>
+        <tr>
+          <th scope="row" data-text="setupfile.exampleName"></th>
+          <td data-text="setupfile.exampleFor"></td>
+        </tr>
+        <tr>
+          <th scope="row" data-text="setupfile.dictionaryName"></th>
+          <td data-text="setupfile.dictionaryFor"></td>
+        </tr>
+        <tr>
+          <th scope="row" data-text="setupfile.emptyName"></th>
+          <td>
+            <span data-text="setupfile.emptyFor"></span>
+            <button id="setup-template" type="button" data-text="setupfile.template"></button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" data-text="setupfile.setupName"></th>
+          <td data-text="setupfile.setupFor"></td>
+        </tr>
+      </tbody>
+    </table>
   </details>
 </section>
 

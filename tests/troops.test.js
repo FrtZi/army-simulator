@@ -88,3 +88,13 @@ test("CFG-08 D-34 the lab says what is owned of each troop and warns above it, n
   assert.match(page.text("#owned-pestigor"), /more than the 0 you own/, "a troop not owned at all");
   assert.match(page.text("#load-setup-status"), /the troops you own \(1 listed\)/);
 });
+
+test("CFG-08 DEF-041 a setup of troops only, saved, says it is saved", () => {
+  const page = openPage();
+  page.click("#page-tab-setup");
+  page.choose("#setup-troop-select", "marauders");
+  page.click("#setup-troop-add");
+  page.type("#setup-troop-marauders", 9801);
+  page.click("#setup-save");
+  assert.equal(page.text("#setup-status"), "✓ Saved in this browser: the Battle lab loads it with Load your setup.");
+});

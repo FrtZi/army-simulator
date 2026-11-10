@@ -12,7 +12,7 @@ export const EN_SETUP = {
   "setup.discard": "Discard changes",
   "setup.unsaved": "{n} unsaved changes: Save keeps them in this browser.",
   "setup.unsavedOne": "1 unsaved change: Save keeps it in this browser.",
-  "setup.saved": "Saved in this browser.",
+  "setup.saved": "Saved in this browser: the Battle lab loads it with Load your setup.",
   "setup.never": "Nothing saved yet: enter what you have in the game, then Save.",
   "setup.failed": "Not saved: this browser refuses to keep data (a private window?).",
   "tile.warlords": "Heroes",

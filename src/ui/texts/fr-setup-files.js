@@ -43,13 +43,39 @@ export const FR_SETUP_FILES = {
   "setupfile.duplicate-troop": "cette troupe est listée deux fois ; la première est gardée.",
   "setupfile.out-of-range": "hors de {min} à {max}.",
   "setupfile.capacity-bonus": "le bonus de capacité de marche va dans capacity.bonusPercent, pas dans les bonus.",
-  "setupfile.help": "Le fichier : trois façons de remplir votre configuration, et la consigne pour un agent",
-  "setupfile.wayHand": "À la main : dans les sections ci-dessus, comme le jeu affiche chaque valeur.",
-  "setupfile.wayFile": "Depuis un fichier : un fichier téléchargé ici plus tôt, sur un autre appareil par exemple.",
-  "setupfile.wayAgent":
-    "Avec un agent qui lit les images : donnez-lui vos captures d'écran et la consigne ci-dessous, qui contient tout ce qu'il lui faut (chaque champ, chaque identifiant avec ses noms anglais et français, des exemples), puis chargez le fichier qu'il rend et vérifiez ce qu'il a écarté.",
-  "setupfile.privacy":
-    "Avant de partager des captures avec un agent, retirez ce que vous préférez ne pas partager (noms de joueurs, discussion, alliance).",
+  "setupfile.help": "Avec un agent qui lit vos captures : quoi lui donner, et à quoi sert chaque fichier",
+  "setupfile.ways":
+    "Trois façons de remplir votre configuration : à la main, dans les sections ci-dessous ; depuis un fichier téléchargé ici plus tôt ; ou avec un agent qui lit les images (Mistral, ChatGPT, Claude…), en quatre étapes.",
+  "setupfile.agentTitle": "Avec un agent, en quatre étapes",
+  "setupfile.step1":
+    "Faites des captures de ces écrans, et masquez ce que vous préférez ne pas partager (noms de joueurs, discussion, alliance) :",
+  "setupfile.screenTroops": "le Donjon du Chaos, onglet Armée : les troupes et défenses que vous possédez ;",
+  "setupfile.screenRituals": "l'arbre de chaque catégorie de rituels, une capture par branche ;",
+  "setupfile.screenBuildings": "les niveaux de vos bâtiments, de chaque exemplaire ;",
+  "setupfile.screenChampion": "l'écran de votre champion, et la forge de chaque pièce ;",
+  "setupfile.screenWarlords": "les fiches de vos seigneurs de guerre, chacune avec son rang et son niveau.",
+  "setupfile.step2":
+    "Donnez à l'agent la consigne, le fichier d'exemple, le dictionnaire et vos captures. La consigne contient déjà les deux autres, mais à part ils aident l'agent à se corriger.",
+  "setupfile.step3":
+    "Chargez le fichier qu'il vous rend, avec Charger un fichier de configuration ci-dessus : vous voyez ce qu'il apporte avant que rien ne change.",
+  "setupfile.step4": "Vérifiez les valeurs mises de côté, choisissez dans leurs listes, appliquez, puis enregistrez.",
+  "setupfile.filesTitle": "À quoi sert chaque fichier",
+  "setupfile.fileCol": "Fichier",
+  "setupfile.forCol": "À quoi il sert",
+  "setupfile.briefName": "La consigne (.md)",
+  "setupfile.briefFor":
+    "Pour l'agent : quoi lire sur chaque écran, les règles, le dictionnaire et un exemple, en un seul texte.",
+  "setupfile.exampleName": "Le fichier d'exemple (.json)",
+  "setupfile.exampleFor":
+    "Pour l'agent, et pour vous : chaque section remplie d'un exemple, la forme que doit avoir son fichier.",
+  "setupfile.dictionaryName": "Le dictionnaire (.md)",
+  "setupfile.dictionaryFor":
+    "Pour l'agent, et pour vous : chaque champ avec son sens et ses bornes, les identifiants permis avec leurs noms anglais et français.",
+  "setupfile.emptyName": "Le fichier vide (.json)",
+  "setupfile.emptyFor": "Pour vous : la forme sans rien dedans, à remplir à la main dans un éditeur de texte.",
+  "setupfile.setupName": "Votre configuration (.json)",
+  "setupfile.setupFor":
+    "Pour vous : tout ce qui est enregistré, à garder ou à ouvrir sur un autre appareil (Télécharger votre configuration, ci-dessus). L'agent n'en a pas besoin : ce qu'il écrit s'ajoute à la vôtre, rien n'est retiré.",
   "setupfile.copyBrief": "Copier la consigne pour un agent",
   "setupfile.downloadBrief": "Télécharger la consigne",
   "setupfile.template": "Télécharger un fichier vide",
