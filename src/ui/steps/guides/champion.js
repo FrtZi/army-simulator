@@ -108,21 +108,40 @@ export function pieceDetailHtml(piece) {
     <h4>${escape(t("guides.bonuses"))}</h4>${table([t("guides.bonus"), t("guides.now"), t("guides.most")], bonuses)}
     <p class="hint">${escape(t("guides.howApplied"))}</p>
     <h4>${escape(t("guides.requires"))}</h4>${needs.length ? `<ul class="guide-requires">${needs.join("")}</ul>` : `<p class="hint">${escape(t("guides.nothingRequired"))}</p>`}
+    ${piecesSetsHtml(piece)}
     ${costsTable(piece, level, 0, t("guides.fromStart"))}`;
 }
 
 /** A set: its pieces, and what it gives for each number of pieces worn. */
-export function setDetailHtml(set) {
+/** What a set gives, a column per number of pieces worn. */
+function setBonusTable(set) {
   const counts = [...new Set(Object.values(set.bonuses).flatMap((byCount) => Object.keys(byCount)))].sort();
   const value = (entry) =>
     entry === undefined ? "—" : typeof entry === "object" ? `+${number(entry.flat)}` : `+${number(entry, 2)} %`;
   const rows = Object.entries(set.bonuses).map(([id, byCount]) =>
     row([escape(bonusName(id)), ...counts.map((count) => value(byCount[count]))]),
   );
+  return table([t("guides.bonus"), ...counts.map((count) => t("guides.piecesWorn", { n: count }))], rows);
+}
+
+/** The sets a piece belongs to (GUIDE-06): each with what it gives and a way to it, or a word when none. */
+function piecesSetsHtml(piece) {
+  const sets = piece.sets.map((id) => data().sets.find((set) => set.id === id)).filter(Boolean);
+  if (!sets.length) return `<p class="hint">${escape(t("guides.noSet"))}</p>`;
+  return sets
+    .map(
+      (set) => `<h4>${escape(t("guides.partOf", { set: label(set) }))}</h4>${setBonusTable(set)}
+    <p><button type="button" class="link-button" data-goto-set="${set.id}">${escape(t("guides.seeSet", { set: label(set) }))}</button></p>`,
+    )
+    .join("");
+}
+
+export function setDetailHtml(set) {
   const pieces = set.pieces.map(
     (id) => `<li>${escape(label(data().pieces.find((piece) => piece.id === id)) || id)}</li>`,
   );
-  return `<h3 id="guide-champion-title">${escape(label(set))}</h3>
+  // focusable by script: a piece's "see the set" brings the focus here (GUIDE-06)
+  return `<h3 id="guide-champion-title" tabindex="-1">${escape(label(set))}</h3>
     <h4>${escape(t("guides.setPieces"))}</h4><ul class="guide-uses">${pieces.join("")}</ul>
-    <h4>${escape(t("guides.setBonuses"))}</h4>${table([t("guides.bonus"), ...counts.map((count) => t("guides.piecesWorn", { n: count }))], rows)}`;
+    <h4>${escape(t("guides.setBonuses"))}</h4>${setBonusTable(set)}`;
 }

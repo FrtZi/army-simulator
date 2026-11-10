@@ -7,6 +7,7 @@ import { t } from "../../texts/index.js";
 import { drawSetupStatus } from "./draw.js";
 import { pieceLevels } from "../../../storage/setup-champion.js";
 import { gearLevelOptions, gearRarity, rarityBadge } from "../../rarity.js";
+import { championFiguresHtml } from "../../champion-figures.js";
 
 const numbers = (count) => Array.from({ length: count }, (_, index) => [index + 1, String(index + 1)]);
 const slots = () => currentGame().champion.slots; // in the game's order
@@ -38,6 +39,7 @@ export function drawSetupChampion() {
     state.playerSetup.champion?.level ?? "",
   );
   byId("setup-champion-gear").innerHTML = slots().map(slotRow).join("");
+  byId("setup-champion-figures").innerHTML = championFiguresHtml(state.playerSetup.champion); // BONUS-08
 }
 
 /** The champion as chosen: only what is set; nothing set leaves it out (null). */

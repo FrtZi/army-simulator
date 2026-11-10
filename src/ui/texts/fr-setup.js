@@ -63,6 +63,15 @@ export const FR_SETUP = {
   "load.labCapacity": "la capacité de marche saisie plus bas",
   "load.bonuses": "les {n} bonus de votre configuration",
   "load.labBonuses": "les bonus saisis plus bas",
+  "champion.nothingYet": "Choisissez son niveau et son équipement pour voir ce qu'il apporte.",
+  "champion.statsAt": "Ses caractéristiques au niveau {level}",
+  "champion.gives": "Ce que son équipement apporte au combat",
+  "champion.inAll": "Au total",
+  "champion.setReached": "{set} : {worn} pièces portées sur {total}, son bonus à {reached} pièces atteint",
+  "champion.setBelow": "{set} : {worn} pièces portées sur {total}, son premier bonus à {first}",
+  "champion.labLed": "Ce qu'apporte votre champion : {n} bonus au combat, ceux de sa marche compris",
+  "champion.labNotLed":
+    "Ce qu'apporte votre champion : {n} bonus au combat ; ceux de sa marche comptent quand il mène cette composition",
   "composition.champion": "Menée par votre champion",
   "composition.championOn": "Les bonus de son équipement pour la marche qu'il mène comptent dans cette composition.",
   "composition.championOff":

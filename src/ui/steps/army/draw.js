@@ -8,6 +8,7 @@ import { term } from "../../glossary/tooltip.js";
 import { capacityEffect, currentArmy, currentGame, problemsOf, state } from "../../state.js";
 import { capacityInPlay, championGear, fromSetup } from "../../lab-setup.js";
 import { t } from "../../texts/index.js";
+import { championBonusCount, championFiguresHtml } from "../../champion-figures.js";
 
 const PERCENT = 100;
 
@@ -40,6 +41,18 @@ function drawChampionChoice() {
   box.checked = usable && Boolean(state.composition.ledByChampion);
   box.disabled = !usable;
   byId("composition-champion-hint").textContent = t(usable ? "composition.championOn" : "composition.championOff");
+  drawChampionFigures(box.checked);
+}
+
+/** What the saved champion brings, with the setup loaded (BONUS-08): its figures, folded to a line. */
+function drawChampionFigures(led) {
+  const champion = state.savedPlayerSetup.champion;
+  const details = byId("composition-champion-details");
+  details.hidden = !state.useSetup || !champion;
+  if (details.hidden) return;
+  const n = championBonusCount(champion);
+  byId("composition-champion-summary").textContent = t(led ? "champion.labLed" : "champion.labNotLed", { n });
+  byId("composition-champion-figures").innerHTML = championFiguresHtml(champion);
 }
 
 /** The capacity summary, the bar, and the status in words and icon (never colour alone). */

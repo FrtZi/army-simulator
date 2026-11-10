@@ -74,6 +74,8 @@ src/ui/                  the page
 ├── files.js             a file downloaded from the page, a picked file's text
 ├── tablist.js           a row of tabs, clicks and keys (the page's, the dashboards', the guides')
 ├── icons.js             the page's SVG icons and the troop type pictograms (D-18)
+├── rarity.js            a rarity as a badge, a piece's levels as rarities (GUIDE-05, D-31)
+├── champion-figures.js  the champion's stats and its gear's bonuses in all, in Your setup and the lab (BONUS-08)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;
 │                        hover.js: a dot's name while pointing at it; table.js: the chart as a table (D-24)
 ├── filters.js           the troop filters (several values each) shared by the picker and the charts

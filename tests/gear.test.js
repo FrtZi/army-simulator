@@ -2,8 +2,11 @@
 // its rarity, as the game's forge does (GUIDE-05); figures checked against data/chaos-conquest/champion.json.
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { openPage } from "./page.js";
 
+const champion = JSON.parse(readFileSync(new URL("../data/chaos-conquest/champion.json", import.meta.url), "utf8"));
+const SETUP_KEY = "army-simulator.player-setup";
 const textOf = (element) => element.textContent.replace(/\s+/g, " ").trim();
 const optionsOf = (page, selector) => page.$$(`${selector} option`).map(textOf);
 
@@ -85,4 +88,53 @@ test("GUIDE-05 DEF-037 a piece's and a set's bonuses for the champion's march ar
   page.click("#guide-champion-chosen-set-bonus");
   assert.doesNotMatch(page.text("#guide-champion-detail"), /hero-march/, "no bonus left by its id");
   assert.match(page.text("#guide-champion-detail"), /Champion's march: Health/);
+});
+
+test("GUIDE-06 a piece shows its set, what it gives by pieces worn, and a way to it; a piece without one says so", () => {
+  const page = openPiece({}, "weapon", "chaos-gear-weapon");
+  // champion.json: the Great Axe of the Chosen is one of the Chosen Set Bonus's six pieces, its bonuses from 3 worn
+  assert.match(page.text("#guide-champion-detail"), /Part of Chosen Set Bonus/);
+  const head = page.$$("#guide-champion-detail thead th").map(textOf);
+  assert.ok(head.includes("3 pieces") && head.includes("6 pieces"), head.join(" | "));
+  page.$('#guide-champion-detail [data-goto-set="chosen-set-bonus"]').click();
+  assert.equal(page.text("#guide-champion-title"), "Chosen Set Bonus");
+  assert.equal(page.window.document.activeElement.id, "guide-champion-title");
+  assert.equal(page.$("#guide-champion-view").value, "sets");
+  const alone = openPiece({}, "gloves", "vambraces-of-gore");
+  assert.match(alone.text("#guide-champion-detail"), /Not part of a set/);
+});
+
+test("BONUS-08 Your setup shows the champion's own stats at its level and what its gear gives in all", () => {
+  const page = openPage();
+  page.click("#page-tab-setup");
+  assert.match(page.text("#setup-champion-figures"), /Choose its level and its gear/);
+  page.choose("#setup-champion-level", 40);
+  // champion.json: its melee attack at level 40
+  const attack = champion.champion.stats.meleeAttack[39].toLocaleString("en-GB");
+  const rows = () => page.$$("#setup-champion-figures tr").map((row) => [...row.cells].map(textOf).join(" "));
+  assert.ok(rows().includes(`Melee Attack ${attack}`), rows().join(" | "));
+  page.choose("#setup-gear-weapon", "chaos-gear-weapon");
+  page.choose("#setup-gear-level-weapon", 6);
+  // the Great Axe of the Chosen at level 6: +20 % health for the troops of its march
+  assert.ok(rows().includes("Champion's march: Health +20 %"), rows().join(" | "));
+  assert.match(page.text("#setup-champion-figures"), /Chosen Set Bonus: 1 of 6 pieces worn, its first bonus at 3/);
+});
+
+test("BONUS-08 the Battle lab shows what the saved champion brings, its march's once it leads", () => {
+  const saved = JSON.stringify({
+    "chaos-conquest": {
+      format: "army-simulator/setup",
+      version: 1,
+      game: "chaos-conquest",
+      champion: { level: 40, gear: [{ id: "chaos-gear-weapon", level: 6 }] },
+    },
+  });
+  const page = openPage({ stored: { [SETUP_KEY]: saved } });
+  assert.ok(page.$("#composition-champion-details").hidden, "the setup not loaded: nothing shown");
+  page.tick("#load-setup-toggle");
+  assert.ok(!page.$("#composition-champion-details").hidden);
+  assert.match(page.text("#composition-champion-summary"), /its march's count once it leads/);
+  page.tick("#composition-champion");
+  assert.match(page.text("#composition-champion-summary"), /its march's included/);
+  assert.match(page.text("#composition-champion-figures"), /Champion's march: Health/);
 });

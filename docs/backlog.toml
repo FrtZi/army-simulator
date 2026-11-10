@@ -389,14 +389,14 @@ title = "The champion and its gear made easy to read: rarities, sets, the champi
 moscow = "should"
 milestone = "v1.2"
 module = "ui"
-status = "doing"
+status = "done"
 added = 2026-11-10
 features = ["BONUS-08", "GUIDE-05", "GUIDE-06"]
 note = "Frantz, 2026-11-10: the gear's levels are the game's rarities (Commun, Peu commun, Rare, Épique, Légendaire, Éternel), with small logos and colours; a piece says its set and its bonuses; the champion's stats and buffs are seen in Your setup and in the Battle lab."
 tasks = [
   "[x] Each gear level and item named by its rarity, with its colour and a small diamond (GUIDE-05)",
-  "[ ] A piece shows its set and what it gives (GUIDE-06)",
-  "[ ] The champion's stats and bonuses in Your setup and in the Battle lab (BONUS-08)",
+  "[x] A piece shows its set and what it gives (GUIDE-06)",
+  "[x] The champion's stats and bonuses in Your setup and in the Battle lab (BONUS-08)",
 ]
 
 [[item]]
@@ -444,5 +444,20 @@ note = "An agent given the Chaos Keep's Army tab found nothing to write: the set
 tasks = [
   "[ ] Agreed with Frantz: what a composition does with the troops owned",
   "[ ] The section, its dictionary entries, the French names of the Army tab",
+]
+
+[[item]]
+id = "BL-27"
+title = "Several copies of a building in the setup"
+moscow = "should"
+milestone = "v1.2"
+module = "storage"
+status = "to do"
+added = 2026-11-10
+features = ["BONUS-07"]
+note = "Frantz, 2026-11-10, with screenshots of his city: up to 5 of each troop producer (not the Herdstone, the Chaotic Rift nor the Fortress Walls), resource buildings many times. Of our 10 buildings with a battle bonus, 7 are troop producers. The setup holds one level per building; how copies add up is open question 25."
+tasks = [
+  "[ ] Open question 25 settled: each copy's bonus, or the highest level's",
+  "[ ] Each building's most copies in the data; the setup holds a level per copy, the file and its dictionary too",
 ]
 

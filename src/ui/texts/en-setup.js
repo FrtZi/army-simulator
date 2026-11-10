@@ -61,6 +61,15 @@ export const EN_SETUP = {
   "load.labCapacity": "the march capacity entered below",
   "load.bonuses": "your setup's {n} bonuses",
   "load.labBonuses": "the bonuses entered below",
+  "champion.nothingYet": "Choose its level and its gear to see what it gives.",
+  "champion.statsAt": "Its own stats at level {level}",
+  "champion.gives": "What its gear gives in battle",
+  "champion.inAll": "In all",
+  "champion.setReached": "{set}: {worn} of {total} pieces worn, its {reached}-piece bonus reached",
+  "champion.setBelow": "{set}: {worn} of {total} pieces worn, its first bonus at {first}",
+  "champion.labLed": "What your champion brings: {n} bonuses in battle, its march's included",
+  "champion.labNotLed":
+    "What your champion brings: {n} bonuses in battle; its march's count once it leads this composition",
   "composition.champion": "Led by your champion",
   "composition.championOn": "Its gear's bonuses for the march it leads count in this composition.",
   "composition.championOff":

@@ -79,9 +79,15 @@ function bindChampion(panel) {
   });
   panel.addEventListener("click", (event) => {
     const button = event.target.closest("[data-guide-champion-entry]");
-    if (!button) return;
-    Object.assign(guide(), { id: button.dataset.guideChampionEntry, level: null });
-    keepingFocus(drawGuideChampion);
+    const toSet = event.target.closest("[data-goto-set]"); // a piece's set (GUIDE-06)
+    if (toSet) {
+      Object.assign(guide(), { view: "sets", id: toSet.dataset.gotoSet, level: null });
+      drawGuides();
+      byId("guide-champion-title").focus();
+    } else if (button) {
+      Object.assign(guide(), { id: button.dataset.guideChampionEntry, level: null });
+      keepingFocus(drawGuideChampion);
+    }
   });
 }
 

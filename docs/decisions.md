@@ -383,3 +383,15 @@ your champion" (saved with it, `ledByChampion`); the engine's `champion` source 
   together: comparing "led" with "not led" needs two); its bonuses for the heroes (`carrier_*`) and the fortress
   (`hero_city_unit_*`), shown in the guide, not applied (heroes take no troop bonus, open question 14); the champion
   fighting as a unit (not known).
+
+## D-31 · A piece's levels are the game's rarities, each with its colour and a diamond (2026-11-10)
+
+The game's forge names a piece's levels by rarity, Core to Eternal (in French Commun to Éternel, Frantz's
+screenshots), and cctools.cc's pages list them in that order: the import writes it once (`levelRarities` in
+champion.json) and the page names level _n_ by the _n_-th rarity. Items and heroes carry a rarity of their own,
+shown the same way. A rarity is a small diamond in its colour with its name, never the colour alone; the colours are
+tokens, checked as text on every surface in both themes.
+
+- _Set aside:_ the rarity's colour without its name (a colour alone says nothing to a colour-blind reader); the
+  game's own diamond pictures (its art is not ours to publish, D-06); the level number alone (the game never says
+  "level 3" for a piece).
