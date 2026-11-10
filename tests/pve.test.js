@@ -4,7 +4,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { GAMES } from "../src/ui/games.js";
-import { placesOf, pveCatalogue } from "../src/ui/pve.js";
+import { placesOf, pveCatalogue, pveRaces, raceTalentEffects } from "../src/ui/pve.js";
 import { addTroops, openPage } from "./page.js";
 
 const [game] = GAMES;
@@ -73,4 +73,21 @@ test("SIM-11 its troops sub-selected: one left out or lowered changes the battle
   assert.equal(losses(), whole, "back to the whole army");
   page.choose("#compare-b", 1);
   assert.ok(page.$("#compare-pve").hidden, "a composition again");
+});
+
+test("SIM-11 a warlord's Combat Bonus vs. Empire counts against an army all of the Empire, and only then", () => {
+  const talents = { chosen: ["empire-combat"], offered: [{ id: "empire-combat", percent: 10 }] };
+  const { talentCodes } = game.game;
+  const raised = raceTalentEffects(talents, talentCodes, new Set(["empire"]));
+  // game.json: a "combat" bonus raises every fighting stat (open question 16's lead, to verify)
+  assert.deepEqual(
+    raised.map((effect) => `${effect.stat} +${effect.percent}`),
+    ["meleeAttack +10", "meleeDamage +10", "rangedAttack +10", "rangedDamage +10", "armour +10", "health +10"],
+  );
+  assert.deepEqual(raceTalentEffects(talents, talentCodes, new Set(["empire", "kislev"])), [], "Bechafen: not all");
+  assert.deepEqual(raceTalentEffects(talents, talentCodes, new Set(["greenskins"])), []);
+  const altdorf = game.pve.places.find((place) => place.id === "altdorf");
+  assert.deepEqual([...pveRaces({ pve: { troops: altdorf.troops } }, game)], ["empire"]);
+  // warlords.json: Slambo is the one warlord to offer it
+  assert.ok(game.heroes.warlords.find((warlord) => warlord.id === "slambo").talents["empire-combat"]);
 });

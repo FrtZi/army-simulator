@@ -86,5 +86,5 @@ export const FR_MORE = {
   "pve.of": "sur {n}",
   "pve.countOf": "Nombre de {name} dans l'armée PvE",
   "pve.attacksOnly":
-    "Vous l'attaquez : une armée PvE ne vient jamais à vous. Ses troupes combattent avec leurs propres caractéristiques, sans héros ni bonus.",
+    "Vous l'attaquez : une armée PvE ne vient jamais à vous. Ses troupes combattent avec leurs propres caractéristiques, sans héros ni bonus ; contre une armée toute de l'Empire, votre bonus de combat contre l'Empire compte (à vérifier).",
 };

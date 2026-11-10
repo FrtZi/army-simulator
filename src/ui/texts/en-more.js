@@ -85,5 +85,5 @@ export const EN_MORE = {
   "pve.of": "of {n}",
   "pve.countOf": "Number of {name} in the PvE army",
   "pve.attacksOnly":
-    "You attack it: a PvE army never comes to you. Its troops fight with their own stats, without hero or bonus.",
+    "You attack it: a PvE army never comes to you. Its troops fight with their own stats, without hero or bonus; against an army all of the Empire, your Combat Bonus vs. Empire counts (to verify).",
 };

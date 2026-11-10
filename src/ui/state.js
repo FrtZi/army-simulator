@@ -1,7 +1,7 @@
 // The single mutable state of the page, and the values derived from it. Controls write the state; drawing
 // functions read it (and these derived values) and write the DOM.
 import { CONFIG } from "./config.js";
-import { chosenPlace, pveArmy } from "./pve.js";
+import { chosenPlace, pveArmy, pveRaces, raceTalentEffects } from "./pve.js";
 import { GAMES } from "./games.js";
 import { label } from "./format.js";
 import { t } from "./texts/index.js";
@@ -116,11 +116,14 @@ export function validEffects() {
 }
 
 /** A composition as the engine sees it: its troops with every bonus, its talents' included, and its heroes. */
-function summarise(composition) {
+function summarise(composition, against = new Set()) {
   const game = currentGame();
   const played = asPlayed(composition, state);
   const march = championMarchEffects(state, game, composition).filter((effect) => !problemsOf(effect).length);
-  const effects = [...validEffects(), ...talentsOf(played, game).effects, ...march];
+  const talents = talentsOf(played, game);
+  // against a PvE army of one race, a talent for that race counts too (Combat Bonus vs. Empire)
+  const versus = raceTalentEffects(talents, game.game.talentCodes, against);
+  const effects = [...validEffects(), ...talents.effects, ...march, ...versus];
   const limits = { marchCapacity: capacityInPlay(state).base };
   return summariseArmy(composition.troops, game.catalogue, effects, limits, heroUnits(played, game));
 }
@@ -141,8 +144,12 @@ export function comparedNames() {
 
 /** The two compositions chosen for the comparison (figures and battles); null when it is the same one twice. */
 export function comparison() {
-  const first = summarise(state.compositions[state.compare[0]]);
-  if (state.pve.on) return compareArmies(first, pveArmy(state, currentGame()), currentGame().rules);
+  const composition = state.compositions[state.compare[0]];
+  if (state.pve.on) {
+    const game = currentGame();
+    return compareArmies(summarise(composition, pveRaces(state, game)), pveArmy(state, game), game.rules);
+  }
+  const first = summarise(composition);
   if (state.compare[0] === state.compare[1]) return null;
   return compareArmies(first, summarise(state.compositions[state.compare[1]]), currentGame().rules);
 }

@@ -435,7 +435,9 @@
       "labels": {
         "fr": "Combat Bonus vs. Empire*",
         "en": "Combat Bonus vs. Empire"
-      }
+      },
+      "against": "empire",
+      "raises": ["meleeAttack", "meleeDamage", "rangedAttack", "rangedDamage", "armour", "health"]
     },
     {
       "id": "enemy-attack-debuff",

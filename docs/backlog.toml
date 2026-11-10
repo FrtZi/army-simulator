@@ -339,14 +339,14 @@ title = "PvE armies by level: the game's computer-controlled armies as opponents
 moscow = "should"
 milestone = "v1.2"
 module = "data"
-status = "doing"
+status = "done"
 added = 2026-11-09
 note = "The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13 cities) with their exact compositions through a public JSON interface; morale from the 48 NPC troops."
 tasks = [
   "[x] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight",
   "[x] Spec agreed: a PvE army as the opponent, chosen by kind, place and level, its troops sub-selected (docs/spec/pve.md)",
   "[x] The opponent chosen in the Battle lab, its troops sub-selected, the battle fought (SIM-11)",
-  "[ ] The champion's Vanquish bonuses and a warlord's Combat vs Empire, against their race only (the spec's item 4)",
+  "[x] A warlord's Combat Bonus vs. Empire against an army all of the Empire, every fighting stat raised (to verify); Frantz: closed with it, 2026-11-10",
   "[x] Data imported and checked, as the warlords' (D-25): data/chaos-conquest/pve.json (DATA-10)",
 ]
 

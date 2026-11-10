@@ -41,6 +41,23 @@ export function choosePlace(state, game, choice) {
   Object.assign(state.pve, { name: place?.labels.en ?? "", level: place?.level ?? null, troops: { ...place?.troops } });
 }
 
+/** The races of the PvE army's troops kept. */
+export const pveRaces = (state, game) =>
+  new Set(Object.keys(state.pve.troops).map((id) => pveCatalogue(game).units.get(id)?.race));
+
+/**
+ * A talent that counts only against one race (game.json `against`, Combat Bonus vs. Empire): its effects on the
+ * stats it `raises`, at the hero's level, when every troop kept is of that race (open question 16: to verify).
+ */
+export function raceTalentEffects({ chosen, offered }, talentCodes, races) {
+  return chosen.flatMap((id) => {
+    const shape = talentCodes.find((entry) => entry.id === id);
+    if (!shape?.against || races.size !== 1 || !races.has(shape.against)) return [];
+    const { percent } = offered.find((entry) => entry.id === id);
+    return shape.raises.map((stat) => ({ stat, percent }));
+  });
+}
+
 /** The PvE army as the engine sees it: the troops kept, at their counts, without bonus or capacity. */
 export const pveArmy = (state, game) =>
   summariseArmy(state.pve.troops, pveCatalogue(game), [], { marchCapacity: Number.MAX_SAFE_INTEGER });
