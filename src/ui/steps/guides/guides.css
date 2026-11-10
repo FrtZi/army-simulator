@@ -183,7 +183,7 @@
   text-decoration: underline;
 }
 
-/* the map to reach a ritual (GUIDE-07): its tree, scrolled when wider than the page */
+/* a rituals category as the game's tree (GUIDE-07), in the guides' map and in Your setup: scrolled when wider */
 .map-scroll {
   overflow: auto;
   max-height: 70vh;

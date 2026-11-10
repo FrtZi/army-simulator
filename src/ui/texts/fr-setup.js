@@ -51,6 +51,9 @@ export const FR_SETUP = {
     "Le niveau de chacun tel que le jeu l'affiche, 0 s'il n'y est pas encore. Seuls les bonus au combat comptent dans le Laboratoire.",
   "setup.otherCopies": "Ses autres exemplaires (jusqu'à {most} en tout) :",
   "setup.copyOf": "Exemplaire {copy} de {name} : son niveau, sur {max}",
+  "setup.treeHint":
+    "Choisissez un rituel dans son arbre pour saisir son niveau : ✓ au maximum, ◑ en cours, ○ peut commencer, ✕ verrouillé.",
+  "setup.ritualsAsList": "Tous les rituels de la catégorie en liste, pour saisir vite",
   "setup.levelOf": "Niveau de {name}, de 0 à {max}",
   "load.title": "Votre configuration dans le laboratoire",
   "load.label": "Charger votre configuration",

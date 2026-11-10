@@ -3,6 +3,7 @@
 // 0 or an empty field takes the entry out), unsaved until Save; a value out of range is marked and not kept.
 import { byId, escape, options } from "../../dom.js";
 import { treeOrder } from "../../ritual-tree.js";
+import { chooseRitual, drawSetupRitualTree } from "./ritual-tree.js";
 import { label } from "../../format.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
@@ -67,6 +68,7 @@ export function drawSetupLevelled() {
       .map((row) => rowHtml(section, row))
       .join("");
   }
+  drawSetupRitualTree();
 }
 
 /** A level typed: kept when a whole number in range (0 or empty: the entry out), else marked and not kept. */
@@ -83,7 +85,16 @@ function typed(input) {
   else if (kept) kept.level = value;
   else state.playerSetup[section] = [...others, { id: input.dataset.id, level: value }];
   for (const copy of document.querySelectorAll(`[data-setup-copy="${input.dataset.id}"]`)) copy.disabled = value === 0;
+  if (section === "rituals") syncRitual(input);
   drawSetupStatus();
+}
+
+/** A ritual's level typed in the tree's field or in the list: its twin field the same, the tree's node redrawn. */
+function syncRitual(input) {
+  for (const twin of document.querySelectorAll(`[data-setup-level="rituals"][data-id="${input.dataset.id}"]`)) {
+    if (twin !== input) twin.value = input.value;
+  }
+  drawSetupRitualTree({ editor: false });
 }
 
 /** Another copy's level typed: the copies kept in order, an empty field or 0 taking that copy out (D-33). */
@@ -105,12 +116,17 @@ function typedCopy(input) {
 export function bindSetupLevelled() {
   byId("setup-ritual-category").addEventListener("change", (event) => {
     state.setupRitualCategory = event.target.value;
+    state.setupRitualChosen = null;
     drawSetupLevelled();
   });
   for (const id of ["setup-rituals", "setup-buildings"]) {
     byId(id).addEventListener("input", (event) => {
       if (event.target.dataset.setupLevel) typed(event.target);
       if (event.target.dataset.setupCopy) typedCopy(event.target);
+    });
+    byId(id).addEventListener("click", (event) => {
+      const node = event.target.closest("[data-setup-ritual]");
+      if (node) chooseRitual(node.dataset.setupRitual);
     });
   }
 }

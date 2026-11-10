@@ -4,54 +4,13 @@
 // its ritual; the links are drawn behind, for the eye only.
 import { escape } from "../../dom.js";
 import { label } from "../../format.js";
-import { CONFIG } from "../../config.js";
 import { currentGame } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { depthsOf, prerequisitesOf } from "../../../engine/index.js";
-import { treeLayout, treeOrder } from "../../ritual-tree.js";
+import { treeHtml } from "../../ritual-tree.js";
 import { savedLevel } from "./levelled.js";
 
-const ICONS = { done: "✓", partial: "◑", open: "○", locked: "✕" };
 const mine = (id) => savedLevel("rituals", id);
-const top = (entry) => entry.power.length;
-
-/** A ritual's state from the saved setup: at its top, under way, can start (every first need met), or locked. */
-function stateOf(entry) {
-  const level = mine(entry.id);
-  if (level >= top(entry)) return "done";
-  if (level > 0) return "partial";
-  const met = Object.entries(entry.requires.ritual ?? {}).every(([id, levels]) => mine(id) >= (levels[0] ?? 0));
-  return met ? "open" : "locked";
-}
-
-function linksSvg(entries, layout_, lit) {
-  const { nodeWidth: w, nodeHeight: h } = CONFIG.ritualMap;
-  const paths = entries.flatMap((entry) =>
-    Object.entries(entry.requires.ritual ?? {})
-      .filter(([id]) => layout_.places.has(id))
-      .map(([id, levels]) => {
-        const from = layout_.places.get(id);
-        const to = layout_.places.get(entry.id);
-        const [x1, y1, x2, y2] = [from.x + w / 2, from.y + h, to.x + w / 2, to.y];
-        const mid = (y1 + y2) / 2;
-        const asked = levels.find((level) => level !== null) ?? 1;
-        const on = lit.has(id) && (lit.has(entry.id) || lit.goal === entry.id);
-        const tag = asked > 1 ? `<text x="${(x1 + x2) / 2 + 4}" y="${mid}">${asked}</text>` : "";
-        return `<path class="${on ? "on-path" : ""}" d="M${x1},${y1} C${x1},${mid} ${x2},${mid} ${x2},${y2}"/>${tag}`;
-      }),
-  );
-  return `<svg class="map-links" width="${layout_.width}" height="${layout_.height}" aria-hidden="true">${paths.join("")}</svg>`;
-}
-
-function nodeHtml(entry, place, lit, number) {
-  const { nodeWidth: w, nodeHeight: h } = CONFIG.ritualMap;
-  const state = stateOf(entry);
-  const level = state === "done" ? t("map.top") : `${mine(entry.id)}/${top(entry)}`;
-  const classes = ["map-node", state, lit.has(entry.id) ? "on-path" : "", lit.goal === entry.id ? "goal" : ""];
-  const words = t(`map.${state}`, { level: mine(entry.id), top: top(entry) });
-  return `<button type="button" class="${classes.join(" ").trim()}" data-guide-entry="${entry.id}" style="left:${place.x}px;top:${place.y}px;width:${w}px;height:${h}px" aria-label="${escape(`${label(entry)}: ${words}`)}">
-    <span class="name"><span class="tree-number">${number}</span> ${escape(label(entry))}</span><span class="map-state"><span aria-hidden="true">${ICONS[state]}</span> ${escape(level)}</span></button>`;
-}
 
 /** The steps left to reach `level` of the ritual: each prerequisite under the level asked, the deepest first. */
 function stepsHtml(entry, level, needed, all) {
@@ -76,12 +35,9 @@ export function ritualMapHtml(entry, level) {
   const tree = all.filter((other) => other.category === entry.category);
   const needed = prerequisitesOf(all, entry.id, level);
   const lit = Object.assign(new Set(needed.keys()), { goal: entry.id });
-  const placed = treeLayout(tree);
-  const nodes = treeOrder(tree).map(({ entry: other, number }) =>
-    nodeHtml(other, placed.places.get(other.id), lit, number),
-  );
+
   return `<h4>${escape(t("map.title", { level }))}</h4>
     <p class="hint">${escape(t("map.hint"))}</p>
-    <div class="map-scroll"><div class="map" style="width:${placed.width}px;height:${placed.height}px">${linksSvg(tree, placed, lit)}${nodes.join("")}</div></div>
+    ${treeHtml(tree, { levelOf: mine, lit, attribute: "data-guide-entry" })}
     <h4>${escape(t("map.stepsTitle"))}</h4>${stepsHtml(entry, level, needed, all)}`;
 }

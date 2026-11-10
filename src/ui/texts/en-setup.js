@@ -51,6 +51,8 @@ export const EN_SETUP = {
     "Each one's level as the game shows it, 0 if not there yet. Only the bonuses in battle count in the Battle lab.",
   "setup.otherCopies": "Its other copies (up to {most} in all):",
   "setup.copyOf": "Copy {copy} of {name}: its level, out of {max}",
+  "setup.treeHint": "Choose a ritual in its tree to enter its level: ✓ at its top, ◑ under way, ○ can start, ✕ locked.",
+  "setup.ritualsAsList": "Every ritual of the category as a list, to type fast",
   "setup.levelOf": "Level of {name}, from 0 to {max}",
   "load.title": "Your setup in the lab",
   "load.label": "Load your setup",

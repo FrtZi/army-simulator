@@ -49,7 +49,7 @@ const node = (page, id) => page.$(`.map [data-guide-entry="${id}"]`);
 
 test("GUIDE-07 the map: the category's tree, each ritual's state from the setup, the way lit, the steps in order", () => {
   const page = openRitual("the-great-invasion");
-  assert.equal(page.$$(".map .map-node").length, military.length, "the whole Military tree");
+  assert.equal(page.$$(".guide-detail .map .map-node").length, military.length, "the whole Military tree");
   assert.ok(node(page, "scouting").classList.contains("done"), "at its top: 10 of 10");
   assert.match(node(page, "scouting").getAttribute("aria-label"), /Scouting: at its top level/);
   assert.ok(node(page, "daemonic-weapons").classList.contains("partial"));
@@ -63,6 +63,25 @@ test("GUIDE-07 the map: the category's tree, each ritual's state from the setup,
   assert.ok(steps.includes("Daemonic Weapons from 2 to 3"));
   assert.ok(steps.includes("Feel No Pain from 0 to 6"));
   assert.equal(steps.at(-1), "The Great Invasion from 0 to 1");
+});
+
+test("GUIDE-07 Your setup: a ritual chosen in its tree opens its level; typed, its node and its line follow", () => {
+  const page = openPage();
+  page.click("#page-tab-setup");
+  page.choose("#setup-ritual-category", "military");
+  const setupNode = (id) => page.$(`#setup-ritual-tree [data-setup-ritual="${id}"]`);
+  assert.equal(page.$$("#setup-ritual-tree .map-node").length, military.length, "the whole Military tree");
+  setupNode("daemonic-weapons").click();
+  assert.equal(page.window.document.activeElement.id, "setup-ritual-chosen");
+  assert.match(page.text("#setup-ritual-editor"), /Daemonic Weapons/);
+  page.type("#setup-ritual-chosen", 7);
+  assert.ok(setupNode("daemonic-weapons").classList.contains("partial"), "its node: under way");
+  assert.equal(textOf(setupNode("daemonic-weapons").querySelector(".map-state")), "◑ 7/10");
+  assert.equal(page.$("#setup-ritual-daemonic-weapons").value, "7", "its line in the list too");
+  assert.equal(page.window.document.activeElement.id, "setup-ritual-chosen", "the field keeps the focus");
+  page.click("#setup-save");
+  const saved = JSON.parse(page.window.localStorage.getItem("army-simulator.player-setup"))["chaos-conquest"];
+  assert.deepEqual(saved.rituals, [{ id: "daemonic-weapons", level: 7 }]);
 });
 
 test("GUIDE-07 a node and a step open their ritual", () => {

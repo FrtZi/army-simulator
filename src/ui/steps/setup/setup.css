@@ -205,3 +205,20 @@
 .setup-screens {
   margin: 0.25rem 0 0.5rem;
 }
+
+/* the ritual chosen in its tree: its level under the tree (the tree's look is the guides' map, guides.css) */
+.setup-ritual-editor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.setup-ritual-editor input {
+  width: 5.5rem;
+}
+
+.setup-ritual-all {
+  margin-top: 0.5rem;
+}

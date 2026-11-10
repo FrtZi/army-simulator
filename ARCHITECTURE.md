@@ -90,7 +90,7 @@ src/ui/                  the page
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
-                         in warlords.js, the troops owned in troops.js, the rituals' and buildings' levels in levelled.js, the champion in
+                         in warlords.js, the troops owned in troops.js, the rituals' and buildings' levels in levelled.js (the rituals chosen in their tree in ritual-tree.js), the champion in
                          champion.js, a file uploaded in
                          files.js, under review in import.js, drawn in review.js; D-27);
                          and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
