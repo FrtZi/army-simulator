@@ -6,6 +6,7 @@ import { label } from "../../format.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { drawSetupStatus } from "./draw.js";
+import { mostCopies } from "../../../storage/setup-buildings.js";
 
 /** Each section: the setup's list, the game's entries (the rituals of the category chosen), the ids' prefix. */
 const SECTIONS = {
@@ -17,6 +18,21 @@ const SECTIONS = {
 };
 
 const levelIn = (section, id) => state.playerSetup[section].find((entry) => entry.id === id)?.level ?? "";
+const copiesOf = (id) => state.playerSetup.buildings.find((entry) => entry.id === id)?.copies ?? [];
+
+/** A building the game lets you build more than once: a field per other copy, usable once the first has a level. */
+function copiesHtml(entry, name, max) {
+  const most = mostCopies(currentGame().game, entry.id);
+  const first = levelIn("buildings", entry.id) !== "";
+  if (most < 2) return "";
+  const fields = Array.from({ length: most - 1 }, (_, index) => {
+    const copy = index + 2;
+    const id = `setup-building-${entry.id}-copy-${copy}`;
+    return `<label class="visually-hidden" for="${id}">${escape(t("setup.copyOf", { name, copy, max }))}</label>
+    <input id="${id}" class="setup-copy" type="number" min="0" max="${max}" step="1" inputmode="numeric" data-setup-copy="${entry.id}" data-copy="${index}" value="${copiesOf(entry.id)[index] ?? ""}"${first ? "" : " disabled"} />`;
+  });
+  return `<span class="setup-copies"><span class="meta">${escape(t("setup.otherCopies", { most }))}</span>${fields.join("")}</span>`;
+}
 
 function rowHtml(section, entry) {
   const { prefix } = SECTIONS[section];
@@ -28,6 +44,7 @@ function rowHtml(section, entry) {
     <label class="visually-hidden" for="${prefix}-${entry.id}">${escape(t("setup.levelOf", { name, max }))}</label>
     <input id="${prefix}-${entry.id}" type="number" min="0" max="${max}" step="1" inputmode="numeric" data-setup-level="${section}" data-id="${entry.id}" value="${levelIn(section, entry.id)}" />
     <span class="meta" aria-hidden="true">/ ${max}</span>
+    ${section === "buildings" ? copiesHtml(entry, name, max) : ""}
   </li>`;
 }
 
@@ -59,6 +76,23 @@ function typed(input) {
   if (value === 0) state.playerSetup[section] = others;
   else if (kept) kept.level = value;
   else state.playerSetup[section] = [...others, { id: input.dataset.id, level: value }];
+  for (const copy of document.querySelectorAll(`[data-setup-copy="${input.dataset.id}"]`)) copy.disabled = value === 0;
+  drawSetupStatus();
+}
+
+/** Another copy's level typed: the copies kept in order, an empty field or 0 taking that copy out (D-33). */
+function typedCopy(input) {
+  const max = Number(input.max);
+  const value = input.value === "" ? 0 : Number(input.value);
+  const valid = Number.isInteger(value) && value >= 0 && value <= max;
+  input.setAttribute("aria-invalid", String(!valid));
+  const building = state.playerSetup.buildings.find((entry) => entry.id === input.dataset.setupCopy);
+  if (!valid || !building) return;
+  const copies = [...(building.copies ?? [])];
+  copies[Number(input.dataset.copy)] = value;
+  const kept = copies.filter((level) => level > 0);
+  if (kept.length) building.copies = kept;
+  else delete building.copies;
   drawSetupStatus();
 }
 
@@ -70,6 +104,7 @@ export function bindSetupLevelled() {
   for (const id of ["setup-rituals", "setup-buildings"]) {
     byId(id).addEventListener("input", (event) => {
       if (event.target.dataset.setupLevel) typed(event.target);
+      if (event.target.dataset.setupCopy) typedCopy(event.target);
     });
   }
 }

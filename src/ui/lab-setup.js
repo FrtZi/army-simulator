@@ -3,6 +3,7 @@
 // capacity (base, bonus) and its bonuses count instead of those entered in the lab. What the setup does not hold,
 // the lab's own values still give. Off, the lab plays freely. Always the saved setup, never unsaved edits.
 // The state is passed in, so state.js can use these without importing back.
+import { eachCopy } from "../storage/setup-buildings.js";
 import { resolveSources } from "../engine/index.js";
 
 const owned = (state) => new Map(state.savedPlayerSetup.warlords.map((warlord) => [warlord.id, warlord.level]));
@@ -51,7 +52,7 @@ export function setupSourceEffects(state, game) {
     {
       kind: "building",
       catalogue: { effects: game.structures.effects, entries: game.structures.structures },
-      levels: buildings,
+      levels: eachCopy(buildings), // each copy gives its bonus (D-33)
     },
     { kind: "champion", catalogue: game.champion, gear: championGear(state), part: "general" },
   ]);

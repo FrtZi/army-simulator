@@ -4,6 +4,7 @@
 // (setup-file.js) accepts: a test reads the dictionary's example file back without a single refusal.
 
 import { TARGET_FIELDS } from "../engine/index.js";
+import { mostCopies } from "./setup-buildings.js";
 import { SETUP_FORMAT, SETUP_VERSION } from "./setup-file.js";
 import { pieceLevels } from "./setup-champion.js";
 
@@ -35,7 +36,9 @@ function valueLists({ game, warlords, units, defences, rituals, structures, cham
     units: [...units, ...defences].map((unit) => listEntry(unit)),
     // each with its last level: a level read beyond it is refused (BONUS-04, BONUS-07)
     rituals: (rituals?.rituals ?? []).map((ritual) => listEntry(ritual, { levels: ritual.power.length })),
-    buildings: (structures?.structures ?? []).map((building) => listEntry(building, { levels: building.power.length })),
+    buildings: (structures?.structures ?? []).map((building) =>
+      listEntry(building, { levels: building.power.length, mostCopies: mostCopies(game, building.id) }),
+    ),
     gear: (champion?.pieces ?? []).map((piece) => listEntry(piece, { levels: pieceLevels(piece) })),
   };
 }
@@ -68,6 +71,7 @@ function domains(game, gameId, champion) {
     "rituals[].level": count,
     ...levelled("buildings"),
     "buildings[].level": count,
+    "buildings[].copies": { dataType: "list", valueDomain: { min: 1 } },
     champion: object,
     "champion.level": { dataType: "integer", valueDomain: { min: 1, max: champion?.champion.power.length } },
     "champion.gear": list,

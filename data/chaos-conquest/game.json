@@ -187,42 +187,48 @@
       "labels": {
         "fr": "Pierre des hardes des Hommes-bêtes",
         "en": "Beastmen Herdstone"
-      }
+      },
+      "maxCopies": 1
     },
     {
       "id": "dungeon",
       "labels": {
         "fr": "Donjon",
         "en": "Dungeon"
-      }
+      },
+      "maxCopies": 5
     },
     {
       "id": "training-ground",
       "labels": {
         "fr": "Terrain d'entraînement",
         "en": "Training Ground"
-      }
+      },
+      "maxCopies": 5
     },
     {
       "id": "bestiary",
       "labels": {
         "fr": "Bestiaire",
         "en": "Bestiary"
-      }
+      },
+      "maxCopies": 5
     },
     {
       "id": "chaos-rift",
       "labels": {
         "fr": "Faille du Chaos",
         "en": "Chaotic Rift"
-      }
+      },
+      "maxCopies": 1
     },
     {
       "id": "fortress-walls",
       "labels": {
         "fr": "Murs de la Forteresse",
         "en": "Fortress Walls"
-      }
+      },
+      "maxCopies": 1
     }
   ],
   "troopStats": [

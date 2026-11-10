@@ -408,3 +408,15 @@ its state in words), placed over an SVG of the links drawn for the eye only.
   Flow made for a dbt project's lineage, for a page with no framework and a public repository it could not yet
   depend on; a graph library (dagre, ELK) for a tree of 20 to 36 nodes a few lines lay out; the buildings' map, whose
   prerequisites cross every tree (each building asks others), left for when it is asked.
+
+## D-33 · A building's copies: its first level, then the others' in `copies`, each copy's bonus counting (2026-11-10)
+
+Frantz: the game lets some troop producers be built up to 5 times, the Dungeon, the Training Ground and the
+Bestiary; the Herdstone, the Chaotic Rift and the Fortress Walls once; and for him each copy's bonus counts. The most
+copies are a game fact, `maxCopies` on game.json's buildings (1 when absent); a setup's building keeps its `level`
+(its first copy) and adds `copies`, the others' levels, refused beyond the most or out of range. The levelled source
+gets one entry per copy, so the bonuses add up; a requirement asks the highest copy.
+
+- _Set aside:_ a list of levels replacing `level` (every setup file written so far would change shape); the same id
+  repeated (a list matched by id would merge the copies into one); only the highest copy counting (Frantz says they
+  add up; a battle report will tell).

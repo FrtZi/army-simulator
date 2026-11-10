@@ -146,13 +146,20 @@
       "name": "buildings[].id",
       "definition": "The building, by its id.",
       "obligation": "required",
-      "example": "fortress-walls"
+      "example": "training-ground"
     },
     {
       "name": "buildings[].level",
-      "definition": "The building's level, from 0 to its last (see the list).",
+      "definition": "The building's level, from 0 to its last (see the list); for a building you have several of, its first copy's.",
       "obligation": "required",
       "example": 25
+    },
+    {
+      "name": "buildings[].copies",
+      "definition": "For a building the game lets you build more than once (see the list: most copies), the levels of its other copies, each from 1 to its last. Leave it out for one copy.",
+      "obligation": "optional",
+      "whereInGame": "Each copy's level, on its sign in the city",
+      "example": [22, 20]
     },
     {
       "name": "champion",

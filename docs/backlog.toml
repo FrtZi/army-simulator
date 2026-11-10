@@ -452,12 +452,12 @@ title = "Several copies of a building in the setup"
 moscow = "should"
 milestone = "v1.2"
 module = "storage"
-status = "to do"
+status = "done"
 added = 2026-11-10
 features = ["BONUS-07"]
 note = "Frantz, 2026-11-10, with screenshots of his city: up to 5 of each troop producer (not the Herdstone, the Chaotic Rift nor the Fortress Walls), resource buildings many times. Of our 10 buildings with a battle bonus, 3 are troop producers that can have copies: the Bestiary, the Dungeon and the Training Ground. Frantz: their bonuses add up. The setup holds one level per building; how copies add up is open question 25."
 tasks = [
-  "[ ] Open question 25 settled: each copy's bonus, or the highest level's",
-  "[ ] Each building's most copies in the data; the setup holds a level per copy, the file and its dictionary too",
+  "[x] Open question 25 settled: each copy's bonus counts (Frantz)",
+  "[x] Each building's most copies in the data; the setup holds a level per copy, the file and its dictionary too (D-33)",
 ]
 

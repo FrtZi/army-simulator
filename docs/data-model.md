@@ -220,7 +220,7 @@ A currency's id is its name (its code, `currency7`, says nothing); an item keeps
 
 Written by `scripts/import-rituals.mjs` and `scripts/import-structures.mjs` from cctools.cc's saved pages, never by
 hand; both read their levels the same way (`scripts/levels.mjs`). The 373 rituals sit in 13 categories (`categories`,
-in the game's order); the 32 structures take their id from their name, and game.json's six troop buildings keep their
+in the game's order); the 32 structures take their id from their name, and game.json's six troop buildings, each with its most copies (`maxCopies`, D-33), keep their
 id and their names read in both languages (Chaotic Rift is `chaos-rift`). Each entry, level 1 first:
 
 | Field      | Meaning                                                                                                              |

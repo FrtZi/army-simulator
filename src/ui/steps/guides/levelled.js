@@ -2,6 +2,7 @@
 // list serves them: found by category (rituals), by whether they give bonuses in battle, or by name; each marked
 // with its level when in the player's saved setup.
 import { escape, options } from "../../dom.js";
+import { highestCopy } from "../../../storage/setup-buildings.js";
 import { label, searchable } from "../../format.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
@@ -18,8 +19,10 @@ export const LEVELLED = {
 
 export const guideOf = (kind) => state.guide.levelled[kind];
 /** The player's saved level of an entry, or 0. */
-export const savedLevel = (kind, id) =>
-  state.savedPlayerSetup[LEVELLED[kind].setup].find((entry) => entry.id === id)?.level ?? 0;
+export const savedLevel = (kind, id) => {
+  const entry = state.savedPlayerSetup[LEVELLED[kind].setup].find((saved) => saved.id === id);
+  return entry ? highestCopy(entry) : 0; // a building's highest copy (D-33)
+};
 
 /** The entries the filters and the search let through, by name in the page's language. */
 export function shownEntries(kind) {

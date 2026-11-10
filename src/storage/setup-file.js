@@ -6,6 +6,7 @@ import { effectProblems, levelOf, rankOf } from "../engine/index.js";
 import { nearestId } from "./nearest.js";
 import { isObject, rangeProblem, readList, refuse } from "./setup-checks.js";
 import { readChampion } from "./setup-champion.js";
+import { withCopies } from "./setup-buildings.js";
 
 export const SETUP_FORMAT = "army-simulator/setup";
 export const SETUP_VERSION = 1;
@@ -86,7 +87,7 @@ const SECTIONS = {
     readList(list, "rituals", (entry, path) => levelledEntry(entry, path, target.rituals?.rituals, "unknown-ritual")),
   buildings: (list, target) =>
     readList(list, "buildings", (entry, path) =>
-      levelledEntry(entry, path, target.structures?.structures, "unknown-building"),
+      withCopies(levelledEntry(entry, path, target.structures?.structures, "unknown-building"), entry, path, target),
     ),
   champion: readChampion,
 };

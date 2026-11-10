@@ -39,6 +39,7 @@ export const EN_SETUP_FILES = {
   "setupfile.unknown-building": "no building has this id.",
   "setupfile.unknown-gear": "no piece of gear has this id.",
   "setupfile.duplicate": "this hero is listed twice; the first is kept.",
+  "setupfile.too-many-copies": "at most {max} of this building.",
   "setupfile.out-of-range": "outside {min} to {max}.",
   "setupfile.capacity-bonus": "the march capacity bonus goes in capacity.bonusPercent, not in the bonuses.",
   "setupfile.help": "The file: three ways to fill your setup, and the brief for an agent",

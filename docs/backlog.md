@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 4/9 | 22/29 | ○ not yet: 1 Must left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 5/9 | 24/29 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/3 | 3/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -29,7 +29,6 @@ Not done, and every dependency done:
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
 - [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ◐ doing)
 - [BL-24](#bl-24) Guides: the map to reach a level, the items by category, a set lab (v1.2, should, ◐ doing)
-- [BL-27](#bl-27) Several copies of a building in the setup (v1.2, should, ○ to do)
 - [BL-26](#bl-26) The troops owned in the setup (v1.2, could, ○ to do)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
@@ -74,7 +73,7 @@ flowchart LR
   BL24["BL-24 ◐ doing<br/>Guides: the map to reach a level, the items by category, a set lab"]:::doing
   BL25["BL-25 ✓ done<br/>The setup's files for an agent: empty, an example, the dictionary, a clearer brief"]:::done
   BL26["BL-26 ○ to do<br/>The troops owned in the setup"]:::todo
-  BL27["BL-27 ○ to do<br/>Several copies of a building in the setup"]:::todo
+  BL27["BL-27 ✓ done<br/>Several copies of a building in the setup"]:::done
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -215,7 +214,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 | [BL-23](#bl-23) | The champion and its gear made easy to read: rarities, sets, the champion's figures | should | [ui](../src/ui) | ✓ done | 3/3 |
 | [BL-24](#bl-24) | Guides: the map to reach a level, the items by category, a set lab | should | [ui](../src/ui) | ◐ doing | 3/4 |
 | [BL-26](#bl-26) | The troops owned in the setup | could | [storage](../src/storage) | ○ to do | 0/2 |
-| [BL-27](#bl-27) | Several copies of a building in the setup | should | [storage](../src/storage) | ○ to do | 0/2 |
+| [BL-27](#bl-27) | Several copies of a building in the setup | should | [storage](../src/storage) | ✓ done | 2/2 |
 
 <a id="bl-10"></a>
 #### BL-10 · Rituals in the setup: each ritual's level, its bonuses applied
@@ -311,12 +310,12 @@ An agent given the Chaos Keep's Army tab found nothing to write: the setup has n
 <a id="bl-27"></a>
 #### BL-27 · Several copies of a building in the setup
 
-Should · [storage](../src/storage) · ○ to do · added `2026-11-10` · features: BONUS-07
+Should · [storage](../src/storage) · ✓ done · added `2026-11-10` · features: BONUS-07
 
 Frantz, 2026-11-10, with screenshots of his city: up to 5 of each troop producer (not the Herdstone, the Chaotic Rift nor the Fortress Walls), resource buildings many times. Of our 10 buildings with a battle bonus, 3 are troop producers that can have copies: the Bestiary, the Dungeon and the Training Ground. Frantz: their bonuses add up. The setup holds one level per building; how copies add up is open question 25.
 
-- [ ] Open question 25 settled: each copy's bonus, or the highest level's
-- [ ] Each building's most copies in the data; the setup holds a level per copy, the file and its dictionary too
+- [x] Open question 25 settled: each copy's bonus counts (Frantz)
+- [x] Each building's most copies in the data; the setup holds a level per copy, the file and its dictionary too (D-33)
 
 ### v1.3 · Version 1.3, champion, gear and the keep
 

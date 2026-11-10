@@ -49,6 +49,8 @@ export const FR_SETUP = {
   "setup.buildings": "Bâtiments",
   "setup.levelsHint":
     "Le niveau de chacun tel que le jeu l'affiche, 0 s'il n'y est pas encore. Seuls les bonus au combat comptent dans le Laboratoire.",
+  "setup.otherCopies": "Ses autres exemplaires (jusqu'à {most} en tout) :",
+  "setup.copyOf": "Exemplaire {copy} de {name} : son niveau, sur {max}",
   "setup.levelOf": "Niveau de {name}, de 0 à {max}",
   "load.title": "Votre configuration dans le laboratoire",
   "load.label": "Charger votre configuration",
