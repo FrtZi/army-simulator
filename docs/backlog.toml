@@ -468,12 +468,12 @@ title = "An uploaded file: each section added to what you have, or replacing it"
 moscow = "should"
 milestone = "v1.2"
 module = "storage"
-status = "to do"
+status = "done"
 added = 2026-11-10
 features = ["CFG-09"]
 note = "Frantz, 2026-11-10: with several files uploaded one after the other, ask whether the past is kept or discarded, and if discarded, which sections. Today a file only adds and updates (D-27): nothing is ever removed."
 tasks = [
-  "[ ] In the review, for each section the file holds: add to what you have, or replace it; replacing named with what it removes",
+  "[x] In the review, for each section the file holds: add to what you have, or replace it; replacing named with what it removes",
 ]
 
 [[item]]

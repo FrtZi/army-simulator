@@ -94,6 +94,11 @@
   border-color: var(--accent);
 }
 
+/* what replacing a section removes (CFG-09) */
+.chip-removed {
+  border-color: var(--critical);
+}
+
 .report-parked,
 .parked-list {
   border-left: 4px solid var(--accent);

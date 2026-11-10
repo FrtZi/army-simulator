@@ -12,7 +12,7 @@ import { parkedChoice, readWithChoices } from "../../../storage/setup-parked.js"
 const MAX_READINGS = 3;
 
 /** The review with its figures: the file read with the choices, the values parked, the others left out. */
-export function reviewed({ file, parsed, choices = {}, parked = {} }) {
+export function reviewed({ file, parsed, choices = {}, parked = {}, replace = [] }) {
   const chosen = { ...choices };
   const found = { ...parked };
   let result;
@@ -28,8 +28,8 @@ export function reviewed({ file, parsed, choices = {}, parked = {} }) {
     if (!fresh.some(({ choice }) => choice.suggestion !== null)) break;
   }
   const leftOut = result.problems.filter((problem) => !found[parkedChoice(problem, currentGame())?.path]);
-  const { report } = mergeSetup(state.playerSetup, result.sections);
-  return { file, parsed, choices: chosen, parked: found, sections: result.sections, leftOut, report };
+  const { report } = mergeSetup(state.playerSetup, result.sections, new Set(replace));
+  return { file, parsed, choices: chosen, parked: found, sections: result.sections, leftOut, report, replace };
 }
 
 /** The review of a file's text, or why it cannot be read at all. */
@@ -44,6 +44,12 @@ export function reviewOf(file, text) {
   if (!sections) return { file, unreadable: problems[0] };
   if (game !== state.gameId) return { file, unreadable: { code: "game", read: game } };
   return reviewed({ file, parsed });
+}
+
+/** A section to add to what the player has, or to replace it (CFG-09). */
+export function replaceSection(review, name, replacing) {
+  const replace = review.replace.filter((section) => section !== name);
+  return reviewed({ ...review, replace: replacing ? [...replace, name] : replace });
 }
 
 /** A choice made in a parked value's list: an entry's id, or null to leave it out. */

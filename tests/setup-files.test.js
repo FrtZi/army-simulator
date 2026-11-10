@@ -1,5 +1,6 @@
 // Your setup's files on the published page in jsdom (CFG-05, CFG-06, D-27): a file uploaded, reviewed, applied or
-// cancelled; the setup, an empty file and the agent's brief downloaded; the brief copied where the browser allows.
+// cancelled, each section added to what you have or replacing it (CFG-09); the setup, an empty file and the agent's
+// brief downloaded; the brief copied where the browser allows.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { openPage } from "./page.js";
@@ -35,7 +36,13 @@ function downloads(page) {
 }
 
 const textOf = (element) => element.textContent.replace(/\s+/g, " ").trim();
-const rows = (page) => page.$$("#setup-review .report-row").map(textOf);
+// a row's words: its section and what the file does, without the add-or-replace choice beside them (CFG-09)
+const rows = (page) =>
+  page.$$("#setup-review .report-row").map((row) => {
+    const words = row.cloneNode(true);
+    for (const choice of words.querySelectorAll("select, label")) choice.remove();
+    return textOf(words);
+  });
 /** Each parked value: what was read, and what its list has chosen. */
 const parked = (page) =>
   page
@@ -236,4 +243,27 @@ test("CFG-06 the brief is copied where the browser allows it; elsewhere the page
   await settle();
   assert.equal(page.text("#setup-files-status"), "The brief is copied: paste it to the agent with your screenshots.");
   assert.match(copied, /`"azazel"`: Azazel/);
+});
+
+test("CFG-09 each section of a file added to what you have, or replacing it: what replacing removes is said", async () => {
+  // Frantz's Marauders (DEF-042): a troop in the setup that his file does not hold
+  const saved = JSON.stringify({
+    [GAME]: setupFile({
+      troops: [
+        { id: "marauders", count: 9801 },
+        { id: "pestigor", count: 10 },
+      ],
+    }),
+  });
+  const page = openPage({ stored: { "army-simulator.player-setup": saved } });
+  page.click("#page-tab-setup");
+  await upload(page, setupFile({ troops: [{ id: "pestigor", count: 64336 }] }));
+  assert.deepEqual(rows(page), ["Troops owned ↻ 1 updated • 1 kept"], "added to what you have, as before");
+  assert.equal(page.$("#setup-replace-troops").value, "add");
+  page.choose("#setup-replace-troops", "replace");
+  assert.deepEqual(rows(page), ["Troops owned ↻ 1 updated − 1 removed"]);
+  page.click("#setup-import-apply");
+  page.click("#setup-save");
+  const kept = JSON.parse(page.window.localStorage.getItem("army-simulator.player-setup"))[GAME];
+  assert.deepEqual(kept.troops, [{ id: "pestigor", count: 64336 }], "the Marauders gone");
 });

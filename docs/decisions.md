@@ -447,3 +447,13 @@ What is folded is kept in this browser (a convenience: blocked storage folds for
 - _Set aside:_ the title itself as the button (its text is drawn from the texts and, for some blocks, from the
   composition; a button inside would be redrawn away); `<details>` around each block (its content moves, and the
   summary would be a second title); a second computation of each figure for the lines (it could drift from the block).
+
+## D-36 · An uploaded file may replace a section, when the player chooses it (2026-11-10)
+
+D-27 had a file only add and update: nothing removed, so a misread screenshot deletes nothing. Frantz, uploading
+several files one after the other, wants to discard the past where he says so: in the review, each section the file
+holds offers "add to what you have" (the default, D-27 as it was) or "replace it with the file's"; replacing says
+how many entries it removes before Apply. A section the file does not hold is never touched.
+
+- _Set aside:_ one choice for the whole file (a file of troops would wipe the heroes it does not hold, or keep a
+  stray troop); replacing by default (the misread screenshot again).

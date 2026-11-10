@@ -12,7 +12,7 @@ import { exampleFile } from "../../../storage/setup-dictionary.js";
 import { t } from "../../texts/index.js";
 import { drawSetup } from "./draw.js";
 import { drawSetupReview } from "./review.js";
-import { choose, reviewOf } from "./import.js";
+import { choose, replaceSection, reviewOf } from "./import.js";
 
 const json = (value) => JSON.stringify(value, null, 2);
 const showStatus = (text) => {
@@ -29,7 +29,10 @@ async function upload(input) {
 
 /** Ends the review: the changes applied to the setup shown, or nothing done; the focus back on the upload. */
 function close(apply) {
-  if (apply) state.playerSetup = mergeSetup(state.playerSetup, state.setupImport.sections).setup;
+  if (apply) {
+    const { sections, replace } = state.setupImport;
+    state.playerSetup = mergeSetup(state.playerSetup, sections, new Set(replace)).setup;
+  }
   state.setupImport = apply ? { applied: true } : null;
   drawSetup();
   drawSetupReview();
@@ -51,7 +54,12 @@ async function copyBrief() {
 export function bindSetupFiles() {
   byId("setup-import").addEventListener("change", (event) => upload(event.target));
   byId("setup-review").addEventListener("change", (event) => {
-    const { parked: path } = event.target.dataset;
+    const { parked: path, replace } = event.target.dataset;
+    if (replace) {
+      state.setupImport = replaceSection(state.setupImport, replace, event.target.value === "replace");
+      keepingFocus(drawSetupReview);
+      return;
+    }
     if (!path) return;
     const entry = state.setupImport.parked[path].entries[event.target.value];
     state.setupImport = choose(state.setupImport, path, entry ? entry.id : null);

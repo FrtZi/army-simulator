@@ -1,6 +1,7 @@
 // What an uploaded file changes in the player's setup (CFG-05, D-27): only what it holds. A list's entries are
 // matched by their key (a warlord's id, a bonus's stat and troops): a new one is added, a known one updated, and
-// one the file does not list is kept. A file never removes anything: a misread screenshot would delete a warlord.
+// one the file does not list is kept. A file removes nothing unless the player chooses, section by section, to
+// replace what they have with it (CFG-09, Frantz 2026-11-10): then what the file does not hold is removed, and said.
 
 /** The player's setup before anything is entered. */
 export const emptySetup = (game) => ({
@@ -54,15 +55,23 @@ const MERGES = {
   troops: (current, incoming) => mergeList(current ?? [], incoming, byId),
 };
 
+/** A section replaced by the file's: counted as a merge would, what it held and the file not counted as removed. */
+function replaced(name, current, incoming) {
+  const { report } = MERGES[name](current, incoming);
+  if (Array.isArray(incoming)) return { value: incoming, report: { ...report, kept: 0, removed: report.kept } };
+  const gone = Object.keys(current ?? {}).filter((field) => !(field in incoming)).length;
+  return { value: { ...incoming }, report: { ...report, removed: gone } };
+}
+
 /**
  * The setup once the file's sections (from readSetupFile) are applied, and per section what changed; a section
- * the file does not hold is left as it is and absent from the report.
+ * the file does not hold is left as it is and absent from the report; one in `replace` becomes the file's.
  */
-export function mergeSetup(setup, sections) {
+export function mergeSetup(setup, sections, replace = new Set()) {
   const merged = { ...setup };
   const report = {};
   for (const [name, incoming] of Object.entries(sections)) {
-    const result = MERGES[name](setup[name], incoming);
+    const result = replace.has(name) ? replaced(name, setup[name], incoming) : MERGES[name](setup[name], incoming);
     merged[name] = result.value;
     report[name] = result.report;
   }
