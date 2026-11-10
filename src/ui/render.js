@@ -4,6 +4,7 @@
 //   refresh()   — after a value typed in (a percentage, a count, the capacity, a name): only the computed
 //                 parts, so the field being typed in is never rebuilt under the cursor.
 import { keepingFocus } from "./dom.js";
+import { drawFoldSummaries } from "./fold.js";
 import { drawSetupTroops } from "./steps/setup/troops.js";
 import { applyTexts } from "./steps/page/draw.js";
 import { drawThemeToggle } from "./steps/page/theme.js";
@@ -32,6 +33,7 @@ export function refresh() {
   drawCompare();
   drawDashboards();
   drawSetupStatus();
+  drawFoldSummaries();
 }
 
 export function renderAll() {
@@ -56,5 +58,5 @@ export function renderAll() {
     drawSetupTroops();
     drawGuides();
   });
-  refresh();
+  refresh(); // the folded blocks' lines last, from the figures just drawn
 }

@@ -107,3 +107,29 @@ footer {
   padding: 0 1rem;
   font-size: 0.875rem;
 }
+
+/* a block folds to its summary line (FOLD-01): its button by the title, everything else hidden while folded */
+.card {
+  position: relative;
+}
+
+.fold-toggle {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  min-width: 2rem;
+  padding: 0.1rem 0.4rem;
+}
+
+.card > h2 {
+  padding-right: 2.5rem;
+}
+
+.card.folded > :not(h2, .fold-toggle, .fold-summary) {
+  display: none;
+}
+
+.fold-summary {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}

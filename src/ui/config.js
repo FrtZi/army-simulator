@@ -2,7 +2,8 @@
 export const CONFIG = {
   languages: ["en", "fr"],
   locales: { en: "en-GB", fr: "fr-FR" },
-  languageKey: "army-simulator.language", // the only thing the page keeps in the browser (LANG-02)
+  languageKey: "army-simulator.language", // the language chosen (LANG-02)
+  foldKey: "army-simulator.folded", // the blocks folded (FOLD-01): a convenience, this browser only
   defaultMarchCapacity: 50000,
   newTroopCount: 1000,
   newBonus: { stat: "meleeAttack", percent: 10, filter: "all", value: "" },

@@ -435,3 +435,15 @@ Amended on 2026-11-10 (Frantz, after loading his troops and seeing an empty comp
 troops owned, the picker offers only the troops owned, as it offers only the heroes owned, each added at the number
 owned within the march capacity still free (in the order picked). A count typed above what is owned stays warned,
 never capped.
+
+## D-35 · Every block folds to its summary: a button by its title, the line read from the block's figures (2026-11-10)
+
+Frantz asked for Portfolio Advisor's rule: a block that opens closes to one line that sums it up. Each of the 18
+blocks gets, at start, a button by its title and a line under it shown only while folded; the line is written by a
+rule per block (fold-summaries.js), from the figures the block already shows where it shows them (the capacity's
+status, the profile's metrics, Your setup's tiles and status), so the folded line and the open block never disagree.
+What is folded is kept in this browser (a convenience: blocked storage folds for the visit only).
+
+- _Set aside:_ the title itself as the button (its text is drawn from the texts and, for some blocks, from the
+  composition; a button inside would be redrawn away); `<details>` around each block (its content moves, and the
+  summary would be a second title); a second computation of each figure for the lines (it could drift from the block).

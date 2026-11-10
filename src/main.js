@@ -1,6 +1,7 @@
 // Entry point: binds every control once, sets up the glossary's tooltip, reads the player's saved setup, then
 // draws the page.
 import { bindLanguage } from "./ui/steps/page/bind.js";
+import { bindFolds } from "./ui/fold.js";
 import { bindSetupTroops } from "./ui/steps/setup/troops.js";
 import { bindThemeToggle } from "./ui/steps/page/theme.js";
 import { bindPageTabs } from "./ui/steps/page/tabs.js";
@@ -25,6 +26,7 @@ import { setUpTooltip } from "./ui/glossary/tooltip.js";
 import { rememberOpenFilters } from "./ui/filters.js";
 import { renderAll } from "./ui/render.js";
 
+bindFolds(); // first: each block gets its button before anything is drawn
 bindLanguage();
 bindThemeToggle();
 bindPageTabs();

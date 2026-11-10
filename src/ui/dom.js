@@ -25,3 +25,6 @@ export function keepingFocus(draw) {
   draw();
   if (focusedId) byId(focusedId)?.focus();
 }
+
+/** The text an element shows, its spaces tidied; "" when it is not on the page. */
+export const shownText = (selector) => document.querySelector(selector)?.textContent.replace(/\s+/g, " ").trim() ?? "";

@@ -75,6 +75,8 @@ src/ui/                  the page
 ├── files.js             a file downloaded from the page, a picked file's text
 ├── tablist.js           a row of tabs, clicks and keys (the page's, the dashboards', the guides')
 ├── icons.js             the page's SVG icons and the troop type pictograms (D-18)
+├── fold.js              every block folds to its summary line, remembered (FOLD-01, D-35); its lines in
+│                        fold-summaries.js (the Battle lab's) and fold-summaries-setup.js (Your setup's, the Guides)
 ├── ritual-tree.js       a rituals category as the game's tree, and the order and numbers it reads in (GUIDE-07)
 ├── rarity.js            a rarity as a badge, a piece's levels as rarities (GUIDE-05, D-31)
 ├── champion-figures.js  the champion's stats and its gear's bonuses in all, in Your setup and the lab (BONUS-08)
@@ -126,6 +128,7 @@ tests/                   node --test; each test names the feature it proves
 ├── gear.test.js         the gear's rarities, a piece's set, the champion's figures, the set lab (GUIDE-05, 06, 09, BONUS-08)
 ├── ritual-map.test.js   the map to reach a ritual: prerequisites, states, the way, the steps (GUIDE-07)
 ├── items.test.js        the items by family, folded, a row's detail under it (GUIDE-08)
+├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)
 ├── buildings.test.js    a building's copies: most copies, read, each counting, typed (BONUS-07, D-33)
 ├── styles.test.js       each selector's look in one stylesheet (DEF-031)

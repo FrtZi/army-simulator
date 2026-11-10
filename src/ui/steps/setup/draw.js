@@ -2,6 +2,7 @@
 // an icon and a word (entered, not entered, coming); then whether the edits are saved, and the Save and Discard
 // buttons, usable only when there is something to save. Redrawn after every edit, typed values included.
 import { byId, escape, keepingFocus } from "../../dom.js";
+import { drawFoldSummaries } from "../../fold.js";
 import { drawSetupTroops } from "./troops.js";
 import { number } from "../../format.js";
 import { CONFIG } from "../../config.js";
@@ -106,6 +107,7 @@ export function drawSetupStatus() {
   byId("setup-summary").innerHTML = tiles();
   drawStatus();
   drawCapacityTotal();
+  drawFoldSummaries(); // a folded block's line follows an edit (FOLD-01)
 }
 
 /** The capacity's fields, from the setup (not while typed in: only on a full redraw). */

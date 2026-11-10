@@ -481,13 +481,13 @@ title = "Every block closes to a one-line summary"
 moscow = "should"
 milestone = "v1.2"
 module = "ui"
-status = "to do"
+status = "done"
 added = 2026-11-10
 features = ["FOLD-01"]
 note = "Frantz, 2026-11-10: each block can be closed to a synthesis, as in Portfolio Advisor (a block that opens closes to one line, its state with its icon and word and its key figures, written by rules from its figures). 18 blocks: 9 in the Battle lab, 8 in Your setup, the Guides."
 tasks = [
-  "[ ] Each block's summary agreed with Frantz",
-  "[ ] A block closes and opens from its title, its summary in its place; the Battle lab's blocks",
-  "[ ] Your setup's blocks and the Guides",
+  "[x] Each block's summary agreed with Frantz",
+  "[x] A block closes and opens from its title, its summary in its place; the Battle lab's blocks",
+  "[x] Your setup's blocks and the Guides",
 ]
 
