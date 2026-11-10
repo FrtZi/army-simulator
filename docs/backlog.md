@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 8/11 | 30/33 | ○ not yet: 1 Must left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 8/11 | 31/34 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/3 | 3/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -209,7 +209,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 |---|---|---|---|---|---|
 | [BL-10](#bl-10) | Rituals in the setup: each ritual's level, its bonuses applied | must | [ui](../src/ui) | ✓ done | 3/3 |
 | [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ✓ done | 2/2 |
-| [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ◐ doing | 3/4 |
+| [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ◐ doing | 4/5 |
 | [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ◐ doing | 2/3 |
 | [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ✓ done | 6/6 |
 | [BL-23](#bl-23) | The champion and its gear made easy to read: rarities, sets, the champion's figures | should | [ui](../src/ui) | ✓ done | 3/3 |
@@ -249,7 +249,8 @@ The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13 cities)
 
 - [x] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight
 - [x] Spec agreed: a PvE army as the opponent, chosen by kind, place and level, its troops sub-selected (docs/spec/pve.md)
-- [ ] The opponent chosen in the Battle lab, its troops sub-selected, the battle fought (SIM-11)
+- [x] The opponent chosen in the Battle lab, its troops sub-selected, the battle fought (SIM-11)
+- [ ] The champion's Vanquish bonuses and a warlord's Combat vs Empire, against their race only (the spec's item 4)
 - [x] Data imported and checked, as the warlords' (D-25): data/chaos-conquest/pve.json (DATA-10)
 
 <a id="bl-21"></a>

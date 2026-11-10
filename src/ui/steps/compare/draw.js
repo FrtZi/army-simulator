@@ -2,9 +2,10 @@
 // side, the better value in green (▲), the weaker in red (▼), equal values in orange (=) — the symbol and its
 // word always go with the colour; then the battle both ways.
 import { byId, escape, options } from "../../dom.js";
+import { drawPveChoice } from "./pve.js";
 import { number } from "../../format.js";
 import { term } from "../../glossary/tooltip.js";
-import { comparison, state } from "../../state.js";
+import { comparedNames, comparison, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 
 // the glossary term of each compared figure
@@ -59,15 +60,16 @@ const compositionName = (index) => state.compositions[index].name || String(inde
 /** The two lists of compositions, each showing the one chosen on its side. */
 function drawCompareChoice() {
   const pairs = state.compositions.map((composition, index) => [index, compositionName(index)]);
-  for (const select of [byId("compare-a"), byId("compare-b")]) {
-    select.innerHTML = options(pairs, state.compare[select.dataset.side]);
-  }
+  byId("compare-a").innerHTML = options(pairs, state.compare[0]);
+  // the second side may be a PvE army (SIM-11)
+  byId("compare-b").innerHTML = options([...pairs, ["pve", t("pve.option")]], state.pve.on ? "pve" : state.compare[1]);
+  drawPveChoice();
 }
 
 export function drawCompare() {
   drawCompareChoice();
-  const names = state.compare.map(compositionName);
-  if (state.compare[0] === state.compare[1]) {
+  const names = comparedNames();
+  if (!state.pve.on && state.compare[0] === state.compare[1]) {
     byId("compare-figures").innerHTML = `<p class="empty">${escape(t("compare.sameChoice"))}</p>`;
     byId("compare-battles").innerHTML = "";
     return;
@@ -76,6 +78,6 @@ export function drawCompare() {
   const [aAttacks, bAttacks] = result.battles ? [result.battles.aAttacks, result.battles.bAttacks] : [];
   byId("compare-figures").innerHTML = figuresTable(result, names);
   byId("compare-battles").innerHTML = result.battles
-    ? `<h3>${escape(t("compare.battles"))}</h3><ul class="battle-list">${battleLine(aAttacks, names[0], names[1])}${battleLine(bAttacks, names[1], names[0])}</ul><p class="hint">${escape(t("compare.model"))}</p>`
+    ? `<h3>${escape(t("compare.battles"))}</h3><ul class="battle-list">${battleLine(aAttacks, names[0], names[1])}${state.pve.on ? "" : battleLine(bAttacks, names[1], names[0])}</ul><p class="hint">${escape(t(state.pve.on ? "pve.attacksOnly" : "compare.model"))}</p>`
     : `<p class="empty">${escape(t("compare.empty"))}</p>`;
 }

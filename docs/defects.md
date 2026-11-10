@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **42 defects**: 42 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **43 defects**: 43 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -55,6 +55,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-040](#def-040) | 2026-11-10 | The level fields of Your setup's rituals and buildings did not line up | code | minor | ✓ fixed |
 | [DEF-041](#def-041) | 2026-11-10 | A setup of troops only, once saved, said nothing was saved | code | minor | ✓ fixed |
 | [DEF-042](#def-042) | 2026-11-10 | Test values written into the browser where Frantz kept his setup | process | minor | ✓ fixed |
+| [DEF-043](#def-043) | 2026-11-10 | Three Chaos troops of the PvE cities had no type, attack, morale nor power | code | major | ✓ fixed |
 
 ## Entries
 
@@ -588,3 +589,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A browser someone uses is theirs: testing in it is writing into their data.
 - **Proof:** Rule: no test data in a browser the player uses; a page is checked with jsdom
 - **Links:** CFG-08, CFG-05
+
+<a id="def-043"></a>
+### DEF-043 · Three Chaos troops of the PvE cities had no type, attack, morale nor power
+
+`2026-11-10` · code · major · ✓ fixed · tags: `data`
+
+- **Finding:** Building the PvE opponent, the cities' Marauder, Marauder Horsemen and Chaos Warhounds had no type, attack type, morale nor squad power in pve.json: a city fielding them would fight with an unreadable power and no morale.
+- **Cause:** The import took those figures from cctools.cc's page of PvE troops, which does not list these three: they are not PvE troops but ours, fielded by the Empire's cities; the import left them blank (data-model said so) instead of looking at our own troops.
+- **Solution:** A troop the PvE list leaves out is taken from units.json by its English name: its type, attack, morale and squad power; pve.json imported again.
+- **Result:** Every PvE troop has its four figures; the test fails on the old pve.json.
+- **Lesson:** A blank left by an import is a question to answer before the data is used, not a value.
+- **Proof:** `tests/pve.test.js`
+- **Links:** DATA-10, SIM-11

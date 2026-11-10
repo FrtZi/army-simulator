@@ -106,7 +106,8 @@ test(
   { skip: !existsSync(pveAnswers) },
   () => {
     const { places, answers, npcTroops } = savedPve();
-    const made = formatPve(buildPve(places, answers, npcTroops, readGame()));
+    const units = JSON.parse(readFileSync(new URL("../data/chaos-conquest/units.json", import.meta.url), "utf8"));
+    const made = formatPve(buildPve(places, answers, npcTroops, readGame(), units));
     assert.equal(readFileSync(new URL(`../data/${GAME}/pve.json`, import.meta.url), "utf8"), made);
   },
 );

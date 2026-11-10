@@ -71,4 +71,19 @@ export const EN_MORE = {
   "col.hideDetails": "Hide the details of {name}",
   "col.powerPerTroop": "Power per troop",
   "filter.several": "{n} selected",
+  // a PvE army as the second side (SIM-11)
+  "pve.option": "A PvE army",
+  "pve.kind": "Kind",
+  "pve.kind-army": "Army",
+  "pve.kind-raid": "Raid",
+  "pve.kind-city": "City",
+  "pve.place": "Place",
+  "pve.level": "Level",
+  "pve.name": "{place}, level {level}",
+  "pve.troopsHint": "Its troops: leave one out, or lower its count (what is left of it, or one part of it).",
+  "pve.whole": "The whole army",
+  "pve.of": "of {n}",
+  "pve.countOf": "Number of {name} in the PvE army",
+  "pve.attacksOnly":
+    "You attack it: a PvE army never comes to you. Its troops fight with their own stats, without hero or bonus.",
 };

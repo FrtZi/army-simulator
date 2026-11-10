@@ -256,6 +256,7 @@ the champion leads (`hero_march_unit_*`), as a piece's `march`; applied as D-30 
 
 Written by `scripts/import-pve.mjs` from cctools.cc's saved answers, never by hand. `troops`: each troop a PvE place
 fields, its `tier` and fighting `stats` as the compositions give them, its `unitType`, `attackType`, `race` and
-`morale` from cctools.cc's PvE troops' page where it lists it (three Chaos troops of the cities are not there: `null`).
+`morale` and squad power from cctools.cc's PvE troops' page; the three it does not list are ours (the cities'
+Marauders, Marauder Horsemen, Chaos Warhounds), so they come from units.json by their English name (DEF-043).
 `places`: each army, raid and city at its `level`, its `troops` (id → count). Not in the page yet: how it becomes an
 opponent is BL-20's spec, to agree first.

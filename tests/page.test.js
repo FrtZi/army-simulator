@@ -225,7 +225,7 @@ test("ARMY-03 SIM-03 compositions: as many as wanted, any two compared, better i
   assert.equal(page.$$("[data-composition]").length, 2);
   assert.deepEqual(
     page.$$("#compare-a option, #compare-b option").map((option) => option.textContent),
-    ["A", "Swarm", "A", "Swarm"],
+    ["A", "Swarm", "A", "Swarm", "A PvE army"], // the second side may be a PvE army (SIM-11)
   );
 });
 

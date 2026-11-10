@@ -79,6 +79,7 @@ src/ui/                  the page
 │                        fold-summaries.js (the Battle lab's) and fold-summaries-setup.js (Your setup's, the Guides)
 ├── ritual-tree.js       a rituals category as the game's tree, and the order and numbers it reads in (GUIDE-07)
 ├── rarity.js            a rarity as a badge, a piece's levels as rarities (GUIDE-05, D-31)
+├── pve.js               a PvE army as the second side: its troops read like ours, a place chosen, its army (SIM-11)
 ├── champion-figures.js  the champion's stats and its gear's bonuses in all, in Your setup and the lab (BONUS-08)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;
 │                        hover.js: a dot's name while pointing at it; table.js: the chart as a table (D-24)
@@ -128,6 +129,7 @@ tests/                   node --test; each test names the feature it proves
 ├── gear.test.js         the gear's rarities, a piece's set, the champion's figures, the set lab (GUIDE-05, 06, 09, BONUS-08)
 ├── ritual-map.test.js   the map to reach a ritual: prerequisites, states, the way, the steps (GUIDE-07)
 ├── items.test.js        the items by family, folded, a row's detail under it (GUIDE-08)
+├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)
 ├── buildings.test.js    a building's copies: most copies, read, each counting, typed (BONUS-07, D-33)

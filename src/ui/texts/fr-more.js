@@ -72,4 +72,19 @@ export const FR_MORE = {
   "col.hideDetails": "Masquer le détail de {name}",
   "col.powerPerTroop": "Puissance par troupe",
   "filter.several": "{n} choisis",
+  // a PvE army as the second side (SIM-11)
+  "pve.option": "Une armée PvE",
+  "pve.kind": "Type",
+  "pve.kind-army": "Armée",
+  "pve.kind-raid": "Raid",
+  "pve.kind-city": "Cité",
+  "pve.place": "Lieu",
+  "pve.level": "Niveau",
+  "pve.name": "{place}, niveau {level}",
+  "pve.troopsHint": "Ses troupes : retirez-en une, ou baissez son nombre (ce qu'il en reste, ou une partie).",
+  "pve.whole": "Toute l'armée",
+  "pve.of": "sur {n}",
+  "pve.countOf": "Nombre de {name} dans l'armée PvE",
+  "pve.attacksOnly":
+    "Vous l'attaquez : une armée PvE ne vient jamais à vous. Ses troupes combattent avec leurs propres caractéristiques, sans héros ni bonus.",
 };

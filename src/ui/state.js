@@ -1,7 +1,10 @@
 // The single mutable state of the page, and the values derived from it. Controls write the state; drawing
 // functions read it (and these derived values) and write the DOM.
 import { CONFIG } from "./config.js";
+import { chosenPlace, pveArmy } from "./pve.js";
 import { GAMES } from "./games.js";
+import { label } from "./format.js";
+import { t } from "./texts/index.js";
 import { armyProfile, compareArmies, effectProblems, summariseArmy } from "../engine/index.js";
 import { heroUnits, talentsOf } from "./heroes.js";
 import { asPlayed, capacityInPlay, championMarchEffects, setupBonuses, setupSourceEffects } from "./lab-setup.js";
@@ -50,6 +53,7 @@ export const state = {
   setupImport: null, // a setup file uploaded: what it brings, before it is applied (CFG-05)
   active: 0, // the composition being edited
   compare: [0, 1], // the two compositions compared
+  pve: { on: false, kind: "army", name: "", level: null, troops: {} }, // a PvE army as the second side (SIM-11)
   dashboard: "efficiency", // the dashboard tab shown
   efficiencyFilters: {}, // the charts' filters: building, tier, alignment → the values ticked
   highlightComposition: false, // the charts darken the troops outside the composition being edited
@@ -75,6 +79,7 @@ const resetPicker = () => Object.assign(state, { picker: closed(), heroPicker: c
 /** Starts over with a new game: its troops and bonuses would mean nothing in another one. */
 export function selectGame(id) {
   Object.assign(state, { gameId: id, bonuses: [], compositions: emptyCompositions(), active: 0, compare: [0, 1] });
+  state.pve = { ...state.pve, on: false, name: "", level: null, troops: {} };
   resetPicker();
 }
 
@@ -126,14 +131,21 @@ export function currentArmy() {
   return { army, profile: armyProfile(army, currentGame().rules.model) };
 }
 
-/** The names of the two compositions compared. */
-export const comparedNames = () => state.compare.map((index) => state.compositions[index].name || String(index + 1));
+/** The names of the two sides compared: two compositions, or a composition and the PvE army chosen. */
+export function comparedNames() {
+  const names = state.compare.map((index) => state.compositions[index].name || String(index + 1));
+  if (!state.pve.on) return names;
+  const place = chosenPlace(state, currentGame());
+  return [names[0], t("pve.name", { place: label(place), level: place?.level ?? "" })];
+}
 
 /** The two compositions chosen for the comparison (figures and battles); null when it is the same one twice. */
-export const comparison = () =>
-  state.compare[0] === state.compare[1]
-    ? null
-    : compareArmies(...state.compare.map((index) => summarise(state.compositions[index])), currentGame().rules);
+export function comparison() {
+  const first = summarise(state.compositions[state.compare[0]]);
+  if (state.pve.on) return compareArmies(first, pveArmy(state, currentGame()), currentGame().rules);
+  if (state.compare[0] === state.compare[1]) return null;
+  return compareArmies(first, summarise(state.compositions[state.compare[1]]), currentGame().rules);
+}
 
 /** The whole setup, in the shape the storage module saves. */
 export const currentSetup = () => ({

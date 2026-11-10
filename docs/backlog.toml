@@ -345,7 +345,8 @@ note = "The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13
 tasks = [
   "[x] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight",
   "[x] Spec agreed: a PvE army as the opponent, chosen by kind, place and level, its troops sub-selected (docs/spec/pve.md)",
-  "[ ] The opponent chosen in the Battle lab, its troops sub-selected, the battle fought (SIM-11)",
+  "[x] The opponent chosen in the Battle lab, its troops sub-selected, the battle fought (SIM-11)",
+  "[ ] The champion's Vanquish bonuses and a warlord's Combat vs Empire, against their race only (the spec's item 4)",
   "[x] Data imported and checked, as the warlords' (D-25): data/chaos-conquest/pve.json (DATA-10)",
 ]
 

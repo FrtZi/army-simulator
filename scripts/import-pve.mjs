@@ -24,28 +24,52 @@ Object.assign(STATS, { ranged_damage: "rangedDamage", health: "health", armour: 
 /** A troop type of the PvE list as our vocabulary names it (game.json's unit types), else from its name. */
 const unitTypeOf = (name, game) => game.unitTypes.find((type) => type.labels.en === name)?.id ?? kebab(name);
 
-/** One troop: its tier and stats from a composition, its type, attack and morale from the PvE troops' list if there. */
-function troopOf(entry, listed, game) {
-  const stats = Object.fromEntries(Object.entries(STATS).map(([field, stat]) => [stat, entry[field]]));
+/**
+ * A troop's type, attack, race, morale and squad power: from the PvE troops' list; a troop that list leaves out is one
+ * of ours (the cities' Marauders…: DEF-043), the same English name in units.json.
+ */
+function figuresOf(entry, listed, game, units) {
   const known = listed.get(entry.troop_code);
+  if (known) {
+    const { unit_type: type, combat_type: attack, race_code: race, morale, squad_power: squadPower } = known;
+    return {
+      unitType: unitTypeOf(type, game),
+      attackType: attack.toLowerCase(),
+      race: race ?? null,
+      morale,
+      squadPower,
+    };
+  }
+  const own = units.find((unit) => unit.labels.en === entry.troop_name);
+  return {
+    unitType: own?.unitType ?? null,
+    attackType: own?.attackType ?? null,
+    race: null,
+    morale: own?.stats.morale ?? null,
+    squadPower: own?.stats.squadPower ?? null,
+  };
+}
+
+/** One troop: its tier and stats from a composition, the rest as figuresOf finds it. */
+function troopOf(entry, listed, game, units) {
+  const stats = Object.fromEntries(Object.entries(STATS).map(([field, stat]) => [stat, entry[field]]));
+  const { morale, squadPower, ...kind } = figuresOf(entry, listed, game, units);
   return {
     id: kebab(entry.troop_code),
     code: entry.troop_code,
     labels: labels(entry.troop_name),
     tier: entry.tier,
-    unitType: known ? unitTypeOf(known.unit_type, game) : null,
-    attackType: known ? known.combat_type.toLowerCase() : null,
-    race: known?.race_code ?? null,
-    stats: { ...stats, morale: known?.morale ?? null, squadPower: known?.squad_power ?? null },
+    ...kind,
+    stats: { ...stats, morale: morale ?? null, squadPower: squadPower ?? null },
   };
 }
 
-export function buildPve(places, answers, npcTroops, game) {
+export function buildPve(places, answers, npcTroops, game, units = []) {
   const listed = new Map(npcTroops.map((troop) => [troop.code, troop]));
   const troops = new Map();
   const found = places.map((place) => {
     const composition = answers.get(place.id)?.composition ?? [];
-    for (const entry of composition) troops.set(entry.troop_code, troopOf(entry, listed, game));
+    for (const entry of composition) troops.set(entry.troop_code, troopOf(entry, listed, game, units));
     return {
       id: kebab(place.code),
       kind: place.location_type,
@@ -77,7 +101,8 @@ export function savedPve(folder = SAVED) {
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
   const { places, answers, npcTroops } = savedPve();
-  const data = buildPve(places, answers, npcTroops, readGame());
+  const units = JSON.parse(readFileSync(new URL("../data/chaos-conquest/units.json", import.meta.url), "utf8"));
+  const data = buildPve(places, answers, npcTroops, readGame(), units);
   writeFileSync(OUTPUT, formatPve(data));
   console.log(`✓ ${data.places.length} PvE places, ${data.troops.length} troops`);
 }
