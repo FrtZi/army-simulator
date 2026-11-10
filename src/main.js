@@ -1,6 +1,7 @@
 // Entry point: binds every control once, sets up the glossary's tooltip, reads the player's saved setup, then
 // draws the page.
 import { bindLanguage } from "./ui/steps/page/bind.js";
+import { bindSetupTroops } from "./ui/steps/setup/troops.js";
 import { bindThemeToggle } from "./ui/steps/page/theme.js";
 import { bindPageTabs } from "./ui/steps/page/tabs.js";
 import { bindGame } from "./ui/steps/game/bind.js";
@@ -41,6 +42,7 @@ bindSetup();
 bindSetupFiles();
 bindSetupLevelled();
 bindSetupChampion();
+bindSetupTroops();
 bindLoadSetup();
 bindGuides();
 setUpTooltip();

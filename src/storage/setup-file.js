@@ -3,6 +3,7 @@
 // what was read and why, and the rest is kept. Only a file that is not a setup stops the reading. No DOM here.
 
 import { effectProblems, levelOf, rankOf } from "../engine/index.js";
+import { readTroops } from "./setup-troops.js";
 import { nearestId } from "./nearest.js";
 import { isObject, rangeProblem, readList, refuse } from "./setup-checks.js";
 import { readChampion } from "./setup-champion.js";
@@ -90,6 +91,7 @@ const SECTIONS = {
       withCopies(levelledEntry(entry, path, target.structures?.structures, "unknown-building"), entry, path, target),
     ),
   champion: readChampion,
+  troops: readTroops, // the troops owned (CFG-08)
 };
 
 /**

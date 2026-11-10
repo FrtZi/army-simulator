@@ -191,7 +191,7 @@ test("CFG-07 an example file and the dictionary downloaded; the brief names the 
   await settle();
   const [example, dictionary, brief] = files;
   assert.equal(example.name, `army-simulator-setup-example-${GAME}.json`);
-  const sections = ["warlords", "capacity", "bonuses", "rituals", "buildings", "champion"];
+  const sections = ["warlords", "capacity", "bonuses", "rituals", "buildings", "champion", "troops"];
   assert.deepEqual(
     sections.filter((section) => !JSON.parse(example.text)[section]),
     [],
@@ -201,7 +201,7 @@ test("CFG-07 an example file and the dictionary downloaded; the brief names the 
   assert.match(brief.text, /The screens to read, and how:\n- Your warlords/);
   assert.match(brief.text, /Do not copy the Chaos Keep's Combat tab/, "its totals mix every source (question 24)");
   assert.match(brief.text, /a node bright and ticked is at its top level/);
-  assert.match(brief.text, /Not part of the setup: the troops you own/);
+  assert.match(brief.text, /Chaos Keep \(in French Donjon du Chaos\), Army tab: each line is a troop/);
   // the example is a file the page reads without refusing anything
   await upload(page, example.text);
   assert.doesNotMatch(page.text("#setup-review"), /left out|to check/i);

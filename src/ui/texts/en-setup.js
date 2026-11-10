@@ -72,6 +72,19 @@ export const EN_SETUP = {
   "champion.labLed": "What your champion brings: {n} bonuses in battle, its march's included",
   "champion.labNotLed":
     "What your champion brings: {n} bonuses in battle; its march's count once it leads this composition",
+  "tile.troops": "Troops owned",
+  "tile.troopsFigure": "Listed: {n} · in all: {total}",
+  "setup.troops": "Troops owned",
+  "setup.troopsHint":
+    "Each troop's and defence's number as the Chaos Keep's Army tab shows it. In the Battle lab, with your setup loaded, a composition above it is warned, never capped.",
+  "setup.troopSelect": "A troop or a defence",
+  "setup.allTroopsOwned": "Every troop is listed",
+  "setup.noTroop": "No troop listed yet.",
+  "setup.troopCountOf": "Number of {name} you own",
+  "setup.troopRemove": "Take {name} out of your troops",
+  "army.owned": "You own {n}",
+  "army.ownedOver": "{over} more than the {n} you own",
+  "load.troops": "the troops you own ({n} listed)",
   "composition.champion": "Led by your champion",
   "composition.championOn": "Its gear's bonuses for the march it leads count in this composition.",
   "composition.championOff":

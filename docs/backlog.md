@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 6/9 | 25/29 | ○ not yet: 1 Must left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 7/9 | 27/29 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/3 | 3/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -28,7 +28,6 @@ Not done, and every dependency done:
 - [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ◐ doing)
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
 - [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ◐ doing)
-- [BL-26](#bl-26) The troops owned in the setup (v1.2, could, ○ to do)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
@@ -71,7 +70,7 @@ flowchart LR
   BL23["BL-23 ✓ done<br/>The champion and its gear made easy to read: rarities, sets, the champion's figures"]:::done
   BL24["BL-24 ✓ done<br/>Guides: the map to reach a level, the items by category, a set lab"]:::done
   BL25["BL-25 ✓ done<br/>The setup's files for an agent: empty, an example, the dictionary, a clearer brief"]:::done
-  BL26["BL-26 ○ to do<br/>The troops owned in the setup"]:::todo
+  BL26["BL-26 ✓ done<br/>The troops owned in the setup"]:::done
   BL27["BL-27 ✓ done<br/>Several copies of a building in the setup"]:::done
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
@@ -212,7 +211,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 | [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ✓ done | 6/6 |
 | [BL-23](#bl-23) | The champion and its gear made easy to read: rarities, sets, the champion's figures | should | [ui](../src/ui) | ✓ done | 3/3 |
 | [BL-24](#bl-24) | Guides: the map to reach a level, the items by category, a set lab | should | [ui](../src/ui) | ✓ done | 4/4 |
-| [BL-26](#bl-26) | The troops owned in the setup | could | [storage](../src/storage) | ○ to do | 0/2 |
+| [BL-26](#bl-26) | The troops owned in the setup | could | [storage](../src/storage) | ✓ done | 2/2 |
 | [BL-27](#bl-27) | Several copies of a building in the setup | should | [storage](../src/storage) | ✓ done | 2/2 |
 
 <a id="bl-10"></a>
@@ -299,12 +298,12 @@ Frantz, 2026-11-10, on the prototype: liked all; in the set lab, the level and i
 <a id="bl-26"></a>
 #### BL-26 · The troops owned in the setup
 
-Could · [storage](../src/storage) · ○ to do · added `2026-11-10` · features: CFG-08
+Could · [storage](../src/storage) · ✓ done · added `2026-11-10` · features: CFG-08
 
 An agent given the Chaos Keep's Army tab found nothing to write: the setup has no place for the troops owned (Frantz: a strong point). Each troop's count, matched by its French or English name; to agree first: a composition above what is owned, warned or capped.
 
-- [ ] Agreed with Frantz: what a composition does with the troops owned
-- [ ] The section, its dictionary entries, the French names of the Army tab
+- [x] Agreed with Frantz (2026-11-10): a composition above what is owned is warned, never capped (D-34)
+- [x] The section, typed or uploaded, its dictionary entries and brief; the Army tab's French names are ours already
 
 <a id="bl-27"></a>
 #### BL-27 · Several copies of a building in the setup

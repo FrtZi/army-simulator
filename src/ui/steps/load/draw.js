@@ -21,6 +21,7 @@ function onText() {
     parts.push(t("load.levelled", { rituals: saved.rituals.length, buildings: saved.buildings.length }));
   }
   if (saved.champion?.gear?.length) parts.push(t("load.champion", { n: saved.champion.gear.length }));
+  if (saved.troops?.length) parts.push(t("load.troops", { n: saved.troops.length }));
   return `${t("load.on")} ${parts.join(" · ")}`;
 }
 

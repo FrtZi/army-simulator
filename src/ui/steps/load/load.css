@@ -22,3 +22,14 @@
 .composition-champion .hint {
   margin: 0.15rem 0 0.75rem;
 }
+
+/* what the saved setup owns of a troop (D-34): a warning above it, in words with its icon */
+.owned {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--good);
+}
+
+.owned.over {
+  color: var(--equal);
+}

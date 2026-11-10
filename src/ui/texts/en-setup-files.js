@@ -40,6 +40,8 @@ export const EN_SETUP_FILES = {
   "setupfile.unknown-gear": "no piece of gear has this id.",
   "setupfile.duplicate": "this hero is listed twice; the first is kept.",
   "setupfile.too-many-copies": "at most {max} of this building.",
+  "setupfile.unknown-troop": "no troop or defence has this id.",
+  "setupfile.duplicate-troop": "this troop is listed twice; the first is kept.",
   "setupfile.out-of-range": "outside {min} to {max}.",
   "setupfile.capacity-bonus": "the march capacity bonus goes in capacity.bonusPercent, not in the bonuses.",
   "setupfile.help": "The file: three ways to fill your setup, and the brief for an agent",

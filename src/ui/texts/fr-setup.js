@@ -74,6 +74,19 @@ export const FR_SETUP = {
   "champion.labLed": "Ce qu'apporte votre champion : {n} bonus au combat, ceux de sa marche compris",
   "champion.labNotLed":
     "Ce qu'apporte votre champion : {n} bonus au combat ; ceux de sa marche comptent quand il mène cette composition",
+  "tile.troops": "Troupes possédées",
+  "tile.troopsFigure": "Listées : {n} · en tout : {total}",
+  "setup.troops": "Troupes possédées",
+  "setup.troopsHint":
+    "Le nombre de chaque troupe et défense, tel que l'onglet Armée du Donjon du Chaos le montre. Dans le laboratoire, avec votre configuration chargée, une composition au-delà est signalée, jamais plafonnée.",
+  "setup.troopSelect": "Une troupe ou une défense",
+  "setup.allTroopsOwned": "Toutes les troupes sont listées",
+  "setup.noTroop": "Aucune troupe listée.",
+  "setup.troopCountOf": "Nombre de {name} possédés",
+  "setup.troopRemove": "Retirer {name} de vos troupes",
+  "army.owned": "Vous en possédez {n}",
+  "army.ownedOver": "{over} de plus que les {n} possédés",
+  "load.troops": "les troupes possédées ({n} listées)",
   "composition.champion": "Menée par votre champion",
   "composition.championOn": "Les bonus de son équipement pour la marche qu'il mène comptent dans cette composition.",
   "composition.championOff":

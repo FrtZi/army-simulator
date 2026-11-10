@@ -58,6 +58,13 @@ export function setupSourceEffects(state, game) {
   ]);
 }
 
+/** The troops the saved setup owns, with the setup loaded and a troops section filled (D-34); else null. */
+export function troopsOwned(state) {
+  const troops = state.savedPlayerSetup.troops ?? [];
+  if (!state.useSetup || !troops.length) return null;
+  return new Map(troops.map(({ id, count }) => [id, count]));
+}
+
 /** The gear the saved setup's champion wears, or none. */
 export const championGear = (state) => state.savedPlayerSetup.champion?.gear ?? [];
 

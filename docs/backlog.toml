@@ -437,13 +437,13 @@ title = "The troops owned in the setup"
 moscow = "could"
 milestone = "v1.2"
 module = "storage"
-status = "to do"
+status = "done"
 added = 2026-11-10
 features = ["CFG-08"]
 note = "An agent given the Chaos Keep's Army tab found nothing to write: the setup has no place for the troops owned (Frantz: a strong point). Each troop's count, matched by its French or English name; to agree first: a composition above what is owned, warned or capped."
 tasks = [
-  "[ ] Agreed with Frantz: what a composition does with the troops owned",
-  "[ ] The section, its dictionary entries, the French names of the Army tab",
+  "[x] Agreed with Frantz (2026-11-10): a composition above what is owned is warned, never capped (D-34)",
+  "[x] The section, typed or uploaded, its dictionary entries and brief; the Army tab's French names are ours already",
 ]
 
 [[item]]

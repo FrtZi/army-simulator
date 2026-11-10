@@ -4,6 +4,7 @@
 //   refresh()   — after a value typed in (a percentage, a count, the capacity, a name): only the computed
 //                 parts, so the field being typed in is never rebuilt under the cursor.
 import { keepingFocus } from "./dom.js";
+import { drawSetupTroops } from "./steps/setup/troops.js";
 import { applyTexts } from "./steps/page/draw.js";
 import { drawThemeToggle } from "./steps/page/theme.js";
 import { drawPageTabs } from "./steps/page/tabs.js";
@@ -52,6 +53,7 @@ export function renderAll() {
     drawSetupReview();
     drawSetupLevelled();
     drawSetupChampion();
+    drawSetupTroops();
     drawGuides();
   });
   refresh();

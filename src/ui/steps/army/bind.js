@@ -4,7 +4,7 @@ import { byId, keepingFocus } from "../../dom.js";
 import { state } from "../../state.js";
 import { refresh } from "../../render.js";
 import { drawPicker } from "../picker/draw.js";
-import { drawArmyLines } from "./draw.js";
+import { drawArmyLines, drawOwned } from "./draw.js";
 
 const wholeCount = (text) => Math.max(0, Math.round(Number(text) || 0));
 
@@ -22,6 +22,7 @@ export function bindArmy() {
     const id = event.target.dataset.count;
     if (!id) return;
     state.troops[id] = wholeCount(event.target.value);
+    drawOwned(id);
     refresh();
   });
   lines.addEventListener("click", (event) => {

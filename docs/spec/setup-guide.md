@@ -72,8 +72,9 @@ An AI agent (one that reads images) can read your game's screens and write the f
    - your champion's screen, and each piece's forge (its rarity is its level, Core to Eternal);
    - your warlords' cards _(to confirm: the screen)_.
 
-   Not the Chaos Keep (Donjon du Chaos): its Combat tab's totals mix every source (they would count twice),
-   and its Army tab (the troops you own) is not part of the setup yet.
+   - the Chaos Keep (Donjon du Chaos), Army tab: the troops and defences you own, each with its number.
+
+   Not the Chaos Keep's Combat tab: its totals mix every source (they would count twice).
 
 2. Copy the brief (button below) and give it to the agent with your screenshots.
 3. Upload the file it gives back. Check the refused values and correct them by hand.

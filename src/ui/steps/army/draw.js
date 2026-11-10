@@ -6,7 +6,7 @@ import { label, number, troopMeta } from "../../format.js";
 import { ICONS, troopIcon } from "../../icons.js";
 import { term } from "../../glossary/tooltip.js";
 import { capacityEffect, currentArmy, currentGame, problemsOf, state } from "../../state.js";
-import { capacityInPlay, championGear, fromSetup } from "../../lab-setup.js";
+import { capacityInPlay, championGear, fromSetup, troopsOwned } from "../../lab-setup.js";
 import { t } from "../../texts/index.js";
 import { championBonusCount, championFiguresHtml } from "../../champion-figures.js";
 
@@ -80,12 +80,29 @@ export function drawCapacity() {
   byId("capacity").querySelector(".bar span").style.width = `${filled}%`;
 }
 
+/** What the saved setup owns of a troop, warned above it (D-34): words and an icon, never a cap. */
+function ownedHtml(id, count) {
+  const owned = troopsOwned(state);
+  if (!owned) return "";
+  const mine = owned.get(id) ?? 0;
+  const over = count - mine;
+  if (over > 0) {
+    return `<span class="owned over"><span aria-hidden="true">⚠</span> ${escape(t("army.ownedOver", { over: number(over), n: number(mine) }))}</span>`;
+  }
+  return `<span class="owned"><span aria-hidden="true">✓</span> ${escape(t("army.owned", { n: number(mine) }))}</span>`;
+}
+
+/** A count typed: only its line's ownership redrawn, the field keeps its focus. */
+export function drawOwned(id) {
+  byId(`owned-${id}`).innerHTML = ownedHtml(id, state.troops[id]);
+}
+
 function line(id, count) {
   const unit = currentGame().catalogue.units.get(id);
   const name = label(unit);
   return `<li class="army-line">
     ${troopIcon(unit)}
-    <div class="who"><span class="name">${escape(name)}</span><span class="meta">${escape(troopMeta(unit))}</span></div>
+    <div class="who"><span class="name">${escape(name)}</span><span class="meta">${escape(troopMeta(unit))}</span><span id="owned-${id}">${ownedHtml(id, count)}</span></div>
     <label class="visually-hidden" for="count-${id}">${escape(`${t("army.count")} · ${name}`)}</label>
     <input id="count-${id}" data-count="${id}" type="number" min="0" step="100" inputmode="numeric" value="${count}" />
     <button type="button" class="icon" id="remove-${id}" data-remove="${id}" aria-label="${escape(t("army.remove", { name }))}">${ICONS.close}</button>

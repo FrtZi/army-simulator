@@ -52,7 +52,7 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 src/storage/             no DOM: configuration.js (setup ↔ file format version 2, checks), migrate.js (an older
                          file brought up to date), browser.js (saves); the player's setup file (D-27):
                          setup-file.js (read and checked value by value, written back; setup-checks.js: what its
-                         readers share; setup-champion.js: the champion read; setup-buildings.js: a building's copies, D-33), setup-merge.js (only
+                         readers share; setup-champion.js: the champion read; setup-buildings.js: a building's copies, D-33; setup-troops.js: the troops owned, D-34), setup-merge.js (only
                          what a file holds changes), nearest.js (the id a misread name meant); its dictionary
                          (D-28): setup-dictionary.js (built from the game's data), setup-schema.js (as a JSON
                          Schema), setup-brief.js (the brief for an agent, the whole dictionary in it); and
@@ -89,7 +89,7 @@ src/ui/                  the page
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
-                         in warlords.js, the rituals' and buildings' levels in levelled.js, the champion in
+                         in warlords.js, the troops owned in troops.js, the rituals' and buildings' levels in levelled.js, the champion in
                          champion.js, a file uploaded in
                          files.js, under review in import.js, drawn in review.js; D-27);
                          and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
@@ -125,6 +125,7 @@ tests/                   node --test; each test names the feature it proves
 ├── gear.test.js         the gear's rarities, a piece's set, the champion's figures, the set lab (GUIDE-05, 06, 09, BONUS-08)
 ├── ritual-map.test.js   the map to reach a ritual: prerequisites, states, the way, the steps (GUIDE-07)
 ├── items.test.js        the items by family, folded, a row's detail under it (GUIDE-08)
+├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)
 ├── buildings.test.js    a building's copies: most copies, read, each counting, typed (BONUS-07, D-33)
 ├── styles.test.js       each selector's look in one stylesheet (DEF-031)
 ├── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens

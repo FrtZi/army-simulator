@@ -420,3 +420,13 @@ gets one entry per copy, so the bonuses add up; a requirement asks the highest c
 - _Set aside:_ a list of levels replacing `level` (every setup file written so far would change shape); the same id
   repeated (a list matched by id would merge the copies into one); only the highest copy counting (Frantz says they
   add up; a battle report will tell).
+
+## D-34 · The troops owned: warned above, never capped (2026-11-10)
+
+An agent given the Chaos Keep's Army tab found nothing to write: the setup had no place for the troops owned. They
+are now a section, `troops`, each troop or defence by its id with its number, typed in Your setup or uploaded; the
+Army tab's French names are exactly ours, so an agent matches them. In the Battle lab, with the setup loaded, each
+line of a composition says what is owned, and a count above it is warned in words with its icon (Frantz's choice).
+
+- _Set aside:_ capping a count at what is owned (a composition is also a plan: what to train before a battle); the
+  Army tab's totals by place (Fortress, Far…), which say where the troops are, not how many of each.

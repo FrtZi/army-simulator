@@ -50,7 +50,7 @@ test("CFG-04 your setup's summary: one tile per section, its figure and its stat
   const page = openPage();
   page.click("#page-tab-setup");
   const tiles = page.$$("#setup-summary [data-tile]").map((tile) => tile.dataset.tile);
-  assert.deepEqual(tiles, ["warlords", "capacity", "rituals", "buildings", "champion", "bonuses"]);
+  assert.deepEqual(tiles, ["warlords", "capacity", "rituals", "buildings", "champion", "troops", "bonuses"]);
   assert.equal(tileFigure(page, "warlords"), "0 of 33");
   assert.equal(tileState(page, "warlords"), "○ Not entered");
   assert.equal(tileState(page, "rituals"), "○ Not entered");

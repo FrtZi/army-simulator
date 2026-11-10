@@ -2,6 +2,7 @@
 // an icon and a word (entered, not entered, coming); then whether the edits are saved, and the Save and Discard
 // buttons, usable only when there is something to save. Redrawn after every edit, typed values included.
 import { byId, escape, keepingFocus } from "../../dom.js";
+import { drawSetupTroops } from "./troops.js";
 import { number } from "../../format.js";
 import { CONFIG } from "../../config.js";
 import { currentGame, state } from "../../state.js";
@@ -38,6 +39,14 @@ function championTile(filled) {
   return tile("champion", figure, ...filled(champion !== null));
 }
 
+/** The troops owned: how many kinds, and how many in all (CFG-08). */
+function troopsTile(filled) {
+  const { troops } = state.playerSetup;
+  const total = troops.reduce((sum, troop) => sum + troop.count, 0);
+  const figure = troops.length ? t("tile.troopsFigure", { n: troops.length, total: number(total) }) : "—";
+  return tile("troops", figure, ...filled(troops.length > 0));
+}
+
 function tiles() {
   const owned = state.playerSetup.warlords.length;
   const capacity = setupCapacity();
@@ -54,6 +63,7 @@ function tiles() {
       return tile(section, t("tile.owned", { n, total: entries.length }), ...filled(n > 0));
     }),
     championTile(filled),
+    troopsTile(filled),
     ...coming,
   ].join("");
 }
@@ -111,6 +121,7 @@ export function drawSetup() {
     drawSetupCapacityFields();
     drawSetupLevelled();
     drawSetupChampion();
+    drawSetupTroops();
   });
   drawSetupStatus();
 }

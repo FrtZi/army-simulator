@@ -3,6 +3,7 @@
 // nearest entry chosen for a misread name; the choice is written into the file, which is read again whole, so every
 // check still applies. No DOM here.
 import { nearestId } from "./nearest.js";
+import { ownable } from "./setup-troops.js";
 import { readSetupFile } from "./setup-file.js";
 
 const numbers = (max) =>
@@ -55,6 +56,7 @@ const CHOICES = {
   "unknown-ritual": (problem, target) => parked(problem.path, problem.read, target.rituals.rituals),
   "unknown-building": (problem, target) => parked(problem.path, problem.read, target.structures.structures),
   "unknown-gear": (problem, target) => parked(problem.path, problem.read, target.champion.pieces),
+  "unknown-troop": (problem, target) => parked(problem.path, problem.read, ownable(target.catalogue)),
   "out-of-range": rangeChoice,
   "unknown-stat": statChoice,
   "fixed-stat": statChoice,

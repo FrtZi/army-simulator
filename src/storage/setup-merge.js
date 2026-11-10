@@ -11,6 +11,7 @@ export const emptySetup = (game) => ({
   rituals: [],
   buildings: [],
   champion: null,
+  troops: [],
 });
 
 const byId = (entry) => entry.id;
@@ -50,6 +51,7 @@ const MERGES = {
   buildings: (current, incoming) => mergeList(current, incoming, byId),
   capacity: mergeFields,
   champion: mergeFields,
+  troops: (current, incoming) => mergeList(current ?? [], incoming, byId),
 };
 
 /**

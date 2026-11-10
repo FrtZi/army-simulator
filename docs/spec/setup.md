@@ -18,6 +18,7 @@ the lab and tries anything.
 | Rituals and their levels                  | 1.2     | BL-10: 153 combat rituals; Defence Capacity I and II       |
 | Buildings and their levels                | 1.2     | BL-14: 10 with combat bonuses; Fortress Walls              |
 | Champion, skills, gear and sets           | 1.3     | BL-13                                                      |
+| Troops owned, each with its number        | 1.2     | BL-26, D-34: warned above in the lab, never capped         |
 | Prestige, skins, titles, cities, alliance | later   | bonus rows until each source has its data                  |
 
 The file carries every section from the start; a section the site cannot use yet is kept and shown as

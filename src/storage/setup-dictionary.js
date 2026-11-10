@@ -77,6 +77,9 @@ function domains(game, gameId, champion) {
     "champion.gear": list,
     "champion.gear[].id": { dataType: "text", valueDomain: { list: "gear" } },
     "champion.gear[].level": { dataType: "integer", valueDomain: { min: 1 } },
+    troops: list,
+    "troops[].id": { dataType: "text", valueDomain: { list: "units" } },
+    "troops[].count": count,
   };
 }
 
