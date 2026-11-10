@@ -411,7 +411,7 @@ features = ["GUIDE-07", "GUIDE-08", "GUIDE-09"]
 note = "Frantz, 2026-11-10, on the prototype: liked all; in the set lab, the level and its rarity in one control, a small pictogram per slot, and a set chosen to filter the pieces. Before: a map to reach a level besides its list, like the game's ritual trees; the items easier to read, as a table by category, still opening; a small lab to try sets and see their bonuses in all and what they need. Small logos and colours everywhere. Prototype first."
 tasks = [
   "[x] Prototype validated by Frantz (2026-11-10): the map first, then the set lab",
-  "[ ] The map to reach a level (GUIDE-07)",
+  "[x] The map to reach a ritual (GUIDE-07, D-32)",
   "[ ] The items by category (GUIDE-08)",
   "[ ] The set lab (GUIDE-09)",
 ]

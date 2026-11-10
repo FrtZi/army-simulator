@@ -7,6 +7,7 @@ import { currentGame } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { costsTable } from "./costs.js";
 import { LEVELLED, guideOf, savedLevel } from "./levelled.js";
+import { ritualMapHtml } from "./ritual-map.js";
 
 const TARGET_LISTS = { unitTypes: "unitTypes", alignments: "alignments" };
 
@@ -84,6 +85,7 @@ export function entryDetailHtml(kind, entry) {
     <div class="metrics"><div class="metric key"><span class="metric-label">${escape(t("guides.power"))}</span><span class="metric-value">${number(entry.power[index])}</span></div></div>
     ${bonusesTable(kind, entry, index)}
     ${requirementsList(entry, index)}
+    ${kind === "rituals" ? ritualMapHtml(entry, level) : ""}
     ${costsTable(entry, level, mine, from)}`;
 }
 

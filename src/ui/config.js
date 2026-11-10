@@ -15,5 +15,7 @@ export const CONFIG = {
   // the setup's sections not entered on the page yet, and the version of the site that brings each (D-27)
   setupComing: { bonuses: "next" },
   percentStep: 0.5,
+  // the map to reach a ritual (GUIDE-07): each node's size and the gaps between them, in pixels
+  ritualMap: { nodeWidth: 168, nodeHeight: 56, gapX: 18, gapY: 40 },
   compositionNames: ["A", "B"], // the compositions a new page starts with; the player adds more (D-19)
 };

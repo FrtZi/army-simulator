@@ -395,3 +395,16 @@ tokens, checked as text on every surface in both themes.
 - _Set aside:_ the rarity's colour without its name (a colour alone says nothing to a colour-blind reader); the
   game's own diamond pictures (its art is not ours to publish, D-06); the level number alone (the game never says
   "level 3" for a piece).
+
+## D-32 · The map to reach a ritual: our own small tree, buttons over drawn links (2026-11-10)
+
+Frantz asked for a map besides the list of requirements, like the game's ritual trees. The rituals' prerequisites
+(`requires.ritual`) already make each category a tree: the engine follows them back to the roots at the highest
+level asked (`prerequisitesOf`) and gives each ritual its depth (`depthsOf`); the page puts a row per depth, each
+ritual under the middle of its prerequisites, as the game does. Each node is a button (keyboard, screen reader,
+its state in words), placed over an SVG of the links drawn for the eye only.
+
+- _Set aside:_ the data-map component (Workspaces/data-map), which Frantz suggested: a Svelte 5 component on Svelte
+  Flow made for a dbt project's lineage, for a page with no framework and a public repository it could not yet
+  depend on; a graph library (dagre, ELK) for a tree of 20 to 36 nodes a few lines lay out; the buildings' map, whose
+  prerequisites cross every tree (each building asks others), left for when it is asked.

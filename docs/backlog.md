@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 4/9 | 20/29 | ○ not yet: 1 Must left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 4/9 | 21/29 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/3 | 3/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -213,7 +213,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 | [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ◐ doing | 2/3 |
 | [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ✓ done | 6/6 |
 | [BL-23](#bl-23) | The champion and its gear made easy to read: rarities, sets, the champion's figures | should | [ui](../src/ui) | ✓ done | 3/3 |
-| [BL-24](#bl-24) | Guides: the map to reach a level, the items by category, a set lab | should | [ui](../src/ui) | ◐ doing | 1/4 |
+| [BL-24](#bl-24) | Guides: the map to reach a level, the items by category, a set lab | should | [ui](../src/ui) | ◐ doing | 2/4 |
 | [BL-26](#bl-26) | The troops owned in the setup | could | [storage](../src/storage) | ○ to do | 0/2 |
 | [BL-27](#bl-27) | Several copies of a building in the setup | should | [storage](../src/storage) | ○ to do | 0/2 |
 
@@ -294,7 +294,7 @@ Should · [ui](../src/ui) · ◐ doing · added `2026-11-10` · features: GUIDE-
 Frantz, 2026-11-10, on the prototype: liked all; in the set lab, the level and its rarity in one control, a small pictogram per slot, and a set chosen to filter the pieces. Before: a map to reach a level besides its list, like the game's ritual trees; the items easier to read, as a table by category, still opening; a small lab to try sets and see their bonuses in all and what they need. Small logos and colours everywhere. Prototype first.
 
 - [x] Prototype validated by Frantz (2026-11-10): the map first, then the set lab
-- [ ] The map to reach a level (GUIDE-07)
+- [x] The map to reach a ritual (GUIDE-07, D-32)
 - [ ] The items by category (GUIDE-08)
 - [ ] The set lab (GUIDE-09)
 

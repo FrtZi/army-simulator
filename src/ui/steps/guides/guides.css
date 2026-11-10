@@ -182,3 +182,94 @@
   text-align: left;
   text-decoration: underline;
 }
+
+/* the map to reach a ritual (GUIDE-07): its tree, scrolled when wider than the page */
+.map-scroll {
+  overflow: auto;
+  max-height: 70vh;
+  padding: 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.map {
+  position: relative;
+}
+
+.map-links {
+  position: absolute;
+  inset: 0;
+}
+
+.map-links path {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 2;
+}
+
+.map-links path.on-path {
+  stroke: var(--heading);
+}
+
+.map-links text {
+  fill: var(--muted);
+  font-size: 0.7rem;
+}
+
+.map-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+  font-size: 0.8rem;
+  background: var(--field);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.map-node .name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.map-node .map-state {
+  font-weight: 700;
+}
+
+.map-node.done {
+  border-color: var(--good);
+}
+
+.map-node.done .map-state {
+  color: var(--good);
+}
+
+.map-node.partial {
+  border-color: var(--equal);
+}
+
+.map-node.partial .map-state {
+  color: var(--equal);
+}
+
+.map-node.open {
+  border-style: dashed;
+  border-color: var(--link);
+}
+
+.map-node.locked {
+  color: var(--muted);
+}
+
+.map-node.on-path {
+  outline: 2px solid var(--heading);
+  outline-offset: 1px;
+}
+
+.map-node.goal {
+  background: var(--key);
+}
