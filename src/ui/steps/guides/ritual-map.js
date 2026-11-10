@@ -8,34 +8,12 @@ import { CONFIG } from "../../config.js";
 import { currentGame } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { depthsOf, prerequisitesOf } from "../../../engine/index.js";
+import { treeLayout, treeOrder } from "../../ritual-tree.js";
 import { savedLevel } from "./levelled.js";
 
 const ICONS = { done: "✓", partial: "◑", open: "○", locked: "✕" };
 const mine = (id) => savedLevel("rituals", id);
 const top = (entry) => entry.power.length;
-const needsOf = (entry) => Object.keys(entry.requires.ritual ?? {});
-
-/** Each node's place: a row per depth, each ritual under the middle of its prerequisites. */
-function layout(entries) {
-  const { nodeWidth: w, nodeHeight: h, gapX, gapY } = CONFIG.ritualMap;
-  const depths = depthsOf(entries);
-  const rows = [];
-  for (const entry of entries) (rows[depths.get(entry.id)] ??= []).push(entry);
-  const width = Math.max(...rows.map((row) => row.length)) * (w + gapX) - gapX;
-  const places = new Map();
-  const middle = (entry) => {
-    const xs = needsOf(entry)
-      .filter((id) => places.has(id))
-      .map((id) => places.get(id).x);
-    return xs.length ? xs.reduce((sum, x) => sum + x, 0) / xs.length : 0;
-  };
-  rows.forEach((row, depth) => {
-    row.sort((a, b) => middle(a) - middle(b));
-    const start = (width - (row.length * (w + gapX) - gapX)) / 2;
-    row.forEach((entry, index) => places.set(entry.id, { x: start + index * (w + gapX), y: depth * (h + gapY) }));
-  });
-  return { places, width, height: rows.length * (h + gapY) - gapY };
-}
 
 /** A ritual's state from the saved setup: at its top, under way, can start (every first need met), or locked. */
 function stateOf(entry) {
@@ -65,14 +43,14 @@ function linksSvg(entries, layout_, lit) {
   return `<svg class="map-links" width="${layout_.width}" height="${layout_.height}" aria-hidden="true">${paths.join("")}</svg>`;
 }
 
-function nodeHtml(entry, place, lit) {
+function nodeHtml(entry, place, lit, number) {
   const { nodeWidth: w, nodeHeight: h } = CONFIG.ritualMap;
   const state = stateOf(entry);
   const level = state === "done" ? t("map.top") : `${mine(entry.id)}/${top(entry)}`;
   const classes = ["map-node", state, lit.has(entry.id) ? "on-path" : "", lit.goal === entry.id ? "goal" : ""];
   const words = t(`map.${state}`, { level: mine(entry.id), top: top(entry) });
   return `<button type="button" class="${classes.join(" ").trim()}" data-guide-entry="${entry.id}" style="left:${place.x}px;top:${place.y}px;width:${w}px;height:${h}px" aria-label="${escape(`${label(entry)}: ${words}`)}">
-    <span class="name">${escape(label(entry))}</span><span class="map-state"><span aria-hidden="true">${ICONS[state]}</span> ${escape(level)}</span></button>`;
+    <span class="name"><span class="tree-number">${number}</span> ${escape(label(entry))}</span><span class="map-state"><span aria-hidden="true">${ICONS[state]}</span> ${escape(level)}</span></button>`;
 }
 
 /** The steps left to reach `level` of the ritual: each prerequisite under the level asked, the deepest first. */
@@ -98,8 +76,10 @@ export function ritualMapHtml(entry, level) {
   const tree = all.filter((other) => other.category === entry.category);
   const needed = prerequisitesOf(all, entry.id, level);
   const lit = Object.assign(new Set(needed.keys()), { goal: entry.id });
-  const placed = layout(tree);
-  const nodes = tree.map((other) => nodeHtml(other, placed.places.get(other.id), lit));
+  const placed = treeLayout(tree);
+  const nodes = treeOrder(tree).map(({ entry: other, number }) =>
+    nodeHtml(other, placed.places.get(other.id), lit, number),
+  );
   return `<h4>${escape(t("map.title", { level }))}</h4>
     <p class="hint">${escape(t("map.hint"))}</p>
     <div class="map-scroll"><div class="map" style="width:${placed.width}px;height:${placed.height}px">${linksSvg(tree, placed, lit)}${nodes.join("")}</div></div>

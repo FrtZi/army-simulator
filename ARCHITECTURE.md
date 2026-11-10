@@ -75,6 +75,7 @@ src/ui/                  the page
 ├── files.js             a file downloaded from the page, a picked file's text
 ├── tablist.js           a row of tabs, clicks and keys (the page's, the dashboards', the guides')
 ├── icons.js             the page's SVG icons and the troop type pictograms (D-18)
+├── ritual-tree.js       a rituals category as the game's tree, and the order and numbers it reads in (GUIDE-07)
 ├── rarity.js            a rarity as a badge, a piece's levels as rarities (GUIDE-05, D-31)
 ├── champion-figures.js  the champion's stats and its gear's bonuses in all, in Your setup and the lab (BONUS-08)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;

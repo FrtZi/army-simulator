@@ -133,3 +133,16 @@
 .rarity-eternal {
   color: var(--rarity-eternal);
 }
+
+/* a ritual's number in its category's tree, the same in the guides' map and in Your setup */
+.tree-number {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0 0.25em;
+  font-size: 0.75em;
+  font-weight: 700;
+  text-align: center;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}

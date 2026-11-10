@@ -72,3 +72,30 @@ test("GUIDE-07 a node and a step open their ritual", () => {
   page.$('.map-steps [data-guide-entry="feel-no-pain"]').click();
   assert.equal(page.text("#guide-rituals-title"), "Feel No Pain");
 });
+
+test("GUIDE-07 Your setup lists a category's rituals in the tree's order, numbered as on the map", () => {
+  const page = openPage();
+  page.click("#page-tab-setup");
+  page.choose("#setup-ritual-category", "military");
+  const rows = page.$$("#setup-ritual-list .setup-level-row").map((row) => ({
+    number: textOf(row.querySelector(".tree-number")),
+    name: textOf(row.querySelector(".name")),
+  }));
+  assert.equal(rows.length, military.length);
+  assert.deepEqual(rows[0], { number: "1", name: "Scouting" }, "the tree's root first");
+  const depths = depthsOf(military);
+  const ids = page.$$("#setup-ritual-list input[data-id]").map((input) => input.dataset.id);
+  assert.deepEqual(
+    ids.map((id) => depths.get(id)),
+    ids.map((id) => depths.get(id)).toSorted((a, b) => a - b),
+    "row by row, as the tree reads",
+  );
+  // the same number on the map
+  const map = openRitual("the-great-invasion");
+  const numberOn = (id) => textOf(node(map, id).querySelector(".tree-number"));
+  const inSetup = (id) => rows[ids.indexOf(id)].number;
+  assert.deepEqual(
+    ["scouting", "feel-no-pain", "the-great-invasion"].map(numberOn),
+    ["scouting", "feel-no-pain", "the-great-invasion"].map(inSetup),
+  );
+});
