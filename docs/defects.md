@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **37 defects**: 37 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **38 defects**: 38 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -50,6 +50,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-035](#def-035) | 2026-11-09 | A tick box drawn as a text field | code | minor | ✓ fixed |
 | [DEF-036](#def-036) | 2026-11-09 | A setup of rituals and buildings only could not be loaded | code | minor | ✓ fixed |
 | [DEF-037](#def-037) | 2026-11-10 | The champion's guide left out the gear's bonuses for its march | code | minor | ✓ fixed |
+| [DEF-038](#def-038) | 2026-11-10 | An item's row showed a text key, and its detail left the gear out of what asks for it | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -518,3 +519,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** Splitting one list of data into two splits every reader of it: find them all when the data moves.
 - **Proof:** `tests/gear.test.js`
 - **Links:** GUIDE-03, BONUS-06
+
+<a id="def-038"></a>
+### DEF-038 · An item's row showed a text key, and its detail left the gear out of what asks for it
+
+`2026-11-10` · code · minor · ✓ fixed · tags: `page`, `translation`
+
+- **Finding:** In the new items' tables, Iron's "Asked by" showed "guides.gear" beside Heroes, Rituals and Buildings; and its detail, under the row, listed the heroes, rituals and buildings that cost iron, not the gear pieces. Seen on the page before the commit.
+- **Cause:** The tag's text key is built from the block's kind (guides.<kind>), and the three older kinds had a text; the gear, added with the champion, had none, and t() shows a missing key as it is. The detail's list of what asks for an item was written before the gear had costs.
+- **Solution:** A text for the gear in both languages; the detail lists the gear pieces too. A test reads the tables for anything shaped like a key, and the gear among the blocks.
+- **Result:** Iron's row says Heroes, Rituals, Buildings, Gear; its detail lists the pieces; the test fails with either fault back.
+- **Lesson:** A text key built from a value escapes the check that both languages hold the same keys: test the page for keys left showing.
+- **Proof:** `tests/items.test.js`
+- **Links:** GUIDE-08, GUIDE-04

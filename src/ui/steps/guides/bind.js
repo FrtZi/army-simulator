@@ -38,10 +38,19 @@ function bindLevelled(panel) {
 function bindItems(panel) {
   panel.addEventListener("change", (event) => {
     const { guideItems: field } = event.target.dataset;
-    if (field !== "kind") return;
-    state.guide.items.kind = event.target.value;
+    if (field !== "rarity") return;
+    state.guide.items.rarity = event.target.value;
     keepingFocus(drawGuideItems);
   });
+  // a family opened or folded by hand stays so (toggle does not bubble: caught on the way down)
+  panel.addEventListener(
+    "toggle",
+    (event) => {
+      const { family } = event.target.dataset ?? {};
+      if (family) state.guide.items.open[family] = event.target.open;
+    },
+    true,
+  );
   panel.addEventListener("input", (event) => {
     if (event.target.dataset.guideItems !== "search") return;
     state.guide.items.search = event.target.value;
@@ -51,10 +60,12 @@ function bindItems(panel) {
     const chosen = event.target.closest("[data-guide-item]");
     const goTo = event.target.closest("[data-goto-item]");
     if (chosen) {
-      state.guide.items.id = chosen.dataset.guideItem;
+      // a second click folds the detail again (GUIDE-08)
+      const id = chosen.dataset.guideItem;
+      state.guide.items.id = state.guide.items.id === id ? null : id;
       keepingFocus(drawGuideItems);
     } else if (goTo) {
-      Object.assign(state.guide.items, { id: goTo.dataset.gotoItem, kind: "", search: "" });
+      Object.assign(state.guide.items, { id: goTo.dataset.gotoItem, rarity: "", search: "" });
       state.guide.kind = "items";
       drawGuides();
       byId("guide-items-title").focus();

@@ -3,44 +3,20 @@
 // level by level on demand) and what asks for it (the heroes, rituals and structures whose levels cost it, worked out
 // from our own data).
 import { escape, options } from "../../dom.js";
-import { label, number, searchable } from "../../format.js";
+import { label, number } from "../../format.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
-import { rarityBadge } from "../../rarity.js";
 
 const AVERAGES = ["perHit", "perChest", "perSpoil", "perChampion", "perCompletion"];
 const guide = () => state.guide.items;
 
-/** The resources and items the filters and the search let through, by name. */
-export function shownItems() {
-  const { kind, search } = guide();
-  const query = searchable(search.trim());
-  return [...currentGame().items.values()]
-    .filter((item) => (!kind || item.kind === kind) && (!query || searchable(label(item)).includes(query)))
-    .sort((a, b) => label(a).localeCompare(label(b)));
-}
-
-export function itemListHtml() {
-  const shown = shownItems();
-  if (!shown.length) return `<li class="empty">${escape(t("guides.noneFound"))}</li>`;
-  return shown
-    .map(
-      (
-        item,
-      ) => `<li><button type="button" class="guide-hero" id="guide-item-${item.id}" data-guide-item="${item.id}" aria-current="${item.id === guide().id}">
-        <span class="name">${escape(label(item))}</span><span class="meta">${escape(t(`guides.kind-${item.kind}`))} ${rarityBadge(item.rarity)}</span></button></li>`,
-    )
-    .join("");
-}
-
 export function itemFiltersHtml() {
-  const kinds = [
+  const rarities = [
     ["", t("guides.every")],
-    ["currency", t("guides.kind-currency")],
-    ["item", t("guides.kind-item")],
+    ...currentGame().game.rarities.map((rarity) => [rarity.id, label(rarity)]),
   ];
   return `<div class="guide-filters">
-    <div class="field"><label for="guide-items-kind">${escape(t("guides.kind"))}</label><select id="guide-items-kind" data-guide-items="kind">${options(kinds, guide().kind)}</select></div>
+    <div class="field"><label for="guide-items-rarity">${escape(t("guides.rarity"))}</label><select id="guide-items-rarity" data-guide-items="rarity">${options(rarities, guide().rarity)}</select></div>
     <div class="field"><label for="guide-items-search">${escape(t("guides.searchName"))}</label><input id="guide-items-search" type="search" autocomplete="off" data-guide-items="search" value="${escape(guide().search)}" /></div>
   </div>`;
 }
@@ -78,6 +54,7 @@ function usesHtml(id) {
     ...[...game.warlords.values()].map((entry) => ({ entry, kind: "guides.heroes" })),
     ...game.rituals.rituals.map((entry) => ({ entry, kind: "guides.rituals" })),
     ...game.structures.structures.map((entry) => ({ entry, kind: "guides.buildings" })),
+    ...game.champion.pieces.map((entry) => ({ entry, kind: "guides.gear" })), // the forge asks too (DEF-038)
   ].filter(({ entry }) => entry.costs?.[id]);
   if (!users.length) return `<p class="hint">${escape(t("guides.usedNowhere"))}</p>`;
   const rows = users.map(({ entry, kind }) => {
@@ -90,7 +67,6 @@ function usesHtml(id) {
 export function itemDetailHtml(item) {
   // focusable by script: a cost table's item name brings the focus here (GUIDE-04)
   return `<h3 id="guide-items-title" tabindex="-1">${escape(label(item))}</h3>
-    <p class="meta">${escape(t(`guides.kind-${item.kind}`))} ${rarityBadge(item.rarity)}</p>
     <h4>${escape(t("guides.drops"))}</h4>${dropsHtml(item.id)}
     <h4>${escape(t("guides.uses"))}</h4>${usesHtml(item.id)}`;
 }

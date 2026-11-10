@@ -7,7 +7,8 @@ import { t } from "../../texts/index.js";
 import { guideHeroes, heroDetailHtml, heroFiltersHtml, heroListHtml } from "./heroes.js";
 import { LEVELLED, entryFiltersHtml, entryListHtml, shownEntries } from "./levelled.js";
 import { chosenEntry, entryDetailHtml } from "./levelled-detail.js";
-import { itemDetailHtml, itemFiltersHtml, itemListHtml, shownItems } from "./items.js";
+import { itemDetailHtml, itemFiltersHtml } from "./items.js";
+import { itemsTablesHtml } from "./items-table.js";
 import { championDetailHtml, championFiltersHtml, pieceDetailHtml, setDetailHtml, shownPieces } from "./champion.js";
 import { label } from "../../format.js";
 import { setLabHtml } from "./set-lab.js";
@@ -87,21 +88,13 @@ function drawChampionGuide(panel) {
   drawGuideChampion();
 }
 
-/** Only the items' list and the detail: a search typed in keeps its field. */
+/** Only the items' tables, the chosen one's detail under its row: a search typed in keeps its field. */
 export function drawGuideItems() {
-  const shown = shownItems();
-  const item = shown.find((entry) => entry.id === state.guide.items.id) ?? shown[0];
-  state.guide.items.id = item?.id ?? state.guide.items.id;
-  byId("guide-items-list").innerHTML = itemListHtml();
-  byId("guide-items-detail").innerHTML = item ? itemDetailHtml(item) : "";
+  byId("guide-items-list").innerHTML = itemsTablesHtml(itemDetailHtml);
 }
 
 function drawItemsGuide(panel) {
-  panel.innerHTML = `${itemFiltersHtml()}
-    <div class="guide-layout">
-      <ul id="guide-items-list" class="guide-list" aria-label="${escape(t("guides.items"))}"></ul>
-      <div id="guide-items-detail" class="guide-detail" aria-live="polite"></div>
-    </div>`;
+  panel.innerHTML = `${itemFiltersHtml()}<div id="guide-items-list" class="item-families"></div>`;
   drawGuideItems();
 }
 

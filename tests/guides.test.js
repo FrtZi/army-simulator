@@ -181,8 +181,6 @@ test("GUIDE-04 an item's page: where it drops, what asks for it; reached from a 
   assert.equal(textOf(page.$(".guide-drops summary")), "Vampire Lord (Foe), levels 8 to 12: up to 1.6 per chest");
   // warlords.json: Azazel's favours over its 35 levels, 200 + 250 + … + 2,250 = 20,475
   assert.equal(textOf(page.$(".guide-uses li")), "Azazel (Heroes): 20,475 over all its levels");
-  page.choose("#guide-items-kind", "currency");
-  assert.ok(page.$$("#guide-items-list [data-guide-item]").length >= 5, "the resources: food, stone, lead, wood, iron");
   page.click("#guide-item-iron");
   assert.match(page.text(".guide-detail"), /No drop known/);
 });

@@ -591,3 +591,19 @@ preuve = ["tests/gear.test.js"]
 lecon = "Splitting one list of data into two splits every reader of it: find them all when the data moves."
 liens = ["GUIDE-03", "BONUS-06"]
 
+[[defaut]]
+id = "DEF-038"
+date = 2026-11-10
+titre = "An item's row showed a text key, and its detail left the gear out of what asks for it"
+type = "code"
+etiquettes = ["page", "translation"]
+gravite = "minor"
+statut = "fixed"
+constat = "In the new items' tables, Iron's \"Asked by\" showed \"guides.gear\" beside Heroes, Rituals and Buildings; and its detail, under the row, listed the heroes, rituals and buildings that cost iron, not the gear pieces. Seen on the page before the commit."
+cause = "The tag's text key is built from the block's kind (guides.<kind>), and the three older kinds had a text; the gear, added with the champion, had none, and t() shows a missing key as it is. The detail's list of what asks for an item was written before the gear had costs."
+solution = "A text for the gear in both languages; the detail lists the gear pieces too. A test reads the tables for anything shaped like a key, and the gear among the blocks."
+resultat = "Iron's row says Heroes, Rituals, Buildings, Gear; its detail lists the pieces; the test fails with either fault back."
+preuve = ["tests/items.test.js"]
+lecon = "A text key built from a value escapes the check that both languages hold the same keys: test the page for keys left showing."
+liens = ["GUIDE-08", "GUIDE-04"]
+

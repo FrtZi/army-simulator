@@ -59,11 +59,10 @@ test("GUIDE-05 items and heroes show their rarity; the heroes' filter offers onl
   const rarities = optionsOf(page, "#guide-rarity");
   assert.ok(!rarities.includes("Eternal"), "no hero is Eternal");
   page.click("#guide-hero-azazel");
-  // items.json: Azazel Favour is legendary, in the cost table and on its page
+  // items.json: Azazel Favour is legendary, in the cost table and in its row of the items' guide
   assert.equal(textOf(page.$('.guide-detail td:has([data-goto-item="azazel-favour"]) .rarity')), "Legendary");
   page.$('.guide-detail [data-goto-item="azazel-favour"]').click();
-  assert.equal(textOf(page.$(".guide-detail .meta .rarity")), "Legendary");
-  assert.equal(textOf(page.$("#guide-item-azazel-favour .rarity")), "Legendary");
+  assert.equal(textOf(page.$("tr:has(#guide-item-azazel-favour) .rarity")), "Legendary");
 });
 
 test("GUIDE-05 a piece worn in Your setup shows the rarity of its level", () => {

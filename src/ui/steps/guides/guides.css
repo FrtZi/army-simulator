@@ -300,3 +300,38 @@
   display: inline-flex;
   color: var(--muted);
 }
+
+/* the items by family (GUIDE-08): each family folds; the item chosen opens under its row */
+.item-family {
+  margin: 0.5rem 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.item-family > summary {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  color: var(--heading);
+  font-weight: 600;
+}
+
+.item-family .guide-table {
+  margin: 0;
+}
+
+.item-family tr.chosen th {
+  background: var(--key);
+}
+
+.item-detail-row > td {
+  padding: 0.5rem 0.75rem 1rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0 0.45rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}

@@ -479,5 +479,55 @@
     "talentsPerArmy": 4,
     "ranks": 7,
     "levelsPerRank": 5
-  }
+  },
+  "itemFamilies": [
+    {
+      "id": "resources",
+      "kind": "currency",
+      "labels": {
+        "en": "Resources",
+        "fr": "Ressources"
+      }
+    },
+    {
+      "id": "warlords",
+      "code": "_favour$|^carrier_xp_token$",
+      "labels": {
+        "en": "Warlords' favours and experience",
+        "fr": "Faveurs et expérience des seigneurs de guerre"
+      }
+    },
+    {
+      "id": "forge",
+      "code": "^component_crafting_",
+      "labels": {
+        "en": "Forge materials",
+        "fr": "Matériaux de forge"
+      }
+    },
+    {
+      "id": "rituals",
+      "code": "^component_unit_",
+      "labels": {
+        "en": "Ritual components",
+        "fr": "Composants de rituels"
+      }
+    },
+    {
+      "id": "buildings",
+      "code": "^component_core_",
+      "labels": {
+        "en": "Building components",
+        "fr": "Composants de bâtiments"
+      }
+    },
+    {
+      "id": "gear",
+      "code": "^component_",
+      "labels": {
+        "en": "Gear components",
+        "fr": "Composants d'équipement"
+      }
+    }
+  ]
 }

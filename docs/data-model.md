@@ -213,7 +213,8 @@ damage and health divisors (from the community wiki), the tier modifier and the 
 
 Every resource (iron) and item (Warlord Honour, a warlord's favour) a cost names, written by
 `scripts/import-items.mjs` from cctools.cc's saved pages, never by hand; one list the warlords' costs point at, and
-the rituals', buildings' and gear's will. An entry: `{ "id", "code", "kind": "currency" | "item", "rarity", "labels" }`.
+the rituals', buildings' and gear's will. An entry: `{ "id", "code", "kind": "currency" | "item", "rarity", "labels" }`. Its family, for the guide (GUIDE-08), is
+the first of game.json's `itemFamilies` its `kind` or its game `code` (a regular expression) matches.
 A currency's id is its name (its code, `currency7`, says nothing); an item keeps its code (`carrier-xp-token`).
 
 ## Rituals and structures: `data/<game>/rituals.json`, `structures.json` (D-29)
