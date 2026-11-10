@@ -430,3 +430,8 @@ line of a composition says what is owned, and a count above it is warned in word
 
 - _Set aside:_ capping a count at what is owned (a composition is also a plan: what to train before a battle); the
   Army tab's totals by place (Fortress, Far…), which say where the troops are, not how many of each.
+
+Amended on 2026-11-10 (Frantz, after loading his troops and seeing an empty composition): with the setup loaded and
+troops owned, the picker offers only the troops owned, as it offers only the heroes owned, each added at the number
+owned within the march capacity still free (in the order picked). A count typed above what is owned stays warned,
+never capped.

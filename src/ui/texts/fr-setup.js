@@ -89,7 +89,9 @@ export const FR_SETUP = {
   "setup.troopRemove": "Retirer {name} de vos troupes",
   "army.owned": "Vous en possédez {n}",
   "army.ownedOver": "{over} de plus que les {n} possédés",
-  "load.troops": "les troupes possédées ({n} listées)",
+  "load.troops": "seulement vos troupes ({n} listées), ajoutées à vos nombres",
+  "picker.owned":
+    "Votre configuration est chargée : seulement vos troupes, chacune ajoutée à votre nombre, dans la capacité de marche libre.",
   "composition.champion": "Menée par votre champion",
   "composition.championOn": "Les bonus de son équipement pour la marche qu'il mène comptent dans cette composition.",
   "composition.championOff":

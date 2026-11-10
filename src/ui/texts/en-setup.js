@@ -86,7 +86,9 @@ export const EN_SETUP = {
   "setup.troopRemove": "Take {name} out of your troops",
   "army.owned": "You own {n}",
   "army.ownedOver": "{over} more than the {n} you own",
-  "load.troops": "the troops you own ({n} listed)",
+  "load.troops": "only the troops you own ({n} listed), added at your numbers",
+  "picker.owned":
+    "Your setup is loaded: only the troops you own, each added at your number within the free march capacity.",
   "composition.champion": "Led by your champion",
   "composition.championOn": "Its gear's bonuses for the march it leads count in this composition.",
   "composition.championOff":

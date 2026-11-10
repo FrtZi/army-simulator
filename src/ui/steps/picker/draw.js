@@ -3,17 +3,20 @@
 import { byId, escape } from "../../dom.js";
 import { CONFIG } from "../../config.js";
 import { matchesFilters, multiFilter } from "../../filters.js";
-import { label, searchable, troopMeta } from "../../format.js";
+import { label, number, searchable, troopMeta } from "../../format.js";
 import { troopIcon } from "../../icons.js";
 import { currentGame, state } from "../../state.js";
+import { troopsOwned } from "../../lab-setup.js";
 import { t } from "../../texts/index.js";
 
-/** The troops matching the search (in either language) and every filter set. */
+/** The troops matching the search (in either language) and every filter set; with the setup loaded, those owned. */
 export function matchingTroops() {
   const { picker } = state;
   const query = searchable(picker.search.trim());
+  const owned = troopsOwned(state); // D-34: only your troops, as only your heroes
   return [...currentGame().catalogue.units.values()].filter(
     (unit) =>
+      (!owned || owned.has(unit.id)) &&
       matchesFilters(unit, picker.filters) &&
       (!query || Object.values(unit.labels).some((name) => searchable(name).includes(query))),
   );
@@ -33,7 +36,8 @@ export function drawPickerList() {
         .map((unit) => {
           const inArmy = unit.id in state.troops;
           const checked = inArmy || state.picker.picked.has(unit.id) ? " checked" : "";
-          const note = inArmy ? ` · ${t("picker.inArmy")}` : "";
+          const owned = troopsOwned(state)?.get(unit.id);
+          const note = `${owned === undefined ? "" : ` · ${t("army.owned", { n: number(owned) })}`}${inArmy ? ` · ${t("picker.inArmy")}` : ""}`;
           return `<li><label for="pick-${unit.id}"><input type="checkbox" id="pick-${unit.id}" data-pick="${unit.id}"${checked}${inArmy ? " disabled" : ""} />
             ${troopIcon(unit)}<span class="name">${escape(label(unit))}</span><span class="visually-hidden">, </span><span class="meta">${escape(troopMeta(unit) + note)}</span></label></li>`;
         })
@@ -53,6 +57,7 @@ export function drawPicker() {
   toggle.setAttribute("aria-expanded", String(open));
   byId("picker").hidden = !open;
   byId("picker-search").value = search;
+  byId("picker-owned").hidden = !troopsOwned(state);
   drawFilters();
   drawPickerList();
   drawPickerButton();

@@ -65,6 +65,23 @@ export function troopsOwned(state) {
   return new Map(troops.map(({ id, count }) => [id, count]));
 }
 
+/**
+ * The number each troop picked is added at (D-34): with the troops owned in play, what is owned, within the march
+ * capacity still free, the troops in the order picked; else the lab's usual count.
+ */
+export function addedCounts(state, picked, free, usual) {
+  const ownedTroops = troopsOwned(state);
+  let left = Math.max(0, free);
+  return new Map(
+    picked.map((id) => {
+      if (!ownedTroops) return [id, usual];
+      const count = Math.min(ownedTroops.get(id) ?? 0, left);
+      left -= count;
+      return [id, count];
+    }),
+  );
+}
+
 /** The gear the saved setup's champion wears, or none. */
 export const championGear = (state) => state.savedPlayerSetup.champion?.gear ?? [];
 

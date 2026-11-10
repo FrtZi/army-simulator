@@ -89,6 +89,39 @@ test("CFG-08 D-34 the lab says what is owned of each troop and warns above it, n
   assert.match(page.text("#load-setup-status"), /the troops you own \(1 listed\)/);
 });
 
+test("CFG-08 D-34 with the setup loaded the picker offers only your troops, each added at your number within the free capacity", () => {
+  const saved = JSON.stringify({
+    [GAME]: {
+      format: "army-simulator/setup",
+      version: 1,
+      game: GAME,
+      troops: [
+        { id: "marauders", count: 9801 },
+        { id: "pestigor", count: 64336 },
+      ],
+    },
+  });
+  const page = openPage({ stored: { [SETUP_KEY]: saved } });
+  page.click("#picker-toggle");
+  assert.ok(page.$$("#picker-list [data-pick]").length > 2, "the setup not loaded: every troop");
+  assert.ok(page.$("#picker-owned").hidden);
+  page.tick("#load-setup-toggle");
+  assert.deepEqual(
+    page
+      .$$("#picker-list [data-pick]")
+      .map((box) => box.dataset.pick)
+      .sort(),
+    ["marauders", "pestigor"],
+  );
+  assert.ok(!page.$("#picker-owned").hidden, "the picker says why");
+  assert.match(page.text("#picker-list"), /You own 64,336/);
+  addTroops(page, ["marauders", "pestigor"]);
+  // a march capacity of 50,000 (the lab's default): 9,801 Marauders, then the 40,199 left for the Pestigor
+  assert.equal(page.$("#count-marauders").value, "9801");
+  assert.equal(page.$("#count-pestigor").value, "40199");
+  assert.equal(page.text("#owned-pestigor"), "✓ You own 64,336");
+});
+
 test("CFG-08 DEF-041 a setup of troops only, saved, says it is saved", () => {
   const page = openPage();
   page.click("#page-tab-setup");
