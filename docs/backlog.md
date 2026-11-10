@@ -16,7 +16,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Milestone | Musts done | Items done | Tasks done | Reached |
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
-| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/5 | 17/21 | ○ not yet: 1 Must left |
+| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 4/9 | 19/29 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/3 | 3/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
@@ -26,7 +26,6 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 Not done, and every dependency done:
 
 - [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ◐ doing)
-- [BL-25](#bl-25) The setup's files for an agent: empty, an example, the dictionary, a clearer brief (v1.1, should, ○ to do)
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
 - [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ◐ doing)
 - [BL-24](#bl-24) Guides: the map to reach a level, the items by category, a set lab (v1.2, should, ○ to do)
@@ -73,7 +72,7 @@ flowchart LR
   BL22["BL-22 ✓ done<br/>Guides: the game's blocks in detail, in a tab of their own"]:::done
   BL23["BL-23 ✓ done<br/>The champion and its gear made easy to read: rarities, sets, the champion's figures"]:::done
   BL24["BL-24 ○ to do<br/>Guides: the map to reach a level, the items by category, a set lab"]:::todo
-  BL25["BL-25 ○ to do<br/>The setup's files for an agent: empty, an example, the dictionary, a clearer brief"]:::todo
+  BL25["BL-25 ✓ done<br/>The setup's files for an agent: empty, an example, the dictionary, a clearer brief"]:::done
   BL26["BL-26 ○ to do<br/>The troops owned in the setup"]:::todo
   BL27["BL-27 ○ to do<br/>Several copies of a building in the setup"]:::todo
   classDef done stroke-width:3px
@@ -141,7 +140,7 @@ The warlords in a composition, at their level, their bonuses applied; what the p
 | [BL-06](#bl-06) | Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels | must | [data](../data) | ✓ done | 3/3 |
 | [BL-07](#bl-07) | Heroes in a composition: up to 3 warlords, 4 talents, at their level | must | [ui](../src/ui) | ✓ done | 5/5 |
 | [BL-08](#bl-08) | The player's setup: everything they have in game, entered by hand or uploaded | must | [storage](../src/storage) | ◐ doing | 6/8 |
-| [BL-25](#bl-25) | The setup's files for an agent: empty, an example, the dictionary, a clearer brief | should | [storage](../src/storage) | ○ to do | 0/2 |
+| [BL-25](#bl-25) | The setup's files for an agent: empty, an example, the dictionary, a clearer brief | should | [storage](../src/storage) | ✓ done | 2/2 |
 
 <a id="bl-05"></a>
 #### BL-05 · Tooling majors: ESLint 10, jsdom 30, html-validate 11
@@ -195,12 +194,12 @@ Frantz, 2026-11-09: it holds everything (every bonus source, shaped on cctools.c
 <a id="bl-25"></a>
 #### BL-25 · The setup's files for an agent: empty, an example, the dictionary, a clearer brief
 
-Should · [storage](../src/storage) · ○ to do · added `2026-11-10` · features: CFG-07
+Should · [storage](../src/storage) · ✓ done · added `2026-11-10` · features: CFG-07
 
 Frantz, 2026-11-10, after a first try with an agent (Mistral) on the Army tab's screenshots: provide an empty file and an example filled in, a prompt that explains better, maybe the dictionary. The brief names the screens (the Chaos Keep's Combat tab, the rituals' trees by branch, the champion and each piece's forge) and says what it does not read (the troops owned, until CFG-08).
 
-- [ ] An example file filled in, the dictionary and the empty file, each a download
-- [ ] The brief: the screens to send, how to read each (a ritual bright and ticked is at its top), what is left out
+- [x] An example file filled in, the dictionary and the empty file, each a download
+- [x] The brief: the screens to send, how to read each (a ritual bright and ticked is at its top), what is left out
 
 ### v1.2 · Version 1.2, the tier table, PvE armies, rituals and buildings
 

@@ -50,6 +50,8 @@ export const FR_SETUP_FILES = {
   "setupfile.copyBrief": "Copier la consigne pour un agent",
   "setupfile.downloadBrief": "Télécharger la consigne",
   "setupfile.template": "Télécharger un fichier vide",
+  "setupfile.example": "Télécharger un fichier d'exemple",
+  "setupfile.dictionary": "Télécharger le dictionnaire",
   "setupfile.copied": "La consigne est copiée : collez-la à l'agent avec vos captures.",
   "setupfile.notCopied": "Ce navigateur n'a pas laissé la page copier : téléchargez la consigne à la place.",
 };

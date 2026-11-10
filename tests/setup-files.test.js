@@ -182,6 +182,32 @@ test("CFG-05 CFG-06 the setup, an empty file and the brief downloaded; the setup
   assert.equal(page.$("#setup-import-apply"), null, "nothing to apply");
 });
 
+test("CFG-07 an example file and the dictionary downloaded; the brief names the screens and what it leaves out", async () => {
+  const page = openPage();
+  const files = downloads(page);
+  page.click("#setup-example");
+  page.click("#setup-dictionary-download");
+  page.click("#setup-brief-download");
+  await settle();
+  const [example, dictionary, brief] = files;
+  assert.equal(example.name, `army-simulator-setup-example-${GAME}.json`);
+  const sections = ["warlords", "capacity", "bonuses", "rituals", "buildings", "champion"];
+  assert.deepEqual(
+    sections.filter((section) => !JSON.parse(example.text)[section]),
+    [],
+    "every section filled in",
+  );
+  assert.match(dictionary.text, /^# Data dictionary: Army Simulator setup/);
+  assert.match(brief.text, /The screens to read, and how:\n- Your warlords/);
+  assert.match(brief.text, /The Chaos Keep \(in French Donjon du Chaos\), Combat tab/);
+  assert.match(brief.text, /a node bright and ticked is at its top level/);
+  assert.match(brief.text, /Not part of the setup: the troops you own/);
+  // the example is a file the page reads without refusing anything
+  await upload(page, example.text);
+  assert.doesNotMatch(page.text("#setup-review"), /left out|to check/i);
+  assert.ok(page.$("#setup-import-apply"), "something to apply");
+});
+
 test("CFG-06 the brief is copied where the browser allows it; elsewhere the page says to download it", async () => {
   const page = openPage();
   await page.$("#setup-brief-copy").click();

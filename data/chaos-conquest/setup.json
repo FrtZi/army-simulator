@@ -11,7 +11,15 @@
       "Include only the sections my screenshots show; the others stay as they are in my setup.",
       "Ignore anything else on the screens (player names, chat, alliance).",
       "A bonus on screen that matches no stat or filter of the dictionary: leave it out and list it.",
+      "Not part of the setup: the troops you own (the Chaos Keep's Army tab), your resources and defences. Leave them out; if the screenshots show nothing else, say so and give back the file unchanged.",
       "Give back the JSON file only, then a short list of what you left out and why."
+    ],
+    "screens": [
+      "Your warlords: each warlord's card, with its rank and its level (the exact screen is still to confirm).",
+      "The Chaos Keep (in French Donjon du Chaos), Combat tab: open each troop type's block (Infantry, Monsters, Cavalry…). Each line is one bonus for that type: one entry in bonuses, its target's unitTypes the block's type. Leave out a line at +0%, and a line that is no stat of the dictionary (healing speed): list it.",
+      "Rituals: each category's tree (Military, Champion, Defensive…), one screenshot per branch. A node shows its level out of its top (\"7/10\"); a node bright and ticked is at its top level: write its top. A dark node at 0 is not learnt: leave it out.",
+      "Buildings: each building's level, on its sign in the city or in its window.",
+      "The champion: its screen shows its level and its six pieces; each piece's forge shows its rarity under it, Core, Uncommon, Rare, Epic, Legendary, Eternal (in French Commun, Peu commun, Rare, Épique, Légendaire, Éternel), its level 1 to 6 in that order."
     ]
   },
   "elements": [

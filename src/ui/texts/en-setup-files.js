@@ -51,6 +51,8 @@ export const EN_SETUP_FILES = {
   "setupfile.copyBrief": "Copy the brief for an agent",
   "setupfile.downloadBrief": "Download the brief",
   "setupfile.template": "Download an empty file",
+  "setupfile.example": "Download an example file",
+  "setupfile.dictionary": "Download the dictionary",
   "setupfile.copied": "The brief is copied: paste it to the agent with your screenshots.",
   "setupfile.notCopied": "This browser did not let the page copy: download the brief instead.",
 };

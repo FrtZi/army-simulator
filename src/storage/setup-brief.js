@@ -95,5 +95,17 @@ export function dictionaryText(dictionary) {
 /** The whole brief: the instructions (data/<game>/setup.json), then the dictionary. */
 export function agentBrief(brief, dictionary) {
   const rules = brief.rules.map((rule) => `- ${rule}`);
-  return [...brief.intro, "", "Rules:", ...rules, "", dictionaryText(dictionary), ""].join("\n");
+  const screens = (brief.screens ?? []).map((screen) => `- ${screen}`); // which screens, how to read each (CFG-07)
+  return [
+    ...brief.intro,
+    "",
+    "The screens to read, and how:",
+    ...screens,
+    "",
+    "Rules:",
+    ...rules,
+    "",
+    dictionaryText(dictionary),
+    "",
+  ].join("\n");
 }

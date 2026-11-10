@@ -422,13 +422,13 @@ title = "The setup's files for an agent: empty, an example, the dictionary, a cl
 moscow = "should"
 milestone = "v1.1"
 module = "storage"
-status = "to do"
+status = "done"
 added = 2026-11-10
 features = ["CFG-07"]
 note = "Frantz, 2026-11-10, after a first try with an agent (Mistral) on the Army tab's screenshots: provide an empty file and an example filled in, a prompt that explains better, maybe the dictionary. The brief names the screens (the Chaos Keep's Combat tab, the rituals' trees by branch, the champion and each piece's forge) and says what it does not read (the troops owned, until CFG-08)."
 tasks = [
-  "[ ] An example file filled in, the dictionary and the empty file, each a download",
-  "[ ] The brief: the screens to send, how to read each (a ritual bright and ticked is at its top), what is left out",
+  "[x] An example file filled in, the dictionary and the empty file, each a download",
+  "[x] The brief: the screens to send, how to read each (a ritual bright and ticked is at its top), what is left out",
 ]
 
 [[item]]
