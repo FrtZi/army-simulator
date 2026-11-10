@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **38 defects**: 38 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **39 defects**: 39 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -51,6 +51,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-036](#def-036) | 2026-11-09 | A setup of rituals and buildings only could not be loaded | code | minor | ✓ fixed |
 | [DEF-037](#def-037) | 2026-11-10 | The champion's guide left out the gear's bonuses for its march | code | minor | ✓ fixed |
 | [DEF-038](#def-038) | 2026-11-10 | An item's row showed a text key, and its detail left the gear out of what asks for it | code | minor | ✓ fixed |
+| [DEF-039](#def-039) | 2026-11-10 | The performance check failed on a busy CI runner, the code unchanged | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -532,3 +533,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A text key built from a value escapes the check that both languages hold the same keys: test the page for keys left showing.
 - **Proof:** `tests/items.test.js`
 - **Links:** GUIDE-08, GUIDE-04
+
+<a id="def-039"></a>
+### DEF-039 · The performance check failed on a busy CI runner, the code unchanged
+
+`2026-11-10` · code · minor · ✓ fixed · tags: `ci`, `tests`
+
+- **Finding:** CI failed on 973c0d5 with PERF-01 at 25.3 ms for a 25 ms budget; the code it measures had not changed since 1d05f9e, it passed every time locally, and the same job passed when run again.
+- **Cause:** The check took the median of nine runs: on a shared runner, what else the machine is doing slows most runs, and the median sat close to the budget.
+- **Solution:** The check takes the fastest of the nine runs, what the code itself costs; the budget is unchanged.
+- **Result:** A slow neighbour on the runner no longer fails the build; a slower engine still does, since every run would be slower.
+- **Lesson:** A timing check on shared machines measures the machine as much as the code: assert on the best run, not a typical one.
+- **Proof:** `tests/performance.test.js`
+- **Links:** PERF-01

@@ -607,3 +607,19 @@ preuve = ["tests/items.test.js"]
 lecon = "A text key built from a value escapes the check that both languages hold the same keys: test the page for keys left showing."
 liens = ["GUIDE-08", "GUIDE-04"]
 
+[[defaut]]
+id = "DEF-039"
+date = 2026-11-10
+titre = "The performance check failed on a busy CI runner, the code unchanged"
+type = "code"
+etiquettes = ["ci", "tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "CI failed on 973c0d5 with PERF-01 at 25.3 ms for a 25 ms budget; the code it measures had not changed since 1d05f9e, it passed every time locally, and the same job passed when run again."
+cause = "The check took the median of nine runs: on a shared runner, what else the machine is doing slows most runs, and the median sat close to the budget."
+solution = "The check takes the fastest of the nine runs, what the code itself costs; the budget is unchanged."
+resultat = "A slow neighbour on the runner no longer fails the build; a slower engine still does, since every run would be slower."
+preuve = ["tests/performance.test.js"]
+lecon = "A timing check on shared machines measures the machine as much as the code: assert on the best run, not a typical one."
+liens = ["PERF-01"]
+
