@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **41 defects**: 41 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **42 defects**: 42 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -54,6 +54,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-039](#def-039) | 2026-11-10 | The performance check failed on a busy CI runner, the code unchanged | code | minor | ✓ fixed |
 | [DEF-040](#def-040) | 2026-11-10 | The level fields of Your setup's rituals and buildings did not line up | code | minor | ✓ fixed |
 | [DEF-041](#def-041) | 2026-11-10 | A setup of troops only, once saved, said nothing was saved | code | minor | ✓ fixed |
+| [DEF-042](#def-042) | 2026-11-10 | Test values written into the browser where Frantz kept his setup | process | minor | ✓ fixed |
 
 ## Entries
 
@@ -574,3 +575,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** When a defect comes from a list of cases, look for every copy of the list before closing it (DEF-036 had a twin).
 - **Proof:** `tests/troops.test.js`
 - **Links:** CFG-04, CFG-08
+
+<a id="def-042"></a>
+### DEF-042 · Test values written into the browser where Frantz kept his setup
+
+`2026-11-10` · process · minor · ✓ fixed · tags: `tests`
+
+- **Finding:** Frantz found Marauders 9,801 among his troops, a troop he does not own and his uploaded file did not hold.
+- **Cause:** To look at the troops section, Claude wrote a test setup (Marauders 9,801, Pestigor 64,336) into the saved setup of the preview browser, the one Frantz was using; his upload then added to it, and a file never removes anything (D-27), so the Marauders stayed.
+- **Solution:** Frantz takes the line out and saves. Claude no longer writes into that browser's storage: a page with test data is checked in jsdom (tests/page.js), which starts empty each time.
+- **Result:** His setup holds only what his files and his hands put in it.
+- **Lesson:** A browser someone uses is theirs: testing in it is writing into their data.
+- **Proof:** Rule: no test data in a browser the player uses; a page is checked with jsdom
+- **Links:** CFG-08, CFG-05

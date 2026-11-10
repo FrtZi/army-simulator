@@ -655,3 +655,19 @@ preuve = ["tests/troops.test.js"]
 lecon = "When a defect comes from a list of cases, look for every copy of the list before closing it (DEF-036 had a twin)."
 liens = ["CFG-04", "CFG-08"]
 
+[[defaut]]
+id = "DEF-042"
+date = 2026-11-10
+titre = "Test values written into the browser where Frantz kept his setup"
+type = "process"
+etiquettes = ["tests"]
+gravite = "minor"
+statut = "fixed"
+constat = "Frantz found Marauders 9,801 among his troops, a troop he does not own and his uploaded file did not hold."
+cause = "To look at the troops section, Claude wrote a test setup (Marauders 9,801, Pestigor 64,336) into the saved setup of the preview browser, the one Frantz was using; his upload then added to it, and a file never removes anything (D-27), so the Marauders stayed."
+solution = "Frantz takes the line out and saves. Claude no longer writes into that browser's storage: a page with test data is checked in jsdom (tests/page.js), which starts empty each time."
+resultat = "His setup holds only what his files and his hands put in it."
+preuve = ["Rule: no test data in a browser the player uses; a page is checked with jsdom"]
+lecon = "A browser someone uses is theirs: testing in it is writing into their data."
+liens = ["CFG-08", "CFG-05"]
+
