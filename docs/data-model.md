@@ -248,7 +248,8 @@ Written by `scripts/import-champion.mjs` from cctools.cc's saved pages, never by
 and its `other` attributes (Vanquish Damage); its skills are the rituals' Champion category. `pieces`: each piece of
 gear, its `slot`, `rarity`, `sets`, and per level its bonuses (`effects`, `other`), `costs` and `requires` (a
 structure at a level), as the rituals'. `sets`: their `pieces`, and per bonus what each number of pieces worn gives
-(a percentage, or `{ "flat": n }`). Nothing of it is applied in battle yet (open question 22).
+(a percentage, or `{ "flat": n }`). `slots`: in the game's order. `march`: the bonuses for the troops of the march
+the champion leads (`hero_march_unit_*`), as a piece's `march`; applied as D-30 says.
 
 ## The PvE armies: `data/<game>/pve.json` (BL-20)
 

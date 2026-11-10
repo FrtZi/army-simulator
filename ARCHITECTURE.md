@@ -50,7 +50,8 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 └── insights.js          the dashboards' figures: efficiency, rounds, balance and warnings, pros and cons
 src/storage/             no DOM: configuration.js (setup ↔ file format version 2, checks), migrate.js (an older
                          file brought up to date), browser.js (saves); the player's setup file (D-27):
-                         setup-file.js (read and checked value by value, written back), setup-merge.js (only
+                         setup-file.js (read and checked value by value, written back; setup-checks.js: what its
+                         readers share; setup-champion.js: the champion read), setup-merge.js (only
                          what a file holds changes), nearest.js (the id a misread name meant); its dictionary
                          (D-28): setup-dictionary.js (built from the game's data), setup-schema.js (as a JSON
                          Schema), setup-brief.js (the brief for an agent, the whole dictionary in it); and
@@ -85,7 +86,8 @@ src/ui/                  the page
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
-                         in warlords.js, the rituals' and buildings' levels in levelled.js, a file uploaded in
+                         in warlords.js, the rituals' and buildings' levels in levelled.js, the champion in
+                         champion.js, a file uploaded in
                          files.js, under review in import.js, drawn in review.js; D-27);
                          and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
                          rituals' and buildings' in levelled.js and levelled-detail.js, the items' in items.js, the champion's in champion.js, what going up costs in costs.js)

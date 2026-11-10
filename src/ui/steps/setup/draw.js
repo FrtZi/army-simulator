@@ -10,6 +10,7 @@ import { unsavedCount } from "../../player-setup.js";
 import { t } from "../../texts/index.js";
 import { drawSetupWarlords } from "./warlords.js";
 import { drawSetupLevelled } from "./levelled.js";
+import { drawSetupChampion } from "./champion.js";
 
 const STATES = { entered: "✓", empty: "○", coming: "◌" };
 
@@ -28,6 +29,15 @@ function tile(section, figure, kind, words) {
   </li>`;
 }
 
+/** The champion's tile: its level and how many pieces it wears, or not entered. */
+function championTile(filled) {
+  const { champion } = state.playerSetup;
+  const figure = champion
+    ? t("tile.championFigure", { level: champion.level ?? "—", n: champion.gear?.length ?? 0 })
+    : "—";
+  return tile("champion", figure, ...filled(champion !== null));
+}
+
 function tiles() {
   const owned = state.playerSetup.warlords.length;
   const capacity = setupCapacity();
@@ -43,6 +53,7 @@ function tiles() {
       const n = state.playerSetup[section].length;
       return tile(section, t("tile.owned", { n, total: entries.length }), ...filled(n > 0));
     }),
+    championTile(filled),
     ...coming,
   ].join("");
 }
@@ -99,6 +110,7 @@ export function drawSetup() {
     drawSetupWarlords();
     drawSetupCapacityFields();
     drawSetupLevelled();
+    drawSetupChampion();
   });
   drawSetupStatus();
 }

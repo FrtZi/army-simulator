@@ -23,7 +23,7 @@ function levelled({ catalogue, levels }) {
 }
 
 /**
- * The champion's gear (BL-13, open question 22): each piece worn at its level, and each set by the most pieces of it
+ * The champion's gear (BL-13, D-30): each piece worn at its level, and each set by the most pieces of it
  * worn (the highest tier reached counts; a flat bonus is not one of our effects). `part`: "general", the bonuses on
  * troops everywhere; "march", those for the troops of the march it leads. `catalogue`: champion.json; `gear`:
  * [{ id, level }].

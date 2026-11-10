@@ -1,7 +1,6 @@
 // The champion's guide (GUIDE-03, BL-13): the champion level by level (power, tier, experience, skill points, its own
 // stats), its gear piece by piece (each level's bonuses, cost and the structures it requires) and the sets (their
-// bonuses by the number of pieces worn). Its bonuses are shown, not applied yet: how the champion joins a composition
-// is still to decide (BL-13).
+// bonuses by the number of pieces worn), and how its bonuses are applied (D-30).
 import { escape, options } from "../../dom.js";
 import { label, nameOf, number, searchable } from "../../format.js";
 import { currentGame, state } from "../../state.js";
@@ -37,7 +36,7 @@ export function shownPieces() {
 
 export function championFiltersHtml() {
   const views = VIEWS.map((view) => [view, t(`guides.view-${view}`)]);
-  const slots = [...new Set(data().pieces.map((piece) => piece.slot))].map((slot) => [slot, t(`guides.slot-${slot}`)]);
+  const slots = data().slots.map((slot) => [slot, t(`guides.slot-${slot}`)]);
   const viewField = field(
     "guide-champion-view",
     "guides.show",
@@ -102,7 +101,7 @@ export function pieceDetailHtml(piece) {
     <p class="meta">${escape([t(`guides.slot-${piece.slot}`), nameOf("rarities", piece.rarity), sets].filter(Boolean).join(" · "))}</p>
     <div class="guide-level">${field("guide-champion-level", "guides.levelChoice", `<select id="guide-champion-level" data-guide-champion="level">${options(numbers(max), level)}</select>`)}</div>
     <h4>${escape(t("guides.bonuses"))}</h4>${table([t("guides.bonus"), t("guides.now"), t("guides.most")], bonuses)}
-    <p class="hint">${escape(t("guides.notAppliedYet"))}</p>
+    <p class="hint">${escape(t("guides.howApplied"))}</p>
     <h4>${escape(t("guides.requires"))}</h4>${needs.length ? `<ul class="guide-requires">${needs.join("")}</ul>` : `<p class="hint">${escape(t("guides.nothingRequired"))}</p>`}
     ${costsTable(piece, level, 0, t("guides.fromStart"))}`;
 }

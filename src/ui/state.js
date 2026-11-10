@@ -4,7 +4,7 @@ import { CONFIG } from "./config.js";
 import { GAMES } from "./games.js";
 import { armyProfile, compareArmies, effectProblems, summariseArmy } from "../engine/index.js";
 import { heroUnits, talentsOf } from "./heroes.js";
-import { asPlayed, capacityInPlay, setupBonuses, setupSourceEffects } from "./lab-setup.js";
+import { asPlayed, capacityInPlay, championMarchEffects, setupBonuses, setupSourceEffects } from "./lab-setup.js";
 
 /** The language: the one remembered in this browser, else the browser's own if the page has it. */
 function startLanguage() {
@@ -114,7 +114,8 @@ export function validEffects() {
 function summarise(composition) {
   const game = currentGame();
   const played = asPlayed(composition, state);
-  const effects = [...validEffects(), ...talentsOf(played, game).effects];
+  const march = championMarchEffects(state, game, composition).filter((effect) => !problemsOf(effect).length);
+  const effects = [...validEffects(), ...talentsOf(played, game).effects, ...march];
   const limits = { marchCapacity: capacityInPlay(state).base };
   return summariseArmy(composition.troops, game.catalogue, effects, limits, heroUnits(played, game));
 }

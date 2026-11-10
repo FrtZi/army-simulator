@@ -62,6 +62,33 @@ test("BONUS-04 BONUS-07 rituals and buildings at their levels give the bonuses i
   for (const effect of found) assert.deepEqual(effectProblems(effect, game, catalogue), [], JSON.stringify(effect));
 });
 
+test("BONUS-06 the champion's gear: each piece at its level, each set by the most pieces worn; general or its march's", () => {
+  const champion = read(`data/${example.game}/champion.json`);
+  const resolve = (gear, part) => resolveSources([{ kind: "champion", catalogue: champion, gear, part }]);
+  const runesmith = (ids) => ids.map((id) => ({ id: `runesmith-${id}`, level: 1 }));
+  // champion.json: the Runesmith set gives Undivided ranged attack +5 % from 4 pieces, +15 % from 5 (the highest
+  // tier reached counts, not their sum); none of these five pieces gives that bonus on its own
+  const setBonus = (ids) =>
+    resolve(runesmith(ids), "general").filter(
+      (effect) => effect.stat === "rangedAttack" && effect.target?.alignments?.[0] === "undivided",
+    );
+  assert.deepEqual(setBonus(["helmet", "gloves", "weapon"]), []);
+  assert.deepEqual(
+    setBonus(["helmet", "gloves", "weapon", "relic"]).map((effect) => effect.percent),
+    [5],
+  );
+  assert.deepEqual(
+    setBonus(["helmet", "gloves", "weapon", "relic", "boots"]).map((effect) => effect.percent),
+    [15],
+  );
+  // the Great Axe of the Chosen at level 6: +20 % health, but for the troops of the march the champion leads only
+  const axe = [{ id: "chaos-gear-weapon", level: 6 }];
+  assert.ok(
+    resolve(axe, "march").some((effect) => effect.stat === "health" && effect.percent === 20 && !effect.target),
+  );
+  assert.ok(!resolve(axe, "general").some((effect) => effect.stat === "health"));
+});
+
 test("BONUS-01 a bonus is a percentage from 0 to 100 on a stat that can be boosted", () => {
   assert.deepEqual(codes({ stat: "morale", percent: 0, target: { unitTypes: ["monsters"] } }), []);
   assert.deepEqual(codes({ stat: "armour", percent: 100, target: { alignments: ["slaanesh"] } }), []);

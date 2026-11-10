@@ -37,6 +37,14 @@ export const FR_SETUP = {
   "setup.changed": "modifié",
   "setup.removed": "Retirés depuis le dernier enregistrement : {names}.",
   "setup.capacity": "Capacité de marche",
+  "setup.champion": "Champion",
+  "setup.championHint":
+    "Son niveau, et la pièce qu'il porte à chaque emplacement à son niveau. Les bonus de son équipement comptent dans le Laboratoire ; ceux de sa marche seulement dans la composition qu'il mène.",
+  "setup.championLevel": "Son niveau",
+  "setup.noLevel": "Non saisi",
+  "setup.noPiece": "Aucune",
+  "setup.pieceLevel": "Niveau de sa pièce : {slot}",
+  "tile.championFigure": "niveau {level} · {n} pièces",
   "setup.rituals": "Rituels",
   "setup.buildings": "Bâtiments",
   "setup.levelsHint":
@@ -55,6 +63,11 @@ export const FR_SETUP = {
   "load.labCapacity": "la capacité de marche saisie plus bas",
   "load.bonuses": "les {n} bonus de votre configuration",
   "load.labBonuses": "les bonus saisis plus bas",
+  "composition.champion": "Menée par votre champion",
+  "composition.championOn": "Les bonus de son équipement pour la marche qu'il mène comptent dans cette composition.",
+  "composition.championOff":
+    "Chargez votre configuration, avec l'équipement de votre champion, pour qu'il mène une composition.",
+  "load.champion": "les {n} pièces d'équipement de votre champion",
   "load.levelled": "les bonus au combat de vos {rituals} rituels et {buildings} bâtiments",
   "load.notOwned": "Absents de votre configuration, laissés hors des chiffres : {names}.",
 };

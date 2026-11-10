@@ -40,7 +40,7 @@ test("GUIDE-03 the champion level by level, a piece of gear at its level, a set'
   page.click("#guide-champion-chaos-gear-weapon");
   assert.equal(page.text("#guide-champion-title"), "Great Axe of the Chosen");
   assert.match(page.text("#guide-champion-detail"), /Daemonic Forge, level 15/);
-  assert.match(page.text("#guide-champion-detail"), /not applied in battle yet/);
+  assert.match(page.text("#guide-champion-detail"), /Applied with Your setup loaded/);
   page.choose("#guide-champion-view", "sets");
   page.click("#guide-champion-chosen-set-bonus");
   const head = page.$$("#guide-champion-detail thead th").map(textOf);

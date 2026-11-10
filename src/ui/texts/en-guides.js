@@ -99,7 +99,8 @@ export const EN_GUIDES = {
   "guides.experience": "Experience to reach it",
   "guides.skillPoints": "Skill points",
   "guides.championSkills": "Its skills are the Champion category in the rituals' guide.",
-  "guides.notAppliedYet": "Shown, not applied in battle yet: how the champion joins a composition is still to decide.",
+  "guides.howApplied":
+    "Applied with Your setup loaded: its troop bonuses everywhere, its march's in the composition it leads; its bonuses for heroes and the fortress, shown only.",
   "guides.setPieces": "Its pieces",
   "guides.setBonuses": "What it gives, by the number of pieces worn",
   "guides.piecesWorn": "{n} pieces",

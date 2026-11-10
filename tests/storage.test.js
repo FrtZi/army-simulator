@@ -42,6 +42,16 @@ test("REL-01 the example configuration reads into a setup, and writes back ident
   assert.deepEqual(written.scenarios[0].talents, example.scenarios[0].talents);
 });
 
+test("BONUS-06 a composition led by the champion stays so once saved and loaded back", () => {
+  const { setup } = fromConfiguration(example, games);
+  setup.compositions[0].ledByChampion = true;
+  const back = fromConfiguration(toConfiguration(setup, example.name), games).setup;
+  assert.equal(back.compositions[0].ledByChampion, true);
+  assert.equal(back.compositions[1].ledByChampion, undefined, "the others are not");
+  const wrong = { ...example, scenarios: [{ ...example.scenarios[0], ledByChampion: "yes" }] };
+  assert.ok(fromConfiguration(wrong, games).problems, "a flag that is not true or false is refused");
+});
+
 test("CFG-02 a file the game cannot use is refused, with the reasons", () => {
   const codes = (configuration) => fromConfiguration(configuration, games).problems.map((problem) => problem.code);
   assert.deepEqual(codes({ ...example, schemaVersion: 99 }), ["version"]);

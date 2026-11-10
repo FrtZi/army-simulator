@@ -2,7 +2,7 @@
 import { byId, keepingFocus } from "../../dom.js";
 import { state } from "../../state.js";
 import { addComposition, duplicateComposition, removeComposition } from "../../compositions.js";
-import { refresh } from "../../render.js";
+import { refresh, renderAll } from "../../render.js";
 import { drawPicker } from "../picker/draw.js";
 import { drawHeroes } from "../heroes/draw.js";
 import { drawArmyLines, drawCompositions } from "./draw.js";
@@ -39,6 +39,10 @@ export function bindCompositions() {
     state.compositions[state.active].name = event.target.value;
     drawCompositions();
     refresh();
+  });
+  byId("composition-champion").addEventListener("change", (event) => {
+    state.composition.ledByChampion = event.target.checked;
+    renderAll(); // its march's bonuses change every figure of the composition
   });
   byId("composition-duplicate").addEventListener("click", () => {
     duplicateComposition();

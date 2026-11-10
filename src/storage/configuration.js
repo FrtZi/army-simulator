@@ -23,6 +23,7 @@ export function toConfiguration(setup, name) {
       troops: { ...composition.troops },
       heroes: (composition.heroes ?? []).map(({ id, level }) => ({ id, level })),
       talents: [...(composition.talents ?? [])],
+      ...(composition.ledByChampion && { ledByChampion: true }), // the champion leads it (BL-13)
     })),
   };
 }
@@ -38,7 +39,8 @@ const isScenario = (scenario) =>
   isObject(scenario) &&
   (scenario.troops === undefined || isObject(scenario.troops)) &&
   listOf(scenario.heroes, isHero) &&
-  listOf(scenario.talents, (talent) => typeof talent === "string");
+  listOf(scenario.talents, (talent) => typeof talent === "string") &&
+  (scenario.ledByChampion === undefined || typeof scenario.ledByChampion === "boolean");
 
 /** True when every part of a file has the shape the checks below read: lists, objects, a target per effect. */
 const hasShape = (configuration) =>
@@ -97,6 +99,7 @@ export function fromConfiguration(saved, games) {
         troops: { ...scenario.troops },
         heroes: heroesOf(scenario).heroes.map((hero) => ({ ...hero })), // plain copies (DEF-029)
         talents: [...heroesOf(scenario).talents],
+        ...(scenario.ledByChampion && { ledByChampion: true }),
       })),
     },
   };

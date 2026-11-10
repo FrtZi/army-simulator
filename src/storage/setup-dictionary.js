@@ -5,6 +5,7 @@
 
 import { TARGET_FIELDS } from "../engine/index.js";
 import { SETUP_FORMAT, SETUP_VERSION } from "./setup-file.js";
+import { pieceLevels } from "./setup-champion.js";
 
 // a name we translated ourselves ends with "*" (D-08): the game may show another one
 const TRANSLATED = /\*$/;
@@ -19,8 +20,6 @@ function listEntry({ id, labels }, extra = {}) {
 }
 
 /** Every list of allowed ids: the warlords, the stats a bonus may raise, and the values of each target filter. */
-/** A piece of gear's last level: the length of its bonuses' lists. */
-const pieceLevels = (piece) => Object.values({ ...piece.effects, ...piece.march, ...piece.other })[0]?.length ?? 1;
 
 function valueLists({ game, warlords, units, defences, rituals, structures, champion }) {
   const filters = Object.fromEntries(

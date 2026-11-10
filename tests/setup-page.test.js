@@ -50,11 +50,12 @@ test("CFG-04 your setup's summary: one tile per section, its figure and its stat
   const page = openPage();
   page.click("#page-tab-setup");
   const tiles = page.$$("#setup-summary [data-tile]").map((tile) => tile.dataset.tile);
-  assert.deepEqual(tiles, ["warlords", "capacity", "rituals", "buildings", "bonuses", "champion"]);
+  assert.deepEqual(tiles, ["warlords", "capacity", "rituals", "buildings", "champion", "bonuses"]);
   assert.equal(tileFigure(page, "warlords"), "0 of 33");
   assert.equal(tileState(page, "warlords"), "○ Not entered");
   assert.equal(tileState(page, "rituals"), "○ Not entered");
-  assert.equal(tileState(page, "champion"), "◌ Coming in version 1.3");
+  assert.equal(tileState(page, "champion"), "○ Not entered");
+  assert.equal(tileState(page, "bonuses"), "◌ Coming next");
   assert.equal(status(page), "○ Nothing saved yet: enter what you have in the game, then Save.");
   assert.ok(page.$("#setup-save").disabled && page.$("#setup-discard").disabled, "nothing to save yet");
 });
@@ -218,4 +219,42 @@ test("BONUS-07 DEF-036 a setup of buildings alone loads: their bonuses in battle
   assert.equal(health(), Math.round(free * 1.15));
   page.untick("#load-setup-toggle");
   assert.equal(health(), free);
+});
+
+test("BONUS-06 the champion in Your setup: its level, a piece per slot at its level, saved as the file says", () => {
+  const page = openPage();
+  page.click("#page-tab-setup");
+  page.choose("#setup-champion-level", 40);
+  page.choose("#setup-gear-weapon", "chaos-gear-weapon");
+  assert.ok(!page.$("#setup-gear-level-weapon").disabled, "a piece worn has its level");
+  page.choose("#setup-gear-level-weapon", 6);
+  assert.equal(tileFigure(page, "champion"), "level 40 · 1 pieces");
+  page.click("#setup-save");
+  const file = JSON.parse(page.window.localStorage.getItem(SETUP_KEY))["chaos-conquest"];
+  assert.deepEqual(file.champion, { level: 40, gear: [{ id: "chaos-gear-weapon", level: 6 }] });
+  page.choose("#setup-gear-weapon", "");
+  assert.ok(page.$("#setup-gear-level-weapon").disabled, "no piece: no level");
+});
+
+test("BONUS-06 the champion's march bonuses count in the composition it leads, its setup loaded, and only there", () => {
+  const saved = JSON.stringify({
+    "chaos-conquest": {
+      format: "army-simulator/setup",
+      version: 1,
+      game: "chaos-conquest",
+      champion: { level: 40, gear: [{ id: "chaos-gear-weapon", level: 6 }] },
+    },
+  });
+  const page = openPage({ stored: { [SETUP_KEY]: saved } });
+  addTroops(page, ["marauders"]);
+  const health = () => Number(page.metric("health").replace(/\D/g, ""));
+  const free = health();
+  assert.ok(page.$("#composition-champion").disabled, "the setup not loaded: the champion leads nothing");
+  page.tick("#load-setup-toggle");
+  assert.equal(health(), free, "the Great Axe gives no bonus outside the march it leads");
+  page.tick("#composition-champion");
+  // champion.json: the Great Axe of the Chosen at level 6, +20 % health for the troops of the champion's march
+  assert.equal(health(), Math.round(free * 1.2));
+  page.click("#composition-tab-1");
+  assert.equal(page.$("#composition-champion").checked, false, "composition B is not led by it");
 });

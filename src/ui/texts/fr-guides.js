@@ -99,8 +99,8 @@ export const FR_GUIDES = {
   "guides.experience": "Expérience pour l'atteindre",
   "guides.skillPoints": "Points de compétence",
   "guides.championSkills": "Ses compétences sont la catégorie Champion du guide des rituels.",
-  "guides.notAppliedYet":
-    "Affiché, pas encore appliqué au combat : la façon dont le champion rejoint une composition reste à décider.",
+  "guides.howApplied":
+    "Appliqué avec votre setup chargé : ses bonus de troupes partout, ceux de sa marche dans la composition qu'il mène ; ses bonus pour les héros et la forteresse, affichés seulement.",
   "guides.setPieces": "Ses pièces",
   "guides.setBonuses": "Ce qu'il apporte, selon le nombre de pièces portées",
   "guides.piecesWorn": "{n} pièces",

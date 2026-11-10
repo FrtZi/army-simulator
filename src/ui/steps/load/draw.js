@@ -20,6 +20,7 @@ function onText() {
   if (saved.rituals.length || saved.buildings.length) {
     parts.push(t("load.levelled", { rituals: saved.rituals.length, buildings: saved.buildings.length }));
   }
+  if (saved.champion?.gear?.length) parts.push(t("load.champion", { n: saved.champion.gear.length }));
   return `${t("load.on")} ${parts.join(" · ")}`;
 }
 

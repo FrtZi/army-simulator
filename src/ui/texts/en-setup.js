@@ -37,6 +37,14 @@ export const EN_SETUP = {
   "setup.changed": "changed",
   "setup.removed": "Removed since the last save: {names}.",
   "setup.capacity": "March capacity",
+  "setup.champion": "Champion",
+  "setup.championHint":
+    "Its level, and the piece it wears in each slot at its level. Its gear's bonuses count in the Battle lab; those for its march only in the composition it leads.",
+  "setup.championLevel": "Its level",
+  "setup.noLevel": "Not entered",
+  "setup.noPiece": "None",
+  "setup.pieceLevel": "Level of its {slot}",
+  "tile.championFigure": "level {level} · {n} pieces",
   "setup.rituals": "Rituals",
   "setup.buildings": "Buildings",
   "setup.levelsHint":
@@ -53,6 +61,11 @@ export const EN_SETUP = {
   "load.labCapacity": "the march capacity entered below",
   "load.bonuses": "your setup's {n} bonuses",
   "load.labBonuses": "the bonuses entered below",
+  "composition.champion": "Led by your champion",
+  "composition.championOn": "Its gear's bonuses for the march it leads count in this composition.",
+  "composition.championOff":
+    "Load your setup, with your champion's gear in it, to have the champion lead a composition.",
+  "load.champion": "your champion's {n} pieces of gear",
   "load.levelled": "the bonuses in battle of your {rituals} rituals and {buildings} buildings",
   "load.notOwned": "Not in your setup, left out of the figures: {names}.",
 };

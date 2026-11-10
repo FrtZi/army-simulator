@@ -250,15 +250,14 @@ title = "Champion: own stats by level, gear and set bonuses"
 moscow = "should"
 milestone = "v1.3"
 module = "data"
-status = "doing"
+status = "done"
 added = 2026-10-22
-depends_on = ["BL-08"]
 features = ["BONUS-05", "BONUS-06"]
-note = "cctools.cc: the champion's 85 levels (a unit itself: open question, does it fight?), 20 combat skills, 112 gear items by rarity, 7 combat sets (the highest tier reached counts)."
+note = "What it needed of BL-08, the Your setup tab, is in; open question 22 settled on 2026-11-10 (D-30). cctools.cc: the champion's 85 levels (a unit itself: open question, does it fight?), 20 combat skills, 112 gear items by rarity, 7 combat sets (the highest tier reached counts)."
 tasks = [
   "[x] Champion's 85 levels, gear (6 slots) and the 12 sets from cctools.cc, checked",
   "[x] Its guide: the champion by level, each piece by level, the sets by pieces worn (GUIDE-03)",
-  "[ ] In the setup; bonuses applied, once open question 22 is settled",
+  "[x] In the setup: its level and a piece per slot; its gear's bonuses applied, its march's in the composition it leads (D-30)",
 ]
 
 # ── Later ──────────────────────────────────────────────────────────────────────────────────────────────

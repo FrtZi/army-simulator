@@ -53,5 +53,18 @@ export function setupSourceEffects(state, game) {
       catalogue: { effects: game.structures.effects, entries: game.structures.structures },
       levels: buildings,
     },
+    { kind: "champion", catalogue: game.champion, gear: championGear(state), part: "general" },
   ]);
+}
+
+/** The gear the saved setup's champion wears, or none. */
+export const championGear = (state) => state.savedPlayerSetup.champion?.gear ?? [];
+
+/**
+ * The bonuses of the champion's gear for the troops of the march it leads (D-30): only with the setup
+ * loaded, and only for a composition it leads.
+ */
+export function championMarchEffects(state, game, composition) {
+  if (!state.useSetup || !composition.ledByChampion) return [];
+  return resolveSources([{ kind: "champion", catalogue: game.champion, gear: championGear(state), part: "march" }]);
 }

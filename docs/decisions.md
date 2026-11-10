@@ -370,3 +370,16 @@ where each item drops (`where-to-find`) and what uses it (`where-to-use`).
   as the capacity's bonus (it would count twice, as DEF-017 taught).
 - _Set aside:_ a list of `{ level, item, quantity }` rows (three times the size for the same facts); the items
   written by each block's import (two writers of one file would drift).
+
+## D-30 · The champion leads one march: its gear's march bonuses for that composition only (2026-11-10)
+
+Open question 22, settled on cctools.cc's damage calculator, which Frantz confirmed: the champion leads one march;
+its gear's bonuses written for "the champion's march" (`hero_march_unit_*`) raise that march's troops, its other troop
+bonuses count everywhere, as a ritual's do. In the Battle lab, with the setup loaded, each composition has "Led by
+your champion" (saved with it, `ledByChampion`); the engine's `champion` source gives either part ("general" or
+"march"), each piece at its level and each set by the most pieces worn (the highest tier reached, never a sum).
+
+- _Set aside:_ one composition at a time led by the champion (compositions are alternatives, not marches sent
+  together: comparing "led" with "not led" needs two); its bonuses for the heroes (`carrier_*`) and the fortress
+  (`hero_city_unit_*`), shown in the guide, not applied (heroes take no troop bonus, open question 14); the champion
+  fighting as a unit (not known).

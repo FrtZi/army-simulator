@@ -171,3 +171,13 @@
   padding: 0.3rem 0;
   border-bottom: 1px solid var(--line);
 }
+
+/* the champion's gear: a slot's piece and its level side by side */
+.setup-gear-row {
+  display: grid;
+  grid-template-columns: 1fr minmax(7rem, 10rem);
+  align-items: end;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--line);
+}

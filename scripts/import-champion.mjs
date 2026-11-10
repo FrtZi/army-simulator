@@ -129,9 +129,13 @@ export function buildChampion(championPage, piecePages, sets, game) {
   );
   const pieces = piecePages.map((page) => pieceOf(page, context)).sort((a, b) => a.id.localeCompare(b.id));
   const gearSets = piecePages.flatMap((page) => page.gear.gear_sets);
+  // the slots in the game's order (hero_slot1 to hero_slot6: head, chest, gloves, weapon, boots, relic)
+  const slotCodes = new Map(piecePages.map((page) => [page.gear.slot_code, kebab(page.gear.slot_name)]));
+  const slots = [...slotCodes].sort(([a], [b]) => a.localeCompare(b)).map(([, slot]) => slot);
   return {
     source: SOURCE,
     champion,
+    slots,
     pieces,
     sets: sets.map((set) => setOf(set, gearSets, context)).sort((a, b) => a.id.localeCompare(b.id)),
     effects: sortedById(context.effects),

@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 17/19 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 3/5 | 15/17 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 0/3 | 2/8 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/3 | 3/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
 ## Ready to start
@@ -57,8 +57,7 @@ flowchart LR
   BL11["BL-11 ○ to do<br/>Keep attack: the defences' first round, as a switch on a battle"]:::todo
   BL12["BL-12 ○ to do<br/>Keep defence: a fortress (defences and garrison) as the defending side"]:::todo
   BL11 --> BL12
-  BL13["BL-13 ◐ doing<br/>Champion: own stats by level, gear and set bonuses"]:::doing
-  BL08 --> BL13
+  BL13["BL-13 ✓ done<br/>Champion: own stats by level, gear and set bonuses"]:::done
   BL14["BL-14 ✓ done<br/>Buildings' bonuses, by level"]:::done
   BL15["BL-15 ○ to do<br/>Calibration on battle reports: tier modifier, broken bonus, morale per squad"]:::todo
   BL16["BL-16 ○ to do<br/>Optimiser: the best troop mix within the march capacity"]:::todo
@@ -260,7 +259,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 |---|---|---|---|---|---|
 | [BL-11](#bl-11) | Keep attack: the defences' first round, as a switch on a battle | must | [engine](../src/engine) | ○ to do | 0/3 |
 | [BL-12](#bl-12) | Keep defence: a fortress (defences and garrison) as the defending side | should | [ui](../src/ui) | ○ to do | 0/2 |
-| [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ◐ doing | 2/3 |
+| [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ✓ done | 3/3 |
 
 <a id="bl-11"></a>
 #### BL-11 · Keep attack: the defences' first round, as a switch on a battle
@@ -284,13 +283,13 @@ To correct first (cctools.cc, 2026-11-09): the defences' capacity comes from the
 <a id="bl-13"></a>
 #### BL-13 · Champion: own stats by level, gear and set bonuses
 
-Should · [data](../data) · ◐ doing · added `2026-10-22` · after [BL-08](#bl-08) · features: BONUS-05, BONUS-06
+Should · [data](../data) · ✓ done · added `2026-10-22` · features: BONUS-05, BONUS-06
 
-cctools.cc: the champion's 85 levels (a unit itself: open question, does it fight?), 20 combat skills, 112 gear items by rarity, 7 combat sets (the highest tier reached counts).
+What it needed of BL-08, the Your setup tab, is in; open question 22 settled on 2026-11-10 (D-30). cctools.cc: the champion's 85 levels (a unit itself: open question, does it fight?), 20 combat skills, 112 gear items by rarity, 7 combat sets (the highest tier reached counts).
 
 - [x] Champion's 85 levels, gear (6 slots) and the 12 sets from cctools.cc, checked
 - [x] Its guide: the champion by level, each piece by level, the sets by pieces worn (GUIDE-03)
-- [ ] In the setup; bonuses applied, once open question 22 is settled
+- [x] In the setup: its level and a piece per slot; its gear's bonuses applied, its march's in the composition it leads (D-30)
 
 ### later · Later, ideas kept
 

@@ -6,7 +6,7 @@ import { label, number, troopMeta } from "../../format.js";
 import { ICONS, troopIcon } from "../../icons.js";
 import { term } from "../../glossary/tooltip.js";
 import { capacityEffect, currentArmy, currentGame, problemsOf, state } from "../../state.js";
-import { capacityInPlay, fromSetup } from "../../lab-setup.js";
+import { capacityInPlay, championGear, fromSetup } from "../../lab-setup.js";
 import { t } from "../../texts/index.js";
 
 const PERCENT = 100;
@@ -30,6 +30,16 @@ export function drawCompositions() {
   byId("composition-tabs").innerHTML = tabs.join("") + add;
   byId("composition-name").value = state.compositions[state.active].name;
   byId("composition-delete").hidden = state.compositions.length <= 1;
+  drawChampionChoice();
+}
+
+/** "Led by your champion": usable once the setup is loaded with a champion wearing gear (D-30). */
+function drawChampionChoice() {
+  const usable = state.useSetup && championGear(state).length > 0;
+  const box = byId("composition-champion");
+  box.checked = usable && Boolean(state.composition.ledByChampion);
+  box.disabled = !usable;
+  byId("composition-champion-hint").textContent = t(usable ? "composition.championOn" : "composition.championOff");
 }
 
 /** The capacity summary, the bar, and the status in words and icon (never colour alone). */

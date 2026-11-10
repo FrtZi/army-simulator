@@ -14,10 +14,10 @@ function freeName() {
 }
 
 /** A new composition, empty or a copy of another's troops, heroes and talents, which becomes the one edited. */
-export function addComposition({ troops = {}, heroes = [], talents = [] } = {}) {
+export function addComposition({ troops = {}, heroes = [], talents = [], ledByChampion = false } = {}) {
   // plain copies: structuredClone is missing where the page tests run (jsdom, DEF-029)
   const copy = { troops: { ...troops }, heroes: heroes.map((hero) => ({ ...hero })), talents: [...talents] };
-  state.compositions.push({ name: freeName(), ...copy });
+  state.compositions.push({ name: freeName(), ...copy, ...(ledByChampion && { ledByChampion }) });
   state.active = state.compositions.length - 1;
 }
 

@@ -10,3 +10,15 @@
   width: 1.25rem;
   height: 1.25rem;
 }
+
+/* "Led by your champion", beside a composition's name: the tick box and its words on one line */
+.composition-champion label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.composition-champion .hint {
+  margin: 0.15rem 0 0.75rem;
+}

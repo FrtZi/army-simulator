@@ -1,7 +1,11 @@
-// The champion in a setup file (BL-13, open question 22): its level, and the gear it wears, each piece at a level
+// The champion in a setup file (BL-13, D-30): its level, and the gear it wears, each piece at a level
 // it has; each value checked on its own, a piece unknown told with the nearest. No DOM here.
 import { nearestId } from "./nearest.js";
 import { isObject, rangeProblem, readList, refuse } from "./setup-checks.js";
+
+/** A piece of gear's last level: the length of its bonuses' lists (champion.json). */
+export const pieceLevels = (piece) =>
+  Object.values({ ...piece.effects, ...piece.march, ...piece.other })[0]?.length ?? 1;
 
 /** A piece of gear worn: a piece of the game's list (`pieces`, when the game has one), at a level it has. */
 function gearEntry(entry, path, pieces) {
@@ -10,9 +14,7 @@ function gearEntry(entry, path, pieces) {
   if (pieces && !piece) {
     return { problems: [refuse(`${path}.id`, entry.id, "unknown-gear", { suggestion: nearestId(entry.id, pieces) })] };
   }
-  const max = piece
-    ? (Object.values({ ...piece.effects, ...piece.march, ...piece.other })[0]?.length ?? 1)
-    : Number.MAX_SAFE_INTEGER;
+  const max = piece ? pieceLevels(piece) : Number.MAX_SAFE_INTEGER;
   const problems = rangeProblem(`${path}.level`, entry.level, 1, max);
   return problems.length ? { problems } : { value: { id: entry.id, level: entry.level }, problems };
 }
