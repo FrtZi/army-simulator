@@ -16,7 +16,7 @@
     ],
     "screens": [
       "Your warlords: each warlord's card, with its rank and its level (the exact screen is still to confirm).",
-      "The Chaos Keep (in French Donjon du Chaos), Combat tab: open each troop type's block (Infantry, Monsters, Cavalry…). Each line is one bonus for that type: one entry in bonuses, its target's unitTypes the block's type. Leave out a line at +0%, and a line that is no stat of the dictionary (healing speed): list it.",
+      "Do not copy the Chaos Keep's Combat tab (in French Donjon du Chaos) into bonuses: its totals already hold your rituals, buildings and champion, and would count twice. Write in bonuses only a bonus whose own screen shows it and that no other section holds.",
       "Rituals: each category's tree (Military, Champion, Defensive…), one screenshot per branch. A node shows its level out of its top (\"7/10\"); a node bright and ticked is at its top level: write its top. A dark node at 0 is not learnt: leave it out.",
       "Buildings: each building's level, on its sign in the city or in its window.",
       "The champion: its screen shows its level and its six pieces; each piece's forge shows its rarity under it, Core, Uncommon, Rare, Epic, Legendary, Eternal (in French Commun, Peu commun, Rare, Épique, Légendaire, Éternel), its level 1 to 6 in that order."
@@ -90,7 +90,7 @@
       "name": "bonuses",
       "definition": "The bonuses, one entry per bonus as the game shows it. A bonus raises one stat by a percentage, for every troop or only some. Absent: the player's bonuses stay as they are.",
       "obligation": "optional",
-      "whereInGame": "Chaos Keep (Donjon du Chaos), Combat tab: the bonuses summed by troop type, one block per type"
+      "whereInGame": "A bonus's own screen, for a source with no section of its own yet; not the Chaos Keep's Combat tab, whose totals mix every source"
     },
     {
       "name": "bonuses[].stat",

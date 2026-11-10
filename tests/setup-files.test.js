@@ -199,7 +199,7 @@ test("CFG-07 an example file and the dictionary downloaded; the brief names the 
   );
   assert.match(dictionary.text, /^# Data dictionary: Army Simulator setup/);
   assert.match(brief.text, /The screens to read, and how:\n- Your warlords/);
-  assert.match(brief.text, /The Chaos Keep \(in French Donjon du Chaos\), Combat tab/);
+  assert.match(brief.text, /Do not copy the Chaos Keep's Combat tab/, "its totals mix every source (question 24)");
   assert.match(brief.text, /a node bright and ticked is at its top level/);
   assert.match(brief.text, /Not part of the setup: the troops you own/);
   // the example is a file the page reads without refusing anything

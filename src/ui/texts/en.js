@@ -62,7 +62,7 @@ export const EN = {
   "profile.health": "Effective health (tanking)",
   "profile.morale": "Average morale",
   "profile.speed": "Slowest speed",
-  "profile.load": "Load",
+  "profile.load": "Loading capacity",
   "profile.food": "Food per hour",
   "col.troop": "Troop",
   "col.count": "Troops",

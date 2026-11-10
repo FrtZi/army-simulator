@@ -173,7 +173,7 @@ tasks = [
   "[x] Prototype and spec validated: use my setup or open the lab, manual sections, upload, summary, guide",
   "[x] The setup's format and its dictionary: every source, field and value, in both languages, for a person or an agent",
   "[x] Your setup: the summary of everything, the heroes at their rank and level, the march capacity; Save, Discard, unsaved changes shown",
-  "[ ] The bonus rows in Your setup (the others as their data comes)",
+  "[ ] The bonus rows in Your setup, for the sources with no section yet (prestige, skins, titles), each troop type with its pictogram; the Chaos Keep's totals a control only (question 24)",
   "[x] A setup file uploaded and downloaded, checked, refused with its reasons",
   "[x] Use my setup or open the lab: compositions draw on the setup, or play freely",
   "[x] The guide: how to fill it, by hand or with an agent reading screenshots",
@@ -405,12 +405,12 @@ title = "Guides: the map to reach a level, the items by category, a set lab"
 moscow = "should"
 milestone = "v1.2"
 module = "ui"
-status = "to do"
+status = "doing"
 added = 2026-11-10
 features = ["GUIDE-07", "GUIDE-08", "GUIDE-09"]
-note = "Frantz, 2026-11-10: a map to reach a level besides its list, like the game's ritual trees; the items easier to read, as a table by category, still opening; a small lab to try sets and see their bonuses in all and what they need. Small logos and colours everywhere. Prototype first."
+note = "Frantz, 2026-11-10, on the prototype: liked all; in the set lab, the level and its rarity in one control, a small pictogram per slot, and a set chosen to filter the pieces. Before: a map to reach a level besides its list, like the game's ritual trees; the items easier to read, as a table by category, still opening; a small lab to try sets and see their bonuses in all and what they need. Small logos and colours everywhere. Prototype first."
 tasks = [
-  "[ ] Prototype validated by Frantz",
+  "[x] Prototype validated by Frantz (2026-11-10): the map first, then the set lab",
   "[ ] The map to reach a level (GUIDE-07)",
   "[ ] The items by category (GUIDE-08)",
   "[ ] The set lab (GUIDE-09)",
@@ -455,7 +455,7 @@ module = "storage"
 status = "to do"
 added = 2026-11-10
 features = ["BONUS-07"]
-note = "Frantz, 2026-11-10, with screenshots of his city: up to 5 of each troop producer (not the Herdstone, the Chaotic Rift nor the Fortress Walls), resource buildings many times. Of our 10 buildings with a battle bonus, 7 are troop producers. The setup holds one level per building; how copies add up is open question 25."
+note = "Frantz, 2026-11-10, with screenshots of his city: up to 5 of each troop producer (not the Herdstone, the Chaotic Rift nor the Fortress Walls), resource buildings many times. Of our 10 buildings with a battle bonus, 3 are troop producers that can have copies: the Bestiary, the Dungeon and the Training Ground. Frantz: their bonuses add up. The setup holds one level per building; how copies add up is open question 25."
 tasks = [
   "[ ] Open question 25 settled: each copy's bonus, or the highest level's",
   "[ ] Each building's most copies in the data; the setup holds a level per copy, the file and its dictionary too",

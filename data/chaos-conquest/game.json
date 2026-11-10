@@ -312,8 +312,8 @@
     {
       "id": "load",
       "labels": {
-        "fr": "Charger",
-        "en": "Load"
+        "fr": "Capacité de charge",
+        "en": "Loading capacity"
       }
     },
     {

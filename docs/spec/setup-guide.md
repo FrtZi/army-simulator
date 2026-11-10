@@ -67,13 +67,13 @@ Values are refused when:
 An AI agent (one that reads images) can read your game's screens and write the file for you.
 
 1. Take screenshots of these screens (the brief says how to read each):
-   - the Chaos Keep (Donjon du Chaos), Combat tab, each troop type's block open: your bonuses, summed by type;
    - each rituals category's tree, one screenshot per branch (a ritual bright and ticked is at its top level);
    - your buildings' levels;
    - your champion's screen, and each piece's forge (its rarity is its level, Core to Eternal);
    - your warlords' cards _(to confirm: the screen)_.
 
-   The Chaos Keep's Army tab (the troops you own) is not part of the setup yet.
+   Not the Chaos Keep (Donjon du Chaos): its Combat tab's totals mix every source (they would count twice),
+   and its Army tab (the troops you own) is not part of the setup yet.
 
 2. Copy the brief (button below) and give it to the agent with your screenshots.
 3. Upload the file it gives back. Check the refused values and correct them by hand.
