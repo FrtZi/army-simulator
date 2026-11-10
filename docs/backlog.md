@@ -17,7 +17,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 7/10 | 27/30 | ○ not yet: 1 Must left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 7/11 | 27/33 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/3 | 3/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -29,6 +29,7 @@ Not done, and every dependency done:
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
 - [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ◐ doing)
 - [BL-28](#bl-28) An uploaded file: each section added to what you have, or replacing it (v1.2, should, ○ to do)
+- [BL-29](#bl-29) Every block closes to a one-line summary (v1.2, should, ○ to do)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
@@ -74,6 +75,7 @@ flowchart LR
   BL26["BL-26 ✓ done<br/>The troops owned in the setup"]:::done
   BL27["BL-27 ✓ done<br/>Several copies of a building in the setup"]:::done
   BL28["BL-28 ○ to do<br/>An uploaded file: each section added to what you have, or replacing it"]:::todo
+  BL29["BL-29 ○ to do<br/>Every block closes to a one-line summary"]:::todo
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -216,6 +218,7 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 | [BL-26](#bl-26) | The troops owned in the setup | could | [storage](../src/storage) | ✓ done | 2/2 |
 | [BL-27](#bl-27) | Several copies of a building in the setup | should | [storage](../src/storage) | ✓ done | 2/2 |
 | [BL-28](#bl-28) | An uploaded file: each section added to what you have, or replacing it | should | [storage](../src/storage) | ○ to do | 0/1 |
+| [BL-29](#bl-29) | Every block closes to a one-line summary | should | [ui](../src/ui) | ○ to do | 0/3 |
 
 <a id="bl-10"></a>
 #### BL-10 · Rituals in the setup: each ritual's level, its bonuses applied
@@ -326,6 +329,17 @@ Should · [storage](../src/storage) · ○ to do · added `2026-11-10` · featur
 Frantz, 2026-11-10: with several files uploaded one after the other, ask whether the past is kept or discarded, and if discarded, which sections. Today a file only adds and updates (D-27): nothing is ever removed.
 
 - [ ] In the review, for each section the file holds: add to what you have, or replace it; replacing named with what it removes
+
+<a id="bl-29"></a>
+#### BL-29 · Every block closes to a one-line summary
+
+Should · [ui](../src/ui) · ○ to do · added `2026-11-10` · features: FOLD-01
+
+Frantz, 2026-11-10: each block can be closed to a synthesis, as in Portfolio Advisor (a block that opens closes to one line, its state with its icon and word and its key figures, written by rules from its figures). 18 blocks: 9 in the Battle lab, 8 in Your setup, the Guides.
+
+- [ ] Each block's summary agreed with Frantz
+- [ ] A block closes and opens from its title, its summary in its place; the Battle lab's blocks
+- [ ] Your setup's blocks and the Guides
 
 ### v1.3 · Version 1.3, champion, gear and the keep
 

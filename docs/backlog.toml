@@ -475,3 +475,19 @@ tasks = [
   "[ ] In the review, for each section the file holds: add to what you have, or replace it; replacing named with what it removes",
 ]
 
+[[item]]
+id = "BL-29"
+title = "Every block closes to a one-line summary"
+moscow = "should"
+milestone = "v1.2"
+module = "ui"
+status = "to do"
+added = 2026-11-10
+features = ["FOLD-01"]
+note = "Frantz, 2026-11-10: each block can be closed to a synthesis, as in Portfolio Advisor (a block that opens closes to one line, its state with its icon and word and its key figures, written by rules from its figures). 18 blocks: 9 in the Battle lab, 8 in Your setup, the Guides."
+tasks = [
+  "[ ] Each block's summary agreed with Frantz",
+  "[ ] A block closes and opens from its title, its summary in its place; the Battle lab's blocks",
+  "[ ] Your setup's blocks and the Guides",
+]
+
