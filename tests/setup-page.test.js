@@ -143,7 +143,7 @@ test("CFG-04 Load your setup: only the heroes owned at their levels, the setup's
   assert.ok(page.$("#capacity-base").disabled && page.$("#capacity-bonus").disabled);
   assert.match(page.text("#capacity .capacity-total"), /= 148,500/); // 110,000 + 35 %
   assert.match(page.text("#bonus-list"), /your setup's 1 bonuses/);
-  assert.match(page.text("#load-setup-status"), /^On: compositions play with your saved setup\./);
+  assert.match(page.text("#load-setup-status"), /^On, the compositions play with your saved setup: only your heroes/);
   page.click("#hero-picker-toggle");
   assert.deepEqual(
     page.$$("#hero-picker-list [data-pick-hero]").map((box) => box.dataset.pickHero),

@@ -54,7 +54,7 @@ export const EN_SETUP = {
   "setup.levelOf": "Level of {name}, from 0 to {max}",
   "load.title": "Your setup in the lab",
   "load.label": "Load your setup",
-  "load.on": "On: compositions play with your saved setup.",
+  "load.on": "On, the compositions play with your saved setup:",
   "load.off": "Off: free play, any hero at any level, the capacity and bonuses entered below.",
   "load.none": "Nothing is saved in Your setup yet: enter what you have in the game there, then Save.",
   "load.open": "Open Your setup",

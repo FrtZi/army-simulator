@@ -54,7 +54,7 @@ export const FR_SETUP = {
   "setup.levelOf": "Niveau de {name}, de 0 à {max}",
   "load.title": "Votre configuration dans le laboratoire",
   "load.label": "Charger votre configuration",
-  "load.on": "Activé : les compositions jouent avec votre configuration enregistrée.",
+  "load.on": "Activé, les compositions jouent avec votre configuration enregistrée :",
   "load.off":
     "Désactivé : jeu libre, n'importe quel héros à n'importe quel niveau, la capacité et les bonus saisis plus bas.",
   "load.none":
