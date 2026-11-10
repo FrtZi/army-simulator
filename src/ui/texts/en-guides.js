@@ -101,6 +101,8 @@ export const EN_GUIDES = {
   "guides.championSkills": "Its skills are the Champion category in the rituals' guide.",
   "guides.howApplied":
     "Applied with Your setup loaded: its troop bonuses everywhere, its march's in the composition it leads; its bonuses for heroes and the fortress, shown only.",
+  "guides.championMarch": "Champion's march: {stat}",
+  "gear.level": "{level} · {rarity}",
   "guides.setPieces": "Its pieces",
   "guides.setBonuses": "What it gives, by the number of pieces worn",
   "guides.piecesWorn": "{n} pieces",

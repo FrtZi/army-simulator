@@ -156,9 +156,9 @@ test("GUIDE-04 a hero's way up: what the level shown costs, and in all from your
     );
   const row = (name) => rows().find((text) => text.startsWith(name));
   // levels 9 to 11 (warlords.json): iron 800,000 + 1,000,000; honour 360 + 405; favours 375 at level 11
-  assert.equal(row("Azazel Favour"), "Azazel Favour 375 375");
+  assert.equal(row("Azazel Favour"), "Azazel Favour Legendary 375 375");
   assert.equal(row("Iron"), "Iron — 1,800,000");
-  assert.equal(row("Warlord Honour"), "Warlord Honour — 765");
+  assert.equal(row("Warlord Honour"), "Warlord Honour Uncommon — 765");
   assert.match(page.text(".guide-detail"), /From yours \(rank 2, level 3\)/);
   page.click("#guide-hero-skulltaker"); // not owned: from nothing, at level 35 by default
   assert.match(page.text(".guide-detail"), /From nothing, its unlock included/);

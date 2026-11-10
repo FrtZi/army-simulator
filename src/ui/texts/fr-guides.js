@@ -101,6 +101,8 @@ export const FR_GUIDES = {
   "guides.championSkills": "Ses compétences sont la catégorie Champion du guide des rituels.",
   "guides.howApplied":
     "Appliqué avec votre setup chargé : ses bonus de troupes partout, ceux de sa marche dans la composition qu'il mène ; ses bonus pour les héros et la forteresse, affichés seulement.",
+  "guides.championMarch": "Marche du champion : {stat}",
+  "gear.level": "{level} · {rarity}",
   "guides.setPieces": "Ses pièces",
   "guides.setBonuses": "Ce qu'il apporte, selon le nombre de pièces portées",
   "guides.piecesWorn": "{n} pièces",

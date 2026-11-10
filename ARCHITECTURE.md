@@ -164,15 +164,15 @@ army lines and the profile.
 
 ## Documentation
 
-| Page                                        | Says                                                                                           |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| [data-model.md](docs/data-model.md)         | units, effects, sources (hero, ritual, champion, armour, building), the player's configuration |
-| [features.md](docs/features.md)             | what the simulator does, and what proves it                                                    |
-| [spec/](docs/spec/setup.md)                 | the specs of the larger features: the player's setup, its guide and its dictionary             |
-| [decisions.md](docs/decisions.md)           | why these choices, and the options set aside                                                   |
-| [open-questions.md](docs/open-questions.md) | what is still to confirm, and the next steps                                                   |
-| [backlog.md](docs/backlog.md)               | what is left to do: milestones, priorities, dependencies (generated from backlog.toml)         |
-| [defects.md](docs/defects.md)               | what broke, and what we learnt (generated from defects.toml)                                   |
+| Page                                        | Says                                                                                              |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [data-model.md](docs/data-model.md)         | units, effects, sources (hero, ritual, champion, armour, building), the player's configuration    |
+| [features.md](docs/features.md)             | what the simulator does, and what proves it                                                       |
+| [spec/](docs/spec/setup.md)                 | the specs of the larger features: the player's setup, its guide and its dictionary; PvE opponents |
+| [decisions.md](docs/decisions.md)           | why these choices, and the options set aside                                                      |
+| [open-questions.md](docs/open-questions.md) | what is still to confirm, and the next steps                                                      |
+| [backlog.md](docs/backlog.md)               | what is left to do: milestones, priorities, dependencies (generated from backlog.toml)            |
+| [defects.md](docs/defects.md)               | what broke, and what we learnt (generated from defects.toml)                                      |
 
 ## Where things live
 

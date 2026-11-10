@@ -51,15 +51,24 @@ Settled on 2026-10-24: the English names (questions 8 and 9) are the game's own,
 
 ## To confirm: the setup (BL-08, D-27)
 
-| #   | Question                                                                                                                          | As of 2026-11-09                                    | Who                          |
-| --- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ---------------------------- |
-| 19  | **Where the game shows** a warlord's rank and level, the march capacity and its bonus, the bonuses: the screens an agent is given | marked _to confirm_ in the guide and the dictionary | Frantz (screenshots)         |
-| 20  | **The French label of Load**: "Charger" reads as a verb (to charge); the game's word?                                             | kept                                                | Frantz (a French unit sheet) |
-| 21  | **"Damage" in a bonus**: does a bonus on "damage" raise both melee and ranged damage?                                             | the dictionary's example, to confirm                | Frantz (a bonus's tooltip)   |
+| #   | Question                                                                                                                                                                                                                 | As of 2026-11-09                                                                                | Who                                                    |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| 19  | **Where the game shows** a warlord's rank and level, the march capacity and its bonus: the screens an agent is given; the bonuses, rituals and gear: answered (below)                                                    | marked _to confirm_ in the guide and the dictionary                                             | Frantz (screenshots)                                   |
+| 23  | **The champion fighting**: is it in the battle as a unit, with its own stats at its level (attack 30 to 66, health 25 to 2,050…)?                                                                                        | not fighting; Frantz, 2026-11-10: "it seems so", to verify; if so, as the heroes fight (SIM-10) | Frantz (a battle report)                               |
+| 24  | **The Chaos Keep's totals**: do its Combat tab's bonuses ("Infanterie : attaque de mêlée +50,5 %") already hold the rituals', buildings' and champion's? Then a setup takes either the totals or the sources, never both | the bonus rows are added to the sources (BL-08)                                                 | Frantz (one ritual raised, the total before and after) |
+
+Settled on 2026-11-10: where the game shows the bonuses, rituals and gear (question 19 in part, Frantz). The
+bonuses: the Chaos Keep (Donjon du Chaos), Combat tab, summed by troop type ("Infanterie : attaque de mêlée
++50,5 %"); the troops owned are on its Army tab. The rituals: each category's tree, one screenshot per branch; a
+ritual bright and ticked is at its top level, the others show theirs ("7/10"). The French word for load is the
+game's "charge" ("Infanterie : charge +15 %"; question 20).
+
+Settled on 2026-11-10: a bonus on "damage" raises melee and ranged damage alike, unless the game names one
+(question 21, Frantz: the game says which when it is only one).
 
 Settled on 2026-11-10: the champion in a composition (question 22), on cctools.cc's lead, confirmed by Frantz: it
 leads one march, whose troops its gear's march bonuses raise; its gear's other troop bonuses count everywhere, as
-a ritual's; its heroes' and fortress's bonuses are shown, not applied (D-30). Whether it fights as a unit stays open.
+a ritual's; its heroes' and fortress's bonuses are shown, not applied (D-30). Whether it fights as a unit: question 23.
 
 Settled on 2026-10-24: the warlords' French names (question 17) are their English names with a star (D-08) until
 the game's French names are read on a screenshot.

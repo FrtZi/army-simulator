@@ -9,6 +9,8 @@ export const ICONS = {
   sun: svg(
     '<circle cx="8" cy="8" r="3"/><path d="M8 1v1.6M8 13.4V15M15 8h-1.6M2.6 8H1M12.7 3.3l-1.1 1.1M4.4 11.6l-1.1 1.1M12.7 12.7l-1.1-1.1M4.4 4.4L3.3 3.3"/>',
   ),
+  // a rarity's mark, as the game's forge shows its levels (GUIDE-05)
+  diamond: svg('<path d="M8 1.5 14.5 8 8 14.5 1.5 8Z"/>', { fill: "currentColor", size: 12 }),
   moon: svg('<path d="M14 9.8A6.2 6.2 0 1 1 6.2 2a5 5 0 0 0 7.8 7.8Z" fill="currentColor" stroke="none"/>'),
 };
 

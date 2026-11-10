@@ -9,6 +9,7 @@ import { levelOf, rankOf } from "../../../engine/index.js";
 import { talentName } from "../heroes/draw.js";
 import { costsHtml } from "./costs.js";
 import { t } from "../../texts/index.js";
+import { rarityBadge } from "../../rarity.js";
 
 const rules = () => currentGame().game.heroRules;
 const maxLevel = () => rules().ranks * rules().levelsPerRank;
@@ -40,7 +41,7 @@ export function heroListHtml() {
         warlord,
       ) => `<li><button type="button" class="guide-hero god-${warlord.alignment}" id="guide-hero-${warlord.id}" data-guide-hero="${warlord.id}" aria-current="${warlord.id === state.guide.hero}">
         <span class="name">${escape(label(warlord))}</span>${mine.has(warlord.id) ? yours(mine.get(warlord.id)) : ""}
-        <span class="meta">${escape(`${nameOf("alignments", warlord.alignment)} · ${nameOf("rarities", warlord.rarity)}`)}</span>
+        <span class="meta">${escape(nameOf("alignments", warlord.alignment))} ${rarityBadge(warlord.rarity)}</span>
       </button></li>`,
     )
     .join("");
@@ -117,9 +118,12 @@ export function heroDetailHtml(warlord) {
 /** The filters: god, rarity (each "every one" or one value) and the search. */
 export function heroFiltersHtml() {
   const { game } = currentGame();
+  const warlords = [...currentGame().warlords.values()];
+  const field = { alignments: "alignment", rarities: "rarity" };
+  const used = (list) => (entry) => warlords.some((warlord) => warlord[field[list]] === entry.id);
   const choice = (id, key, list, value) =>
     `<div class="field"><label for="${id}">${escape(t(key))}</label><select id="${id}">${options(
-      [["", t("guides.every")], ...game[list].map((entry) => [entry.id, label(entry)])],
+      [["", t("guides.every")], ...game[list].filter(used(list)).map((entry) => [entry.id, label(entry)])],
       value,
     )}</select></div>`;
   return `<div class="guide-filters">

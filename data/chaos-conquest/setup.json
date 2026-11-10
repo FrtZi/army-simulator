@@ -81,7 +81,8 @@
     {
       "name": "bonuses",
       "definition": "The bonuses, one entry per bonus as the game shows it. A bonus raises one stat by a percentage, for every troop or only some. Absent: the player's bonuses stay as they are.",
-      "obligation": "optional"
+      "obligation": "optional",
+      "whereInGame": "Chaos Keep (Donjon du Chaos), Combat tab: the bonuses summed by troop type, one block per type"
     },
     {
       "name": "bonuses[].stat",
@@ -99,7 +100,9 @@
       "name": "bonuses[].target",
       "definition": "Which troops the bonus raises; absent, every troop. Each filter lists the values a troop must have; when there are several filters, a troop must match them all.",
       "obligation": "optional",
-      "example": { "unitTypes": ["infantry"] }
+      "example": {
+        "unitTypes": ["infantry"]
+      }
     },
     {
       "name": "bonuses[].source",
@@ -110,7 +113,8 @@
     {
       "name": "rituals",
       "definition": "The rituals and their levels. Their bonuses in battle count in the Battle lab.",
-      "obligation": "optional"
+      "obligation": "optional",
+      "whereInGame": "Rituals: each category's tree (Military, Champion, Defensive…), one screenshot per branch"
     },
     {
       "name": "rituals[].id",
@@ -122,7 +126,8 @@
       "name": "rituals[].level",
       "definition": "The level the ritual has reached, from 0 to its last (see the list).",
       "obligation": "required",
-      "example": 10
+      "example": 10,
+      "whereInGame": "On the ritual's node: its level out of its top (\"7/10\"); a node bright and ticked is at its top level"
     },
     {
       "name": "buildings",
@@ -167,29 +172,87 @@
       "name": "champion.gear[].level",
       "definition": "The piece's level, from 1 to its last (see the list).",
       "obligation": "required",
-      "example": 6
+      "example": 6,
+      "whereInGame": "The piece's forge: its rarity under the piece (Core to Eternal; in French Commun to Éternel), level 1 to 6 in that order"
     }
   ],
   "readings": [
     {
       "onScreen": "Infantry Melee Attack +12%",
-      "inFile": [{ "stat": "meleeAttack", "percent": 12, "target": { "unitTypes": ["infantry"] } }]
+      "inFile": [
+        {
+          "stat": "meleeAttack",
+          "percent": 12,
+          "target": {
+            "unitTypes": ["infantry"]
+          }
+        }
+      ]
     },
     {
       "onScreen": "Santé des troupes +8 %",
-      "inFile": [{ "stat": "health", "percent": 8 }]
+      "inFile": [
+        {
+          "stat": "health",
+          "percent": 8
+        }
+      ]
     },
     {
       "onScreen": "Tier V cavalry armour +5%",
-      "inFile": [{ "stat": "armour", "percent": 5, "target": { "tiers": [5], "unitTypes": ["cavalry"] } }]
+      "inFile": [
+        {
+          "stat": "armour",
+          "percent": 5,
+          "target": {
+            "tiers": [5],
+            "unitTypes": ["cavalry"]
+          }
+        }
+      ]
     },
     {
       "onScreen": "Khorne troops' damage +10%",
       "inFile": [
-        { "stat": "meleeDamage", "percent": 10, "target": { "alignments": ["khorne"] } },
-        { "stat": "rangedDamage", "percent": 10, "target": { "alignments": ["khorne"] } }
-      ],
-      "toConfirm": "whether the game's \"damage\" means both melee and ranged"
+        {
+          "stat": "meleeDamage",
+          "percent": 10,
+          "target": {
+            "alignments": ["khorne"]
+          }
+        },
+        {
+          "stat": "rangedDamage",
+          "percent": 10,
+          "target": {
+            "alignments": ["khorne"]
+          }
+        }
+      ]
+    },
+    {
+      "onScreen": "Infanterie : attaque de mêlée +50,5 %",
+      "inFile": [
+        {
+          "stat": "meleeAttack",
+          "percent": 50.5,
+          "target": {
+            "unitTypes": ["infantry"]
+          }
+        }
+      ]
+    },
+    {
+      "onScreen": "Infanterie : charge +15 %",
+      "inFile": [
+        {
+          "stat": "load",
+          "percent": 15,
+          "target": {
+            "unitTypes": ["infantry"]
+          }
+        }
+      ]
     }
   ]
 }

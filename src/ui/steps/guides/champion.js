@@ -6,6 +6,7 @@ import { label, nameOf, number, searchable } from "../../format.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { costsTable } from "./costs.js";
+import { gearLevelOptions, gearRarity, rarityBadge } from "../../rarity.js";
 
 const VIEWS = ["champion", "gear", "sets"];
 const guide = () => state.guide.champion;
@@ -13,8 +14,10 @@ const data = () => currentGame().champion;
 const numbers = (count) => Array.from({ length: count }, (_, index) => [index + 1, String(index + 1)]);
 const field = (id, key, control) => `<div class="field"><label for="${id}">${escape(t(key))}</label>${control}</div>`;
 
-/** A bonus by its id: one of our effects named by stat and troops, else its name from the file. */
+/** A bonus by its id: its march's (D-30), one of our effects named by stat and troops, else its name from the file. */
 function bonusName(id) {
+  const march = data().march.find((entry) => entry.id === id);
+  if (march) return t("guides.championMarch", { stat: nameOf("troopStats", march.stat) });
   const effect = data().effects.find((entry) => entry.id === id);
   if (!effect) return label(data().other.find((entry) => entry.id === id)) || id;
   const [filter, [value] = []] = Object.entries(effect.target ?? {})[0] ?? [];
@@ -80,10 +83,11 @@ export function championDetailHtml() {
 
 /** A piece at the level chosen: its bonuses now and at most, the structures it requires, what it costs. */
 export function pieceDetailHtml(piece) {
-  const max = Object.values({ ...piece.effects, ...piece.other })[0]?.length ?? 1;
+  const all = { ...piece.march, ...piece.effects, ...piece.other }; // its march's first, as the game lists them
+  const max = Object.values(all)[0]?.length ?? 1;
   const level = Math.min(guide().level ?? 1, max);
   const index = level - 1;
-  const bonuses = Object.entries({ ...piece.effects, ...piece.other }).map(([id, values]) =>
+  const bonuses = Object.entries(all).map(([id, values]) =>
     row([
       escape(bonusName(id)),
       values[index] === null ? "—" : `+${number(values[index], 2)} %`,
@@ -98,8 +102,9 @@ export function pieceDetailHtml(piece) {
     );
   const sets = piece.sets.map((id) => label(data().sets.find((set) => set.id === id))).join(", ");
   return `<h3 id="guide-champion-title">${escape(label(piece))}</h3>
-    <p class="meta">${escape([t(`guides.slot-${piece.slot}`), nameOf("rarities", piece.rarity), sets].filter(Boolean).join(" · "))}</p>
-    <div class="guide-level">${field("guide-champion-level", "guides.levelChoice", `<select id="guide-champion-level" data-guide-champion="level">${options(numbers(max), level)}</select>`)}</div>
+    <p class="meta">${escape([t(`guides.slot-${piece.slot}`), sets].filter(Boolean).join(" · "))}</p>
+    <div class="guide-level">${field("guide-champion-level", "guides.levelChoice", `<select id="guide-champion-level" data-guide-champion="level">${options(gearLevelOptions(max), level)}</select>`)}
+      ${rarityBadge(gearRarity(level))}</div>
     <h4>${escape(t("guides.bonuses"))}</h4>${table([t("guides.bonus"), t("guides.now"), t("guides.most")], bonuses)}
     <p class="hint">${escape(t("guides.howApplied"))}</p>
     <h4>${escape(t("guides.requires"))}</h4>${needs.length ? `<ul class="guide-requires">${needs.join("")}</ul>` : `<p class="hint">${escape(t("guides.nothingRequired"))}</p>`}

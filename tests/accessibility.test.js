@@ -99,6 +99,8 @@ const contrast = (tokens, one, two) => {
   return (light + 0.05) / (darker + 0.05);
 };
 const GODS = ["undivided", "khorne", "nurgle", "slaanesh", "tzeentch"];
+// a rarity's name is written in its colour (GUIDE-05): text, so 4.5:1
+const RARITIES = ["core", "uncommon", "rare", "epic", "legendary", "eternal"].map((id) => `rarity-${id}`);
 
 for (const [theme, tokens] of Object.entries(THEMES)) {
   const check = (pairs, minimum) => {
@@ -111,12 +113,12 @@ for (const [theme, tokens] of Object.entries(THEMES)) {
   const surfaces = ["bg", "card", "field", "key"];
   const on = (colours) => colours.flatMap((colour) => surfaces.map((surface) => [colour, surface]));
 
-  test(`ACC-01 THEME-01 [${theme}] every text colour reads on every surface (WCAG AA, 4.5:1)`, () => {
+  test(`ACC-01 THEME-01 GUIDE-05 [${theme}] every text colour reads on every surface (WCAG AA, 4.5:1)`, () => {
     check(
       [
         ["on-accent", "accent"],
         ["tip-text", "tip-bg"],
-        ...on(["heading", "text", "muted", "link", "good", "critical", "equal"]),
+        ...on(["heading", "text", "muted", "link", "good", "critical", "equal", ...RARITIES]),
       ],
       AA_TEXT,
     );

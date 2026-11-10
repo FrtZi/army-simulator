@@ -349,36 +349,43 @@
     {
       "id": "core",
       "labels": {
-        "fr": "Base*",
+        "fr": "Commun",
         "en": "Core"
       }
     },
     {
       "id": "uncommon",
       "labels": {
-        "fr": "Peu commun*",
+        "fr": "Peu commun",
         "en": "Uncommon"
       }
     },
     {
       "id": "rare",
       "labels": {
-        "fr": "Rare*",
+        "fr": "Rare",
         "en": "Rare"
       }
     },
     {
       "id": "epic",
       "labels": {
-        "fr": "Épique*",
+        "fr": "Épique",
         "en": "Epic"
       }
     },
     {
       "id": "legendary",
       "labels": {
-        "fr": "Légendaire*",
+        "fr": "Légendaire",
         "en": "Legendary"
+      }
+    },
+    {
+      "id": "eternal",
+      "labels": {
+        "fr": "Éternel",
+        "en": "Eternal"
       }
     }
   ],

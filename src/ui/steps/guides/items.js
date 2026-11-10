@@ -6,6 +6,7 @@ import { escape, options } from "../../dom.js";
 import { label, number, searchable } from "../../format.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
+import { rarityBadge } from "../../rarity.js";
 
 const AVERAGES = ["perHit", "perChest", "perSpoil", "perChampion", "perCompletion"];
 const guide = () => state.guide.items;
@@ -27,7 +28,7 @@ export function itemListHtml() {
       (
         item,
       ) => `<li><button type="button" class="guide-hero" id="guide-item-${item.id}" data-guide-item="${item.id}" aria-current="${item.id === guide().id}">
-        <span class="name">${escape(label(item))}</span><span class="meta">${escape(t(`guides.kind-${item.kind}`))}</span></button></li>`,
+        <span class="name">${escape(label(item))}</span><span class="meta">${escape(t(`guides.kind-${item.kind}`))} ${rarityBadge(item.rarity)}</span></button></li>`,
     )
     .join("");
 }
@@ -89,7 +90,7 @@ function usesHtml(id) {
 export function itemDetailHtml(item) {
   // focusable by script: a cost table's item name brings the focus here (GUIDE-04)
   return `<h3 id="guide-items-title" tabindex="-1">${escape(label(item))}</h3>
-    <p class="meta">${escape(t(`guides.kind-${item.kind}`))}</p>
+    <p class="meta">${escape(t(`guides.kind-${item.kind}`))} ${rarityBadge(item.rarity)}</p>
     <h4>${escape(t("guides.drops"))}</h4>${dropsHtml(item.id)}
     <h4>${escape(t("guides.uses"))}</h4>${usesHtml(item.id)}`;
 }

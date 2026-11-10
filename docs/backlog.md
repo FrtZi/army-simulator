@@ -16,8 +16,8 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Milestone | Musts done | Items done | Tasks done | Reached |
 |---|---|---|---|---|
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
-| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/4 | 17/19 | ○ not yet: 1 Must left |
-| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 3/5 | 15/17 | ○ not yet: 1 Must left |
+| Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 3/5 | 17/21 | ○ not yet: 1 Must left |
+| Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 3/8 | 17/27 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/3 | 3/8 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
@@ -26,8 +26,12 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 Not done, and every dependency done:
 
 - [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ◐ doing)
+- [BL-25](#bl-25) The setup's files for an agent: empty, an example, the dictionary, a clearer brief (v1.1, should, ○ to do)
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
 - [BL-20](#bl-20) PvE armies by level: the game's computer-controlled armies as opponents (v1.2, should, ◐ doing)
+- [BL-23](#bl-23) The champion and its gear made easy to read: rarities, sets, the champion's figures (v1.2, should, ◐ doing)
+- [BL-24](#bl-24) Guides: the map to reach a level, the items by category, a set lab (v1.2, should, ○ to do)
+- [BL-26](#bl-26) The troops owned in the setup (v1.2, could, ○ to do)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
@@ -67,6 +71,10 @@ flowchart LR
   BL20["BL-20 ◐ doing<br/>PvE armies by level: the game's computer-controlled armies as opponents"]:::doing
   BL21["BL-21 ◐ doing<br/>The tier modifier, from cctools.cc's table, confirmed on a battle report"]:::doing
   BL22["BL-22 ✓ done<br/>Guides: the game's blocks in detail, in a tab of their own"]:::done
+  BL23["BL-23 ◐ doing<br/>The champion and its gear made easy to read: rarities, sets, the champion's figures"]:::doing
+  BL24["BL-24 ○ to do<br/>Guides: the map to reach a level, the items by category, a set lab"]:::todo
+  BL25["BL-25 ○ to do<br/>The setup's files for an agent: empty, an example, the dictionary, a clearer brief"]:::todo
+  BL26["BL-26 ○ to do<br/>The troops owned in the setup"]:::todo
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -132,6 +140,7 @@ The warlords in a composition, at their level, their bonuses applied; what the p
 | [BL-06](#bl-06) | Warlords' data: 33 heroes, their stats and bonuses at each of 35 levels | must | [data](../data) | ✓ done | 3/3 |
 | [BL-07](#bl-07) | Heroes in a composition: up to 3 warlords, 4 talents, at their level | must | [ui](../src/ui) | ✓ done | 5/5 |
 | [BL-08](#bl-08) | The player's setup: everything they have in game, entered by hand or uploaded | must | [storage](../src/storage) | ◐ doing | 6/8 |
+| [BL-25](#bl-25) | The setup's files for an agent: empty, an example, the dictionary, a clearer brief | should | [storage](../src/storage) | ○ to do | 0/2 |
 
 <a id="bl-05"></a>
 #### BL-05 · Tooling majors: ESLint 10, jsdom 30, html-validate 11
@@ -182,6 +191,16 @@ Frantz, 2026-11-09: it holds everything (every bonus source, shaped on cctools.c
 - [x] The guide: how to fill it, by hand or with an agent reading screenshots
 - [ ] Kept in the browser, saved, exported and imported (configuration version 3)
 
+<a id="bl-25"></a>
+#### BL-25 · The setup's files for an agent: empty, an example, the dictionary, a clearer brief
+
+Should · [storage](../src/storage) · ○ to do · added `2026-11-10` · features: CFG-07
+
+Frantz, 2026-11-10, after a first try with an agent (Mistral) on the Army tab's screenshots: provide an empty file and an example filled in, a prompt that explains better, maybe the dictionary. The brief names the screens (the Chaos Keep's Combat tab, the rituals' trees by branch, the champion and each piece's forge) and says what it does not read (the troops owned, until CFG-08).
+
+- [ ] An example file filled in, the dictionary and the empty file, each a download
+- [ ] The brief: the screens to send, how to read each (a ritual bright and ticked is at its top), what is left out
+
 ### v1.2 · Version 1.2, the tier table, PvE armies, rituals and buildings
 
 The tier modifier in every battle (cctools.cc's table, confirmed on a battle report); the game's PvE armies as opponents; the rituals and buildings entered in the setup, their bonuses applied.
@@ -190,9 +209,12 @@ The tier modifier in every battle (cctools.cc's table, confirmed on a battle rep
 |---|---|---|---|---|---|
 | [BL-10](#bl-10) | Rituals in the setup: each ritual's level, its bonuses applied | must | [ui](../src/ui) | ✓ done | 3/3 |
 | [BL-14](#bl-14) | Buildings' bonuses, by level | should | [data](../data) | ✓ done | 2/2 |
-| [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ◐ doing | 2/3 |
+| [BL-20](#bl-20) | PvE armies by level: the game's computer-controlled armies as opponents | should | [data](../data) | ◐ doing | 3/4 |
 | [BL-21](#bl-21) | The tier modifier, from cctools.cc's table, confirmed on a battle report | must | [engine](../src/engine) | ◐ doing | 2/3 |
 | [BL-22](#bl-22) | Guides: the game's blocks in detail, in a tab of their own | should | [ui](../src/ui) | ✓ done | 6/6 |
+| [BL-23](#bl-23) | The champion and its gear made easy to read: rarities, sets, the champion's figures | should | [ui](../src/ui) | ◐ doing | 1/3 |
+| [BL-24](#bl-24) | Guides: the map to reach a level, the items by category, a set lab | should | [ui](../src/ui) | ○ to do | 0/4 |
+| [BL-26](#bl-26) | The troops owned in the setup | could | [storage](../src/storage) | ○ to do | 0/2 |
 
 <a id="bl-10"></a>
 #### BL-10 · Rituals in the setup: each ritual's level, its bonuses applied
@@ -223,7 +245,8 @@ Should · [data](../data) · ◐ doing · added `2026-11-09`
 The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13 cities) with their exact compositions through a public JSON interface; morale from the 48 NPC troops.
 
 - [x] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight
-- [ ] Spec: a PvE army as the opponent of a composition, chosen by location and level
+- [x] Spec agreed: a PvE army as the opponent, chosen by kind, place and level, its troops sub-selected (docs/spec/pve.md)
+- [ ] The opponent chosen in the Battle lab, its troops sub-selected, the battle fought (SIM-11)
 - [x] Data imported and checked, as the warlords' (D-25): data/chaos-conquest/pve.json (DATA-10)
 
 <a id="bl-21"></a>
@@ -250,6 +273,39 @@ What it needed of BL-08, the page tabs (NAV-01), is in. Frantz, 2026-11-09: a Gu
 - [x] The champion's and gear's guide, with their data (BL-13)
 - [x] The heroes' way up: what each level costs, in all from your level or from its unlock (GUIDE-04, D-29)
 - [x] The way up of the rituals and buildings: each level's cost and requirements; each item's page, where it drops and what asks for it (GUIDE-04)
+
+<a id="bl-23"></a>
+#### BL-23 · The champion and its gear made easy to read: rarities, sets, the champion's figures
+
+Should · [ui](../src/ui) · ◐ doing · added `2026-11-10` · features: BONUS-08, GUIDE-05, GUIDE-06
+
+Frantz, 2026-11-10: the gear's levels are the game's rarities (Commun, Peu commun, Rare, Épique, Légendaire, Éternel), with small logos and colours; a piece says its set and its bonuses; the champion's stats and buffs are seen in Your setup and in the Battle lab.
+
+- [x] Each gear level and item named by its rarity, with its colour and a small diamond (GUIDE-05)
+- [ ] A piece shows its set and what it gives (GUIDE-06)
+- [ ] The champion's stats and bonuses in Your setup and in the Battle lab (BONUS-08)
+
+<a id="bl-24"></a>
+#### BL-24 · Guides: the map to reach a level, the items by category, a set lab
+
+Should · [ui](../src/ui) · ○ to do · added `2026-11-10` · features: GUIDE-07, GUIDE-08, GUIDE-09
+
+Frantz, 2026-11-10: a map to reach a level besides its list, like the game's ritual trees; the items easier to read, as a table by category, still opening; a small lab to try sets and see their bonuses in all and what they need. Small logos and colours everywhere. Prototype first.
+
+- [ ] Prototype validated by Frantz
+- [ ] The map to reach a level (GUIDE-07)
+- [ ] The items by category (GUIDE-08)
+- [ ] The set lab (GUIDE-09)
+
+<a id="bl-26"></a>
+#### BL-26 · The troops owned in the setup
+
+Could · [storage](../src/storage) · ○ to do · added `2026-11-10` · features: CFG-08
+
+An agent given the Chaos Keep's Army tab found nothing to write: the setup has no place for the troops owned (Frantz: a strong point). Each troop's count, matched by its French or English name; to agree first: a composition above what is owned, warned or capped.
+
+- [ ] Agreed with Frantz: what a composition does with the troops owned
+- [ ] The section, its dictionary entries, the French names of the Army tab
 
 ### v1.3 · Version 1.3, champion, gear and the keep
 

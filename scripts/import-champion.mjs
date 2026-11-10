@@ -136,6 +136,8 @@ export function buildChampion(championPage, piecePages, sets, game) {
     source: SOURCE,
     champion,
     slots,
+    // a piece's level n is the n-th rarity, as the game's forge names them (Core to Eternal)
+    levelRarities: piecePages[0].rarityLabels.map((rarity) => rarity.key),
     pieces,
     sets: sets.map((set) => setOf(set, gearSets, context)).sort((a, b) => a.id.localeCompare(b.id)),
     effects: sortedById(context.effects),

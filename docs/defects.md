@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **36 defects**: 36 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **37 defects**: 37 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -49,6 +49,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-034](#def-034) | 2026-11-09 | The import review scrolled sideways on a narrow screen | code | minor | ✓ fixed |
 | [DEF-035](#def-035) | 2026-11-09 | A tick box drawn as a text field | code | minor | ✓ fixed |
 | [DEF-036](#def-036) | 2026-11-09 | A setup of rituals and buildings only could not be loaded | code | minor | ✓ fixed |
+| [DEF-037](#def-037) | 2026-11-10 | The champion's guide left out the gear's bonuses for its march | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -504,3 +505,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A list of cases written in one place goes stale when a case is added elsewhere: ask the data, not a list.
 - **Proof:** `tests/setup-page.test.js`
 - **Links:** CFG-04, BONUS-07
+
+<a id="def-037"></a>
+### DEF-037 · The champion's guide left out the gear's bonuses for its march
+
+`2026-11-10` · code · minor · ✓ fixed · tags: `page`, `data`
+
+- **Finding:** In the Guides, Vambraces of Gore showed a Khorne ranged attack and a lead production bonus, but not its first two lines in the game, the melee and ranged attack of the champion's march (+7 % at Epic); a set's march bonus showed as its raw id. Seen on the page against Frantz's screenshots of the forge.
+- **Cause:** The march bonuses got their own list in champion.json when D-30 applied them in battle; the guide, written before, kept reading a piece's general and other bonuses only, and named a bonus from those two lists.
+- **Solution:** The guide reads the three lists, the march's first as the game does, and names a march bonus "Champion's march: <stat>".
+- **Result:** A piece and a set show every bonus by name; the test fails with the old reading.
+- **Lesson:** Splitting one list of data into two splits every reader of it: find them all when the data moves.
+- **Proof:** `tests/gear.test.js`
+- **Links:** GUIDE-03, BONUS-06

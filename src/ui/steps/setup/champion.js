@@ -6,6 +6,7 @@ import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { drawSetupStatus } from "./draw.js";
 import { pieceLevels } from "../../../storage/setup-champion.js";
+import { gearLevelOptions, gearRarity, rarityBadge } from "../../rarity.js";
 
 const numbers = (count) => Array.from({ length: count }, (_, index) => [index + 1, String(index + 1)]);
 const slots = () => currentGame().champion.slots; // in the game's order
@@ -21,11 +22,12 @@ function slotRow(slot) {
     [["", t("setup.noPiece")], ...pieces.map((entry) => [entry.id, label(entry)])],
     current?.id ?? "",
   );
-  const levels = piece ? options(numbers(pieceLevels(piece)), current.level) : "";
+  const levels = piece ? options(gearLevelOptions(pieceLevels(piece)), current.level) : "";
   const name = t(`guides.slot-${slot}`);
   return `<li class="setup-gear-row">
     <div class="field"><label for="setup-gear-${slot}">${escape(name)}</label><select id="setup-gear-${slot}" data-setup-gear="${slot}">${choice}</select></div>
     <div class="field"><label for="setup-gear-level-${slot}">${escape(t("setup.pieceLevel", { slot: name }))}</label><select id="setup-gear-level-${slot}" data-setup-gear-level="${slot}"${piece ? "" : " disabled"}>${levels}</select></div>
+    ${piece ? rarityBadge(gearRarity(current.level)) : ""}
   </li>`;
 }
 

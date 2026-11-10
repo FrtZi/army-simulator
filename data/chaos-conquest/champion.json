@@ -21,6 +21,7 @@
     }
   },
   "slots": ["head", "chest", "gloves", "weapon", "boots", "relic"],
+  "levelRarities": ["core", "uncommon", "rare", "epic", "legendary", "eternal"],
   "pieces": [
     {
       "id": "armour-of-damnation",

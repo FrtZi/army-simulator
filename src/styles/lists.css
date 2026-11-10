@@ -99,3 +99,37 @@
   color: var(--heading);
   font-weight: 600;
 }
+
+/* a rarity: its diamond and its name, in its colour (GUIDE-05) */
+.rarity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.85em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.rarity-core {
+  color: var(--rarity-core);
+}
+
+.rarity-uncommon {
+  color: var(--rarity-uncommon);
+}
+
+.rarity-rare {
+  color: var(--rarity-rare);
+}
+
+.rarity-epic {
+  color: var(--rarity-epic);
+}
+
+.rarity-legendary {
+  color: var(--rarity-legendary);
+}
+
+.rarity-eternal {
+  color: var(--rarity-eternal);
+}

@@ -175,7 +175,7 @@
 /* the champion's gear: a slot's piece and its level side by side */
 .setup-gear-row {
   display: grid;
-  grid-template-columns: 1fr minmax(7rem, 10rem);
+  grid-template-columns: 1fr minmax(7rem, 10rem) 6.5rem;
   align-items: end;
   gap: 0.5rem;
   padding: 0.3rem 0;

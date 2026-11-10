@@ -344,7 +344,8 @@ added = 2026-11-09
 note = "The cctools.cc scan (2026-11-09): 104 locations (74 armies, 17 raids, 13 cities) with their exact compositions through a public JSON interface; morale from the 48 NPC troops."
 tasks = [
   "[x] What cctools.cc gives: the armies by location and level, the 48 NPC troops, how they fight",
-  "[ ] Spec: a PvE army as the opponent of a composition, chosen by location and level",
+  "[x] Spec agreed: a PvE army as the opponent, chosen by kind, place and level, its troops sub-selected (docs/spec/pve.md)",
+  "[ ] The opponent chosen in the Battle lab, its troops sub-selected, the battle fought (SIM-11)",
   "[x] Data imported and checked, as the warlords' (D-25): data/chaos-conquest/pve.json (DATA-10)",
 ]
 
@@ -381,3 +382,67 @@ tasks = [
   "[x] The heroes' way up: what each level costs, in all from your level or from its unlock (GUIDE-04, D-29)",
   "[x] The way up of the rituals and buildings: each level's cost and requirements; each item's page, where it drops and what asks for it (GUIDE-04)",
 ]
+
+[[item]]
+id = "BL-23"
+title = "The champion and its gear made easy to read: rarities, sets, the champion's figures"
+moscow = "should"
+milestone = "v1.2"
+module = "ui"
+status = "doing"
+added = 2026-11-10
+features = ["BONUS-08", "GUIDE-05", "GUIDE-06"]
+note = "Frantz, 2026-11-10: the gear's levels are the game's rarities (Commun, Peu commun, Rare, Épique, Légendaire, Éternel), with small logos and colours; a piece says its set and its bonuses; the champion's stats and buffs are seen in Your setup and in the Battle lab."
+tasks = [
+  "[x] Each gear level and item named by its rarity, with its colour and a small diamond (GUIDE-05)",
+  "[ ] A piece shows its set and what it gives (GUIDE-06)",
+  "[ ] The champion's stats and bonuses in Your setup and in the Battle lab (BONUS-08)",
+]
+
+[[item]]
+id = "BL-24"
+title = "Guides: the map to reach a level, the items by category, a set lab"
+moscow = "should"
+milestone = "v1.2"
+module = "ui"
+status = "to do"
+added = 2026-11-10
+features = ["GUIDE-07", "GUIDE-08", "GUIDE-09"]
+note = "Frantz, 2026-11-10: a map to reach a level besides its list, like the game's ritual trees; the items easier to read, as a table by category, still opening; a small lab to try sets and see their bonuses in all and what they need. Small logos and colours everywhere. Prototype first."
+tasks = [
+  "[ ] Prototype validated by Frantz",
+  "[ ] The map to reach a level (GUIDE-07)",
+  "[ ] The items by category (GUIDE-08)",
+  "[ ] The set lab (GUIDE-09)",
+]
+
+[[item]]
+id = "BL-25"
+title = "The setup's files for an agent: empty, an example, the dictionary, a clearer brief"
+moscow = "should"
+milestone = "v1.1"
+module = "storage"
+status = "to do"
+added = 2026-11-10
+features = ["CFG-07"]
+note = "Frantz, 2026-11-10, after a first try with an agent (Mistral) on the Army tab's screenshots: provide an empty file and an example filled in, a prompt that explains better, maybe the dictionary. The brief names the screens (the Chaos Keep's Combat tab, the rituals' trees by branch, the champion and each piece's forge) and says what it does not read (the troops owned, until CFG-08)."
+tasks = [
+  "[ ] An example file filled in, the dictionary and the empty file, each a download",
+  "[ ] The brief: the screens to send, how to read each (a ritual bright and ticked is at its top), what is left out",
+]
+
+[[item]]
+id = "BL-26"
+title = "The troops owned in the setup"
+moscow = "could"
+milestone = "v1.2"
+module = "storage"
+status = "to do"
+added = 2026-11-10
+features = ["CFG-08"]
+note = "An agent given the Chaos Keep's Army tab found nothing to write: the setup has no place for the troops owned (Frantz: a strong point). Each troop's count, matched by its French or English name; to agree first: a composition above what is owned, warned or capped."
+tasks = [
+  "[ ] Agreed with Frantz: what a composition does with the troops owned",
+  "[ ] The section, its dictionary entries, the French names of the Army tab",
+]
+

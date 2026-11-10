@@ -6,6 +6,7 @@ import { label, number } from "../../format.js";
 import { currentGame } from "../../state.js";
 import { costBetween, rankOf } from "../../../engine/index.js";
 import { t } from "../../texts/index.js";
+import { rarityBadge } from "../../rarity.js";
 
 const itemName = (id) => label(currentGame().items.get(id)) || id;
 // the item's name opens its page in the items' guide: where it drops, what asks for it (GUIDE-04)
@@ -21,7 +22,10 @@ export function costsTable(entry, level, mine, from) {
     (text, column) => `<th scope="col"${column ? ' class="num"' : ""}>${escape(text)}</th>`,
   );
   const cell = (costs, item) => `<td class="num">${costs[item] ? number(costs[item]) : "—"}</td>`;
-  const rows = items.map((item) => `<tr><td>${itemLink(item)}</td>${cell(step, item)}${cell(total, item)}</tr>`);
+  const rows = items.map(
+    (item) =>
+      `<tr><td>${itemLink(item)} ${rarityBadge(currentGame().items.get(item)?.rarity)}</td>${cell(step, item)}${cell(total, item)}</tr>`,
+  );
   const reached = mine >= level ? `<p class="hint">${escape(t("guides.reached"))}</p>` : "";
   const body = rows.length ? rows.join("") : `<tr><td colspan="3">${escape(t("guides.free"))}</td></tr>`;
   return `<h4>${escape(t("guides.costs"))}</h4>${reached}
