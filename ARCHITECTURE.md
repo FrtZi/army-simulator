@@ -80,7 +80,8 @@ src/ui/                  the page
 ├── ritual-tree.js       a rituals category as the game's tree, and the order and numbers it reads in (GUIDE-07)
 ├── rarity.js            a rarity as a badge, a piece's levels as rarities (GUIDE-05, D-31)
 ├── pve.js               a PvE army as the second side: its troops read like ours, a place chosen, its army (SIM-11)
-├── champion-bonuses.js  every bonus a gear set gives, by domain (BONUS-09)
+├── champion-bonuses.js  every bonus a gear set or a skill gives, by domain (BONUS-09)
+├── skill-benefits.js    what a skill gives at a level, a tree's skills in all (BONUS-09)
 ├── champion-figures.js  the champion's stats and its gear's bonuses in all, in Your setup and the lab (BONUS-08)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;
 │                        hover.js: a dot's name while pointing at it; table.js: the chart as a table (D-24)
@@ -99,7 +100,7 @@ src/ui/                  the page
                          files.js, under review in import.js, drawn in review.js; D-27);
                          the Champion lab: champion-lab (lab.js its state, draw.js the level, gear.js two sets compared,
                          skills.js the trees, bind.js); and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
-                         rituals' and buildings' in levelled.js and levelled-detail.js, the items' in items-table.js (by family) and items.js (one in detail), the champion's in champion.js, what going up costs in costs.js, the map to reach a ritual in ritual-map.js, the set lab in set-lab.js)
+                         rituals' and buildings' in levelled.js and levelled-detail.js, the items' in items-table.js (by family) and items.js (one in detail), the champion's in champion.js, what going up costs in costs.js, the map to reach a ritual in ritual-map.js, the set lab in set-lab.js, the skill trees in champion-skills.js)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
 scripts/

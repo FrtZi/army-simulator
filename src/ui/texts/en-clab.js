@@ -22,4 +22,10 @@ export const EN_CLAB = {
   "clab.pointsOver": "{spent} points spent, more than the {given} level {level} gives",
   "clab.skillLevel": "Level of {name}",
   "clab.maxUnknown": "(most levels not known)",
+  "clab.notKnown": "What this skill gives is not known yet.",
+  "clab.atLevel": "At level {level}",
+  "clab.atMost": "At level {level}, its most",
+  "clab.treeGives": "What the skills taken give in all",
+  "clab.noSkill": "No skill with known values taken yet.",
+  "guides.view-skills": "Its skill trees",
 };

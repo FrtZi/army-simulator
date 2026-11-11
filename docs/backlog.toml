@@ -506,6 +506,7 @@ tasks = [
   "[x] Agreed with Frantz (2026-11-11); the skill trees' data: the conquest tree from cctools.cc, the champion tree from his screenshots, both in French (champion-skills.json)",
   "[x] The tab: the champion at a level, two gear sets side by side, every bonus by domain and their difference",
   "[x] Its two skill trees, drawn as the rituals', with their levels and points",
-  "[ ] What each level of a skill gives (not on cctools.cc: from the game's tooltips)",
+  "[x] What each level gives for 29 champion skills (cctools.cc's tools), shown in the lab and the Guides with the gear comparison coloured by gain and loss",
+  "[ ] What each level gives for the champion tree's 23 others and the conquest tree's 26 (not on cctools.cc: the game's tooltips)",
 ]
 

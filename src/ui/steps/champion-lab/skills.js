@@ -7,6 +7,7 @@ import { currentGame } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { treeHtml, treeOrder } from "../../ritual-tree.js";
 import { lab } from "./lab.js";
+import { skillBenefitsHtml, treeBenefitsHtml } from "../../skill-benefits.js";
 
 const trees = () => currentGame().championSkills.trees;
 const tree = () => trees().find((entry) => entry.id === lab().tree);
@@ -55,6 +56,8 @@ export function drawSkills({ editor = true } = {}) {
   const lit = Object.assign(new Set(), { goal: chosen.id });
   byId("clab-tree-map").innerHTML = treeHtml(entries, { levelOf, lit, attribute: "data-clab-node" });
   if (editor) byId("clab-skill-editor").innerHTML = editorHtml(entries, chosen);
+  byId("clab-skill-benefits").innerHTML = skillBenefitsHtml(chosen, levelOf(chosen.id));
+  byId("clab-tree-benefits").innerHTML = treeBenefitsHtml(tree().skills, lab().skills[lab().tree]);
 }
 
 /** A level typed for the chosen skill: kept when a whole number within its levels (0 or empty: not taken). */

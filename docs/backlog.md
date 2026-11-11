@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/4 | 6/12 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/4 | 7/13 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
 ## Ready to start
@@ -350,7 +350,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-11](#bl-11) | Keep attack: the defences' first round, as a switch on a battle | must | [engine](../src/engine) | ○ to do | 0/3 |
 | [BL-12](#bl-12) | Keep defence: a fortress (defences and garrison) as the defending side | should | [ui](../src/ui) | ○ to do | 0/2 |
 | [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ✓ done | 3/3 |
-| [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 3/4 |
+| [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 4/5 |
 
 <a id="bl-11"></a>
 #### BL-11 · Keep attack: the defences' first round, as a switch on a battle
@@ -392,7 +392,8 @@ Frantz, 2026-11-11: a new tab, like a Champion lab, to compare gear sets, the st
 - [x] Agreed with Frantz (2026-11-11); the skill trees' data: the conquest tree from cctools.cc, the champion tree from his screenshots, both in French (champion-skills.json)
 - [x] The tab: the champion at a level, two gear sets side by side, every bonus by domain and their difference
 - [x] Its two skill trees, drawn as the rituals', with their levels and points
-- [ ] What each level of a skill gives (not on cctools.cc: from the game's tooltips)
+- [x] What each level gives for 29 champion skills (cctools.cc's tools), shown in the lab and the Guides with the gear comparison coloured by gain and loss
+- [ ] What each level gives for the champion tree's 23 others and the conquest tree's 26 (not on cctools.cc: the game's tooltips)
 
 ### later · Later, ideas kept
 

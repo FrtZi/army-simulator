@@ -8,7 +8,7 @@ import { t } from "../../texts/index.js";
 import { costsTable } from "./costs.js";
 import { gearLevelSelect } from "../../rarity.js";
 
-const VIEWS = ["champion", "gear", "sets", "lab"]; // the lab: GUIDE-09
+const VIEWS = ["champion", "gear", "sets", "lab", "skills"]; // the lab: GUIDE-09; the skill trees: BONUS-09
 const guide = () => state.guide.champion;
 const data = () => currentGame().champion;
 const numbers = (count) => Array.from({ length: count }, (_, index) => [index + 1, String(index + 1)]);

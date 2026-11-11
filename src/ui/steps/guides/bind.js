@@ -87,6 +87,7 @@ function bindChampion(panel) {
     if (!field || field === "search") return;
     guide()[field] = field === "level" ? Number(event.target.value) : event.target.value;
     if (field === "view") Object.assign(guide(), { id: null, level: null });
+    if (field === "skillTree") guide().skill = null;
     if (field === "view") keepingFocus(drawGuides);
     else keepingFocus(drawGuideChampion);
   });
@@ -98,6 +99,12 @@ function bindChampion(panel) {
   panel.addEventListener("click", (event) => {
     const button = event.target.closest("[data-guide-champion-entry]");
     const toSet = event.target.closest("[data-goto-set]"); // a piece's set (GUIDE-06)
+    const skill = event.target.closest("[data-guide-skill]"); // a skill in its tree (BONUS-09)
+    if (skill) {
+      guide().skill = skill.dataset.guideSkill;
+      drawGuideChampion();
+      return;
+    }
     if (toSet) {
       Object.assign(guide(), { view: "sets", id: toSet.dataset.gotoSet, level: null });
       drawGuides();

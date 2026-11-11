@@ -42,7 +42,9 @@ export function gearBonuses(gear) {
 
 /** A bonus in words, and its domain: battle for our effects and the march's, else the first domain matching its id. */
 export function bonusInfo(id) {
-  const effect = byId(data().effects, id);
+  const skills = currentGame().championSkills.trees.flatMap((tree) => tree.bonuses ?? []);
+  const skill = byId(skills, id); // a troop bonus only the skills give (cavalry melee attack…), defined with them
+  const effect = byId(data().effects, id) ?? (skill?.stat ? skill : null);
   const march = byId(data().march, id);
   if (march) return { name: t("guides.championMarch", { stat: nameOf("troopStats", march.stat) }), domain: "battle" };
   if (effect) {
@@ -51,8 +53,16 @@ export function bonusInfo(id) {
     return { name: t("talents.label", { stat: nameOf("troopStats", effect.stat), target }), domain: "battle" };
   }
   const domain = currentGame().game.bonusDomains.find((entry) => new RegExp(entry.match).test(id)).id;
-  return { name: label(byId(data().other, id)) || id, domain };
+  return { name: label(byId(data().other, id) ?? byId(skills, id)) || id, domain };
 }
+
+/** What a skill gives at a level: each bonus by id, as a gear piece's (BONUS-09). */
+export const skillBonuses = (skill, level) =>
+  new Map(
+    Object.entries(skill.gives ?? {})
+      .map(([id, values]) => [id, { percent: values[Math.min(level, values.length) - 1] ?? 0, flat: 0 }])
+      .filter(([, total]) => total.percent),
+  );
 
 /** A total in words: "+12.5 %", "+2,600", or both. */
 export const totalText = (total) =>

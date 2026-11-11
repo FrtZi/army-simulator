@@ -551,7 +551,7 @@
     },
     {
       "id": "economy",
-      "match": "(generate-modifier|produce-speed|cost-modifier|productionqueue|hospital|research-speed|structure-speed|protected|^bonus-|^march-gather|^march-rally-speed|^march-scout)",
+      "match": "(generate-modifier|produce-speed|cost-modifier|productionqueue|hospital|research-speed|structure-speed|protected|^bonus-|^march-gather|^march-rally-speed|^march-scout|^march-speed)",
       "labels": {
         "en": "Economy and logistics",
         "fr": "Économie et logistique"

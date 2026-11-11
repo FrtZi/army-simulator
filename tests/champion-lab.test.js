@@ -75,3 +75,32 @@ test("BONUS-09 the two skill trees drawn as the rituals': a skill's level typed,
   // cctools.cc's English name where it has the skill, ours marked with a star where it has not
   assert.match(page.text("#clab-tree-map"), /Infantry Training Speed I.*Food Production I\*/);
 });
+
+const rowsOf = (page, selector) => page.$$(`${selector} tbody tr`).map((row) => [...row.cells].map(textOf).join(" "));
+
+test("BONUS-09 what a skill gives at its level and at most, and the tree's skills in all; a skill not known says so", () => {
+  const page = openLab();
+  page.choose("#clab-tree", "champion");
+  page.$('#clab-tree-map [data-clab-node="aura-of-chaos"]').click();
+  page.type("#clab-skill-level", 20);
+  // cctools.cc: Aura of Chaos at 20, +25 % melee and ranged attack of the champion's march
+  const skill = rowsOf(page, "#clab-skill-benefits");
+  assert.ok(skill.includes("Champion's march: Melee Attack +25 % +25 %"), skill.join(" | "));
+  assert.ok(rowsOf(page, "#clab-tree-benefits").includes("Champion's march: Melee Attack +25 %"));
+  page.$('#clab-tree-map [data-clab-node="food-production-i"]').click();
+  assert.match(page.text("#clab-skill-benefits"), /not known yet/);
+});
+
+test("BONUS-09 the Guides show each skill tree, a skill's every level and what it gives", () => {
+  const page = openPage();
+  page.click("#page-tab-guides");
+  page.click("#guide-tab-champion");
+  page.choose("#guide-champion-view", "skills");
+  assert.equal(page.$$("#guide-champion-detail .map-node").length, 26, "the conquest tree first");
+  assert.match(page.text("#guide-champion-detail"), /not known yet/, "the conquest skills' values are not known");
+  page.choose("#guide-skill-tree", "champion");
+  page.$('#guide-champion-detail [data-guide-skill="aura-of-chaos"]').click();
+  const levels = page.$$("#guide-champion-detail tbody tr");
+  assert.equal(levels.length, 20);
+  assert.equal(textOf(levels[0].cells[1]), "+0.5 %");
+});
