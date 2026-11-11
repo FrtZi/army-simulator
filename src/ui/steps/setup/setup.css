@@ -206,7 +206,12 @@
   width: 4.5rem;
 }
 
-/* the agent's guide (CFG-07): the screens under their step */
+/* the agent's guide (CFG-07): the screens under their step; its table of sentences wraps, unlike the figures' (DEF-044) */
+.setup-files-table th,
+.setup-files-table td {
+  white-space: normal;
+}
+
 .setup-screens {
   margin: 0.25rem 0 0.5rem;
 }

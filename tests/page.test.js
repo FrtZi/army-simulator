@@ -331,8 +331,8 @@ test("REL-02 the page shows its version, major.minor of package.json", () => {
   const { version } = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
   const page = openPage({ saved: "fr" });
   assert.equal(page.text(".version"), `v${version.split(".").slice(0, 2).join(".")}`);
-  assert.equal(page.text(".version"), "v1.0");
-  assert.match(page.text("h1"), /^Simulateur d'armée v1\.0$/, "switching language keeps the version");
+  assert.equal(page.text(".version"), "v1.2");
+  assert.match(page.text("h1"), /^Simulateur d'armée v1\.2$/, "switching language keeps the version");
 });
 
 test("CFG-01 DEF-015 a save list another tab changed: a click loads nothing wrong, and the list is redrawn", () => {

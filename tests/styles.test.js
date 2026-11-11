@@ -137,3 +137,12 @@ test("MAINT-01 DEF-040 a row's columns after its flexible one have a set width, 
   );
   assert.deepEqual(shifting, []);
 });
+
+test("MAINT-01 DEF-044 a card never widens its column; the agent's table of sentences wraps", () => {
+  // a grid item is as wide as its content at least, unless told: one wide table pushed every card past the screen
+  const rules = SHEETS.flatMap(({ outside }) => declarations(outside));
+  const has = (selector, property, value) =>
+    rules.some((rule) => rule.selector === selector && rule.property === property && rule.value === value);
+  assert.ok(has(".page-panel > *", "min-width", "0"), "the page panels' cards may shrink below their content");
+  assert.ok(has(".setup-files-table td", "white-space", "normal"), "the table's sentences wrap");
+});

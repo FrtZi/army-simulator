@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **43 defects**: 43 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **44 defects**: 44 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -56,6 +56,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-041](#def-041) | 2026-11-10 | A setup of troops only, once saved, said nothing was saved | code | minor | ✓ fixed |
 | [DEF-042](#def-042) | 2026-11-10 | Test values written into the browser where Frantz kept his setup | process | minor | ✓ fixed |
 | [DEF-043](#def-043) | 2026-11-10 | Three Chaos troops of the PvE cities had no type, attack, morale nor power | code | major | ✓ fixed |
+| [DEF-044](#def-044) | 2026-11-11 | One wide table pushed every card of Your setup past the screen | code | major | ✓ fixed |
 
 ## Entries
 
@@ -602,3 +603,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A blank left by an import is a question to answer before the data is used, not a value.
 - **Proof:** `tests/pve.test.js`
 - **Links:** DATA-10, SIM-11
+
+<a id="def-044"></a>
+### DEF-044 · One wide table pushed every card of Your setup past the screen
+
+`2026-11-11` · code · major · ✓ fixed · tags: `page`
+
+- **Finding:** Frantz saw Your setup's cards run off the right of the screen, cut and no longer centred.
+- **Cause:** The agent's guide (CFG-07) put sentences in a table, and every table cell of the site is set never to wrap (right for the figures' tables): the table took 1,461 pixels; the page's grid, its cards free to be as wide as their content, widened its one column to it.
+- **Solution:** The cards of a page panel may shrink below their content (min-width: 0), so a wide table or tree scrolls or wraps inside its card; the guide's table of sentences wraps.
+- **Result:** Every card keeps the page's width, centred, at desktop and phone widths; a test reads the two rules.
+- **Lesson:** A grid item is as wide as its widest content unless told otherwise: any wide content in one card widens them all.
+- **Proof:** `tests/styles.test.js`
+- **Links:** CFG-07, COMP-01

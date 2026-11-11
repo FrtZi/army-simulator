@@ -687,3 +687,19 @@ preuve = ["tests/pve.test.js"]
 lecon = "A blank left by an import is a question to answer before the data is used, not a value."
 liens = ["DATA-10", "SIM-11"]
 
+[[defaut]]
+id = "DEF-044"
+date = 2026-11-11
+titre = "One wide table pushed every card of Your setup past the screen"
+type = "code"
+etiquettes = ["page"]
+gravite = "major"
+statut = "fixed"
+constat = "Frantz saw Your setup's cards run off the right of the screen, cut and no longer centred."
+cause = "The agent's guide (CFG-07) put sentences in a table, and every table cell of the site is set never to wrap (right for the figures' tables): the table took 1,461 pixels; the page's grid, its cards free to be as wide as their content, widened its one column to it."
+solution = "The cards of a page panel may shrink below their content (min-width: 0), so a wide table or tree scrolls or wraps inside its card; the guide's table of sentences wraps."
+resultat = "Every card keeps the page's width, centred, at desktop and phone widths; a test reads the two rules."
+preuve = ["tests/styles.test.js"]
+lecon = "A grid item is as wide as its widest content unless told otherwise: any wide content in one card widens them all."
+liens = ["CFG-07", "COMP-01"]
+
