@@ -565,5 +565,6 @@
         "fr": "Autres"
       }
     }
-  ]
+  ],
+  "lowerIsBetter": "^hero-revive-seconds"
 }

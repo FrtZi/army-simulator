@@ -76,6 +76,20 @@ function sideHtml(side) {
       .join("")}</ul>`;
 }
 
+// as the battle comparison: better in green with ▲, weaker in red with ▼, equal in orange with =, and a word for screen readers
+const MARK = { win: "▲", lose: "▼", tie: "=" };
+
+/** How A and B fare on a bonus: the one giving more wins, unless less is better (game.json `lowerIsBetter`). */
+function outcomes(id, gap) {
+  const value = gap.percent || gap.flat;
+  if (!value) return ["tie", "tie"];
+  const lower = new RegExp(currentGame().game.lowerIsBetter).test(id);
+  return value > 0 !== lower ? ["lose", "win"] : ["win", "lose"];
+}
+
+const cell = (total, result) =>
+  `<td class="num ${result}"><span aria-hidden="true">${MARK[result]}</span> ${totalText(total)}<span class="visually-hidden"> (${escape(t(`compare.${result}`))})</span></td>`;
+
 /** Every bonus of the two sets, by domain: A, B, and how B differs. */
 function compareHtml() {
   const [a, b] = SIDES.map((side) => gearBonuses(lab().gear[side]));
@@ -89,7 +103,8 @@ function compareHtml() {
       .map(({ id, name }) => {
         const [one, two] = [a.get(id) ?? none, b.get(id) ?? none];
         const gap = { percent: two.percent - one.percent, flat: two.flat - one.flat };
-        return `<tr><td>${escape(name)}</td><td class="num">${totalText(one)}</td><td class="num">${totalText(two)}</td><td class="num">${totalText(gap)}</td></tr>`;
+        const [ofA, ofB] = outcomes(id, gap);
+        return `<tr><td>${escape(name)}</td>${cell(one, ofA)}${cell(two, ofB)}${cell(gap, ofB)}</tr>`;
       });
     if (!rows.length) return "";
     const head = ["guides.bonus", "clab.side-a", "clab.side-b", "clab.gap"].map(

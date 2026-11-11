@@ -47,7 +47,18 @@ test("BONUS-09 two gear sets side by side: every bonus by domain, in battle and 
   );
   // Vambraces of Gore at Epic: lead production +15 % on A, none on B
   const lead = page.$$("#clab-compare tr").find((row) => row.cells[0]?.textContent === "Lead Production Bonus");
-  assert.deepEqual([...lead.cells].slice(1).map(textOf), ["+15 %", "—", "-15 %"]);
+  const cells = [...lead.cells].slice(1);
+  assert.deepEqual(
+    cells.map((cell) => textOf(cell.querySelector(":scope > span[aria-hidden]").nextSibling)),
+    ["+15 %", "—", "-15 %"],
+  );
+  // as the battle comparison: A gives more, in green with ▲; B and the gap in red with ▼ (Frantz, 2026-11-11)
+  assert.deepEqual(
+    cells.map(
+      (cell) => `${cell.classList.contains("win") ? "win" : "lose"} ${cell.querySelector("[aria-hidden]").textContent}`,
+    ),
+    ["win ▲", "lose ▼", "lose ▼"],
+  );
 });
 
 test("BONUS-09 the two skill trees drawn as the rituals': a skill's level typed, the points against the level's", () => {
