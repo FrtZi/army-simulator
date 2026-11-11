@@ -259,8 +259,9 @@ page: 26 skills, their branch, most levels and prerequisites) and the champion t
 screenshots of 2026-11-11, written by hand in `champion-tree.json`, each hanging from the one above it on the screen;
 the level asked and the most levels of the skills shown done, to confirm). Each skill: `id`, `labels` (French as the
 game writes it; English translated by us marked `*`), `branch`, `max`, `requires` ({ id: level }). Each tree names
-its pool of points in champion.json: `monsterSkillPoints` (conquest) or `skillPoints` (champion). What each level of
-a skill gives is not known yet.
+its pool of points in champion.json: `monsterSkillPoints` (conquest) or `skillPoints` (champion). 29 champion skills
+take from three cctools.cc tools (damage, training, march speed) their English name, most levels and `gives`, each
+bonus by id with its value at each level; the tree's `bonuses` define them. The conquest tree's values are not known.
 
 ## The PvE armies: `data/<game>/pve.json` (BL-20)
 

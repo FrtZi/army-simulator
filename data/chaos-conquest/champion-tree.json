@@ -65,7 +65,8 @@
         },
         "branch": "left",
         "max": null,
-        "requires": {}
+        "requires": {},
+        "cctools": "infantry_production_1"
       },
       {
         "id": "food-production-i",
@@ -111,7 +112,8 @@
         "max": 10,
         "requires": {
           "infantry-training-speed-i": 1
-        }
+        },
+        "cctools": "chariots_and_cavalry_production_1"
       },
       {
         "id": "wood-production-i",
@@ -147,7 +149,8 @@
         "max": 10,
         "requires": {
           "chariot-and-cavalry-training-speed-i": 1
-        }
+        },
+        "cctools": "monsters_and_beasts_production_1"
       },
       {
         "id": "stone-production-i",
@@ -171,7 +174,8 @@
         "max": 15,
         "requires": {
           "monster-and-beast-training-speed-i": 1
-        }
+        },
+        "cctools": "defense_production_1"
       },
       {
         "id": "iron-production-i",
@@ -207,7 +211,8 @@
         "max": 15,
         "requires": {
           "defence-production-speed-i": 1
-        }
+        },
+        "cctools": "defense_effectiveness_1"
       },
       {
         "id": "slave-driver-i",
@@ -231,7 +236,8 @@
         "max": 15,
         "requires": {
           "savage-defence-i": 1
-        }
+        },
+        "cctools": "unholy_accuracy_1"
       },
       {
         "id": "unholy-fervour-i",
@@ -243,7 +249,8 @@
         "max": 15,
         "requires": {
           "unholy-precision-i": 1
-        }
+        },
+        "cctools": "unholy_ardour_1"
       },
       {
         "id": "food-production-ii",
@@ -267,7 +274,8 @@
         "max": 15,
         "requires": {
           "unholy-precision-i": 1
-        }
+        },
+        "cctools": "sturdy_lances_1"
       },
       {
         "id": "sturdy-construction-i",
@@ -279,7 +287,8 @@
         "max": 15,
         "requires": {
           "unholy-fervour-i": 1
-        }
+        },
+        "cctools": "robust_construction_1"
       },
       {
         "id": "wood-production-ii",
@@ -303,7 +312,8 @@
         "max": 15,
         "requires": {
           "sturdy-lances-i": 1
-        }
+        },
+        "cctools": "cruel_lashes_1"
       },
       {
         "id": "unnaturally-thick-hide-i",
@@ -315,7 +325,8 @@
         "max": 15,
         "requires": {
           "sturdy-construction-i": 1
-        }
+        },
+        "cctools": "unnaturally_thickened_hide_1"
       },
       {
         "id": "lead-production-ii",
@@ -339,7 +350,8 @@
         "max": 15,
         "requires": {
           "cruel-whips-i": 1
-        }
+        },
+        "cctools": "keen_blade_1"
       },
       {
         "id": "crushing-impact-i",
@@ -351,7 +363,8 @@
         "max": 15,
         "requires": {
           "keen-blades-i": 1
-        }
+        },
+        "cctools": "crushing_impact_1"
       },
       {
         "id": "stone-production-ii",
@@ -375,7 +388,8 @@
         "max": 15,
         "requires": {
           "keen-blades-i": 1
-        }
+        },
+        "cctools": "monstrous_blows_1"
       },
       {
         "id": "iron-production-ii",
@@ -399,7 +413,8 @@
         "max": 30,
         "requires": {
           "monstrous-blows-i": 1
-        }
+        },
+        "cctools": "infantry_production_2"
       },
       {
         "id": "unholy-precision-ii",
@@ -411,7 +426,8 @@
         "max": 30,
         "requires": {
           "infantry-training-speed-ii": 1
-        }
+        },
+        "cctools": "unholy_accuracy_2"
       },
       {
         "id": "construction-ii",
@@ -435,7 +451,8 @@
         "max": 30,
         "requires": {
           "infantry-training-speed-ii": 1
-        }
+        },
+        "cctools": "chariots_and_cavalry_production_2"
       },
       {
         "id": "sturdy-lances-ii",
@@ -447,7 +464,8 @@
         "max": 30,
         "requires": {
           "chariot-and-cavalry-training-speed-ii": 1
-        }
+        },
+        "cctools": "sturdy_lances_2"
       },
       {
         "id": "rituals-ii",
@@ -471,7 +489,8 @@
         "max": 30,
         "requires": {
           "chariot-and-cavalry-training-speed-ii": 1
-        }
+        },
+        "cctools": "monsters_and_beasts_production_2"
       },
       {
         "id": "cruel-whips-ii",
@@ -483,7 +502,8 @@
         "max": 30,
         "requires": {
           "monster-and-beast-training-speed-ii": 1
-        }
+        },
+        "cctools": "cruel_lashes_2"
       },
       {
         "id": "slave-driver-ii",
@@ -507,7 +527,8 @@
         "max": 50,
         "requires": {
           "monster-and-beast-training-speed-ii": 1
-        }
+        },
+        "cctools": "unholy_ardour_2"
       },
       {
         "id": "unnaturally-thick-hide-ii",
@@ -519,7 +540,8 @@
         "max": 50,
         "requires": {
           "unholy-fervour-ii": 1
-        }
+        },
+        "cctools": "unnaturally_thickened_hide_2"
       },
       {
         "id": "food-production-iii",
@@ -543,7 +565,8 @@
         "max": 50,
         "requires": {
           "unholy-fervour-ii": 1
-        }
+        },
+        "cctools": "robust_construction_2"
       },
       {
         "id": "aura-of-chaos",
@@ -555,7 +578,8 @@
         "max": 20,
         "requires": {
           "sturdy-construction-ii": 1
-        }
+        },
+        "cctools": "aura_of_chaos"
       },
       {
         "id": "wood-production-iii",
@@ -579,7 +603,8 @@
         "max": 30,
         "requires": {
           "sturdy-construction-ii": 1
-        }
+        },
+        "cctools": "defense_production_2"
       },
       {
         "id": "inspiring-presence",
@@ -615,7 +640,8 @@
         "max": 30,
         "requires": {
           "defence-production-speed-ii": 1
-        }
+        },
+        "cctools": "defense_effectiveness_2"
       },
       {
         "id": "lead-the-charge",
@@ -627,7 +653,8 @@
         "max": 20,
         "requires": {
           "inspiring-presence": 1
-        }
+        },
+        "cctools": "leading_the_charge"
       },
       {
         "id": "stone-production-iii",
@@ -651,7 +678,8 @@
         "max": 20,
         "requires": {
           "lead-the-charge": 1
-        }
+        },
+        "cctools": "chaos_plate"
       },
       {
         "id": "gaze-of-the-dark-gods",
@@ -663,7 +691,8 @@
         "max": 20,
         "requires": {
           "lead-the-charge": 1
-        }
+        },
+        "cctools": "dark_god_gaze"
       },
       {
         "id": "iron-production-iii",
@@ -675,6 +704,15 @@
         "max": 50,
         "requires": {
           "stone-production-iii": 1
+        }
+      }
+    ],
+    "bonuses": [
+      {
+        "id": "march-speed-modifier",
+        "labels": {
+          "en": "March Speed Bonus",
+          "fr": "Bonus de vitesse de marche*"
         }
       }
     ]

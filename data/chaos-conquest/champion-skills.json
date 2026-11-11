@@ -333,12 +333,38 @@
         {
           "id": "infantry-training-speed-i",
           "labels": {
-            "en": "Infantry Training Speed I*",
+            "en": "Infantry Training Speed I",
             "fr": "Vitesse d'entraînement de l'Infanterie I"
           },
           "branch": "left",
-          "max": null,
-          "requires": {}
+          "max": 10,
+          "requires": {},
+          "gives": {
+            "infantry-produce-speed-modifier": [
+              0.5,
+              1.5,
+              3,
+              5,
+              7.5,
+              10.5,
+              14,
+              18,
+              22.5,
+              28
+            ],
+            "monstrous-infantry-produce-speed-modifier": [
+              0.5,
+              1.5,
+              3,
+              5,
+              7.5,
+              10.5,
+              14,
+              18,
+              22.5,
+              28
+            ]
+          }
         },
         {
           "id": "food-production-i",
@@ -377,13 +403,51 @@
         {
           "id": "chariot-and-cavalry-training-speed-i",
           "labels": {
-            "en": "Chariot and Cavalry Training Speed I*",
+            "en": "Chariot & Cavalry Training Speed I",
             "fr": "Vitesse d'entraînement des Chars et de la Cavalerie I"
           },
           "branch": "left",
           "max": 10,
           "requires": {
             "infantry-training-speed-i": 1
+          },
+          "gives": {
+            "cavalry-produce-speed-modifier": [
+              0.5,
+              1.5,
+              3,
+              5,
+              7.5,
+              10.5,
+              14,
+              18,
+              22.5,
+              28
+            ],
+            "chariots-produce-speed-modifier": [
+              0.5,
+              1.5,
+              3,
+              5,
+              7.5,
+              10.5,
+              14,
+              18,
+              22.5,
+              28
+            ],
+            "monstrous-cavalry-produce-speed-modifier": [
+              0.5,
+              1.5,
+              3,
+              5,
+              7.5,
+              10.5,
+              14,
+              18,
+              22.5,
+              28
+            ]
           }
         },
         {
@@ -413,13 +477,51 @@
         {
           "id": "monster-and-beast-training-speed-i",
           "labels": {
-            "en": "Monster and Beast Training Speed I*",
+            "en": "Monsters & Beasts Training Speed I",
             "fr": "Vitesse d'entraînement des Monstres et des Bêtes I"
           },
           "branch": "left",
           "max": 10,
           "requires": {
             "chariot-and-cavalry-training-speed-i": 1
+          },
+          "gives": {
+            "monsters-produce-speed-modifier": [
+              0.5,
+              1.5,
+              3,
+              5,
+              7.5,
+              10.5,
+              14,
+              18,
+              22.5,
+              28
+            ],
+            "monstrous-beasts-produce-speed-modifier": [
+              0.5,
+              1.5,
+              3,
+              5,
+              7.5,
+              10.5,
+              14,
+              18,
+              22.5,
+              28
+            ],
+            "war-beasts-produce-speed-modifier": [
+              0.5,
+              1.5,
+              3,
+              5,
+              7.5,
+              10.5,
+              14,
+              18,
+              22.5,
+              28
+            ]
           }
         },
         {
@@ -437,13 +539,32 @@
         {
           "id": "defence-production-speed-i",
           "labels": {
-            "en": "Defence Production Speed I*",
+            "en": "Defence Production Speed I",
             "fr": "Vitesse de production des défenses I"
           },
           "branch": "left",
           "max": 15,
           "requires": {
             "monster-and-beast-training-speed-i": 1
+          },
+          "gives": {
+            "defenses-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              11,
+              13,
+              16,
+              19,
+              22,
+              25,
+              30
+            ]
           }
         },
         {
@@ -473,13 +594,49 @@
         {
           "id": "savage-defence-i",
           "labels": {
-            "en": "Savage Defence I*",
+            "en": "Savage Defence I",
             "fr": "Défense sauvage I"
           },
           "branch": "left",
           "max": 15,
           "requires": {
             "defence-production-speed-i": 1
+          },
+          "gives": {
+            "defences-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "defences-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ]
           }
         },
         {
@@ -497,25 +654,131 @@
         {
           "id": "unholy-precision-i",
           "labels": {
-            "en": "Unholy Precision I*",
+            "en": "Unholy Accuracy I",
             "fr": "Précision impie I"
           },
           "branch": "left",
           "max": 15,
           "requires": {
             "savage-defence-i": 1
+          },
+          "gives": {
+            "infantry-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "infantry-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-infantry-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-infantry-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ]
           }
         },
         {
           "id": "unholy-fervour-i",
           "labels": {
-            "en": "Unholy Fervour I*",
+            "en": "Unholy Ardour I",
             "fr": "Ardeur impie I"
           },
           "branch": "middle",
           "max": 15,
           "requires": {
             "unholy-precision-i": 1
+          },
+          "gives": {
+            "infantry-armour": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              11,
+              13,
+              16,
+              19,
+              22,
+              25,
+              30
+            ],
+            "monstrous-infantry-armour": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              11,
+              13,
+              16,
+              19,
+              22,
+              25,
+              30
+            ]
           }
         },
         {
@@ -533,25 +796,182 @@
         {
           "id": "sturdy-lances-i",
           "labels": {
-            "en": "Sturdy Lances I*",
+            "en": "Sturdy Lances I",
             "fr": "Lances robustes I"
           },
           "branch": "left",
           "max": 15,
           "requires": {
             "unholy-precision-i": 1
+          },
+          "gives": {
+            "cavalry-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "cavalry-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "chariots-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "chariots-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-cavalry-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-cavalry-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ]
           }
         },
         {
           "id": "sturdy-construction-i",
           "labels": {
-            "en": "Sturdy Construction I*",
+            "en": "Robust Construction I",
             "fr": "Construction robuste I"
           },
           "branch": "middle",
           "max": 15,
           "requires": {
             "unholy-fervour-i": 1
+          },
+          "gives": {
+            "cavalry-armour": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              11,
+              13,
+              16,
+              19,
+              22,
+              25,
+              30
+            ],
+            "chariots-armour": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              11,
+              13,
+              16,
+              19,
+              22,
+              25,
+              30
+            ],
+            "monstrous-cavalry-armour": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              11,
+              13,
+              16,
+              19,
+              22,
+              25,
+              30
+            ]
           }
         },
         {
@@ -569,25 +989,182 @@
         {
           "id": "cruel-whips-i",
           "labels": {
-            "en": "Cruel Whips I*",
+            "en": "Cruel Lashes I",
             "fr": "Fouets cruels I"
           },
           "branch": "left",
           "max": 15,
           "requires": {
             "sturdy-lances-i": 1
+          },
+          "gives": {
+            "monsters-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monsters-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-beasts-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-beasts-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "war-beasts-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "war-beasts-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ]
           }
         },
         {
           "id": "unnaturally-thick-hide-i",
           "labels": {
-            "en": "Unnaturally Thick Hide I*",
+            "en": "Unnaturally Thickened Hide I",
             "fr": "Peau anormalement épaisse I"
           },
           "branch": "middle",
           "max": 15,
           "requires": {
             "sturdy-construction-i": 1
+          },
+          "gives": {
+            "monsters-armour": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              11,
+              13,
+              16,
+              19,
+              22,
+              25,
+              30
+            ],
+            "monstrous-beasts-armour": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              11,
+              13,
+              16,
+              19,
+              22,
+              25,
+              30
+            ],
+            "war-beasts-armour": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              11,
+              13,
+              16,
+              19,
+              22,
+              25,
+              30
+            ]
           }
         },
         {
@@ -605,25 +1182,199 @@
         {
           "id": "keen-blades-i",
           "labels": {
-            "en": "Keen Blades I*",
+            "en": "Keen Blade I",
             "fr": "Lames vives I"
           },
           "branch": "left",
           "max": 15,
           "requires": {
             "cruel-whips-i": 1
+          },
+          "gives": {
+            "infantry-melee-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "infantry-ranged-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-infantry-melee-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-infantry-ranged-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ]
           }
         },
         {
           "id": "crushing-impact-i",
           "labels": {
-            "en": "Crushing Impact I*",
+            "en": "Crushing Impact I",
             "fr": "Impact écrasant I"
           },
           "branch": "middle",
           "max": 15,
           "requires": {
             "keen-blades-i": 1
+          },
+          "gives": {
+            "cavalry-melee-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "cavalry-ranged-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "chariots-melee-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "chariots-ranged-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-cavalry-melee-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-cavalry-ranged-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ]
           }
         },
         {
@@ -641,13 +1392,117 @@
         {
           "id": "monstrous-blows-i",
           "labels": {
-            "en": "Monstrous Blows I*",
+            "en": "Monstrous Blows I",
             "fr": "Coups monstrueux I"
           },
           "branch": "left",
           "max": 15,
           "requires": {
             "keen-blades-i": 1
+          },
+          "gives": {
+            "monsters-melee-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monsters-ranged-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-beasts-melee-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "monstrous-beasts-ranged-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "war-beasts-melee-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ],
+            "war-beasts-ranged-damage": [
+              0.5,
+              1,
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              9,
+              10.5,
+              12,
+              13.5,
+              15,
+              17
+            ]
           }
         },
         {
@@ -665,25 +1520,221 @@
         {
           "id": "infantry-training-speed-ii",
           "labels": {
-            "en": "Infantry Training Speed II*",
+            "en": "Infantry Training Speed II",
             "fr": "Vitesse d'entraînement de l'Infanterie II"
           },
           "branch": "left",
           "max": 30,
           "requires": {
             "monstrous-blows-i": 1
+          },
+          "gives": {
+            "infantry-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              48,
+              52,
+              56,
+              60,
+              64,
+              69,
+              75
+            ],
+            "monstrous-infantry-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              48,
+              52,
+              56,
+              60,
+              64,
+              69,
+              75
+            ]
           }
         },
         {
           "id": "unholy-precision-ii",
           "labels": {
-            "en": "Unholy Precision II*",
+            "en": "Unholy Accuracy II",
             "fr": "Précision impie II"
           },
           "branch": "middle",
           "max": 30,
           "requires": {
             "infantry-training-speed-ii": 1
+          },
+          "gives": {
+            "infantry-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "infantry-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "monstrous-infantry-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "monstrous-infantry-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ]
           }
         },
         {
@@ -701,25 +1752,317 @@
         {
           "id": "chariot-and-cavalry-training-speed-ii",
           "labels": {
-            "en": "Chariot and Cavalry Training Speed II*",
+            "en": "Chariot & Cavalry Training Speed II",
             "fr": "Vitesse d'entraînement des Chars et de la Cavalerie II"
           },
           "branch": "left",
           "max": 30,
           "requires": {
             "infantry-training-speed-ii": 1
+          },
+          "gives": {
+            "cavalry-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              48,
+              52,
+              56,
+              60,
+              64,
+              69,
+              75
+            ],
+            "chariots-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              48,
+              52,
+              56,
+              60,
+              64,
+              69,
+              75
+            ],
+            "monstrous-cavalry-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              48,
+              52,
+              56,
+              60,
+              64,
+              69,
+              75
+            ]
           }
         },
         {
           "id": "sturdy-lances-ii",
           "labels": {
-            "en": "Sturdy Lances II*",
+            "en": "Sturdy Lances II",
             "fr": "Lances robustes II"
           },
           "branch": "middle",
           "max": 30,
           "requires": {
             "chariot-and-cavalry-training-speed-ii": 1
+          },
+          "gives": {
+            "cavalry-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "cavalry-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "chariots-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "chariots-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "monstrous-cavalry-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "monstrous-cavalry-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ]
           }
         },
         {
@@ -737,25 +2080,317 @@
         {
           "id": "monster-and-beast-training-speed-ii",
           "labels": {
-            "en": "Monster and Beast Training Speed II*",
+            "en": "Monsters & Beasts Training Speed II",
             "fr": "Vitesse d'entraînement des Monstres et des Bêtes II"
           },
           "branch": "left",
           "max": 30,
           "requires": {
             "chariot-and-cavalry-training-speed-ii": 1
+          },
+          "gives": {
+            "monsters-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              48,
+              52,
+              56,
+              60,
+              64,
+              69,
+              75
+            ],
+            "monstrous-beasts-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              48,
+              52,
+              56,
+              60,
+              64,
+              69,
+              75
+            ],
+            "war-beasts-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              48,
+              52,
+              56,
+              60,
+              64,
+              69,
+              75
+            ]
           }
         },
         {
           "id": "cruel-whips-ii",
           "labels": {
-            "en": "Cruel Whips II*",
+            "en": "Cruel Lashes II",
             "fr": "Fouets cruels II"
           },
           "branch": "middle",
           "max": 30,
           "requires": {
             "monster-and-beast-training-speed-ii": 1
+          },
+          "gives": {
+            "monsters-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "monsters-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "monstrous-beasts-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "monstrous-beasts-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "war-beasts-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "war-beasts-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ]
           }
         },
         {
@@ -773,25 +2408,289 @@
         {
           "id": "unholy-fervour-ii",
           "labels": {
-            "en": "Unholy Fervour II*",
+            "en": "Unholy Ardour II",
             "fr": "Ardeur impie II"
           },
           "branch": "left",
           "max": 50,
           "requires": {
             "monster-and-beast-training-speed-ii": 1
+          },
+          "gives": {
+            "infantry-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15.5,
+              17,
+              18.5,
+              20,
+              21.5,
+              23,
+              24.5,
+              26,
+              27.5,
+              29,
+              30.5,
+              32,
+              34,
+              36,
+              38,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50.5,
+              53,
+              55.5,
+              58,
+              60.5,
+              63,
+              66,
+              69,
+              74,
+              80,
+              90
+            ],
+            "monstrous-infantry-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15.5,
+              17,
+              18.5,
+              20,
+              21.5,
+              23,
+              24.5,
+              26,
+              27.5,
+              29,
+              30.5,
+              32,
+              34,
+              36,
+              38,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50.5,
+              53,
+              55.5,
+              58,
+              60.5,
+              63,
+              66,
+              69,
+              74,
+              80,
+              90
+            ]
           }
         },
         {
           "id": "unnaturally-thick-hide-ii",
           "labels": {
-            "en": "Unnaturally Thick Hide II*",
+            "en": "Unnaturally Thickened Hide II",
             "fr": "Peau anormalement épaisse II"
           },
           "branch": "middle",
           "max": 50,
           "requires": {
             "unholy-fervour-ii": 1
+          },
+          "gives": {
+            "monsters-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15.5,
+              17,
+              18.5,
+              20,
+              21.5,
+              23,
+              24.5,
+              26,
+              27.5,
+              29,
+              30.5,
+              32,
+              34,
+              36,
+              38,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50.5,
+              53,
+              55.5,
+              58,
+              60.5,
+              63,
+              66,
+              69,
+              74,
+              80,
+              90
+            ],
+            "monstrous-beasts-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15.5,
+              17,
+              18.5,
+              20,
+              21.5,
+              23,
+              24.5,
+              26,
+              27.5,
+              29,
+              30.5,
+              32,
+              34,
+              36,
+              38,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50.5,
+              53,
+              55.5,
+              58,
+              60.5,
+              63,
+              66,
+              69,
+              74,
+              80,
+              90
+            ],
+            "war-beasts-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15.5,
+              17,
+              18.5,
+              20,
+              21.5,
+              23,
+              24.5,
+              26,
+              27.5,
+              29,
+              30.5,
+              32,
+              34,
+              36,
+              38,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50.5,
+              53,
+              55.5,
+              58,
+              60.5,
+              63,
+              66,
+              69,
+              74,
+              80,
+              90
+            ]
           }
         },
         {
@@ -809,13 +2708,171 @@
         {
           "id": "sturdy-construction-ii",
           "labels": {
-            "en": "Sturdy Construction II*",
+            "en": "Robust Construction II",
             "fr": "Construction robuste II"
           },
           "branch": "left",
           "max": 50,
           "requires": {
             "unholy-fervour-ii": 1
+          },
+          "gives": {
+            "cavalry-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15.5,
+              17,
+              18.5,
+              20,
+              21.5,
+              23,
+              24.5,
+              26,
+              27.5,
+              29,
+              30.5,
+              32,
+              34,
+              36,
+              38,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50.5,
+              53,
+              55.5,
+              58,
+              60.5,
+              63,
+              66,
+              69,
+              74,
+              80,
+              90
+            ],
+            "chariots-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15.5,
+              17,
+              18.5,
+              20,
+              21.5,
+              23,
+              24.5,
+              26,
+              27.5,
+              29,
+              30.5,
+              32,
+              34,
+              36,
+              38,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50.5,
+              53,
+              55.5,
+              58,
+              60.5,
+              63,
+              66,
+              69,
+              74,
+              80,
+              90
+            ],
+            "monstrous-cavalry-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15.5,
+              17,
+              18.5,
+              20,
+              21.5,
+              23,
+              24.5,
+              26,
+              27.5,
+              29,
+              30.5,
+              32,
+              34,
+              36,
+              38,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50.5,
+              53,
+              55.5,
+              58,
+              60.5,
+              63,
+              66,
+              69,
+              74,
+              80,
+              90
+            ]
           }
         },
         {
@@ -828,6 +2885,52 @@
           "max": 20,
           "requires": {
             "sturdy-construction-ii": 1
+          },
+          "gives": {
+            "hero-march-unit-melee-attack-modifier": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              25
+            ],
+            "hero-march-unit-ranged-attack-modifier": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              25
+            ]
           }
         },
         {
@@ -845,13 +2948,47 @@
         {
           "id": "defence-production-speed-ii",
           "labels": {
-            "en": "Defence Production Speed II*",
+            "en": "Defence Production Speed II",
             "fr": "Vitesse de production des défenses II"
           },
           "branch": "left",
           "max": 30,
           "requires": {
             "sturdy-construction-ii": 1
+          },
+          "gives": {
+            "defenses-produce-speed-modifier": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              48,
+              52,
+              56,
+              60,
+              64,
+              69,
+              75
+            ]
           }
         },
         {
@@ -881,25 +3018,115 @@
         {
           "id": "savage-defence-ii",
           "labels": {
-            "en": "Savage Defence II*",
+            "en": "Savage Defence II",
             "fr": "Défense sauvage II"
           },
           "branch": "left",
           "max": 30,
           "requires": {
             "defence-production-speed-ii": 1
+          },
+          "gives": {
+            "defences-melee-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ],
+            "defences-ranged-attack": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              22,
+              24,
+              27,
+              30,
+              33,
+              36,
+              39,
+              42,
+              45,
+              49,
+              55
+            ]
           }
         },
         {
           "id": "lead-the-charge",
           "labels": {
-            "en": "Lead the Charge*",
+            "en": "Leading the Charge",
             "fr": "Mener la charge"
           },
           "branch": "middle",
           "max": 20,
           "requires": {
             "inspiring-presence": 1
+          },
+          "gives": {
+            "march-speed-modifier": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              5.5,
+              6,
+              6.5,
+              7,
+              7.5,
+              8,
+              8.5,
+              9,
+              9.5,
+              10
+            ]
           }
         },
         {
@@ -917,25 +3144,139 @@
         {
           "id": "chaos-armour",
           "labels": {
-            "en": "Chaos Armour",
+            "en": "Chaos Plate",
             "fr": "Armure du Chaos"
           },
           "branch": "left",
           "max": 20,
           "requires": {
             "lead-the-charge": 1
+          },
+          "gives": {
+            "undivided-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              5.5,
+              6,
+              6.5,
+              7,
+              7.5,
+              8,
+              8.5,
+              9,
+              9.5,
+              10
+            ]
           }
         },
         {
           "id": "gaze-of-the-dark-gods",
           "labels": {
-            "en": "Gaze of the Dark Gods*",
+            "en": "Gaze of the Dark Gods",
             "fr": "Le regard des Dieux sombres"
           },
           "branch": "middle",
           "max": 20,
           "requires": {
             "lead-the-charge": 1
+          },
+          "gives": {
+            "khorne-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              5.5,
+              6,
+              6.5,
+              7,
+              7.5,
+              8,
+              8.5,
+              9,
+              9.5,
+              10
+            ],
+            "nurgle-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              5.5,
+              6,
+              6.5,
+              7,
+              7.5,
+              8,
+              8.5,
+              9,
+              9.5,
+              10
+            ],
+            "slaanesh-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              5.5,
+              6,
+              6.5,
+              7,
+              7.5,
+              8,
+              8.5,
+              9,
+              9.5,
+              10
+            ],
+            "tzeentch-armour": [
+              0.5,
+              1,
+              1.5,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              5.5,
+              6,
+              6.5,
+              7,
+              7.5,
+              8,
+              8.5,
+              9,
+              9.5,
+              10
+            ]
           }
         },
         {
@@ -948,6 +3289,573 @@
           "max": 50,
           "requires": {
             "stone-production-iii": 1
+          }
+        }
+      ],
+      "bonuses": [
+        {
+          "id": "cavalry-armour",
+          "code": "cavalry_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "unitTypes": [
+              "cavalry"
+            ]
+          }
+        },
+        {
+          "id": "cavalry-melee-attack",
+          "code": "cavalry_melee_attack_modifier",
+          "stat": "meleeAttack",
+          "target": {
+            "unitTypes": [
+              "cavalry"
+            ]
+          }
+        },
+        {
+          "id": "cavalry-melee-damage",
+          "code": "cavalry_melee_damage_modifier",
+          "stat": "meleeDamage",
+          "target": {
+            "unitTypes": [
+              "cavalry"
+            ]
+          }
+        },
+        {
+          "id": "cavalry-produce-speed-modifier",
+          "code": "cavalry_produce_speed_modifier",
+          "labels": {
+            "en": "Cavalry Production Speed",
+            "fr": "Cavalry Production Speed*"
+          }
+        },
+        {
+          "id": "cavalry-ranged-attack",
+          "code": "cavalry_ranged_attack_modifier",
+          "stat": "rangedAttack",
+          "target": {
+            "unitTypes": [
+              "cavalry"
+            ]
+          }
+        },
+        {
+          "id": "cavalry-ranged-damage",
+          "code": "cavalry_ranged_damage_modifier",
+          "stat": "rangedDamage",
+          "target": {
+            "unitTypes": [
+              "cavalry"
+            ]
+          }
+        },
+        {
+          "id": "chariots-armour",
+          "code": "chariots_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "unitTypes": [
+              "chariots"
+            ]
+          }
+        },
+        {
+          "id": "chariots-melee-attack",
+          "code": "chariots_melee_attack_modifier",
+          "stat": "meleeAttack",
+          "target": {
+            "unitTypes": [
+              "chariots"
+            ]
+          }
+        },
+        {
+          "id": "chariots-melee-damage",
+          "code": "chariots_melee_damage_modifier",
+          "stat": "meleeDamage",
+          "target": {
+            "unitTypes": [
+              "chariots"
+            ]
+          }
+        },
+        {
+          "id": "chariots-produce-speed-modifier",
+          "code": "chariots_produce_speed_modifier",
+          "labels": {
+            "en": "Chariots Production Speed",
+            "fr": "Chariots Production Speed*"
+          }
+        },
+        {
+          "id": "chariots-ranged-attack",
+          "code": "chariots_ranged_attack_modifier",
+          "stat": "rangedAttack",
+          "target": {
+            "unitTypes": [
+              "chariots"
+            ]
+          }
+        },
+        {
+          "id": "chariots-ranged-damage",
+          "code": "chariots_ranged_damage_modifier",
+          "stat": "rangedDamage",
+          "target": {
+            "unitTypes": [
+              "chariots"
+            ]
+          }
+        },
+        {
+          "id": "defences-melee-attack",
+          "code": "defenses_melee_attack_modifier",
+          "stat": "meleeAttack",
+          "target": {
+            "unitTypes": [
+              "defences"
+            ]
+          }
+        },
+        {
+          "id": "defences-ranged-attack",
+          "code": "defenses_ranged_attack_modifier",
+          "stat": "rangedAttack",
+          "target": {
+            "unitTypes": [
+              "defences"
+            ]
+          }
+        },
+        {
+          "id": "defenses-produce-speed-modifier",
+          "code": "defenses_produce_speed_modifier",
+          "labels": {
+            "en": "Defence Production Speed",
+            "fr": "Defence Production Speed*"
+          }
+        },
+        {
+          "id": "hero-march-unit-melee-attack-modifier",
+          "code": "hero_march_unit_melee_attack_modifier",
+          "labels": {
+            "en": "Champion March Melee Attack Bonus",
+            "fr": "Champion March Melee Attack Bonus*"
+          }
+        },
+        {
+          "id": "hero-march-unit-ranged-attack-modifier",
+          "code": "hero_march_unit_ranged_attack_modifier",
+          "labels": {
+            "en": "Champion March Ranged Attack Bonus",
+            "fr": "Champion March Ranged Attack Bonus*"
+          }
+        },
+        {
+          "id": "infantry-armour",
+          "code": "infantry_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "unitTypes": [
+              "infantry"
+            ]
+          }
+        },
+        {
+          "id": "infantry-melee-attack",
+          "code": "infantry_melee_attack_modifier",
+          "stat": "meleeAttack",
+          "target": {
+            "unitTypes": [
+              "infantry"
+            ]
+          }
+        },
+        {
+          "id": "infantry-melee-damage",
+          "code": "infantry_melee_damage_modifier",
+          "stat": "meleeDamage",
+          "target": {
+            "unitTypes": [
+              "infantry"
+            ]
+          }
+        },
+        {
+          "id": "infantry-produce-speed-modifier",
+          "code": "infantry_produce_speed_modifier",
+          "labels": {
+            "en": "Infantry Production Speed",
+            "fr": "Infantry Production Speed*"
+          }
+        },
+        {
+          "id": "infantry-ranged-attack",
+          "code": "infantry_ranged_attack_modifier",
+          "stat": "rangedAttack",
+          "target": {
+            "unitTypes": [
+              "infantry"
+            ]
+          }
+        },
+        {
+          "id": "infantry-ranged-damage",
+          "code": "infantry_ranged_damage_modifier",
+          "stat": "rangedDamage",
+          "target": {
+            "unitTypes": [
+              "infantry"
+            ]
+          }
+        },
+        {
+          "id": "khorne-armour",
+          "code": "chaos_khorne_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "alignments": [
+              "khorne"
+            ]
+          }
+        },
+        {
+          "id": "march-speed-modifier",
+          "labels": {
+            "en": "March Speed Bonus",
+            "fr": "Bonus de vitesse de marche*"
+          }
+        },
+        {
+          "id": "monsters-armour",
+          "code": "monsters_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "unitTypes": [
+              "monsters"
+            ]
+          }
+        },
+        {
+          "id": "monsters-melee-attack",
+          "code": "monsters_melee_attack_modifier",
+          "stat": "meleeAttack",
+          "target": {
+            "unitTypes": [
+              "monsters"
+            ]
+          }
+        },
+        {
+          "id": "monsters-melee-damage",
+          "code": "monsters_melee_damage_modifier",
+          "stat": "meleeDamage",
+          "target": {
+            "unitTypes": [
+              "monsters"
+            ]
+          }
+        },
+        {
+          "id": "monsters-produce-speed-modifier",
+          "code": "monsters_produce_speed_modifier",
+          "labels": {
+            "en": "Monsters Production Speed",
+            "fr": "Monsters Production Speed*"
+          }
+        },
+        {
+          "id": "monsters-ranged-attack",
+          "code": "monsters_ranged_attack_modifier",
+          "stat": "rangedAttack",
+          "target": {
+            "unitTypes": [
+              "monsters"
+            ]
+          }
+        },
+        {
+          "id": "monsters-ranged-damage",
+          "code": "monsters_ranged_damage_modifier",
+          "stat": "rangedDamage",
+          "target": {
+            "unitTypes": [
+              "monsters"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-beasts-armour",
+          "code": "monstrous_beasts_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "unitTypes": [
+              "monstrous-beasts"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-beasts-melee-attack",
+          "code": "monstrous_beasts_melee_attack_modifier",
+          "stat": "meleeAttack",
+          "target": {
+            "unitTypes": [
+              "monstrous-beasts"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-beasts-melee-damage",
+          "code": "monstrous_beasts_melee_damage_modifier",
+          "stat": "meleeDamage",
+          "target": {
+            "unitTypes": [
+              "monstrous-beasts"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-beasts-produce-speed-modifier",
+          "code": "monstrous_beasts_produce_speed_modifier",
+          "labels": {
+            "en": "Monstrous Beasts Production Speed",
+            "fr": "Monstrous Beasts Production Speed*"
+          }
+        },
+        {
+          "id": "monstrous-beasts-ranged-attack",
+          "code": "monstrous_beasts_ranged_attack_modifier",
+          "stat": "rangedAttack",
+          "target": {
+            "unitTypes": [
+              "monstrous-beasts"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-beasts-ranged-damage",
+          "code": "monstrous_beasts_ranged_damage_modifier",
+          "stat": "rangedDamage",
+          "target": {
+            "unitTypes": [
+              "monstrous-beasts"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-cavalry-armour",
+          "code": "monstrous_cavalry_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "unitTypes": [
+              "monstrous-cavalry"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-cavalry-melee-attack",
+          "code": "monstrous_cavalry_melee_attack_modifier",
+          "stat": "meleeAttack",
+          "target": {
+            "unitTypes": [
+              "monstrous-cavalry"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-cavalry-melee-damage",
+          "code": "monstrous_cavalry_melee_damage_modifier",
+          "stat": "meleeDamage",
+          "target": {
+            "unitTypes": [
+              "monstrous-cavalry"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-cavalry-produce-speed-modifier",
+          "code": "monstrous_cavalry_produce_speed_modifier",
+          "labels": {
+            "en": "Monstrous Cavalry Production Speed",
+            "fr": "Monstrous Cavalry Production Speed*"
+          }
+        },
+        {
+          "id": "monstrous-cavalry-ranged-attack",
+          "code": "monstrous_cavalry_ranged_attack_modifier",
+          "stat": "rangedAttack",
+          "target": {
+            "unitTypes": [
+              "monstrous-cavalry"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-cavalry-ranged-damage",
+          "code": "monstrous_cavalry_ranged_damage_modifier",
+          "stat": "rangedDamage",
+          "target": {
+            "unitTypes": [
+              "monstrous-cavalry"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-infantry-armour",
+          "code": "monstrous_infantry_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "unitTypes": [
+              "monstrous-infantry"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-infantry-melee-attack",
+          "code": "monstrous_infantry_melee_attack_modifier",
+          "stat": "meleeAttack",
+          "target": {
+            "unitTypes": [
+              "monstrous-infantry"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-infantry-melee-damage",
+          "code": "monstrous_infantry_melee_damage_modifier",
+          "stat": "meleeDamage",
+          "target": {
+            "unitTypes": [
+              "monstrous-infantry"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-infantry-produce-speed-modifier",
+          "code": "monstrous_infantry_produce_speed_modifier",
+          "labels": {
+            "en": "Monstrous Infantry Production Speed",
+            "fr": "Monstrous Infantry Production Speed*"
+          }
+        },
+        {
+          "id": "monstrous-infantry-ranged-attack",
+          "code": "monstrous_infantry_ranged_attack_modifier",
+          "stat": "rangedAttack",
+          "target": {
+            "unitTypes": [
+              "monstrous-infantry"
+            ]
+          }
+        },
+        {
+          "id": "monstrous-infantry-ranged-damage",
+          "code": "monstrous_infantry_ranged_damage_modifier",
+          "stat": "rangedDamage",
+          "target": {
+            "unitTypes": [
+              "monstrous-infantry"
+            ]
+          }
+        },
+        {
+          "id": "nurgle-armour",
+          "code": "chaos_nurgle_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "alignments": [
+              "nurgle"
+            ]
+          }
+        },
+        {
+          "id": "slaanesh-armour",
+          "code": "chaos_slaanesh_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "alignments": [
+              "slaanesh"
+            ]
+          }
+        },
+        {
+          "id": "tzeentch-armour",
+          "code": "chaos_tzeentch_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "alignments": [
+              "tzeentch"
+            ]
+          }
+        },
+        {
+          "id": "undivided-armour",
+          "code": "chaos_undivided_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "alignments": [
+              "undivided"
+            ]
+          }
+        },
+        {
+          "id": "war-beasts-armour",
+          "code": "war_beasts_armour_modifier",
+          "stat": "armour",
+          "target": {
+            "unitTypes": [
+              "war-beasts"
+            ]
+          }
+        },
+        {
+          "id": "war-beasts-melee-attack",
+          "code": "war_beasts_melee_attack_modifier",
+          "stat": "meleeAttack",
+          "target": {
+            "unitTypes": [
+              "war-beasts"
+            ]
+          }
+        },
+        {
+          "id": "war-beasts-melee-damage",
+          "code": "war_beasts_melee_damage_modifier",
+          "stat": "meleeDamage",
+          "target": {
+            "unitTypes": [
+              "war-beasts"
+            ]
+          }
+        },
+        {
+          "id": "war-beasts-produce-speed-modifier",
+          "code": "war_beasts_produce_speed_modifier",
+          "labels": {
+            "en": "War Beasts Production Speed",
+            "fr": "War Beasts Production Speed*"
+          }
+        },
+        {
+          "id": "war-beasts-ranged-attack",
+          "code": "war_beasts_ranged_attack_modifier",
+          "stat": "rangedAttack",
+          "target": {
+            "unitTypes": [
+              "war-beasts"
+            ]
+          }
+        },
+        {
+          "id": "war-beasts-ranged-damage",
+          "code": "war_beasts_ranged_damage_modifier",
+          "stat": "rangedDamage",
+          "target": {
+            "unitTypes": [
+              "war-beasts"
+            ]
           }
         }
       ]

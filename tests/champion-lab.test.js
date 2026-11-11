@@ -72,5 +72,6 @@ test("BONUS-09 the two skill trees drawn as the rituals': a skill's level typed,
   assert.ok(page.$('#clab-tree-map [data-clab-node="gloat-1"]').classList.contains("partial"));
   page.choose("#clab-tree", "champion");
   assert.equal(page.$$("#clab-tree-map .map-node").length, 52, "the champion tree");
-  assert.match(page.text("#clab-tree-map"), /Vitesse d'entraînement|Infantry Training Speed I\*/);
+  // cctools.cc's English name where it has the skill, ours marked with a star where it has not
+  assert.match(page.text("#clab-tree-map"), /Infantry Training Speed I.*Food Production I\*/);
 });
