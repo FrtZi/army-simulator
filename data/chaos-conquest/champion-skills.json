@@ -1,0 +1,956 @@
+{
+  "source": "Written by scripts/import-skills.mjs from cctools.cc's vigour-distribution page and Frantz's screenshots of the game, 2026-11-11: the champion tree, the conquest tree's French names and one link: never edit by hand",
+  "trees": [
+    {
+      "id": "conquest",
+      "points": "monsterSkillPoints",
+      "labels": {
+        "en": "Conquest skills",
+        "fr": "Compétences de conquête"
+      },
+      "skills": [
+        {
+          "id": "champion-recovery-1",
+          "labels": {
+            "en": "Champion Recovery I",
+            "fr": "Champion : récupération I"
+          },
+          "branch": "root",
+          "max": 3,
+          "requires": {}
+        },
+        {
+          "id": "efficient-endurance-1",
+          "labels": {
+            "en": "Inhuman Vigour I",
+            "fr": "Vigueur inhumaine I"
+          },
+          "branch": "vigour_stamina",
+          "max": 15,
+          "requires": {
+            "champion-recovery-1": 3
+          }
+        },
+        {
+          "id": "champion-endurance-1",
+          "labels": {
+            "en": "Boundless Stamina I",
+            "fr": "Endurance sans limite I"
+          },
+          "branch": "vigour_stamina",
+          "max": 15,
+          "requires": {
+            "efficient-endurance-1": 3
+          }
+        },
+        {
+          "id": "champion-recovery-2",
+          "labels": {
+            "en": "Champion Recovery II",
+            "fr": "Champion : récupération II"
+          },
+          "branch": "vigour_stamina",
+          "max": 3,
+          "requires": {
+            "champion-endurance-1": 3
+          }
+        },
+        {
+          "id": "efficient-endurance-2",
+          "labels": {
+            "en": "Inhuman Vigour II",
+            "fr": "Vigueur inhumaine II"
+          },
+          "branch": "vigour_stamina",
+          "max": 25,
+          "requires": {
+            "champion-recovery-2": 3
+          }
+        },
+        {
+          "id": "champion-endurance-2",
+          "labels": {
+            "en": "Boundless Stamina II",
+            "fr": "Endurance sans limite II"
+          },
+          "branch": "vigour_stamina",
+          "max": 25,
+          "requires": {
+            "efficient-endurance-2": 3
+          }
+        },
+        {
+          "id": "efficient-endurance-3",
+          "labels": {
+            "en": "Inhuman Vigour III",
+            "fr": "Vigueur inhumaine III"
+          },
+          "branch": "vigour_stamina",
+          "max": 30,
+          "requires": {
+            "champion-endurance-2": 3
+          }
+        },
+        {
+          "id": "champion-endurance-3",
+          "labels": {
+            "en": "Boundless Stamina III",
+            "fr": "Endurance sans limite III"
+          },
+          "branch": "vigour_stamina",
+          "max": 30,
+          "requires": {
+            "efficient-endurance-3": 3
+          }
+        },
+        {
+          "id": "champion-vanquish-damage-1",
+          "labels": {
+            "en": "Vanquish Damage I",
+            "fr": "Dégâts de conquête I"
+          },
+          "branch": "damage",
+          "max": 15,
+          "requires": {
+            "champion-recovery-1": 3
+          }
+        },
+        {
+          "id": "bane-of-the-empire-1",
+          "labels": {
+            "en": "Bane of the Empire I",
+            "fr": "Fléau de l'Empire I"
+          },
+          "branch": "damage",
+          "max": 15,
+          "requires": {
+            "champion-vanquish-damage-1": 3
+          }
+        },
+        {
+          "id": "bane-of-the-beastmen-1",
+          "labels": {
+            "en": "Bane of the Beastmen I",
+            "fr": "Fléau des Hommes-bête I"
+          },
+          "branch": "damage",
+          "max": 15,
+          "requires": {
+            "bane-of-the-empire-1": 3
+          }
+        },
+        {
+          "id": "bane-of-the-greenskins-1",
+          "labels": {
+            "en": "Bane of the Greenskins I",
+            "fr": "Fléau des Peaux-vertes I"
+          },
+          "branch": "damage",
+          "max": 15,
+          "requires": {
+            "bane-of-the-beastmen-1": 3
+          }
+        },
+        {
+          "id": "bane-of-the-dwarfs-1",
+          "labels": {
+            "en": "Bane of the Dwarfs I",
+            "fr": "Fléau des Nains I"
+          },
+          "branch": "damage",
+          "max": 15,
+          "requires": {
+            "bane-of-the-greenskins-1": 3
+          }
+        },
+        {
+          "id": "champion-vanquish-damage-2",
+          "labels": {
+            "en": "Vanquish Damage II",
+            "fr": "Dégâts de conquête II"
+          },
+          "branch": "damage",
+          "max": 25,
+          "requires": {
+            "bane-of-the-dwarfs-1": 3
+          }
+        },
+        {
+          "id": "bane-of-the-empire-2",
+          "labels": {
+            "en": "Bane of the Empire II",
+            "fr": "Fléau de l'Empire II"
+          },
+          "branch": "damage",
+          "max": 25,
+          "requires": {
+            "champion-vanquish-damage-2": 3
+          }
+        },
+        {
+          "id": "bane-of-the-beastmen-2",
+          "labels": {
+            "en": "Bane of the Beastmen II",
+            "fr": "Fléau des Hommes-bête II"
+          },
+          "branch": "damage",
+          "max": 25,
+          "requires": {
+            "bane-of-the-empire-2": 3
+          }
+        },
+        {
+          "id": "bane-of-the-greenskins-2",
+          "labels": {
+            "en": "Bane of the Greenskins II",
+            "fr": "Fléau des Peaux-vertes II"
+          },
+          "branch": "damage",
+          "max": 25,
+          "requires": {
+            "bane-of-the-empire-2": 3
+          }
+        },
+        {
+          "id": "bane-of-the-dwarfs-2",
+          "labels": {
+            "en": "Bane of the Dwarfs II",
+            "fr": "Fléau des Nains II"
+          },
+          "branch": "damage",
+          "max": 25,
+          "requires": {
+            "bane-of-the-empire-2": 3
+          }
+        },
+        {
+          "id": "bane-of-the-undead-1",
+          "labels": {
+            "en": "Bane of the Undead I",
+            "fr": "Fléau des Morts-Vivants I"
+          },
+          "branch": "damage",
+          "max": 15,
+          "requires": {
+            "bane-of-the-dwarfs-2": 3
+          }
+        },
+        {
+          "id": "champion-speed-1",
+          "labels": {
+            "en": "Vanquish Speed I",
+            "fr": "Vitesse de conquête I"
+          },
+          "branch": "speed",
+          "max": 15,
+          "requires": {
+            "champion-recovery-1": 3
+          }
+        },
+        {
+          "id": "attack-streak-1",
+          "labels": {
+            "en": "Flurry of Attacks I",
+            "fr": "Avalanche d'attaques I"
+          },
+          "branch": "speed",
+          "max": 15,
+          "requires": {
+            "champion-speed-1": 3
+          }
+        },
+        {
+          "id": "gloat-1",
+          "labels": {
+            "en": "Gloat I",
+            "fr": "Jubiler I"
+          },
+          "branch": "speed",
+          "max": 15,
+          "requires": {
+            "attack-streak-1": 3
+          }
+        },
+        {
+          "id": "champion-speed-2",
+          "labels": {
+            "en": "Vanquish Speed II",
+            "fr": "Vitesse de conquête II"
+          },
+          "branch": "speed",
+          "max": 25,
+          "requires": {
+            "gloat-1": 3
+          }
+        },
+        {
+          "id": "attack-streak-2",
+          "labels": {
+            "en": "Flurry of Attacks II",
+            "fr": "Avalanche d'attaques II"
+          },
+          "branch": "speed",
+          "max": 25,
+          "requires": {
+            "champion-speed-2": 3
+          }
+        },
+        {
+          "id": "gloat-2",
+          "labels": {
+            "en": "Gloat II",
+            "fr": "Jubiler II"
+          },
+          "branch": "speed",
+          "max": 25,
+          "requires": {
+            "attack-streak-2": 3
+          }
+        },
+        {
+          "id": "bloodthirst",
+          "labels": {
+            "en": "Bloodthirsty",
+            "fr": "Sanguinaire"
+          },
+          "branch": "speed",
+          "max": 15,
+          "requires": {
+            "gloat-2": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "champion",
+      "points": "skillPoints",
+      "labels": {
+        "en": "Champion skills",
+        "fr": "Compétences de champion"
+      },
+      "toConfirm": "the level each skill asks of the one it hangs from (1 here), and the most levels of the skills the screenshots show done",
+      "skills": [
+        {
+          "id": "infantry-training-speed-i",
+          "labels": {
+            "en": "Infantry Training Speed I*",
+            "fr": "Vitesse d'entraînement de l'Infanterie I"
+          },
+          "branch": "left",
+          "max": null,
+          "requires": {}
+        },
+        {
+          "id": "food-production-i",
+          "labels": {
+            "en": "Food Production I*",
+            "fr": "Production de nourriture I"
+          },
+          "branch": "right",
+          "max": null,
+          "requires": {}
+        },
+        {
+          "id": "construction-i",
+          "labels": {
+            "en": "Construction I*",
+            "fr": "Construction I"
+          },
+          "branch": "left",
+          "max": null,
+          "requires": {
+            "infantry-training-speed-i": 1
+          }
+        },
+        {
+          "id": "rituals-i",
+          "labels": {
+            "en": "Rituals I*",
+            "fr": "Rituels I"
+          },
+          "branch": "right",
+          "max": null,
+          "requires": {
+            "food-production-i": 1
+          }
+        },
+        {
+          "id": "chariot-and-cavalry-training-speed-i",
+          "labels": {
+            "en": "Chariot and Cavalry Training Speed I*",
+            "fr": "Vitesse d'entraînement des Chars et de la Cavalerie I"
+          },
+          "branch": "left",
+          "max": 10,
+          "requires": {
+            "infantry-training-speed-i": 1
+          }
+        },
+        {
+          "id": "wood-production-i",
+          "labels": {
+            "en": "Wood Production I*",
+            "fr": "Production de bois I"
+          },
+          "branch": "right",
+          "max": 10,
+          "requires": {
+            "food-production-i": 1
+          }
+        },
+        {
+          "id": "lead-production-i",
+          "labels": {
+            "en": "Lead Production I*",
+            "fr": "Production de plomb I"
+          },
+          "branch": "middle",
+          "max": 10,
+          "requires": {
+            "wood-production-i": 1
+          }
+        },
+        {
+          "id": "monster-and-beast-training-speed-i",
+          "labels": {
+            "en": "Monster and Beast Training Speed I*",
+            "fr": "Vitesse d'entraînement des Monstres et des Bêtes I"
+          },
+          "branch": "left",
+          "max": 10,
+          "requires": {
+            "chariot-and-cavalry-training-speed-i": 1
+          }
+        },
+        {
+          "id": "stone-production-i",
+          "labels": {
+            "en": "Stone Production I*",
+            "fr": "Production de pierre I"
+          },
+          "branch": "right",
+          "max": 10,
+          "requires": {
+            "wood-production-i": 1
+          }
+        },
+        {
+          "id": "defence-production-speed-i",
+          "labels": {
+            "en": "Defence Production Speed I*",
+            "fr": "Vitesse de production des défenses I"
+          },
+          "branch": "left",
+          "max": 15,
+          "requires": {
+            "monster-and-beast-training-speed-i": 1
+          }
+        },
+        {
+          "id": "iron-production-i",
+          "labels": {
+            "en": "Iron Production I*",
+            "fr": "Production de fer I"
+          },
+          "branch": "right",
+          "max": null,
+          "requires": {
+            "stone-production-i": 1
+          }
+        },
+        {
+          "id": "exalted-presence",
+          "labels": {
+            "en": "Exalted Presence*",
+            "fr": "Présence exaltée"
+          },
+          "branch": "middle",
+          "max": null,
+          "requires": {
+            "iron-production-i": 1
+          }
+        },
+        {
+          "id": "savage-defence-i",
+          "labels": {
+            "en": "Savage Defence I*",
+            "fr": "Défense sauvage I"
+          },
+          "branch": "left",
+          "max": 15,
+          "requires": {
+            "defence-production-speed-i": 1
+          }
+        },
+        {
+          "id": "slave-driver-i",
+          "labels": {
+            "en": "Slave Driver I*",
+            "fr": "Meneur d'esclaves I"
+          },
+          "branch": "right",
+          "max": null,
+          "requires": {
+            "iron-production-i": 1
+          }
+        },
+        {
+          "id": "unholy-precision-i",
+          "labels": {
+            "en": "Unholy Precision I*",
+            "fr": "Précision impie I"
+          },
+          "branch": "left",
+          "max": 15,
+          "requires": {
+            "savage-defence-i": 1
+          }
+        },
+        {
+          "id": "unholy-fervour-i",
+          "labels": {
+            "en": "Unholy Fervour I*",
+            "fr": "Ardeur impie I"
+          },
+          "branch": "middle",
+          "max": 15,
+          "requires": {
+            "unholy-precision-i": 1
+          }
+        },
+        {
+          "id": "food-production-ii",
+          "labels": {
+            "en": "Food Production II*",
+            "fr": "Production de nourriture II"
+          },
+          "branch": "right",
+          "max": 20,
+          "requires": {
+            "slave-driver-i": 1
+          }
+        },
+        {
+          "id": "sturdy-lances-i",
+          "labels": {
+            "en": "Sturdy Lances I*",
+            "fr": "Lances robustes I"
+          },
+          "branch": "left",
+          "max": 15,
+          "requires": {
+            "unholy-precision-i": 1
+          }
+        },
+        {
+          "id": "sturdy-construction-i",
+          "labels": {
+            "en": "Sturdy Construction I*",
+            "fr": "Construction robuste I"
+          },
+          "branch": "middle",
+          "max": 15,
+          "requires": {
+            "unholy-fervour-i": 1
+          }
+        },
+        {
+          "id": "wood-production-ii",
+          "labels": {
+            "en": "Wood Production II*",
+            "fr": "Production de bois II"
+          },
+          "branch": "right",
+          "max": 20,
+          "requires": {
+            "food-production-ii": 1
+          }
+        },
+        {
+          "id": "cruel-whips-i",
+          "labels": {
+            "en": "Cruel Whips I*",
+            "fr": "Fouets cruels I"
+          },
+          "branch": "left",
+          "max": 15,
+          "requires": {
+            "sturdy-lances-i": 1
+          }
+        },
+        {
+          "id": "unnaturally-thick-hide-i",
+          "labels": {
+            "en": "Unnaturally Thick Hide I*",
+            "fr": "Peau anormalement épaisse I"
+          },
+          "branch": "middle",
+          "max": 15,
+          "requires": {
+            "sturdy-construction-i": 1
+          }
+        },
+        {
+          "id": "lead-production-ii",
+          "labels": {
+            "en": "Lead Production II*",
+            "fr": "Production de plomb II"
+          },
+          "branch": "right",
+          "max": 20,
+          "requires": {
+            "wood-production-ii": 1
+          }
+        },
+        {
+          "id": "keen-blades-i",
+          "labels": {
+            "en": "Keen Blades I*",
+            "fr": "Lames vives I"
+          },
+          "branch": "left",
+          "max": 15,
+          "requires": {
+            "cruel-whips-i": 1
+          }
+        },
+        {
+          "id": "crushing-impact-i",
+          "labels": {
+            "en": "Crushing Impact I*",
+            "fr": "Impact écrasant I"
+          },
+          "branch": "middle",
+          "max": 15,
+          "requires": {
+            "keen-blades-i": 1
+          }
+        },
+        {
+          "id": "stone-production-ii",
+          "labels": {
+            "en": "Stone Production II*",
+            "fr": "Production de pierre II"
+          },
+          "branch": "right",
+          "max": 20,
+          "requires": {
+            "lead-production-ii": 1
+          }
+        },
+        {
+          "id": "monstrous-blows-i",
+          "labels": {
+            "en": "Monstrous Blows I*",
+            "fr": "Coups monstrueux I"
+          },
+          "branch": "left",
+          "max": 15,
+          "requires": {
+            "keen-blades-i": 1
+          }
+        },
+        {
+          "id": "iron-production-ii",
+          "labels": {
+            "en": "Iron Production II*",
+            "fr": "Production de fer II"
+          },
+          "branch": "right",
+          "max": 20,
+          "requires": {
+            "stone-production-ii": 1
+          }
+        },
+        {
+          "id": "infantry-training-speed-ii",
+          "labels": {
+            "en": "Infantry Training Speed II*",
+            "fr": "Vitesse d'entraînement de l'Infanterie II"
+          },
+          "branch": "left",
+          "max": 30,
+          "requires": {
+            "monstrous-blows-i": 1
+          }
+        },
+        {
+          "id": "unholy-precision-ii",
+          "labels": {
+            "en": "Unholy Precision II*",
+            "fr": "Précision impie II"
+          },
+          "branch": "middle",
+          "max": 30,
+          "requires": {
+            "infantry-training-speed-ii": 1
+          }
+        },
+        {
+          "id": "construction-ii",
+          "labels": {
+            "en": "Construction II*",
+            "fr": "Construction II"
+          },
+          "branch": "right",
+          "max": null,
+          "requires": {
+            "iron-production-ii": 1
+          }
+        },
+        {
+          "id": "chariot-and-cavalry-training-speed-ii",
+          "labels": {
+            "en": "Chariot and Cavalry Training Speed II*",
+            "fr": "Vitesse d'entraînement des Chars et de la Cavalerie II"
+          },
+          "branch": "left",
+          "max": 30,
+          "requires": {
+            "infantry-training-speed-ii": 1
+          }
+        },
+        {
+          "id": "sturdy-lances-ii",
+          "labels": {
+            "en": "Sturdy Lances II*",
+            "fr": "Lances robustes II"
+          },
+          "branch": "middle",
+          "max": 30,
+          "requires": {
+            "chariot-and-cavalry-training-speed-ii": 1
+          }
+        },
+        {
+          "id": "rituals-ii",
+          "labels": {
+            "en": "Rituals II*",
+            "fr": "Rituels II"
+          },
+          "branch": "right",
+          "max": null,
+          "requires": {
+            "construction-ii": 1
+          }
+        },
+        {
+          "id": "monster-and-beast-training-speed-ii",
+          "labels": {
+            "en": "Monster and Beast Training Speed II*",
+            "fr": "Vitesse d'entraînement des Monstres et des Bêtes II"
+          },
+          "branch": "left",
+          "max": 30,
+          "requires": {
+            "chariot-and-cavalry-training-speed-ii": 1
+          }
+        },
+        {
+          "id": "cruel-whips-ii",
+          "labels": {
+            "en": "Cruel Whips II*",
+            "fr": "Fouets cruels II"
+          },
+          "branch": "middle",
+          "max": 30,
+          "requires": {
+            "monster-and-beast-training-speed-ii": 1
+          }
+        },
+        {
+          "id": "slave-driver-ii",
+          "labels": {
+            "en": "Slave Driver II*",
+            "fr": "Meneur d'esclaves II"
+          },
+          "branch": "right",
+          "max": null,
+          "requires": {
+            "rituals-ii": 1
+          }
+        },
+        {
+          "id": "unholy-fervour-ii",
+          "labels": {
+            "en": "Unholy Fervour II*",
+            "fr": "Ardeur impie II"
+          },
+          "branch": "left",
+          "max": 50,
+          "requires": {
+            "monster-and-beast-training-speed-ii": 1
+          }
+        },
+        {
+          "id": "unnaturally-thick-hide-ii",
+          "labels": {
+            "en": "Unnaturally Thick Hide II*",
+            "fr": "Peau anormalement épaisse II"
+          },
+          "branch": "middle",
+          "max": 50,
+          "requires": {
+            "unholy-fervour-ii": 1
+          }
+        },
+        {
+          "id": "food-production-iii",
+          "labels": {
+            "en": "Food Production III*",
+            "fr": "Production de nourriture III"
+          },
+          "branch": "right",
+          "max": 50,
+          "requires": {
+            "slave-driver-ii": 1
+          }
+        },
+        {
+          "id": "sturdy-construction-ii",
+          "labels": {
+            "en": "Sturdy Construction II*",
+            "fr": "Construction robuste II"
+          },
+          "branch": "left",
+          "max": 50,
+          "requires": {
+            "unholy-fervour-ii": 1
+          }
+        },
+        {
+          "id": "aura-of-chaos",
+          "labels": {
+            "en": "Aura of Chaos",
+            "fr": "Aura du Chaos"
+          },
+          "branch": "middle",
+          "max": 20,
+          "requires": {
+            "sturdy-construction-ii": 1
+          }
+        },
+        {
+          "id": "wood-production-iii",
+          "labels": {
+            "en": "Wood Production III*",
+            "fr": "Production de bois III"
+          },
+          "branch": "right",
+          "max": 50,
+          "requires": {
+            "food-production-iii": 1
+          }
+        },
+        {
+          "id": "defence-production-speed-ii",
+          "labels": {
+            "en": "Defence Production Speed II*",
+            "fr": "Vitesse de production des défenses II"
+          },
+          "branch": "left",
+          "max": 30,
+          "requires": {
+            "sturdy-construction-ii": 1
+          }
+        },
+        {
+          "id": "inspiring-presence",
+          "labels": {
+            "en": "Inspiring Presence",
+            "fr": "Présence inspirante"
+          },
+          "branch": "middle",
+          "max": 20,
+          "requires": {
+            "aura-of-chaos": 1
+          }
+        },
+        {
+          "id": "lead-production-iii",
+          "labels": {
+            "en": "Lead Production III*",
+            "fr": "Production de plomb III"
+          },
+          "branch": "right",
+          "max": 50,
+          "requires": {
+            "wood-production-iii": 1
+          }
+        },
+        {
+          "id": "savage-defence-ii",
+          "labels": {
+            "en": "Savage Defence II*",
+            "fr": "Défense sauvage II"
+          },
+          "branch": "left",
+          "max": 30,
+          "requires": {
+            "defence-production-speed-ii": 1
+          }
+        },
+        {
+          "id": "lead-the-charge",
+          "labels": {
+            "en": "Lead the Charge*",
+            "fr": "Mener la charge"
+          },
+          "branch": "middle",
+          "max": 20,
+          "requires": {
+            "inspiring-presence": 1
+          }
+        },
+        {
+          "id": "stone-production-iii",
+          "labels": {
+            "en": "Stone Production III*",
+            "fr": "Production de pierre III"
+          },
+          "branch": "right",
+          "max": 50,
+          "requires": {
+            "lead-production-iii": 1
+          }
+        },
+        {
+          "id": "chaos-armour",
+          "labels": {
+            "en": "Chaos Armour",
+            "fr": "Armure du Chaos"
+          },
+          "branch": "left",
+          "max": 20,
+          "requires": {
+            "lead-the-charge": 1
+          }
+        },
+        {
+          "id": "gaze-of-the-dark-gods",
+          "labels": {
+            "en": "Gaze of the Dark Gods*",
+            "fr": "Le regard des Dieux sombres"
+          },
+          "branch": "middle",
+          "max": 20,
+          "requires": {
+            "lead-the-charge": 1
+          }
+        },
+        {
+          "id": "iron-production-iii",
+          "labels": {
+            "en": "Iron Production III*",
+            "fr": "Production de fer III"
+          },
+          "branch": "right",
+          "max": 50,
+          "requires": {
+            "stone-production-iii": 1
+          }
+        }
+      ]
+    }
+  ]
+}

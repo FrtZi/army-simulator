@@ -111,6 +111,7 @@ scripts/
 ├── cctools.mjs          what the imports share: a saved page's data, a cost's item
 ├── import-rituals.mjs, import-structures.mjs   rituals.json and structures.json; levels.mjs: their levels read alike
 ├── import-item-sources.mjs  item-sources.json, where each item drops
+├── import-skills.mjs    champion-skills.json, the champion's two skill trees
 ├── import-champion.mjs  champion.json, the champion, its gear and sets
 ├── import-pve.mjs       pve.json, the PvE places and their troops
 ├── backlog*.mjs         the product backlog: its check and its page docs/backlog.md (npm run backlog)
@@ -129,6 +130,7 @@ tests/                   node --test; each test names the feature it proves
 ├── gear.test.js         the gear's rarities, a piece's set, the champion's figures, the set lab (GUIDE-05, 06, 09, BONUS-08)
 ├── ritual-map.test.js   the map to reach a ritual: prerequisites, states, the way, the steps (GUIDE-07)
 ├── items.test.js        the items by family, folded, a row's detail under it (GUIDE-08)
+├── skills.test.js       the champion's two skill trees and their points (BONUS-09)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)

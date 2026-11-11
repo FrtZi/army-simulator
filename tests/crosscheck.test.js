@@ -8,6 +8,7 @@ import { buildWarlords, formatWarlords, readGame, savedPages } from "../scripts/
 import { buildItems, formatItems, searchedName } from "../scripts/import-items.mjs";
 import { buildChampion, formatChampion, savedChampion } from "../scripts/import-champion.mjs";
 import { buildPve, formatPve, savedPve } from "../scripts/import-pve.mjs";
+import { formatSkills, savedSkills } from "../scripts/import-skills.mjs";
 import { buildRituals, formatRituals, savedRituals } from "../scripts/import-rituals.mjs";
 import { buildStructures, formatStructures, savedStructures } from "../scripts/import-structures.mjs";
 import { buildItemSources, formatItemSources, readItems, savedAnswer } from "../scripts/import-item-sources.mjs";
@@ -109,6 +110,17 @@ test(
     const units = JSON.parse(readFileSync(new URL("../data/chaos-conquest/units.json", import.meta.url), "utf8"));
     const made = formatPve(buildPve(places, answers, npcTroops, readGame(), units));
     assert.equal(readFileSync(new URL(`../data/${GAME}/pve.json`, import.meta.url), "utf8"), made);
+  },
+);
+
+const skillsPage = new URL(`../captures/${GAME}/sources/cctools/skills/vigour-distribution.html`, import.meta.url);
+
+test(
+  "BONUS-09 the skill trees' file is exactly what the import makes from the saved page and the screenshots",
+  { skip: !existsSync(skillsPage) },
+  () => {
+    const made = formatSkills(savedSkills());
+    assert.equal(readFileSync(new URL(`../data/${GAME}/champion-skills.json`, import.meta.url), "utf8"), made);
   },
 );
 

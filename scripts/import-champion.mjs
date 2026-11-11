@@ -68,6 +68,7 @@ function championOf(levels, context) {
     tier: list("tier"),
     xp: list("xp_required"),
     skillPoints: list("skill_points"),
+    monsterSkillPoints: list("monster_skill_points"), // the conquest skills' points (BL-30)
     ...own,
   };
 }

@@ -252,6 +252,16 @@ structure at a level), as the rituals'. `sets`: their `pieces`, and per bonus wh
 (a percentage, or `{ "flat": n }`). `slots`: in the game's order. `march`: the bonuses for the troops of the march
 the champion leads (`hero_march_unit_*`), as a piece's `march`; applied as D-30 says.
 
+## The champion's skill trees: `data/<game>/champion-skills.json` (BL-30)
+
+Written by `scripts/import-skills.mjs`, never by hand. `trees`: the conquest tree (cctools.cc's vigour-distribution
+page: 26 skills, their branch, most levels and prerequisites) and the champion tree (52 skills, from Frantz's
+screenshots of 2026-11-11, written by hand in `champion-tree.json`, each hanging from the one above it on the screen;
+the level asked and the most levels of the skills shown done, to confirm). Each skill: `id`, `labels` (French as the
+game writes it; English translated by us marked `*`), `branch`, `max`, `requires` ({ id: level }). Each tree names
+its pool of points in champion.json: `monsterSkillPoints` (conquest) or `skillPoints` (champion). What each level of
+a skill gives is not known yet.
+
 ## The PvE armies: `data/<game>/pve.json` (BL-20)
 
 Written by `scripts/import-pve.mjs` from cctools.cc's saved answers, never by hand. `troops`: each troop a PvE place
