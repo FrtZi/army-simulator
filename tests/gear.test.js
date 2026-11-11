@@ -24,17 +24,16 @@ test("GUIDE-05 a piece's levels are the game's rarities, each with its diamond a
   // Vambraces of Gore, five levels: Core to Legendary (the game's "Brassard d'avant-bras de sang")
   const page = openPiece({}, "gloves", "vambraces-of-gore");
   assert.deepEqual(optionsOf(page, "#guide-champion-level"), [
-    "1 · Core",
-    "2 · Uncommon",
-    "3 · Rare",
-    "4 · Epic",
-    "5 · Legendary",
+    "◆ 1 · Core",
+    "◆ 2 · Uncommon",
+    "◆ 3 · Rare",
+    "◆ 4 · Epic",
+    "◆ 5 · Legendary",
   ]);
   page.choose("#guide-champion-level", 3);
-  const badge = page.$("#guide-champion-detail .guide-level .rarity");
-  assert.equal(textOf(badge), "Rare");
-  assert.ok(badge.classList.contains("rarity-rare"), "its colour");
-  assert.ok(badge.querySelector("svg"), "its diamond");
+  // the list itself in the level's colour, its options with their diamond: no badge beside it (Frantz, 2026-11-11)
+  assert.ok(page.$("#guide-champion-level").classList.contains("rarity-rare"), "its colour");
+  assert.equal(page.$("#guide-champion-detail .guide-level .rarity"), null);
   assert.doesNotMatch(page.text("#guide-champion-detail .meta"), /Core/, "no rarity of its own besides its levels");
 });
 
@@ -42,12 +41,12 @@ test("GUIDE-05 the rarities read in French as the game writes them, Commun to É
   // Headsman's Skull Helm has six levels: up to Eternal
   const page = openPiece({ saved: "fr" }, "head", "skull-helm");
   assert.deepEqual(optionsOf(page, "#guide-champion-level"), [
-    "1 · Commun",
-    "2 · Peu commun",
-    "3 · Rare",
-    "4 · Épique",
-    "5 · Légendaire",
-    "6 · Éternel",
+    "◆ 1 · Commun",
+    "◆ 2 · Peu commun",
+    "◆ 3 · Rare",
+    "◆ 4 · Épique",
+    "◆ 5 · Légendaire",
+    "◆ 6 · Éternel",
   ]);
 });
 
@@ -69,10 +68,11 @@ test("GUIDE-05 a piece worn in Your setup shows the rarity of its level", () => 
   const page = openPage();
   page.click("#page-tab-setup");
   page.choose("#setup-gear-weapon", "chaos-gear-weapon");
-  assert.equal(textOf(page.$("#setup-gear-weapon").closest("li").querySelector(".rarity")), "Core");
+  assert.ok(page.$("#setup-gear-level-weapon").classList.contains("rarity-core"));
   page.choose("#setup-gear-level-weapon", 6);
-  assert.equal(textOf(page.$("#setup-gear-weapon").closest("li").querySelector(".rarity")), "Eternal");
-  assert.equal(page.$("#setup-gear-level-weapon option:checked").textContent, "6 · Eternal");
+  assert.ok(page.$("#setup-gear-level-weapon").classList.contains("rarity-eternal"));
+  assert.equal(page.$("#setup-gear-level-weapon option:checked").textContent, "◆ 6 · Eternal");
+  assert.equal(page.$("#setup-gear-weapon").closest("li").querySelector(".rarity"), null, "no badge beside it");
 });
 
 test("GUIDE-05 DEF-037 a piece's and a set's bonuses for the champion's march are shown, first, by name", () => {

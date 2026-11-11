@@ -10,7 +10,7 @@ import { t } from "../../texts/index.js";
 import { costBetween } from "../../../engine/index.js";
 import { pieceLevels } from "../../../storage/setup-champion.js";
 import { championFiguresHtml } from "../../champion-figures.js";
-import { gearLevelOptions, gearRarity, rarityBadge } from "../../rarity.js";
+import { gearLevelSelect, rarityBadge } from "../../rarity.js";
 import { itemLink } from "./costs.js";
 
 const data = () => currentGame().champion;
@@ -62,12 +62,12 @@ function slotRow(slot) {
     [["", t("setup.noPiece")], ...pieces.map((entry) => [entry.id, label(entry)])],
     current?.id ?? "",
   );
-  const rarity = current && gearRarity(current.level);
   const levels = current
-    ? `<select id="lab-level-${slot}" class="rarity-${rarity}" data-set-lab="level" data-slot="${slot}" aria-label="${escape(t("setup.pieceLevel", { slot: name }))}">${options(
-        gearLevelOptions(pieceLevels(piece(current.id))).map(([level, text]) => [level, `◆ ${text}`]),
+    ? gearLevelSelect(
+        `id="lab-level-${slot}" data-set-lab="level" data-slot="${slot}" aria-label="${escape(t("setup.pieceLevel", { slot: name }))}"`,
+        pieceLevels(piece(current.id)),
         current.level,
-      )}</select>`
+      )
     : "";
   return `<li class="lab-slot"><label for="lab-piece-${slot}">${slotIcon(slot)} ${escape(name)}</label>
     <select id="lab-piece-${slot}" data-set-lab="piece" data-slot="${slot}">${choice}</select>${levels}</li>`;
