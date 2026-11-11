@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/3 | 3/8 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/4 | 3/11 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
 
 ## Ready to start
@@ -28,6 +28,7 @@ Not done, and every dependency done:
 - [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ◐ doing)
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
+- [BL-30](#bl-30) A Champion lab: gear sets compared, stats by level, every bonus, its skill trees (v1.3, should, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
 - [BL-16](#bl-16) Optimiser: the best troop mix within the march capacity (later, could, ○ to do)
@@ -73,6 +74,7 @@ flowchart LR
   BL27["BL-27 ✓ done<br/>Several copies of a building in the setup"]:::done
   BL28["BL-28 ✓ done<br/>An uploaded file: each section added to what you have, or replacing it"]:::done
   BL29["BL-29 ✓ done<br/>Every block closes to a one-line summary"]:::done
+  BL30["BL-30 ○ to do<br/>A Champion lab: gear sets compared, stats by level, every bonus, its skill trees"]:::todo
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -348,6 +350,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-11](#bl-11) | Keep attack: the defences' first round, as a switch on a battle | must | [engine](../src/engine) | ○ to do | 0/3 |
 | [BL-12](#bl-12) | Keep defence: a fortress (defences and garrison) as the defending side | should | [ui](../src/ui) | ○ to do | 0/2 |
 | [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ✓ done | 3/3 |
+| [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ○ to do | 0/3 |
 
 <a id="bl-11"></a>
 #### BL-11 · Keep attack: the defences' first round, as a switch on a battle
@@ -378,6 +381,17 @@ What it needed of BL-08, the Your setup tab, is in; open question 22 settled on 
 - [x] Champion's 85 levels, gear (6 slots) and the 12 sets from cctools.cc, checked
 - [x] Its guide: the champion by level, each piece by level, the sets by pieces worn (GUIDE-03)
 - [x] In the setup: its level and a piece per slot; its gear's bonuses applied, its march's in the composition it leads (D-30)
+
+<a id="bl-30"></a>
+#### BL-30 · A Champion lab: gear sets compared, stats by level, every bonus, its skill trees
+
+Should · [ui](../src/ui) · ○ to do · added `2026-11-11` · features: BONUS-09
+
+Frantz, 2026-11-11: a new tab, like a Champion lab, to compare gear sets, the stats by level and the buffs, which reach far beyond battle (conquest damage, stamina, double reward, production, training). The 130 bonuses the site keeps by name are in the data; the setup and lab show only those applied in battle, on purpose. The skill trees (conquest, champion) are to place: the rituals' Champion category holds some (Bane of the Empire…).
+
+- [ ] Agreed with Frantz: what the tab shows, and the skill trees' data
+- [ ] The tab: the champion at a level, two gear sets side by side, every bonus by domain and their difference
+- [ ] Its two skill trees, with their levels
 
 ### later · Later, ideas kept
 
