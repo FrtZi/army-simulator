@@ -4,7 +4,7 @@ import { byId } from "../../dom.js";
 import { state } from "../../state.js";
 import { bindTablist } from "../../tablist.js";
 
-const PAGES = ["lab", "setup", "guides"];
+const PAGES = ["lab", "setup", "guides", "champion"]; // the Champion lab: BONUS-09
 
 /** Shows the tab of the page chosen, and only its panel; only the selected tab is in the tab order. */
 export function drawPageTabs() {

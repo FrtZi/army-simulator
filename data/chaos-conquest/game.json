@@ -531,5 +531,39 @@
         "fr": "Composants d'équipement"
       }
     }
+  ],
+  "bonusDomains": [
+    {
+      "id": "conquest",
+      "match": "^(hero-hunting|hunt-|hero-max-energy|hero-energy|hero-monster|monster-attack|hero-capture|hero-execute|hero-reward|hero-xp|hero-revive|hero-speed|random-reward)",
+      "labels": {
+        "en": "Champion and conquest",
+        "fr": "Champion et conquête"
+      }
+    },
+    {
+      "id": "battle-other",
+      "match": "(combat-modifier|^carrier-|^hero-city-unit|^broken-|unit-save|^march-unit-capacity|^rally-capacity|^structure-ranged|^attack-defender|^city-attacker|^march-contest)",
+      "labels": {
+        "en": "Battle, in other contexts",
+        "fr": "Combat, dans d'autres contextes"
+      }
+    },
+    {
+      "id": "economy",
+      "match": "(generate-modifier|produce-speed|cost-modifier|productionqueue|hospital|research-speed|structure-speed|protected|^bonus-|^march-gather|^march-rally-speed|^march-scout)",
+      "labels": {
+        "en": "Economy and logistics",
+        "fr": "Économie et logistique"
+      }
+    },
+    {
+      "id": "other",
+      "match": ".",
+      "labels": {
+        "en": "Other",
+        "fr": "Autres"
+      }
+    }
   ]
 }

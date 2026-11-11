@@ -335,3 +335,14 @@
   border: 1px solid var(--line);
   border-radius: 999px;
 }
+
+/* the Champion lab (BONUS-09): its two gear sets side by side, one above the other on a phone */
+.clab-sides {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.clab-side {
+  min-width: 0;
+}

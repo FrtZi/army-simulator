@@ -8,12 +8,12 @@ const FOLD_KEY = "army-simulator.folded";
 const BLOCKS = [
   ...["game", "load-setup", "bonuses", "army", "heroes", "profile", "compare", "dashboards", "saves"],
   ...["setup", "setup-files", "setup-warlords", "setup-troops", "setup-champion", "setup-rituals", "setup-buildings"],
-  ...["setup-capacity", "guides"],
+  ...["setup-capacity", "guides", "champion-level", "champion-gear", "champion-skills"],
 ];
 const fold = (page, id) => page.$(`#${id} > .fold-toggle`).click();
 const line = (page, id) => page.text(`#${id} > .fold-summary`);
 
-test("FOLD-01 each of the 18 blocks folds from its button to one line, and opens again", () => {
+test("FOLD-01 each of the 21 blocks folds from its button to one line, and opens again", () => {
   const page = openPage();
   for (const id of BLOCKS) {
     const toggle = page.$(`#${id} > .fold-toggle`);

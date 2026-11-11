@@ -13,6 +13,7 @@ import chaosConquestStructures from "../../data/chaos-conquest/structures.json" 
 import chaosConquestItemSources from "../../data/chaos-conquest/item-sources.json" with { type: "json" };
 import chaosConquestChampion from "../../data/chaos-conquest/champion.json" with { type: "json" };
 import chaosConquestPve from "../../data/chaos-conquest/pve.json" with { type: "json" };
+import chaosConquestSkills from "../../data/chaos-conquest/champion-skills.json" with { type: "json" };
 import { indexCatalogue } from "../engine/index.js";
 import { setupDictionary } from "../storage/setup-dictionary.js";
 
@@ -30,6 +31,7 @@ const DATA = {
     itemSources: chaosConquestItemSources,
     champion: chaosConquestChampion,
     pve: chaosConquestPve,
+    championSkills: chaosConquestSkills,
   },
 };
 

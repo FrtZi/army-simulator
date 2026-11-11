@@ -457,3 +457,15 @@ how many entries it removes before Apply. A section the file does not hold is ne
 
 - _Set aside:_ one choice for the whole file (a file of troops would wipe the heroes it does not hold, or keep a
   stray troop); replacing by default (the misread screenshot again).
+
+## D-37 · The Champion lab: its own page tab, every bonus by domain, the trees drawn as the rituals' (2026-11-11)
+
+Frantz asked for a tab to compare gear sets, the champion's stats by level and its buffs, which reach far beyond
+battle. It is a fourth page tab that starts from the saved setup and saves nothing: the champion at a level; two
+gear sets side by side, every bonus they give summed (champion-bonuses.js, each piece at its level, each set at its
+highest tier reached), in a domain given by game.json's `bonusDomains` rules; the two skill trees drawn by the
+rituals' tree code (ritual-tree.js), a skill's level set and the points spent against those the level gives.
+
+- _Set aside:_ more than two sets compared (two answer "this or that", a third crowds a phone); putting the lab in
+  the Guides (it is a workshop on the player's own champion, not a reference); the skills' bonuses guessed (cctools.cc
+  has the conquest tree's shape, not what each level gives; the champion tree is read from screenshots).

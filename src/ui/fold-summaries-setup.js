@@ -14,5 +14,9 @@ export const SETUP_SUMMARIES = {
   "setup-rituals": () => t("fold.entered", { figure: tile("rituals") }),
   "setup-buildings": () => t("fold.entered", { figure: tile("buildings") }),
   "setup-capacity": () => shown("#setup-capacity-total") || tile("capacity"),
+  // the Champion lab's blocks (BONUS-09)
+  "champion-level": () => `${shown("#clab-level option:checked")} · ${shown("#clab-figures .metric.key")}`,
+  "champion-gear": () => shown("#clab-compare summary") || t("clab.noGear"),
+  "champion-skills": () => shown("#clab-points"),
   guides: () => [shown(".guide-tabs [aria-selected=true]"), shown(".guide-detail h3")].filter(Boolean).join(" · "),
 };

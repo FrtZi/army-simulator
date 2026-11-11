@@ -80,6 +80,7 @@ src/ui/                  the page
 ├── ritual-tree.js       a rituals category as the game's tree, and the order and numbers it reads in (GUIDE-07)
 ├── rarity.js            a rarity as a badge, a piece's levels as rarities (GUIDE-05, D-31)
 ├── pve.js               a PvE army as the second side: its troops read like ours, a place chosen, its army (SIM-11)
+├── champion-bonuses.js  every bonus a gear set gives, by domain (BONUS-09)
 ├── champion-figures.js  the champion's stats and its gear's bonuses in all, in Your setup and the lab (BONUS-08)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;
 │                        hover.js: a dot's name while pointing at it; table.js: the chart as a table (D-24)
@@ -96,7 +97,8 @@ src/ui/                  the page
                          in warlords.js, the troops owned in troops.js, the rituals' and buildings' levels in levelled.js (the rituals chosen in their tree in ritual-tree.js), the champion in
                          champion.js, a file uploaded in
                          files.js, under review in import.js, drawn in review.js; D-27);
-                         and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
+                         the Champion lab: champion-lab (lab.js its state, draw.js the level, gear.js two sets compared,
+                         skills.js the trees, bind.js); and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
                          rituals' and buildings' in levelled.js and levelled-detail.js, the items' in items-table.js (by family) and items.js (one in detail), the champion's in champion.js, what going up costs in costs.js, the map to reach a ritual in ritual-map.js, the set lab in set-lab.js)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
@@ -130,6 +132,7 @@ tests/                   node --test; each test names the feature it proves
 ├── gear.test.js         the gear's rarities, a piece's set, the champion's figures, the set lab (GUIDE-05, 06, 09, BONUS-08)
 ├── ritual-map.test.js   the map to reach a ritual: prerequisites, states, the way, the steps (GUIDE-07)
 ├── items.test.js        the items by family, folded, a row's detail under it (GUIDE-08)
+├── champion-lab.test.js  the Champion lab: level, two sets compared, the trees (BONUS-09)
 ├── skills.test.js       the champion's two skill trees and their points (BONUS-09)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)

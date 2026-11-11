@@ -1,0 +1,25 @@
+// The Champion lab's texts in English (BONUS-09). The same keys as fr-clab.js (tested).
+export const EN_CLAB = {
+  "tabs.champion": "Champion lab",
+  "clab.levelTitle": "The champion at a level",
+  "clab.levelHint": "Its figures at the level chosen. The lab starts from your saved setup and saves nothing.",
+  "clab.championPoints": "Champion skill points",
+  "clab.conquestPoints": "Conquest skill points",
+  "clab.gearTitle": "Two gear sets side by side",
+  "clab.gearHint":
+    "A piece per slot at a rarity, or a set to put its pieces in place; below, every bonus the two give, in battle and beyond.",
+  "clab.side-a": "Set A",
+  "clab.side-b": "Set B",
+  "clab.gap": "B − A",
+  "clab.domain-battle": "In battle",
+  "clab.bonusCount": "· {n} bonuses",
+  "clab.noGear": "Choose pieces on either side to see what they give.",
+  "clab.skillsTitle": "Its skill trees",
+  "clab.skillsHint":
+    "Choose a skill in its tree to set its level. What each level gives is not known yet: the trees count the points taken.",
+  "clab.tree": "Tree",
+  "clab.points": "Spent: {spent} of the {given} points level {level} gives",
+  "clab.pointsOver": "{spent} points spent, more than the {given} level {level} gives",
+  "clab.skillLevel": "Level of {name}",
+  "clab.maxUnknown": "(most levels not known)",
+};

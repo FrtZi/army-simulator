@@ -113,7 +113,7 @@ function openLab(options) {
 
 test("GUIDE-09 the set lab: a set chosen puts its pieces in their slots and filters the lists; level and rarity in one list", () => {
   const page = openLab();
-  assert.equal(page.$$(".lab-slot .slot-icon svg").length, 6, "a pictogram per slot");
+  assert.equal(page.$$("#guide-champion-detail .lab-slot .slot-icon svg").length, 6, "a pictogram per slot");
   assert.equal(page.$("#lab-piece-weapon").value, "", "nothing worn: no setup saved");
   page.choose("#lab-set", "chosen-set-bonus");
   // champion.json: the Chosen Set Bonus, a piece for each of the six slots

@@ -74,6 +74,10 @@ for (const language of ["en", "fr"]) {
     assert.deepEqual(await violations(page), [], "champion's gear");
     page.choose("#guide-champion-view", "sets");
     assert.deepEqual(await violations(page), [], "champion's sets");
+    // the Champion lab: two gear sets compared, a skill tree (BONUS-09)
+    page.click("#page-tab-champion");
+    page.choose("#clab-set-b", "chosen-set-bonus");
+    assert.deepEqual(await violations(page), [], "champion lab");
   });
 }
 

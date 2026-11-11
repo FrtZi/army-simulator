@@ -504,7 +504,8 @@ features = ["BONUS-09"]
 note = "Frantz, 2026-11-11: a new tab, like a Champion lab, to compare gear sets, the stats by level and the buffs, which reach far beyond battle (conquest damage, stamina, double reward, production, training). The 130 bonuses the site keeps by name are in the data; the setup and lab show only those applied in battle, on purpose. The skill trees (conquest, champion) are to place: the rituals' Champion category holds some (Bane of the Empire…)."
 tasks = [
   "[x] Agreed with Frantz (2026-11-11); the skill trees' data: the conquest tree from cctools.cc, the champion tree from his screenshots, both in French (champion-skills.json)",
-  "[ ] The tab: the champion at a level, two gear sets side by side, every bonus by domain and their difference",
-  "[ ] Its two skill trees, with their levels",
+  "[x] The tab: the champion at a level, two gear sets side by side, every bonus by domain and their difference",
+  "[x] Its two skill trees, drawn as the rituals', with their levels and points",
+  "[ ] What each level of a skill gives (not on cctools.cc: from the game's tooltips)",
 ]
 
