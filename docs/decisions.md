@@ -637,3 +637,23 @@ from; each step of the path opens on its cost. The model's map is, for now, the 
 - _Set aside:_ the page's own fold buttons for these blocks (they are bound once, at load; the blocks are redrawn with
   each run: the native element folds by itself and keeps the keyboard); the tabs' panels drawn only when shown (all
   are drawn, the others hidden: a test or a screen reader finds the same content whichever tab is open).
+
+## D-48 · The army found in detail, its power two ways, X or Y (2026-11-16)
+
+The rest of the tab "With what I have", and X or Y, as the mockups were agreed, for Frantz to test. The detail is
+weighed on damage × health (the all-round score) whatever the goal, the troops and heroes kept, so a source's weight
+reads alike for every goal: what the army would lose without it, as a share. Its blocks: what weighs most among the
+heroes' talents, the champion (its gear and skills, its march's), the rituals, the buildings and the setup's own
+bonuses; the champion with its stats at its level, its bonuses summed and its sets (the figures Your setup already
+draws, BONUS-08); the rituals held that touch a troop of the army, each with its effects there and its weight, edged in
+its god's colour when it is a god's; the bonuses summed by stat and troops, one column per source. **The power two ways**:
+the game's (the troops' and heroes' own) and with every bonus, the game's times what the bonuses add to damage × health
+(the definition proposed to Frantz, to confirm). On a real account's setup: rituals −45 %, talents −17 %, champion
+−2 %; power ×2.4.
+
+X or Y: two aims ticked freely, gods and troop types as the aim above, each side's best army for the goal chosen
+against the best with no aim, the better of the two marked with an icon and words; a side no troop owned fits says so.
+
+- _Set aside for now:_ the aims suggested (every simple aim tried: some twenty searches, too slow until the search is
+  sped up again, which Frantz set for later); each bonus's own weight in the synthesis (a column of weights per row:
+  the sources' and rituals' weights say most of it).

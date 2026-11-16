@@ -76,7 +76,8 @@ src/ui/                  the page
 ├── player-setup.js      the player's setup on the page: the one edited, the last saved, what differs (D-27)
 ├── lab-setup.js         the saved setup in the Battle lab: heroes owned at their levels, capacity, bonuses
 ├── optimiser.js         the optimiser on the page: what Your setup gives the search, an aim (SIM-05, SIM-12);
-│                        optimiser-scores.js the goal's scores and the opponent; optimiser-path.js the path
+│                        optimiser-scores.js the goal's scores and the opponent; optimiser-path.js the path;
+│                        optimiser-detail.js the army found in detail: weights, rituals, synthesis, power (SIM-19, SIM-20)
 ├── render.js            the render pipeline: what to redraw after a change
 ├── texts/               the page's texts: en.js + en-more, en-dash, en-heroes, en-setup, and the same in French
 │                        (same keys), t()
@@ -104,7 +105,8 @@ src/ui/                  the page
                          load (the "Load your setup" switch), bonuses, army (+ compositions), picker, heroes
                          (+ picker.js; heroes.js beside state.js works out a composition's heroes), optimiser (the best army with
                          your setup: the goal, the aim, the button in draw.js; its tabs: map.js the model's map,
-                         have.js with what I have, path.js to improve; blocks.js a folding block, words.js the
+                         have.js with what I have (have-detail.js its detail), xy.js X or Y, path.js to improve;
+                         blocks.js a folding block, words.js the
                          results in words; optimiser.css),
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
@@ -159,6 +161,7 @@ tests/                   node --test; each test names the feature it proves
 ├── linked.test.js       every branch linked: a capacity talent's troops, in the search and the path (DEF-048)
 ├── optimiser-speed.test.js  a real account's scale: the same army, far fewer judged (DEF-049)
 ├── optimiser-tabs.test.js   the optimiser's tabs, its folding blocks, the gods' colours (SIM-18, SIM-19)
+├── optimiser-detail.test.js the army in detail, its power two ways, X or Y (SIM-19, SIM-20, SIM-21)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)

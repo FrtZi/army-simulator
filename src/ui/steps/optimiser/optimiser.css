@@ -90,3 +90,25 @@
 .mark-tzeentch {
   --god: var(--tzeentch);
 }
+
+.opt-aim {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin: 0.5rem 0;
+  padding: 0.25rem 0.75rem;
+}
+
+.opt-xys {
+  margin-top: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.opt-xy {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+}
+
+.opt-badge {
+  color: var(--good);
+}

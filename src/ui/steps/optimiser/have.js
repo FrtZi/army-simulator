@@ -8,6 +8,7 @@ import { t } from "../../texts/index.js";
 import { talentName } from "../heroes/draw.js";
 import { offeredTalents } from "../../../engine/index.js";
 import { block, godClass } from "./blocks.js";
+import { detailBlocks, powerText } from "./have-detail.js";
 import { aimLine, comparedLine, compositionName } from "./words.js";
 
 const total = (troops) => Object.values(troops).reduce((sum, count) => sum + count, 0);
@@ -18,7 +19,8 @@ function summaryBlock(result) {
     n: number(total(result.composition.troops)),
     capacity: number(result.capacity),
   });
-  const body = `<p>${escape(comparedLine(result))}</p>${aim ? `<p>${escape(aim)}</p>` : ""}`;
+  const power = `<p>${escape(powerText(result.detail))}</p><p class="hint">${escape(t("optimiser.powerHint"))}</p>`;
+  const body = `<p>${escape(comparedLine(result))}</p>${aim ? `<p>${escape(aim)}</p>` : ""}${power}`;
   return block("summary", t("optimiser.summary"), line, body);
 }
 
@@ -69,6 +71,7 @@ function heroesBlock(result) {
 
 /** The tab: the summary, the troops, the heroes and talents, and where to put the army found. */
 export const havePanel = (result) => `${summaryBlock(result)}${troopsBlock(result)}${heroesBlock(result)}
+  ${detailBlocks(result.detail)}
   <div class="file-actions">
     <button id="optimiser-use" type="button" class="secondary">${escape(t("optimiser.use", { name: compositionName() }))}</button>
     <button id="optimiser-new" type="button" class="secondary">${escape(t("optimiser.useNew"))}</button>

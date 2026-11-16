@@ -12,10 +12,11 @@ import { sizeBars } from "../dashboards/balance.js";
 import { havePanel } from "./have.js";
 import { mapPanel } from "./map.js";
 import { upPanel } from "./path.js";
+import { xyPanel } from "./xy.js";
 import { compositionName, opponentName } from "./words.js";
 
 /** The tabs, in their order, and how each draws the army found. */
-export const TABS = { map: mapPanel, have: havePanel, up: upPanel };
+export const TABS = { map: mapPanel, have: havePanel, xy: xyPanel, up: upPanel };
 
 /** The status line: why it cannot run, or what the last run found, or what was put in the composition. */
 function statusText(reason) {

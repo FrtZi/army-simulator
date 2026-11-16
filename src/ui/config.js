@@ -38,6 +38,7 @@ export const CONFIG = {
     guess: { damage: 0.5, health: 0.5 },
     // an aim (SIM-12): a god, a troop type; never a tier, as small troops take the strikes first (D-41)
     aimFilters: ["alignment", "unitType"],
+    xyTroops: 5, // X or Y: the largest troops shown on each side (SIM-21)
     pathSteps: 10, // the path's steps shown, the most gain first (D-42)
   },
 };

@@ -10,6 +10,7 @@ import { asPlayed, troopsOwned } from "./lab-setup.js";
 import { matchesFilters } from "./filters.js";
 import { goalOf, heroesOwned, offered, opponent, opponentChosen, scores } from "./optimiser-scores.js";
 import { pathFrom } from "./optimiser-path.js";
+import { detailOf } from "./optimiser-detail.js";
 import { addComposition } from "./compositions.js";
 import { combinations, optimise, wholePlaces } from "../engine/index.js";
 
@@ -18,9 +19,9 @@ export { goalOf, opponentChosen, opponents } from "./optimiser-scores.js";
 /** Whether an aim is ticked: a god or a troop type (SIM-12). */
 export const aiming = () => Object.values(state.optimiser.aim).some((values) => values.length);
 
-/** The troops owned the aim keeps: those matching every filter ticked (all of them with no aim). */
-const aimed = (owned) =>
-  new Map([...owned].filter(([id]) => matchesFilters(currentGame().catalogue.units.get(id), state.optimiser.aim)));
+/** The troops owned an aim keeps: those matching every filter ticked (all of them with none); the aim chosen above. */
+const aimed = (owned, aim = state.optimiser.aim) =>
+  new Map([...owned].filter(([id]) => matchesFilters(currentGame().catalogue.units.get(id), aim)));
 
 /** Why the optimiser cannot run for this goal now, as a text key; null when it can. */
 export function blocked(goal) {
@@ -81,7 +82,34 @@ export function runOptimiser() {
   const current = empty ? null : judges.score({ troops, heroes: playing ?? [], talents: talents ?? [] });
   const versus = goal.battle ? opponentChosen() : null;
   const path = pathFrom(found, goal, aimed(owned));
-  return { goal: goal.id, ...found, current, free, capacity, opponent: versus, path, map: mapOf(owned, capacity) };
+  const detail = detailOf(found.composition);
+  return {
+    goal: goal.id,
+    ...found,
+    current,
+    free,
+    capacity,
+    opponent: versus,
+    path,
+    map: mapOf(owned, capacity),
+    detail,
+  };
+}
+
+/**
+ * X or Y (SIM-21): each aim's best army for the goal chosen, against the best with no aim (the army found, or its
+ * "free" score when it was aimed): { x, y }, each { composition, score } or null when no troop owned fits it.
+ */
+export function runAims(aims) {
+  const goal = goalOf(state.optimiser.goal);
+  const owned = troopsOwned(state);
+  const judges = scores(goal);
+  const side = (aim) => {
+    const kept = aimed(owned, aim);
+    return kept.size ? search(kept, judges) : null;
+  };
+  const { result } = state.optimiser;
+  return { goal: goal.id, x: side(aims.x), y: side(aims.y), free: result.free ?? result.score };
 }
 
 /** Puts the army found in the composition being edited, or in a new one (`into` "new"): its troops, heroes, talents. */

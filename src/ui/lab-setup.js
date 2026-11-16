@@ -64,17 +64,28 @@ function skillSource(state, game, part) {
  */
 export function setupSourceEffects(state, game) {
   if (!state.useSetup) return [];
+  return resolveSources(Object.values(setupSources(state, game)).flat());
+}
+
+/** The saved setup's sources by kind, as the resolver reads them (the optimiser weighs each, D-48). */
+export function setupSources(state, game) {
   const { rituals, buildings } = state.savedPlayerSetup;
-  return resolveSources([
-    { kind: "ritual", catalogue: { effects: game.rituals.effects, entries: game.rituals.rituals }, levels: rituals },
-    {
-      kind: "building",
-      catalogue: { effects: game.structures.effects, entries: game.structures.structures },
-      levels: eachCopy(buildings), // each copy gives its bonus (D-33)
-    },
-    { kind: "champion", catalogue: game.champion, gear: championGear(state), part: "general" },
-    skillSource(state, game, "general"),
-  ]);
+  return {
+    rituals: [
+      { kind: "ritual", catalogue: { effects: game.rituals.effects, entries: game.rituals.rituals }, levels: rituals },
+    ],
+    buildings: [
+      {
+        kind: "building",
+        catalogue: { effects: game.structures.effects, entries: game.structures.structures },
+        levels: eachCopy(buildings), // each copy gives its bonus (D-33)
+      },
+    ],
+    champion: [
+      { kind: "champion", catalogue: game.champion, gear: championGear(state), part: "general" },
+      skillSource(state, game, "general"),
+    ],
+  };
 }
 
 /** The troops the saved setup owns, with the setup loaded and a troops section filled (D-34); else null. */

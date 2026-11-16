@@ -4,7 +4,7 @@ import { byId } from "../../dom.js";
 import { toggleChoice } from "../../filters.js";
 import { bindTablist } from "../../tablist.js";
 import { TABS } from "./draw.js";
-import { runOptimiser, useFound } from "../../optimiser.js";
+import { runAims, runOptimiser, useFound } from "../../optimiser.js";
 import { state } from "../../state.js";
 import { renderAll } from "../../render.js";
 
@@ -46,7 +46,20 @@ export function bindOptimiser() {
     state.optimiser = { ...state.optimiser, result: runOptimiser() ?? false, applied: false };
     renderAll();
   });
+  // X or Y (SIM-21): a side's aim ticked clears the comparison; the button runs both sides
+  byId("optimiser-result").addEventListener("change", (event) => {
+    const side = event.target.closest?.("[id^=optimiser-xy-]")?.id.slice(-1);
+    if (!side || !event.target.dataset.multi) return;
+    toggleChoice(state.optimiserXY.aims[side], event.target);
+    state.optimiserXY.result = null;
+    renderAll();
+  });
   byId("optimiser").addEventListener("click", (event) => {
+    if (event.target.id === "optimiser-xy-run") {
+      state.optimiserXY.result = runAims(state.optimiserXY.aims);
+      renderAll();
+      return;
+    }
     const into = { "optimiser-use": "edited", "optimiser-new": "new" }[event.target.id];
     if (!into) return;
     useFound(into);

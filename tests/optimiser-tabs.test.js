@@ -31,12 +31,12 @@ function run() {
   return page;
 }
 
-test("SIM-18 the results in three tabs, with what I have shown first, the others a click away", () => {
+test("SIM-18 the results in four tabs, with what I have shown first, the others a click away", () => {
   const page = run();
   const selected = () => page.$$("#optimiser-tabs [role=tab]").filter((tab) => tab.ariaSelected === "true");
   assert.deepEqual(
     page.$$("#optimiser-tabs [role=tab]").map((tab) => tab.textContent),
-    ["Model's map", "With what I have", "To improve"],
+    ["Model's map", "With what I have", "X or Y", "To improve"],
   );
   assert.deepEqual(
     selected().map((tab) => tab.id),
@@ -75,7 +75,7 @@ test("SIM-18 every block folds, its line still shown, and stays closed across ru
 
 test("SIM-19 the gods' colours: each troop's bar and each hero's card in its god's colour, its god written beside", () => {
   const page = run();
-  const bars = page.$$("#opt-panel-have .share-bar span").map((bar) => bar.className);
+  const bars = page.$$('#opt-panel-have [data-block="troops"] .share-bar span').map((bar) => bar.className);
   assert.ok(bars.length >= 2 && bars.every((name) => /^mark-(khorne|nurgle)$/.test(name)), bars.join(", "));
   const cards = page.$$("#opt-panel-have .opt-hero");
   for (const card of cards) {

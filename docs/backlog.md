@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/9 | 18/30 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/9 | 22/31 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/9 | 2/12 | — |
 
 ## Ready to start
@@ -372,7 +372,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ◐ doing | 4/5 |
 | [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ✓ done | 2/2 |
 | [BL-37](#bl-37) | The march capacity from the levels: the keep's base, the capacity rituals applied | should | [data](../data) | ◐ doing | 1/2 |
-| [BL-38](#bl-38) | The optimiser's page as agreed: four tabs, every block folding, the gods' colours, the detail of the army | should | [ui](../src/ui) | ◐ doing | 1/5 |
+| [BL-38](#bl-38) | The optimiser's page as agreed: four tabs, every block folding, the gods' colours, the detail of the army | should | [ui](../src/ui) | ◐ doing | 5/6 |
 
 <a id="bl-11"></a>
 #### BL-11 · Keep attack: the defences' first round, as a switch on a battle
@@ -467,10 +467,11 @@ Should · [ui](../src/ui) · ◐ doing · added `2026-11-16` · after [BL-31](#b
 Frantz, 2026-11-16, on the mockups: the talents under the heroes, the champion with its stats and set in its own block, the rituals acting on the army and the bonuses summed up, the power with every bonus beside the game's; a tab with the model's map; X or Y with any aim, and a path suggested from the troops, heroes and talents; everything opens and closes.
 
 - [x] The tabs and the folding blocks; the summary, troops, heroes and talents; the path; the map's figures (D-47)
-- [ ] The champion, the rituals acting on the army, the bonus synthesis, each source's weight
-- [ ] The power with every bonus beside the game's
-- [ ] X or Y with two free aims; the aims suggested
-- [ ] The path in its tab, each step's cost folded; the model's map
+- [x] The champion, the rituals acting on the army, the bonus synthesis, each source's weight (D-48)
+- [x] The power with every bonus beside the game's (D-48; its definition to confirm)
+- [x] X or Y with two free aims (D-48)
+- [ ] The aims suggested from the troops, heroes and talents held (once the search is faster)
+- [x] The path in its tab, each step's cost folded; the model's map as its figures (D-47; its tree with SIM-14)
 
 ### later · Later, ideas kept
 

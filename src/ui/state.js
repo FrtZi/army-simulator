@@ -63,6 +63,7 @@ export const state = {
   // closed (SIM-18), kept across runs
   optimiser: { goal: CONFIG.optimiser.goals[0].id, aim: {}, opponent: "", result: null, applied: false },
   optimiserView: { tab: "have", closed: new Set() },
+  optimiserXY: { aims: { x: {}, y: {} }, result: null }, // X or Y: two aims ticked, their armies (SIM-21)
   dashboard: "efficiency", // the dashboard tab shown
   efficiencyFilters: {}, // the charts' filters: building, tier, alignment → the values ticked
   highlightComposition: false, // the charts darken the troops outside the composition being edited
