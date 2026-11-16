@@ -123,20 +123,24 @@ export function validEffects() {
 }
 
 /**
- * A composition as the engine sees it: its troops with every bonus, its talents' included, and its heroes. `shared`:
- * the bonuses every composition shares (validEffects), passed in by a caller that sums many armies (the optimiser).
+ * A composition as the engine sees it, its heroes played as given: its troops with every bonus, its talents' included,
+ * and its heroes. `shared`: the bonuses every composition shares (validEffects), passed in by a caller that sums many
+ * armies. The optimiser's path plays a hero not owned yet, or one level up, so it skips asPlayed (D-42).
  */
-export function summarise(composition, against = new Set(), shared = validEffects()) {
+export function summariseAsGiven(composition, against = new Set(), shared = validEffects()) {
   const game = currentGame();
-  const played = asPlayed(composition, state);
   const march = championMarchEffects(state, game, composition).filter((effect) => !problemsOf(effect).length);
-  const talents = talentsOf(played, game);
+  const talents = talentsOf(composition, game);
   // against a PvE army of one race, a talent for that race counts too (Combat Bonus vs. Empire)
   const versus = raceTalentEffects(talents, game.game.talentCodes, against);
   const effects = [...shared, ...talents.effects, ...march, ...versus];
   const limits = { marchCapacity: capacityInPlay(state).base };
-  return summariseArmy(composition.troops, game.catalogue, effects, limits, heroUnits(played, game));
+  return summariseArmy(composition.troops, game.catalogue, effects, limits, heroUnits(composition, game));
 }
+
+/** A composition as the engine sees it, as it plays: with the setup loaded, only the heroes owned, at their levels. */
+export const summarise = (composition, against, shared) =>
+  summariseAsGiven(asPlayed(composition, state), against, shared);
 
 /** The composition being edited as the engine sees it, and its profile. */
 export function currentArmy() {

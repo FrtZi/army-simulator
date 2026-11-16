@@ -10,6 +10,7 @@ import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { talentName } from "../heroes/draw.js";
 import { multiFilter } from "../../filters.js";
+import { pathHtml } from "./path.js";
 import { offeredTalents } from "../../../engine/index.js";
 
 export const compositionName = () => state.composition.name || String(state.active + 1);
@@ -76,6 +77,7 @@ function foundHtml(result) {
       talents.map((id) => `${talentName(id)} +${number(percentOf(id), 1)} %`),
       t("optimiser.noTalent"),
     )}
+    ${pathHtml(result)}
     <button id="optimiser-use" type="button" class="secondary">${escape(t("optimiser.use", { name: compositionName() }))}</button>`;
 }
 

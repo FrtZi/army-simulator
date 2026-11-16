@@ -50,7 +50,8 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 ├── profile.js           the army's profile: damage, tanking (health, armour), morale, speed, load, upkeep
 ├── compare.js           two armies: each figure, its difference and the better one, both battles (SIM-03)
 ├── insights.js          the dashboards' figures: efficiency, rounds, balance and warnings, pros and cons
-└── optimise.js          the optimiser: a search tree pruned at each level, the caller's scores as its judge (SIM-05)
+├── optimise.js          the optimiser: a search tree pruned at each level, the caller's scores as its judge (SIM-05)
+└── path.js              the path: each hero to get or raise, by its gain on the army found (SIM-12)
 src/storage/             no DOM: configuration.js (setup ↔ file format version 2, checks), migrate.js (an older
                          file brought up to date), browser.js (saves, the Champion lab's included); the player's setup file (D-27):
                          setup-file.js (read and checked value by value, written back; setup-checks.js: what its
@@ -98,7 +99,7 @@ src/ui/                  the page
                          page (language, theme, the page tabs: tabs.html, tabs.js), game, then the Battle lab's:
                          load (the "Load your setup" switch), bonuses, army (+ compositions), picker, heroes
                          (+ picker.js; heroes.js beside state.js works out a composition's heroes), optimiser (the best army with
-                         your setup: the goal, the army found, put in the composition),
+                         your setup: the goal, the army found, put in the composition; path.js the path under it),
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
@@ -146,6 +147,7 @@ tests/                   node --test; each test names the feature it proves
 ├── champion-saves.test.js   the Champion lab's setups saved, one played in the Battle lab (CFG-10)
 ├── optimiser.test.js    the optimiser: against simple armies and every choice, then on the page (SIM-05)
 ├── optimiser-aim.test.js  an aim: only its troops, what it costs now, on the page (SIM-12)
+├── path.test.js         the path: gains counted by hand, then on the page (SIM-12)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)

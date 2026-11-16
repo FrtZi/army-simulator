@@ -65,7 +65,7 @@ function guessTalents(branch, offered, { guess, max, gains }) {
 }
 
 /** A branch's talents chosen one by one, each time the one the exact score rises most with, up to `max`. */
-function chooseTalents(branch, ids, { score, max }) {
+export function chooseTalents(branch, ids, { score, max }) {
   let best = { composition: { ...branch, talents: [] }, score: score({ ...branch, talents: [] }) };
   while (best.composition.talents.length < max) {
     const tries = ids

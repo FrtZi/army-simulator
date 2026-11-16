@@ -539,3 +539,23 @@ by how much the best army without it scores more (or, for a battle, how that bat
   belong to the path, the second half: what to get next, by its gain for its cost).
 - _Taken back:_ the tiers among the aim's filters (Frantz, 2026-11-16: it makes no sense, and many smaller troops can
   take the strikes, as damage falls on the lowest tier first, D-16: an aim by tier would leave them out).
+
+## D-42 · The path, its heroes first: by gain on the army found, the cost shown (2026-11-16)
+
+Frantz chose the gain first: the cost matters little for now, and weighing it belongs to a later plan (BL-35). The
+path starts from the army found (within the aim, if any) and its first steps are the heroes: each hero not owned, got
+at level 1, and each one owned below the top, raised by one level. A step's gain is the best that army reaches with it,
+its troops kept: the hero in place of each one of the trio, or beside them with a place free, or itself raised when in
+the trio, the talents chosen again each time by the exact score. A hero owned is judged at its own level too, so its
+gain is what the level adds, not a better trio the search had missed. The ten steps that gain most are listed, each
+with its gain (a percentage of the goal's score, or power in the battle's margin) and its cost summed as the guides sum
+it (D-29). It adds about a third of a second to a search.
+
+The path plays heroes the setup does not hold (one not owned, one a level up): the optimiser's scores take a
+composition's heroes as given (`summariseAsGiven` in state.js), the composition edited still played through the
+setup's heroes owned (`summarise`).
+
+- _Set aside for now:_ the other steps (rituals, buildings, gear, champion skills, prerequisites first): next, one
+  kind at a time; a hero's next rank instead of its next level (a level is the game's own step; a rank is five of
+  them, and the path can be read on); the whole search run again for each step (a second or so each: thirty steps would
+  take half a minute, for gains the trio's swaps already show).

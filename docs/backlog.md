@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/7 | 13/20 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/7 | 14/21 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/8 | 2/11 | — |
 
 ## Ready to start
@@ -362,7 +362,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ✓ done | 3/3 |
 | [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | should | [engine](../src/engine) | ✓ done | 3/3 |
 | [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 4/5 |
-| [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ◐ doing | 1/2 |
+| [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ◐ doing | 2/3 |
 | [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ✓ done | 2/2 |
 
 <a id="bl-11"></a>
@@ -425,7 +425,8 @@ Should · [engine](../src/engine) · ◐ doing · added `2026-11-16` · after [B
 Frantz, 2026-11-16: the optimum for a characteristic I want (pro Nurgle, pro cavalry and chariots), leading to evolution suggestions: what to pick, which hero to raise, which talents; my path, shown with a small guide.
 
 - [x] The aim in the optimiser: only the troops it names, and what it costs now (D-41)
-- [ ] The path: each step by gain for its cost, prerequisites first, shown with a short guide
+- [x] The path, its heroes: each hero to get or raise by its gain on the army found, the cost shown (D-42)
+- [ ] The path's other steps: rituals, buildings, gear, champion skills, prerequisites first, with a short guide
 
 <a id="bl-32"></a>
 #### BL-32 · The Champion lab's setups saved, one played in the Battle lab
