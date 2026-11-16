@@ -527,6 +527,7 @@ features = ["SIM-12"]
 note = "Frantz, 2026-11-16: the optimum for a characteristic I want (pro Nurgle, pro cavalry and chariots), leading to evolution suggestions: what to pick, which hero to raise, which talents; my path, shown with a small guide."
 tasks = [
   "[x] The aim in the optimiser: only the troops it names, and what it costs now (D-41)",
+  "[x] The best with no aim never below an aimed one: each god's troops first in a start of every trio (D-49, DEF-054)",
   "[x] The path, its heroes: each hero to get or raise by its gain on the army found, the cost shown (D-42)",
   "[x] The path's rituals and buildings: one level up, those whose prerequisites are held (D-43)",
   "[x] The path's champion: a piece raised or put on, a skill one level up (D-44)",

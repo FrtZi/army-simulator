@@ -155,6 +155,7 @@ tests/                   node --test; each test names the feature it proves
 ├── champion-saves.test.js   the Champion lab's setups saved, one played in the Battle lab (CFG-10)
 ├── optimiser.test.js    the optimiser: against simple armies and every choice, then on the page (SIM-05)
 ├── optimiser-aim.test.js  an aim: only its troops, what it costs now, on the page (SIM-12)
+├── optimiser-free.test.js the best with no aim never below an aimed one (SIM-12, DEF-054)
 ├── path.test.js         the path: gains counted by hand, then on the page (SIM-12)
 ├── path-levelled.test.js  the path's rituals and buildings: a worked tree, then the page (SIM-12)
 ├── path-champion.test.js  the path's champion: pieces and skills on a worked case, then the page (SIM-12)

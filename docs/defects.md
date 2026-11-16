@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **53 defects**: 53 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **54 defects**: 54 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -66,6 +66,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-051](#def-051) | 2026-11-16 | In French every troop's bar was full in the optimiser | code | minor | ✓ fixed |
 | [DEF-052](#def-052) | 2026-11-16 | The optimiser's hero names took a god's colour checked for marks only | code | minor | ✓ fixed |
 | [DEF-053](#def-053) | 2026-11-16 | The optimiser left a talent's places empty on a real account | code | major | ✓ fixed |
+| [DEF-054](#def-054) | 2026-11-16 | The best army with no aim scored below a god's best | code | major | ✓ fixed |
 
 ## Entries
 
@@ -741,4 +742,17 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Result:** Every place filled on that setup (61,500 of 61,500); with a thousand of each troop and a trio raising the capacity, the test fills 61,500 and fails with the twelve alone (50,000).
 - **Lesson:** A shortcut over a search is checked on the case it can starve, not only on the case it speeds up: here, the best being scarce.
 - **Proof:** `tests/optimiser-speed.test.js`
+- **Links:** SIM-05, SIM-12
+
+<a id="def-054"></a>
+### DEF-054 · The best army with no aim scored below a god's best
+
+`2026-11-16` · code · major · ✓ fixed · tags: `engine`
+
+- **Finding:** On a real account's setup, X or Y showed full Undivided (Throgg, Harald and another hero) as good as, or better than, the best army with no aim, which an aimed search can never beat: every army an aim allows, the free search allows too.
+- **Cause:** The trios were ranked on one fill: the troops worth most per place alone first. A hero who lifts his own god's troops was judged beside another god's troops, and dropped from the trios kept before his talents and troops were chosen.
+- **Solution:** Each trio is also judged on each god's troops filled first, the page passing the troops owned grouped by god; the best fill is kept for the trio (D-49).
+- **Result:** On that setup the best with no aim rose by some 3 %, above each god's best; on a made-up score where a hero triples his god's troops, the test finds 6,000 and fails without the fix (3,300, below the aimed 6,000).
+- **Lesson:** A pruned search is checked against what it must dominate: here, any narrower search over the same choices.
+- **Proof:** `tests/optimiser-free.test.js`
 - **Links:** SIM-05, SIM-12

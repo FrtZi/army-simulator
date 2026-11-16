@@ -57,11 +57,33 @@ function mapOf(owned, capacity) {
   };
 }
 
+/** The troops owned by god: each god's filled first in a start of its own, so no aim beats the free search (DEF-054). */
+function godsOf(owned) {
+  const { units } = currentGame().catalogue;
+  const byGod = new Map();
+  for (const id of owned.keys()) {
+    const god = units.get(id).alignment;
+    byGod.set(god, [...(byGod.get(god) ?? []), id]);
+  }
+  return byGod.size > 1 ? [...byGod.values()] : [];
+}
+
 /** A search over these troops owned, with the heroes owned and the scores given, from the composition edited. */
 function search(owned, { score, guess, capacity }) {
   const settings = { ...CONFIG.optimiser, ...currentGame().game.heroRules };
   const start = startOf(owned, capacity(state.composition));
-  return optimise({ owned: [...owned], capacity, heroes: heroesOwned(), offered, score, guess, start, settings });
+  const groups = godsOf(owned);
+  return optimise({
+    owned: [...owned],
+    capacity,
+    heroes: heroesOwned(),
+    offered,
+    score,
+    guess,
+    start,
+    groups,
+    settings,
+  });
 }
 
 /**

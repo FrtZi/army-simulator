@@ -51,6 +51,12 @@ export function shortlist(order, few, room) {
 /** The troops owned filled into the capacity, in `order`. */
 export const fill = (order, capacity) => topUp({ troops: {} }, order, capacity).troops;
 
+/** The order with a group's troops first (a god's, DEF-054), each part in its own order. */
+export const leading = (order, ids) => [
+  ...order.filter(([id]) => ids.includes(id)),
+  ...order.filter(([id]) => !ids.includes(id)),
+];
+
 /** A composition's capacity in whole places, worked out once per heroes and talents: only they change it in a search. */
 export function remembered(capacityOf) {
   const known = new Map();

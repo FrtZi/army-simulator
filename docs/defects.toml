@@ -847,3 +847,19 @@ preuve = ["tests/optimiser-speed.test.js"]
 lecon = "A shortcut over a search is checked on the case it can starve, not only on the case it speeds up: here, the best being scarce."
 liens = ["SIM-05", "SIM-12"]
 
+[[defaut]]
+id = "DEF-054"
+date = 2026-11-16
+titre = "The best army with no aim scored below a god's best"
+type = "code"
+etiquettes = ["engine"]
+gravite = "major"
+statut = "fixed"
+constat = "On a real account's setup, X or Y showed full Undivided (Throgg, Harald and another hero) as good as, or better than, the best army with no aim, which an aimed search can never beat: every army an aim allows, the free search allows too."
+cause = "The trios were ranked on one fill: the troops worth most per place alone first. A hero who lifts his own god's troops was judged beside another god's troops, and dropped from the trios kept before his talents and troops were chosen."
+solution = "Each trio is also judged on each god's troops filled first, the page passing the troops owned grouped by god; the best fill is kept for the trio (D-49)."
+resultat = "On that setup the best with no aim rose by some 3 %, above each god's best; on a made-up score where a hero triples his god's troops, the test finds 6,000 and fails without the fix (3,300, below the aimed 6,000)."
+preuve = ["tests/optimiser-free.test.js"]
+lecon = "A pruned search is checked against what it must dominate: here, any narrower search over the same choices."
+liens = ["SIM-05", "SIM-12"]
+

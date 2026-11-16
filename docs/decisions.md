@@ -657,3 +657,16 @@ against the best with no aim, the better of the two marked with an icon and word
 - _Set aside for now:_ the aims suggested (every simple aim tried: some twenty searches, too slow until the search is
   sped up again, which Frantz set for later); each bonus's own weight in the synthesis (a column of weights per row:
   the sources' and rituals' weights say most of it).
+
+## D-49 · Every trio also tried with each god's troops first (2026-11-16)
+
+On a real account's setup, X or Y showed a god's best army as good as, or better than, the best with no aim (DEF-054):
+every army an aim allows, the search with no aim allows too, so it must never score below. The cause: the trios were
+ranked on one fill only, the troops worth most per place alone first; a hero who lifts his own god's troops was judged
+beside another god's troops and dropped before his talents and troops were chosen. Now the page gives the search the
+troops owned grouped by god, and each trio is also judged on each god's troops filled first, the best fill kept for it.
+The cost: one quick guess per trio and god (some 1,100 more for 220 trios, about a tenth more armies judged); on that
+setup the best with no aim rose by some 3 %, and the god-aimed armies now stay below it.
+
+- _Set aside:_ a full search per god kept as a start (five searches more: too slow); the best with no aim taken as the
+  maximum of the aimed ones shown (it would hide the defect instead of fixing the search).

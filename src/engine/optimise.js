@@ -5,7 +5,7 @@
 // rises. The caller passes both scores (the battle engine behind them), so this module knows neither the page nor
 // what a goal is.
 import { COMPARED } from "./compare.js";
-import { fill, placed, rank, remembered, shortlist, topUp } from "./fill.js";
+import { fill, leading, placed, rank, remembered, shortlist, topUp } from "./fill.js";
 
 /** Every subset of `size` items, in their order (220 trios for 12 heroes). */
 export function combinations(items, size) {
@@ -122,10 +122,11 @@ export function settle(composition, { owned, capacity, offered, score, slices, r
  * offer, [{ id, percent }]; `score(composition)` the exact judge, `guess` the quick one (the same by default); `start`:
  * the troops the player has now, judged too; `settings`: width, slices, rounds, heroesPerArmy, talentsPerArmy, and
  * `settled`, the few leaves whose troops are settled (all the kept ones by default), `candidates`, the troops worth
- * most per place that slices may move to (all of them by default).
+ * most per place that slices may move to (all of them by default); `groups`: troop ids that go together (a god's), each
+ * filled first in a start every trio is tried on (DEF-054).
  * `judged`: how many armies were scored.
  */
-export function optimise({ owned, capacity, heroes, offered, score, guess = score, start, settings }) {
+export function optimise({ owned, capacity, heroes, offered, score, guess = score, start, groups = [], settings }) {
   const capacityOf = remembered(typeof capacity === "function" ? capacity : () => capacity);
   const usable = owned.filter(([, count]) => count > 0);
   const base = capacityOf({ troops: {}, heroes: [], talents: [] });
@@ -149,6 +150,9 @@ export function optimise({ owned, capacity, heroes, offered, score, guess = scor
   // the slices move to the troops worth most per place only, and enough of them to fill every place (DEF-049, DEF-053)
   // a talent judged with the places it frees filled: one raising the capacity is worth its troops (D-45)
   const topped = (judge) => (composition) => judge(topUp(composition, order, capacityOf(composition)));
+  // each trio also tried on each group's troops first (a god's): a hero who lifts his god's troops is kept with them,
+  // and no aim finds an army the search with none misses (DEF-054)
+  const fills = [troops, ...groups.map((ids) => fill(leading(order, ids), base))];
   const gains = new Map();
   const kept = combinations(heroes, Math.min(heroesPerArmy, heroes.length))
     .map((trio) => ({ troops, heroes: trio, talents: [] }))
@@ -156,7 +160,12 @@ export function optimise({ owned, capacity, heroes, offered, score, guess = scor
       ...branch,
       talents: guessTalents(branch, offered(branch.heroes), { guess: topped(quick), max, gains }),
     }))
-    .map((composition) => ({ composition, score: topped(quick)(composition) }))
+    .map((branch) =>
+      fills
+        .map((some) => ({ ...branch, troops: some }))
+        .map((composition) => ({ composition, score: topped(quick)(composition) }))
+        .reduce(better),
+    )
     .sort((a, b) => b.score - a.score)
     .slice(0, width);
   // each kept trio's talents by the exact score, then its troops settled: a talent raising the capacity is worth the
