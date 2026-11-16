@@ -99,7 +99,7 @@ function climb(start, owned, capacity, { score, slice, rounds }) {
  * troops moved by slices while the score rises, the free capacity filled first when the change raised it.
  * `capacity(composition)`: the march capacity it has (a talent or a bonus may raise it); `owned`: [[troop id, count]].
  */
-export function settle(composition, { owned, capacity, offered, score, slices, rounds, talentsPerArmy }) {
+export function settle(composition, { owned, capacity, offered, score, slices, rounds, talentsPerArmy, candidates }) {
   const usable = owned.filter(([, count]) => count > 0);
   const roomOf = remembered(capacity);
   const order = rank(usable, roomOf(composition), (some) => score({ ...composition, troops: some }));
@@ -108,7 +108,8 @@ export function settle(composition, { owned, capacity, offered, score, slices, r
   const talented = chooseTalents(composition, ids, { score: full, max: talentsPerArmy });
   const room = roomOf(talented.composition);
   const start = { composition: talented.composition, score: score(talented.composition) };
-  return climb(start, usable, room, { score, slice: Math.max(1, Math.round(room / slices)), rounds });
+  const short = order.slice(0, candidates ?? order.length); // the troops a slice may move to (DEF-049)
+  return climb(start, short, room, { score, slice: Math.max(1, Math.round(room / slices)), rounds });
 }
 
 /**
@@ -117,7 +118,8 @@ export function settle(composition, { owned, capacity, offered, score, slices, r
  * (a talent may raise it, D-45); `heroes`: the heroes owned, [{ id, level }]; `offered(heroes)`: the talents they
  * offer, [{ id, percent }]; `score(composition)` the exact judge, `guess` the quick one (the same by default); `start`:
  * the troops the player has now, judged too; `settings`: width, slices, rounds, heroesPerArmy, talentsPerArmy, and
- * `settled`, the few leaves whose troops are settled (all the kept ones by default).
+ * `settled`, the few leaves whose troops are settled (all the kept ones by default), `candidates`, the troops worth
+ * most per place that slices may move to (all of them by default).
  * `judged`: how many armies were scored.
  */
 export function optimise({ owned, capacity, heroes, offered, score, guess = score, start, settings }) {
@@ -129,14 +131,17 @@ export function optimise({ owned, capacity, heroes, offered, score, guess = scor
   const counted = (judge) => (composition) => ((judged += 1), judge(composition));
   const exact = counted(score);
   const quick = counted(guess);
-  const { width, slices, rounds, heroesPerArmy, talentsPerArmy: max, settled: few = width } = settings;
+  const { width, slices, rounds, heroesPerArmy, talentsPerArmy: max, settled: few = width, candidates } = settings;
   // the troops moved by slices within the capacity this composition has, its free places filled first
   const settled = (entry) => {
     const room = capacityOf(entry.composition);
-    return climb(entry, usable, room, { score: exact, slice: Math.max(1, Math.round(room / slices)), rounds });
+    return climb(entry, short, room, { score: exact, slice: Math.max(1, Math.round(room / slices)), rounds });
   };
   const order = rank(usable, base, (some) => quick({ troops: some, heroes: [], talents: [] }));
   const troops = fill(order, base);
+  // the slices move to the troops worth most per place only: with seventy kinds owned, every pair was tried, each
+  // round, a search judging a hundred thousand armies (DEF-049)
+  const short = order.slice(0, candidates ?? order.length);
   // a talent judged with the places it frees filled: one raising the capacity is worth its troops (D-45)
   const topped = (judge) => (composition) => judge(topUp(composition, order, capacityOf(composition)));
   const gains = new Map();
@@ -166,7 +171,7 @@ export function optimise({ owned, capacity, heroes, offered, score, guess = scor
     .map(({ composition }) => settled({ composition, score: exact(composition) }))
     .reduce(better);
   const room = capacityOf(leaf.composition);
-  const starts = [start, ...usable.map(([id, count]) => ({ [id]: Math.min(count, room) }))]
+  const starts = [start, ...short.map(([id, count]) => ({ [id]: Math.min(count, room) }))]
     .filter(Boolean)
     .map((some) => ({ ...leaf.composition, troops: some }))
     .map((composition) => ({ composition, score: exact(composition) }))

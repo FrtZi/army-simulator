@@ -767,3 +767,19 @@ preuve = ["tests/linked.test.js"]
 lecon = "A search over linked choices must judge each one with the others free to follow it: a figure that only pays through another (places through troops) reads as nothing when the other is held still."
 liens = ["SIM-05", "SIM-12"]
 
+[[defaut]]
+id = "DEF-049"
+date = 2026-11-16
+titre = "The optimiser took ten seconds on a real account"
+type = "code"
+etiquettes = ["engine", "page"]
+gravite = "major"
+statut = "fixed"
+constat = "Run on a real account's setup (70 kinds of troops owned, 33 heroes), a search took about ten seconds in jsdom and judged 99,687 armies; the tests, with fifteen kinds at most, took under two."
+cause = "Each round of the troops' moves tried every troop owned as a target for every line (70 × 7 moves, up to sixty rounds), and every army judged recomputed every troop's stats and every hero unit, though only the counts changed. The tests never held a real account's breadth."
+solution = "The slices move to the twelve troops worth most per place only; a troop's stats are kept per list of effects, a composition's effects and hero units per heroes and talents."
+resultat = "12,048 armies judged and 2.7 s at most on that setup; on every troop owned, the same army found judging 2,478 armies instead of 11,228, the test failing with every troop a target."
+preuve = ["tests/optimiser-speed.test.js"]
+lecon = "Test a search at the scale of a real account, not of a worked case: the breadth of what is owned, not its depth, made the cost."
+liens = ["SIM-05", "SIM-12"]
+

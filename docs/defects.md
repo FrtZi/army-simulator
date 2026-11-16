@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **48 defects**: 48 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **49 defects**: 49 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -61,6 +61,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-046](#def-046) | 2026-11-16 | Buttons stood against the field above them, and a status line against its button | code | minor | ✓ fixed |
 | [DEF-047](#def-047) | 2026-11-16 | The "Champion played" choice showed with no Champion lab setup saved | code | minor | ✓ fixed |
 | [DEF-048](#def-048) | 2026-11-16 | More march capacity was worth nothing to the optimiser and its path | code | major | ✓ fixed |
+| [DEF-049](#def-049) | 2026-11-16 | The optimiser took ten seconds on a real account | code | major | ✓ fixed |
 
 ## Entries
 
@@ -671,4 +672,17 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Result:** With 80,000 troops owned for 50,000 places, the search takes the Bearer and fills 51,650 places; raising it a level reads +0.2 %, its 100 places counted, not < 0.1 %. Both tests fail with the capacity fixed or the path neither topped up nor settled.
 - **Lesson:** A search over linked choices must judge each one with the others free to follow it: a figure that only pays through another (places through troops) reads as nothing when the other is held still.
 - **Proof:** `tests/linked.test.js`
+- **Links:** SIM-05, SIM-12
+
+<a id="def-049"></a>
+### DEF-049 · The optimiser took ten seconds on a real account
+
+`2026-11-16` · code · major · ✓ fixed · tags: `engine`, `page`
+
+- **Finding:** Run on a real account's setup (70 kinds of troops owned, 33 heroes), a search took about ten seconds in jsdom and judged 99,687 armies; the tests, with fifteen kinds at most, took under two.
+- **Cause:** Each round of the troops' moves tried every troop owned as a target for every line (70 × 7 moves, up to sixty rounds), and every army judged recomputed every troop's stats and every hero unit, though only the counts changed. The tests never held a real account's breadth.
+- **Solution:** The slices move to the twelve troops worth most per place only; a troop's stats are kept per list of effects, a composition's effects and hero units per heroes and talents.
+- **Result:** 12,048 armies judged and 2.7 s at most on that setup; on every troop owned, the same army found judging 2,478 armies instead of 11,228, the test failing with every troop a target.
+- **Lesson:** Test a search at the scale of a real account, not of a worked case: the breadth of what is owned, not its depth, made the cost.
+- **Proof:** `tests/optimiser-speed.test.js`
 - **Links:** SIM-05, SIM-12

@@ -24,6 +24,7 @@ export const CONFIG = {
   // against the comparison's second side, guessed at by `guess`'s weights
   optimiser: {
     width: 20,
+    candidates: 12, // the troops worth most per place that slices of the capacity may move to (DEF-049)
     settled: 5, // of the trios kept, those whose troops are moved to the end (D-45)
     slices: 20,
     rounds: 60,

@@ -593,3 +593,34 @@ tasks = [
   "[ ] Spec: which costs, how weighed against the gain; to agree",
 ]
 
+[[item]]
+id = "BL-36"
+title = "The fortress's appearance: its grade's bonuses counted (the champion's endurance, the march's)"
+moscow = "could"
+milestone = "later"
+module = "engine"
+status = "to do"
+added = 2026-11-16
+depends_on = ["BL-31"]
+features = ["SIM-16"]
+note = "Frantz, 2026-11-16: there is also the fortress type's parameter, for later. The game shows an appearance with a grade, each giving bonuses (one seen: champion maximum endurance, expedition capacity)."
+tasks = [
+  "[ ] The appearances and their bonuses by grade, from screenshots; in Your setup; counted where they act",
+]
+
+[[item]]
+id = "BL-37"
+title = "The march capacity from the levels: the keep's base, the capacity rituals applied"
+moscow = "should"
+milestone = "v1.3"
+module = "data"
+status = "to do"
+added = 2026-11-16
+depends_on = ["BL-16"]
+features = ["SIM-17"]
+note = "Frantz, 2026-11-16: with my level, the number of troops I can carry should be known. The imported data hold the keep's march capacity field at 0 for every level; the rituals march-capacity-1 and -2 are kept by name, not applied."
+tasks = [
+  "[ ] The capacity rituals counted on the march capacity",
+  "[ ] The base capacity by level, from the game's screens (to collect)",
+]
+

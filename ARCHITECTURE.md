@@ -71,7 +71,8 @@ src/main.js              entry point: binds every control, then draws the page
 src/ui/                  the page
 ├── config.js            CONFIG: every tunable value of the interface
 ├── games.js             the games and their data (the JSON imports the build bundles)
-├── state.js             the single mutable state, and what derives from it (effects, army, profile)
+├── state.js             the single mutable state, and what derives from it (effects, army, profile);
+│                        bonus-rows.js: a bonus row to and from an engine effect
 ├── player-setup.js      the player's setup on the page: the one edited, the last saved, what differs (D-27)
 ├── lab-setup.js         the saved setup in the Battle lab: heroes owned at their levels, capacity, bonuses
 ├── optimiser.js         the optimiser on the page: what Your setup gives the search, an aim (SIM-05, SIM-12);
@@ -154,6 +155,7 @@ tests/                   node --test; each test names the feature it proves
 ├── path-levelled.test.js  the path's rituals and buildings: a worked tree, then the page (SIM-12)
 ├── path-champion.test.js  the path's champion: pieces and skills on a worked case, then the page (SIM-12)
 ├── linked.test.js       every branch linked: a capacity talent's troops, in the search and the path (DEF-048)
+├── optimiser-speed.test.js  a real account's scale: the same army, far fewer judged (DEF-049)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)

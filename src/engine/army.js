@@ -3,6 +3,16 @@
 
 import { effectiveStats, marchCapacity } from "./stats.js";
 
+// a troop's stats for one list of effects, worked out once: a search sums thousands of armies with the same effects,
+// only their counts changing (DEF-049); keyed by the list itself, forgotten with it
+const known = new WeakMap();
+function statsOf(unit, effects) {
+  if (!known.has(effects)) known.set(effects, new Map());
+  const units = known.get(effects);
+  if (!units.has(unit.id)) units.set(unit.id, effectiveStats(unit, effects));
+  return units.get(unit.id);
+}
+
 /** Looks up each troop of the army; throws on an unknown id or a defence (defences never march, D-11). */
 function lineUp(troops, catalogue) {
   return Object.entries(troops).map(([id, count]) => {
@@ -33,7 +43,7 @@ export function summariseArmy(troops, catalogue, effects, limits, heroUnits = []
   const lines = lineUp(troops, catalogue).map(({ unit, count }) => ({
     unit,
     count,
-    stats: effectiveStats(unit, effects),
+    stats: statsOf(unit, effects),
     power: count * unit.stats.squadPower,
   }));
   const heroes = heroUnits.map((unit) => ({ unit, count: 1, stats: unit.stats, power: unit.stats.squadPower }));

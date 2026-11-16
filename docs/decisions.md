@@ -610,3 +610,15 @@ composition, the one edited kept as it is. A run takes 0.6 to 1.7 s in jsdom wit
 
 - _Set aside:_ the whole search run again for each step (twenty seconds); every trio kept settled (twice the time for
   the same armies: ranked with their free places filled, the others do not overtake the first five).
+
+## D-46 · The optimiser at a real account's scale: moves among the best troops, stats kept (2026-11-16)
+
+On a real account's setup (70 kinds of troops owned, 33 heroes) a search took ten seconds in jsdom and judged 99,687
+armies: each round of the troops' moves tried every troop owned as a target for every line, up to sixty rounds. The
+slices now move to the twelve troops worth most per place only (CONFIG `candidates`), the order the capacity is filled
+in; and the same lists of effects come back thousands of times, only the counts changing, so a troop's stats are kept
+per list (army.js) and a composition's effects and hero units per heroes and talents (state.js). On that setup: 12,048
+armies judged, 2.7 s at most in jsdom; the army found the same on the worked cases.
+
+- _Set aside:_ the search in a worker (still worth it if a phone finds two seconds long; the page would wait anyway);
+  fewer rounds (they stop as soon as no move gains: the targets were the cost).

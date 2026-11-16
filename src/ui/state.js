@@ -7,6 +7,7 @@ import { label } from "./format.js";
 import { t } from "./texts/index.js";
 import { armyProfile, compareArmies, effectProblems, summariseArmy } from "../engine/index.js";
 import { heroUnits, talentsOf } from "./heroes.js";
+import { bonusEffect, bonusRow } from "./bonus-rows.js";
 import { asPlayed, capacityInPlay, championMarchEffects, setupBonuses, setupSourceEffects } from "./lab-setup.js";
 
 /** The language: the one remembered in this browser, else the browser's own if the page has it. */
@@ -92,20 +93,7 @@ export function selectGame(id) {
 
 export const currentGame = () => GAMES.find((game) => game.id === state.gameId);
 
-/** A bonus row of the page as an engine effect. */
-export function bonusEffect(bonus) {
-  if (bonus.filter === "all") return { stat: bonus.stat, percent: bonus.percent };
-  const value = bonus.filter === "tiers" ? Number(bonus.value) : bonus.value;
-  return { stat: bonus.stat, percent: bonus.percent, target: { [bonus.filter]: [value] } };
-}
-
-/** An engine effect as a bonus row; null when its target has several filters (the page shows one per row). */
-export function bonusRow(effect) {
-  const filters = Object.entries(effect.target ?? {});
-  if (filters.length > 1 || filters.some(([, values]) => values.length !== 1)) return null;
-  const [filter, [value] = [""]] = filters[0] ?? ["all"];
-  return { stat: effect.stat, percent: effect.percent, filter, value: String(value) };
-}
+export { bonusEffect, bonusRow };
 
 export const capacityEffect = () => ({ stat: "marchCapacity", percent: capacityInPlay(state).percent });
 
@@ -128,16 +116,36 @@ export function validEffects(seen = state) {
  * and its heroes. `shared`: the bonuses every composition shares (validEffects), passed in by a caller that sums many
  * armies. The optimiser's path plays a hero not owned yet, or one level up, so it skips asPlayed (D-42).
  */
-export function summariseAsGiven(composition, against = new Set(), shared = validEffects(), seen = state) {
+// a composition's effects and hero units, built once per bonuses shared and per heroes and talents: the optimiser sums
+// thousands of armies differing in their troops only, and the same list lets the engine keep its troops' stats (DEF-049)
+const built = new WeakMap();
+
+function effectsOf(composition, against, shared, seen) {
   const game = currentGame();
-  // `seen`: the state, or one whose champion has a piece or a skill more (the optimiser's path, D-44)
+  const key = JSON.stringify([
+    composition.heroes ?? [],
+    composition.talents ?? [],
+    composition.ledByChampion,
+    [...against],
+  ]);
+  if (!built.has(shared)) built.set(shared, new Map());
+  const known = built.get(shared);
+  if (known.has(key)) return known.get(key);
+  // `seen`: the state, or one whose champion has a piece or a skill more (the optimiser's path, D-44); it comes with
+  // its own shared bonuses, so the key above holds
   const march = championMarchEffects(seen, game, composition).filter((effect) => !problemsOf(effect).length);
   const talents = talentsOf(composition, game);
   // against a PvE army of one race, a talent for that race counts too (Combat Bonus vs. Empire)
   const versus = raceTalentEffects(talents, game.game.talentCodes, against);
-  const effects = [...shared, ...talents.effects, ...march, ...versus];
+  const value = { effects: [...shared, ...talents.effects, ...march, ...versus], units: heroUnits(composition, game) };
+  known.set(key, value);
+  return value;
+}
+
+export function summariseAsGiven(composition, against = new Set(), shared = validEffects(), seen = state) {
+  const { effects, units } = effectsOf(composition, against, shared, seen);
   const limits = { marchCapacity: capacityInPlay(state).base };
-  return summariseArmy(composition.troops, game.catalogue, effects, limits, heroUnits(composition, game));
+  return summariseArmy(composition.troops, currentGame().catalogue, effects, limits, units);
 }
 
 /** A composition as the engine sees it, as it plays: with the setup loaded, only the heroes owned, at their levels. */

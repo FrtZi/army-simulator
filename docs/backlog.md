@@ -18,8 +18,8 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/7 | 16/23 | ○ not yet: 1 Must left |
-| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/8 | 2/11 | — |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/8 | 16/25 | ○ not yet: 1 Must left |
+| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/9 | 2/12 | — |
 
 ## Ready to start
 
@@ -30,6 +30,7 @@ Not done, and every dependency done:
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-30](#bl-30) A Champion lab: gear sets compared, stats by level, every bonus, its skill trees (v1.3, should, ◐ doing)
 - [BL-31](#bl-31) An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise (v1.3, should, ◐ doing)
+- [BL-37](#bl-37) The march capacity from the levels: the keep's base, the capacity rituals applied (v1.3, should, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
 - [BL-17](#bl-17) Read-only share link (later, could, ○ to do)
@@ -85,6 +86,10 @@ flowchart LR
   BL16 --> BL34
   BL35["BL-35 ○ to do<br/>The cost of a plan: an evolution, a new talent, an armour set, what reaching it costs"]:::todo
   BL31 --> BL35
+  BL36["BL-36 ○ to do<br/>The fortress's appearance: its grade's bonuses counted (the champion's endurance, the march's)"]:::todo
+  BL31 --> BL36
+  BL37["BL-37 ○ to do<br/>The march capacity from the levels: the keep's base, the capacity rituals applied"]:::todo
+  BL16 --> BL37
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -364,6 +369,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 4/5 |
 | [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ◐ doing | 4/5 |
 | [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ✓ done | 2/2 |
+| [BL-37](#bl-37) | The march capacity from the levels: the keep's base, the capacity rituals applied | should | [data](../data) | ○ to do | 0/2 |
 
 <a id="bl-11"></a>
 #### BL-11 · Keep attack: the defences' first round, as a switch on a battle
@@ -440,6 +446,16 @@ Frantz, 2026-11-16: the labs' setups can be saved, and a heroes' setup loaded in
 - [x] Agreed with Frantz (2026-11-16): the Champion lab's setups (gear sets and skills), one played in the Battle lab
 - [x] Saved by name, put back or deleted; a set of one chosen to play in the Battle lab (D-39)
 
+<a id="bl-37"></a>
+#### BL-37 · The march capacity from the levels: the keep's base, the capacity rituals applied
+
+Should · [data](../data) · ○ to do · added `2026-11-16` · after [BL-16](#bl-16) · features: SIM-17
+
+Frantz, 2026-11-16: with my level, the number of troops I can carry should be known. The imported data hold the keep's march capacity field at 0 for every level; the rituals march-capacity-1 and -2 are kept by name, not applied.
+
+- [ ] The capacity rituals counted on the march capacity
+- [ ] The base capacity by level, from the game's screens (to collect)
+
 ### later · Later, ideas kept
 
 Validated as ideas, not planned yet: each one is reprioritised when a version is prepared.
@@ -454,6 +470,7 @@ Validated as ideas, not planned yet: each one is reprioritised when a version is
 | [BL-33](#bl-33) | The break-even of an evolution: several setups compared along a level | could | [engine](../src/engine) | ○ to do | 0/1 |
 | [BL-34](#bl-34) | The optimiser's tree drawn: unfolding live as it computes, two setups on one tree | could | [ui](../src/ui) | ○ to do | 0/1 |
 | [BL-35](#bl-35) | The cost of a plan: an evolution, a new talent, an armour set, what reaching it costs | could | [engine](../src/engine) | ○ to do | 0/1 |
+| [BL-36](#bl-36) | The fortress's appearance: its grade's bonuses counted (the champion's endurance, the march's) | could | [engine](../src/engine) | ○ to do | 0/1 |
 
 <a id="bl-09"></a>
 #### BL-09 · Credit cctools.cc and tell its author
@@ -521,3 +538,12 @@ Could · [engine](../src/engine) · ○ to do · added `2026-11-16` · after [BL
 Frantz, 2026-11-16: the path goes by gain first, the cost matters little for now; it is rather a factor of a future plan: the cost of an evolution, of reaching a new talent, of an armour set.
 
 - [ ] Spec: which costs, how weighed against the gain; to agree
+
+<a id="bl-36"></a>
+#### BL-36 · The fortress's appearance: its grade's bonuses counted (the champion's endurance, the march's)
+
+Could · [engine](../src/engine) · ○ to do · added `2026-11-16` · after [BL-31](#bl-31) · features: SIM-16
+
+Frantz, 2026-11-16: there is also the fortress type's parameter, for later. The game shows an appearance with a grade, each giving bonuses (one seen: champion maximum endurance, expedition capacity).
+
+- [ ] The appearances and their bonuses by grade, from screenshots; in Your setup; counted where they act
