@@ -41,9 +41,11 @@ test("SIM-12 pro Nurgle: only your Nurgle troops play, a Nurgle hero follows, an
   page.tick("#optimiser-aim-alignment-nurgle");
   assert.match(page.text("#optimiser-aim"), /Nurgle/);
   page.click("#optimiser-run");
-  const result = page.text("#optimiser-result");
-  assert.match(result, /Troops: 30,000 of 50,000 Pestigor × 30,000 Heroes/, "your 30,000 Pestigor, nothing of Khorne");
-  assert.match(result, /Great Unclean One · level 20/, "Nurgle's troops: the hero whose talents raise them");
+  const result = page.text("#opt-panel-have");
+  assert.match(result, /Troops: 30,000 of 50,000/);
+  // one bar, Nurgle's: your 30,000 Pestigor, nothing of Khorne
+  assert.match(result, /Troops kinds: 1 · Nurgle 100 % Pestigor · Nurgle 30,000 /);
+  assert.match(result, /Great Unclean One level 20 · Nurgle/, "Nurgle's troops: the hero whose talents raise them");
   // without the aim, your Khorne troops fill the capacity: the best army scores more
   assert.match(result, /▼ The aim costs [\d.]+ % now: without it, the best army scores that much more\./);
   page.$("#optimiser > .fold-toggle").click();
@@ -57,7 +59,7 @@ test("SIM-12 an aim none of your troops fits stops the search and says so; untic
   assert.match(page.text("#optimiser-status"), /None of your troops owned fits the aim/);
   page.untick("#optimiser-aim-alignment-slaanesh");
   page.click("#optimiser-run");
-  assert.doesNotMatch(page.text("#optimiser-result"), /aim/, "no aim: nothing said about one");
+  assert.doesNotMatch(page.text("#opt-panel-have"), /aim/, "no aim: nothing said about one");
 });
 
 test("SIM-12 a battle aimed: won within the aim, and the battle without it said beside", () => {
@@ -69,7 +71,7 @@ test("SIM-12 a battle aimed: won within the aim, and the battle without it said 
   page.tick("#optimiser-aim-alignment-khorne");
   page.click("#optimiser-run");
   assert.match(
-    page.text("#optimiser-result"),
+    page.text("#opt-panel-have"),
     /Without the aim: (✓ won|✗ lost) by [\d,]+ power|Without the aim: = a draw/,
   );
 });

@@ -13,5 +13,35 @@
   <div class="filters" id="optimiser-aim"></div>
   <button id="optimiser-run" type="button" class="primary" data-text="optimiser.run"></button>
   <p id="optimiser-status" class="status" role="status"></p>
-  <div id="optimiser-result"></div>
+  <div id="optimiser-result" hidden>
+    <div class="tabs opt-tabs" id="optimiser-tabs" role="tablist" data-text-label="optimiser.tabs">
+      <button
+        type="button"
+        role="tab"
+        id="opt-tab-map"
+        data-opt="map"
+        aria-controls="opt-panel-map"
+        data-text="optimiser.tab-map"
+      ></button>
+      <button
+        type="button"
+        role="tab"
+        id="opt-tab-have"
+        data-opt="have"
+        aria-controls="opt-panel-have"
+        data-text="optimiser.tab-have"
+      ></button>
+      <button
+        type="button"
+        role="tab"
+        id="opt-tab-up"
+        data-opt="up"
+        aria-controls="opt-panel-up"
+        data-text="optimiser.tab-up"
+      ></button>
+    </div>
+    <div id="opt-panel-map" class="opt-panel" role="tabpanel" tabindex="0" aria-labelledby="opt-tab-map"></div>
+    <div id="opt-panel-have" class="opt-panel" role="tabpanel" tabindex="0" aria-labelledby="opt-tab-have"></div>
+    <div id="opt-panel-up" class="opt-panel" role="tabpanel" tabindex="0" aria-labelledby="opt-tab-up"></div>
+  </div>
 </section>

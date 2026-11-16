@@ -1,0 +1,92 @@
+/* The optimiser's tabs (SIM-18): folding blocks, the gods' colours on marks only (a god's name is always written). */
+.opt-tabs {
+  margin-top: 0.75rem;
+}
+
+.opt-block {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.opt-block > summary {
+  cursor: pointer;
+}
+
+.opt-title {
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.opt-line {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.opt-body {
+  margin-top: 0.5rem;
+}
+
+.opt-list,
+.opt-heroes,
+.opt-map {
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.opt-list,
+.opt-heroes {
+  list-style: none;
+  padding: 0;
+}
+
+.opt-map {
+  padding-left: 1.25rem;
+}
+
+.opt-heroes {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+
+.opt-hero {
+  display: grid;
+  border: 1px solid var(--line);
+  border-left: 0.35rem solid var(--god, var(--line));
+  border-radius: 0;
+  padding: 0.4rem 0.6rem;
+}
+
+.opt-panel .share-bar span {
+  background: var(--god, var(--accent));
+}
+
+.opt-step {
+  border-left: 0.3rem solid var(--line);
+  padding-left: 0.5rem;
+}
+
+.opt-step[data-kind="hero"] {
+  border-left-color: var(--accent);
+}
+
+.mark-undivided {
+  --god: var(--undivided);
+}
+
+.mark-khorne {
+  --god: var(--khorne);
+}
+
+.mark-nurgle {
+  --god: var(--nurgle);
+}
+
+.mark-slaanesh {
+  --god: var(--slaanesh);
+}
+
+.mark-tzeentch {
+  --god: var(--tzeentch);
+}

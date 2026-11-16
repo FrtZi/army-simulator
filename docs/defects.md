@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **50 defects**: 50 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **52 defects**: 52 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -63,6 +63,8 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-048](#def-048) | 2026-11-16 | More march capacity was worth nothing to the optimiser and its path | code | major | ✓ fixed |
 | [DEF-049](#def-049) | 2026-11-16 | The optimiser took ten seconds on a real account | code | major | ✓ fixed |
 | [DEF-050](#def-050) | 2026-11-16 | The rituals raising the march capacity were never applied | code | major | ✓ fixed |
+| [DEF-051](#def-051) | 2026-11-16 | In French every troop's bar was full in the optimiser | code | minor | ✓ fixed |
+| [DEF-052](#def-052) | 2026-11-16 | The optimiser's hero names took a god's colour checked for marks only | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -700,3 +702,29 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A bonus kept by name is a question: check what each one is before leaving it unapplied, above all one the player asks about.
 - **Proof:** `tests/linked.test.js`
 - **Links:** SIM-17, DATA-07
+
+<a id="def-051"></a>
+### DEF-051 · In French every troop's bar was full in the optimiser
+
+`2026-11-16` · code · minor · ✓ fixed · tags: `page`, `translation`
+
+- **Finding:** Checking the optimiser's new tabs in the preview, in French, every troop's bar filled its whole width whatever its share.
+- **Cause:** The share was written with the page's number format before becoming a CSS width: "58,1" in French, which a browser refuses, the bar left at its full width. A worked case with round shares (60 %, 40 %) hid it from the test at first.
+- **Solution:** The share stays a raw figure; only what is read is formatted.
+- **Result:** The bars measure their share in both languages; the test, on shares with decimals, fails with the formatted figure.
+- **Lesson:** A figure for the machine (a width, an attribute) is never formatted for people; and a test of a format needs a figure the format changes.
+- **Proof:** `tests/optimiser-tabs.test.js`
+- **Links:** SIM-19
+
+<a id="def-052"></a>
+### DEF-052 · The optimiser's hero names took a god's colour checked for marks only
+
+`2026-11-16` · code · minor · ✓ fixed · tags: `page`, `accessibility`
+
+- **Finding:** In the preview, the heroes' names in the optimiser's cards showed in their god's colour.
+- **Cause:** The cards took the class the troop icons use (god-khorne…), which sets the text colour: the gods' tokens are checked at 3:1 against their surfaces, for marks, not at 4.5:1 for text.
+- **Solution:** The optimiser's marks have their own class (mark-…), which sets only the colour a bar or an edge reads.
+- **Result:** The names keep the text colour; the test lists any god-* class in the results and fails when the cards take it again.
+- **Lesson:** Reusing a class reuses all it sets: check what a class does before borrowing its name.
+- **Proof:** `tests/optimiser-tabs.test.js`
+- **Links:** SIM-19, ACC-01

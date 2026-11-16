@@ -27,8 +27,8 @@ function run(warlords) {
 test("SIM-05 DEF-048 a talent raising the march capacity lets troops in: the search takes it", () => {
   const page = run(["chosen-standard-bearer", "doom-knight", "daemon-prince", "chosen-champion"]);
   // the Chosen Standard Bearer at level 20: march capacity +3.3 %, 50,000 × 1.033 = 51,650 places, all filled
-  assert.match(page.text("#optimiser-result"), /Troops: 51,650 of 51,650/);
-  assert.match(page.text("#optimiser-result"), /Heroes .*Chosen Standard Bearer/);
+  assert.match(page.text("#opt-panel-have"), /Troops: 51,650 of 51,650/);
+  assert.match(page.text("#opt-panel-have"), /Heroes .*Chosen Standard Bearer/);
 });
 
 test("SIM-12 DEF-048 a hero raising the march capacity: its next level counted with the troops it lets in", () => {
@@ -48,7 +48,7 @@ test("SIM-17 DEF-050 a ritual raising the march capacity counts: its places fill
   page.choose("#optimiser-goal", "power");
   page.click("#optimiser-run");
   // March Capacity II at its level 10: +12.5 %, 50,000 × 1.125 = 56,250 places
-  assert.match(page.text("#optimiser-result"), /Troops: 56,250 of 56,250/);
+  assert.match(page.text("#opt-panel-have"), /Troops: 56,250 of 56,250/);
 });
 
 test("SIM-17 DEF-050 a gear piece raising the march capacity counts too: the Daemonblade's places filled", () => {
@@ -58,5 +58,5 @@ test("SIM-17 DEF-050 a gear piece raising the march capacity counts too: the Dae
   page.choose("#optimiser-goal", "power");
   page.click("#optimiser-run");
   // the Daemonblade at level 1: march capacity +10 %, 50,000 × 1.1 = 55,000 places
-  assert.match(page.text("#optimiser-result"), /Troops: 55,000 of 55,000/);
+  assert.match(page.text("#opt-panel-have"), /Troops: 55,000 of 55,000/);
 });

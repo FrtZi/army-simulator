@@ -11,7 +11,7 @@ import { matchesFilters } from "./filters.js";
 import { goalOf, heroesOwned, offered, opponent, opponentChosen, scores } from "./optimiser-scores.js";
 import { pathFrom } from "./optimiser-path.js";
 import { addComposition } from "./compositions.js";
-import { optimise, wholePlaces } from "../engine/index.js";
+import { combinations, optimise, wholePlaces } from "../engine/index.js";
 
 export { goalOf, opponentChosen, opponents } from "./optimiser-scores.js";
 
@@ -39,6 +39,23 @@ function startOf(owned, capacity) {
   return fits && total <= capacity ? troops : null;
 }
 
+/** The search's figures for the model's map (SIM-18): what it started from, the trios tried, kept and settled. */
+function mapOf(owned, capacity) {
+  const { width, settled } = CONFIG.optimiser;
+  const heroes = heroesOwned().length;
+  const trios = combinations(heroesOwned(), Math.min(currentGame().game.heroRules.heroesPerArmy, heroes)).length;
+  const kept = Math.min(width, trios);
+  return {
+    heroes,
+    owned: owned.size,
+    aimed: aimed(owned).size,
+    capacity,
+    trios,
+    kept,
+    settled: Math.min(settled, kept),
+  };
+}
+
 /** A search over these troops owned, with the heroes owned and the scores given, from the composition edited. */
 function search(owned, { score, guess, capacity }) {
   const settings = { ...CONFIG.optimiser, ...currentGame().game.heroRules };
@@ -64,7 +81,7 @@ export function runOptimiser() {
   const current = empty ? null : judges.score({ troops, heroes: playing ?? [], talents: talents ?? [] });
   const versus = goal.battle ? opponentChosen() : null;
   const path = pathFrom(found, goal, aimed(owned));
-  return { goal: goal.id, ...found, current, free, capacity, opponent: versus, path };
+  return { goal: goal.id, ...found, current, free, capacity, opponent: versus, path, map: mapOf(owned, capacity) };
 }
 
 /** Puts the army found in the composition being edited, or in a new one (`into` "new"): its troops, heroes, talents. */

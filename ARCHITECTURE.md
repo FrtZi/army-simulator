@@ -103,7 +103,9 @@ src/ui/                  the page
                          page (language, theme, the page tabs: tabs.html, tabs.js), game, then the Battle lab's:
                          load (the "Load your setup" switch), bonuses, army (+ compositions), picker, heroes
                          (+ picker.js; heroes.js beside state.js works out a composition's heroes), optimiser (the best army with
-                         your setup: the goal, the army found, put in the composition; path.js the path under it),
+                         your setup: the goal, the aim, the button in draw.js; its tabs: map.js the model's map,
+                         have.js with what I have, path.js to improve; blocks.js a folding block, words.js the
+                         results in words; optimiser.css),
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
@@ -156,6 +158,7 @@ tests/                   node --test; each test names the feature it proves
 ├── path-champion.test.js  the path's champion: pieces and skills on a worked case, then the page (SIM-12)
 ├── linked.test.js       every branch linked: a capacity talent's troops, in the search and the path (DEF-048)
 ├── optimiser-speed.test.js  a real account's scale: the same army, far fewer judged (DEF-049)
+├── optimiser-tabs.test.js   the optimiser's tabs, its folding blocks, the gods' colours (SIM-18, SIM-19)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)

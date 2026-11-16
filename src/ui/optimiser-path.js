@@ -163,8 +163,11 @@ export function pathFrom(found, goal, owned) {
   const judged = glanced.map((step, index) =>
     index < settings.width || freeing(step) ? settled(step, { owned, settings, again }) : step,
   );
-  return bestPerSlot(judged.filter((step) => step.gain > 0).sort((a, b) => b.gain - a.gain)).slice(
+  const steps = bestPerSlot(judged.filter((step) => step.gain > 0).sort((a, b) => b.gain - a.gain)).slice(
     0,
     CONFIG.optimiser.pathSteps,
   );
+  // the figures the model's map shows: the steps judged at a glance, and those settled
+  const settledCount = judged.filter((step, index) => index < settings.width || freeing(glanced[index])).length;
+  return { steps, glanced: glanced.length, settled: settledCount };
 }

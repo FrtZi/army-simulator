@@ -799,3 +799,35 @@ preuve = ["tests/linked.test.js"]
 lecon = "A bonus kept by name is a question: check what each one is before leaving it unapplied, above all one the player asks about."
 liens = ["SIM-17", "DATA-07"]
 
+[[defaut]]
+id = "DEF-051"
+date = 2026-11-16
+titre = "In French every troop's bar was full in the optimiser"
+type = "code"
+etiquettes = ["page", "translation"]
+gravite = "minor"
+statut = "fixed"
+constat = "Checking the optimiser's new tabs in the preview, in French, every troop's bar filled its whole width whatever its share."
+cause = "The share was written with the page's number format before becoming a CSS width: \"58,1\" in French, which a browser refuses, the bar left at its full width. A worked case with round shares (60 %, 40 %) hid it from the test at first."
+solution = "The share stays a raw figure; only what is read is formatted."
+resultat = "The bars measure their share in both languages; the test, on shares with decimals, fails with the formatted figure."
+preuve = ["tests/optimiser-tabs.test.js"]
+lecon = "A figure for the machine (a width, an attribute) is never formatted for people; and a test of a format needs a figure the format changes."
+liens = ["SIM-19"]
+
+[[defaut]]
+id = "DEF-052"
+date = 2026-11-16
+titre = "The optimiser's hero names took a god's colour checked for marks only"
+type = "code"
+etiquettes = ["page", "accessibility"]
+gravite = "minor"
+statut = "fixed"
+constat = "In the preview, the heroes' names in the optimiser's cards showed in their god's colour."
+cause = "The cards took the class the troop icons use (god-khorne…), which sets the text colour: the gods' tokens are checked at 3:1 against their surfaces, for marks, not at 4.5:1 for text."
+solution = "The optimiser's marks have their own class (mark-…), which sets only the colour a bar or an edge reads."
+resultat = "The names keep the text colour; the test lists any god-* class in the results and fails when the cards take it again."
+preuve = ["tests/optimiser-tabs.test.js"]
+lecon = "Reusing a class reuses all it sets: check what a class does before borrowing its name."
+liens = ["SIM-19", "ACC-01"]
+

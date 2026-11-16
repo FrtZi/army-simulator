@@ -622,3 +622,18 @@ armies judged, 2.7 s at most in jsdom; the army found the same on the worked cas
 
 - _Set aside:_ the search in a worker (still worth it if a phone finds two seconds long; the page would wait anyway);
   fewer rounds (they stop as soon as no move gains: the targets were the cost).
+
+## D-47 · The optimiser's results in tabs, its parts in folding blocks (2026-11-16)
+
+The first piece of BL-38, as the mockups were agreed: once an army is found, its results show in three tabs, the
+ARIA tabs pattern of the dashboards (the model's map, with what I have, to improve; X or Y to come), with what I have
+shown first. Every part of a tab is a native folding block (`<details>`): its title and the line that sums it up
+always shown, closed as the player left it, across runs (`state.optimiserView`, apart from the run's own state so a
+run keeps the tab and the folds). The troops are bars in their god's colour and the heroes cards edged in it, the god's
+name always written beside (the colour tokens are checked for marks, not text: DEF-052); each talent says the hero it is
+from; each step of the path opens on its cost. The model's map is, for now, the search's stages with their figures
+(SIM-14 will draw it as a tree).
+
+- _Set aside:_ the page's own fold buttons for these blocks (they are bound once, at load; the blocks are redrawn with
+  each run: the native element folds by itself and keeps the keyboard); the tabs' panels drawn only when shown (all
+  are drawn, the others hidden: a test or a screen reader finds the same content whichever tab is open).

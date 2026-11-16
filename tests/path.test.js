@@ -74,7 +74,7 @@ test("SIM-12 on the page: the path under the army found, each step with its gain
   const page = openPage({ stored: { "army-simulator.player-setup": JSON.stringify({ [GAME]: setup }) } });
   page.tick("#load-setup-toggle");
   page.click("#optimiser-run");
-  assert.match(page.text("#optimiser-result"), /The path: what to get or raise next/);
+  assert.match(page.text("#opt-panel-up"), /The path: what to get or raise next/);
   const steps = page.$$("#optimiser-path li").map((step) => step.textContent);
   assert.ok(steps.length > 0 && steps.length <= 10, `${steps.length} steps`);
   // a hero of the army found, raised: its talents raise the army's Khorne and Nurgle troops

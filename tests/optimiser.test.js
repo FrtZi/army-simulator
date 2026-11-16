@@ -144,10 +144,11 @@ test("SIM-05 on the page: with Your setup loaded, the best army for a goal found
   page.choose("#optimiser-goal", "damage");
   page.click("#optimiser-run");
   assert.match(page.text("#optimiser-status"), /^✓ The best army found for “Damage”, among [\d,]+ armies tried\.$/);
-  const result = page.text("#optimiser-result");
+  const result = page.text("#opt-panel-have");
   assert.match(result, /Composition A is empty for now\./);
   assert.match(result, /Troops: 50,000 of 50,000/);
-  assert.match(result, /Heroes Bloodthirster · level 20/);
+  // the heroes as cards, each with its level and its god; their talents under them, each with its hero
+  assert.match(result, /Heroes and talents 3 heroes · 1 of 4 talents .*Bloodthirster level 20 · Khorne/);
   // the other talents add no damage to these melee troops of Khorne: none taken for nothing
   assert.match(result, /Talents: 1 of 4 Melee Damage, Khorne \+33\.5 %/);
   page.click("#optimiser-use");
@@ -155,7 +156,7 @@ test("SIM-05 on the page: with Your setup loaded, the best army for a goal found
   assert.equal(page.$$("#hero-lines .hero-line").length, 3);
   assert.equal(page.$$("#army-lines input").length, 2, "its two troops");
   page.click("#optimiser-run");
-  assert.match(page.text("#optimiser-result"), /= As good as composition A as it stands\./, "found again from itself");
+  assert.match(page.text("#opt-panel-have"), /= As good as composition A as it stands\./, "found again from itself");
   // or in a new composition, A kept as it is (Frantz, 2026-11-16)
   page.click("#optimiser-new");
   assert.equal(page.text("#optimiser-status"), "✓ Composition C now holds the army found.");
@@ -178,11 +179,11 @@ test("SIM-05 DEF-045 on the page: a battle won against an opponent chosen, said 
   assert.deepEqual(opponentsShown(), ["Composition A"], "B edited: A is the opponent");
   page.click("#composition-tab-0");
   page.click("#optimiser-run");
-  assert.match(page.text("#optimiser-result"), /^Composition A is empty for now\./);
+  assert.match(page.text("#opt-panel-have"), /Composition A is empty for now\./);
   addTroops(page, ["pestigor"]);
   page.click("#optimiser-run");
   assert.match(
-    page.text("#optimiser-result"),
-    /^Attacking Composition B: ✓ won by [\d,]+ power; composition A as it stands: ✗ lost by [\d,]+ power\./,
+    page.text("#opt-panel-have"),
+    /Attacking Composition B: ✓ won by [\d,]+ power; composition A as it stands: ✗ lost by [\d,]+ power\./,
   );
 });

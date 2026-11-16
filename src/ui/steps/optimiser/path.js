@@ -8,6 +8,7 @@ import { levelledEntries } from "../../optimiser-path.js";
 import { currentGame } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { costBetween } from "../../../engine/index.js";
+import { block } from "./blocks.js";
 import { allSkills } from "../../../storage/setup-champion.js";
 
 const TINY = 0.05; // a gain in % that one decimal rounds to 0
@@ -53,12 +54,18 @@ function whatText(step) {
     : t("optimiser.pathGet", { name });
 }
 
-/** The path's title, how it reads, and its steps, or that none adds to the army now. */
-export function pathHtml(result) {
-  const steps = result.path ?? [];
-  const line = (step) => `${whatText(step)} · ${gainText(result, step.gain)} · ${costText(step)}`;
+/** A step that opens on its cost: what it does and its gain, its kind marked on its edge (its words say it too). */
+function stepItem(result, step) {
+  return `<li class="opt-step" data-kind="${step.kind}"><details><summary>${escape(`${whatText(step)} · ${gainText(result, step.gain)}`)}</summary><span class="opt-cost"> · ${escape(costText(step))}</span></details></li>`;
+}
+
+/** The tab "To improve": the path in a block, how it reads, its steps, or that none adds to the army now. */
+export function upPanel(result) {
+  const { steps } = result.path;
   const body = steps.length
-    ? `<ol id="optimiser-path">${steps.map((step) => `<li>${escape(line(step))}</li>`).join("")}</ol>`
+    ? `<ol id="optimiser-path" class="opt-list">${steps.map((step) => stepItem(result, step)).join("")}</ol>`
     : `<p class="empty" id="optimiser-path">${escape(t("optimiser.pathNone"))}</p>`;
-  return `<h3>${escape(t("optimiser.pathTitle"))}</h3><p class="hint">${escape(t("optimiser.pathHint"))}</p>${body}`;
+  const first = steps[0] ? `${whatText(steps[0])} · ${gainText(result, steps[0].gain)}` : t("optimiser.pathNone");
+  const line = t("optimiser.pathLine", { n: steps.length, first });
+  return block("path", t("optimiser.pathTitle"), line, `<p class="hint">${escape(t("optimiser.pathHint"))}</p>${body}`);
 }
