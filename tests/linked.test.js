@@ -38,3 +38,25 @@ test("SIM-12 DEF-048 a hero raising the march capacity: its next level counted w
   // 3.3 → 3.5 %, 100 places more, +6,000 power (+0.19 %): +0.2 % with its troops, "< 0.1 %" without them
   assert.match(steps[0], /^Raise Chosen Standard Bearer from level 20 to 21 · ▲ \+0\.2 % · costs /, steps.join("\n"));
 });
+
+// DEF-050: the rituals raising the march capacity were kept by name, never applied (the import read a code named by
+// hand, the march capacity, without its stat)
+test("SIM-17 DEF-050 a ritual raising the march capacity counts: its places filled", () => {
+  const withRitual = { ...setup([]), rituals: [{ id: "march-capacity-2", level: 10 }] };
+  const page = openPage({ stored: { "army-simulator.player-setup": JSON.stringify({ [GAME]: withRitual }) } });
+  page.tick("#load-setup-toggle");
+  page.choose("#optimiser-goal", "power");
+  page.click("#optimiser-run");
+  // March Capacity II at its level 10: +12.5 %, 50,000 × 1.125 = 56,250 places
+  assert.match(page.text("#optimiser-result"), /Troops: 56,250 of 56,250/);
+});
+
+test("SIM-17 DEF-050 a gear piece raising the march capacity counts too: the Daemonblade's places filled", () => {
+  const armed = { ...setup([]), champion: { level: 40, gear: [{ id: "daemonblade", level: 1 }] } };
+  const page = openPage({ stored: { "army-simulator.player-setup": JSON.stringify({ [GAME]: armed }) } });
+  page.tick("#load-setup-toggle");
+  page.choose("#optimiser-goal", "power");
+  page.click("#optimiser-run");
+  // the Daemonblade at level 1: march capacity +10 %, 50,000 × 1.1 = 55,000 places
+  assert.match(page.text("#optimiser-result"), /Troops: 55,000 of 55,000/);
+});

@@ -614,13 +614,13 @@ title = "The march capacity from the levels: the keep's base, the capacity ritua
 moscow = "should"
 milestone = "v1.3"
 module = "data"
-status = "to do"
+status = "doing"
 added = 2026-11-16
 depends_on = ["BL-16"]
 features = ["SIM-17"]
 note = "Frantz, 2026-11-16: with my level, the number of troops I can carry should be known. The imported data hold the keep's march capacity field at 0 for every level; the rituals march-capacity-1 and -2 are kept by name, not applied."
 tasks = [
-  "[ ] The capacity rituals counted on the march capacity",
+  "[x] The capacity rituals counted on the march capacity (DEF-050)",
   "[ ] The base capacity by level, from the game's screens (to collect)",
 ]
 

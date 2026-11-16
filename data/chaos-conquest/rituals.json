@@ -372,6 +372,7 @@
         "alignments": ["khorne"]
       }
     },
+    {"id": "march-capacity", "code": "march_unit_capacity", "stat": "marchCapacity"},
     {"id": "march-speed", "code": "march_speed_modifier", "stat": "speed"},
     {
       "id": "monsters-armour",
@@ -1405,11 +1406,6 @@
       "id": "march-stationed-units-limit",
       "code": "march_stationed_units_limit",
       "labels": {"en": "Stationed Units Limit", "fr": "Stationed Units Limit*"}
-    },
-    {
-      "id": "march-unit-capacity",
-      "code": "march_unit_capacity",
-      "labels": {"en": "March Capacity", "fr": "March Capacity*"}
     },
     {
       "id": "monsters-hospital-speed-modifier",
@@ -6543,10 +6539,10 @@
         "wood": [15000, 30000, 50000, 125000, 225000, 350000, 750000, 2000000, 4000000, 10000000],
         "iron": [30000, 50000, 100000, 200000, 300000, 500000, 1000000, 2500000, 5000000, 12500000]
       },
-      "effects": {},
-      "other": {
-        "march-unit-capacity": [1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7.5]
+      "effects": {
+        "march-capacity": [1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7.5]
       },
+      "other": {},
       "requires": {
         "ritual": {
           "march-speed-1": [1, null, 2, null, 3, null, null, null, null, null]
@@ -6569,10 +6565,10 @@
         "wood": [500000, 1000000, 2500000, 4000000, 5000000, 7500000, 10000000, 20000000, 40000000, 65000000],
         "iron": [1000000, 2500000, 4000000, 5000000, 7500000, 10000000, 12500000, 25000000, 50000000, 100000000]
       },
-      "effects": {},
-      "other": {
-        "march-unit-capacity": [1, 2, 3, 4, 5, 6.5, 8, 9.5, 11, 12.5]
+      "effects": {
+        "march-capacity": [1, 2, 3, 4, 5, 6.5, 8, 9.5, 11, 12.5]
       },
+      "other": {},
       "requires": {
         "ritual": {
           "march-speed-2": [2, null, 4, null, 6, null, null, null, null, null]

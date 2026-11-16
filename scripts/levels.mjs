@@ -38,6 +38,12 @@ function putRequirement(requires, need, size, index) {
 
 /** A bonus code as one of our effects, or null when it is not about battle (kept, never applied). */
 export function effectOf(code, game) {
+  // a code named by hand in game.json with a stat (the march capacity) is an effect too: the talents' reading returns
+  // its id only, which once left the capacity rituals kept by name, never applied (DEF-050)
+  const named = game.talentCodes.find((entry) => entry.code === code);
+  if (named) {
+    return named.stat ? { id: named.id, code, stat: named.stat, ...(named.target && { target: named.target }) } : null;
+  }
   try {
     const talent = talentOf(code, game);
     return talent.stat ? talent : null;

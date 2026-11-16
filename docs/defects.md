@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **49 defects**: 49 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **50 defects**: 50 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -62,6 +62,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-047](#def-047) | 2026-11-16 | The "Champion played" choice showed with no Champion lab setup saved | code | minor | ✓ fixed |
 | [DEF-048](#def-048) | 2026-11-16 | More march capacity was worth nothing to the optimiser and its path | code | major | ✓ fixed |
 | [DEF-049](#def-049) | 2026-11-16 | The optimiser took ten seconds on a real account | code | major | ✓ fixed |
+| [DEF-050](#def-050) | 2026-11-16 | The rituals raising the march capacity were never applied | code | major | ✓ fixed |
 
 ## Entries
 
@@ -686,3 +687,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** Test a search at the scale of a real account, not of a worked case: the breadth of what is owned, not its depth, made the cost.
 - **Proof:** `tests/optimiser-speed.test.js`
 - **Links:** SIM-05, SIM-12
+
+<a id="def-050"></a>
+### DEF-050 · The rituals raising the march capacity were never applied
+
+`2026-11-16` · code · major · ✓ fixed · tags: `data`, `tooling`
+
+- **Finding:** Frantz asked whether his level should not give the troops he can carry. Looking for it, the rituals March Capacity I and II (up to +7.5 % and +12.5 %), and nine champion pieces and their sets (up to +60 %), were found among the bonuses kept by name, applied to no march.
+- **Cause:** The import reads a game code named by hand in game.json (the march capacity, march_unit_capacity) through the talents' reading, which returns its id only, without its stat: so every level-based bonus on the march capacity was taken for one that is not about battle.
+- **Solution:** The import takes a named code's stat and target when game.json gives them; the rituals, structures and champion imported again from the saved pages: those bonuses are now effects on the march capacity.
+- **Result:** With March Capacity II at level 10 the optimiser fills 56,250 places for 50,000, with the Daemonblade 55,000; the tests fail on the data imported before.
+- **Lesson:** A bonus kept by name is a question: check what each one is before leaving it unapplied, above all one the player asks about.
+- **Proof:** `tests/linked.test.js`
+- **Links:** SIM-17, DATA-07

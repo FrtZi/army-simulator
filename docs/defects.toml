@@ -783,3 +783,19 @@ preuve = ["tests/optimiser-speed.test.js"]
 lecon = "Test a search at the scale of a real account, not of a worked case: the breadth of what is owned, not its depth, made the cost."
 liens = ["SIM-05", "SIM-12"]
 
+[[defaut]]
+id = "DEF-050"
+date = 2026-11-16
+titre = "The rituals raising the march capacity were never applied"
+type = "code"
+etiquettes = ["data", "tooling"]
+gravite = "major"
+statut = "fixed"
+constat = "Frantz asked whether his level should not give the troops he can carry. Looking for it, the rituals March Capacity I and II (up to +7.5 % and +12.5 %), and nine champion pieces and their sets (up to +60 %), were found among the bonuses kept by name, applied to no march."
+cause = "The import reads a game code named by hand in game.json (the march capacity, march_unit_capacity) through the talents' reading, which returns its id only, without its stat: so every level-based bonus on the march capacity was taken for one that is not about battle."
+solution = "The import takes a named code's stat and target when game.json gives them; the rituals, structures and champion imported again from the saved pages: those bonuses are now effects on the march capacity."
+resultat = "With March Capacity II at level 10 the optimiser fills 56,250 places for 50,000, with the Daemonblade 55,000; the tests fail on the data imported before."
+preuve = ["tests/linked.test.js"]
+lecon = "A bonus kept by name is a question: check what each one is before leaving it unapplied, above all one the player asks about."
+liens = ["SIM-17", "DATA-07"]
+

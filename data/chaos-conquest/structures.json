@@ -81,6 +81,7 @@
         "alignments": ["khorne"]
       }
     },
+    {"id": "march-capacity", "code": "march_unit_capacity", "stat": "marchCapacity"},
     {
       "id": "monsters-armour",
       "code": "monsters_armour_modifier",
@@ -282,11 +283,6 @@
       "labels": {"en": "Warband Speed Bonus", "fr": "Warband Speed Bonus*"}
     },
     {
-      "id": "march-unit-capacity",
-      "code": "march_unit_capacity",
-      "labels": {"en": "March Capacity", "fr": "March Capacity*"}
-    },
-    {
       "id": "monsters-hospital-speed-modifier",
       "code": "monsters_hospital_speed_modifier",
       "labels": {"en": "Monsters Healing Speed", "fr": "Monsters Healing Speed*"}
@@ -472,10 +468,11 @@
         "iron": [null, null, null, null, null, null, null, null, null, 25000, 75000, 150000, 225000, 300000, 400000, 600000, 800000, 1000000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 5000000, 6000000, 9000000, 12000000, 20000000, 32500000, 50000000, 70000000, 92500000, 120000000, 150000000, 185000000, 225000000, 280000000, 350000000],
         "component-core-premium-warpstone-star": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 5, 10, 15, 20, 25, 30, 40, 45, 50, 60, 75, 100]
       },
-      "effects": {},
+      "effects": {
+        "march-capacity": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      },
       "other": {
-        "march-maximum": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        "march-unit-capacity": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        "march-maximum": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       },
       "requires": {
         "structure": {
@@ -1043,10 +1040,10 @@
         "iron": [null, null, null, null, null, null, null, null, null, 25000, 50000, 75000, 125000, 175000, 250000, 350000, 500000, 750000, 1000000, 1250000, 1500000, 1750000, 2000000, 2250000, 2500000, 3000000, 4000000, 6500000, 9000000, 15000000, 25000000, 37500000, 50000000, 65000000, 80000000, 100000000, 120000000, 150000000, 187500000, 235000000],
         "component-core-premium-warpstone-star": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 5, 10, 15, 20, 25, 30, 40, 40, 40, 40, 45, 50]
       },
-      "effects": {},
-      "other": {
-        "march-unit-capacity": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      "effects": {
+        "march-capacity": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       },
+      "other": {},
       "requires": {
         "structure": {
           "sawbones": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]

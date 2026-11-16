@@ -233,13 +233,13 @@
       "labels": {"en": "Gauntlets of the Barrow", "fr": "Gauntlets of the Barrow*"},
       "sets": ["undead-barrow-set-bonus"],
       "effects": {
+        "march-capacity": [2, 4, 6, 8, 10],
         "monsters-melee-damage": [5, 10, 15, 20, 25],
         "infantry-melee-attack": [5, 10, 20, 30, 40],
         "chariots-ranged-damage": [10, 12.5, 17.5, 20, 25]
       },
       "march": {},
       "other": {
-        "march-unit-capacity": [2, 4, 6, 8, 10],
         "infantry-hospital-speed-modifier": [5, 10, 15, 20, 25]
       },
       "costs": {
@@ -1480,12 +1480,12 @@
       "labels": {"en": "Daemonblade", "fr": "Daemonblade*"},
       "sets": ["damnation-set-bonus"],
       "effects": {
-        "march-speed": [10, 20, 30, 40, 50, 60]
+        "march-speed": [10, 20, 30, 40, 50, 60],
+        "march-capacity": [10, 20, 30, 40, 50, 60]
       },
       "march": {},
       "other": {
         "march-combat-modifier": [25, 35, 45, 55, 70, 85],
-        "march-unit-capacity": [10, 20, 30, 40, 50, 60],
         "hero-monster-attack-modifier": [25, 35, 45, 55, 70, 85]
       },
       "costs": {
@@ -2508,12 +2508,11 @@
         "nurgle-armour": [8, 10, 13, 17, 20],
         "khorne-melee-attack": [8, 10, 13, 17, 20],
         "undivided-ranged-attack": [8, 10, 13, 17, 20],
-        "slaanesh-ranged-attack": [8, 10, 13, 17, 20]
+        "slaanesh-ranged-attack": [8, 10, 13, 17, 20],
+        "march-capacity": [5, 7, 9, 12, 15]
       },
       "march": {},
-      "other": {
-        "march-unit-capacity": [5, 7, 9, 12, 15]
-      },
+      "other": {},
       "costs": {
         "component-crafting-centigor-horn": [1200, null, null, null, null],
         "component-crafting-bronze": [1200, null, null, null, null],
@@ -2664,12 +2663,13 @@
       "rarity": "core",
       "labels": {"en": "Mace of the Great Hunt", "fr": "Mace of the Great Hunt*"},
       "sets": ["great-hunt-set-bonus"],
-      "effects": {},
+      "effects": {
+        "march-capacity": [2, 4, 6, 8, 10, 12.5]
+      },
       "march": {},
       "other": {
         "war-beasts-produce-speed-modifier": [5, 7, 9, 12, 15, 20],
         "hero-max-energy": [0, 0, 0, 0, 0, 0],
-        "march-unit-capacity": [2, 4, 6, 8, 10, 12.5],
         "hunt-energy-modifier": [-1, -2, -3, -4, -5, -6.5],
         "beastmen-combat-modifier": [3, 9, 14, 22.5, 30, 35]
       },
@@ -2980,6 +2980,7 @@
       "labels": {"en": "Murderous Cuirass of Butchery", "fr": "Murderous Cuirass of Butchery*"},
       "sets": [],
       "effects": {
+        "march-capacity": [1.5, 5, 7.5, 10, 15],
         "khorne-armour": [5, 7, 12, 20, 30]
       },
       "march": {
@@ -2987,7 +2988,6 @@
       },
       "other": {
         "march-scout-speed-modifier": [3, 6, 12, 20, 30],
-        "march-unit-capacity": [1.5, 5, 7.5, 10, 15],
         "research-speed-modifier": [1, 2, 3, 4, 5]
       },
       "costs": {
@@ -3107,14 +3107,14 @@
       "labels": {"en": "Ritualist Boots", "fr": "Ritualist Boots*"},
       "sets": ["ritualist-set-bonus"],
       "effects": {
+        "march-capacity": [2.5, 5, 7.5, 10, 15],
         "monstrous-cavalry-armour": [5, 10, 15, 20, 30],
         "monsters-melee-damage": [5, 10, 15, 20, 30]
       },
       "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5],
-        "monstrous-cavalry-hospital-speed-modifier": [4, 6, 8, 10, 12.5],
-        "march-unit-capacity": [2.5, 5, 7.5, 10, 15]
+        "monstrous-cavalry-hospital-speed-modifier": [4, 6, 8, 10, 12.5]
       },
       "costs": {
         "component-crafting-armour-plating": [750, 2000, 2500, 3000, 4000],
@@ -3138,14 +3138,14 @@
       "labels": {"en": "Ritualist Cuirass", "fr": "Ritualist Cuirass*"},
       "sets": ["ritualist-set-bonus"],
       "effects": {
+        "march-capacity": [1, 2, 3, 4, 5, 10],
         "monstrous-infantry-melee-damage": [1, 5, 10, 12.5, 15, 20],
         "monstrous-infantry-ranged-attack": [1, 5, 10, 12.5, 15, 20]
       },
       "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5, 10],
-        "monstrous-infantry-produce-speed-modifier": [1, 2.5, 5, 7.5, 10, 15],
-        "march-unit-capacity": [1, 2, 3, 4, 5, 10]
+        "monstrous-infantry-produce-speed-modifier": [1, 2.5, 5, 7.5, 10, 15]
       },
       "costs": {
         "component-crafting-armour-plating": [750, 2000, 2500, 3000, 4000, 8000],
@@ -3170,14 +3170,14 @@
       "labels": {"en": "Ritualist Gauntlets", "fr": "Ritualist Gauntlets*"},
       "sets": ["ritualist-set-bonus"],
       "effects": {
+        "march-capacity": [1, 2, 3, 4, 5],
         "infantry-health": [1, 5, 10, 12.5, 15],
         "infantry-armour": [2.5, 5, 7.5, 10, 15]
       },
       "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5],
-        "infantry-produce-speed-modifier": [1, 2, 3, 4, 5],
-        "march-unit-capacity": [1, 2, 3, 4, 5]
+        "infantry-produce-speed-modifier": [1, 2, 3, 4, 5]
       },
       "costs": {
         "component-crafting-armour-plating": [750, 2000, 2500, 3000, 4000],
@@ -3201,14 +3201,14 @@
       "labels": {"en": "Ritualist Hood", "fr": "Ritualist Hood*"},
       "sets": ["ritualist-set-bonus"],
       "effects": {
+        "march-capacity": [1, 2, 3, 4, 5, 7.5],
         "infantry-health": [1, 5, 10, 15, 20, 25],
         "infantry-armour": [3, 6, 9, 13, 17.5, 22.5]
       },
       "march": {},
       "other": {
         "research-speed-modifier": [1, 2, 3, 4, 5, 6.5],
-        "infantry-produce-speed-modifier": [2.5, 5, 7.5, 10, 15, 20],
-        "march-unit-capacity": [1, 2, 3, 4, 5, 7.5]
+        "infantry-produce-speed-modifier": [2.5, 5, 7.5, 10, 15, 20]
       },
       "costs": {
         "component-crafting-armour-plating": [750, 2000, 2500, 3000, 4000, 8000],
@@ -4584,7 +4584,7 @@
       "bonuses": {
         "shelter-hospital-produced-units-modifier": {"2": 5, "3": 5, "4": 5, "5": 10, "6": 10},
         "elves-combat-modifier": {"3": 10, "4": 10, "5": 10, "6": 20},
-        "march-unit-capacity": {"6": 25}
+        "march-capacity": {"6": 25}
       }
     },
     {
@@ -4605,7 +4605,7 @@
       "bonuses": {
         "capturable-combat-modifier": {"2": 5, "3": 5, "4": 10, "5": 10, "6": 10},
         "attack-defender-combat-modifier": {"3": 5, "4": 5, "5": 10, "6": 10},
-        "march-unit-capacity": {"4": 5, "5": 15, "6": 25}
+        "march-capacity": {"4": 5, "5": 15, "6": 25}
       }
     },
     {
@@ -4640,7 +4640,7 @@
       "pieces": ["hammer-of-dominion", "totem-of-dominion"],
       "bonuses": {
         "hero-march-unit-health-modifier": {"2": 35},
-        "march-unit-capacity": {"2": 30},
+        "march-capacity": {"2": 30},
         "march-contest-modifier": {"2": 15},
         "rally-combat-modifier": {"2": 5}
       }
@@ -4673,7 +4673,7 @@
         "elves-combat-modifier": {"2": 10, "3": 15, "4": 20},
         "capturable-combat-modifier": {"3": 12, "4": 20},
         "march-contest-modifier": {"3": 10, "4": 15},
-        "march-unit-capacity": {"4": 20},
+        "march-capacity": {"4": 20},
         "rally-combat-modifier": {"4": 15}
       }
     },
@@ -4931,6 +4931,7 @@
         "alignments": ["khorne"]
       }
     },
+    {"id": "march-capacity", "code": "march_unit_capacity", "stat": "marchCapacity"},
     {"id": "march-speed", "code": "march_speed_modifier", "stat": "speed"},
     {
       "id": "monsters-armour",
@@ -5722,11 +5723,6 @@
       "id": "march-scout-speed-modifier",
       "code": "march_scout_speed_modifier",
       "labels": {"en": "Scout Speed Bonus", "fr": "Scout Speed Bonus*"}
-    },
-    {
-      "id": "march-unit-capacity",
-      "code": "march_unit_capacity",
-      "labels": {"en": "March Capacity", "fr": "March Capacity*"}
     },
     {
       "id": "monster-attack",
