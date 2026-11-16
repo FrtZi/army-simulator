@@ -1,5 +1,5 @@
 // The Champion lab (BONUS-09, BL-30, Frantz 2026-11-11): the champion at a level, two gear sets side by side with every
-// bonus they give, and its two skill trees. It starts from the saved setup and saves nothing.
+// bonus they give, and its two skill trees. It starts from the saved setup; its setups are saved by name (CFG-10).
 import { byId, escape, options } from "../../dom.js";
 import { nameOf, number, tierName } from "../../format.js";
 import { currentGame } from "../../state.js";
@@ -7,6 +7,7 @@ import { lab } from "./lab.js";
 import { t } from "../../texts/index.js";
 import { drawGear } from "./gear.js";
 import { drawSkills } from "./skills.js";
+import { drawChampionSaves } from "./saves.js";
 
 const champion = () => currentGame().champion.champion;
 
@@ -36,4 +37,5 @@ export function drawChampionLab() {
   drawFigures();
   drawGear();
   drawSkills();
+  drawChampionSaves();
 }

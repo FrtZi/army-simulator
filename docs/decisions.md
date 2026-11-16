@@ -483,3 +483,17 @@ starts from the saved skills.
   player's own skills in Your setup; a skill bonus outside the march applied only to the champion's march (cctools.cc
   and the game's screens give these as troop bonuses, as the gear's general ones; to correct if the game shows
   otherwise).
+
+## D-39 · The Champion lab's setups: saved whole, a set played in the Battle lab (2026-11-16)
+
+Frantz asked that the labs' setups be saved and a champion's loaded in the simulator. The Champion lab is saved as it
+is, by name, in this browser (its level, both gear sets, its skills by tree; `army-simulator.champion-setups`, per
+game, beside the Battle lab's saves in browser.js). In the Battle lab, with Your setup loaded, a choice "Champion
+played" lists Your setup's champion and each saved setup's set A, and its set B when it has pieces: the one chosen
+gives its level, that set's gear and the setup's skills instead of Your setup's champion (lab-setup.js
+`championInPlay`). The choice lasts the visit.
+
+- _Set aside:_ a champion played without Your setup loaded (the switch brings the heroes owned and the rest with it:
+  a champion alone would play against free heroes, a mix the figures would not say); saving one set only (a lab is
+  "this or that": both are kept and either can be played); the choice remembered across visits (a convenience, later
+  if missed).

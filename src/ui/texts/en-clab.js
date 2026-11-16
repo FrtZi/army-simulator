@@ -2,7 +2,7 @@
 export const EN_CLAB = {
   "tabs.champion": "Champion lab",
   "clab.levelTitle": "The champion at a level",
-  "clab.levelHint": "Its figures at the level chosen. The lab starts from your saved setup and saves nothing.",
+  "clab.levelHint": "Its figures at the level chosen. The lab starts from your saved setup; save it by name below.",
   "clab.championPoints": "Champion skill points",
   "clab.conquestPoints": "Conquest skill points",
   "clab.gearTitle": "Two gear sets side by side",
@@ -27,5 +27,15 @@ export const EN_CLAB = {
   "clab.atMost": "At level {level}, its most",
   "clab.treeGives": "What the skills taken give in all",
   "clab.noSkill": "No skill with known values taken yet.",
+  "clab.savesTitle": "Champion setups saved",
+  "clab.savesHint":
+    "Saves the lab as it is, its level, both gear sets and its skills, by name in this browser. One can then play in the Battle lab instead of Your setup's champion.",
+  "clab.defaultName": "My champion",
+  "clab.savedLevel": "level {level}",
+  "clab.noSave": "No champion setup saved yet.",
+  "clab.saved": "Saved: {name}.",
+  "clab.loaded": "Put in the lab: {name}.",
+  "clab.deleted": "Deleted: {name}.",
+  "clab.savedCount": "{n} saved",
   "guides.view-skills": "Its skill trees",
 };

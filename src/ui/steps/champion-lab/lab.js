@@ -1,6 +1,6 @@
 // The Champion lab's own state (BONUS-09): a level, two gear sets (the saved setup's first), the set each filters
 // on, the skills' levels by tree (the saved setup's: BONUS-10), the tree shown and the skill chosen in it. Made at
-// first use; never saved.
+// first use; saved by name only when asked (CFG-10).
 import { currentGame, state } from "../../state.js";
 
 /** The saved skills' levels, by tree: { conquest: { id: level }, champion: {…} }. */

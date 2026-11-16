@@ -9,6 +9,10 @@ export function bindLoadSetup() {
     state.useSetup = event.target.checked;
     renderAll();
   });
+  byId("load-champion").addEventListener("change", (event) => {
+    state.labChampion = event.target.value; // CFG-10
+    renderAll();
+  });
   byId("load-setup-open").addEventListener("click", () => {
     state.page = "setup";
     renderAll();

@@ -5,6 +5,7 @@ import { lab } from "./lab.js";
 import { drawChampionLab } from "./draw.js";
 import { chooseSidePiece, chooseSideSet, drawGear } from "./gear.js";
 import { drawSkills, setSkillLevel } from "./skills.js";
+import { bindChampionSaves } from "./saves.js";
 
 function changed(event) {
   const { clabSet, clabPiece, clabLevel, side } = event.target.dataset;
@@ -24,6 +25,7 @@ function changed(event) {
 }
 
 export function bindChampionLab() {
+  bindChampionSaves();
   const panel = byId("page-panel-champion");
   panel.addEventListener("change", (event) => {
     const redraw = changed(event);

@@ -54,7 +54,7 @@ function skillSource(state, game, part) {
     kind: "skill",
     definitions: part === "march" ? game.champion.march : general,
     skills: trees.flatMap((tree) => tree.skills),
-    levels: state.savedPlayerSetup.champion?.skills ?? [],
+    levels: championInPlay(state).skills ?? [],
   };
 }
 
@@ -101,8 +101,21 @@ export function addedCounts(state, picked, free, usual) {
   );
 }
 
-/** The gear the saved setup's champion wears, or none. */
-export const championGear = (state) => state.savedPlayerSetup.champion?.gear ?? [];
+/**
+ * The champion in play (CFG-10): the Champion lab setup's set chosen in the Battle lab ("name|a" or "name|b"), with
+ * that setup's level and skills; else Your setup's champion. { level, gear, skills } as the setup file holds them.
+ */
+export function championInPlay(state) {
+  const cut = state.labChampion.lastIndexOf("|");
+  const chosen = state.championSetups.find((save) => save.name === state.labChampion.slice(0, cut));
+  if (!chosen) return state.savedPlayerSetup.champion ?? {};
+  const { level, gear, skills } = chosen.champion;
+  const taken = Object.values(skills).flatMap((tree) => Object.entries(tree).map(([id, at]) => ({ id, level: at })));
+  return { level, gear: gear[state.labChampion.slice(cut + 1)] ?? [], skills: taken };
+}
+
+/** The gear the champion in play wears, or none. */
+export const championGear = (state) => championInPlay(state).gear ?? [];
 
 /**
  * The bonuses of the champion's gear and skills for the troops of the march it leads (D-30, BONUS-10): only with

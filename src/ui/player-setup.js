@@ -4,6 +4,7 @@
 import { storedPlayerSetup, storePlayerSetup } from "../storage/player-setup.js";
 import { GAMES_BY_ID } from "./games.js";
 import { currentGame, state } from "./state.js";
+import { loadChampionSetups } from "./champion-setups.js";
 
 // a plain copy: jsdom, which runs the page tests, has no structuredClone (DEF-029)
 const copy = (value) => JSON.parse(JSON.stringify(value));
@@ -29,6 +30,7 @@ export function loadPlayerSetup() {
   state.playerSetup = copy(state.savedPlayerSetup);
   state.setupSaveFailed = false;
   state.setupImport = null;
+  loadChampionSetups(); // the Champion lab's setups are per game too (CFG-10)
 }
 
 /** Keeps the edits in this browser; false (and said on the page) when the browser refuses. */

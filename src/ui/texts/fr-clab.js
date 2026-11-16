@@ -3,7 +3,7 @@ export const FR_CLAB = {
   "tabs.champion": "Labo du champion",
   "clab.levelTitle": "Le champion à un niveau",
   "clab.levelHint":
-    "Ses chiffres au niveau choisi. Le labo part de votre configuration enregistrée et n'enregistre rien.",
+    "Ses chiffres au niveau choisi. Le labo part de votre configuration enregistrée ; enregistrez-le sous un nom plus bas.",
   "clab.championPoints": "Points de compétences de champion",
   "clab.conquestPoints": "Points de compétences de conquête",
   "clab.gearTitle": "Deux équipements côte à côte",
@@ -28,5 +28,15 @@ export const FR_CLAB = {
   "clab.atMost": "Au niveau {level}, son maximum",
   "clab.treeGives": "Ce que donnent en tout les compétences prises",
   "clab.noSkill": "Aucune compétence aux valeurs connues prise pour l'instant.",
+  "clab.savesTitle": "Configurations du champion enregistrées",
+  "clab.savesHint":
+    "Enregistre le laboratoire tel qu'il est, son niveau, ses deux ensembles d'équipement et ses compétences, sous un nom dans ce navigateur. L'une d'elles peut ensuite jouer dans le Laboratoire de bataille à la place du champion de votre configuration.",
+  "clab.defaultName": "Mon champion",
+  "clab.savedLevel": "niveau {level}",
+  "clab.noSave": "Aucune configuration du champion enregistrée.",
+  "clab.saved": "Enregistrée : {name}.",
+  "clab.loaded": "Mise dans le laboratoire : {name}.",
+  "clab.deleted": "Supprimée : {name}.",
+  "clab.savedCount": "{n} enregistrée(s)",
   "guides.view-skills": "Ses arbres de compétences",
 };

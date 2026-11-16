@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/7 | 10/20 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 2/7 | 11/20 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/7 | 2/10 | — |
 
 ## Ready to start
@@ -30,7 +30,6 @@ Not done, and every dependency done:
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-16](#bl-16) Optimiser: the best troop mix within the march capacity (v1.3, should, ◐ doing)
 - [BL-30](#bl-30) A Champion lab: gear sets compared, stats by level, every bonus, its skill trees (v1.3, should, ◐ doing)
-- [BL-32](#bl-32) The Champion lab's setups saved, one played in the Battle lab (v1.3, should, ◐ doing)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
 - [BL-17](#bl-17) Read-only share link (later, could, ○ to do)
@@ -78,7 +77,7 @@ flowchart LR
   BL30["BL-30 ◐ doing<br/>A Champion lab: gear sets compared, stats by level, every bonus, its skill trees"]:::doing
   BL31["BL-31 ○ to do<br/>An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise"]:::todo
   BL16 --> BL31
-  BL32["BL-32 ◐ doing<br/>The Champion lab's setups saved, one played in the Battle lab"]:::doing
+  BL32["BL-32 ✓ done<br/>The Champion lab's setups saved, one played in the Battle lab"]:::done
   BL33["BL-33 ○ to do<br/>The break-even of an evolution: several setups compared along a level"]:::todo
   BL31 --> BL33
   BL34["BL-34 ○ to do<br/>The optimiser's tree drawn: unfolding live as it computes, two setups on one tree"]:::todo
@@ -361,7 +360,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | should | [engine](../src/engine) | ◐ doing | 2/3 |
 | [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 4/5 |
 | [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ○ to do | 0/2 |
-| [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ◐ doing | 1/2 |
+| [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ✓ done | 2/2 |
 
 <a id="bl-11"></a>
 #### BL-11 · Keep attack: the defences' first round, as a switch on a battle
@@ -428,12 +427,12 @@ Frantz, 2026-11-16: the optimum for a characteristic I want (pro Nurgle, pro cav
 <a id="bl-32"></a>
 #### BL-32 · The Champion lab's setups saved, one played in the Battle lab
 
-Should · [ui](../src/ui) · ◐ doing · added `2026-11-16` · features: CFG-10
+Should · [ui](../src/ui) · ✓ done · added `2026-11-16` · features: CFG-10
 
 Frantz, 2026-11-16: the labs' setups can be saved, and a heroes' setup loaded in the simulator. Which labs and which setup: to agree (docs/spec/optimiser.md, question 1).
 
 - [x] Agreed with Frantz (2026-11-16): the Champion lab's setups (gear sets and skills), one played in the Battle lab
-- [ ] Saved by name, one chosen to play in the Battle lab
+- [x] Saved by name, put back or deleted; a set of one chosen to play in the Battle lab (D-39)
 
 ### later · Later, ideas kept
 

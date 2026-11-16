@@ -51,7 +51,7 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 ├── compare.js           two armies: each figure, its difference and the better one, both battles (SIM-03)
 └── insights.js          the dashboards' figures: efficiency, rounds, balance and warnings, pros and cons
 src/storage/             no DOM: configuration.js (setup ↔ file format version 2, checks), migrate.js (an older
-                         file brought up to date), browser.js (saves); the player's setup file (D-27):
+                         file brought up to date), browser.js (saves, the Champion lab's included); the player's setup file (D-27):
                          setup-file.js (read and checked value by value, written back; setup-checks.js: what its
                          readers share; setup-champion.js: the champion read; setup-buildings.js: a building's copies, D-33; setup-troops.js: the troops owned, D-34), setup-merge.js (only
                          what a file holds changes), nearest.js (the id a misread name meant); its dictionary
@@ -84,6 +84,7 @@ src/ui/                  the page
 ├── champion-bonuses.js  every bonus a gear set or a skill gives, by domain (BONUS-09)
 ├── skill-benefits.js    what a skill gives at a level, a tree's skills in all (BONUS-09)
 ├── skill-tree.js        a skill tree as the rituals': a skill as an entry, its points, a skill's level field (BONUS-10)
+├── champion-setups.js   the Champion lab's saved setups in the state, the one played in the Battle lab (CFG-10)
 ├── champion-figures.js  the champion's stats and its gear's bonuses in all, in Your setup and the lab (BONUS-08)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;
 │                        hover.js: a dot's name while pointing at it; table.js: the chart as a table (D-24)
@@ -101,7 +102,7 @@ src/ui/                  the page
                          champion.js (its skills in champion-skills.js), a file uploaded in
                          files.js, under review in import.js, drawn in review.js; D-27);
                          the Champion lab: champion-lab (lab.js its state, draw.js the level, gear.js two sets compared,
-                         skills.js the trees, bind.js); and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
+                         skills.js the trees, saves.js its setups saved by name, bind.js); and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
                          rituals' and buildings' in levelled.js and levelled-detail.js, the items' in items-table.js (by family) and items.js (one in detail), the champion's in champion.js, what going up costs in costs.js, the map to reach a ritual in ritual-map.js, the set lab in set-lab.js, the skill trees in champion-skills.js)
 src/styles/              the shared design: tokens.css (colours, both themes), base, layout, forms, lists, figures,
                          responsive
@@ -138,6 +139,7 @@ tests/                   node --test; each test names the feature it proves
 ├── champion-lab.test.js  the Champion lab: level, two sets compared, the trees (BONUS-09)
 ├── skills.test.js       the champion's two skill trees and their points (BONUS-09)
 ├── champion-skills.test.js  the champion's skills in Your setup, the file and battle (BONUS-10)
+├── champion-saves.test.js   the Champion lab's setups saved, one played in the Battle lab (CFG-10)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)

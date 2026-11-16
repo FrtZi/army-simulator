@@ -98,6 +98,9 @@ export const EN_SETUP = {
   "composition.championOff":
     "Load your setup, with your champion's gear in it, to have the champion lead a composition.",
   "load.champion": "your champion's {n} pieces of gear",
+  "load.championLabel": "Champion played",
+  "load.setupChampion": "Your setup's champion",
+  "load.labChampion": "the champion saved in the Champion lab as {name}",
   "load.levelled": "the bonuses in battle of your {rituals} rituals and {buildings} buildings",
   "load.notOwned": "Not in your setup, left out of the figures: {names}.",
 };

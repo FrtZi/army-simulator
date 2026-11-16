@@ -2,6 +2,7 @@
 // its status's, so a folded block says what its tile says.
 import { shownText as shown } from "./dom.js";
 import { t } from "./texts/index.js";
+import { state } from "./state.js";
 
 const tile = (section) => shown(`[data-tile="${section}"] .tile-figure`);
 
@@ -18,5 +19,6 @@ export const SETUP_SUMMARIES = {
   "champion-level": () => `${shown("#clab-level option:checked")} · ${shown("#clab-figures .metric.key")}`,
   "champion-gear": () => shown("#clab-compare summary") || t("clab.noGear"),
   "champion-skills": () => shown("#clab-points"),
+  "champion-saves": () => t("clab.savedCount", { n: state.championSetups.length }),
   guides: () => [shown(".guide-tabs [aria-selected=true]"), shown(".guide-detail h3")].filter(Boolean).join(" · "),
 };

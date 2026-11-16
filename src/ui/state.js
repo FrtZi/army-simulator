@@ -33,6 +33,8 @@ export const state = {
   compositions: emptyCompositions(),
   page: "lab", // the page tab shown: the Battle lab or Your setup (NAV-01)
   useSetup: false, // "Load your setup" in the Battle lab: the saved setup replaces what it holds (D-27)
+  // the Champion lab's saved setups, and the one played in the Battle lab ("name|side"; "": Your setup's) (CFG-10)
+  ...{ championSetups: [], labChampion: "" },
   // the player's setup (D-27): the one edited, the last one saved, and whether the last save failed
   playerSetup: null,
   savedPlayerSetup: null,

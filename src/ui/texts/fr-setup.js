@@ -101,6 +101,9 @@ export const FR_SETUP = {
   "composition.championOff":
     "Chargez votre configuration, avec l'équipement de votre champion, pour qu'il mène une composition.",
   "load.champion": "les {n} pièces d'équipement de votre champion",
+  "load.championLabel": "Champion joué",
+  "load.setupChampion": "Le champion de votre configuration",
+  "load.labChampion": "le champion enregistré dans le Laboratoire du champion sous le nom {name}",
   "load.levelled": "les bonus au combat de vos {rituals} rituels et {buildings} bâtiments",
   "load.notOwned": "Absents de votre configuration, laissés hors des chiffres : {names}.",
 };
