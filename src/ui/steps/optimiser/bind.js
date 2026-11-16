@@ -11,6 +11,10 @@ export function bindOptimiser() {
     state.optimiser = { ...state.optimiser, goal: event.target.value, result: null, applied: false };
     renderAll();
   });
+  byId("optimiser-opponent").addEventListener("change", (event) => {
+    state.optimiser = { ...state.optimiser, opponent: event.target.value, result: null, applied: false };
+    renderAll();
+  });
   byId("optimiser-aim").addEventListener("change", (event) => {
     if (!event.target.dataset.multi) return;
     toggleChoice(state.optimiser.aim, event.target);

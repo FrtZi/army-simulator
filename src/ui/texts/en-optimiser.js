@@ -8,9 +8,10 @@ export const EN_OPTIMISER = {
   "optimiser.goal-damage": "Damage",
   "optimiser.goal-tanking": "Tanking: effective health",
   "optimiser.goal-power": "Power",
-  "optimiser.goal-battle": "A battle won against the comparison's second side",
+  "optimiser.goal-battle": "A battle won against an opponent",
+  "optimiser.opponent": "Opponent",
   "optimiser.aimHint":
-    "An aim, if you have one (pro Nurgle, pro cavalry…): only your troops of the gods, types and tiers ticked play. Nothing ticked: all of them.",
+    "An aim, if you have one (pro Nurgle, pro cavalry…): only your troops of the gods and types ticked play. Nothing ticked: all of them.",
   "optimiser.needAimTroops":
     "None of your troops owned fits the aim: untick a value, or enter those troops in Your setup.",
   "optimiser.aimCosts": "▼ The aim costs {percent} % now: without it, the best army scores that much more.",
@@ -19,8 +20,7 @@ export const EN_OPTIMISER = {
   "optimiser.run": "Find the best army",
   "optimiser.needSetup": "Turn on “Load your setup” above: the optimiser works with what you have.",
   "optimiser.needTroops": "Your setup holds no troops owned: enter them in Your setup, then Save.",
-  "optimiser.needOpponent":
-    "The comparison's second side is empty: choose a composition with troops, or a PvE army, there.",
+  "optimiser.needOpponent": "The opponent has no troops: give it some, or choose another opponent.",
   "optimiser.none": "Nothing can be placed: no troop owned fits the march capacity.",
   "optimiser.found": "✓ The best army found for “{goal}”, among {n} armies tried.",
   "optimiser.better": "▲ {percent} % better than composition {name} as it stands.",
@@ -32,7 +32,7 @@ export const EN_OPTIMISER = {
   "optimiser.won": "✓ won by {margin} power",
   "optimiser.lost": "✗ lost by {margin} power",
   "optimiser.draw": "= a draw",
-  "optimiser.battleLine": "Attacking: {found}; composition {name} as it stands: {current}.",
+  "optimiser.battleLine": "Attacking {versus}: {found}; composition {name} as it stands: {current}.",
   "optimiser.troops": "Troops: {n} of {capacity}",
   "optimiser.heroes": "Heroes",
   "optimiser.heroLevel": "level {level}",

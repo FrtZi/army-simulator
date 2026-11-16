@@ -64,8 +64,11 @@ lab's saves, and one saved setup can be chosen to play in the Battle lab instead
 1. **The labs' setups:** the Champion lab's (its gear sets and skills) are saved, and one can be played in the Battle
    lab instead of Your setup's champion (BL-32).
 2. **Angle 1's goal:** both, presets on the profile's figures and a battle won against an opponent the player picks.
-3. **The aims:** ticked like the picker's filters (gods, troop types, tiers, several values each).
-4. **Every buff counts:** the champion's gear and sets, the heroes and their talents, the champion's skill trees: they
+3. **The aims:** ticked like the picker's filters, gods and troop types, several values each; not tiers (Frantz,
+   2026-11-16: an aim by tier makes no sense, many smaller troops can take the strikes).
+4. **The path by gain first** (Frantz, 2026-11-16): the cost is shown, not weighed; weighing it belongs to a later
+   plan (what an evolution, a new talent or an armour set costs to reach: BL-35).
+5. **Every buff counts:** the champion's gear and sets, the heroes and their talents, the champion's skill trees: they
    weigh heavily, so the optimiser and the path must take them all.
 
 ## The model, agreed with Frantz (2026-11-16)

@@ -575,3 +575,18 @@ tasks = [
   "[ ] Spec: how the results are shown (the tree, its unfolding, two setups on it); to agree",
 ]
 
+[[item]]
+id = "BL-35"
+title = "The cost of a plan: an evolution, a new talent, an armour set, what reaching it costs"
+moscow = "could"
+milestone = "later"
+module = "engine"
+status = "to do"
+added = 2026-11-16
+depends_on = ["BL-31"]
+features = ["SIM-15"]
+note = "Frantz, 2026-11-16: the path goes by gain first, the cost matters little for now; it is rather a factor of a future plan: the cost of an evolution, of reaching a new talent, of an armour set."
+tasks = [
+  "[ ] Spec: which costs, how weighed against the gain; to agree",
+]
+

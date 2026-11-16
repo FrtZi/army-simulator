@@ -33,6 +33,11 @@ function aimedPage() {
 
 test("SIM-12 pro Nurgle: only your Nurgle troops play, a Nurgle hero follows, and what the aim costs now", () => {
   const page = aimedPage();
+  // a god and a troop type, never a tier: small troops take the strikes first (Frantz, D-41)
+  assert.deepEqual(
+    page.$$("#optimiser-aim details").map((details) => details.id),
+    ["optimiser-aim-alignment", "optimiser-aim-unitType"],
+  );
   page.tick("#optimiser-aim-alignment-nurgle");
   assert.match(page.text("#optimiser-aim"), /Nurgle/);
   page.click("#optimiser-run");

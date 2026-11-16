@@ -8,9 +8,10 @@ export const FR_OPTIMISER = {
   "optimiser.goal-damage": "Dégâts",
   "optimiser.goal-tanking": "Encaisser : santé effective",
   "optimiser.goal-power": "Puissance",
-  "optimiser.goal-battle": "Une bataille gagnée contre le second camp de la comparaison",
+  "optimiser.goal-battle": "Une bataille gagnée contre un adversaire",
+  "optimiser.opponent": "Adversaire",
   "optimiser.aimHint":
-    "Une visée, si vous en avez une (pro Nurgle, pro cavalerie…) : seules vos troupes des dieux, types et rangs cochés jouent. Rien de coché : toutes.",
+    "Une visée, si vous en avez une (pro Nurgle, pro cavalerie…) : seules vos troupes des dieux et types cochés jouent. Rien de coché : toutes.",
   "optimiser.needAimTroops":
     "Aucune de vos troupes possédées ne correspond à la visée : décochez une valeur, ou saisissez ces troupes dans Votre configuration.",
   "optimiser.aimCosts":
@@ -22,8 +23,7 @@ export const FR_OPTIMISER = {
     "Activez « Charger votre configuration » plus haut : l'optimiseur travaille avec ce que vous avez.",
   "optimiser.needTroops":
     "Votre configuration ne contient aucune troupe possédée : saisissez-les dans Votre configuration, puis Enregistrer.",
-  "optimiser.needOpponent":
-    "Le second camp de la comparaison est vide : choisissez-y une composition avec des troupes, ou une armée PvE.",
+  "optimiser.needOpponent": "L'adversaire n'a pas de troupes : donnez-lui-en, ou choisissez un autre adversaire.",
   "optimiser.none": "Rien ne peut être placé : aucune troupe possédée n'entre dans la capacité de marche.",
   "optimiser.found": "✓ La meilleure armée trouvée pour « {goal} », parmi {n} armées essayées.",
   "optimiser.better": "▲ {percent} % de mieux que la composition {name} telle qu'elle est.",
@@ -35,7 +35,7 @@ export const FR_OPTIMISER = {
   "optimiser.won": "✓ gagnée de {margin} de puissance",
   "optimiser.lost": "✗ perdue de {margin} de puissance",
   "optimiser.draw": "= égalité",
-  "optimiser.battleLine": "En attaque : {found} ; la composition {name} telle qu'elle est : {current}.",
+  "optimiser.battleLine": "En attaquant {versus} : {found} ; la composition {name} telle qu'elle est : {current}.",
   "optimiser.troops": "Troupes : {n} sur {capacity}",
   "optimiser.heroes": "Héros",
   "optimiser.heroLevel": "niveau {level}",

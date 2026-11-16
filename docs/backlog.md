@@ -19,7 +19,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/7 | 13/20 | ○ not yet: 1 Must left |
-| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/7 | 2/10 | — |
+| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/8 | 2/11 | — |
 
 ## Ready to start
 
@@ -83,6 +83,8 @@ flowchart LR
   BL31 --> BL33
   BL34["BL-34 ○ to do<br/>The optimiser's tree drawn: unfolding live as it computes, two setups on one tree"]:::todo
   BL16 --> BL34
+  BL35["BL-35 ○ to do<br/>The cost of a plan: an evolution, a new talent, an armour set, what reaching it costs"]:::todo
+  BL31 --> BL35
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -448,6 +450,7 @@ Validated as ideas, not planned yet: each one is reprioritised when a version is
 | [BL-19](#bl-19) | The troops' pictures from the game | won't | [ui](../src/ui) | ○ to do | 0/1 |
 | [BL-33](#bl-33) | The break-even of an evolution: several setups compared along a level | could | [engine](../src/engine) | ○ to do | 0/1 |
 | [BL-34](#bl-34) | The optimiser's tree drawn: unfolding live as it computes, two setups on one tree | could | [ui](../src/ui) | ○ to do | 0/1 |
+| [BL-35](#bl-35) | The cost of a plan: an evolution, a new talent, an armour set, what reaching it costs | could | [engine](../src/engine) | ○ to do | 0/1 |
 
 <a id="bl-09"></a>
 #### BL-09 · Credit cctools.cc and tell its author
@@ -506,3 +509,12 @@ Could · [ui](../src/ui) · ○ to do · added `2026-11-16` · after [BL-16](#bl
 Frantz, 2026-11-16: it would be nice to see the search tree as a chart, even fun to watch it unfold on the fly while it computes; later perhaps two setups compared on the same tree. To keep for after, with how we want to show the results.
 
 - [ ] Spec: how the results are shown (the tree, its unfolding, two setups on it); to agree
+
+<a id="bl-35"></a>
+#### BL-35 · The cost of a plan: an evolution, a new talent, an armour set, what reaching it costs
+
+Could · [engine](../src/engine) · ○ to do · added `2026-11-16` · after [BL-31](#bl-31) · features: SIM-15
+
+Frantz, 2026-11-16: the path goes by gain first, the cost matters little for now; it is rather a factor of a future plan: the cost of an evolution, of reaching a new talent, of an armour set.
+
+- [ ] Spec: which costs, how weighed against the gain; to agree

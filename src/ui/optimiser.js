@@ -1,7 +1,7 @@
 // The optimiser on the page (SIM-05, D-40), angle 1: the best army with what Your setup holds — its troops owned, its
 // heroes at their levels, everything else it brings (rituals, buildings, champion) — for the composition being
-// edited. The page gives the search its goal: weights on the profile's figures, or a battle won against the
-// comparison's second side (a composition, or the PvE army chosen). Angle 2 (SIM-12, D-41): an aim ticked keeps only
+// edited. The page gives the search its goal: weights on the profile's figures, or a battle won against an opponent
+// chosen (another composition, or the PvE army). Angle 2 (SIM-12, D-41): an aim ticked keeps only
 // the troops it names, and the best army without it says what the aim costs now. The search is the engine's.
 import { CONFIG } from "./config.js";
 import { currentGame, state, summarise, validEffects } from "./state.js";
@@ -12,9 +12,24 @@ import { armyProfile, offeredTalents, optimise, profileScore, simulateBattle } f
 
 export const goalOf = (id) => CONFIG.optimiser.goals.find((goal) => goal.id === id);
 
-/** The side the battle goal fights: the PvE army chosen, else the comparison's second composition; null if empty. */
+/** The opponents the battle goal can fight: each composition but the one edited, and the PvE army if it has troops. */
+export function opponents() {
+  const others = state.compositions.map((composition, index) => [String(index), composition]);
+  const pve = pveArmy(state, currentGame()).size > 0 ? [["pve", null]] : [];
+  return [...others.filter(([index]) => Number(index) !== state.active), ...pve];
+}
+
+/** The opponent chosen ("pve" or a composition's index), the first one when the choice no longer stands; or null. */
+export function opponentChosen() {
+  const values = opponents().map(([value]) => value);
+  return values.includes(state.optimiser.opponent) ? state.optimiser.opponent : (values[0] ?? null);
+}
+
+/** The army the battle goal fights, as the engine sees it; null when it has no troop. */
 function opponent() {
-  const army = state.pve.on ? pveArmy(state, currentGame()) : summarise(state.compositions[state.compare[1]]);
+  const chosen = opponentChosen();
+  if (chosen === null) return null;
+  const army = chosen === "pve" ? pveArmy(state, currentGame()) : summarise(state.compositions[Number(chosen)]);
   return army.size > 0 ? army : null;
 }
 
@@ -41,7 +56,7 @@ export function blocked(goal) {
  */
 function scores(goal) {
   const { rules } = currentGame();
-  const against = state.pve.on ? pveRaces(state, currentGame()) : new Set();
+  const against = opponentChosen() === "pve" ? pveRaces(state, currentGame()) : new Set();
   const shared = validEffects(); // once: the setup's rituals and buildings resolved for every army
   const army = (composition) => summarise({ ...state.composition, ...composition }, against, shared);
   const quick = (composition) =>
@@ -91,7 +106,7 @@ export function runOptimiser() {
   const { troops, heroes: playing, talents } = asPlayed(state.composition, state);
   const empty = !Object.values(troops).some((count) => count > 0);
   const current = empty ? null : judges.score({ troops, heroes: playing ?? [], talents: talents ?? [] });
-  return { goal: goal.id, ...found, current, free, capacity };
+  return { goal: goal.id, ...found, current, free, capacity, opponent: goal.battle ? opponentChosen() : null };
 }
 
 /** Puts the army found in the composition being edited: its troops, heroes and talents. */

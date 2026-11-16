@@ -34,6 +34,7 @@ export const CONFIG = {
       { id: "battle", battle: true },
     ],
     guess: { damage: 0.5, health: 0.5 },
-    aimFilters: ["alignment", "unitType", "tier"], // an aim (SIM-12): the picker's filters, a god, a type, a tier
+    // an aim (SIM-12): a god, a troop type; never a tier, as small troops take the strikes first (D-41)
+    aimFilters: ["alignment", "unitType"],
   },
 };

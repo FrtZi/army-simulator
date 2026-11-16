@@ -640,7 +640,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 
 - **Finding:** Frantz asked to mind the gaps between buttons and boxes: the optimiser's button touched its goal's list and its status line touched the button; Your setup in the lab's button touched the champion's choice.
 - **Cause:** A card stacks its children with no gap of its own: a field then a button, or a button then a status line, met edge to edge. The rows of a field and its button (a grid with a gap) were spaced; a stack in the card itself was not, and nothing checked it.
-- **Solution:** In a card, a button after a field and a status line after a button are 0.75 rem apart; in a grid or a row the gap already spaces them (a margin there would double it, seen at a phone's width).
+- **Solution:** In a card, a field or a button after a field, and a status line after a button, are 0.75 rem apart (the field after a field found with the optimiser's opponent); in a grid or a row the gap already spaces them (a margin there would double it, seen at a phone's width).
 - **Result:** Every such pair on the page has its gap; the test lists the three pairs without the rule.
 - **Lesson:** A gap is checked like a contrast: measured on the whole page by a test, not left to the eye of whoever adds the next block.
 - **Proof:** `tests/accessibility.test.js`

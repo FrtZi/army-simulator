@@ -134,14 +134,15 @@ for (const [theme, tokens] of Object.entries(THEMES)) {
 }
 
 // DEF-046: a button stood against the field above it, and a status line against its button (WCAG 2.5.8, targets apart)
-test("ACC-01 DEF-046 no button touches the field or filters above it, nor a status line the button above it", () => {
+test("ACC-01 DEF-046 no field or button touches the field or filters above it, nor a status line its button", () => {
   const page = openPage();
   const { getComputedStyle } = page.window;
   const touching = page
-    .$$("button, .status")
+    .$$("button, .status, .field")
     .filter((element) => {
       const above = element.previousElementSibling;
-      const stacked = element.matches("button") ? above?.matches(".field, .filters") : above?.matches("button");
+      const below = element.matches("button, .field");
+      const stacked = below ? above?.matches(".field, .filters") : above?.matches("button");
       // in a grid or a flex row, the container's gap spaces them (a margin there would double it)
       if (!stacked || /grid|flex/.test(getComputedStyle(element.parentElement).display)) return false;
       const gap = parseFloat(getComputedStyle(above).marginBottom) + parseFloat(getComputedStyle(element).marginTop);

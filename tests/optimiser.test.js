@@ -158,14 +158,19 @@ test("SIM-05 on the page: with Your setup loaded, the best army for a goal found
   assert.match(page.text("#optimiser-result"), /= As good as composition A as it stands\./, "found again from itself");
 });
 
-// DEF-045: troops added to the side compared once left the button greyed, the block drawn only with the whole page
-test("SIM-05 DEF-045 on the page: a battle won against the comparison's second side, said in words", () => {
+// DEF-045: troops added to the opponent once left the button greyed, the block drawn only with the whole page
+test("SIM-05 DEF-045 on the page: a battle won against an opponent chosen, said in words", () => {
   const page = openWithSetup();
   page.tick("#load-setup-toggle");
+  assert.ok(page.$("#optimiser-opponent-field").hidden, "no opponent but for a battle");
   page.choose("#optimiser-goal", "battle");
-  assert.match(page.text("#optimiser-status"), /The comparison's second side is empty/);
+  // the opponent: every composition but the one edited (and the PvE army, once it has troops)
+  const opponentsShown = () => page.$$("#optimiser-opponent option").map((option) => option.textContent);
+  assert.deepEqual(opponentsShown(), ["Composition B"]);
+  assert.match(page.text("#optimiser-status"), /The opponent has no troops/);
   page.click("#composition-tab-1");
   addTroops(page, ["khorngor"]);
+  assert.deepEqual(opponentsShown(), ["Composition A"], "B edited: A is the opponent");
   page.click("#composition-tab-0");
   page.click("#optimiser-run");
   assert.match(page.text("#optimiser-result"), /^Composition A is empty for now\./);
@@ -173,6 +178,6 @@ test("SIM-05 DEF-045 on the page: a battle won against the comparison's second s
   page.click("#optimiser-run");
   assert.match(
     page.text("#optimiser-result"),
-    /^Attacking: ✓ won by [\d,]+ power; composition A as it stands: ✗ lost by [\d,]+ power\./,
+    /^Attacking Composition B: ✓ won by [\d,]+ power; composition A as it stands: ✗ lost by [\d,]+ power\./,
   );
 });

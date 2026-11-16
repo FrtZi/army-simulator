@@ -5,7 +5,7 @@
 import { CONFIG } from "../../config.js";
 import { byId, escape, options } from "../../dom.js";
 import { label, number } from "../../format.js";
-import { blocked, goalOf } from "../../optimiser.js";
+import { blocked, goalOf, opponentChosen, opponents } from "../../optimiser.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { talentName } from "../heroes/draw.js";
@@ -14,6 +14,12 @@ import { offeredTalents } from "../../../engine/index.js";
 
 export const compositionName = () => state.composition.name || String(state.active + 1);
 
+/** An opponent's name: a composition's, or the PvE army's. */
+const opponentName = (value) =>
+  value === "pve"
+    ? t("pve.option")
+    : t("composition.tab", { name: state.compositions[Number(value)].name || String(Number(value) + 1) });
+
 /** A battle's margin in words: won, lost or a draw, with its icon. */
 function battleWords(margin) {
   if (margin > 0) return t("optimiser.won", { margin: number(margin) });
@@ -21,11 +27,12 @@ function battleWords(margin) {
 }
 
 /** The army found against the composition edited as it stands: by how much better, or both battles. */
-function comparedLine({ goal, score, current }) {
+function comparedLine({ goal, score, current, opponent }) {
   const name = compositionName();
   if (current === null) return t("optimiser.emptyNow", { name });
   if (goalOf(goal).battle) {
-    return t("optimiser.battleLine", { found: battleWords(score), name, current: battleWords(current) });
+    const versus = opponentName(opponent);
+    return t("optimiser.battleLine", { versus, found: battleWords(score), name, current: battleWords(current) });
   }
   if (!(current > 0)) return t("optimiser.nothingNow", { name });
   const percent = number(Math.abs(score / current - 1) * 100, 1);
@@ -94,7 +101,17 @@ export function drawOptimiserGoals() {
  * Whether it can run, its status and the army found: with the figures, as troops added to a composition or a side
  * compared may let it run or not (DEF-045).
  */
+/** The opponent's list, shown for the battle goal only: the other compositions and the PvE army (by their names now). */
+function drawOpponents() {
+  const battle = Boolean(goalOf(state.optimiser.goal).battle);
+  byId("optimiser-opponent-field").hidden = !battle;
+  if (!battle) return;
+  const pairs = opponents().map(([value]) => [value, opponentName(value)]);
+  byId("optimiser-opponent").innerHTML = options(pairs, opponentChosen());
+}
+
 export function drawOptimiser() {
+  drawOpponents();
   const reason = blocked(goalOf(state.optimiser.goal));
   byId("optimiser-run").disabled = Boolean(reason);
   const { result } = state.optimiser;
