@@ -1,11 +1,12 @@
-// The path from the army found (SIM-12, D-42, D-43): each hero to get or raise by a level, and each ritual and
-// building one level up with what it asks first, by its gain on that army, the most first; the cost shown, not
-// weighed (Frantz, 2026-11-16: gain first).
+// The path from the army found (SIM-12, D-42, D-43, D-44): each hero to get or raise by a level, each ritual and
+// building one level up that can be done now, and the champion's pieces and skills one level up, by its gain on that
+// army, the most first; the cost shown, not weighed (Frantz, 2026-11-16: gain first).
 import { CONFIG } from "./config.js";
 import { currentGame, state, validEffects } from "./state.js";
 import { heroesOwned, offered, scores } from "./optimiser-scores.js";
 import { highestCopy } from "../storage/setup-buildings.js";
-import { heroPath, heroSteps, levelledSteps } from "../engine/index.js";
+import { championInPlay } from "./lab-setup.js";
+import { gearSteps, heroPath, heroSteps, levelledSteps, skillSteps } from "../engine/index.js";
 
 const byId = (list) => new Map(list.map((entry) => [entry.id, entry]));
 
@@ -63,12 +64,40 @@ function levelledPath(found, goal) {
     .filter((step) => step.gain > 0);
 }
 
-/** The path: the heroes' steps and the rituals' and buildings', the most gain first, the first few. */
+/** The champion in play with a step taken: its piece one level up or put on, or its skill one level up. */
+function championWith(champion, { kind, id, to }) {
+  const set = (list) => [...list.filter((entry) => entry.id !== id), { id, level: to }];
+  if (kind === "gear") return { ...champion, gear: set(champion.gear ?? []) };
+  return { ...champion, skills: set(champion.skills ?? []) };
+}
+
+/** Each piece and skill of the champion in play one level up, by its gain on the army found. */
+function championPath(found, goal) {
+  const { champion, championSkills } = currentGame();
+  const saved = state.savedPlayerSetup;
+  const now = championInPlay(state);
+  const points = (tree) => (now.level ? champion.champion[tree.points][now.level - 1] : 0);
+  const skills = new Map((now.skills ?? []).map(({ id, level }) => [id, level]));
+  const steps = [
+    ...gearSteps(now.gear ?? [], champion.pieces, heldOf(saved).structure),
+    ...skillSteps(championSkills.trees, skills, points),
+  ];
+  return steps
+    .map((step) => {
+      const seen = { ...state, labChampion: "", savedPlayerSetup: { ...saved, champion: championWith(now, step) } };
+      return { ...step, gain: scores(goal, validEffects(seen), seen).score(found.composition) - found.score };
+    })
+    .filter((step) => step.gain > 0);
+}
+
+/** The path: the heroes' steps, the rituals' and buildings', the champion's, the most gain first, the first few. */
 export function pathFrom(found, goal) {
   const { warlords, game } = currentGame();
   const rules = game.heroRules;
   const owned = new Map(heroesOwned().map(({ id, level }) => [id, level]));
   const steps = heroSteps([...warlords.keys()], owned, rules.ranks * rules.levelsPerRank);
   const heroes = heroPath(found, steps, { score: scores(goal).score, offered, ...rules });
-  return [...heroes, ...levelledPath(found, goal)].sort((a, b) => b.gain - a.gain).slice(0, CONFIG.optimiser.pathSteps);
+  return [...heroes, ...levelledPath(found, goal), ...championPath(found, goal)]
+    .sort((a, b) => b.gain - a.gain)
+    .slice(0, CONFIG.optimiser.pathSteps);
 }

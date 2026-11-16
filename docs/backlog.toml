@@ -529,7 +529,8 @@ tasks = [
   "[x] The aim in the optimiser: only the troops it names, and what it costs now (D-41)",
   "[x] The path, its heroes: each hero to get or raise by its gain on the army found, the cost shown (D-42)",
   "[x] The path's rituals and buildings: one level up, those whose prerequisites are held (D-43)",
-  "[ ] The path's gear and champion skills, with a short guide",
+  "[x] The path's champion: a piece raised or put on, a skill one level up (D-44)",
+  "[ ] The path's short guide",
 ]
 
 [[item]]

@@ -17,3 +17,4 @@ export { efficiency, rounds, balance, prosAndCons } from "./insights.js";
 export { combinations, optimise, profileScore } from "./optimise.js";
 export { bestWithHero, heroPath, heroSteps } from "./path.js";
 export { levelledSteps, missingFor } from "./levelled-steps.js";
+export { gearSteps, skillSteps } from "./champion-steps.js";

@@ -32,13 +32,14 @@ export function opponent() {
  * The goal's two scores of a composition ({ troops, heroes, talents }, played as the one edited: led by the champion
  * or not): the exact one, and the quick guess that orders the branches. A battle scores the power the opponent loses
  * less the power ours loses, ours attacking. `shared`: the bonuses every army shares, the setup's by default; the path
- * passes those of a setup with a ritual or a building more (D-43).
+ * passes those of a setup with a ritual or a building more (D-43), and `seen`, a state whose champion has a piece or a
+ * skill more, for its march's bonuses (D-44).
  */
-export function scores(goal, shared = validEffects()) {
+export function scores(goal, shared = validEffects(), seen = state) {
   const { rules } = currentGame();
   const against = opponentChosen() === "pve" ? pveRaces(state, currentGame()) : new Set();
   // the heroes as given: the search's are owned at their levels; the path's may be one up, or not owned yet
-  const army = (composition) => summariseAsGiven({ ...state.composition, ...composition }, against, shared);
+  const army = (composition) => summariseAsGiven({ ...state.composition, ...composition }, against, shared, seen);
   const quick = (composition) =>
     profileScore(armyProfile(army(composition), rules.model), goal.weights ?? CONFIG.optimiser.guess);
   if (!goal.battle) return { score: quick, guess: quick };

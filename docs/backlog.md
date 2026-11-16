@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/7 | 15/22 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/7 | 16/23 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/8 | 2/11 | — |
 
 ## Ready to start
@@ -362,7 +362,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ✓ done | 3/3 |
 | [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | should | [engine](../src/engine) | ✓ done | 3/3 |
 | [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 4/5 |
-| [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ◐ doing | 3/4 |
+| [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ◐ doing | 4/5 |
 | [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ✓ done | 2/2 |
 
 <a id="bl-11"></a>
@@ -427,7 +427,8 @@ Frantz, 2026-11-16: the optimum for a characteristic I want (pro Nurgle, pro cav
 - [x] The aim in the optimiser: only the troops it names, and what it costs now (D-41)
 - [x] The path, its heroes: each hero to get or raise by its gain on the army found, the cost shown (D-42)
 - [x] The path's rituals and buildings: one level up, those whose prerequisites are held (D-43)
-- [ ] The path's gear and champion skills, with a short guide
+- [x] The path's champion: a piece raised or put on, a skill one level up (D-44)
+- [ ] The path's short guide
 
 <a id="bl-32"></a>
 #### BL-32 · The Champion lab's setups saved, one played in the Battle lab

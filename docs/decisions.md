@@ -577,3 +577,17 @@ and a ritual waiting for them appears once they are held. A gain below what one 
   step is shown, so none to list; a "what this ritual asks" belongs to the rituals' map, GUIDE-07); the troops,
   heroes and talents chosen again for each level (a ritual's bonus seldom changes which army is best; the search can be
   run again after a step).
+
+## D-44 · The path's champion: a piece raised or put on, a skill one level up (2026-11-16)
+
+The path's last kind of step, every buff counting as Frantz asked: the champion in play (Your setup's, or a Champion
+lab setup's set chosen, CFG-10) with one piece worn one level up (one rarity), one piece of a slot left empty put on at
+level 1, both when the buildings held allow that level (the Daemonic Forge), or one skill one level up, its
+requirements held and a point free in its tree (each level takes one; the points its level gives, as the lab counts
+them). The gain is the army found scored again with that champion, both its bonuses for every troop and its march's
+(a composition it leads); a skill's cost reads "a skill point".
+
+- _Set aside:_ a piece swapped for another in a slot already filled (the set lab compares sets, GUIDE-09; one swap per
+  piece of every slot would be some hundred steps, mostly worse); a skill whose bonuses are not known yet (BL-30: no
+  value, no gain; it joins the path once its values are entered); a champion level up for more points (its cost is
+  experience, a plan's matter, BL-35).

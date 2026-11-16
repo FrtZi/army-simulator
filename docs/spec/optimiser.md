@@ -1,6 +1,6 @@
 # The optimiser and the path (BL-16, BL-31) — spec
 
-[← Overview](../../ARCHITECTURE.md) · Catalogue: SIM-05, SIM-12, CFG-10 · Status: agreed with Frantz on 2026-11-16; angle 1 built (D-40), angle 2's aim built (D-41), the path's heroes (D-42), rituals and buildings (D-43)
+[← Overview](../../ARCHITECTURE.md) · Catalogue: SIM-05, SIM-12, CFG-10 · Status: agreed with Frantz on 2026-11-16; angle 1 built (D-40), angle 2's aim built (D-41), the path's heroes (D-42), rituals and buildings (D-43), champion (D-44)
 
 ## The need (Frantz, 2026-11-16)
 

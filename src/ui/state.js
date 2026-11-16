@@ -128,9 +128,10 @@ export function validEffects(seen = state) {
  * and its heroes. `shared`: the bonuses every composition shares (validEffects), passed in by a caller that sums many
  * armies. The optimiser's path plays a hero not owned yet, or one level up, so it skips asPlayed (D-42).
  */
-export function summariseAsGiven(composition, against = new Set(), shared = validEffects()) {
+export function summariseAsGiven(composition, against = new Set(), shared = validEffects(), seen = state) {
   const game = currentGame();
-  const march = championMarchEffects(state, game, composition).filter((effect) => !problemsOf(effect).length);
+  // `seen`: the state, or one whose champion has a piece or a skill more (the optimiser's path, D-44)
+  const march = championMarchEffects(seen, game, composition).filter((effect) => !problemsOf(effect).length);
   const talents = talentsOf(composition, game);
   // against a PvE army of one race, a talent for that race counts too (Combat Bonus vs. Empire)
   const versus = raceTalentEffects(talents, game.game.talentCodes, against);
