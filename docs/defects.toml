@@ -831,3 +831,19 @@ preuve = ["tests/optimiser-tabs.test.js"]
 lecon = "Reusing a class reuses all it sets: check what a class does before borrowing its name."
 liens = ["SIM-19", "ACC-01"]
 
+[[defaut]]
+id = "DEF-053"
+date = 2026-11-16
+titre = "The optimiser left a talent's places empty on a real account"
+type = "code"
+etiquettes = ["engine"]
+gravite = "major"
+statut = "fixed"
+constat = "Run on a real account's setup, the army found held 50,000 troops for 61,500 places, the march capacity talent's 11,500 places empty, in the all-round, power and damage goals."
+cause = "The speed fix (DEF-049) let the slices move to the twelve troops worth most per place only. On a real account those are rare (200 Lords on Dragon, 900 Minotaurs), all placed already: the places a talent freed found no troop to move into."
+solution = "The troops a slice may move to are the twelve best and as many more as it takes for their counts to fill the places."
+resultat = "Every place filled on that setup (61,500 of 61,500); with a thousand of each troop and a trio raising the capacity, the test fills 61,500 and fails with the twelve alone (50,000)."
+preuve = ["tests/optimiser-speed.test.js"]
+lecon = "A shortcut over a search is checked on the case it can starve, not only on the case it speeds up: here, the best being scarce."
+liens = ["SIM-05", "SIM-12"]
+

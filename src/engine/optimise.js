@@ -5,7 +5,7 @@
 // rises. The caller passes both scores (the battle engine behind them), so this module knows neither the page nor
 // what a goal is.
 import { COMPARED } from "./compare.js";
-import { fill, placed, rank, remembered, topUp } from "./fill.js";
+import { fill, placed, rank, remembered, shortlist, topUp } from "./fill.js";
 
 /** Every subset of `size` items, in their order (220 trios for 12 heroes). */
 export function combinations(items, size) {
@@ -108,8 +108,11 @@ export function settle(composition, { owned, capacity, offered, score, slices, r
   const talented = chooseTalents(composition, ids, { score: full, max: talentsPerArmy });
   const room = roomOf(talented.composition);
   const start = { composition: talented.composition, score: score(talented.composition) };
-  const short = order.slice(0, candidates ?? order.length); // the troops a slice may move to (DEF-049)
-  return climb(start, short, room, { score, slice: Math.max(1, Math.round(room / slices)), rounds });
+  return climb(start, shortlist(order, candidates, room), room, {
+    score,
+    slice: Math.max(1, Math.round(room / slices)),
+    rounds,
+  });
 }
 
 /**
@@ -135,13 +138,15 @@ export function optimise({ owned, capacity, heroes, offered, score, guess = scor
   // the troops moved by slices within the capacity this composition has, its free places filled first
   const settled = (entry) => {
     const room = capacityOf(entry.composition);
-    return climb(entry, short, room, { score: exact, slice: Math.max(1, Math.round(room / slices)), rounds });
+    return climb(entry, shortlist(order, candidates, room), room, {
+      score: exact,
+      slice: Math.max(1, Math.round(room / slices)),
+      rounds,
+    });
   };
   const order = rank(usable, base, (some) => quick({ troops: some, heroes: [], talents: [] }));
   const troops = fill(order, base);
-  // the slices move to the troops worth most per place only: with seventy kinds owned, every pair was tried, each
-  // round, a search judging a hundred thousand armies (DEF-049)
-  const short = order.slice(0, candidates ?? order.length);
+  // the slices move to the troops worth most per place only, and enough of them to fill every place (DEF-049, DEF-053)
   // a talent judged with the places it frees filled: one raising the capacity is worth its troops (D-45)
   const topped = (judge) => (composition) => judge(topUp(composition, order, capacityOf(composition)));
   const gains = new Map();
@@ -171,7 +176,7 @@ export function optimise({ owned, capacity, heroes, offered, score, guess = scor
     .map(({ composition }) => settled({ composition, score: exact(composition) }))
     .reduce(better);
   const room = capacityOf(leaf.composition);
-  const starts = [start, ...short.map(([id, count]) => ({ [id]: Math.min(count, room) }))]
+  const starts = [start, ...shortlist(order, candidates, room).map(([id, count]) => ({ [id]: Math.min(count, room) }))]
     .filter(Boolean)
     .map((some) => ({ ...leaf.composition, troops: some }))
     .map((composition) => ({ composition, score: exact(composition) }))

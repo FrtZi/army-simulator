@@ -51,3 +51,16 @@ test("SIM-05 DEF-049 every troop owned: the same army found, judging a few thous
   assert.ok(short.judged < 4000, `${short.judged} armies judged`);
   assert.ok(every.judged > 2 * short.judged, `${every.judged} against ${short.judged}`);
 });
+
+// DEF-053: with the best troops rare and all placed, the places a talent frees found no troop to take: on a real
+// account, 50,000 troops for 61,500 places
+test("SIM-05 DEF-053 the places a talent frees are filled, even when the best troops are rare and all placed", () => {
+  const owned = units.map((unit) => [unit.id, 1000]); // 82,000 troops, a thousand of each
+  const heroes = warlords.slice(0, 6).map(({ id }) => ({ id, level: 20 }));
+  // a trio raises the capacity, as a march capacity talent does: 50,000 places without heroes, 61,500 with them
+  const capacity = (composition) => (composition.heroes.length ? 61500 : 50000);
+  const settings = { width: 20, slices: 20, rounds: 60, settled: 5, candidates: 12, ...game.heroRules };
+  const found = optimise({ owned, capacity, heroes, offered, score, settings });
+  const placed = Object.values(found.composition.troops).reduce((sum, count) => sum + count, 0);
+  assert.equal(placed, 61500);
+});

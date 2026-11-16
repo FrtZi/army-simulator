@@ -34,6 +34,20 @@ export function topUp(composition, order, room) {
   return { ...composition, troops };
 }
 
+/**
+ * The troops a slice may move to: the `few` worth most per place (DEF-049), and as many more as it takes for their
+ * counts to fill `room`: the best are often rare (200 Lords on Dragon), all placed already, and the free places would
+ * find no troop to take (DEF-053).
+ */
+export function shortlist(order, few, room) {
+  let counted = 0;
+  return order.filter(([, count], index) => {
+    const kept = index < (few ?? order.length) || counted < room;
+    counted += count;
+    return kept;
+  });
+}
+
 /** The troops owned filled into the capacity, in `order`. */
 export const fill = (order, capacity) => topUp({ troops: {} }, order, capacity).troops;
 

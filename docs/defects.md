@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **52 defects**: 52 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **53 defects**: 53 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -65,6 +65,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-050](#def-050) | 2026-11-16 | The rituals raising the march capacity were never applied | code | major | ✓ fixed |
 | [DEF-051](#def-051) | 2026-11-16 | In French every troop's bar was full in the optimiser | code | minor | ✓ fixed |
 | [DEF-052](#def-052) | 2026-11-16 | The optimiser's hero names took a god's colour checked for marks only | code | minor | ✓ fixed |
+| [DEF-053](#def-053) | 2026-11-16 | The optimiser left a talent's places empty on a real account | code | major | ✓ fixed |
 
 ## Entries
 
@@ -728,3 +729,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** Reusing a class reuses all it sets: check what a class does before borrowing its name.
 - **Proof:** `tests/optimiser-tabs.test.js`
 - **Links:** SIM-19, ACC-01
+
+<a id="def-053"></a>
+### DEF-053 · The optimiser left a talent's places empty on a real account
+
+`2026-11-16` · code · major · ✓ fixed · tags: `engine`
+
+- **Finding:** Run on a real account's setup, the army found held 50,000 troops for 61,500 places, the march capacity talent's 11,500 places empty, in the all-round, power and damage goals.
+- **Cause:** The speed fix (DEF-049) let the slices move to the twelve troops worth most per place only. On a real account those are rare (200 Lords on Dragon, 900 Minotaurs), all placed already: the places a talent freed found no troop to move into.
+- **Solution:** The troops a slice may move to are the twelve best and as many more as it takes for their counts to fill the places.
+- **Result:** Every place filled on that setup (61,500 of 61,500); with a thousand of each troop and a trio raising the capacity, the test fills 61,500 and fails with the twelve alone (50,000).
+- **Lesson:** A shortcut over a search is checked on the case it can starve, not only on the case it speeds up: here, the best being scarce.
+- **Proof:** `tests/optimiser-speed.test.js`
+- **Links:** SIM-05, SIM-12
