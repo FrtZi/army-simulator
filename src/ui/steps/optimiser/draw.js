@@ -78,7 +78,10 @@ function foundHtml(result) {
       t("optimiser.noTalent"),
     )}
     ${pathHtml(result)}
-    <button id="optimiser-use" type="button" class="secondary">${escape(t("optimiser.use", { name: compositionName() }))}</button>`;
+    <div class="file-actions">
+      <button id="optimiser-use" type="button" class="secondary">${escape(t("optimiser.use", { name: compositionName() }))}</button>
+      <button id="optimiser-new" type="button" class="secondary">${escape(t("optimiser.useNew"))}</button>
+    </div>`;
 }
 
 /** The status line: why it cannot run, or what the last run found, or what was put in the composition. */

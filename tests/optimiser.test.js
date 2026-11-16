@@ -156,6 +156,11 @@ test("SIM-05 on the page: with Your setup loaded, the best army for a goal found
   assert.equal(page.$$("#army-lines input").length, 2, "its two troops");
   page.click("#optimiser-run");
   assert.match(page.text("#optimiser-result"), /= As good as composition A as it stands\./, "found again from itself");
+  // or in a new composition, A kept as it is (Frantz, 2026-11-16)
+  page.click("#optimiser-new");
+  assert.equal(page.text("#optimiser-status"), "✓ Composition C now holds the army found.");
+  assert.equal(page.text("#composition-tab-2"), "Composition C");
+  assert.equal(page.$$("#hero-lines .hero-line").length, 3);
 });
 
 // DEF-045: troops added to the opponent once left the button greyed, the block drawn only with the whole page

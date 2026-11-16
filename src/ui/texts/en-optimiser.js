@@ -55,6 +55,7 @@ export const EN_OPTIMISER = {
   "optimiser.pathPutOn": "Put on {name} at level 1",
   "optimiser.path-skill": "Skill {name}: level {from} → {to}",
   "optimiser.pathPoint": "costs a skill point",
+  "optimiser.useNew": "Put it in a new composition",
   "optimiser.use": "Use it in composition {name}",
   "optimiser.used": "✓ Composition {name} now holds the army found.",
   "fold.optimiserNone": "○ Not run yet",

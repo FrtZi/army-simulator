@@ -591,3 +591,22 @@ them). The gain is the army found scored again with that champion, both its bonu
   piece of every slot would be some hundred steps, mostly worse); a skill whose bonuses are not known yet (BL-30: no
   value, no gain; it joins the path once its values are entered); a champion level up for more points (its cost is
   experience, a plan's matter, BL-35).
+
+## D-45 · Every branch linked: a step settled, a capacity's troops counted (2026-11-16)
+
+Frantz saw it in the path: more march capacity seemed worth nothing ("these parameters, even in different branches,
+are all linked"). The search and the path judged a talent or a step with the troops fixed, so a talent raising the
+capacity (the Chosen Standard Bearer's, the only capacity bonus the game's data hold beside the setup's own) let no troop
+in and scored nothing; and the search took the capacity of the composition edited, not of each army it tried (DEF-048).
+
+Now the capacity is the army's own (its talents' and the setup's bonuses, in whole places). A talent is judged with
+the places it frees filled from the troops owned, those worth most per place first (`fill.js`); the five best trios
+kept then have their troops settled, moved by slices while the score rises. In the path, each step is judged at a
+glance the same way, then the twenty best, and every step leaving places free, are settled (`settle`: the talents
+chosen again, the troops moved, the free places filled), their gain measured against the army found settled the same
+way, so a better arrangement of the troops found by the way is not counted as the step's. The empty slots offer their
+best piece only (a choice, not steps one after another; Frantz, 2026-11-16), and the army found can be put in a new
+composition, the one edited kept as it is. A run takes 0.6 to 1.7 s in jsdom with up to 33 heroes.
+
+- _Set aside:_ the whole search run again for each step (twenty seconds); every trio kept settled (twice the time for
+  the same armies: ranked with their free places filled, the others do not overtake the first five).

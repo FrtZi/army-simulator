@@ -5,9 +5,9 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **47 defects**: 47 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **48 defects**: 48 fixed, 0 worked around, 0 open.
 
-Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
+Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
 ## Index
 
@@ -60,6 +60,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-045](#def-045) | 2026-11-16 | The optimiser's button stayed greyed after troops were added to the side it fights | code | minor | ✓ fixed |
 | [DEF-046](#def-046) | 2026-11-16 | Buttons stood against the field above them, and a status line against its button | code | minor | ✓ fixed |
 | [DEF-047](#def-047) | 2026-11-16 | The "Champion played" choice showed with no Champion lab setup saved | code | minor | ✓ fixed |
+| [DEF-048](#def-048) | 2026-11-16 | More march capacity was worth nothing to the optimiser and its path | code | major | ✓ fixed |
 
 ## Entries
 
@@ -658,3 +659,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A fix for one class of a general trap is a defect waiting for the next class: fix the trap. And a test environment that cannot see a defect is said, and the proof taken elsewhere.
 - **Proof:** `tests/styles.test.js`
 - **Links:** CFG-10, MAINT-01
+
+<a id="def-048"></a>
+### DEF-048 · More march capacity was worth nothing to the optimiser and its path
+
+`2026-11-16` · code · major · ✓ fixed · tags: `engine`, `page`
+
+- **Finding:** Frantz asked whether more troop capacity was not beneficial: no step of the path raising it ever showed, and the search never took the Chosen Standard Bearer's march capacity talent, with more troops owned than places.
+- **Cause:** Every judgement kept the troops fixed: a talent or a step that raises the capacity let no troop in, so it scored nothing; and the search took one capacity, the composition edited's, for every army it tried. The branches (heroes, talents, capacity, troops) were judged one after another as if independent.
+- **Solution:** The capacity is each army's own, in whole places; a talent is judged with the places it frees filled from the troops owned; the best trios and the path's best steps, and every step freeing places, are settled (talents again, troops moved, free places filled), their gain against the army found settled alike.
+- **Result:** With 80,000 troops owned for 50,000 places, the search takes the Bearer and fills 51,650 places; raising it a level reads +0.2 %, its 100 places counted, not < 0.1 %. Both tests fail with the capacity fixed or the path neither topped up nor settled.
+- **Lesson:** A search over linked choices must judge each one with the others free to follow it: a figure that only pays through another (places through troops) reads as nothing when the other is held still.
+- **Proof:** `tests/linked.test.js`
+- **Links:** SIM-05, SIM-12

@@ -29,7 +29,7 @@ test("SIM-12 the hero steps: one not owned got at level 1, one owned raised by a
 test("SIM-12 the path: each step's gain counted by hand, the most first, those that add nothing left out", () => {
   const found = army(at5("a", "b", "c")); // 5 + 10 + 15 = 30
   const owned = new Map(Object.entries({ a: 5, b: 5, c: 5, f: 5 }));
-  const path = heroPath(found, heroSteps(Object.keys(WEIGHT), owned, 35), options);
+  const path = heroPath(found, heroSteps(Object.keys(WEIGHT), owned, 35), options).filter(({ gain }) => gain > 0);
   assert.deepEqual(
     path.map(({ id, gain }) => [id, Math.round(gain * 10) / 10]),
     [
@@ -77,9 +77,13 @@ test("SIM-12 on the page: the path under the army found, each step with its gain
   assert.match(page.text("#optimiser-result"), /The path: what to get or raise next/);
   const steps = page.$$("#optimiser-path li").map((step) => step.textContent);
   assert.ok(steps.length > 0 && steps.length <= 10, `${steps.length} steps`);
-  // the heroes of the army found, raised: Khorne's two lead it, their talents raising its Khorne troops
-  assert.match(steps[0], /^Raise Chaos Lord of Khorne on Dragon from level 20 to 21 · ▲ \+[\d.]+ % · costs [\d,]+ /);
-  const gains = steps.map((step) => Number(step.match(/▲ \+([\d.]+) %/)[1]));
+  // a hero of the army found, raised: its talents raise the army's Khorne and Nurgle troops
+  assert.match(
+    steps[0],
+    /^Raise (Chaos Lord of Khorne on Dragon|Great Unclean One|Bloodthirster) from level 20 to 21 · ▲ \+[\d.]+ % · costs [\d,]+ /,
+  );
+  // "▲ +1.2 %", or "▲ < 0.1 %" for a gain one decimal would round to 0
+  const gains = steps.map((step) => Number(step.match(/▲ (?:\+([\d.]+)|< 0\.1) %/)[1] ?? 0.05));
   assert.deepEqual(
     gains,
     [...gains].sort((x, y) => y - x),

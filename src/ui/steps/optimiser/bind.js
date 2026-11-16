@@ -1,5 +1,5 @@
 // The optimiser block (SIM-05, D-40): a goal chosen or an aim ticked (SIM-12) clears the last army found; the button
-// runs the search; "Use it" puts the army found in the composition being edited.
+// runs the search; "Use it" puts the army found in the composition being edited, or in a new one, then edited.
 import { byId } from "../../dom.js";
 import { toggleChoice } from "../../filters.js";
 import { runOptimiser, useFound } from "../../optimiser.js";
@@ -26,8 +26,9 @@ export function bindOptimiser() {
     renderAll();
   });
   byId("optimiser").addEventListener("click", (event) => {
-    if (event.target.id !== "optimiser-use") return;
-    useFound();
+    const into = { "optimiser-use": "edited", "optimiser-new": "new" }[event.target.id];
+    if (!into) return;
+    useFound(into);
     state.optimiser.applied = true;
     renderAll();
   });

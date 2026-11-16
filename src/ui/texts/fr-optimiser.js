@@ -58,6 +58,7 @@ export const FR_OPTIMISER = {
   "optimiser.pathPutOn": "Porter {name} au niveau 1",
   "optimiser.path-skill": "Compétence {name} : niveau {from} → {to}",
   "optimiser.pathPoint": "coûte un point de compétence",
+  "optimiser.useNew": "La mettre dans une nouvelle composition",
   "optimiser.use": "L'utiliser dans la composition {name}",
   "optimiser.used": "✓ La composition {name} contient maintenant l'armée trouvée.",
   "fold.optimiserNone": "○ Pas encore lancé",

@@ -36,16 +36,18 @@ export const heroSteps = (ids, owned, top) =>
     .map(({ id, from }) => ({ kind: "hero", id, from, to: from + 1 }));
 
 /**
- * The path: each step's gain on the army found ({ composition, score }), the steps that gain, the most first. A hero
- * owned is first judged at its own level too, so its gain is its next level's alone, not a trio the search missed.
+ * The path's heroes: each step's gain on the army found ({ composition, score }), the most first, with the score it is
+ * measured against (`base`) and the composition it reaches. A hero owned is first judged at its own level too, so its
+ * gain is its next level's alone, not a trio the search missed. A step that gains nothing yet is kept: settled, its
+ * troops may fill a capacity it raised (D-45).
  */
 export function heroPath(found, steps, options) {
   return steps
     .map((step) => {
       const raised = bestWithHero(found.composition, { id: step.id, level: step.to }, options);
       const now = step.from ? bestWithHero(found.composition, { id: step.id, level: step.from }, options) : found;
-      return { ...step, gain: raised.score - Math.max(found.score, now.score), composition: raised.composition };
+      const base = Math.max(found.score, now.score);
+      return { ...step, gain: raised.score - base, base, composition: raised.composition };
     })
-    .filter((step) => step.gain > 0)
     .sort((a, b) => b.gain - a.gain);
 }

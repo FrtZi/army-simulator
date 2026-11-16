@@ -1,14 +1,35 @@
 // The path from the army found (SIM-12, D-42, D-43, D-44): each hero to get or raise by a level, each ritual and
 // building one level up that can be done now, and the champion's pieces and skills one level up, by its gain on that
-// army, the most first; the cost shown, not weighed (Frantz, 2026-11-16: gain first).
+// army, the most first; the cost shown, not weighed (Frantz, 2026-11-16: gain first). Every branch is linked (D-45):
+// each step is judged at a glance, then the best and those that raise the capacity are settled, their talents chosen
+// again and their troops moved, the capacity they free filled.
 import { CONFIG } from "./config.js";
 import { currentGame, state, validEffects } from "./state.js";
 import { heroesOwned, offered, scores } from "./optimiser-scores.js";
 import { highestCopy } from "../storage/setup-buildings.js";
 import { championInPlay } from "./lab-setup.js";
-import { gearSteps, heroPath, heroSteps, levelledSteps, skillSteps } from "../engine/index.js";
+import {
+  gearSteps,
+  heroPath,
+  heroSteps,
+  levelledSteps,
+  rank,
+  settle,
+  skillSteps,
+  topUp,
+  wholePlaces,
+} from "../engine/index.js";
 
 const byId = (list) => new Map(list.map((entry) => [entry.id, entry]));
+
+/** A step judged at a glance: the army found as it is, scored with the step; `judge` kept to settle it later. */
+const glance = (found, step, judge) => ({
+  ...step,
+  judge,
+  start: found.composition,
+  base: found.score,
+  gain: judge.score(found.composition) - found.score,
+});
 
 /** The rituals' and buildings' entries, kind → Map id → entry, as the levelled steps read them. */
 export const levelledEntries = (game) => ({
@@ -58,10 +79,8 @@ function levelledPath(found, goal) {
     .filter((step) => !step.first.length)
     .map((step) => {
       const reached = [{ kind: step.kind, id: step.id, level: step.to }];
-      const shared = validEffects({ ...state, savedPlayerSetup: setupWith(saved, reached) });
-      return { ...step, gain: scores(goal, shared).score(found.composition) - found.score };
-    })
-    .filter((step) => step.gain > 0);
+      return glance(found, step, scores(goal, validEffects({ ...state, savedPlayerSetup: setupWith(saved, reached) })));
+    });
 }
 
 /** The champion in play with a step taken: its piece one level up or put on, or its skill one level up. */
@@ -82,22 +101,70 @@ function championPath(found, goal) {
     ...gearSteps(now.gear ?? [], champion.pieces, heldOf(saved).structure),
     ...skillSteps(championSkills.trees, skills, points),
   ];
-  return steps
-    .map((step) => {
-      const seen = { ...state, labChampion: "", savedPlayerSetup: { ...saved, champion: championWith(now, step) } };
-      return { ...step, gain: scores(goal, validEffects(seen), seen).score(found.composition) - found.score };
-    })
-    .filter((step) => step.gain > 0);
+  return steps.map((step) => {
+    const seen = { ...state, labChampion: "", savedPlayerSetup: { ...saved, champion: championWith(now, step) } };
+    return glance(found, step, scores(goal, validEffects(seen), seen));
+  });
 }
 
-/** The path: the heroes' steps, the rituals' and buildings', the champion's, the most gain first, the first few. */
-export function pathFrom(found, goal) {
+const placed = (troops) => Object.values(troops).reduce((sum, count) => sum + count, 0);
+
+/** Whether a step leaves capacity free: then its gain shows only once its troops fill it. */
+const freeing = (step) => step.judge.capacity(step.start) > placed(step.start.troops);
+
+/**
+ * A step settled: its talents chosen again, its troops moved and the capacity it freed filled, every branch linked;
+ * its gain against the army found settled the same way (`again`), so a better arrangement of the troops, found with
+ * or without the step, is not counted as the step's.
+ */
+function settled(step, { owned, settings, again }) {
+  const { score, capacity } = step.judge;
+  const done = settle(step.start, { owned: [...owned], capacity, offered, score, ...settings });
+  return { ...step, gain: done.score - Math.max(step.base, again), composition: done.composition };
+}
+
+/** Of the pieces to put on in one empty slot, the best only: they are a choice, not steps one after the other. */
+function bestPerSlot(steps) {
+  const slotOf = (id) => currentGame().champion.pieces.find((piece) => piece.id === id).slot;
+  const seen = new Set();
+  return steps.filter((step) => {
+    if (step.kind !== "gear" || step.from) return true;
+    const slot = slotOf(step.id);
+    if (seen.has(slot)) return false;
+    seen.add(slot);
+    return true;
+  });
+}
+
+/**
+ * The path from the army found (its troops owned within the aim, `owned`): the heroes', rituals' and buildings', and
+ * the champion's steps, the best settled, the most gain first, the first few.
+ */
+export function pathFrom(found, goal, owned) {
   const { warlords, game } = currentGame();
   const rules = game.heroRules;
-  const owned = new Map(heroesOwned().map(({ id, level }) => [id, level]));
-  const steps = heroSteps([...warlords.keys()], owned, rules.ranks * rules.levelsPerRank);
-  const heroes = heroPath(found, steps, { score: scores(goal).score, offered, ...rules });
-  return [...heroes, ...levelledPath(found, goal), ...championPath(found, goal)]
-    .sort((a, b) => b.gain - a.gain)
-    .slice(0, CONFIG.optimiser.pathSteps);
+  const settings = { ...CONFIG.optimiser, ...rules };
+  const judge = scores(goal);
+  const held = new Map(heroesOwned().map(({ id, level }) => [id, level]));
+  // the heroes judged with the places their talents free filled: a talent raising the capacity counts at a glance
+  const order = rank([...owned], wholePlaces(judge.capacity(found.composition)), (some) =>
+    judge.score({ ...found.composition, troops: some }),
+  );
+  const topped = (composition) => judge.score(topUp(composition, order, wholePlaces(judge.capacity(composition))));
+  const heroes = heroPath(found, heroSteps([...warlords.keys()], held, rules.ranks * rules.levelsPerRank), {
+    score: topped,
+    offered,
+    ...rules,
+  }).map((step) => ({ ...step, judge, start: step.composition }));
+  const glanced = [...heroes, ...levelledPath(found, goal), ...championPath(found, goal)].sort(
+    (a, b) => b.gain - a.gain,
+  );
+  const again = settle(found.composition, { owned: [...owned], ...judge, offered, ...settings }).score;
+  const judged = glanced.map((step, index) =>
+    index < settings.width || freeing(step) ? settled(step, { owned, settings, again }) : step,
+  );
+  return bestPerSlot(judged.filter((step) => step.gain > 0).sort((a, b) => b.gain - a.gain)).slice(
+    0,
+    CONFIG.optimiser.pathSteps,
+  );
 }

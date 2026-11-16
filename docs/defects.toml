@@ -750,3 +750,20 @@ resultat = "The field is hidden until a Champion lab setup is saved; the test fa
 preuve = ["tests/styles.test.js"]
 lecon = "A fix for one class of a general trap is a defect waiting for the next class: fix the trap. And a test environment that cannot see a defect is said, and the proof taken elsewhere."
 liens = ["CFG-10", "MAINT-01"]
+
+[[defaut]]
+id = "DEF-048"
+date = 2026-11-16
+titre = "More march capacity was worth nothing to the optimiser and its path"
+type = "code"
+etiquettes = ["engine", "page"]
+gravite = "major"
+statut = "fixed"
+constat = "Frantz asked whether more troop capacity was not beneficial: no step of the path raising it ever showed, and the search never took the Chosen Standard Bearer's march capacity talent, with more troops owned than places."
+cause = "Every judgement kept the troops fixed: a talent or a step that raises the capacity let no troop in, so it scored nothing; and the search took one capacity, the composition edited's, for every army it tried. The branches (heroes, talents, capacity, troops) were judged one after another as if independent."
+solution = "The capacity is each army's own, in whole places; a talent is judged with the places it frees filled from the troops owned; the best trios and the path's best steps, and every step freeing places, are settled (talents again, troops moved, free places filled), their gain against the army found settled alike."
+resultat = "With 80,000 troops owned for 50,000 places, the search takes the Bearer and fills 51,650 places; raising it a level reads +0.2 %, its 100 places counted, not < 0.1 %. Both tests fail with the capacity fixed or the path neither topped up nor settled."
+preuve = ["tests/linked.test.js"]
+lecon = "A search over linked choices must judge each one with the others free to follow it: a figure that only pays through another (places through troops) reads as nothing when the other is held still."
+liens = ["SIM-05", "SIM-12"]
+

@@ -51,6 +51,7 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 ├── compare.js           two armies: each figure, its difference and the better one, both battles (SIM-03)
 ├── insights.js          the dashboards' figures: efficiency, rounds, balance and warnings, pros and cons
 ├── optimise.js          the optimiser: a search tree pruned at each level, the caller's scores as its judge (SIM-05)
+├── fill.js              the troops owned put in the capacity, free places topped up: every branch linked (D-45)
 ├── path.js              the path: each hero to get or raise, by its gain on the army found (SIM-12)
 ├── levelled-steps.js    the path's rituals and buildings: one level up, what it asks first (SIM-12)
 └── champion-steps.js    the path's champion: a piece raised or put on, a skill one level up (SIM-12)
@@ -152,6 +153,7 @@ tests/                   node --test; each test names the feature it proves
 ├── path.test.js         the path: gains counted by hand, then on the page (SIM-12)
 ├── path-levelled.test.js  the path's rituals and buildings: a worked tree, then the page (SIM-12)
 ├── path-champion.test.js  the path's champion: pieces and skills on a worked case, then the page (SIM-12)
+├── linked.test.js       every branch linked: a capacity talent's troops, in the search and the path (DEF-048)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)

@@ -30,7 +30,7 @@ export function opponent() {
 
 /**
  * The goal's two scores of a composition ({ troops, heroes, talents }, played as the one edited: led by the champion
- * or not): the exact one, and the quick guess that orders the branches. A battle scores the power the opponent loses
+ * or not): the exact one, and the quick guess that orders the branches; and the capacity it has. A battle scores the power the opponent loses
  * less the power ours loses, ours attacking. `shared`: the bonuses every army shares, the setup's by default; the path
  * passes those of a setup with a ritual or a building more (D-43), and `seen`, a state whose champion has a piece or a
  * skill more, for its march's bonuses (D-44).
@@ -42,13 +42,15 @@ export function scores(goal, shared = validEffects(), seen = state) {
   const army = (composition) => summariseAsGiven({ ...state.composition, ...composition }, against, shared, seen);
   const quick = (composition) =>
     profileScore(armyProfile(army(composition), rules.model), goal.weights ?? CONFIG.optimiser.guess);
-  if (!goal.battle) return { score: quick, guess: quick };
+  // the march capacity a composition has: its talents and the setup's bonuses may raise it (D-45)
+  const capacity = (composition) => army({ ...composition, troops: {} }).capacity.total;
+  if (!goal.battle) return { score: quick, guess: quick, capacity };
   const enemy = opponent();
   const margin = (composition) => {
     const { powerLost } = simulateBattle(army(composition), enemy, rules);
     return powerLost.defender - powerLost.attacker;
   };
-  return { score: margin, guess: quick };
+  return { score: margin, guess: quick, capacity };
 }
 
 /** The heroes Your setup holds, at their levels. */

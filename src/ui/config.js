@@ -24,6 +24,7 @@ export const CONFIG = {
   // against the comparison's second side, guessed at by `guess`'s weights
   optimiser: {
     width: 20,
+    settled: 5, // of the trios kept, those whose troops are moved to the end (D-45)
     slices: 20,
     rounds: 60,
     goals: [

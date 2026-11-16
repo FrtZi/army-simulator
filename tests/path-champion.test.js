@@ -95,6 +95,10 @@ test("SIM-12 on the page: the champion's pieces in the path, the one worn raised
     steps.some((step) => /^Put on .+ at level 1 · ▲ /.test(step)),
     "an empty slot's piece",
   );
+  // one piece per empty slot, the best: the others are a choice, not steps (Frantz, 2026-11-16)
+  const slotOf = new Map(champion.pieces.map((each) => [each.labels.en, each.slot]));
+  const putOn = steps.map((step) => step.match(/^Put on (.+) at level 1 /)?.[1]).filter(Boolean);
+  assert.equal(new Set(putOn.map((name) => slotOf.get(name))).size, putOn.length, putOn.join(", "));
   // the chest is worn: no other chest piece is put on
   const chests = champion.pieces.filter((each) => each.slot === "chest" && each.id !== "armour-of-damnation");
   assert.ok(!steps.some((step) => chests.some((each) => step.startsWith(`Put on ${each.labels.en} `))));

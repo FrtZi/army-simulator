@@ -11,6 +11,7 @@ export const TAGS = [
   "ci",
   "data",
   "dev-server",
+  "engine",
   "page",
   "saves",
   "tests",

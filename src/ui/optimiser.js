@@ -5,12 +5,13 @@
 // names, and the best army without it says what the aim costs now; then the path from the army found (D-42, D-43).
 // The search is the engine's; the scores are in optimiser-scores.js, the path in optimiser-path.js.
 import { CONFIG } from "./config.js";
-import { currentGame, state, summarise } from "./state.js";
+import { currentGame, state } from "./state.js";
 import { asPlayed, troopsOwned } from "./lab-setup.js";
 import { matchesFilters } from "./filters.js";
 import { goalOf, heroesOwned, offered, opponent, opponentChosen, scores } from "./optimiser-scores.js";
 import { pathFrom } from "./optimiser-path.js";
-import { optimise } from "../engine/index.js";
+import { addComposition } from "./compositions.js";
+import { optimise, wholePlaces } from "../engine/index.js";
 
 export { goalOf, opponentChosen, opponents } from "./optimiser-scores.js";
 
@@ -39,9 +40,9 @@ function startOf(owned, capacity) {
 }
 
 /** A search over these troops owned, with the heroes owned and the scores given, from the composition edited. */
-function search(owned, capacity, { score, guess }) {
+function search(owned, { score, guess, capacity }) {
   const settings = { ...CONFIG.optimiser, ...currentGame().game.heroRules };
-  const start = startOf(owned, capacity);
+  const start = startOf(owned, capacity(state.composition));
   return optimise({ owned: [...owned], capacity, heroes: heroesOwned(), offered, score, guess, start, settings });
 }
 
@@ -53,21 +54,26 @@ function search(owned, capacity, { score, guess }) {
 export function runOptimiser() {
   const goal = goalOf(state.optimiser.goal);
   const owned = troopsOwned(state);
-  const capacity = summarise({ ...state.composition, troops: {} }).capacity.total;
   const judges = scores(goal);
-  const found = search(aimed(owned), capacity, judges);
+  const found = search(aimed(owned), judges);
   if (!found) return null;
-  const free = aiming() ? (search(owned, capacity, judges)?.score ?? null) : null;
+  const free = aiming() ? (search(owned, judges)?.score ?? null) : null;
+  const capacity = wholePlaces(judges.capacity(found.composition));
   const { troops, heroes: playing, talents } = asPlayed(state.composition, state);
   const empty = !Object.values(troops).some((count) => count > 0);
   const current = empty ? null : judges.score({ troops, heroes: playing ?? [], talents: talents ?? [] });
   const versus = goal.battle ? opponentChosen() : null;
-  return { goal: goal.id, ...found, current, free, capacity, opponent: versus, path: pathFrom(found, goal) };
+  const path = pathFrom(found, goal, aimed(owned));
+  return { goal: goal.id, ...found, current, free, capacity, opponent: versus, path };
 }
 
-/** Puts the army found in the composition being edited: its troops, heroes and talents. */
-export function useFound() {
+/** Puts the army found in the composition being edited, or in a new one (`into` "new"): its troops, heroes, talents. */
+export function useFound(into = "edited") {
   const { troops, heroes, talents } = state.optimiser.result.composition;
+  if (into === "new") {
+    addComposition({ troops, heroes, talents, ledByChampion: state.composition.ledByChampion });
+    return;
+  }
   Object.assign(state.composition, {
     troops: { ...troops },
     heroes: heroes.map((hero) => ({ ...hero })),
