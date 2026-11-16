@@ -1,5 +1,6 @@
-// The champion in a setup file (BL-13, D-30): its level, and the gear it wears, each piece at a level
-// it has; each value checked on its own, a piece unknown told with the nearest. No DOM here.
+// The champion in a setup file (BL-13, D-30): its level, the gear it wears, each piece at a level it has, and its
+// skills (BONUS-10), each at a level it has; each value checked on its own, an id unknown told with the nearest.
+// No DOM here.
 import { nearestId } from "./nearest.js";
 import { isObject, rangeProblem, readList, refuse } from "./setup-checks.js";
 
@@ -19,7 +20,21 @@ function gearEntry(entry, path, pieces) {
   return problems.length ? { problems } : { value: { id: entry.id, level: entry.level }, problems };
 }
 
-/** The champion (BL-13): its level, from 1 to its last, and the gear it wears; each field read on its own. */
+/** Every skill of the champion's trees (champion-skills.json), each with its last level when known. */
+export const allSkills = (skillTrees) => (skillTrees?.trees ?? []).flatMap((tree) => tree.skills);
+
+/** A skill taken: a skill of the trees, at a level from 1 to its last (any, when its last is not known yet). */
+function skillEntry(entry, path, skills) {
+  if (!isObject(entry) || typeof entry.id !== "string") return { problems: [refuse(path, entry, "not-object")] };
+  const skill = skills.find((candidate) => candidate.id === entry.id);
+  if (!skill) {
+    return { problems: [refuse(`${path}.id`, entry.id, "unknown-skill", { suggestion: nearestId(entry.id, skills) })] };
+  }
+  const problems = rangeProblem(`${path}.level`, entry.level, 1, skill.max ?? Number.MAX_SAFE_INTEGER);
+  return problems.length ? { problems } : { value: { id: entry.id, level: entry.level }, problems };
+}
+
+/** The champion (BL-13): its level, from 1 to its last, the gear it wears and its skills; each field read on its own. */
 export function readChampion(champion, target) {
   if (!isObject(champion)) return { problems: [refuse("champion", champion, "not-object")] };
   const value = {};
@@ -35,6 +50,13 @@ export function readChampion(champion, target) {
     );
     problems.push(...gear.problems);
     if (gear.value) value.gear = gear.value;
+  }
+  if (champion.skills !== undefined) {
+    const skills = readList(champion.skills, "champion.skills", (entry, path) =>
+      skillEntry(entry, path, allSkills(target.championSkills)),
+    );
+    problems.push(...skills.problems);
+    if (skills.value) value.skills = skills.value;
   }
   return { value, problems };
 }

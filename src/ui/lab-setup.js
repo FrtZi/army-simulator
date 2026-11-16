@@ -43,7 +43,25 @@ export const hasSavedSetup = (state) =>
     ([section, value]) => section !== "game" && value !== null && Object.keys(value).length > 0,
   );
 
-/** The bonuses in battle of the saved setup's rituals and buildings at their levels, with the setup on (BONUS-04, 07). */
+/**
+ * The champion's skills taken in the saved setup as a source (BONUS-10): `part` "general", their bonuses for troops
+ * everywhere (defined with the gear's or with the skills); "march", those for the march it leads.
+ */
+function skillSource(state, game, part) {
+  const trees = game.championSkills.trees;
+  const general = [...game.champion.effects, ...trees.flatMap((tree) => tree.bonuses ?? [])];
+  return {
+    kind: "skill",
+    definitions: part === "march" ? game.champion.march : general,
+    skills: trees.flatMap((tree) => tree.skills),
+    levels: state.savedPlayerSetup.champion?.skills ?? [],
+  };
+}
+
+/**
+ * The bonuses in battle of the saved setup's rituals and buildings at their levels, and of its champion's gear and
+ * skills, with the setup on (BONUS-04, 07, 06, 10).
+ */
 export function setupSourceEffects(state, game) {
   if (!state.useSetup) return [];
   const { rituals, buildings } = state.savedPlayerSetup;
@@ -55,6 +73,7 @@ export function setupSourceEffects(state, game) {
       levels: eachCopy(buildings), // each copy gives its bonus (D-33)
     },
     { kind: "champion", catalogue: game.champion, gear: championGear(state), part: "general" },
+    skillSource(state, game, "general"),
   ]);
 }
 
@@ -86,10 +105,13 @@ export function addedCounts(state, picked, free, usual) {
 export const championGear = (state) => state.savedPlayerSetup.champion?.gear ?? [];
 
 /**
- * The bonuses of the champion's gear for the troops of the march it leads (D-30): only with the setup
- * loaded, and only for a composition it leads.
+ * The bonuses of the champion's gear and skills for the troops of the march it leads (D-30, BONUS-10): only with
+ * the setup loaded, and only for a composition it leads.
  */
 export function championMarchEffects(state, game, composition) {
   if (!state.useSetup || !composition.ledByChampion) return [];
-  return resolveSources([{ kind: "champion", catalogue: game.champion, gear: championGear(state), part: "march" }]);
+  return resolveSources([
+    { kind: "champion", catalogue: game.champion, gear: championGear(state), part: "march" },
+    skillSource(state, game, "march"),
+  ]);
 }

@@ -39,11 +39,15 @@ export const FR_SETUP = {
   "setup.capacity": "Capacité de marche",
   "setup.champion": "Champion",
   "setup.championHint":
-    "Son niveau, et la pièce qu'il porte à chaque emplacement à son niveau. Les bonus de son équipement comptent dans le Laboratoire ; ceux de sa marche seulement dans la composition qu'il mène.",
+    "Son niveau, la pièce qu'il porte à chaque emplacement à son niveau, et ses compétences. Leurs bonus comptent dans le Laboratoire ; ceux de sa marche seulement dans la composition qu'il mène.",
   "setup.championLevel": "Son niveau",
   "setup.noLevel": "Non saisi",
   "setup.noPiece": "Aucune",
   "setup.pieceLevel": "Niveau de sa pièce : {slot}",
+  "setup.skills": "Ses compétences",
+  "setup.skillsHint":
+    "Choisissez une compétence dans son arbre et saisissez son niveau, comme le jeu l'affiche : une compétence allumée et cochée est à son dernier niveau. Seules les compétences dont on connaît les valeurs donnent un bonus.",
+  "setup.skillsSpent": "Dépensés : {spent} points (saisissez le niveau du champion pour les comparer à ses points)",
   "tile.championFigure": "niveau {level} · {n} pièces",
   "setup.rituals": "Rituels",
   "setup.buildings": "Bâtiments",

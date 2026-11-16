@@ -262,6 +262,8 @@ game writes it; English translated by us marked `*`), `branch`, `max`, `requires
 its pool of points in champion.json: `monsterSkillPoints` (conquest) or `skillPoints` (champion). 29 champion skills
 take from three cctools.cc tools (damage, training, march speed) their English name, most levels and `gives`, each
 bonus by id with its value at each level; the tree's `bonuses` define them. The conquest tree's values are not known.
+In battle (BONUS-10, D-38), a skill taken in Your setup gives each bonus with a stat: those of the champion's march
+(`hero_march_unit_*`, defined in champion.json's `march`) for the composition it leads, the others for every troop.
 
 ## The PvE armies: `data/<game>/pve.json` (BL-20)
 

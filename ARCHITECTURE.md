@@ -35,7 +35,8 @@ data/                    each game's facts (JSON), the same for every player (D-
 src/engine/              pure functions, no DOM, no file access: callers pass the data
 ├── index.js             public API: the only file the page and the tests import
 ├── targets.js           which troops an effect selects (TARGET_FIELDS)
-├── sources.js           a player's bonus sources → effects (one resolver per kind: manual, ritual, building)
+├── sources.js           a player's bonus sources → effects (one resolver per kind: manual, ritual, building,
+│                        champion, skill)
 ├── prerequisites.js     what reaching a ritual's level asks, back to the roots; each ritual's depth (GUIDE-07)
 ├── bonuses.js           checks a bonus a player enters: stat, 0–100 %, target (D-14)
 ├── stats.js             effective stats; march capacity as base, bonus, total (D-12)
@@ -82,6 +83,7 @@ src/ui/                  the page
 ├── pve.js               a PvE army as the second side: its troops read like ours, a place chosen, its army (SIM-11)
 ├── champion-bonuses.js  every bonus a gear set or a skill gives, by domain (BONUS-09)
 ├── skill-benefits.js    what a skill gives at a level, a tree's skills in all (BONUS-09)
+├── skill-tree.js        a skill tree as the rituals': a skill as an entry, its points, a skill's level field (BONUS-10)
 ├── champion-figures.js  the champion's stats and its gear's bonuses in all, in Your setup and the lab (BONUS-08)
 ├── charts/             scatter.js: the scatter chart of three dashboards; zoom.js: drag a box, + and −;
 │                        hover.js: a dot's name while pointing at it; table.js: the chart as a table (D-24)
@@ -96,7 +98,7 @@ src/ui/                  the page
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
                          in warlords.js, the troops owned in troops.js, the rituals' and buildings' levels in levelled.js (the rituals chosen in their tree in ritual-tree.js), the champion in
-                         champion.js, a file uploaded in
+                         champion.js (its skills in champion-skills.js), a file uploaded in
                          files.js, under review in import.js, drawn in review.js; D-27);
                          the Champion lab: champion-lab (lab.js its state, draw.js the level, gear.js two sets compared,
                          skills.js the trees, bind.js); and the Guides: guides (the block tabs in draw.js, the heroes' guide in heroes.js, the
@@ -135,6 +137,7 @@ tests/                   node --test; each test names the feature it proves
 ├── items.test.js        the items by family, folded, a row's detail under it (GUIDE-08)
 ├── champion-lab.test.js  the Champion lab: level, two sets compared, the trees (BONUS-09)
 ├── skills.test.js       the champion's two skill trees and their points (BONUS-09)
+├── champion-skills.test.js  the champion's skills in Your setup, the file and battle (BONUS-10)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)

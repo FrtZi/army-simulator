@@ -41,6 +41,7 @@ export const FR_SETUP_FILES = {
   "setupfile.unknown-ritual": "aucun rituel n'a cet identifiant.",
   "setupfile.unknown-building": "aucun bâtiment n'a cet identifiant.",
   "setupfile.unknown-gear": "aucune pièce d'équipement n'a cet identifiant.",
+  "setupfile.unknown-skill": "aucune compétence des arbres du champion n'a cet identifiant.",
   "setupfile.duplicate": "ce héros apparaît deux fois ; le premier est gardé.",
   "setupfile.too-many-copies": "au plus {max} de ce bâtiment.",
   "setupfile.unknown-troop": "aucune troupe ni défense n'a cet identifiant.",

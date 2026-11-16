@@ -22,7 +22,7 @@ function listEntry({ id, labels }, extra = {}) {
 
 /** Every list of allowed ids: the warlords, the stats a bonus may raise, and the values of each target filter. */
 
-function valueLists({ game, warlords, units, defences, rituals, structures, champion }) {
+function valueLists({ game, warlords, units, defences, rituals, structures, champion, championSkills }) {
   const filters = Object.fromEntries(
     Object.keys(TARGET_FIELDS)
       .filter((filter) => filter !== "units")
@@ -40,6 +40,10 @@ function valueLists({ game, warlords, units, defences, rituals, structures, cham
       listEntry(building, { levels: building.power.length, mostCopies: mostCopies(game, building.id) }),
     ),
     gear: (champion?.pieces ?? []).map((piece) => listEntry(piece, { levels: pieceLevels(piece) })),
+    // each with its tree and its last level, when known
+    skills: (championSkills?.trees ?? []).flatMap((tree) =>
+      tree.skills.map((skill) => listEntry(skill, { tree: tree.id, ...(skill.max && { levels: skill.max }) })),
+    ),
   };
 }
 
@@ -77,6 +81,9 @@ function domains(game, gameId, champion) {
     "champion.gear": list,
     "champion.gear[].id": { dataType: "text", valueDomain: { list: "gear" } },
     "champion.gear[].level": { dataType: "integer", valueDomain: { min: 1 } },
+    "champion.skills": list,
+    "champion.skills[].id": { dataType: "text", valueDomain: { list: "skills" } },
+    "champion.skills[].level": { dataType: "integer", valueDomain: { min: 1 } },
     troops: list,
     "troops[].id": { dataType: "text", valueDomain: { list: "units" } },
     "troops[].count": count,

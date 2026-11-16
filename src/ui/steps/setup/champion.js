@@ -1,5 +1,5 @@
-// Your setup's champion (BL-13, D-30): its level, and per slot the piece it wears at its level, as the
-// game shows them. A choice shows at once, unsaved until Save; no level and no piece leave the champion out.
+// Your setup's champion (BL-13, D-30): its level, per slot the piece it wears at its level, as the game shows them,
+// and its skills (BONUS-10). A choice shows at once, unsaved until Save; nothing set leaves the champion out.
 import { byId, escape, keepingFocus, options } from "../../dom.js";
 import { label } from "../../format.js";
 import { slotIcon } from "../../icons.js";
@@ -9,6 +9,7 @@ import { drawSetupStatus } from "./draw.js";
 import { pieceLevels } from "../../../storage/setup-champion.js";
 import { gearLevelSelect } from "../../rarity.js";
 import { championFiguresHtml } from "../../champion-figures.js";
+import { chooseSkill, drawSetupSkills, skillsWith } from "./champion-skills.js";
 
 const numbers = (count) => Array.from({ length: count }, (_, index) => [index + 1, String(index + 1)]);
 const slots = () => currentGame().champion.slots; // in the game's order
@@ -39,12 +40,18 @@ export function drawSetupChampion() {
   );
   byId("setup-champion-gear").innerHTML = slots().map(slotRow).join("");
   byId("setup-champion-figures").innerHTML = championFiguresHtml(state.playerSetup.champion); // BONUS-08
+  drawSetupSkills();
 }
 
-/** The champion as chosen: only what is set; nothing set leaves it out (null). */
-function setChampion(level, gear) {
-  const champion = { ...(level && { level }), ...(gear.length && { gear }) };
-  state.playerSetup.champion = Object.keys(champion).length ? champion : null;
+/** The champion with a change ({ level }, { gear } or { skills }): only what is set; nothing set leaves it out. */
+function changeChampion(change) {
+  const merged = { ...state.playerSetup.champion, ...change };
+  const set = Object.entries(merged).filter(([, value]) => (Array.isArray(value) ? value.length : value));
+  state.playerSetup.champion = set.length ? Object.fromEntries(set) : null;
+}
+
+function setChampion(change) {
+  changeChampion(change);
   keepingFocus(drawSetupChampion);
   drawSetupStatus();
 }
@@ -61,20 +68,40 @@ function chooseGear(slot) {
   const before = worn().find((entry) => entry.id === id);
   const level =
     byId(`setup-gear-level-${slot}`).disabled || !before ? 1 : Number(byId(`setup-gear-level-${slot}`).value);
-  setChampion(state.playerSetup.champion?.level, id ? [...others, { id, level }] : others);
+  setChampion({ gear: id ? [...others, { id, level }] : others });
+}
+
+/** A skill's level typed: kept with the champion, the tree redrawn, the field kept as typed. */
+function typeSkill(input) {
+  const skills = skillsWith(input);
+  if (!skills) return;
+  changeChampion({ skills });
+  drawSetupSkills({ editor: false });
+  drawSetupStatus();
 }
 
 export function bindSetupChampion() {
-  byId("setup-champion").addEventListener("change", (event) => {
+  const section = byId("setup-champion");
+  section.addEventListener("input", (event) => {
+    if (event.target.dataset.setupSkill) typeSkill(event.target);
+  });
+  section.addEventListener("click", (event) => {
+    const node = event.target.closest("[data-setup-skill-node]");
+    if (node) chooseSkill(node.dataset.setupSkillNode);
+  });
+  section.addEventListener("change", (event) => {
     const { setupGear, setupGearLevel } = event.target.dataset;
     if (event.target.id === "setup-champion-level") {
-      setChampion(Number(event.target.value) || undefined, worn());
+      setChampion({ level: Number(event.target.value) || undefined });
+    } else if (event.target.id === "setup-skill-tree") {
+      Object.assign(state, { setupSkillTree: event.target.value, setupSkillChosen: null });
+      keepingFocus(() => drawSetupSkills());
     } else if (setupGear) {
       chooseGear(setupGear);
     } else if (setupGearLevel) {
       const id = byId(`setup-gear-${setupGearLevel}`).value;
       const gear = worn().map((entry) => (entry.id === id ? { id, level: Number(event.target.value) } : entry));
-      setChampion(state.playerSetup.champion?.level, gear);
+      setChampion({ gear });
     }
   });
 }

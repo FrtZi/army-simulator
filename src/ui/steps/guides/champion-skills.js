@@ -2,20 +2,14 @@
 // chosen showing what each of its levels gives, or that it is not known yet.
 import { escape, options } from "../../dom.js";
 import { label, number } from "../../format.js";
-import { currentGame, state } from "../../state.js";
+import { state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { treeHtml } from "../../ritual-tree.js";
 import { bonusInfo } from "../../champion-bonuses.js";
+import { asEntry, skillTrees } from "../../skill-tree.js";
 
 const guide = () => state.guide.champion;
-const trees = () => currentGame().championSkills.trees;
-
-/** A skill as the rituals' tree reads an entry. */
-const asEntry = (skill) => ({
-  ...skill,
-  requires: { ritual: Object.fromEntries(Object.entries(skill.requires).map(([id, level]) => [id, [level]])) },
-  power: Array.from({ length: skill.max ?? 1 }),
-});
+const trees = skillTrees;
 
 /** Each level of a skill and what it gives, a column per bonus. */
 function levelsTable(skill) {

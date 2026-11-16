@@ -469,3 +469,17 @@ rituals' tree code (ritual-tree.js), a skill's level set and the points spent ag
 - _Set aside:_ more than two sets compared (two answer "this or that", a third crowds a phone); putting the lab in
   the Guides (it is a workshop on the player's own champion, not a reference); the skills' bonuses guessed (cctools.cc
   has the conquest tree's shape, not what each level gives; the champion tree is read from screenshots).
+
+## D-38 · The champion's skills: kept in Your setup, counted in battle as its gear (2026-11-16)
+
+Frantz asked that every buff count before the optimiser is built. The skills taken are kept with the champion in Your
+setup and its file (`champion.skills`: id and level; the ids are unique across both trees), chosen in their tree as
+the rituals are, the tree code shared with the Champion lab and the Guides (skill-tree.js). In battle a new source
+kind, `skill`, gives each bonus a skill has a stat for: those of the champion's march (`hero_march_unit_*`, as the
+gear's) only in the composition it leads, the others for every troop, as the gear's general bonuses. The Champion lab
+starts from the saved skills.
+
+- _Set aside:_ the skills only in the Champion lab's saved setups (BL-32): the optimiser's angle 1 needs the
+  player's own skills in Your setup; a skill bonus outside the march applied only to the champion's march (cctools.cc
+  and the game's screens give these as troop bonuses, as the gear's general ones; to correct if the game shows
+  otherwise).

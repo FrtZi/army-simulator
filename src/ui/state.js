@@ -38,6 +38,7 @@ export const state = {
   savedPlayerSetup: null,
   setupSaveFailed: false,
   setupRitualCategory: null, // the rituals' category shown in Your setup (BONUS-04)
+  ...{ setupSkillTree: null, setupSkillChosen: null }, // the champion's skill tree shown, the skill chosen (BONUS-10)
   // the Guides (GUIDE-01): the block shown; in the heroes' guide, the filters, the search, the hero, its level
   guide: {
     kind: "heroes",

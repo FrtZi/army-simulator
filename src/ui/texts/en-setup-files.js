@@ -42,6 +42,7 @@ export const EN_SETUP_FILES = {
   "setupfile.unknown-ritual": "no ritual has this id.",
   "setupfile.unknown-building": "no building has this id.",
   "setupfile.unknown-gear": "no piece of gear has this id.",
+  "setupfile.unknown-skill": "no skill of the champion's trees has this id.",
   "setupfile.duplicate": "this hero is listed twice; the first is kept.",
   "setupfile.too-many-copies": "at most {max} of this building.",
   "setupfile.unknown-troop": "no troop or defence has this id.",

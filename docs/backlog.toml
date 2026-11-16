@@ -299,10 +299,10 @@ milestone = "v1.3"
 module = "engine"
 status = "doing"
 added = 2026-10-22
-features = ["SIM-05"]
+features = ["SIM-05", "BONUS-10"]
 tasks = [
   "[x] Spec agreed (docs/spec/optimiser.md): a pruned search tree judged by the battle engine; the goal as weights on the profile's figures, or a battle won",
-  "[ ] The champion's skills counted in battle, as its gear is (a prerequisite)",
+  "[x] The champion's skills in Your setup and counted in battle, as its gear is (BONUS-10, D-38)",
   "[ ] Angle 1: the best composition, heroes and talents with my setup",
 ]
 
@@ -558,5 +558,20 @@ features = ["SIM-13"]
 note = "Frantz, 2026-11-16: after the specialisation and the path by level, a tool comparing several setups to find an evolution's break-even, for instance the keep's level at which one road overtakes another."
 tasks = [
   "[ ] Spec: the setups compared, the level along which, the score; to agree",
+]
+
+[[item]]
+id = "BL-34"
+title = "The optimiser's tree drawn: unfolding live as it computes, two setups on one tree"
+moscow = "could"
+milestone = "later"
+module = "ui"
+status = "to do"
+added = 2026-11-16
+depends_on = ["BL-16"]
+features = ["SIM-14"]
+note = "Frantz, 2026-11-16: it would be nice to see the search tree as a chart, even fun to watch it unfold on the fly while it computes; later perhaps two setups compared on the same tree. To keep for after, with how we want to show the results."
+tasks = [
+  "[ ] Spec: how the results are shown (the tree, its unfolding, two setups on it); to agree",
 ]
 

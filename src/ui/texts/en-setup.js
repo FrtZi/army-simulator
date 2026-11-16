@@ -39,11 +39,15 @@ export const EN_SETUP = {
   "setup.capacity": "March capacity",
   "setup.champion": "Champion",
   "setup.championHint":
-    "Its level, and the piece it wears in each slot at its level. Its gear's bonuses count in the Battle lab; those for its march only in the composition it leads.",
+    "Its level, the piece it wears in each slot at its level, and its skills. Their bonuses count in the Battle lab; those for its march only in the composition it leads.",
   "setup.championLevel": "Its level",
   "setup.noLevel": "Not entered",
   "setup.noPiece": "None",
   "setup.pieceLevel": "Level of its {slot}",
+  "setup.skills": "Its skills",
+  "setup.skillsHint":
+    "Choose a skill in its tree and type its level, as the game shows it: a skill lit and ticked is at its last level. Only the skills whose values are known give a bonus.",
+  "setup.skillsSpent": "Spent: {spent} points (enter the champion's level to check them against its points)",
   "tile.championFigure": "level {level} · {n} pieces",
   "setup.rituals": "Rituals",
   "setup.buildings": "Buildings",

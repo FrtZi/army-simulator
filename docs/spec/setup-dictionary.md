@@ -74,7 +74,7 @@ Reading examples (from the game's wording to the file):
 | -------------------------------------------------------- | ------------------------------------- | ----------------------------------------------------------------- | -------------------------- |
 | `rituals[].id`, `rituals[].level`                        | A ritual and the level reached        | id from the ritual list (1.2); integer, 0 to the ritual's maximum | `defence-capacity-1`, `10` |
 | `buildings[].id`, `buildings[].level`                    | A building and its level              | id from the building list (1.2); integer ≥ 1                      | `fortress-walls`, `25`     |
-| `champion.level`, `champion.skills[]`, `champion.gear[]` | The champion, its skills and its gear | defined in 1.3                                                    |                            |
+| `champion.level`, `champion.skills[]`, `champion.gear[]` | The champion, its skills and its gear | level 1 to its last; a skill or piece by id, at a level it has    | `aura-of-chaos`, `5`       |
 
 Until their version, these sections are kept as they are and shown as "coming": a file filled today stays
 valid.

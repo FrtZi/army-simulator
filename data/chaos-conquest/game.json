@@ -349,6 +349,9 @@
     },
     {
       "id": "champion"
+    },
+    {
+      "id": "skill"
     }
   ],
   "rarities": [

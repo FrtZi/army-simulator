@@ -18,8 +18,8 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/7 | 9/20 | ○ not yet: 1 Must left |
-| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/7 | 10/20 | ○ not yet: 1 Must left |
+| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/7 | 2/10 | — |
 
 ## Ready to start
 
@@ -81,6 +81,8 @@ flowchart LR
   BL32["BL-32 ◐ doing<br/>The Champion lab's setups saved, one played in the Battle lab"]:::doing
   BL33["BL-33 ○ to do<br/>The break-even of an evolution: several setups compared along a level"]:::todo
   BL31 --> BL33
+  BL34["BL-34 ○ to do<br/>The optimiser's tree drawn: unfolding live as it computes, two setups on one tree"]:::todo
+  BL16 --> BL34
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -356,7 +358,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-11](#bl-11) | Keep attack: the defences' first round, as a switch on a battle | must | [engine](../src/engine) | ○ to do | 0/3 |
 | [BL-12](#bl-12) | Keep defence: a fortress (defences and garrison) as the defending side | should | [ui](../src/ui) | ○ to do | 0/2 |
 | [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ✓ done | 3/3 |
-| [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | should | [engine](../src/engine) | ◐ doing | 1/3 |
+| [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | should | [engine](../src/engine) | ◐ doing | 2/3 |
 | [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 4/5 |
 | [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ○ to do | 0/2 |
 | [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ◐ doing | 1/2 |
@@ -394,10 +396,10 @@ What it needed of BL-08, the Your setup tab, is in; open question 22 settled on 
 <a id="bl-16"></a>
 #### BL-16 · Optimiser: the best troop mix within the march capacity
 
-Should · [engine](../src/engine) · ◐ doing · added `2026-10-22` · features: SIM-05
+Should · [engine](../src/engine) · ◐ doing · added `2026-10-22` · features: SIM-05, BONUS-10
 
 - [x] Spec agreed (docs/spec/optimiser.md): a pruned search tree judged by the battle engine; the goal as weights on the profile's figures, or a battle won
-- [ ] The champion's skills counted in battle, as its gear is (a prerequisite)
+- [x] The champion's skills in Your setup and counted in battle, as its gear is (BONUS-10, D-38)
 - [ ] Angle 1: the best composition, heroes and talents with my setup
 
 <a id="bl-30"></a>
@@ -445,6 +447,7 @@ Validated as ideas, not planned yet: each one is reprioritised when a version is
 | [BL-18](#bl-18) | Food upkeep: settle the factor of 6 with cctools.cc | could | [data](../data) | ○ to do | 0/1 |
 | [BL-19](#bl-19) | The troops' pictures from the game | won't | [ui](../src/ui) | ○ to do | 0/1 |
 | [BL-33](#bl-33) | The break-even of an evolution: several setups compared along a level | could | [engine](../src/engine) | ○ to do | 0/1 |
+| [BL-34](#bl-34) | The optimiser's tree drawn: unfolding live as it computes, two setups on one tree | could | [ui](../src/ui) | ○ to do | 0/1 |
 
 <a id="bl-09"></a>
 #### BL-09 · Credit cctools.cc and tell its author
@@ -494,3 +497,12 @@ Could · [engine](../src/engine) · ○ to do · added `2026-11-16` · after [BL
 Frantz, 2026-11-16: after the specialisation and the path by level, a tool comparing several setups to find an evolution's break-even, for instance the keep's level at which one road overtakes another.
 
 - [ ] Spec: the setups compared, the level along which, the score; to agree
+
+<a id="bl-34"></a>
+#### BL-34 · The optimiser's tree drawn: unfolding live as it computes, two setups on one tree
+
+Could · [ui](../src/ui) · ○ to do · added `2026-11-16` · after [BL-16](#bl-16) · features: SIM-14
+
+Frantz, 2026-11-16: it would be nice to see the search tree as a chart, even fun to watch it unfold on the fly while it computes; later perhaps two setups compared on the same tree. To keep for after, with how we want to show the results.
+
+- [ ] Spec: how the results are shown (the tree, its unfolding, two setups on it); to agree

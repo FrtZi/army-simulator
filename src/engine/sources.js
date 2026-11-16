@@ -58,12 +58,31 @@ function champion({ catalogue, gear, part }) {
   return [...fromPieces, ...fromSets];
 }
 
+/**
+ * The champion's skills (BONUS-10): each skill taken at its level gives the bonuses it has a definition for among
+ * `definitions` ([{ id, stat, target }]: the general ones, or its march's). A bonus outside battle (training speed,
+ * production) has no stat and gives nothing here; a skill whose values are not known yet gives nothing either.
+ * `skills`: the trees' skills ({ id, gives }); `levels`: [{ id, level }].
+ */
+function skill({ definitions, skills, levels }) {
+  const known = new Map(definitions.filter((definition) => definition.stat).map((entry) => [entry.id, entry]));
+  const entries = new Map(skills.map((entry) => [entry.id, entry]));
+  return levels.flatMap(({ id, level }) =>
+    Object.entries(entries.get(id)?.gives ?? {})
+      .filter(([bonus]) => known.has(bonus) && level >= 1)
+      .map(([bonus, values]) => [known.get(bonus), values[Math.min(level, values.length) - 1]])
+      .filter(([, percent]) => percent)
+      .map(([{ stat, target }, percent]) => ({ stat, percent, ...(target && { target }) })),
+  );
+}
+
 const RESOLVERS = {
   // the totals the player copies from the in-game boost summary: already effects
   manual: (source) => source.effects,
   ritual: levelled,
   building: levelled,
   champion,
+  skill,
 };
 
 /** Every effect of every source, in order. Throws on an unknown source kind. */

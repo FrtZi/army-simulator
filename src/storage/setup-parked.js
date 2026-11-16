@@ -5,6 +5,7 @@
 import { nearestId } from "./nearest.js";
 import { ownable } from "./setup-troops.js";
 import { readSetupFile } from "./setup-file.js";
+import { allSkills } from "./setup-champion.js";
 
 const numbers = (max) =>
   Array.from({ length: max }, (_, index) => ({
@@ -56,6 +57,7 @@ const CHOICES = {
   "unknown-ritual": (problem, target) => parked(problem.path, problem.read, target.rituals.rituals),
   "unknown-building": (problem, target) => parked(problem.path, problem.read, target.structures.structures),
   "unknown-gear": (problem, target) => parked(problem.path, problem.read, target.champion.pieces),
+  "unknown-skill": (problem, target) => parked(problem.path, problem.read, allSkills(target.championSkills)),
   "unknown-troop": (problem, target) => parked(problem.path, problem.read, ownable(target.catalogue)),
   "out-of-range": rangeChoice,
   "unknown-stat": statChoice,

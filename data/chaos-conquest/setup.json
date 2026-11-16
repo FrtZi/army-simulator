@@ -165,7 +165,7 @@
     },
     {
       "name": "champion",
-      "definition": "The champion: its level and the gear it wears. Its gear's bonuses count in the Battle lab, those for its march in the composition it leads.",
+      "definition": "The champion: its level, the gear it wears and its skills. Their bonuses count in the Battle lab, those for its march in the composition it leads.",
       "obligation": "optional"
     },
     {
@@ -191,6 +191,24 @@
       "obligation": "required",
       "example": 6,
       "whereInGame": "The piece's forge: its rarity under the piece (Core to Eternal; in French Commun to Éternel), level 1 to 6 in that order"
+    },
+    {
+      "name": "champion.skills",
+      "definition": "The champion's skills taken, in its two trees (conquest and champion), each with its level. Leave out a skill not taken.",
+      "obligation": "optional",
+      "whereInGame": "The champion's screen, Skills (in French Compétences): the conquest tree and the champion tree; a skill lit and ticked is at its last level"
+    },
+    {
+      "name": "champion.skills[].id",
+      "definition": "The skill, by its id (see the list: each with its tree).",
+      "obligation": "required",
+      "example": "aura-of-chaos"
+    },
+    {
+      "name": "champion.skills[].level",
+      "definition": "The skill's level, from 1 to its last (see the list), as the skill shows it.",
+      "obligation": "required",
+      "example": 5
     },
     {
       "name": "troops",
