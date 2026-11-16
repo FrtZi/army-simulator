@@ -297,11 +297,12 @@ title = "Optimiser: the best troop mix within the march capacity"
 moscow = "should"
 milestone = "v1.3"
 module = "engine"
-status = "to do"
+status = "doing"
 added = 2026-10-22
 features = ["SIM-05"]
 tasks = [
-  "[ ] Spec agreed (docs/spec/optimiser.md): the goal as weights on the profile's figures, or a battle won",
+  "[x] Spec agreed (docs/spec/optimiser.md): a pruned search tree judged by the battle engine; the goal as weights on the profile's figures, or a battle won",
+  "[ ] The champion's skills counted in battle, as its gear is (a prerequisite)",
   "[ ] Angle 1: the best composition, heroes and talents with my setup",
 ]
 
@@ -543,3 +544,19 @@ tasks = [
   "[x] Agreed with Frantz (2026-11-16): the Champion lab's setups (gear sets and skills), one played in the Battle lab",
   "[ ] Saved by name, one chosen to play in the Battle lab",
 ]
+
+[[item]]
+id = "BL-33"
+title = "The break-even of an evolution: several setups compared along a level"
+moscow = "could"
+milestone = "later"
+module = "engine"
+status = "to do"
+added = 2026-11-16
+depends_on = ["BL-31"]
+features = ["SIM-13"]
+note = "Frantz, 2026-11-16: after the specialisation and the path by level, a tool comparing several setups to find an evolution's break-even, for instance the keep's level at which one road overtakes another."
+tasks = [
+  "[ ] Spec: the setups compared, the level along which, the score; to agree",
+]
+
