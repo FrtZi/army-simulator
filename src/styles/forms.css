@@ -5,6 +5,13 @@
   min-width: 0;
 }
 
+/* stacked in a card, a button never touches the field above it, nor a status line the button above it (DEF-046); in
+   a grid or a row, their gap spaces them already */
+.card > .field + button,
+.card > button + .status {
+  margin-top: 0.75rem;
+}
+
 .field label {
   font-size: 0.875rem;
   color: var(--muted);

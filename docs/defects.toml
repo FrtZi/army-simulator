@@ -718,3 +718,35 @@ resultat = "Troops added to the side compared let the optimiser run at once; the
 preuve = ["tests/optimiser.test.js"]
 lecon = "A block whose state reads the figures is drawn with the figures: ask which redraw a change calls, not only what the block shows."
 liens = ["SIM-05"]
+
+[[defaut]]
+id = "DEF-046"
+date = 2026-11-16
+titre = "Buttons stood against the field above them, and a status line against its button"
+type = "code"
+etiquettes = ["page"]
+gravite = "minor"
+statut = "fixed"
+constat = "Frantz asked to mind the gaps between buttons and boxes: the optimiser's button touched its goal's list and its status line touched the button; Your setup in the lab's button touched the champion's choice."
+cause = "A card stacks its children with no gap of its own: a field then a button, or a button then a status line, met edge to edge. The rows of a field and its button (a grid with a gap) were spaced; a stack in the card itself was not, and nothing checked it."
+solution = "In a card, a button after a field and a status line after a button are 0.75 rem apart; in a grid or a row the gap already spaces them (a margin there would double it, seen at a phone's width)."
+resultat = "Every such pair on the page has its gap; the test lists the three pairs without the rule."
+preuve = ["tests/accessibility.test.js"]
+lecon = "A gap is checked like a contrast: measured on the whole page by a test, not left to the eye of whoever adds the next block."
+liens = ["ACC-01", "SIM-05", "CFG-10"]
+
+[[defaut]]
+id = "DEF-047"
+date = 2026-11-16
+titre = "The \"Champion played\" choice showed with no Champion lab setup saved"
+type = "code"
+etiquettes = ["page"]
+gravite = "minor"
+statut = "fixed"
+constat = "Checking the gaps, the Battle lab showed the \"Champion played\" choice, empty and disabled, though no Champion lab setup was saved and its field was hidden."
+cause = "The field's class sets display: grid, which wins over the hidden attribute (the browser's own rule for it is the weakest). The page panels had met it before and got a patch of their own (.page-panel[hidden]), which left the next class out; jsdom computes hidden as never shown, so no page test could see it."
+solution = "One rule for every element, [hidden] { display: none !important }, the panels' patch removed; a test reads the stylesheets for it and refuses a patch per class."
+resultat = "The field is hidden until a Champion lab setup is saved; the test fails without the rule."
+preuve = ["tests/styles.test.js"]
+lecon = "A fix for one class of a general trap is a defect waiting for the next class: fix the trap. And a test environment that cannot see a defect is said, and the proof taken elsewhere."
+liens = ["CFG-10", "MAINT-01"]

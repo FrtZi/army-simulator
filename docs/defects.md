@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **45 defects**: 45 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **47 defects**: 47 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -58,6 +58,8 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-043](#def-043) | 2026-11-10 | Three Chaos troops of the PvE cities had no type, attack, morale nor power | code | major | ✓ fixed |
 | [DEF-044](#def-044) | 2026-11-11 | One wide table pushed every card of Your setup past the screen | code | major | ✓ fixed |
 | [DEF-045](#def-045) | 2026-11-16 | The optimiser's button stayed greyed after troops were added to the side it fights | code | minor | ✓ fixed |
+| [DEF-046](#def-046) | 2026-11-16 | Buttons stood against the field above them, and a status line against its button | code | minor | ✓ fixed |
+| [DEF-047](#def-047) | 2026-11-16 | The "Champion played" choice showed with no Champion lab setup saved | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -630,3 +632,29 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A block whose state reads the figures is drawn with the figures: ask which redraw a change calls, not only what the block shows.
 - **Proof:** `tests/optimiser.test.js`
 - **Links:** SIM-05
+
+<a id="def-046"></a>
+### DEF-046 · Buttons stood against the field above them, and a status line against its button
+
+`2026-11-16` · code · minor · ✓ fixed · tags: `page`
+
+- **Finding:** Frantz asked to mind the gaps between buttons and boxes: the optimiser's button touched its goal's list and its status line touched the button; Your setup in the lab's button touched the champion's choice.
+- **Cause:** A card stacks its children with no gap of its own: a field then a button, or a button then a status line, met edge to edge. The rows of a field and its button (a grid with a gap) were spaced; a stack in the card itself was not, and nothing checked it.
+- **Solution:** In a card, a button after a field and a status line after a button are 0.75 rem apart; in a grid or a row the gap already spaces them (a margin there would double it, seen at a phone's width).
+- **Result:** Every such pair on the page has its gap; the test lists the three pairs without the rule.
+- **Lesson:** A gap is checked like a contrast: measured on the whole page by a test, not left to the eye of whoever adds the next block.
+- **Proof:** `tests/accessibility.test.js`
+- **Links:** ACC-01, SIM-05, CFG-10
+
+<a id="def-047"></a>
+### DEF-047 · The "Champion played" choice showed with no Champion lab setup saved
+
+`2026-11-16` · code · minor · ✓ fixed · tags: `page`
+
+- **Finding:** Checking the gaps, the Battle lab showed the "Champion played" choice, empty and disabled, though no Champion lab setup was saved and its field was hidden.
+- **Cause:** The field's class sets display: grid, which wins over the hidden attribute (the browser's own rule for it is the weakest). The page panels had met it before and got a patch of their own (.page-panel[hidden]), which left the next class out; jsdom computes hidden as never shown, so no page test could see it.
+- **Solution:** One rule for every element, [hidden] { display: none !important }, the panels' patch removed; a test reads the stylesheets for it and refuses a patch per class.
+- **Result:** The field is hidden until a Champion lab setup is saved; the test fails without the rule.
+- **Lesson:** A fix for one class of a general trap is a defect waiting for the next class: fix the trap. And a test environment that cannot see a defect is said, and the proof taken elsewhere.
+- **Proof:** `tests/styles.test.js`
+- **Links:** CFG-10, MAINT-01

@@ -146,3 +146,19 @@ test("MAINT-01 DEF-044 a card never widens its column; the agent's table of sent
   assert.ok(has(".page-panel > *", "min-width", "0"), "the page panels' cards may shrink below their content");
   assert.ok(has(".setup-files-table td", "white-space", "normal"), "the table's sentences wrap");
 });
+
+// DEF-047: the "Champion played" field, hidden with no Champion lab setup saved, showed: a field's display: grid won
+// over the hidden attribute. jsdom always computes display: none for [hidden], so the rule is read here.
+test("MAINT-01 DEF-047 hidden always hides: one rule for every element, never a patch per class", () => {
+  const rules = SHEETS.flatMap(({ outside }) => declarations(outside));
+  const hiding = (rule) => rule.property === "display" && rule.selector.endsWith("[hidden]");
+  assert.ok(
+    rules.some((rule) => hiding(rule) && rule.selector === "[hidden]" && rule.value === "none !important"),
+    "[hidden] { display: none !important } for every element",
+  );
+  // a patch per class (.page-panel[hidden] once) leaves out the next class that sets a display
+  assert.deepEqual(
+    rules.filter((rule) => hiding(rule) && rule.selector !== "[hidden]").map((rule) => rule.selector),
+    [],
+  );
+});

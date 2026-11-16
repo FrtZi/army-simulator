@@ -3,6 +3,11 @@
   box-sizing: border-box;
 }
 
+/* hidden is hidden: a class's display (a field's grid, a panel's) must never show it again (DEF-047) */
+[hidden] {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: var(--bg);

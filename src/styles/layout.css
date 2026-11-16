@@ -90,10 +90,6 @@ main {
   gap: 1rem;
 }
 
-.page-panel[hidden] {
-  display: none;
-}
-
 /* a card never widens its column: a wide table or tree scrolls or wraps inside it (DEF-044) */
 .page-panel > * {
   min-width: 0;
