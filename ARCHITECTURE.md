@@ -70,7 +70,8 @@ src/ui/                  the page
 ├── state.js             the single mutable state, and what derives from it (effects, army, profile)
 ├── player-setup.js      the player's setup on the page: the one edited, the last saved, what differs (D-27)
 ├── lab-setup.js         the saved setup in the Battle lab: heroes owned at their levels, capacity, bonuses
-├── optimiser.js         the optimiser on the page: what Your setup gives the search, the goal's scores (SIM-05)
+├── optimiser.js         the optimiser on the page: what Your setup gives the search, the goal's scores, an aim
+│                        (SIM-05, SIM-12)
 ├── render.js            the render pipeline: what to redraw after a change
 ├── texts/               the page's texts: en.js + en-more, en-dash, en-heroes, en-setup, and the same in French
 │                        (same keys), t()
@@ -144,6 +145,7 @@ tests/                   node --test; each test names the feature it proves
 ├── champion-skills.test.js  the champion's skills in Your setup, the file and battle (BONUS-10)
 ├── champion-saves.test.js   the Champion lab's setups saved, one played in the Battle lab (CFG-10)
 ├── optimiser.test.js    the optimiser: against simple armies and every choice, then on the page (SIM-05)
+├── optimiser-aim.test.js  an aim: only its troops, what it costs now, on the page (SIM-12)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)

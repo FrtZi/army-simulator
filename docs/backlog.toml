@@ -520,13 +520,13 @@ title = "An aim and the path to it: pro Nurgle, pro cavalry, what to pick and ra
 moscow = "should"
 milestone = "v1.3"
 module = "engine"
-status = "to do"
+status = "doing"
 added = 2026-11-16
 depends_on = ["BL-16"]
 features = ["SIM-12"]
 note = "Frantz, 2026-11-16: the optimum for a characteristic I want (pro Nurgle, pro cavalry and chariots), leading to evolution suggestions: what to pick, which hero to raise, which talents; my path, shown with a small guide."
 tasks = [
-  "[ ] The aim weighting the optimiser",
+  "[x] The aim in the optimiser: only the troops it names, and what it costs now (D-41)",
   "[ ] The path: each step by gain for its cost, prerequisites first, shown with a short guide",
 ]
 

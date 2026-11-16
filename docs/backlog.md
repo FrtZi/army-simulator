@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/7 | 12/20 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/7 | 13/20 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/7 | 2/10 | — |
 
 ## Ready to start
@@ -29,7 +29,7 @@ Not done, and every dependency done:
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
 - [BL-30](#bl-30) A Champion lab: gear sets compared, stats by level, every bonus, its skill trees (v1.3, should, ◐ doing)
-- [BL-31](#bl-31) An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise (v1.3, should, ○ to do)
+- [BL-31](#bl-31) An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise (v1.3, should, ◐ doing)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
 - [BL-17](#bl-17) Read-only share link (later, could, ○ to do)
@@ -76,7 +76,7 @@ flowchart LR
   BL28["BL-28 ✓ done<br/>An uploaded file: each section added to what you have, or replacing it"]:::done
   BL29["BL-29 ✓ done<br/>Every block closes to a one-line summary"]:::done
   BL30["BL-30 ◐ doing<br/>A Champion lab: gear sets compared, stats by level, every bonus, its skill trees"]:::doing
-  BL31["BL-31 ○ to do<br/>An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise"]:::todo
+  BL31["BL-31 ◐ doing<br/>An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise"]:::doing
   BL16 --> BL31
   BL32["BL-32 ✓ done<br/>The Champion lab's setups saved, one played in the Battle lab"]:::done
   BL33["BL-33 ○ to do<br/>The break-even of an evolution: several setups compared along a level"]:::todo
@@ -360,7 +360,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ✓ done | 3/3 |
 | [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | should | [engine](../src/engine) | ✓ done | 3/3 |
 | [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 4/5 |
-| [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ○ to do | 0/2 |
+| [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ◐ doing | 1/2 |
 | [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ✓ done | 2/2 |
 
 <a id="bl-11"></a>
@@ -418,11 +418,11 @@ Frantz, 2026-11-11: a new tab, like a Champion lab, to compare gear sets, the st
 <a id="bl-31"></a>
 #### BL-31 · An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise
 
-Should · [engine](../src/engine) · ○ to do · added `2026-11-16` · after [BL-16](#bl-16) · features: SIM-12
+Should · [engine](../src/engine) · ◐ doing · added `2026-11-16` · after [BL-16](#bl-16) · features: SIM-12
 
 Frantz, 2026-11-16: the optimum for a characteristic I want (pro Nurgle, pro cavalry and chariots), leading to evolution suggestions: what to pick, which hero to raise, which talents; my path, shown with a small guide.
 
-- [ ] The aim weighting the optimiser
+- [x] The aim in the optimiser: only the troops it names, and what it costs now (D-41)
 - [ ] The path: each step by gain for its cost, prerequisites first, shown with a short guide
 
 <a id="bl-32"></a>

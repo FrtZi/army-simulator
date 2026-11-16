@@ -9,6 +9,13 @@ export const EN_OPTIMISER = {
   "optimiser.goal-tanking": "Tanking: effective health",
   "optimiser.goal-power": "Power",
   "optimiser.goal-battle": "A battle won against the comparison's second side",
+  "optimiser.aimHint":
+    "An aim, if you have one (pro Nurgle, pro cavalry…): only your troops of the gods, types and tiers ticked play. Nothing ticked: all of them.",
+  "optimiser.needAimTroops":
+    "None of your troops owned fits the aim: untick a value, or enter those troops in Your setup.",
+  "optimiser.aimCosts": "▼ The aim costs {percent} % now: without it, the best army scores that much more.",
+  "optimiser.aimFree": "= The aim costs nothing now: without it, the best army scores no more.",
+  "optimiser.aimBattle": "Without the aim: {free}.",
   "optimiser.run": "Find the best army",
   "optimiser.needSetup": "Turn on “Load your setup” above: the optimiser works with what you have.",
   "optimiser.needTroops": "Your setup holds no troops owned: enter them in Your setup, then Save.",
@@ -36,4 +43,5 @@ export const EN_OPTIMISER = {
   "optimiser.used": "✓ Composition {name} now holds the army found.",
   "fold.optimiserNone": "○ Not run yet",
   "fold.optimiser": "✓ {goal}: {troops} troops, {heroes} heroes, {talents} talents",
+  "fold.optimiserAimed": "{line} · aimed",
 };

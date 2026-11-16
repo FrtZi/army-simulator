@@ -9,6 +9,14 @@ export const FR_OPTIMISER = {
   "optimiser.goal-tanking": "Encaisser : santé effective",
   "optimiser.goal-power": "Puissance",
   "optimiser.goal-battle": "Une bataille gagnée contre le second camp de la comparaison",
+  "optimiser.aimHint":
+    "Une visée, si vous en avez une (pro Nurgle, pro cavalerie…) : seules vos troupes des dieux, types et rangs cochés jouent. Rien de coché : toutes.",
+  "optimiser.needAimTroops":
+    "Aucune de vos troupes possédées ne correspond à la visée : décochez une valeur, ou saisissez ces troupes dans Votre configuration.",
+  "optimiser.aimCosts":
+    "▼ La visée coûte {percent} % pour l'instant : sans elle, la meilleure armée obtient autant de plus.",
+  "optimiser.aimFree": "= La visée ne coûte rien pour l'instant : sans elle, la meilleure armée n'obtient pas plus.",
+  "optimiser.aimBattle": "Sans la visée : {free}.",
   "optimiser.run": "Trouver la meilleure armée",
   "optimiser.needSetup":
     "Activez « Charger votre configuration » plus haut : l'optimiseur travaille avec ce que vous avez.",
@@ -38,4 +46,5 @@ export const FR_OPTIMISER = {
   "optimiser.used": "✓ La composition {name} contient maintenant l'armée trouvée.",
   "fold.optimiserNone": "○ Pas encore lancé",
   "fold.optimiser": "✓ {goal} : {troops} troupes, {heroes} héros, {talents} talents",
+  "fold.optimiserAimed": "{line} · visée",
 };

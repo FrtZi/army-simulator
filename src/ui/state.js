@@ -57,8 +57,9 @@ export const state = {
   active: 0, // the composition being edited
   compare: [0, 1], // the two compositions compared
   pve: { on: false, kind: "army", name: "", level: null, troops: {} }, // a PvE army as the second side (SIM-11)
-  // the optimiser (SIM-05): the goal chosen, the best army found (false: none could be placed), put in the composition
-  optimiser: { goal: CONFIG.optimiser.goals[0].id, result: null, applied: false },
+  // the optimiser (SIM-05): the goal chosen, the aim ticked (field → values, SIM-12), the best army found (false: none
+  // could be placed), put in the composition
+  optimiser: { goal: CONFIG.optimiser.goals[0].id, aim: {}, result: null, applied: false },
   dashboard: "efficiency", // the dashboard tab shown
   efficiencyFilters: {}, // the charts' filters: building, tier, alignment → the values ticked
   highlightComposition: false, // the charts darken the troops outside the composition being edited

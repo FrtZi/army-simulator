@@ -38,12 +38,13 @@ function optimiser() {
   if (result === false) return `ⓘ ${t("optimiser.none")}`;
   if (!result) return t("fold.optimiserNone");
   const { troops, heroes: found, talents } = result.composition;
-  return t("fold.optimiser", {
+  const line = t("fold.optimiser", {
     goal: t(`optimiser.goal-${result.goal}`),
     troops: number(Object.values(troops).reduce((sum, count) => sum + count, 0)),
     heroes: found.length,
     talents: talents.length,
   });
+  return result.free === null ? line : t("fold.optimiserAimed", { line });
 }
 
 function profile() {

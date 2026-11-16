@@ -1,6 +1,7 @@
-// The optimiser block (SIM-05, D-40): the goal, the button, and the army found — its troops within the capacity, its
-// heroes at their levels, its talents — with how it compares with the composition being edited as it stands, a state
-// always said with an icon and a word. Without Your setup loaded, or its troops owned, it says what is missing.
+// The optimiser block (SIM-05, D-40): the goal, the aim (SIM-12), the button, and the army found — its troops within
+// the capacity, its heroes at their levels, its talents — with how it compares with the composition being edited as it
+// stands and, aimed, with the best army without the aim, a state always said with an icon and a word. Without Your
+// setup loaded, or its troops owned, it says what is missing.
 import { CONFIG } from "../../config.js";
 import { byId, escape, options } from "../../dom.js";
 import { label, number } from "../../format.js";
@@ -8,6 +9,7 @@ import { blocked, goalOf } from "../../optimiser.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { talentName } from "../heroes/draw.js";
+import { multiFilter } from "../../filters.js";
 import { offeredTalents } from "../../../engine/index.js";
 
 export const compositionName = () => state.composition.name || String(state.active + 1);
@@ -31,6 +33,14 @@ function comparedLine({ goal, score, current }) {
   return score < current ? t("optimiser.worse", { percent, name }) : t("optimiser.same", { name });
 }
 
+/** What the aim costs now (SIM-12): the best army without it against the one found within it; "" with no aim. */
+function aimLine({ goal, score, free }) {
+  if (free === null) return "";
+  if (goalOf(goal).battle) return t("optimiser.aimBattle", { free: battleWords(free) });
+  if (!(free > score)) return t("optimiser.aimFree");
+  return t("optimiser.aimCosts", { percent: number((1 - score / free) * 100, 1) });
+}
+
 const list = (items, empty) =>
   items.length
     ? `<ul>${items.map((item) => `<li>${escape(item)}</li>`).join("")}</ul>`
@@ -42,7 +52,8 @@ function foundHtml(result) {
   const placed = Object.values(troops).reduce((sum, count) => sum + count, 0);
   const offered = offeredTalents(heroes.map(({ id, level }) => ({ warlord: warlords.get(id), level })));
   const percentOf = (id) => offered.find((talent) => talent.id === id).percent;
-  return `<p>${escape(comparedLine(result))}</p>
+  const aim = aimLine(result);
+  return `<p>${escape(comparedLine(result))}</p>${aim ? `<p>${escape(aim)}</p>` : ""}
     <h3>${escape(t("optimiser.troops", { n: number(placed), capacity: number(result.capacity) }))}</h3>
     ${list(
       Object.entries(troops).map(([id, count]) => `${label(catalogue.units.get(id))} × ${number(count)}`),
@@ -70,10 +81,13 @@ function statusText(reason) {
   return result ? t("optimiser.found", { goal: t(`optimiser.goal-${result.goal}`), n: number(result.judged) }) : "";
 }
 
-/** The goals to choose from, the one chosen selected (redrawn with the page, not while the figures change). */
+/** The goals to choose from and the aim's filters, as chosen (redrawn with the page, not with the figures). */
 export function drawOptimiserGoals() {
   const goals = CONFIG.optimiser.goals.map(({ id }) => [id, t(`optimiser.goal-${id}`)]);
   byId("optimiser-goal").innerHTML = options(goals, state.optimiser.goal);
+  byId("optimiser-aim").innerHTML = CONFIG.optimiser.aimFilters
+    .map((field) => multiFilter("optimiser-aim", field, state.optimiser.aim[field]))
+    .join("");
 }
 
 /**

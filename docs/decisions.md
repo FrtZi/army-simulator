@@ -521,3 +521,16 @@ heroes owned it judges about 12,000 armies in under a second in jsdom.
   it, so the guess orders the trios and only the kept ones are judged exactly); a weighted sum of the figures (it adds
   damage to health, two units: the weights would mean nothing); the search in a worker (a second at most: not needed
   yet); choosing whether the champion leads (the composition's own choice stays the player's).
+
+## D-41 · The optimiser's aim: its troops only, and what it costs now (2026-11-16)
+
+The first half of BL-31, as the spec's model agreed: an aim ticked like the picker's filters (gods, troop types,
+tiers, several values each; CONFIG `aimFilters`) keeps only the troops owned it names, the others out, and the same
+search runs. The heroes and talents follow by themselves: with Nurgle's troops alone, the hero whose talents raise
+Nurgle's troops scores best. With an aim, the search also runs without it, and the block says what the aim costs now:
+by how much the best army without it scores more (or, for a battle, how that battle goes), so a player sees what being
+"pro Nurgle" costs with what they have today. An aim none of the troops owned fits stops the search and says so.
+
+- _Set aside:_ the aim's troops weighted up rather than the others left out (the spec's first wording: a weight is a
+  figure to guess, while "only these" is what a player means by pro Nurgle); troops not owned in the aimed army (they
+  belong to the path, the second half: what to get next, by its gain for its cost).
