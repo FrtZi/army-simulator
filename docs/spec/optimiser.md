@@ -96,3 +96,32 @@ seconds in the browser.
 - _Set aside:_ every combination (billions); a trained model (random or deep forest: it would learn our own engine
   from its own runs, less exactly and without saying why; worth it only for a slow engine, ours answers in under
   25 ms); a linear score alone (bonuses multiply, the battle has thresholds, the talents act on subsets).
+
+## The optimiser's page, as the mockups were agreed (Frantz, 2026-11-16)
+
+Three questions, kept apart: what is best with what I have; what is best if I go X or Y; what I should do to improve.
+The block holds four tabs, the model's map first; every block in them folds to one line that sums it up (FOLD-01),
+and the gods' colours mark troops, heroes, talents and steps (with a word beside, never the colour alone).
+
+1. **The model's map**: the search drawn as it ran, with its figures: the setup, the aim, the capacity filled, the
+   trios tried, kept, settled, the army found, then the path's steps judged; the branches' links said in a line.
+   (SIM-14 later makes it unfold live and set two setups on one tree.)
+2. **With what I have**, in folding blocks:
+   - _Summary_: the score against the composition edited, the troops against the places, the battle if one is the
+     goal; and **the power two ways**: the game's (the troops' and heroes' own) and the power with every bonus, the
+     game's multiplied by what the bonuses add to the army's damage × health (a figure the game does not show; this
+     definition to confirm).
+   - _Troops_: one bar each, in its god's colour, with its count.
+   - _Heroes and talents_: the trio at its levels, and under it the talents chosen, each with the hero it comes from
+     and what the score would lose without it.
+   - _Champion_: its stats at its level, its points, its set slot by slot (the empty ones dashed), and every bonus it
+     adds: the set's tiers reached or not, the pieces', the skills', its march's.
+   - _Rituals acting on this army_: those that touch its troops, by what the score would lose without each.
+   - _Bonus synthesis_: per stat, what each source gives (heroes, champion, rituals, buildings, setup).
+   - The army found put in the composition edited, or in a new one.
+3. **X or Y**: two aims chosen freely (gods, troop types), each with its best army and what it costs against
+   "with what I have", the better one marked. Then **an aim suggested**: every simple aim (each god, each troop type)
+   tried on the troops, heroes and talents held, the most promising ones offered.
+4. **To improve**: the path, each step with its kind's icon, its gain, its cost folded under it.
+
+The weight of a source or a bonus is what the army's score would lose without it, everything else kept.
