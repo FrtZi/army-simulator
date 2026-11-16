@@ -535,11 +535,11 @@ title = "The Champion lab's setups saved, one played in the Battle lab"
 moscow = "should"
 milestone = "v1.3"
 module = "ui"
-status = "to do"
+status = "doing"
 added = 2026-11-16
 features = ["CFG-10"]
 note = "Frantz, 2026-11-16: the labs' setups can be saved, and a heroes' setup loaded in the simulator. Which labs and which setup: to agree (docs/spec/optimiser.md, question 1)."
 tasks = [
-  "[ ] Agreed with Frantz: which setups",
+  "[x] Agreed with Frantz (2026-11-16): the Champion lab's setups (gear sets and skills), one played in the Battle lab",
   "[ ] Saved by name, one chosen to play in the Battle lab",
 ]

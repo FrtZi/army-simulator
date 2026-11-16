@@ -1,6 +1,6 @@
 # The optimiser and the path (BL-16, BL-31) — spec, to agree with Frantz
 
-[← Overview](../../ARCHITECTURE.md) · Catalogue: SIM-05, SIM-12, CFG-10 · Status: proposal of 2026-11-16
+[← Overview](../../ARCHITECTURE.md) · Catalogue: SIM-05, SIM-12, CFG-10 · Status: its questions settled on 2026-11-16; the model to agree
 
 ## The need (Frantz, 2026-11-16)
 
@@ -59,10 +59,13 @@ the one with the best gain for its cost on a small worked case.
 The Champion lab's setups (its two gear sets, its skills' levels) are saved by name in the browser, like the Battle
 lab's saves, and one saved setup can be chosen to play in the Battle lab instead of Your setup's champion.
 
-## Questions for Frantz
+## Settled with Frantz (2026-11-16)
 
-1. **The labs' setups:** is it the Champion lab's (gear and skills) you want saved, and the "heroes setup" loaded in
-   the simulator the champion's? Or the Battle lab's compositions with their heroes (already saved, CFG-01)?
-2. **Angle 1's goal:** a few presets (all-round, damage, tanking, power), or "win this battle" against an opponent
-   you pick, or both?
-3. **The aims:** a god, a troop type, a tier, or a mix of them, ticked like the picker's filters?
+1. **The labs' setups:** the Champion lab's (its gear sets and skills) are saved, and one can be played in the Battle
+   lab instead of Your setup's champion (BL-32).
+2. **Angle 1's goal:** both, presets on the profile's figures and a battle won against an opponent the player picks.
+3. **The aims:** ticked like the picker's filters (gods, troop types, tiers, several values each).
+4. **Every buff counts:** the champion's gear and sets, the heroes and their talents, the champion's skill trees: they
+   weigh heavily, so the optimiser and the path must take them all.
+
+The model itself (vectors, or another approach) is to agree before it is built.
