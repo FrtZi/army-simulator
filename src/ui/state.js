@@ -116,9 +116,10 @@ export function problemsOf(effect) {
 }
 
 /** Every valid effect: a bonus with a problem is shown with it, and left out of the figures. */
-export function validEffects() {
-  const bonuses = setupBonuses(state) ? state.savedPlayerSetup.bonuses : state.bonuses.map(bonusEffect);
-  const sources = setupSourceEffects(state, currentGame()); // rituals and buildings, with the setup loaded
+export function validEffects(seen = state) {
+  // `seen`: the state, or one whose setup holds a ritual or building more (the optimiser's path, D-43)
+  const bonuses = setupBonuses(seen) ? seen.savedPlayerSetup.bonuses : seen.bonuses.map(bonusEffect);
+  const sources = setupSourceEffects(seen, currentGame()); // rituals and buildings, with the setup loaded
   return [...bonuses, ...sources, capacityEffect()].filter((effect) => !problemsOf(effect).length);
 }
 

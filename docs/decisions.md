@@ -559,3 +559,21 @@ setup's heroes owned (`summarise`).
   kind at a time; a hero's next rank instead of its next level (a level is the game's own step; a rank is five of
   them, and the path can be read on); the whole search run again for each step (a second or so each: thirty steps would
   take half a minute, for gains the trio's swaps already show).
+
+## D-43 · The path's rituals and buildings: one level up, those that can be done now (2026-11-16)
+
+The path's second kind of step: each ritual and building whose levels give a bonus in battle, one level up from the
+level Your setup holds (a building at its highest copy). Its gain is the army found scored again with the setup holding
+that level, its troops, heroes and talents kept; it joins the heroes' steps in one list, by gain.
+
+Only the steps that can be done now are judged: what a level asks first (rituals and a building's level for a ritual,
+buildings for a building, back to the roots, `missingFor`) must all be held. Counted with its prerequisites, a deep
+ritual took their gains and their cost: with no ritual held, the first steps were bundles of fifty prerequisites at
++161 % for ten billion of each resource. A prerequisite is a step of its own, so the path keeps them first by itself,
+and a ritual waiting for them appears once they are held. A gain below what one decimal shows reads "< 0.1 %", not
+"+0 %". With 150 rituals and every building held, the run takes about 0.2 s more.
+
+- _Set aside:_ a locked step counted with its prerequisites (above); its prerequisites listed beside it (no locked
+  step is shown, so none to list; a "what this ritual asks" belongs to the rituals' map, GUIDE-07); the troops,
+  heroes and talents chosen again for each level (a ritual's bonus seldom changes which army is best; the search can be
+  run again after a step).

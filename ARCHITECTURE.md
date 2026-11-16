@@ -51,7 +51,8 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 ├── compare.js           two armies: each figure, its difference and the better one, both battles (SIM-03)
 ├── insights.js          the dashboards' figures: efficiency, rounds, balance and warnings, pros and cons
 ├── optimise.js          the optimiser: a search tree pruned at each level, the caller's scores as its judge (SIM-05)
-└── path.js              the path: each hero to get or raise, by its gain on the army found (SIM-12)
+├── path.js              the path: each hero to get or raise, by its gain on the army found (SIM-12)
+└── levelled-steps.js    the path's rituals and buildings: one level up, what it asks first (SIM-12)
 src/storage/             no DOM: configuration.js (setup ↔ file format version 2, checks), migrate.js (an older
                          file brought up to date), browser.js (saves, the Champion lab's included); the player's setup file (D-27):
                          setup-file.js (read and checked value by value, written back; setup-checks.js: what its
@@ -71,8 +72,8 @@ src/ui/                  the page
 ├── state.js             the single mutable state, and what derives from it (effects, army, profile)
 ├── player-setup.js      the player's setup on the page: the one edited, the last saved, what differs (D-27)
 ├── lab-setup.js         the saved setup in the Battle lab: heroes owned at their levels, capacity, bonuses
-├── optimiser.js         the optimiser on the page: what Your setup gives the search, the goal's scores, an aim
-│                        (SIM-05, SIM-12)
+├── optimiser.js         the optimiser on the page: what Your setup gives the search, an aim (SIM-05, SIM-12);
+│                        optimiser-scores.js the goal's scores and the opponent; optimiser-path.js the path
 ├── render.js            the render pipeline: what to redraw after a change
 ├── texts/               the page's texts: en.js + en-more, en-dash, en-heroes, en-setup, and the same in French
 │                        (same keys), t()
@@ -148,6 +149,7 @@ tests/                   node --test; each test names the feature it proves
 ├── optimiser.test.js    the optimiser: against simple armies and every choice, then on the page (SIM-05)
 ├── optimiser-aim.test.js  an aim: only its troops, what it costs now, on the page (SIM-12)
 ├── path.test.js         the path: gains counted by hand, then on the page (SIM-12)
+├── path-levelled.test.js  the path's rituals and buildings: a worked tree, then the page (SIM-12)
 ├── pve.test.js          a PvE army as the opponent: chosen, sub-selected, only your attack (SIM-11, DEF-043)
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)
