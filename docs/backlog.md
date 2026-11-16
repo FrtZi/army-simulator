@@ -18,8 +18,8 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/4 | 7/13 | ○ not yet: 1 Must left |
-| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/6 | 2/9 | — |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 1/7 | 7/19 | ○ not yet: 1 Must left |
+| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/5 | 2/8 | — |
 
 ## Ready to start
 
@@ -28,10 +28,11 @@ Not done, and every dependency done:
 - [BL-08](#bl-08) The player's setup: everything they have in game, entered by hand or uploaded (v1.1, must, ◐ doing)
 - [BL-21](#bl-21) The tier modifier, from cctools.cc's table, confirmed on a battle report (v1.2, must, ◐ doing)
 - [BL-11](#bl-11) Keep attack: the defences' first round, as a switch on a battle (v1.3, must, ○ to do)
+- [BL-16](#bl-16) Optimiser: the best troop mix within the march capacity (v1.3, should, ○ to do)
 - [BL-30](#bl-30) A Champion lab: gear sets compared, stats by level, every bonus, its skill trees (v1.3, should, ◐ doing)
+- [BL-32](#bl-32) The Champion lab's setups saved, one played in the Battle lab (v1.3, should, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
-- [BL-16](#bl-16) Optimiser: the best troop mix within the march capacity (later, could, ○ to do)
 - [BL-17](#bl-17) Read-only share link (later, could, ○ to do)
 - [BL-18](#bl-18) Food upkeep: settle the factor of 6 with cctools.cc (later, could, ○ to do)
 - [BL-19](#bl-19) The troops' pictures from the game (later, won't, ○ to do)
@@ -75,6 +76,9 @@ flowchart LR
   BL28["BL-28 ✓ done<br/>An uploaded file: each section added to what you have, or replacing it"]:::done
   BL29["BL-29 ✓ done<br/>Every block closes to a one-line summary"]:::done
   BL30["BL-30 ◐ doing<br/>A Champion lab: gear sets compared, stats by level, every bonus, its skill trees"]:::doing
+  BL31["BL-31 ○ to do<br/>An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise"]:::todo
+  BL16 --> BL31
+  BL32["BL-32 ○ to do<br/>The Champion lab's setups saved, one played in the Battle lab"]:::todo
   classDef done stroke-width:3px
   classDef doing stroke-dasharray:4
   classDef todo stroke-width:1px
@@ -350,7 +354,10 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-11](#bl-11) | Keep attack: the defences' first round, as a switch on a battle | must | [engine](../src/engine) | ○ to do | 0/3 |
 | [BL-12](#bl-12) | Keep defence: a fortress (defences and garrison) as the defending side | should | [ui](../src/ui) | ○ to do | 0/2 |
 | [BL-13](#bl-13) | Champion: own stats by level, gear and set bonuses | should | [data](../data) | ✓ done | 3/3 |
+| [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | should | [engine](../src/engine) | ○ to do | 0/2 |
 | [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 4/5 |
+| [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ○ to do | 0/2 |
+| [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ○ to do | 0/2 |
 
 <a id="bl-11"></a>
 #### BL-11 · Keep attack: the defences' first round, as a switch on a battle
@@ -382,6 +389,14 @@ What it needed of BL-08, the Your setup tab, is in; open question 22 settled on 
 - [x] Its guide: the champion by level, each piece by level, the sets by pieces worn (GUIDE-03)
 - [x] In the setup: its level and a piece per slot; its gear's bonuses applied, its march's in the composition it leads (D-30)
 
+<a id="bl-16"></a>
+#### BL-16 · Optimiser: the best troop mix within the march capacity
+
+Should · [engine](../src/engine) · ○ to do · added `2026-10-22` · features: SIM-05
+
+- [ ] Spec agreed (docs/spec/optimiser.md): the goal as weights on the profile's figures, or a battle won
+- [ ] Angle 1: the best composition, heroes and talents with my setup
+
 <a id="bl-30"></a>
 #### BL-30 · A Champion lab: gear sets compared, stats by level, every bonus, its skill trees
 
@@ -395,6 +410,26 @@ Frantz, 2026-11-11: a new tab, like a Champion lab, to compare gear sets, the st
 - [x] What each level gives for 29 champion skills (cctools.cc's tools), shown in the lab and the Guides with the gear comparison coloured by gain and loss
 - [ ] What each level gives for the champion tree's 23 others and the conquest tree's 26 (not on cctools.cc: the game's tooltips)
 
+<a id="bl-31"></a>
+#### BL-31 · An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise
+
+Should · [engine](../src/engine) · ○ to do · added `2026-11-16` · after [BL-16](#bl-16) · features: SIM-12
+
+Frantz, 2026-11-16: the optimum for a characteristic I want (pro Nurgle, pro cavalry and chariots), leading to evolution suggestions: what to pick, which hero to raise, which talents; my path, shown with a small guide.
+
+- [ ] The aim weighting the optimiser
+- [ ] The path: each step by gain for its cost, prerequisites first, shown with a short guide
+
+<a id="bl-32"></a>
+#### BL-32 · The Champion lab's setups saved, one played in the Battle lab
+
+Should · [ui](../src/ui) · ○ to do · added `2026-11-16` · features: CFG-10
+
+Frantz, 2026-11-16: the labs' setups can be saved, and a heroes' setup loaded in the simulator. Which labs and which setup: to agree (docs/spec/optimiser.md, question 1).
+
+- [ ] Agreed with Frantz: which setups
+- [ ] Saved by name, one chosen to play in the Battle lab
+
 ### later · Later, ideas kept
 
 Validated as ideas, not planned yet: each one is reprioritised when a version is prepared.
@@ -403,7 +438,6 @@ Validated as ideas, not planned yet: each one is reprioritised when a version is
 |---|---|---|---|---|---|
 | [BL-09](#bl-09) | Credit cctools.cc and tell its author | could | framework | ◐ doing | 2/3 |
 | [BL-15](#bl-15) | Calibration on battle reports: tier modifier, broken bonus, morale per squad | should | [engine](../src/engine) | ○ to do | 0/2 |
-| [BL-16](#bl-16) | Optimiser: the best troop mix within the march capacity | could | [engine](../src/engine) | ○ to do | 0/1 |
 | [BL-17](#bl-17) | Read-only share link | could | [storage](../src/storage) | ○ to do | 0/1 |
 | [BL-18](#bl-18) | Food upkeep: settle the factor of 6 with cctools.cc | could | [data](../data) | ○ to do | 0/1 |
 | [BL-19](#bl-19) | The troops' pictures from the game | won't | [ui](../src/ui) | ○ to do | 0/1 |
@@ -426,13 +460,6 @@ Should · [engine](../src/engine) · ○ to do · added `2026-10-22` · features
 
 - [ ] Detailed battle reports from Frantz (troops and losses per round, both sides)
 - [ ] Open questions 1 to 5 settled, the model's parameters fitted
-
-<a id="bl-16"></a>
-#### BL-16 · Optimiser: the best troop mix within the march capacity
-
-Could · [engine](../src/engine) · ○ to do · added `2026-10-22` · features: SIM-05
-
-- [ ] Spec: what "best" means (power, damage, tanking, a battle won)
 
 <a id="bl-17"></a>
 #### BL-17 · Read-only share link

@@ -1,0 +1,68 @@
+# The optimiser and the path (BL-16, BL-31) — spec, to agree with Frantz
+
+[← Overview](../../ARCHITECTURE.md) · Catalogue: SIM-05, SIM-12, CFG-10 · Status: proposal of 2026-11-16
+
+## The need (Frantz, 2026-11-16)
+
+Two questions a player asks:
+
+1. **What is my best army with what I have?** My troops owned, my heroes at their levels, my rituals, buildings and
+   champion: which composition, which heroes and talents give the most?
+2. **What is my best army if I aim at something?** Being "pro Nurgle", or "pro cavalry and chariots": the best army
+   of that kind, and **the path** to it: what to pick, which hero to raise, which talents, rituals, buildings, gear.
+   Shown, with a short guide.
+
+## A simple model: vectors
+
+Every candidate (a troop, a hero, a talent, a ritual level, a building level, a gear piece) is turned into the same
+**vector of figures**, what it adds to an army per unit of what it costs:
+
+| Figure                              | Read from                                                |
+| ----------------------------------- | -------------------------------------------------------- |
+| damage per strike, effective health | the engine's profile (D-16), each troop with every bonus |
+| power                               | the engine (squad power)                                 |
+| morale, speed, load, food per hour  | the profile                                              |
+| god and troop type (the "aim")      | the troop's tags; a bonus's target                       |
+
+The player's goal is a **vector of weights** on those figures. "Best" is the highest weighted sum, within the
+limits: the march capacity, the troops owned, 3 heroes and 4 talents, the champion's points.
+
+- **Angle 1, with my setup:** the weights the player picks among a few presets (all-round, damage, tanking, power;
+  or a battle won against a chosen opponent, a composition or a PvE army). The optimiser fills the capacity with
+  the troops owned that give the most per place, then tries the owned heroes and their talents (at most 3 and 4:
+  few enough to try every combination), and keeps the best.
+- **Angle 2, with an aim:** the same, the troops of the aim weighted up (a god, a troop type, several). Then it
+  compares with angle 1: what the aim gains or loses now.
+
+## The path
+
+Against an aim, each thing the player does not have yet (a hero, a hero's next level, a ritual level, a building
+level, a gear piece or set tier, a champion skill) is a step. Each step gets **its gain** (how much the weighted
+sum of the aimed army rises) and **its cost** (resources and items, as the guides already sum them, D-29). The path
+is the steps by gain for their cost, the most worth it first, each one's prerequisites placed before it (the ritual
+tree, the forge's building). Shown as an ordered list, each step a way to its guide, and a short summary:
+"to be pro Nurgle: these 3 heroes, these 6 rituals first, then…".
+
+## What is out
+
+What the site cannot know: drop luck, time to gather, events. The path ranks by gain for cost; it does not plan
+days. The figures only count what is modelled: a bonus kept by name and not applied (open question 16) adds nothing.
+
+## Proof planned
+
+SIM-05: with fixed troops owned and capacity, the optimiser's composition scores at least as high as each simple
+one (all of one troop, the owned mix as it stands). SIM-12: an aim weights its troops up; the path's first step is
+the one with the best gain for its cost on a small worked case.
+
+## Saving the labs' setups, and using one in the battles (CFG-10)
+
+The Champion lab's setups (its two gear sets, its skills' levels) are saved by name in the browser, like the Battle
+lab's saves, and one saved setup can be chosen to play in the Battle lab instead of Your setup's champion.
+
+## Questions for Frantz
+
+1. **The labs' setups:** is it the Champion lab's (gear and skills) you want saved, and the "heroes setup" loaded in
+   the simulator the champion's? Or the Battle lab's compositions with their heroes (already saved, CFG-01)?
+2. **Angle 1's goal:** a few presets (all-round, damage, tanking, power), or "win this battle" against an opponent
+   you pick, or both?
+3. **The aims:** a god, a troop type, a tier, or a mix of them, ticked like the picker's filters?

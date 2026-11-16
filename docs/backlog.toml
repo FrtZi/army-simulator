@@ -294,13 +294,16 @@ tasks = [
 [[item]]
 id = "BL-16"
 title = "Optimiser: the best troop mix within the march capacity"
-moscow = "could"
-milestone = "later"
+moscow = "should"
+milestone = "v1.3"
 module = "engine"
 status = "to do"
 added = 2026-10-22
 features = ["SIM-05"]
-tasks = ["[ ] Spec: what \"best\" means (power, damage, tanking, a battle won)"]
+tasks = [
+  "[ ] Spec agreed (docs/spec/optimiser.md): the goal as weights on the profile's figures, or a battle won",
+  "[ ] Angle 1: the best composition, heroes and talents with my setup",
+]
 
 [[item]]
 id = "BL-17"
@@ -510,3 +513,33 @@ tasks = [
   "[ ] What each level gives for the champion tree's 23 others and the conquest tree's 26 (not on cctools.cc: the game's tooltips)",
 ]
 
+[[item]]
+id = "BL-31"
+title = "An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise"
+moscow = "should"
+milestone = "v1.3"
+module = "engine"
+status = "to do"
+added = 2026-11-16
+depends_on = ["BL-16"]
+features = ["SIM-12"]
+note = "Frantz, 2026-11-16: the optimum for a characteristic I want (pro Nurgle, pro cavalry and chariots), leading to evolution suggestions: what to pick, which hero to raise, which talents; my path, shown with a small guide."
+tasks = [
+  "[ ] The aim weighting the optimiser",
+  "[ ] The path: each step by gain for its cost, prerequisites first, shown with a short guide",
+]
+
+[[item]]
+id = "BL-32"
+title = "The Champion lab's setups saved, one played in the Battle lab"
+moscow = "should"
+milestone = "v1.3"
+module = "ui"
+status = "to do"
+added = 2026-11-16
+features = ["CFG-10"]
+note = "Frantz, 2026-11-16: the labs' setups can be saved, and a heroes' setup loaded in the simulator. Which labs and which setup: to agree (docs/spec/optimiser.md, question 1)."
+tasks = [
+  "[ ] Agreed with Frantz: which setups",
+  "[ ] Saved by name, one chosen to play in the Battle lab",
+]
