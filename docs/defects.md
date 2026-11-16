@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **44 defects**: 44 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **45 defects**: 45 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, page, saves, tests, tooling, translation.
 
@@ -57,6 +57,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-042](#def-042) | 2026-11-10 | Test values written into the browser where Frantz kept his setup | process | minor | ✓ fixed |
 | [DEF-043](#def-043) | 2026-11-10 | Three Chaos troops of the PvE cities had no type, attack, morale nor power | code | major | ✓ fixed |
 | [DEF-044](#def-044) | 2026-11-11 | One wide table pushed every card of Your setup past the screen | code | major | ✓ fixed |
+| [DEF-045](#def-045) | 2026-11-16 | The optimiser's button stayed greyed after troops were added to the side it fights | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -616,3 +617,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A grid item is as wide as its widest content unless told otherwise: any wide content in one card widens them all.
 - **Proof:** `tests/styles.test.js`
 - **Links:** CFG-07, COMP-01
+
+<a id="def-045"></a>
+### DEF-045 · The optimiser's button stayed greyed after troops were added to the side it fights
+
+`2026-11-16` · code · minor · ✓ fixed · tags: `page`
+
+- **Finding:** Building the optimiser, its battle goal said the comparison's second side was empty, its button greyed, after troops had been added to that composition.
+- **Cause:** The block was drawn only with the whole page (renderAll), while adding troops, switching composition or typing a count only refreshes the figures (refresh): its state depends on those figures, so it went stale.
+- **Solution:** The goals' list is drawn with the page; whether it can run, its status and the army found with the figures, as the profile is.
+- **Result:** Troops added to the side compared let the optimiser run at once; the test fails with the block drawn only with the page.
+- **Lesson:** A block whose state reads the figures is drawn with the figures: ask which redraw a change calls, not only what the block shows.
+- **Proof:** `tests/optimiser.test.js`
+- **Links:** SIM-05

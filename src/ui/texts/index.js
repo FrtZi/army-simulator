@@ -9,6 +9,7 @@ import { EN_SETUP } from "./en-setup.js";
 import { EN_SETUP_FILES } from "./en-setup-files.js";
 import { EN_GUIDES } from "./en-guides.js";
 import { EN_CLAB } from "./en-clab.js";
+import { EN_OPTIMISER } from "./en-optimiser.js";
 import { FR } from "./fr.js";
 import { FR_MORE } from "./fr-more.js";
 import { FR_DASH } from "./fr-dash.js";
@@ -17,10 +18,31 @@ import { FR_SETUP } from "./fr-setup.js";
 import { FR_SETUP_FILES } from "./fr-setup-files.js";
 import { FR_GUIDES } from "./fr-guides.js";
 import { FR_CLAB } from "./fr-clab.js";
+import { FR_OPTIMISER } from "./fr-optimiser.js";
 
 export const TEXTS = {
-  en: { ...EN, ...EN_MORE, ...EN_DASH, ...EN_HEROES, ...EN_SETUP, ...EN_SETUP_FILES, ...EN_GUIDES, ...EN_CLAB },
-  fr: { ...FR, ...FR_MORE, ...FR_DASH, ...FR_HEROES, ...FR_SETUP, ...FR_SETUP_FILES, ...FR_GUIDES, ...FR_CLAB },
+  en: {
+    ...EN,
+    ...EN_MORE,
+    ...EN_DASH,
+    ...EN_HEROES,
+    ...EN_SETUP,
+    ...EN_SETUP_FILES,
+    ...EN_GUIDES,
+    ...EN_CLAB,
+    ...EN_OPTIMISER,
+  },
+  fr: {
+    ...FR,
+    ...FR_MORE,
+    ...FR_DASH,
+    ...FR_HEROES,
+    ...FR_SETUP,
+    ...FR_SETUP_FILES,
+    ...FR_GUIDES,
+    ...FR_CLAB,
+    ...FR_OPTIMISER,
+  },
 };
 
 /** The text of a key, its {placeholders} filled from vars. */

@@ -1,6 +1,6 @@
 # The optimiser and the path (BL-16, BL-31) — spec
 
-[← Overview](../../ARCHITECTURE.md) · Catalogue: SIM-05, SIM-12, CFG-10 · Status: agreed with Frantz on 2026-11-16
+[← Overview](../../ARCHITECTURE.md) · Catalogue: SIM-05, SIM-12, CFG-10 · Status: agreed with Frantz on 2026-11-16; angle 1 built (D-40)
 
 ## The need (Frantz, 2026-11-16)
 

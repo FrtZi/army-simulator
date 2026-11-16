@@ -703,3 +703,18 @@ preuve = ["tests/styles.test.js"]
 lecon = "A grid item is as wide as its widest content unless told otherwise: any wide content in one card widens them all."
 liens = ["CFG-07", "COMP-01"]
 
+[[defaut]]
+id = "DEF-045"
+date = 2026-11-16
+titre = "The optimiser's button stayed greyed after troops were added to the side it fights"
+type = "code"
+etiquettes = ["page"]
+gravite = "minor"
+statut = "fixed"
+constat = "Building the optimiser, its battle goal said the comparison's second side was empty, its button greyed, after troops had been added to that composition."
+cause = "The block was drawn only with the whole page (renderAll), while adding troops, switching composition or typing a count only refreshes the figures (refresh): its state depends on those figures, so it went stale."
+solution = "The goals' list is drawn with the page; whether it can run, its status and the army found with the figures, as the profile is."
+resultat = "Troops added to the side compared let the optimiser run at once; the test fails with the block drawn only with the page."
+preuve = ["tests/optimiser.test.js"]
+lecon = "A block whose state reads the figures is drawn with the figures: ask which redraw a change calls, not only what the block shows."
+liens = ["SIM-05"]

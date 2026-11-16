@@ -1,19 +1,19 @@
 // Every block closes to one line that sums it up (FOLD-01, Frantz, 2026-11-10): on the published page in jsdom, each
-// of the 22 blocks has its button and its line, the line written from the block's figures, the folding remembered.
+// of the 23 blocks has its button and its line, the line written from the block's figures, the folding remembered.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { addTroops, openPage } from "./page.js";
 
 const FOLD_KEY = "army-simulator.folded";
 const BLOCKS = [
-  ...["game", "load-setup", "bonuses", "army", "heroes", "profile", "compare", "dashboards", "saves"],
+  ...["game", "load-setup", "bonuses", "army", "heroes", "optimiser", "profile", "compare", "dashboards", "saves"],
   ...["setup", "setup-files", "setup-warlords", "setup-troops", "setup-champion", "setup-rituals", "setup-buildings"],
   ...["setup-capacity", "guides", "champion-level", "champion-gear", "champion-skills", "champion-saves"],
 ];
 const fold = (page, id) => page.$(`#${id} > .fold-toggle`).click();
 const line = (page, id) => page.text(`#${id} > .fold-summary`);
 
-test("FOLD-01 each of the 22 blocks folds from its button to one line, and opens again", () => {
+test("FOLD-01 each of the 23 blocks folds from its button to one line, and opens again", () => {
   const page = openPage();
   for (const id of BLOCKS) {
     const toggle = page.$(`#${id} > .fold-toggle`);

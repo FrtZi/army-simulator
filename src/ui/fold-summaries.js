@@ -33,6 +33,19 @@ function heroes() {
   return `${t("fold.heroes", { n: state.composition.heroes?.length ?? 0 })} · ${shown("#talents-title")}`;
 }
 
+function optimiser() {
+  const { result } = state.optimiser;
+  if (result === false) return `ⓘ ${t("optimiser.none")}`;
+  if (!result) return t("fold.optimiserNone");
+  const { troops, heroes: found, talents } = result.composition;
+  return t("fold.optimiser", {
+    goal: t(`optimiser.goal-${result.goal}`),
+    troops: number(Object.values(troops).reduce((sum, count) => sum + count, 0)),
+    heroes: found.length,
+    talents: talents.length,
+  });
+}
+
 function profile() {
   const metric = (key) =>
     `${shown(`[data-metric="${key}"] .metric-label`)} ${shown(`[data-metric="${key}"] .metric-value`)}`;
@@ -58,6 +71,7 @@ export const SUMMARIES = {
   bonuses,
   army,
   heroes,
+  optimiser,
   profile,
   compare,
   dashboards: () =>

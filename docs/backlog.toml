@@ -297,13 +297,13 @@ title = "Optimiser: the best troop mix within the march capacity"
 moscow = "should"
 milestone = "v1.3"
 module = "engine"
-status = "doing"
+status = "done"
 added = 2026-10-22
 features = ["SIM-05", "BONUS-10"]
 tasks = [
   "[x] Spec agreed (docs/spec/optimiser.md): a pruned search tree judged by the battle engine; the goal as weights on the profile's figures, or a battle won",
   "[x] The champion's skills in Your setup and counted in battle, as its gear is (BONUS-10, D-38)",
-  "[ ] Angle 1: the best composition, heroes and talents with my setup",
+  "[x] Angle 1: the best composition, heroes and talents with my setup, for a goal or a battle won, put in the composition (D-40)",
 ]
 
 [[item]]

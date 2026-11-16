@@ -14,3 +14,4 @@ export { armyDamage, armyHealth } from "./measures.js";
 export { armyProfile } from "./profile.js";
 export { COMPARED, compareArmies, verdict } from "./compare.js";
 export { efficiency, rounds, balance, prosAndCons } from "./insights.js";
+export { combinations, optimise, profileScore } from "./optimise.js";

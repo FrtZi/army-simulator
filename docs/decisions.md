@@ -497,3 +497,27 @@ gives its level, that set's gear and the setup's skills instead of Your setup's 
   a champion alone would play against free heroes, a mix the figures would not say); saving one set only (a lab is
   "this or that": both are kept and either can be played); the choice remembered across visits (a convenience, later
   if missed).
+
+## D-40 · The optimiser, angle 1: the caller's scores as the judge, a few goals, the composition edited (2026-11-16)
+
+Frantz said go on the agreed model (a search tree pruned at each level, judged by the battle engine). The engine's
+`optimise` searches and knows no goal: the page passes it two scores of a composition, the exact one and a quick guess
+that orders the branches. It fills the march capacity with the troops owned worth most per place, ranks every trio of
+the heroes owned (talents taken at a glance, each one's gain alone) and keeps the best 20; each kept trio takes its
+talents one by one by the exact score; the best one's troops are then moved by slices of a twentieth of the capacity,
+the best move each round, while the score rises. The troops the composition edited holds now, and all of each troop
+owned, are judged as starts too, so the army found scores at least as high as those simple ones.
+
+The goals: all-round (damage × health, each to the power ½: a weighted geometric mean, so neither figure's unit
+counts and an army without one scores nothing), damage, tanking (effective health), power, and a battle won against
+the comparison's second side (a composition or the PvE army chosen), scored as the power the opponent loses less the
+power ours loses, ours attacking, with all-round as its guess. The settings and goals are in CONFIG. It runs on Your
+setup loaded (its troops owned, heroes at their levels, everything else it brings, the champion played included), for
+the composition being edited (led by the champion or not, as it is), and "Use it" puts the army found in it. With 33
+heroes owned it judges about 12,000 armies in under a second in jsdom.
+
+- _Set aside:_ a goal as free weights typed by the player (the spec's presets first; free weights if missed); every
+  trio's talents by the exact score (most of the time for nothing: a talent's gain hardly depends on the heroes beside
+  it, so the guess orders the trios and only the kept ones are judged exactly); a weighted sum of the figures (it adds
+  damage to health, two units: the weights would mean nothing); the search in a worker (a second at most: not needed
+  yet); choosing whether the champion leads (the composition's own choice stays the player's).

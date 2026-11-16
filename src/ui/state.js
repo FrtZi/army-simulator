@@ -57,6 +57,8 @@ export const state = {
   active: 0, // the composition being edited
   compare: [0, 1], // the two compositions compared
   pve: { on: false, kind: "army", name: "", level: null, troops: {} }, // a PvE army as the second side (SIM-11)
+  // the optimiser (SIM-05): the goal chosen, the best army found (false: none could be placed), put in the composition
+  optimiser: { goal: CONFIG.optimiser.goals[0].id, result: null, applied: false },
   dashboard: "efficiency", // the dashboard tab shown
   efficiencyFilters: {}, // the charts' filters: building, tier, alignment → the values ticked
   highlightComposition: false, // the charts darken the troops outside the composition being edited
@@ -83,6 +85,7 @@ const resetPicker = () => Object.assign(state, { picker: closed(), heroPicker: c
 export function selectGame(id) {
   Object.assign(state, { gameId: id, bonuses: [], compositions: emptyCompositions(), active: 0, compare: [0, 1] });
   state.pve = { ...state.pve, on: false, name: "", level: null, troops: {} };
+  state.optimiser = { ...state.optimiser, result: null, applied: false };
   resetPicker();
 }
 
@@ -118,15 +121,18 @@ export function validEffects() {
   return [...bonuses, ...sources, capacityEffect()].filter((effect) => !problemsOf(effect).length);
 }
 
-/** A composition as the engine sees it: its troops with every bonus, its talents' included, and its heroes. */
-function summarise(composition, against = new Set()) {
+/**
+ * A composition as the engine sees it: its troops with every bonus, its talents' included, and its heroes. `shared`:
+ * the bonuses every composition shares (validEffects), passed in by a caller that sums many armies (the optimiser).
+ */
+export function summarise(composition, against = new Set(), shared = validEffects()) {
   const game = currentGame();
   const played = asPlayed(composition, state);
   const march = championMarchEffects(state, game, composition).filter((effect) => !problemsOf(effect).length);
   const talents = talentsOf(played, game);
   // against a PvE army of one race, a talent for that race counts too (Combat Bonus vs. Empire)
   const versus = raceTalentEffects(talents, game.game.talentCodes, against);
-  const effects = [...validEffects(), ...talents.effects, ...march, ...versus];
+  const effects = [...shared, ...talents.effects, ...march, ...versus];
   const limits = { marchCapacity: capacityInPlay(state).base };
   return summariseArmy(composition.troops, game.catalogue, effects, limits, heroUnits(played, game));
 }
