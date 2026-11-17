@@ -29,8 +29,7 @@
 }
 
 .opt-list,
-.opt-heroes,
-.opt-map {
+.opt-heroes {
   margin: 0;
   display: grid;
   gap: 0.4rem;
@@ -40,10 +39,6 @@
 .opt-heroes {
   list-style: none;
   padding: 0;
-}
-
-.opt-map {
-  padding-left: 1.25rem;
 }
 
 .opt-heroes {
@@ -67,8 +62,21 @@
   padding-left: 0.5rem;
 }
 
+.opt-step[data-kind="ritual"] {
+  border-left-color: var(--kind-ritual);
+}
+
 .opt-step[data-kind="hero"] {
-  border-left-color: var(--accent);
+  border-left-color: var(--kind-hero);
+}
+
+.opt-step[data-kind="structure"] {
+  border-left-color: var(--kind-structure);
+}
+
+.opt-step[data-kind="gear"],
+.opt-step[data-kind="skill"] {
+  border-left-color: var(--kind-champion);
 }
 
 .mark-undivided {

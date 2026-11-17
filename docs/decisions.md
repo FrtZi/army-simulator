@@ -715,3 +715,25 @@ words. New colour tokens for the stages and kinds, checked at 3:1 in both themes
 
 - _Set aside:_ the dots placed by score (all the kept trios would sit in one corner: scattered reads better, the rank is
   said in words); a picture redrawn live while the search runs (SIM-14, later).
+
+## D-52 · The champion's gear chosen among the pieces owned; the map's stages and the summary as cards (2026-11-17)
+
+Frantz showed his forge: the champion wears a runic set, and owns fifteen other pieces, among them pieces that lift
+Nurgle. The setup file now lists them (`champion.owned`, each piece at its level, read and checked as the pieces worn).
+When it does, the optimiser chooses the gear: once the army is found, each slot takes the piece, worn or owned, that
+raises the score most, the others held, in two rounds so that a set's tier can move; the army is then settled again in
+that gear (its talents chosen again, its troops moved). The army without an aim and each side of X or Y get their own
+best gear, so that they compare fairly; the composition edited is judged in the gear worn, as it plays now. The setup
+itself is not changed: the page names each piece to put on and the one it replaces, the player equips them in the game.
+On a real account's setup, four pieces change for a Nurgle army: +8.3 %, the champion's weight from 2 % to 9.6 %.
+
+Settling again showed that talents chosen again could leave more troops than the places they give (DEF-058): each talent
+choice is now judged with its troops fitted to its places, the least worth per place cut first.
+
+On Frantz's reading of the published pictures: the search's stages became cards (the figure in bold, what the stage does
+in words, the stage's colour on its edge), standing for the picture's legend and replacing the list of words; the summary
+became cards too (troops placed, the game's power, the power with every bonus); and the path's steps take their kind's
+colour on their edge, as the branches.
+
+- _Set aside:_ the gear chosen before the trios (it would multiply the search by the gear's choices); the hero trio
+  changed by the gear (a trio rarely turns on a piece; the path still shows the heroes to raise).

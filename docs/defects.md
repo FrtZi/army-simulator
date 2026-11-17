@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **57 defects**: 57 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **58 defects**: 58 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -70,6 +70,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-055](#def-055) | 2026-11-17 | A troop building's bonus went to a troop type, not to the troops it produces | third party | major | ✓ fixed |
 | [DEF-056](#def-056) | 2026-11-17 | The Keep and the Conclave gave no march places | third party | major | ✓ fixed |
 | [DEF-057](#def-057) | 2026-11-17 | A champion's pieces read from their icons were the wrong pieces | process | major | ✓ fixed |
+| [DEF-058](#def-058) | 2026-11-17 | Settled again with other talents, an army kept troops beyond its capacity | code | major | ✓ fixed |
 
 ## Entries
 
@@ -798,3 +799,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** An icon is a hint, not a reading: identify a game item from a screen that names it, and check its figures against the data before using it.
 - **Proof:** Rule: docs/spec/optimiser.md (SIM-26), a piece is read from the forge's screen that names it, its bonuses checked against the data, never from an icon alone
 - **Links:** SIM-24, SIM-26
+
+<a id="def-058"></a>
+### DEF-058 · Settled again with other talents, an army kept troops beyond its capacity
+
+`2026-11-17` · code · major · ✓ fixed · tags: `engine`
+
+- **Finding:** Choosing the champion's gear for a real account's army, the army settled again in it held 226,459 troops for 187,000 places: the talent raising the march capacity had been dropped for a combat talent.
+- **Cause:** Settling chose the talents with the troops already placed: an army over its capacity was scored with all its troops, so the capacity talent seemed worth nothing; nothing cut the troops to the places a talent choice gives.
+- **Solution:** Each talent choice is judged with its troops fitted to its places (cut from the least worth per place, or topped up), and the troops are cut to the places before they move.
+- **Result:** On that setup the capacity talent stays and every place is filled, no more (226,459 of 226,459); on a made-up score the test keeps the capacity talent, and fails without the fix (the attack talent, 150 troops for 100 places).
+- **Lesson:** A score that does not check a limit cannot be trusted to choose what sets the limit: fit the army to its limit before scoring a change to that limit.
+- **Proof:** `tests/optimiser-free.test.js`
+- **Links:** SIM-05, SIM-26

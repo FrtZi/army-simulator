@@ -71,19 +71,6 @@ function picture(trail) {
   return `<svg class="opt-search${state.optimiserView.play ? " play" : ""}" viewBox="0 0 ${WIDTH} ${HEIGHT}" role="img" aria-label="${escape(name)}">${paths.join("")}${ring}</svg>`;
 }
 
-/** The legend: each stage's mark and its words. */
-function legend(trail) {
-  const words = {
-    tried: t("optimiser.stage-tried", { n: number(trail.trios) }),
-    kept: t("optimiser.stage-kept", { n: trail.kept }),
-    settled: t("optimiser.stage-settled", { n: trail.settled.length }),
-    chosen: t("optimiser.stage-chosen", { rank: trail.chosen + 1 }),
-  };
-  return `<ul class="opt-legend">${Object.entries(words)
-    .map(([stage, text]) => `<li><span class="opt-dot stage-${stage}" aria-hidden="true"></span>${escape(text)}</li>`)
-    .join("")}</ul>`;
-}
-
 /** The setup's figures above the picture: heroes, kinds of troops, places, armies judged. */
 function metrics({ map, judged }) {
   const figures = [
@@ -104,6 +91,6 @@ function metrics({ map, judged }) {
 export const searchPicture = (result) =>
   `${metrics(result)}${
     result.trail
-      ? `<button id="opt-map-replay" type="button" class="secondary">${escape(t("optimiser.replay"))}</button>${picture(result.trail)}${legend(result.trail)}`
+      ? `<button id="opt-map-replay" type="button" class="secondary">${escape(t("optimiser.replay"))}</button>${picture(result.trail)}`
       : ""
   }`;

@@ -79,7 +79,8 @@ src/ui/                  the page
 ├── lab-setup.js         the saved setup in the Battle lab: heroes owned at their levels, capacity, bonuses
 ├── optimiser.js         the optimiser on the page: what Your setup gives the search, an aim (SIM-05, SIM-12);
 │                        optimiser-scores.js the goal's scores and the opponent; optimiser-path.js the path;
-│                        optimiser-detail.js the army found in detail: weights, rituals, synthesis, power (SIM-19, SIM-20)
+│                        optimiser-detail.js the army found in detail: weights, rituals, synthesis, power (SIM-19, SIM-20);
+│                        optimiser-gear.js the champion's gear chosen among the pieces owned (SIM-26)
 ├── render.js            the render pipeline: what to redraw after a change
 ├── texts/               the page's texts: en.js + en-more, en-dash, en-heroes, en-setup, and the same in French
 │                        (same keys), t()
@@ -162,6 +163,7 @@ tests/                   node --test; each test names the feature it proves
 ├── optimiser-aim.test.js  an aim: only its troops, what it costs now, on the page (SIM-12)
 ├── optimiser-free.test.js the best with no aim never below an aimed one (SIM-12, DEF-054)
 ├── optimiser-pictures.test.js the search's trail drawn, bonus lines, the champion's gear (SIM-22 to SIM-24)
+├── optimiser-gear.test.js the pieces owned read, the gear chosen per army (SIM-26)
 ├── path.test.js         the path: gains counted by hand, then on the page (SIM-12)
 ├── path-levelled.test.js  the path's rituals and buildings: a worked tree, then the page (SIM-12)
 ├── path-champion.test.js  the path's champion: pieces and skills on a worked case, then the page (SIM-12)

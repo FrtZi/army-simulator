@@ -8,19 +8,28 @@ import { t } from "../../texts/index.js";
 import { talentName } from "../heroes/draw.js";
 import { offeredTalents } from "../../../engine/index.js";
 import { block, godClass } from "./blocks.js";
-import { detailBlocks, powerText } from "./have-detail.js";
+import { detailBlocks } from "./have-detail.js";
 import { aimLine, comparedLine, compositionName } from "./words.js";
 
 const total = (troops) => Object.values(troops).reduce((sum, count) => sum + count, 0);
 
+/** The summary: the troops placed and the power two ways as cards, the army against the composition, the aim's cost. */
 function summaryBlock(result) {
   const aim = aimLine(result);
-  const line = t("optimiser.troops", {
-    n: number(total(result.composition.troops)),
-    capacity: number(result.capacity),
-  });
-  const power = `<p>${escape(powerText(result.detail))}</p><p class="hint">${escape(t("optimiser.powerHint"))}</p>`;
-  const body = `<p>${escape(comparedLine(result))}</p>${aim ? `<p>${escape(aim)}</p>` : ""}${power}`;
+  const placed = total(result.composition.troops);
+  const { power } = result.detail;
+  const ratio = power.game > 0 ? number(power.buffed / power.game, 2) : "—";
+  const cards = [
+    [number(placed), t("optimiser.card-troops", { capacity: number(result.capacity) })],
+    [number(power.game), t("optimiser.powerGame")],
+    [number(Math.round(power.buffed)), t("optimiser.card-buffed", { ratio })],
+  ];
+  const figures = `<ul class="opt-metrics">${cards
+    .map(([figure, words]) => `<li><b>${escape(figure)}</b><span>${escape(words)}</span></li>`)
+    .join("")}</ul>`;
+  const words = `<p>${escape(comparedLine(result))}</p>${aim ? `<p>${escape(aim)}</p>` : ""}`;
+  const body = `${figures}${words}<p class="hint">${escape(t("optimiser.powerHint"))}</p>`;
+  const line = t("optimiser.troops", { n: number(placed), capacity: number(result.capacity) });
   return block("summary", t("optimiser.summary"), line, body);
 }
 

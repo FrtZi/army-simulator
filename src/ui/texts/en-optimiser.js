@@ -69,15 +69,8 @@ export const EN_OPTIMISER = {
   "optimiser.pathLine": "{n} steps · the first: {first}",
   "optimiser.mapTitle": "How the search ran",
   "optimiser.mapLine": "{judged} armies judged · {trios} trios → {kept} kept → {settled} settled → 1",
-  "optimiser.map-setup": "Your setup: {heroes} heroes, {kinds} kinds of troops, {capacity} places",
-  "optimiser.map-aim": "The aim: kinds of troops kept, {kinds}",
-  "optimiser.map-trios":
-    "Trios of heroes: {trios} tried at a glance, the best {kept} kept and their talents chosen, {settled} with their troops settled",
-  "optimiser.map-judged": "Armies judged, by the battle engine: {n}",
-  "optimiser.map-path": "The path: {glanced} steps judged at a glance, {settled} settled, {shown} shown",
   "optimiser.mapHint":
     "Every branch linked: a step, a talent or a bonus that changes the capacity remakes the troops and the talents.",
-  "optimiser.powerLine": "Power: the game's {game}; with every bonus {buffed} (×{ratio})",
   "optimiser.powerHint":
     "The game counts the troops' and heroes' own power; with every bonus, that power times what the bonuses add to the army's damage × health.",
   "optimiser.weightsTitle": "What weighs most",

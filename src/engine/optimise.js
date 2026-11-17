@@ -5,7 +5,7 @@
 // rises. The caller passes both scores (the battle engine behind them), so this module knows neither the page nor
 // what a goal is.
 import { COMPARED } from "./compare.js";
-import { fill, leading, placed, rank, remembered, shortlist, topUp } from "./fill.js";
+import { fill, leading, placed, rank, remembered, shortlist, topUp, trim } from "./fill.js";
 
 /** Every subset of `size` items, in their order (220 trios for 12 heroes). */
 export function combinations(items, size) {
@@ -103,11 +103,14 @@ export function settle(composition, { owned, capacity, offered, score, slices, r
   const usable = owned.filter(([, count]) => count > 0);
   const roomOf = remembered(capacity);
   const order = rank(usable, roomOf(composition), (some) => score({ ...composition, troops: some }));
-  const full = (each) => score(topUp(each, order, roomOf(each)));
+  // each talent choice judged with its troops fitted to the places it gives: cut when fewer, filled when more (DEF-058)
+  const fitted = (each) => topUp(trim(each, order, roomOf(each)), order, roomOf(each));
+  const full = (each) => score(fitted(each));
   const ids = offered(composition.heroes).map(({ id }) => id);
   const talented = chooseTalents(composition, ids, { score: full, max: talentsPerArmy });
   const room = roomOf(talented.composition);
-  const start = { composition: talented.composition, score: score(talented.composition) };
+  const begun = trim(talented.composition, order, room);
+  const start = { composition: begun, score: score(begun) };
   return climb(start, shortlist(order, candidates, room), room, {
     score,
     slice: Math.max(1, Math.round(room / slices)),

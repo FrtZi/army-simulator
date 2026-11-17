@@ -35,6 +35,23 @@ export function topUp(composition, order, room) {
 }
 
 /**
+ * The composition's troops cut down to `room`, the lines worth least per place cut first: talents chosen again may give
+ * fewer places than the troops already placed, which a score would count all the same (DEF-058).
+ */
+export function trim(composition, order, room) {
+  let excess = placed(composition.troops) - room;
+  if (excess <= 0) return composition;
+  const troops = { ...composition.troops };
+  for (const [id] of [...order].reverse()) {
+    const cut = Math.min(troops[id] ?? 0, excess);
+    if (cut > 0) troops[id] -= cut;
+    if (troops[id] === 0) delete troops[id];
+    excess -= Math.max(0, cut);
+  }
+  return { ...composition, troops };
+}
+
+/**
  * The troops a slice may move to: the `few` worth most per place (DEF-049), and as many more as it takes for their
  * counts to fill `room`: the best are often rare (200 Lords on Dragon), all placed already, and the free places would
  * find no troop to take (DEF-053).

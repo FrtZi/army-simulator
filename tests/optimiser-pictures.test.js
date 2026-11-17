@@ -95,7 +95,11 @@ test("SIM-22 the model's map drawn: every trio a dot by stage, the army's power 
     page.$("#opt-panel-map .opt-search").getAttribute("aria-label"),
     /^4 trios of heroes as dots: 4 kept, 4 settled, 1 chosen$/,
   );
-  assert.match(page.text("#opt-panel-map .opt-legend"), /4 trios tried at a glance.*1 chosen, ranked \d at a glance/);
+  // the stages as cards, the picture's legend
+  assert.match(
+    page.text("#opt-panel-map .opt-stages"),
+    /^4trios of heroes, .*1chosen, the best settled; ranked \d at a glance/,
+  );
   // the search played once after the run, still on the next draw, played again on demand
   assert.ok(!page.$("#opt-panel-map .opt-search").classList.contains("play"), "still once drawn again");
   page.click("#opt-map-replay");

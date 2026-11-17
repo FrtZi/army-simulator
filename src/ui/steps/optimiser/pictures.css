@@ -194,3 +194,29 @@
   fill: var(--heading);
   font-weight: 600;
 }
+
+.opt-stages {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.5rem;
+}
+
+.opt-stage {
+  display: grid;
+  align-content: start;
+  gap: 0.2rem;
+  border: 1px solid var(--line);
+  border-top: 0.35rem solid var(--mark, var(--line));
+  border-radius: 0;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.opt-stage b {
+  font-size: 1.25rem;
+  color: var(--heading);
+}

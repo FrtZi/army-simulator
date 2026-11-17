@@ -165,7 +165,7 @@
     },
     {
       "name": "champion",
-      "definition": "The champion: its level, the gear it wears and its skills. Their bonuses count in the Battle lab, those for its march in the composition it leads.",
+      "definition": "The champion: its level, the gear it wears and owns, and its skills. Their bonuses count in the Battle lab, those for its march in the composition it leads.",
       "obligation": "optional"
     },
     {
@@ -191,6 +191,25 @@
       "obligation": "required",
       "example": 6,
       "whereInGame": "The piece's forge: its rarity under the piece (Core to Eternal; in French Commun to Éternel), level 1 to 6 in that order"
+    },
+    {
+      "name": "champion.owned",
+      "definition": "The pieces of gear the champion owns but does not wear, each with its level; a piece owned twice is listed twice. The optimiser chooses among them and the pieces worn, slot by slot, for each army.",
+      "obligation": "optional",
+      "whereInGame": "The champion's screen, a slot's forge: the pieces under From the inventory (in French Depuis l'inventaire), each with its name and rarity. Read a piece from that screen, which names it, never from its icon alone"
+    },
+    {
+      "name": "champion.owned[].id",
+      "definition": "The piece, by its id.",
+      "obligation": "required",
+      "example": "cleaver-of-bile"
+    },
+    {
+      "name": "champion.owned[].level",
+      "definition": "The piece's level, from 1 to its last (see the list).",
+      "obligation": "required",
+      "example": 4,
+      "whereInGame": "Its rarity under the piece (Core to Eternal; in French Commun to Éternel), level 1 to 6 in that order"
     },
     {
       "name": "champion.skills",

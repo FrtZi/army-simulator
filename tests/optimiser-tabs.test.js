@@ -52,11 +52,9 @@ test("SIM-18 the results in four tabs, with what I have shown first, the others 
   assert.match(page.text("#opt-panel-up"), /^The path: what to get or raise next \d+ steps · the first: /);
   // the model's map: the search's stages with their figures (4 heroes owned: 4 trios, all kept, all settled)
   page.click("#opt-tab-map");
-  assert.match(page.text("#opt-panel-map"), /Your setup: 4 heroes, 3 kinds of troops, 50,000 places/);
-  assert.match(
-    page.text("#opt-panel-map"),
-    /Trios of heroes: 4 tried at a glance, the best 4 kept .+ 4 with their troops/,
-  );
+  assert.match(page.text("#opt-panel-map"), /4heroes owned3kinds of troops50,000march places/);
+  // the stages as cards, each its figure and what it does (SIM-22)
+  assert.match(page.text("#opt-panel-map .opt-stages"), /^4trios of heroes, .*4kept, .*4settled, .*1chosen, /);
 });
 
 test("SIM-18 every block folds, its line still shown, and stays closed across runs", () => {

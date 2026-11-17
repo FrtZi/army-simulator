@@ -3,7 +3,7 @@
 // alone are another god's, so the search filled with them first kept the wrong hero.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { optimise } from "../src/engine/index.js";
+import { optimise, settle } from "../src/engine/index.js";
 
 // worth per place alone; the "b" hero triples the "b" troops, the "a" hero adds a tenth to the "a" troops
 const WORTH = { a1: 3, a2: 3, b1: 2, b2: 2 };
@@ -36,4 +36,29 @@ test("SIM-12 DEF-054 the best with no aim scores at least the best aimed at each
   // the "b" army led by its hero: 1,000 × 2 × 3
   assert.equal(free.score, 6000);
   assert.deepEqual(free.composition.heroes, [{ id: "b", level: 1 }]);
+});
+
+// DEF-058: settled again with other talents, an army kept troops beyond the capacity they left it
+test("SIM-26 DEF-058 settled again, an army keeps no more troops than its talents' capacity gives", () => {
+  const talents = { cap: 50 }; // "cap" raises the capacity by 50 places; "atk" lifts every troop by a fifth
+  const capacity = ({ talents: chosen = [] }) => 100 + chosen.reduce((sum, id) => sum + (talents[id] ?? 0), 0);
+  const judge = ({ troops, talents: chosen = [] }) =>
+    Object.values(troops).reduce((sum, count) => sum + count, 0) * (chosen.includes("atk") ? 1.2 : 1);
+  const composition = { troops: { x: 150 }, heroes: [], talents: ["cap"] };
+  const done = settle(composition, {
+    owned: [["x", 500]],
+    capacity,
+    offered: () => [
+      { id: "cap", percent: 1 },
+      { id: "atk", percent: 1 },
+    ],
+    score: judge,
+    slices: 10,
+    rounds: 20,
+    talentsPerArmy: 1,
+  });
+  // "cap": 150 troops, 150; "atk": 100 troops × 1.2, 120: the capacity talent stays, and the troops fit
+  assert.deepEqual(done.composition.talents, ["cap"]);
+  assert.ok(done.composition.troops.x <= capacity(done.composition), JSON.stringify(done.composition));
+  assert.equal(done.score, 150);
 });

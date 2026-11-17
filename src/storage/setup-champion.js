@@ -1,4 +1,4 @@
-// The champion in a setup file (BL-13, D-30): its level, the gear it wears, each piece at a level it has, and its
+// The champion in a setup file (BL-13, D-30): its level, the gear it wears and owns, each piece at a level it has, and its
 // skills (BONUS-10), each at a level it has; each value checked on its own, an id unknown told with the nearest.
 // No DOM here.
 import { nearestId } from "./nearest.js";
@@ -34,7 +34,10 @@ function skillEntry(entry, path, skills) {
   return problems.length ? { problems } : { value: { id: entry.id, level: entry.level }, problems };
 }
 
-/** The champion (BL-13): its level, from 1 to its last, the gear it wears and its skills; each field read on its own. */
+/**
+ * The champion (BL-13): its level, from 1 to its last, the gear it wears, the pieces it owns besides (SIM-26) and its
+ * skills; each field read on its own.
+ */
 export function readChampion(champion, target) {
   if (!isObject(champion)) return { problems: [refuse("champion", champion, "not-object")] };
   const value = {};
@@ -50,6 +53,14 @@ export function readChampion(champion, target) {
     );
     problems.push(...gear.problems);
     if (gear.value) value.gear = gear.value;
+  }
+  // the pieces owned, not worn (SIM-26): read as the worn ones, the optimiser choosing among them
+  if (champion.owned !== undefined) {
+    const owned = readList(champion.owned, "champion.owned", (entry, path) =>
+      gearEntry(entry, path, target.champion?.pieces),
+    );
+    problems.push(...owned.problems);
+    if (owned.value) value.owned = owned.value;
   }
   if (champion.skills !== undefined) {
     const skills = readList(champion.skills, "champion.skills", (entry, path) =>

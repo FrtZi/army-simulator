@@ -25,12 +25,6 @@ function effectLabel({ stat, target }) {
 const weightRow = (name, share, mark = "") =>
   `<li class="share"><span>${escape(name)}</span><span class="share-bar" aria-hidden="true"><span class="${mark}" data-share="${Math.round(Math.max(0, share) * 1000) / 10}"></span></span><span class="share-value">${escape(`−${percent(Math.max(0, share))} %`)}</span></li>`;
 
-/** The power two ways: the game's, and with every bonus (SIM-20). */
-export function powerText({ power }) {
-  const ratio = power.game > 0 ? number(power.buffed / power.game, 2) : "—";
-  return t("optimiser.powerLine", { game: number(power.game), buffed: number(Math.round(power.buffed)), ratio });
-}
-
 function weightsBlock({ weights }) {
   const ranked = SOURCES.map((source) => [source, weights[source]]).sort((a, b) => b[1] - a[1]);
   const rows = ranked.map(([source, share]) => weightRow(t(`optimiser.source-${source}`), share));
@@ -47,7 +41,10 @@ function championBlock({ weights }, result) {
   if (!champion.level && !champion.gear?.length) {
     return block("champion", t("optimiser.championTitle"), t("optimiser.championNone"), "");
   }
-  const line = t("optimiser.championLine", { level: champion.level ?? "—", weight: percent(weights.champion) });
+  const changed = result.gear?.changes.length;
+  const line = `${t("optimiser.championLine", { level: champion.level ?? "—", weight: percent(weights.champion) })}${
+    changed ? t("optimiser.championGearLine", { n: changed }) : ""
+  }`;
   // its gear drawn by slot and set (SIM-24), then its own stats at its level
   const body = `${gearPicture(champion, result)}${champion.level ? championStatsHtml(champion.level) : ""}`;
   return block("champion", t("optimiser.championTitle"), line, body);

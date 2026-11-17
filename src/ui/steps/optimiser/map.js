@@ -8,17 +8,31 @@ import { searchPicture } from "./map-search.js";
 import { armyPicture } from "./map-army.js";
 import { pathPicture } from "./map-path.js";
 
-/** The search: its picture, then its stages in words with their figures (what the picture shows, read aloud). */
-function searchBlock({ map, judged, path, trail }) {
-  const stages = [
-    t("optimiser.map-setup", { heroes: map.heroes, kinds: map.owned, capacity: number(map.capacity) }),
-    ...(map.aimed === map.owned ? [] : [t("optimiser.map-aim", { kinds: map.aimed })]),
-    t("optimiser.map-trios", { trios: number(map.trios), kept: map.kept, settled: map.settled }),
-    t("optimiser.map-judged", { n: number(judged) }),
-    t("optimiser.map-path", { glanced: number(path.glanced), settled: path.settled, shown: path.steps.length }),
+/** A stage as a card: its figure in bold, its words, its mark (the picture's colour for it), as the champion's cards. */
+const stageCard = (mark, figure, words) =>
+  `<li class="opt-stage${mark ? ` ${mark}` : ""}"><b>${escape(String(figure))}</b><span>${escape(words)}</span></li>`;
+
+/** The search's stages in order, each a card: the aim, the trios, kept, settled, chosen, then the path's steps. */
+function stageCards({ map, path, trail }) {
+  const cards = [
+    ...(map.aimed === map.owned ? [] : [stageCard("", map.aimed, t("optimiser.card-aim"))]),
+    stageCard("stage-tried", number(map.trios), t("optimiser.card-tried")),
+    stageCard("stage-kept", map.kept, t("optimiser.card-kept")),
+    stageCard("stage-settled", map.settled, t("optimiser.card-settled")),
+    stageCard("stage-chosen", 1, t("optimiser.card-chosen", { rank: (trail?.chosen ?? 0) + 1 })),
+    stageCard(
+      "",
+      path.steps.length,
+      t("optimiser.card-path", { glanced: number(path.glanced), settled: path.settled }),
+    ),
   ];
-  const words = `<ol class="opt-map">${stages.map((stage) => `<li>${escape(stage)}</li>`).join("")}</ol>`;
-  const body = `${searchPicture({ map, judged, trail })}${words}<p class="hint">${escape(t("optimiser.mapHint"))}</p>`;
+  return `<ol class="opt-stages">${cards.join("")}</ol>`;
+}
+
+/** The search: the setup's figures, its picture, its stages as cards (its legend), the branches' links. */
+function searchBlock(result) {
+  const { map, judged } = result;
+  const body = `${searchPicture(result)}${stageCards(result)}<p class="hint">${escape(t("optimiser.mapHint"))}</p>`;
   const line = t("optimiser.mapLine", {
     judged: number(judged),
     trios: number(map.trios),

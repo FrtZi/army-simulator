@@ -39,7 +39,18 @@ function emptyCard(slot, result) {
   return `<li class="opt-gear opt-gear-empty"><span class="opt-slot">${escape(t(`guides.slot-${slot}`))}</span><span class="opt-name">${escape(t("optimiser.gearEmpty"))}</span>${hint}</li>`;
 }
 
-/** A slot's card with its piece worn. */
+/** For a slot whose piece the optimiser changed (SIM-26): the piece worn it replaces, or that the slot was empty. */
+function instead(slot, result) {
+  const change = result.gear?.changes.find((entry) => entry.slot === slot);
+  if (!change) return "";
+  const worn = change.worn && data().pieces.find((entry) => entry.id === change.worn.id);
+  const words = worn
+    ? t("optimiser.gearInstead", { name: label(worn), rarity: nameOf("rarities", gearRarity(change.worn.level)) })
+    : t("optimiser.gearWasEmpty");
+  return `<span class="opt-changed">${escape(words)}</span>`;
+}
+
+/** A slot's card with its piece worn, or chosen for this army. */
 function pieceCard(slot, { id, level }, result) {
   const piece = data().pieces.find((entry) => entry.id === id);
   const [general, march] = [own(id, level, "general"), own(id, level, "march")];
@@ -48,6 +59,7 @@ function pieceCard(slot, { id, level }, result) {
   const off = Object.values(piece.other ?? {}).filter((values) => at(values, level)).length;
   const parts = [
     `<span class="opt-slot">${escape(t(`guides.slot-${slot}`))} ${rarityBadge(gearRarity(level))}</span>`,
+    instead(slot, result),
     `<span class="opt-name">${escape(label(piece))}</span>${pips(level, levelsOf(piece))}`,
     set ? `<span class="opt-set">${escape(label(set))}</span>` : "",
     general.length ? effectLines(general) : "",
@@ -117,9 +129,18 @@ function setRow(set, worn) {
     <span class="opt-track" aria-hidden="true">${track}</span><ul class="opt-tiers">${tiers.map((tier) => tierItem(tier, worn)).join("")}</ul></li>`;
 }
 
+/** What the optimiser did with the gear: the pieces it changed and what they add, or that the gear worn is best. */
+function gearLine({ gear }) {
+  if (!gear) return "";
+  if (!gear.changes.length) return `<p class="opt-sub">${escape(t("optimiser.gearKept"))}</p>`;
+  const gain = number(gear.gain * 100, 1);
+  return `<p class="opt-next">${escape(t("optimiser.gearChosen", { n: gear.changes.length, gain }))}</p>`;
+}
+
 /** The gear as cards by slot, then the sets begun. `champion`: { level, gear }; `result`: the optimiser's. */
 export function gearPicture(champion, result) {
-  const gear = champion.gear ?? [];
+  // the gear chosen for this army when the setup lists pieces owned (SIM-26), else the gear worn
+  const gear = result.gear?.gear ?? champion.gear ?? [];
   const bySlot = (slot) => gear.find(({ id }) => data().pieces.find((piece) => piece.id === id)?.slot === slot);
   const cards = data().slots.map((slot) =>
     bySlot(slot) ? pieceCard(slot, bySlot(slot), result) : emptyCard(slot, result),
@@ -128,5 +149,5 @@ export function gearPicture(champion, result) {
     .sets.map((set) => [set, gear.filter(({ id }) => set.pieces.includes(id)).length])
     .filter(([, worn]) => worn > 0)
     .map(([set, worn]) => setRow(set, worn));
-  return `<ul class="opt-gears">${cards.join("")}</ul>${sets.length ? `<ul class="opt-gear-sets">${sets.join("")}</ul>` : ""}`;
+  return `${gearLine(result)}<ul class="opt-gears">${cards.join("")}</ul>${sets.length ? `<ul class="opt-gear-sets">${sets.join("")}</ul>` : ""}`;
 }

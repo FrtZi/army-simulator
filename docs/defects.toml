@@ -911,3 +911,19 @@ preuve = ["Rule: docs/spec/optimiser.md (SIM-26), a piece is read from the forge
 lecon = "An icon is a hint, not a reading: identify a game item from a screen that names it, and check its figures against the data before using it."
 liens = ["SIM-24", "SIM-26"]
 
+[[defaut]]
+id = "DEF-058"
+date = 2026-11-17
+titre = "Settled again with other talents, an army kept troops beyond its capacity"
+type = "code"
+etiquettes = ["engine"]
+gravite = "major"
+statut = "fixed"
+constat = "Choosing the champion's gear for a real account's army, the army settled again in it held 226,459 troops for 187,000 places: the talent raising the march capacity had been dropped for a combat talent."
+cause = "Settling chose the talents with the troops already placed: an army over its capacity was scored with all its troops, so the capacity talent seemed worth nothing; nothing cut the troops to the places a talent choice gives."
+solution = "Each talent choice is judged with its troops fitted to its places (cut from the least worth per place, or topped up), and the troops are cut to the places before they move."
+resultat = "On that setup the capacity talent stays and every place is filled, no more (226,459 of 226,459); on a made-up score the test keeps the capacity talent, and fails without the fix (the attack talent, 150 troops for 100 places)."
+preuve = ["tests/optimiser-free.test.js"]
+lecon = "A score that does not check a limit cannot be trusted to choose what sets the limit: fit the army to its limit before scoring a change to that limit."
+liens = ["SIM-05", "SIM-26"]
+

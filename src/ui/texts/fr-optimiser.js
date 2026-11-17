@@ -72,15 +72,8 @@ export const FR_OPTIMISER = {
   "optimiser.pathLine": "{n} étapes · la première : {first}",
   "optimiser.mapTitle": "Comment la recherche a tourné",
   "optimiser.mapLine": "{judged} armées jugées · {trios} trios → {kept} gardés → {settled} recalés → 1",
-  "optimiser.map-setup": "Ta configuration : {heroes} héros, {kinds} sortes de troupes, {capacity} places",
-  "optimiser.map-aim": "La visée : sortes de troupes gardées, {kinds}",
-  "optimiser.map-trios":
-    "Trios de héros : {trios} essayés d'un coup d'œil, les {kept} meilleurs gardés et leurs talents choisis, {settled} avec leurs troupes recalées",
-  "optimiser.map-judged": "Armées jugées, par le moteur de bataille : {n}",
-  "optimiser.map-path": "Le chemin : {glanced} étapes jugées d'un coup d'œil, {settled} recalées, {shown} montrées",
   "optimiser.mapHint":
     "Toutes les branches liées : une étape, un talent ou un bonus qui change la capacité refait les troupes et les talents.",
-  "optimiser.powerLine": "Puissance : celle du jeu {game} ; avec tous les bonus {buffed} (×{ratio})",
   "optimiser.powerHint":
     "Le jeu compte la puissance propre des troupes et des héros ; avec tous les bonus, cette puissance multipliée par ce que les bonus ajoutent aux dégâts × santé de l'armée.",
   "optimiser.weightsTitle": "Ce qui pèse le plus",

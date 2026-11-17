@@ -51,10 +51,11 @@ test("SIM-19 SIM-23 what weighs, the rituals acting on the army, the bonuses sum
 test("SIM-20 the power two ways: the game's, and with every bonus, the same with none", () => {
   const bare = run({});
   // no hero, no ritual, no champion: no bonus, the two powers the same
-  assert.match(blockText(bare, "summary"), /Power: the game's ([\d,]+); with every bonus \1 \(×1\)/);
+  // the summary's cards: the troops placed, the game's power, the power with every bonus
+  assert.match(blockText(bare, "summary"), /([\d,]+)The game's power\1with every bonus \(×1\)/);
   const buffed = run({ rituals: [{ id: "brutal-strength", level: 10 }] });
   const [, game, more, ratio] = blockText(buffed, "summary").match(
-    /the game's ([\d,]+); with every bonus ([\d,]+) \(×([\d.]+)\)/,
+    /places([\d,]+)The game's power([\d,]+)with every bonus \(×([\d.]+)\)/,
   );
   assert.ok(Number(ratio) > 1, ratio);
   const figure = (text) => Number(text.replace(/,/g, ""));

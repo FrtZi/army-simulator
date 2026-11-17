@@ -11,6 +11,7 @@ import { matchesFilters } from "./filters.js";
 import { goalOf, heroesOwned, offered, opponent, opponentChosen, scores } from "./optimiser-scores.js";
 import { pathFrom } from "./optimiser-path.js";
 import { detailOf } from "./optimiser-detail.js";
+import { chooseGear, settledAgain, wearing } from "./optimiser-gear.js";
 import { addComposition } from "./compositions.js";
 import { combinations, optimise, wholePlaces } from "../engine/index.js";
 
@@ -87,48 +88,67 @@ function search(owned, { score, guess, capacity }) {
 }
 
 /**
- * Runs the search for the goal chosen, within the aim if one is ticked: { goal, composition, score, current, free,
- * judged, path }; `current` the composition edited as it plays now, scored the same way (null while it is empty);
- * `free` the best score without the aim (null with none); `path` the steps from it. Null when nothing can be placed.
+ * The best army for these troops owned, then the champion's gear chosen for it among the pieces owned and its troops
+ * settled again in that gear (SIM-26): { found, gear }, gear null without pieces owned; null when nothing is placed.
  */
-export function runOptimiser() {
-  const goal = goalOf(state.optimiser.goal);
-  const owned = troopsOwned(state);
-  const judges = scores(goal);
-  const found = search(aimed(owned), judges);
-  if (!found) return null;
-  const free = aiming() ? (search(owned, judges)?.score ?? null) : null;
-  const capacity = wholePlaces(judges.capacity(found.composition));
-  const { troops, heroes: playing, talents } = asPlayed(state.composition, state);
-  const empty = !Object.values(troops).some((count) => count > 0);
-  const current = empty ? null : judges.score({ troops, heroes: playing ?? [], talents: talents ?? [] });
-  const versus = goal.battle ? opponentChosen() : null;
-  const path = pathFrom(found, goal, aimed(owned));
-  const detail = detailOf(found.composition);
+function geared(owned, goal) {
+  const first = search(owned, scores(goal));
+  if (!first) return null;
+  const gear = chooseGear(goal, first.composition);
+  if (!gear?.changes.length) return { found: first, gear };
+  return { found: wearing(gear.gear, () => settledAgain(first, goal, owned)), gear };
+}
+
+/** The composition edited as it plays now, in the gear worn: its score, or null while it is empty. */
+function currentScore(goal) {
+  const { troops, heroes, talents } = asPlayed(state.composition, state);
+  if (!Object.values(troops).some((count) => count > 0)) return null;
+  return scores(goal).score({ troops, heroes: heroes ?? [], talents: talents ?? [] });
+}
+
+/** The army found described in the gear chosen: its capacity, path, map and detail. */
+function described(goal, owned, { found, gear }, compared) {
+  const capacity = wholePlaces(scores(goal).capacity(found.composition));
   return {
     goal: goal.id,
     ...found,
-    current,
-    free,
+    ...compared,
     capacity,
-    opponent: versus,
-    path,
+    opponent: goal.battle ? opponentChosen() : null,
+    path: pathFrom(found, goal, aimed(owned)),
     map: mapOf(owned, capacity),
-    detail,
+    detail: detailOf(found.composition),
+    gear,
   };
 }
 
 /**
- * X or Y (SIM-21): each aim's best army for the goal chosen, against the best with no aim (the army found, or its
- * "free" score when it was aimed): { x, y }, each { composition, score } or null when no troop owned fits it.
+ * Runs the search for the goal chosen, within the aim if one is ticked: { goal, composition, score, current, free,
+ * judged, path, gear }; `current` the composition edited as it plays now (null while it is empty); `free` the best
+ * score without the aim, in its own best gear (null with none); `path` the steps from it, in the gear chosen; `gear`
+ * the champion's gear chosen (SIM-26). Null when nothing can be placed.
+ */
+export function runOptimiser() {
+  const goal = goalOf(state.optimiser.goal);
+  const owned = troopsOwned(state);
+  const run = geared(aimed(owned), goal);
+  if (!run) return null;
+  const free = aiming() ? (geared(owned, goal)?.found.score ?? null) : null;
+  const current = currentScore(goal);
+  return wearing(run.gear?.gear, () => described(goal, owned, run, { free, current }));
+}
+
+/**
+ * X or Y (SIM-21): each aim's best army for the goal chosen, in its own best gear, against the best with no aim (the
+ * army found, or its "free" score when it was aimed): { x, y }, each { composition, score } or null when no troop
+ * owned fits it.
  */
 export function runAims(aims) {
   const goal = goalOf(state.optimiser.goal);
   const owned = troopsOwned(state);
-  const judges = scores(goal);
   const side = (aim) => {
     const kept = aimed(owned, aim);
-    return kept.size ? search(kept, judges) : null;
+    return kept.size ? (geared(kept, goal)?.found ?? null) : null;
   };
   const { result } = state.optimiser;
   return { goal: goal.id, x: side(aims.x), y: side(aims.y), free: result.free ?? result.score };

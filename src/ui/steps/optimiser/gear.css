@@ -131,3 +131,12 @@
 .opt-tiers b {
   color: var(--text);
 }
+
+.opt-changed {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  padding: 0.05rem 0.5rem;
+  border-left: 0.3rem solid var(--stage-settled);
+  background: var(--field);
+  color: var(--text);
+}
