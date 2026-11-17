@@ -895,3 +895,19 @@ preuve = ["tests/structures-screens.test.js"]
 lecon = "A field at 0 on every level is a missing table, not a building with no effect: an import should flag it."
 liens = ["DATA-07", "SIM-17"]
 
+[[defaut]]
+id = "DEF-057"
+date = 2026-11-17
+titre = "A champion's pieces read from their icons were the wrong pieces"
+type = "process"
+etiquettes = ["data"]
+gravite = "major"
+statut = "fixed"
+constat = "Testing on a real account's setup, five of the champion's six pieces worn were the wrong ones: other pieces of the same slot, read from the small icons of the champion's screen. The army's figures, the champion's weight and the path's gear steps were all worked out on them for a day, until the player showed his forge."
+cause = "The pieces were matched to the data by their icons on the champion's screen, which names none of them; nothing asked for the screens that name each piece."
+solution = "The pieces worn and owned read from the forge's screens, which name each piece, its rarity and its bonuses; a piece is checked against the data's bonuses at its level before it is used."
+resultat = "The six pieces worn and the fifteen owned now match the forge's screens, bonus for bonus; the gear chosen per army is planned on them (SIM-26)."
+preuve = ["Rule: docs/spec/optimiser.md (SIM-26), a piece is read from the forge's screen that names it, its bonuses checked against the data, never from an icon alone"]
+lecon = "An icon is a hint, not a reading: identify a game item from a screen that names it, and check its figures against the data before using it."
+liens = ["SIM-24", "SIM-26"]
+

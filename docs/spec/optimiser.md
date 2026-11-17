@@ -139,5 +139,8 @@ piece alone), a piece raising the march capacity worth the troops it lets in. "W
 beside the gear worn, each change named ("put on Maggot Plate of Rot instead of Breastplate of Fury: +x %"); the path
 keeps suggesting a level up or a piece to forge, now against the gear chosen.
 
+A piece is read from the forge's screen that names it, with its rarity and bonuses, and its bonuses are checked against
+the data at its level: never from the champion's icons alone, which name nothing (DEF-057).
+
 - To agree: the pieces owned read from the forge's screens (a file section, as the troops); the choice per slot made
   after the troops are settled, then the troops settled again (the order the talents already follow).

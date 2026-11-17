@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **56 defects**: 56 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **57 defects**: 57 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -69,6 +69,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-054](#def-054) | 2026-11-16 | The best army with no aim scored below a god's best | code | major | ✓ fixed |
 | [DEF-055](#def-055) | 2026-11-17 | A troop building's bonus went to a troop type, not to the troops it produces | third party | major | ✓ fixed |
 | [DEF-056](#def-056) | 2026-11-17 | The Keep and the Conclave gave no march places | third party | major | ✓ fixed |
+| [DEF-057](#def-057) | 2026-11-17 | A champion's pieces read from their icons were the wrong pieces | process | major | ✓ fixed |
 
 ## Entries
 
@@ -784,3 +785,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A field at 0 on every level is a missing table, not a building with no effect: an import should flag it.
 - **Proof:** `tests/structures-screens.test.js`
 - **Links:** DATA-07, SIM-17
+
+<a id="def-057"></a>
+### DEF-057 · A champion's pieces read from their icons were the wrong pieces
+
+`2026-11-17` · process · major · ✓ fixed · tags: `data`
+
+- **Finding:** Testing on a real account's setup, five of the champion's six pieces worn were the wrong ones: other pieces of the same slot, read from the small icons of the champion's screen. The army's figures, the champion's weight and the path's gear steps were all worked out on them for a day, until the player showed his forge.
+- **Cause:** The pieces were matched to the data by their icons on the champion's screen, which names none of them; nothing asked for the screens that name each piece.
+- **Solution:** The pieces worn and owned read from the forge's screens, which name each piece, its rarity and its bonuses; a piece is checked against the data's bonuses at its level before it is used.
+- **Result:** The six pieces worn and the fifteen owned now match the forge's screens, bonus for bonus; the gear chosen per army is planned on them (SIM-26).
+- **Lesson:** An icon is a hint, not a reading: identify a game item from a screen that names it, and check its figures against the data before using it.
+- **Proof:** Rule: docs/spec/optimiser.md (SIM-26), a piece is read from the forge's screen that names it, its bonuses checked against the data, never from an icon alone
+- **Links:** SIM-24, SIM-26
