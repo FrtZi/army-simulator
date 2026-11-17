@@ -269,7 +269,8 @@ In battle (BONUS-10, D-38), a skill taken in Your setup gives each bonus with a 
 
 Written by `scripts/import-pve.mjs` from cctools.cc's saved answers, never by hand. `troops`: each troop a PvE place
 fields, its `tier` and fighting `stats` as the compositions give them, its `unitType`, `attackType`, `race` and
-`morale` and squad power from cctools.cc's PvE troops' page; the three it does not list are ours (the cities'
-Marauders, Marauder Horsemen, Chaos Warhounds), so they come from units.json by their English name (DEF-043).
+`morale` from cctools.cc's PvE troops' page; the three it does not list are ours (the cities' Marauders, Marauder
+Horsemen, Chaos Warhounds), so they come from units.json by their English name (DEF-043). Its power (`squadPower`) is
+its tier's, as ours: cctools.cc's squad power is a squad's, ten times a troop's or so (DEF-062).
 `places`: each army, raid and city at its `level`, its `troops` (id → count). Not in the page yet: how it becomes an
 opponent is BL-20's spec, to agree first.

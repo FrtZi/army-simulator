@@ -653,13 +653,14 @@ title = "A battle's outcome in full: the enemy wiped out in one fight, or its su
 moscow = "should"
 milestone = "v1.3"
 module = "engine"
-status = "to do"
+status = "done"
 added = 2026-11-17
 depends_on = []
 features = ["SIM-25"]
 note = "Frantz, 2026-11-17, on the battle simulation against a PvE army: say whether it kills them in one fight, or whether survivors remain."
 tasks = [
-  "[ ] Spec: what the battle says (wiped out, or survivors by troop), to agree",
+  "[x] Spec: what the battle says (wiped out, or survivors by troop), from Frantz's report (docs/spec/battle-outcome.md)",
+  "[x] The verdict and the losses per troop in the Battle lab's battles",
 ]
 
 [[item]]

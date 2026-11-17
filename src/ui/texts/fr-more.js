@@ -27,6 +27,15 @@ export const FR_MORE = {
   "compare.battles": "Simulation de bataille",
   "compare.attacks": "{attacker} attaque {defender}",
   "compare.winner": "{name} l'emporte",
+  "compare.annihilation": "Annihilation totale : {name} l'emporte, plus aucune troupe en face",
+  "compare.victory": "{name} l'emporte : {left} troupes en face survivent, sur {sent} ({percent} %)",
+  "compare.lossLine":
+    "Pertes par troupe : {attacker} {attackerLost} sur {attackerSent} · {defender} {defenderLost} sur {defenderSent}",
+  "compare.lossTroop": "Troupe",
+  "compare.lossSent": "Envoyées",
+  "compare.lossLost": "Perdues",
+  "compare.lossLeft": "Restantes",
+  "compare.lossTotal": "Total",
   "compare.draw": "Égalité",
   "compare.losses": "puissance perdue : {attacker} {attackerLost} · {defender} {defenderLost}",
   "compare.model":

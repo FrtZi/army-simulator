@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 4/11 | 28/38 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 5/11 | 30/39 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/9 | 2/12 | — |
 
 ## Ready to start
@@ -31,7 +31,6 @@ Not done, and every dependency done:
 - [BL-30](#bl-30) A Champion lab: gear sets compared, stats by level, every bonus, its skill trees (v1.3, should, ◐ doing)
 - [BL-31](#bl-31) An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise (v1.3, should, ◐ doing)
 - [BL-37](#bl-37) The march capacity from the levels: the keep's base, the capacity rituals applied (v1.3, should, ◐ doing)
-- [BL-39](#bl-39) A battle's outcome in full: the enemy wiped out in one fight, or its survivors (v1.3, should, ○ to do)
 - [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
 - [BL-17](#bl-17) Read-only share link (later, could, ○ to do)
@@ -93,7 +92,7 @@ flowchart LR
   BL16 --> BL37
   BL38["BL-38 ◐ doing<br/>The optimiser's page as agreed: four tabs, every block folding, the gods' colours, the detail of the army"]:::doing
   BL31 --> BL38
-  BL39["BL-39 ○ to do<br/>A battle's outcome in full: the enemy wiped out in one fight, or its survivors"]:::todo
+  BL39["BL-39 ✓ done<br/>A battle's outcome in full: the enemy wiped out in one fight, or its survivors"]:::done
   BL40["BL-40 ✓ done<br/>The champion's pieces owned: the best per slot chosen for each army"]:::done
   BL16 --> BL40
   classDef done stroke-width:3px
@@ -377,7 +376,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ✓ done | 2/2 |
 | [BL-37](#bl-37) | The march capacity from the levels: the keep's base, the capacity rituals applied | should | [data](../data) | ◐ doing | 2/3 |
 | [BL-38](#bl-38) | The optimiser's page as agreed: four tabs, every block folding, the gods' colours, the detail of the army | should | [ui](../src/ui) | ◐ doing | 6/7 |
-| [BL-39](#bl-39) | A battle's outcome in full: the enemy wiped out in one fight, or its survivors | should | [engine](../src/engine) | ○ to do | 0/1 |
+| [BL-39](#bl-39) | A battle's outcome in full: the enemy wiped out in one fight, or its survivors | should | [engine](../src/engine) | ✓ done | 2/2 |
 | [BL-40](#bl-40) | The champion's pieces owned: the best per slot chosen for each army | should | [engine](../src/engine) | ✓ done | 3/3 |
 
 <a id="bl-11"></a>
@@ -485,11 +484,12 @@ Frantz, 2026-11-16, on the mockups: the talents under the heroes, the champion w
 <a id="bl-39"></a>
 #### BL-39 · A battle's outcome in full: the enemy wiped out in one fight, or its survivors
 
-Should · [engine](../src/engine) · ○ to do · added `2026-11-17` · features: SIM-25
+Should · [engine](../src/engine) · ✓ done · added `2026-11-17` · features: SIM-25
 
 Frantz, 2026-11-17, on the battle simulation against a PvE army: say whether it kills them in one fight, or whether survivors remain.
 
-- [ ] Spec: what the battle says (wiped out, or survivors by troop), to agree
+- [x] Spec: what the battle says (wiped out, or survivors by troop), from Frantz's report (docs/spec/battle-outcome.md)
+- [x] The verdict and the losses per troop in the Battle lab's battles
 
 <a id="bl-40"></a>
 #### BL-40 · The champion's pieces owned: the best per slot chosen for each army

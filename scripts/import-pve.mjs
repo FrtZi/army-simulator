@@ -25,19 +25,18 @@ Object.assign(STATS, { ranged_damage: "rangedDamage", health: "health", armour: 
 const unitTypeOf = (name, game) => game.unitTypes.find((type) => type.labels.en === name)?.id ?? kebab(name);
 
 /**
- * A troop's type, attack, race, morale and squad power: from the PvE troops' list; a troop that list leaves out is one
- * of ours (the cities' Marauders…: DEF-043), the same English name in units.json.
+ * A troop's type, attack, race and morale: from the PvE troops' list; a troop that list leaves out is one of ours (the
+ * cities' Marauders…: DEF-043), the same English name in units.json.
  */
 function figuresOf(entry, listed, game, units) {
   const known = listed.get(entry.troop_code);
   if (known) {
-    const { unit_type: type, combat_type: attack, race_code: race, morale, squad_power: squadPower } = known;
+    const { unit_type: type, combat_type: attack, race_code: race, morale } = known;
     return {
       unitType: unitTypeOf(type, game),
       attackType: attack.toLowerCase(),
       race: race ?? null,
       morale,
-      squadPower,
     };
   }
   const own = units.find((unit) => unit.labels.en === entry.troop_name);
@@ -46,14 +45,20 @@ function figuresOf(entry, listed, game, units) {
     attackType: own?.attackType ?? null,
     race: null,
     morale: own?.stats.morale ?? null,
-    squadPower: own?.stats.squadPower ?? null,
   };
 }
 
-/** One troop: its tier and stats from a composition, the rest as figuresOf finds it. */
+/**
+ * A troop's power: its tier's, as ours (one power per troop for each tier). cctools' squad power is a squad's, not a
+ * troop's: the game's battle report weighs the rank 15 Greenskin Army at 25 a tier-3 troop, 60 a tier-4 (DEF-062).
+ */
+const powerOfTier = (units, tier) => units.find((unit) => unit.tier === tier)?.stats.squadPower ?? null;
+
+/** One troop: its tier and stats from a composition, its power its tier's, the rest as figuresOf finds it. */
 function troopOf(entry, listed, game, units) {
   const stats = Object.fromEntries(Object.entries(STATS).map(([field, stat]) => [stat, entry[field]]));
-  const { morale, squadPower, ...kind } = figuresOf(entry, listed, game, units);
+  const { morale, ...kind } = figuresOf(entry, listed, game, units);
+  const squadPower = powerOfTier(units, entry.tier);
   return {
     id: kebab(entry.troop_code),
     code: entry.troop_code,

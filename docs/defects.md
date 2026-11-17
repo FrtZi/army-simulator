@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **61 defects**: 61 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **62 defects**: 62 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -74,6 +74,7 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-059](#def-059) | 2026-11-17 | The search kept one pair of heroes beside every third: its places spent on one army | code | minor | ✓ fixed |
 | [DEF-060](#def-060) | 2026-11-17 | A prototype stated a figure misread from its own histogram (406 trios tied, where 29 were) | process | minor | ✓ fixed |
 | [DEF-061](#def-061) | 2026-11-17 | A page-wide style squashed the search picture's bars | code | minor | ✓ fixed |
+| [DEF-062](#def-062) | 2026-11-17 | The PvE armies weighed about ten times their power: a squad's power taken for a troop's | third party | major | ✓ fixed |
 
 ## Entries
 
@@ -854,3 +855,16 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** An SVG shape's size can be taken by any page-wide class of the same name: name a picture's classes by the picture, and test that no style reaches its shapes.
 - **Proof:** `tests/optimiser-pictures.test.js`
 - **Links:** SIM-22
+
+<a id="def-062"></a>
+### DEF-062 · The PvE armies weighed about ten times their power: a squad's power taken for a troop's
+
+`2026-11-17` · third party · major · ✓ fixed · tags: `data`, `engine`
+
+- **Finding:** Comparing a real battle report against the rank 15 Greenskin Army with the tool: the game weighs the army at 130,000,000 and its 805,919 dead at 20,147,975; the tool weighed it at 1,700,000,000, and its dead at about 190 million.
+- **Cause:** The PvE import took cctools' squad power as each troop's power. It is a squad's: our troops have one power per troop for each tier (4, 10, 25, 60, 150, 300), and so do the PvE troops in the game (4,000,000 tier-3 troops at 25 and 500,000 tier-4 at 60 make the 130,000,000; 805,919 tier-3 dead at 25 make the 20,147,975).
+- **Solution:** The import gives each PvE troop its tier's power, read from our troops; cctools' squad power is no longer kept. 41 of the 47 PvE troops change.
+- **Result:** The rank 15 Greenskin Army weighs 130,000,000 as in the game; the battle's power lost against it falls from about 190 million to 15.9 million, the report's 20.1 million within reach. The test fails without the fix (a tier-1 troop at 40, not 4).
+- **Lesson:** A figure imported from a third party is checked against the game's own once it shows it: a battle report gives the power of both sides, and the dead.
+- **Proof:** `tests/pve.test.js`
+- **Links:** SIM-11, SIM-25

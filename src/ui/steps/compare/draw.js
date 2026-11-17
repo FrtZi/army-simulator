@@ -3,6 +3,7 @@
 // word always go with the colour; then the battle both ways.
 import { byId, escape, options } from "../../dom.js";
 import { drawPveChoice } from "./pve.js";
+import { lossesBlock, verdictOf } from "./losses.js";
 import { number } from "../../format.js";
 import { term } from "../../glossary/tooltip.js";
 import { state } from "../../state.js";
@@ -43,9 +44,9 @@ function figuresTable({ figures }, names) {
   return `<table><thead><tr>${header.join("")}</tr></thead><tbody>${rows.join("")}</tbody></table>`;
 }
 
+/** A battle: who attacks whom, the verdict in full (SIM-25), the power lost, the losses per troop folded. */
 function battleLine(result, attacker, defender) {
-  const winner = { attacker, defender }[result.winner];
-  const verdict = winner ? t("compare.winner", { name: winner }) : t("compare.draw");
+  const verdict = verdictOf(result, { attacker, defender });
   const losses = t("compare.losses", {
     attacker,
     attackerLost: number(result.powerLost.attacker),
@@ -53,7 +54,7 @@ function battleLine(result, attacker, defender) {
     defenderLost: number(result.powerLost.defender),
   });
   return `<li><span class="battle-title">${escape(t("compare.attacks", { attacker, defender }))}</span>
-    <span class="battle-verdict">${escape(verdict)}</span><span class="meta">${escape(losses)}</span></li>`;
+    <span class="battle-verdict">${escape(verdict)}</span><span class="meta">${escape(losses)}</span>${lossesBlock(result, { attacker, defender })}</li>`;
 }
 
 const compositionName = (index) => state.compositions[index].name || String(index + 1);

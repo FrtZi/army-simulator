@@ -8,9 +8,16 @@ import { strike, targetOrder } from "./allocate.js";
 import { rally, testMorale } from "./morale.js";
 import { fighters } from "./army.js";
 
-/** A side's fighting groups, from an army summary's lines and heroes (effective stats included). */
+/** A side's fighting groups, from an army summary's lines and heroes (effective stats included); heroes marked. */
 const deploy = (army) =>
-  fighters(army).map((line) => ({ unit: line.unit, stats: line.stats, count: line.count, broken: 0, lostThisTurn: 0 }));
+  fighters(army).map((line, index) => ({
+    unit: line.unit,
+    stats: line.stats,
+    count: line.count,
+    hero: index >= army.lines.length,
+    broken: 0,
+    lostThisTurn: 0,
+  }));
 
 /** One side strikes the other: each group alive and not broken, with its current attack mode. */
 function strikePhase(strikers, targets, rules) {
@@ -31,28 +38,38 @@ const snapshot = (side) =>
     tier: group.unit.tier,
     powerPerTroop: group.unit.stats.squadPower,
     count: group.count,
+    hero: group.hero,
     broken: group.broken,
     lost: group.lostThisTurn,
   }));
 const powerOf = (side) => side.reduce((total, group) => total + group.count * group.unit.stats.squadPower, 0);
 
-/** The power each side lost, and the winner: the side that inflicted the bigger loss ("draw" when equal). */
+/** Whether a side has no troop left: every troop line rounds to none (heroes are not troop lines, SIM-25). */
+const wipedOut = (side) => side.every((group) => group.hero || Math.round(group.count) === 0);
+
+/**
+ * The power each side lost, the winner (the side that inflicted the bigger loss, "draw" when equal), and each side
+ * wiped out or not: the winner's total annihilation of the other (SIM-25).
+ */
 function outcome(start, sides) {
   const lost = {
     attacker: start.attacker - powerOf(sides.attacker),
     defender: start.defender - powerOf(sides.defender),
   };
-  if (lost.defender === lost.attacker) return { powerLost: lost, winner: "draw" };
-  return { powerLost: lost, winner: lost.defender > lost.attacker ? "attacker" : "defender" };
+  const annihilated = { attacker: wipedOut(sides.attacker), defender: wipedOut(sides.defender) };
+  if (lost.defender === lost.attacker) return { powerLost: lost, winner: "draw", annihilated };
+  return { powerLost: lost, winner: lost.defender > lost.attacker ? "attacker" : "defender", annihilated };
 }
 
 /**
  * Simulates a battle between two army summaries (from summariseArmy). Returns each turn's state after morale
- * (per group: troops left, broken, lost that turn), the survivors, the power each side lost and the winner.
+ * (per group: troops left, broken, lost that turn), the groups deployed and the survivors, the power each side lost,
+ * the winner and each side wiped out or not.
  */
 export function simulateBattle(attacker, defender, rules) {
   const sides = { attacker: deploy(attacker), defender: deploy(defender) };
   const start = { attacker: powerOf(sides.attacker), defender: powerOf(sides.defender) };
+  const deployed = { attacker: snapshot(sides.attacker), defender: snapshot(sides.defender) };
   const second = rules.firstToStrike === "attacker" ? "defender" : "attacker";
   const order = [rules.firstToStrike, second];
   const turns = [];
@@ -67,6 +84,7 @@ export function simulateBattle(attacker, defender, rules) {
   }
   return {
     turns,
+    deployed,
     survivors: { attacker: snapshot(sides.attacker), defender: snapshot(sides.defender) },
     ...outcome(start, sides),
   };

@@ -760,3 +760,22 @@ damage the cap of three found a better army (+0.26 %, another trio). One setup o
   panels or a zoom on the top shares (Frantz: one graph); every kept trio its own mark on its own line (twenty marks
   where three shares stand); a cap of one per pair (it turns away a trio that only shares a pair with a better one, and
   found nothing better here); a wider beam (slower for each trio, and the places would still go to the same pair).
+
+## D-54 · A battle's outcome in full; the PvE troops' power by tier (2026-11-17)
+
+Frantz fought the rank 15 Greenskin Army with the army the optimiser found and sent the game's report: a victory,
+805,919 of its 4,500,000 troops killed, and his own losses troop by troop. The game, as the engine, gives the victory to
+the side that inflicts the bigger loss of power; a victory can leave most of the enemy standing. The Battle lab's
+battles now say it: _total annihilation_ when no troop of the losing side is left, else the victory with the other
+side's survivors (of how many, and their share); under it, a block that folds to both sides' losses holds each side's
+troops sent, lost and left, as the report gives them. Heroes are not troop lines.
+
+The same report showed the PvE armies weighing about ten times their power (DEF-062): cctools.cc's squad power is a
+squad's. Each PvE troop now takes its tier's power, as ours, which the report's totals match to the unit.
+
+Set against the report with the optimiser's army of that day (not the one sent to the unit: a few lines differ), the
+engine gives the same winner, 21 % fewer enemy dead and a third more of its own; the exact army will say how much of
+that gap is the engine's.
+
+- _Set aside:_ how many attacks it takes to finish an army (each attack's losses change the next); the wounded the
+  Sawbones takes in (the engine counts troops lost, not where they go).

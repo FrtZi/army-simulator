@@ -46,6 +46,22 @@ test("SIM-02 one turn: the attacker strikes first, the defender answers with its
   assert.equal(result.winner, "defender");
 });
 
+test("SIM-25 a battle's outcome in full: the troops deployed, a victory that leaves survivors, a total annihilation", () => {
+  // one turn of 100 Khorne Gor against 1,000 Marauders: each side deployed as given, neither wiped out
+  const close = simulateBattle(army({ "khorne-gor": 100 }), army({ marauders: 1000 }), oneTurn);
+  assert.deepEqual(
+    close.deployed.attacker.map(({ id, count, hero }) => [id, count, hero]),
+    [["khorne-gor", 100, false]],
+  );
+  assert.equal(left(close.deployed.defender, "marauders"), 1000);
+  assert.deepEqual(close.annihilated, { attacker: false, defender: false });
+  // 10,000 Khorne Gor against 10 Marauders: the Marauders all fall, the Gor stand
+  const crushing = simulateBattle(army({ "khorne-gor": 10000 }), army({ marauders: 10 }), RULES);
+  assert.equal(crushing.winner, "attacker");
+  assert.deepEqual(crushing.annihilated, { attacker: false, defender: true });
+  assert.equal(Math.round(left(crushing.survivors.defender, "marauders")), 0);
+});
+
 test("SIM-02 a battle lasts the turns of the rules (3 in this game)", () => {
   const result = simulateBattle(army({ "khorne-gor": 10 }), army({ marauders: 10 }), RULES);
   assert.equal(RULES.turns, 3);

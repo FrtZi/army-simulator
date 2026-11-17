@@ -114,7 +114,8 @@ src/ui/                  the page
                          lines, champion-gear.js the gear by slot and set), xy.js X or Y, path.js to improve;
                          blocks.js a folding block, words.js the results in words; optimiser.css, pictures.css and
                          gear.css),
-                         profile (+ table.js: key columns and their details), compare, dashboards
+                         profile (+ table.js: key columns and their details), compare (+ losses.js: the verdict in full
+                         and the losses per troop, SIM-25), dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
                          in warlords.js, the troops owned in troops.js, the rituals' and buildings' levels in levelled.js (the rituals chosen in their tree in ritual-tree.js), the champion in
