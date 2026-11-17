@@ -604,7 +604,7 @@ status = "to do"
 added = 2026-11-16
 depends_on = ["BL-31"]
 features = ["SIM-16"]
-note = "Frantz, 2026-11-16: there is also the fortress type's parameter, for later. The game shows an appearance with a grade, each giving bonuses (one seen: champion maximum endurance, expedition capacity)."
+note = "Frantz, 2026-11-16: there is also the fortress type's parameter, for later. The game shows an appearance with a grade, each giving bonuses (one seen: champion maximum endurance, expedition capacity). Frantz, 2026-11-17: one appearance read, the Blood Bastion at grade 6: the champion's maximum endurance +3,000, the march +20,000 places."
 tasks = [
   "[ ] The appearances and their bonuses by grade, from screenshots; in Your setup; counted where they act",
 ]
@@ -622,7 +622,8 @@ features = ["SIM-17"]
 note = "Frantz, 2026-11-16: with my level, the number of troops I can carry should be known. The imported data hold the keep's march capacity field at 0 for every level; the rituals march-capacity-1 and -2 are kept by name, not applied."
 tasks = [
   "[x] The capacity rituals counted on the march capacity (DEF-050)",
-  "[ ] The base capacity by level, from the game's screens (to collect)",
+  "[x] The base capacity by level, from the game's screens: the Keep's and the Conclave's places (D-50, DEF-056)",
+  "[ ] The prestige's places in Your setup, beside the appearance's (BL-36)",
 ]
 
 [[item]]

@@ -670,3 +670,28 @@ setup the best with no aim rose by some 3 %, and the god-aimed armies now stay b
 
 - _Set aside:_ a full search per god kept as a start (five searches more: too slow); the best with no aim taken as the
   maximum of the aimed ones shown (it would hide the defect instead of fixing the search).
+
+## D-50 · The game's screens over cctools.cc's structures; a troop building's bonus on the troops it produces (2026-11-17)
+
+Frantz read every building's level table on the game's screens. Against structures.json (cctools.cc's pages), all
+agree but three things. **The Keep's and the Conclave's march places**: the source holds them at 0 at every level, and
+the Keep's number of marches too; the screens give them (the Keep 500 to 325,000 places, 2 to 6 marches; the Conclave
+500 to 180,000). They are places, not a percent: they sit in a structure's `places`, apart from the bonuses, which the
+engine reads as percents. **A cell**: the Bestiary's monstrous-cavalry armour reads 4 % at level 19, its other tables
+and the screen 4.5 %. **Whose troops**: the source names a troop building's bonuses by troop type (the Dungeon's
+"Monsters Armour Bonus"); Frantz settled that each goes to the troops the building produces (DEF-055). The five troop
+buildings (the Herdstone, the Dungeon, the Training Ground, the Bestiary, the Chaotic Rift) each give one bonus to their
+own troops, targeted by building, as the engine's targets already allowed.
+
+Where it lives: `data/chaos-conquest/structures-screens.json`, the screens' facts once, applied by the import over the
+saved pages (structures-screens.mjs); the import refuses a troop building whose tables of a stat differ, which is how
+the Bestiary's cell showed. A test checks structures.json carries the screens, so CI holds it without the pages.
+
+The capacity: the base Your setup gives already holds the Keep's and the Conclave's places as they stand, with what the
+tool does not hold yet (the fortress's appearance, the
+prestige). So a building raised in
+the path adds only the places it gives beyond; a setup without the Keep gives no Keep to build. On a real account's setup, the Keep, the Conclave,
+the appearance and the prestige come within a few dozen places of the base the player reads.
+
+- _Set aside:_ the base worked out from the buildings when the setup gives none (the appearance and the prestige are
+  missing, so it would read low); the appearance and the prestige themselves (BL-36, and the bonus rows in Your setup).

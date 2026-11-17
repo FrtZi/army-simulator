@@ -1,14 +1,19 @@
 // The single mutable state of the page, and the values derived from it. Controls write the state; drawing
 // functions read it (and these derived values) and write the DOM.
 import { CONFIG } from "./config.js";
-import { chosenPlace, pveArmy, pveRaces, raceTalentEffects } from "./pve.js";
+import { raceTalentEffects } from "./pve.js";
 import { GAMES } from "./games.js";
-import { label } from "./format.js";
-import { t } from "./texts/index.js";
-import { armyProfile, compareArmies, effectProblems, summariseArmy } from "../engine/index.js";
+import { armyProfile, effectProblems, summariseArmy } from "../engine/index.js";
 import { heroUnits, talentsOf } from "./heroes.js";
 import { bonusEffect, bonusRow } from "./bonus-rows.js";
-import { asPlayed, capacityInPlay, championMarchEffects, setupBonuses, setupSourceEffects } from "./lab-setup.js";
+import {
+  asPlayed,
+  baseInPlay,
+  capacityInPlay,
+  championMarchEffects,
+  setupBonuses,
+  setupSourceEffects,
+} from "./lab-setup.js";
 
 /** The language: the one remembered in this browser, else the browser's own if the page has it. */
 function startLanguage() {
@@ -147,7 +152,7 @@ function effectsOf(composition, against, shared, seen) {
 
 export function summariseAsGiven(composition, against = new Set(), shared = validEffects(), seen = state) {
   const { effects, units } = effectsOf(composition, against, shared, seen);
-  const limits = { marchCapacity: capacityInPlay(state).base };
+  const limits = { marchCapacity: baseInPlay(state, currentGame(), seen) };
   return summariseArmy(composition.troops, currentGame().catalogue, effects, limits, units);
 }
 
@@ -159,26 +164,6 @@ export const summarise = (composition, against, shared) =>
 export function currentArmy() {
   const army = summarise(state.composition);
   return { army, profile: armyProfile(army, currentGame().rules.model) };
-}
-
-/** The names of the two sides compared: two compositions, or a composition and the PvE army chosen. */
-export function comparedNames() {
-  const names = state.compare.map((index) => state.compositions[index].name || String(index + 1));
-  if (!state.pve.on) return names;
-  const place = chosenPlace(state, currentGame());
-  return [names[0], t("pve.name", { place: label(place), level: place?.level ?? "" })];
-}
-
-/** The two compositions chosen for the comparison (figures and battles); null when it is the same one twice. */
-export function comparison() {
-  const composition = state.compositions[state.compare[0]];
-  if (state.pve.on) {
-    const game = currentGame();
-    return compareArmies(summarise(composition, pveRaces(state, game)), pveArmy(state, game), game.rules);
-  }
-  const first = summarise(composition);
-  if (state.compare[0] === state.compare[1]) return null;
-  return compareArmies(first, summarise(state.compositions[state.compare[1]]), currentGame().rules);
 }
 
 /** The whole setup, in the shape the storage module saves. */

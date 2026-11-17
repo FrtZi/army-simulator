@@ -4,7 +4,7 @@
 // the lab's own values still give. Off, the lab plays freely. Always the saved setup, never unsaved edits.
 // The state is passed in, so state.js can use these without importing back.
 import { eachCopy } from "../storage/setup-buildings.js";
-import { resolveSources } from "../engine/index.js";
+import { placesOf, resolveSources } from "../engine/index.js";
 
 const owned = (state) => new Map(state.savedPlayerSetup.warlords.map((warlord) => [warlord.id, warlord.level]));
 
@@ -30,6 +30,18 @@ export const capacityInPlay = (state) => ({
   base: fromSetup(state, "base") ? state.savedPlayerSetup.capacity.base : state.marchCapacity,
   percent: fromSetup(state, "bonusPercent") ? state.savedPlayerSetup.capacity.bonusPercent : state.capacityBonus,
 });
+
+/** The march places the setup's buildings give (the Keep, the Conclave, D-50), each copy counted; none with it off. */
+const placesHeld = (state, game) =>
+  state.useSetup ? placesOf(eachCopy(state.savedPlayerSetup.buildings), game.structures.structures) : 0;
+
+/**
+ * The march capacity's base for a setup `seen`: the state's, or one with a building raised (the optimiser's path).
+ * The base in play already holds the places the Keep and the Conclave give now, with what the tool does not hold yet
+ * (the fortress's appearance, the prestige): a building raised adds only the places it gives beyond (D-50).
+ */
+export const baseInPlay = (state, game, seen = state) =>
+  capacityInPlay(state).base + placesHeld(seen, game) - placesHeld(state, game);
 
 /** Whether the setup's bonuses replace the lab's: when it is on and holds some. */
 export const setupBonuses = (state) => state.useSetup && state.savedPlayerSetup.bonuses.length > 0;

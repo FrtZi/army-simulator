@@ -5,7 +5,8 @@ import { byId, escape, options } from "../../dom.js";
 import { drawPveChoice } from "./pve.js";
 import { number } from "../../format.js";
 import { term } from "../../glossary/tooltip.js";
-import { comparedNames, comparison, state } from "../../state.js";
+import { state } from "../../state.js";
+import { comparedNames, comparison } from "../../comparison.js";
 import { t } from "../../texts/index.js";
 
 // the glossary term of each compared figure

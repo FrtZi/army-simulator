@@ -28,6 +28,7 @@ data/                    each game's facts (JSON), the same for every player (D-
     ├── items.json       the resources and items costs name: imported (scripts/import-items.mjs), never edited (D-29)
     ├── rituals.json     the 373 rituals in 13 categories, level by level: imported (scripts/import-rituals.mjs)
     ├── structures.json  the 32 structures, level by level: imported (scripts/import-structures.mjs)
+    ├── structures-screens.json  what the game's screens correct in it: places, a cell, troop buildings (D-50)
     ├── item-sources.json  where each item drops: imported (scripts/import-item-sources.mjs)
     ├── champion.json    the champion by level, its gear and sets: imported (scripts/import-champion.mjs)
     ├── pve.json         the PvE places and their troops: imported (scripts/import-pve.mjs), not in the page yet
@@ -72,6 +73,7 @@ src/ui/                  the page
 ├── config.js            CONFIG: every tunable value of the interface
 ├── games.js             the games and their data (the JSON imports the build bundles)
 ├── state.js             the single mutable state, and what derives from it (effects, army, profile);
+│                        comparison.js: the two sides the page compares
 │                        bonus-rows.js: a bonus row to and from an engine effect
 ├── player-setup.js      the player's setup on the page: the one edited, the last saved, what differs (D-27)
 ├── lab-setup.js         the saved setup in the Battle lab: heroes owned at their levels, capacity, bonuses
@@ -128,7 +130,8 @@ scripts/
 ├── import-warlords.mjs  data/<game>/warlords.json from cctools.cc's saved pages (D-25)
 ├── import-items.mjs     data/<game>/items.json, the resources and items their costs name (D-29)
 ├── cctools.mjs          what the imports share: a saved page's data, a cost's item
-├── import-rituals.mjs, import-structures.mjs   rituals.json and structures.json; levels.mjs: their levels read alike
+├── import-rituals.mjs, import-structures.mjs   rituals.json and structures.json; levels.mjs: their levels read alike;
+│                        structures-screens.mjs: the game's screens over the structures (D-50)
 ├── import-item-sources.mjs  item-sources.json, where each item drops
 ├── import-skills.mjs    champion-skills.json, the champion's two skill trees
 ├── import-champion.mjs  champion.json, the champion, its gear and sets
@@ -167,6 +170,7 @@ tests/                   node --test; each test names the feature it proves
 ├── fold.test.js         every block folds to its line, remembered (FOLD-01)
 ├── troops.test.js       the troops owned: read, typed, warned in the lab (CFG-08, D-34)
 ├── buildings.test.js    a building's copies: most copies, read, each counting, typed (BONUS-07, D-33)
+├── structures-screens.test.js  the screens over the structures: produced troops, places, path (D-50)
 ├── styles.test.js       each selector's look in one stylesheet (DEF-031)
 ├── accessibility.test.js   axe-core on the page in both languages; colour contrast from the tokens
 ├── tooling.test.js      the page assembler, the dev server, configurations aligned (MAINT-04)

@@ -2,7 +2,7 @@
 // power lost, troops broken.
 import { escape } from "../../dom.js";
 import { number, tierName } from "../../format.js";
-import { comparedNames, comparison } from "../../state.js";
+import { comparedNames, comparison } from "../../comparison.js";
 import { rounds } from "../../../engine/index.js";
 import { t } from "../../texts/index.js";
 

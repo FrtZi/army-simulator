@@ -1,36 +1,28 @@
 {
-  "source": "cctools.cc, the structures' pages (D-25); written by scripts/import-structures.mjs: never edit by hand",
+  "source": "cctools.cc, the structures' pages (D-25); written by scripts/import-structures.mjs: never edit by hand; the game's screens over it (D-50)",
   "effects": [
     {
-      "id": "cavalry-armour",
-      "code": "cavalry_armour_modifier",
-      "stat": "armour",
-      "target": {
-        "unitTypes": ["cavalry"]
-      }
-    },
-    {
-      "id": "cavalry-health",
-      "code": "cavalry_health_modifier",
+      "id": "beastmen-herdstone-troops-health",
+      "code": "produced_troops_health",
       "stat": "health",
       "target": {
-        "unitTypes": ["cavalry"]
+        "buildings": ["beastmen-herdstone"]
       }
     },
     {
-      "id": "chariots-armour",
-      "code": "chariots_armour_modifier",
+      "id": "bestiary-troops-armour",
+      "code": "produced_troops_armour",
       "stat": "armour",
       "target": {
-        "unitTypes": ["chariots"]
+        "buildings": ["bestiary"]
       }
     },
     {
-      "id": "chariots-health",
-      "code": "chariots_health_modifier",
+      "id": "chaos-rift-troops-health",
+      "code": "produced_troops_health",
       "stat": "health",
       "target": {
-        "unitTypes": ["chariots"]
+        "buildings": ["chaos-rift"]
       }
     },
     {
@@ -50,19 +42,11 @@
       }
     },
     {
-      "id": "infantry-armour",
-      "code": "infantry_armour_modifier",
+      "id": "dungeon-troops-armour",
+      "code": "produced_troops_armour",
       "stat": "armour",
       "target": {
-        "unitTypes": ["infantry"]
-      }
-    },
-    {
-      "id": "infantry-health",
-      "code": "infantry_health_modifier",
-      "stat": "health",
-      "target": {
-        "unitTypes": ["infantry"]
+        "buildings": ["dungeon"]
       }
     },
     {
@@ -74,90 +58,9 @@
       }
     },
     {
-      "id": "khorne-health",
-      "code": "chaos_khorne_health_modifier",
-      "stat": "health",
-      "target": {
-        "alignments": ["khorne"]
-      }
-    },
-    {"id": "march-capacity", "code": "march_unit_capacity", "stat": "marchCapacity"},
-    {
-      "id": "monsters-armour",
-      "code": "monsters_armour_modifier",
-      "stat": "armour",
-      "target": {
-        "unitTypes": ["monsters"]
-      }
-    },
-    {
-      "id": "monsters-health",
-      "code": "monsters_health_modifier",
-      "stat": "health",
-      "target": {
-        "unitTypes": ["monsters"]
-      }
-    },
-    {
-      "id": "monstrous-beasts-armour",
-      "code": "monstrous_beasts_armour_modifier",
-      "stat": "armour",
-      "target": {
-        "unitTypes": ["monstrous-beasts"]
-      }
-    },
-    {
-      "id": "monstrous-beasts-health",
-      "code": "monstrous_beasts_health_modifier",
-      "stat": "health",
-      "target": {
-        "unitTypes": ["monstrous-beasts"]
-      }
-    },
-    {
-      "id": "monstrous-cavalry-armour",
-      "code": "monstrous_cavalry_armour_modifier",
-      "stat": "armour",
-      "target": {
-        "unitTypes": ["monstrous-cavalry"]
-      }
-    },
-    {
-      "id": "monstrous-cavalry-health",
-      "code": "monstrous_cavalry_health_modifier",
-      "stat": "health",
-      "target": {
-        "unitTypes": ["monstrous-cavalry"]
-      }
-    },
-    {
-      "id": "monstrous-infantry-armour",
-      "code": "monstrous_infantry_armour_modifier",
-      "stat": "armour",
-      "target": {
-        "unitTypes": ["monstrous-infantry"]
-      }
-    },
-    {
-      "id": "monstrous-infantry-health",
-      "code": "monstrous_infantry_health_modifier",
-      "stat": "health",
-      "target": {
-        "unitTypes": ["monstrous-infantry"]
-      }
-    },
-    {
       "id": "nurgle-armour",
       "code": "chaos_nurgle_armour_modifier",
       "stat": "armour",
-      "target": {
-        "alignments": ["nurgle"]
-      }
-    },
-    {
-      "id": "nurgle-health",
-      "code": "chaos_nurgle_health_modifier",
-      "stat": "health",
       "target": {
         "alignments": ["nurgle"]
       }
@@ -171,11 +74,11 @@
       }
     },
     {
-      "id": "slaanesh-health",
-      "code": "chaos_slaanesh_health_modifier",
-      "stat": "health",
+      "id": "training-ground-troops-armour",
+      "code": "produced_troops_armour",
+      "stat": "armour",
       "target": {
-        "alignments": ["slaanesh"]
+        "buildings": ["training-ground"]
       }
     },
     {
@@ -184,30 +87,6 @@
       "stat": "armour",
       "target": {
         "alignments": ["tzeentch"]
-      }
-    },
-    {
-      "id": "tzeentch-health",
-      "code": "chaos_tzeentch_health_modifier",
-      "stat": "health",
-      "target": {
-        "alignments": ["tzeentch"]
-      }
-    },
-    {
-      "id": "war-beasts-armour",
-      "code": "war_beasts_armour_modifier",
-      "stat": "armour",
-      "target": {
-        "unitTypes": ["war-beasts"]
-      }
-    },
-    {
-      "id": "war-beasts-health",
-      "code": "war_beasts_health_modifier",
-      "stat": "health",
-      "target": {
-        "unitTypes": ["war-beasts"]
       }
     }
   ],
@@ -344,14 +223,7 @@
         "component-core-premium-warpstone-star": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65]
       },
       "effects": {
-        "infantry-health": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.5, 6, 6.5, 7.5, 8, 9, 10, 11, 12, 13, 14, 15],
-        "monsters-health": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.5, 6, 6.5, 7.5, 8, 9, 10, 11, 12, 13, 14, 15],
-        "cavalry-health": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.5, 6, 6.5, 7.5, 8, 9, 10, 11, 12, 13, 14, 15],
-        "chariots-health": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.5, 6, 6.5, 7.5, 8, 9, 10, 11, 12, 13, 14, 15],
-        "monstrous-infantry-health": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.5, 6, 6.5, 7.5, 8, 9, 10, 11, 12, 13, 14, 15],
-        "monstrous-beasts-health": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.5, 6, 6.5, 7.5, 8, 9, 10, 11, 12, 13, 14, 15],
-        "monstrous-cavalry-health": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.5, 6, 6.5, 7.5, 8, 9, 10, 11, 12, 13, 14, 15],
-        "war-beasts-health": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.5, 6, 6.5, 7.5, 8, 9, 10, 11, 12, 13, 14, 15]
+        "beastmen-herdstone-troops-health": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.5, 6, 6.5, 7.5, 8, 9, 10, 11, 12, 13, 14, 15]
       },
       "other": {},
       "requires": {
@@ -374,11 +246,7 @@
         "component-core-premium-warpstone-star": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
       },
       "effects": {
-        "cavalry-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5],
-        "chariots-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5],
-        "war-beasts-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5],
-        "monstrous-infantry-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5],
-        "monstrous-cavalry-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5]
+        "bestiary-troops-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5]
       },
       "other": {},
       "requires": {
@@ -468,11 +336,9 @@
         "iron": [null, null, null, null, null, null, null, null, null, 25000, 75000, 150000, 225000, 300000, 400000, 600000, 800000, 1000000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 5000000, 6000000, 9000000, 12000000, 20000000, 32500000, 50000000, 70000000, 92500000, 120000000, 150000000, 185000000, 225000000, 280000000, 350000000],
         "component-core-premium-warpstone-star": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 5, 10, 15, 20, 25, 30, 40, 45, 50, 60, 75, 100]
       },
-      "effects": {
-        "march-capacity": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      },
+      "effects": {},
       "other": {
-        "march-maximum": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        "march-maximum": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6]
       },
       "requires": {
         "structure": {
@@ -503,7 +369,8 @@
           "lumber-mill": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 31, 32, null, 34, null, null, null, null, 39],
           "quarry": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 31, 32, null, 34, null, null, null, null, 39]
         }
-      }
+      },
+      "places": [500, 1000, 2000, 3000, 5000, 7000, 10000, 12500, 15000, 17500, 20000, 25000, 30000, 35000, 40000, 45000, 55000, 65000, 75000, 85000, 90000, 95000, 100000, 105000, 110000, 115000, 120000, 130000, 140000, 150000, 160000, 175000, 185000, 200000, 220000, 240000, 260000, 280000, 300000, 325000]
     },
     {
       "id": "chaos-rift",
@@ -520,10 +387,7 @@
         "component-core-premium-warpstone-star": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65]
       },
       "effects": {
-        "khorne-health": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13.5, 15, 16.5, 18, 20, 20.5, 21, 21.5, 22, 22.5],
-        "tzeentch-health": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13.5, 15, 16.5, 18, 20, 20.5, 21, 21.5, 22, 22.5],
-        "slaanesh-health": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13.5, 15, 16.5, 18, 20, 20.5, 21, 21.5, 22, 22.5],
-        "nurgle-health": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13.5, 15, 16.5, 18, 20, 20.5, 21, 21.5, 22, 22.5]
+        "chaos-rift-troops-health": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13.5, 15, 16.5, 18, 20, 20.5, 21, 21.5, 22, 22.5]
       },
       "other": {},
       "requires": {
@@ -617,8 +481,7 @@
         "component-core-premium-warpstone-star": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65]
       },
       "effects": {
-        "monsters-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5],
-        "monstrous-beasts-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5]
+        "dungeon-troops-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5]
       },
       "other": {},
       "requires": {
@@ -955,7 +818,7 @@
         "component-core-premium-warpstone-star": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65]
       },
       "effects": {
-        "infantry-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5]
+        "training-ground-troops-armour": [0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5]
       },
       "other": {},
       "requires": {
@@ -1040,15 +903,14 @@
         "iron": [null, null, null, null, null, null, null, null, null, 25000, 50000, 75000, 125000, 175000, 250000, 350000, 500000, 750000, 1000000, 1250000, 1500000, 1750000, 2000000, 2250000, 2500000, 3000000, 4000000, 6500000, 9000000, 15000000, 25000000, 37500000, 50000000, 65000000, 80000000, 100000000, 120000000, 150000000, 187500000, 235000000],
         "component-core-premium-warpstone-star": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 5, 10, 15, 20, 25, 30, 40, 40, 40, 40, 45, 50]
       },
-      "effects": {
-        "march-capacity": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      },
+      "effects": {},
       "other": {},
       "requires": {
         "structure": {
           "sawbones": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
         }
-      }
+      },
+      "places": [500, 1000, 1500, 2000, 2500, 3000, 5000, 7500, 10000, 12500, 15000, 17500, 20000, 22500, 25000, 27500, 30000, 32500, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000, 75000, 80000, 85000, 90000, 95000, 100000, 105000, 110000, 115000, 125000, 135000, 150000, 165000, 180000]
     },
     {
       "id": "warpstone-mine",

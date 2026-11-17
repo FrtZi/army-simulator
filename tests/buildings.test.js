@@ -47,7 +47,7 @@ test("BONUS-07 a setup file's building copies: kept in order, refused beyond the
 
 test("BONUS-07 each copy of a building gives its own bonus in battle (D-33)", () => {
   const trainingGround = structures.structures.find((building) => building.id === "training-ground");
-  const atTen = trainingGround.effects["infantry-armour"][9];
+  const atTen = trainingGround.effects["training-ground-troops-armour"][9];
   const effects = resolveSources([
     {
       kind: "building",

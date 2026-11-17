@@ -2,7 +2,7 @@
 // green) or behind (▼, in red) by 10 % or more, then who wins each battle.
 import { escape } from "../../dom.js";
 import { number } from "../../format.js";
-import { comparedNames, comparison } from "../../state.js";
+import { comparedNames, comparison } from "../../comparison.js";
 import { prosAndCons } from "../../../engine/index.js";
 import { t } from "../../texts/index.js";
 

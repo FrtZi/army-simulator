@@ -11,6 +11,7 @@ import { buildPve, formatPve, savedPve } from "../scripts/import-pve.mjs";
 import { formatSkills, savedSkills } from "../scripts/import-skills.mjs";
 import { buildRituals, formatRituals, savedRituals } from "../scripts/import-rituals.mjs";
 import { buildStructures, formatStructures, savedStructures } from "../scripts/import-structures.mjs";
+import { withScreens } from "../scripts/structures-screens.mjs";
 import { buildItemSources, formatItemSources, readItems, savedAnswer } from "../scripts/import-item-sources.mjs";
 
 const GAME = "chaos-conquest";
@@ -75,7 +76,11 @@ test(
     const { categories, pages } = savedRituals();
     const file = (name) => readFileSync(new URL(`../data/${GAME}/${name}`, import.meta.url), "utf8");
     assert.equal(file("rituals.json"), formatRituals(buildRituals(categories, pages, readGame())));
-    assert.equal(file("structures.json"), formatStructures(buildStructures(savedStructures(), readGame())));
+    const screens = JSON.parse(file("structures-screens.json")); // the game's screens over the pages (D-50)
+    assert.equal(
+      file("structures.json"),
+      formatStructures(withScreens(buildStructures(savedStructures(), readGame()), screens)),
+    );
   },
 );
 

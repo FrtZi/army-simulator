@@ -43,11 +43,19 @@ const heldOf = (saved) => ({
   structure: new Map(saved.buildings.map((building) => [building.id, highestCopy(building)])),
 });
 
-/** The entries a level of which gives a bonus in battle: the only ones a step can gain with. */
-function battleIds(game) {
+/**
+ * The entries a level of which gives a bonus in battle: the only ones a step can gain with. The Keep and the
+ * Conclave give march places (D-50), only when the setup holds them: every fortress has them, and a setup without
+ * them gives its base as it stands, not a Keep to build.
+ */
+function battleIds(game, held) {
   const inBattle = ({ entries, effects }) =>
     entries
-      .filter((entry) => Object.keys(entry.effects).some((id) => effects.find((effect) => effect.id === id)?.stat))
+      .filter(
+        (entry) =>
+          Object.keys(entry.effects).some((id) => effects.find((effect) => effect.id === id)?.stat) ||
+          (entry.places?.some(Boolean) && held.structure.has(entry.id)),
+      )
       .map((entry) => entry.id);
   return {
     ritual: inBattle({ entries: game.rituals.rituals, effects: game.rituals.effects }),
@@ -75,11 +83,13 @@ function setupWith(saved, reached) {
 function levelledPath(found, goal) {
   const game = currentGame();
   const saved = state.savedPlayerSetup;
-  return levelledSteps(levelledEntries(game), heldOf(saved), battleIds(game))
+  return levelledSteps(levelledEntries(game), heldOf(saved), battleIds(game, heldOf(saved)))
     .filter((step) => !step.first.length)
     .map((step) => {
       const reached = [{ kind: step.kind, id: step.id, level: step.to }];
-      return glance(found, step, scores(goal, validEffects({ ...state, savedPlayerSetup: setupWith(saved, reached) })));
+      // the setup seen: its bonuses, and the march places a building raised gives (D-50)
+      const seen = { ...state, savedPlayerSetup: setupWith(saved, reached) };
+      return glance(found, step, scores(goal, validEffects(seen), seen));
     });
 }
 

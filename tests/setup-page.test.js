@@ -214,11 +214,11 @@ test("BONUS-07 DEF-036 a setup of buildings alone loads: their bonuses in battle
     },
   });
   const page = openPage({ stored: { [SETUP_KEY]: saved } });
-  addTroops(page, ["marauders"]); // infantry: the Herdstone at 40 gives infantry +15 % health (structures.json)
+  addTroops(page, ["khorngor"]); // the Herdstone at 40 gives the troops it produces +15 % health (D-50)
   const health = () => Number(page.metric("health").replace(/\D/g, ""));
   const free = health();
   page.tick("#load-setup-toggle");
-  assert.equal(health(), Math.round(free * 1.15));
+  assert.ok(Math.abs(health() - free * 1.15) <= 1, `${health()} against ${free} × 1.15`); // rounded per line
   page.untick("#load-setup-toggle");
   assert.equal(health(), free);
 });

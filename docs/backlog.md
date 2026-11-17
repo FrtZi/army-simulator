@@ -18,7 +18,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.0, the troops | `████████████████████` 4/4 | 4/4 | 13/13 | ✓ reached, tag v1.0.0 |
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
-| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/9 | 23/32 | ○ not yet: 1 Must left |
+| Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 3/9 | 24/33 | ○ not yet: 1 Must left |
 | Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/9 | 2/12 | — |
 
 ## Ready to start
@@ -371,7 +371,7 @@ The champion and its gear in the setup; an attack on a keep, with the defences' 
 | [BL-30](#bl-30) | A Champion lab: gear sets compared, stats by level, every bonus, its skill trees | should | [ui](../src/ui) | ◐ doing | 4/5 |
 | [BL-31](#bl-31) | An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise | should | [engine](../src/engine) | ◐ doing | 5/6 |
 | [BL-32](#bl-32) | The Champion lab's setups saved, one played in the Battle lab | should | [ui](../src/ui) | ✓ done | 2/2 |
-| [BL-37](#bl-37) | The march capacity from the levels: the keep's base, the capacity rituals applied | should | [data](../data) | ◐ doing | 1/2 |
+| [BL-37](#bl-37) | The march capacity from the levels: the keep's base, the capacity rituals applied | should | [data](../data) | ◐ doing | 2/3 |
 | [BL-38](#bl-38) | The optimiser's page as agreed: four tabs, every block folding, the gods' colours, the detail of the army | should | [ui](../src/ui) | ◐ doing | 5/6 |
 
 <a id="bl-11"></a>
@@ -458,7 +458,8 @@ Should · [data](../data) · ◐ doing · added `2026-11-16` · after [BL-16](#b
 Frantz, 2026-11-16: with my level, the number of troops I can carry should be known. The imported data hold the keep's march capacity field at 0 for every level; the rituals march-capacity-1 and -2 are kept by name, not applied.
 
 - [x] The capacity rituals counted on the march capacity (DEF-050)
-- [ ] The base capacity by level, from the game's screens (to collect)
+- [x] The base capacity by level, from the game's screens: the Keep's and the Conclave's places (D-50, DEF-056)
+- [ ] The prestige's places in Your setup, beside the appearance's (BL-36)
 
 <a id="bl-38"></a>
 #### BL-38 · The optimiser's page as agreed: four tabs, every block folding, the gods' colours, the detail of the army
@@ -562,6 +563,6 @@ Frantz, 2026-11-16: the path goes by gain first, the cost matters little for now
 
 Could · [engine](../src/engine) · ○ to do · added `2026-11-16` · after [BL-31](#bl-31) · features: SIM-16
 
-Frantz, 2026-11-16: there is also the fortress type's parameter, for later. The game shows an appearance with a grade, each giving bonuses (one seen: champion maximum endurance, expedition capacity).
+Frantz, 2026-11-16: there is also the fortress type's parameter, for later. The game shows an appearance with a grade, each giving bonuses (one seen: champion maximum endurance, expedition capacity). Frantz, 2026-11-17: one appearance read, the Blood Bastion at grade 6: the champion's maximum endurance +3,000, the march +20,000 places.
 
 - [ ] The appearances and their bonuses by grade, from screenshots; in Your setup; counted where they act

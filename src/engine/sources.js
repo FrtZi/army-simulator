@@ -85,6 +85,12 @@ const RESOLVERS = {
   skill,
 };
 
+/** The march places buildings give at their levels (the Keep, the Conclave, D-50): flat, summed. */
+export function placesOf(levels, entries) {
+  const byId = new Map(entries.map((entry) => [entry.id, entry]));
+  return levels.reduce((sum, { id, level }) => sum + (level >= 1 ? (byId.get(id)?.places?.[level - 1] ?? 0) : 0), 0);
+}
+
 /** Every effect of every source, in order. Throws on an unknown source kind. */
 export function resolveSources(sources) {
   return sources.flatMap((source) => {

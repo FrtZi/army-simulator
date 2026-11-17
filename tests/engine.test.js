@@ -35,7 +35,7 @@ test("BONUS-04 BONUS-07 rituals and buildings at their levels give the bonuses i
   const rituals = read(`data/${example.game}/rituals.json`);
   const structures = read(`data/${example.game}/structures.json`);
   // Armoured Zeal at level 4: +6 % morale for cavalry, chariots and monstrous cavalry (rituals.json, cctools.cc);
-  // the Beastmen Herdstone at 40: +15 % health for eight troop types; a level 0 or an unknown id gives nothing
+  // the Beastmen Herdstone at 40: +15 % health for the troops it produces (D-50); a level 0 or an unknown id, nothing
   const found = resolveSources([
     {
       kind: "ritual",
@@ -57,8 +57,7 @@ test("BONUS-04 BONUS-07 rituals and buildings at their levels give the bonuses i
     { stat: "morale", percent: 6, target: { unitTypes: ["chariots"] } },
     { stat: "morale", percent: 6, target: { unitTypes: ["monstrous-cavalry"] } },
   ]);
-  assert.equal(found.length, 3 + 8);
-  assert.ok(found.slice(3).every((effect) => effect.stat === "health" && effect.percent === 15));
+  assert.deepEqual(found.slice(3), [{ stat: "health", percent: 15, target: { buildings: ["beastmen-herdstone"] } }]);
   for (const effect of found) assert.deepEqual(effectProblems(effect, game, catalogue), [], JSON.stringify(effect));
 });
 

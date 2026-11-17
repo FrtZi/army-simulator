@@ -863,3 +863,35 @@ preuve = ["tests/optimiser-free.test.js"]
 lecon = "A pruned search is checked against what it must dominate: here, any narrower search over the same choices."
 liens = ["SIM-05", "SIM-12"]
 
+[[defaut]]
+id = "DEF-055"
+date = 2026-11-17
+titre = "A troop building's bonus went to a troop type, not to the troops it produces"
+type = "third party"
+etiquettes = ["data", "engine"]
+gravite = "major"
+statut = "fixed"
+constat = "The Bile Trolls, raised in the Dungeon, took the Bestiary's armour; the Pestigor and the daemons, raised in the Herdstone and the Rift, took the Training Ground's, the Bestiary's or the Dungeon's; the Chimera, from the Bestiary, took the Dungeon's."
+cause = "The import took the source's bonus names as they read, by troop type (the Dungeon's Monsters Armour Bonus); in the game, as Frantz settled, a troop building's bonus goes to the troops it produces."
+solution = "Each troop building's bonuses become one per stat, targeted at its own troops by building (D-50), from the game's screens file applied by the import."
+resultat = "With the Dungeon at 10 and the Bestiary at 22, the Bile Trolls take 2 %, the Chimera 6 %, the Pestigor nothing; with the old file the test fails on all three."
+preuve = ["tests/structures-screens.test.js"]
+lecon = "A source's name for a bonus says what it touches only as far as the game agrees: check its targets with the player before trusting them."
+liens = ["DATA-07", "BONUS-07"]
+
+[[defaut]]
+id = "DEF-056"
+date = 2026-11-17
+titre = "The Keep and the Conclave gave no march places"
+type = "third party"
+etiquettes = ["data"]
+gravite = "major"
+statut = "fixed"
+constat = "The source held the Keep's and the Conclave's march capacity at 0 at every level, and the Keep's marches too: the path never valued raising them; and the Bestiary's monstrous-cavalry armour read 4 % at level 19 where the game shows 4.5 %."
+cause = "cctools.cc's pages carry those tables empty, and one misread cell; nothing compared them with the game's screens."
+solution = "The game's screens, read by Frantz, in a data file the import applies over the pages (D-50); the places kept apart from the percents; the path counts the places a building raised gives beyond those of the base."
+resultat = "The Keep and the Conclave at 20 give 125,000 places; the Conclave from 15 to 16 is worth some 5 % in the path on a base of 50,000, nothing without the fix."
+preuve = ["tests/structures-screens.test.js"]
+lecon = "A field at 0 on every level is a missing table, not a building with no effect: an import should flag it."
+liens = ["DATA-07", "SIM-17"]
+

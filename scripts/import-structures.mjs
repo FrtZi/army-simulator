@@ -1,6 +1,7 @@
 // Imports the game's structures (buildings) from cctools.cc's saved pages (D-25, BL-14) into
 // data/<game>/structures.json: each structure level by level, as the rituals are (scripts/levels.mjs): its power,
-// its cost, what it requires and its bonuses. Its id comes from its name, as game.json's buildings already are.
+// its cost, what it requires and its bonuses. Its id comes from its name, as game.json's buildings already are. The
+// game's screens then correct it (structures-screens.json, D-50).
 //
 //   node scripts/import-structures.mjs   reads captures/<game>/sources/cctools/structures/*.html (saved pages,
 //                                        never committed) and writes data/<game>/structures.json
@@ -9,11 +10,13 @@ import { pathToFileURL } from "node:url";
 import { pageData } from "./cctools.mjs";
 import { readGame } from "./import-warlords.mjs";
 import { formatLevelled, levelFigures, newContext, sortedById, structureId, structureLabels } from "./levels.mjs";
+import { withScreens } from "./structures-screens.mjs";
 
 const GAME = "chaos-conquest";
 const root = new URL("../", import.meta.url);
 const PAGES = new URL(`captures/${GAME}/sources/cctools/structures/`, root);
 const OUTPUT = new URL(`data/${GAME}/structures.json`, root);
+const SCREENS = new URL(`data/${GAME}/structures-screens.json`, root);
 const SOURCE = "cctools.cc, the structures' pages (D-25); written by scripts/import-structures.mjs: never edit by hand";
 
 /** One structure from its page's data. */
@@ -49,7 +52,8 @@ export function savedStructures(folder = PAGES) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
-  const data = buildStructures(savedStructures(), readGame());
+  // the game's screens over the source: what it lacks or gets wrong (D-50)
+  const data = withScreens(buildStructures(savedStructures(), readGame()), JSON.parse(readFileSync(SCREENS, "utf8")));
   writeFileSync(OUTPUT, formatStructures(data));
   console.log(
     `✓ ${data.structures.length} structures; ${data.effects.length} bonuses applied in battle, ${data.other.length} kept for the guides`,

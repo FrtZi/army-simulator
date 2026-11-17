@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **54 defects**: 54 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **56 defects**: 56 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -67,6 +67,8 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-052](#def-052) | 2026-11-16 | The optimiser's hero names took a god's colour checked for marks only | code | minor | ✓ fixed |
 | [DEF-053](#def-053) | 2026-11-16 | The optimiser left a talent's places empty on a real account | code | major | ✓ fixed |
 | [DEF-054](#def-054) | 2026-11-16 | The best army with no aim scored below a god's best | code | major | ✓ fixed |
+| [DEF-055](#def-055) | 2026-11-17 | A troop building's bonus went to a troop type, not to the troops it produces | third party | major | ✓ fixed |
+| [DEF-056](#def-056) | 2026-11-17 | The Keep and the Conclave gave no march places | third party | major | ✓ fixed |
 
 ## Entries
 
@@ -756,3 +758,29 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A pruned search is checked against what it must dominate: here, any narrower search over the same choices.
 - **Proof:** `tests/optimiser-free.test.js`
 - **Links:** SIM-05, SIM-12
+
+<a id="def-055"></a>
+### DEF-055 · A troop building's bonus went to a troop type, not to the troops it produces
+
+`2026-11-17` · third party · major · ✓ fixed · tags: `data`, `engine`
+
+- **Finding:** The Bile Trolls, raised in the Dungeon, took the Bestiary's armour; the Pestigor and the daemons, raised in the Herdstone and the Rift, took the Training Ground's, the Bestiary's or the Dungeon's; the Chimera, from the Bestiary, took the Dungeon's.
+- **Cause:** The import took the source's bonus names as they read, by troop type (the Dungeon's Monsters Armour Bonus); in the game, as Frantz settled, a troop building's bonus goes to the troops it produces.
+- **Solution:** Each troop building's bonuses become one per stat, targeted at its own troops by building (D-50), from the game's screens file applied by the import.
+- **Result:** With the Dungeon at 10 and the Bestiary at 22, the Bile Trolls take 2 %, the Chimera 6 %, the Pestigor nothing; with the old file the test fails on all three.
+- **Lesson:** A source's name for a bonus says what it touches only as far as the game agrees: check its targets with the player before trusting them.
+- **Proof:** `tests/structures-screens.test.js`
+- **Links:** DATA-07, BONUS-07
+
+<a id="def-056"></a>
+### DEF-056 · The Keep and the Conclave gave no march places
+
+`2026-11-17` · third party · major · ✓ fixed · tags: `data`
+
+- **Finding:** The source held the Keep's and the Conclave's march capacity at 0 at every level, and the Keep's marches too: the path never valued raising them; and the Bestiary's monstrous-cavalry armour read 4 % at level 19 where the game shows 4.5 %.
+- **Cause:** cctools.cc's pages carry those tables empty, and one misread cell; nothing compared them with the game's screens.
+- **Solution:** The game's screens, read by Frantz, in a data file the import applies over the pages (D-50); the places kept apart from the percents; the path counts the places a building raised gives beyond those of the base.
+- **Result:** The Keep and the Conclave at 20 give 125,000 places; the Conclave from 15 to 16 is worth some 5 % in the path on a base of 50,000, nothing without the fix.
+- **Lesson:** A field at 0 on every level is a missing table, not a building with no effect: an import should flag it.
+- **Proof:** `tests/structures-screens.test.js`
+- **Links:** DATA-07, SIM-17

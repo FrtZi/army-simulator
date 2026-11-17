@@ -2,7 +2,7 @@
 // access: callers pass the game data (data/<game>/*.json) and the player's configuration.
 
 export { TARGET_FIELDS, appliesTo } from "./targets.js";
-export { resolveSources } from "./sources.js";
+export { placesOf, resolveSources } from "./sources.js";
 export { depthsOf, prerequisitesOf } from "./prerequisites.js";
 export { effectProblems } from "./bonuses.js";
 export { bonusPercent, applyPercent, effectiveStats, marchCapacity } from "./stats.js";
