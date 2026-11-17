@@ -1,4 +1,4 @@
-/* The optimiser's pictures (SIM-22, SIM-23, SIM-24): the search's dots, the army's bars, the path's branches, the
+/* The optimiser's pictures (SIM-22, SIM-23, SIM-24): the search's bars and marks, the army's bars, the path's branches, the
    bonus lines and the champion's gear. Every colour is a mark from the tokens, its words always beside it. */
 .stage-tried {
   --mark: var(--stage-tried);
@@ -89,34 +89,18 @@
   margin-top: 0.5rem;
 }
 
-.dots {
-  fill: none;
-  stroke: var(--mark);
-  stroke-linecap: round;
-}
-
-.dots.stage-tried {
-  opacity: 0.55;
-}
-
-.dots-ring {
-  fill: none;
-  stroke: var(--mark);
-  stroke-width: 2;
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .opt-search.play .stage-tried {
+  .opt-search.play .row-tried {
     animation: opt-appear 0.8s both;
   }
-  .opt-search.play .stage-kept {
-    animation: opt-appear 0.5s 1s both;
+  .opt-search.play .row-kept {
+    animation: opt-appear 0.6s 1s both;
   }
-  .opt-search.play .stage-settled {
-    animation: opt-appear 0.5s 2s both;
+  .opt-search.play .row-settled {
+    animation: opt-appear 0.6s 2s both;
   }
-  .opt-search.play .stage-chosen {
-    animation: opt-appear 0.5s 3s both;
+  .opt-search.play .row-chosen {
+    animation: opt-appear 0.6s 3s both;
   }
 }
 
@@ -219,4 +203,61 @@
 .opt-stage b {
   font-size: 1.25rem;
   color: var(--heading);
+}
+
+.links {
+  fill: none;
+  stroke: var(--mark);
+  opacity: 0.6;
+}
+
+.opt-search .glance-bar {
+  fill: var(--mark);
+}
+
+.opt-search .glance-bar.stage-tried {
+  opacity: 0.55;
+}
+
+.opt-search .mark circle {
+  fill: var(--mark);
+}
+
+.opt-search .mark .ring {
+  fill: none;
+  stroke: var(--mark);
+  stroke-width: 2;
+}
+
+.opt-search .tick {
+  fill: none;
+  stroke: var(--muted);
+}
+
+.opt-search text {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.opt-search .row-name,
+.opt-search .axis-title {
+  fill: var(--heading);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.opt-badge {
+  border: 1px solid var(--mark);
+  border-radius: var(--radius);
+  padding: 0 0.4rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* the words drawn over the lines keep a rim of the page's colour, so that a line never crosses them */
+.opt-search .mark text {
+  paint-order: stroke;
+  stroke: var(--card);
+  stroke-width: 4px;
+  stroke-linejoin: round;
 }

@@ -41,20 +41,21 @@ function startOf(owned, capacity) {
   return fits && total <= capacity ? troops : null;
 }
 
-/** The search's figures for the model's map (SIM-18): what it started from, the trios tried, kept and settled. */
-function mapOf(owned, capacity) {
-  const { width, settled } = CONFIG.optimiser;
+/**
+ * The search's figures for the model's map (SIM-18): what it started from, the trios tried, kept and settled; the
+ * kept and settled as the trail counts them, as a pair of heroes is kept a few times only (D-53).
+ */
+function mapOf(owned, capacity, trail) {
   const heroes = heroesOwned().length;
   const trios = combinations(heroesOwned(), Math.min(currentGame().game.heroRules.heroesPerArmy, heroes)).length;
-  const kept = Math.min(width, trios);
   return {
     heroes,
     owned: owned.size,
     aimed: aimed(owned).size,
     capacity,
     trios,
-    kept,
-    settled: Math.min(settled, kept),
+    kept: trail?.kept.length ?? 0,
+    settled: trail?.settled.length ?? 0,
   };
 }
 
@@ -116,7 +117,7 @@ function described(goal, owned, { found, gear }, compared) {
     capacity,
     opponent: goal.battle ? opponentChosen() : null,
     path: pathFrom(found, goal, aimed(owned)),
-    map: mapOf(owned, capacity),
+    map: mapOf(owned, capacity, found.trail),
     detail: detailOf(found.composition),
     gear,
   };

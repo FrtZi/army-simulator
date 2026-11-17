@@ -6,12 +6,7 @@
 // what a goal is.
 import { COMPARED } from "./compare.js";
 import { fill, leading, placed, rank, remembered, shortlist, topUp, trim } from "./fill.js";
-
-/** Every subset of `size` items, in their order (220 trios for 12 heroes). */
-export function combinations(items, size) {
-  if (size === 0) return [[]];
-  return items.flatMap((item, index) => combinations(items.slice(index + 1), size - 1).map((rest) => [item, ...rest]));
-}
+import { combinations, rankedTrios, varied } from "./trios.js";
 
 /**
  * A profile scored for weights on its figures (COMPARED's keys): each figure raised to its weight, multiplied. A
@@ -25,25 +20,6 @@ export function profileScore(profile, weights) {
 }
 
 const better = (a, b) => (b.score > a.score ? b : a);
-
-/**
- * The talents a trio takes at a glance: the `max` that gain the most, each alone. A talent's gain is worked out once
- * per value (`gains`), as it hardly depends on the heroes beside it.
- */
-function guessTalents(branch, offered, { guess, max, gains }) {
-  const without = guess(branch);
-  const gainOf = ({ id, percent }) => {
-    const key = `${id}:${percent}`;
-    if (!gains.has(key)) gains.set(key, guess({ ...branch, talents: [id] }) - without);
-    return gains.get(key);
-  };
-  return offered
-    .map((talent) => ({ id: talent.id, gain: gainOf(talent) }))
-    .filter((talent) => talent.gain > 0)
-    .sort((a, b) => b.gain - a.gain)
-    .slice(0, max)
-    .map((talent) => talent.id);
-}
 
 /** A branch's talents chosen one by one, each time the one the exact score rises most with, up to `max`. */
 export function chooseTalents(branch, ids, { score, max }) {
@@ -119,23 +95,21 @@ export function settle(composition, { owned, capacity, offered, score, slices, r
 }
 
 /**
- * The `width` trios best at a glance, best first: each with the talents that gain most alone, on the fill it scores
- * best on (DEF-054). `fills`: the troops to try each trio on, the first the default; `guess`: the quick judge.
+ * The search's trail (SIM-22): every trio's score at a glance, best first; each kept one's heroes, its place and score
+ * at a glance, its score once its talents are chosen; each settled one's rank among the kept and its score; the rank
+ * of the one chosen (its troops may move after).
  */
-function keptTrios(trios, { fills, offered, guess, max, width }) {
-  const gains = new Map();
-  return trios
-    .map((trio) => ({ troops: fills[0], heroes: trio, talents: [] }))
-    .map((branch) => ({ ...branch, talents: guessTalents(branch, offered(branch.heroes), { guess, max, gains }) }))
-    .map((branch) =>
-      fills
-        .map((some) => ({ ...branch, troops: some }))
-        .map((composition) => ({ composition, score: guess(composition) }))
-        .reduce(better),
-    )
-    .sort((a, b) => b.score - a.score)
-    .slice(0, width);
-}
+const trailOf = ({ ranked, kept, talented, chosen, leaf }) => ({
+  glance: ranked.map((entry) => entry.score),
+  kept: talented.map((entry, index) => ({
+    heroes: entry.composition.heroes.map(({ id }) => id),
+    place: ranked.indexOf(kept[index]),
+    glance: kept[index].score,
+    score: entry.score,
+  })),
+  settled: chosen.map((entry) => ({ rank: entry.glance, score: entry.score })),
+  chosen: leaf.glance,
+});
 
 /**
  * The best composition found: { composition: { troops, heroes, talents }, score, judged }, or null with no troop
@@ -146,7 +120,8 @@ function keptTrios(trios, { fills, offered, guess, max, width }) {
  * `settled`, the few leaves whose troops are settled (all the kept ones by default), `candidates`, the troops worth
  * most per place that slices may move to (all of them by default); `groups`: troop ids that go together (a god's), each
  * filled first in a start every trio is tried on (DEF-054).
- * `judged`: how many armies were scored; `trail`: { trios, kept, settled, chosen }, the ranks at a glance (SIM-22).
+ * `judged`: how many armies were scored; `trail`: { glance, kept, settled, chosen }, the search's scores by
+ * stage and the kept trios' heroes (SIM-22).
  */
 export function optimise({ owned, capacity, heroes, offered, score, guess = score, start, groups = [], settings }) {
   const capacityOf = remembered(typeof capacity === "function" ? capacity : () => capacity);
@@ -157,7 +132,16 @@ export function optimise({ owned, capacity, heroes, offered, score, guess = scor
   const counted = (judge) => (composition) => ((judged += 1), judge(composition));
   const exact = counted(score);
   const quick = counted(guess);
-  const { width, slices, rounds, heroesPerArmy, talentsPerArmy: max, settled: few = width, candidates } = settings;
+  const {
+    width,
+    perPair,
+    slices,
+    rounds,
+    heroesPerArmy,
+    talentsPerArmy: max,
+    settled: few = width,
+    candidates,
+  } = settings;
   // the troops moved by slices within the capacity this composition has, its free places filled first
   const settled = (entry) => {
     const room = capacityOf(entry.composition);
@@ -176,19 +160,19 @@ export function optimise({ owned, capacity, heroes, offered, score, guess = scor
   // and no aim finds an army the search with none misses (DEF-054)
   const fills = [troops, ...groups.map((ids) => fill(leading(order, ids), base))];
   const trios = combinations(heroes, Math.min(heroesPerArmy, heroes.length));
-  const kept = keptTrios(trios, { fills, offered, guess: topped(quick), max, width });
+  const ranked = rankedTrios(trios, { fills, offered, guess: topped(quick), max });
+  const kept = varied(ranked, width, perPair);
   // each kept trio's talents by the exact score, then its troops settled: a talent raising the capacity is worth the
   // troops it lets in, every branch linked (D-45)
-  // each with its rank at a glance, for the map's trail (SIM-22)
-  const chosen = kept
-    .map(({ composition }, glance) => ({
-      ...chooseTalents(
-        composition,
-        offered(composition.heroes).map(({ id }) => id),
-        { score: topped(exact), max },
-      ),
-      glance,
-    }))
+  const talented = kept.map(({ composition }, glance) => ({
+    ...chooseTalents(
+      composition,
+      offered(composition.heroes).map(({ id }) => id),
+      { score: topped(exact), max },
+    ),
+    glance,
+  }));
+  const chosen = [...talented]
     // the best few, by their score with their free places filled, have their troops settled: the others would not
     // overtake them; each scored as it stands first, the free places then filled by the moves themselves
     .sort((a, b) => b.score - a.score)
@@ -201,13 +185,6 @@ export function optimise({ owned, capacity, heroes, offered, score, guess = scor
     .map((some) => ({ ...leaf.composition, troops: some }))
     .map((composition) => ({ composition, score: exact(composition) }))
     .reduce(better, leaf);
-  // the search's trail (SIM-22): the trios tried, how many kept, the ranks at a glance of those settled and of the one
-  // chosen (its troops may move after, its heroes stay)
-  const trail = {
-    trios: trios.length,
-    kept: kept.length,
-    settled: chosen.map(({ glance }) => glance),
-    chosen: leaf.glance,
-  };
+  const trail = trailOf({ ranked, kept, talented, chosen, leaf });
   return { ...settled(starts), judged, trail };
 }

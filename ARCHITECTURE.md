@@ -52,6 +52,7 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 ├── compare.js           two armies: each figure, its difference and the better one, both battles (SIM-03)
 ├── insights.js          the dashboards' figures: efficiency, rounds, balance and warnings, pros and cons
 ├── optimise.js          the optimiser: a search tree pruned at each level, the caller's scores as its judge (SIM-05)
+├── trios.js             the trios of heroes at a glance, best first, and those kept, varied (SIM-27)
 ├── fill.js              the troops owned put in the capacity, free places topped up: every branch linked (D-45)
 ├── path.js              the path: each hero to get or raise, by its gain on the army found (SIM-12)
 ├── levelled-steps.js    the path's rituals and buildings: one level up, what it asks first (SIM-12)
@@ -108,7 +109,7 @@ src/ui/                  the page
                          load (the "Load your setup" switch), bonuses, army (+ compositions), picker, heroes
                          (+ picker.js; heroes.js beside state.js works out a composition's heroes), optimiser (the best army with
                          your setup: the goal, the aim, the button in draw.js; its tabs: map.js the model's map
-                         (map-search.js the search's dots, map-army.js the army chosen, map-path.js the path's
+                         (map-search.js the search on one graph, map-search-axis.js its axis and bars, map-trios.js the trios kept named, map-army.js the army chosen, map-path.js the path's
                          branches), have.js with what I have (have-detail.js its detail, effect-lines.js the bonus
                          lines, champion-gear.js the gear by slot and set), xy.js X or Y, path.js to improve;
                          blocks.js a folding block, words.js the results in words; optimiser.css, pictures.css and

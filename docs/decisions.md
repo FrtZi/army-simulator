@@ -737,3 +737,26 @@ colour on their edge, as the branches.
 
 - _Set aside:_ the gear chosen before the trios (it would multiply the search by the gear's choices); the hero trio
   changed by the gear (a trio rarely turns on a piece; the path still shows the heroes to raise).
+
+## D-53 · The search on one graph; the trios kept varied, a pair of heroes in three at most (2026-11-17)
+
+Frantz found the search's dots pretty but silent, then the rows by score fuzzy, and wanted neither panels nor zoom:
+all on one graph. The picture is now one axis, the score for the goal as a share of the best army found (100 %), its
+title saying so; the shares where the kept trios stand are widened and the others squeezed at the left, a break on
+the axis marking where. Every trio at a glance stands in bars by share (as high as the root of their count, so that a
+few trios still show); the kept ones are marks once their talents are chosen, the settled ones once their troops have
+moved, each row under the other, a line following them from row to row; trios at the same share are one mark, as big
+as their count, its share and count in words; the one chosen is ringed and named "chosen". A battle's glance is a
+guess in other units: there each row runs from its worst army (0) to its best (100), and the axis's title says so.
+Under the picture, a table names the trios kept with their share at each stage, the one chosen first.
+
+Naming the marks showed what the column of equal dots meant: on a real account's setup, 18 of the 20 trios kept were the same
+two heroes beside any third, alike to the tenth of a percent, so the search spent its places on
+one army. The trios kept are now the best at a glance with each pair of heroes in three of them at most (`perPair`, a
+setting). Measured on that setup for the four goals with no cap, one, two and three: never worse, as fast, and for
+damage the cap of three found a better army (+0.26 %, another trio). One setup only: the cap stays a setting.
+
+- _Set aside:_ a third dimension (it needs turning, hides marks behind others, and has no third measure to show); two
+  panels or a zoom on the top shares (Frantz: one graph); every kept trio its own mark on its own line (twenty marks
+  where three shares stand); a cap of one per pair (it turns away a trio that only shares a pair with a better one, and
+  found nothing better here); a wider beam (slower for each trio, and the places would still go to the same pair).

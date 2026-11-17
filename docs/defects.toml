@@ -927,3 +927,50 @@ preuve = ["tests/optimiser-free.test.js"]
 lecon = "A score that does not check a limit cannot be trusted to choose what sets the limit: fit the army to its limit before scoring a change to that limit."
 liens = ["SIM-05", "SIM-26"]
 
+[[defaut]]
+id = "DEF-059"
+date = 2026-11-17
+titre = "The search kept one pair of heroes beside every third: its places spent on one army"
+type = "code"
+etiquettes = ["engine"]
+gravite = "minor"
+statut = "fixed"
+constat = "Naming the trios kept on the model's map, on a real account's setup: 18 of the 20 trios kept were the same two heroes beside any third, all within a tenth of a percent of one another, so twenty places studied one army."
+cause = "The trios were kept by their score at a glance only: a pair that lifts every army leads beside any third hero, and every such trio scores alike, so they filled the beam."
+solution = "The trios kept are the best at a glance with each pair of heroes in three of them at most (perPair, a setting); measured on that setup for the four goals, never worse, as fast, and once a better army (D-53)."
+resultat = "On a made-up ranking the test keeps the trios in their order at a glance and turns away a pair's third and fourth; it fails without the cap (the pair kept every time)."
+preuve = ["tests/optimiser-pictures.test.js"]
+lecon = "A beam kept by score alone fills with near-copies when one part of a branch dominates: keep the branches different where they are alike at a glance."
+liens = ["SIM-05", "SIM-27"]
+
+[[defaut]]
+id = "DEF-060"
+date = 2026-11-17
+titre = "A prototype stated a figure misread from its own histogram (406 trios tied, where 29 were)"
+type = "process"
+etiquettes = ["charts", "tooling"]
+gravite = "minor"
+statut = "fixed"
+constat = "The single-graph prototype shown to Frantz said 406 trios were tied at 94.3 % where the kept ones were taken; drawing it again from the trail, 29 trios stood there, the 406 at about 90 %."
+cause = "The probe binned the shares with an offset the prototype did not share, and the figure was read from a bin's count instead of counted from the scores themselves."
+solution = "Every figure a prototype states is counted from the data it draws, by the same code that places it; the prototype was drawn again from the trail, every point computed beforehand."
+resultat = "The prototype redrawn says 29 trios at 94.3 %, counted from the scores; the map built in the page counts its marks from the trail the same way."
+preuve = ["Rule: a figure stated beside a picture is counted by the code that draws it, never read off another output."]
+lecon = "A figure said to the user is checked against the data it comes from, not against a summary of it."
+liens = ["SIM-22"]
+
+[[defaut]]
+id = "DEF-061"
+date = 2026-11-17
+titre = "A page-wide style squashed the search picture's bars"
+type = "code"
+etiquettes = ["charts", "page"]
+gravite = "minor"
+statut = "fixed"
+constat = "In the browser, the search picture's bars stood as small blocks at every height instead of rising from their line; in the tests they looked right."
+cause = "The bars took the class bar, which the forms' style already sizes (height 0.6rem): a browser applies a CSS height to an SVG rectangle over its own height attribute; jsdom draws nothing, so no test saw it."
+solution = "The picture's bars take a class of their own (glance-bar); the test checks that no page-wide style gives a height to any of the picture's shapes."
+resultat = "The bars rise from their line in the browser; the test fails with the old class (a height reaches the bar) and passes with the new one."
+preuve = ["tests/optimiser-pictures.test.js"]
+lecon = "An SVG shape's size can be taken by any page-wide class of the same name: name a picture's classes by the picture, and test that no style reaches its shapes."
+liens = ["SIM-22"]

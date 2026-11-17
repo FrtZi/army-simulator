@@ -1,10 +1,12 @@
 // The tab "Model's map" (SIM-18, SIM-22, D-51): the search drawn, stage by stage, with its figures in words under it;
 // the army chosen with its power two ways; the path as branches by gain. Three folding blocks.
+import { CONFIG } from "../../config.js";
 import { escape } from "../../dom.js";
 import { number } from "../../format.js";
 import { t } from "../../texts/index.js";
 import { block } from "./blocks.js";
 import { searchPicture } from "./map-search.js";
+import { triosTable } from "./map-trios.js";
 import { armyPicture } from "./map-army.js";
 import { pathPicture } from "./map-path.js";
 
@@ -17,9 +19,9 @@ function stageCards({ map, path, trail }) {
   const cards = [
     ...(map.aimed === map.owned ? [] : [stageCard("", map.aimed, t("optimiser.card-aim"))]),
     stageCard("stage-tried", number(map.trios), t("optimiser.card-tried")),
-    stageCard("stage-kept", map.kept, t("optimiser.card-kept")),
+    stageCard("stage-kept", map.kept, t("optimiser.card-kept", { perPair: CONFIG.optimiser.perPair })),
     stageCard("stage-settled", map.settled, t("optimiser.card-settled")),
-    stageCard("stage-chosen", 1, t("optimiser.card-chosen", { rank: (trail?.chosen ?? 0) + 1 })),
+    stageCard("stage-chosen", 1, t("optimiser.card-chosen", { rank: (trail?.kept[trail.chosen].place ?? 0) + 1 })),
     stageCard(
       "",
       path.steps.length,
@@ -32,7 +34,7 @@ function stageCards({ map, path, trail }) {
 /** The search: the setup's figures, its picture, its stages as cards (its legend), the branches' links. */
 function searchBlock(result) {
   const { map, judged } = result;
-  const body = `${searchPicture(result)}${stageCards(result)}<p class="hint">${escape(t("optimiser.mapHint"))}</p>`;
+  const body = `${searchPicture(result)}${stageCards(result)}${triosTable(result)}<p class="hint">${escape(t("optimiser.mapHint"))}</p>`;
   const line = t("optimiser.mapLine", {
     judged: number(judged),
     trios: number(map.trios),

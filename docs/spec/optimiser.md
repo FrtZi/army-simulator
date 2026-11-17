@@ -82,7 +82,8 @@ the result.
 The tree decides, most weighty first, keeping the best branches at each level (20, a setting):
 
 1. **The aim**, when one is ticked: the troops it names, the others out (82 troops to a dozen for one god).
-2. **The heroes**: every trio of the heroes owned (220 for 12), ordered by the quick guess.
+2. **The heroes**: every trio of the heroes owned (220 for 12), ordered by the quick guess; the best kept, each pair
+   of heroes in three of them at most, so that they differ (D-53).
 3. **The talents**: the 4 among those the trio offers.
 4. **The champion**: its gear and skills as in Your setup or a Champion lab setup chosen (the player's choice).
 5. **The troops**: the capacity filled with the troop worth most per place to the engine, then slices moved
@@ -103,7 +104,8 @@ Three questions, kept apart: what is best with what I have; what is best if I go
 The block holds four tabs, the model's map first; every block in them folds to one line that sums it up (FOLD-01),
 and the gods' colours mark troops, heroes, talents and steps (with a word beside, never the colour alone).
 
-1. **The model's map**: the search drawn as it ran, with its figures: the setup, the aim, the capacity filled, the
+1. **The model's map**: the search drawn as it ran on one graph, every score a share of the best army found (D-53),
+   the trios kept named in a table; with its figures: the setup, the aim, the capacity filled, the
    trios tried, kept, settled, the army found, then the path's steps judged; the branches' links said in a line.
    (SIM-14 later makes it unfold live and set two setups on one tree.)
 2. **With what I have**, in folding blocks:

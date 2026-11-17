@@ -1,13 +1,13 @@
-// The optimiser's pictures (SIM-22, SIM-23, SIM-24, D-51): the search's trail drawn as dots, the army chosen with its
+// The optimiser's pictures (SIM-22, SIM-23, SIM-24, D-51): the search's trail drawn on one axis, the army chosen with its
 // power two ways, the path as branches; bonuses grouped into lines; the champion's gear by slot and set. In Node on a
 // made-up score, then on the published page in jsdom with a fictitious setup.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { optimise } from "../src/engine/index.js";
+import { optimise, varied } from "../src/engine/index.js";
 import { groupedEffects } from "../src/ui/steps/optimiser/effect-lines.js";
 import { openPage } from "./page.js";
 
-test("SIM-22 the search's trail: the trios tried, how many kept, the ranks settled and the one chosen among them", () => {
+test("SIM-22 the search's trail: every trio's score at a glance, the kept ones' heroes, place and scores, the settled ones', the one chosen", () => {
   const heroes = ["a", "b", "c", "d", "e", "f"].map((id) => ({ id, level: 1 }));
   const worth = { a: 1, b: 5, c: 2, d: 4, e: 3, f: 0 };
   const score = ({ troops, heroes: picked }) =>
@@ -21,14 +21,45 @@ test("SIM-22 the search's trail: the trios tried, how many kept, the ranks settl
     score,
     settings,
   });
-  assert.equal(trail.trios, 15, "6 heroes two by two");
-  assert.equal(trail.kept, 4);
+  // every trio's score at a glance, best first: 6 heroes two by two
+  assert.equal(trail.glance.length, 15);
+  assert.deepEqual(
+    trail.glance,
+    [...trail.glance].sort((a, b) => b - a),
+  );
+  // b and d at a glance: 100 troops × (1 + 5 + 4)
+  assert.equal(trail.glance[0], 1000);
+  assert.equal(trail.kept.length, 4);
+  // each kept trio's heroes, its place at a glance and its score then, its score once its talents are chosen
+  assert.deepEqual(trail.kept[0], { heroes: ["b", "d"], place: 0, glance: 1000, score: 1000 });
+  for (const { place, glance } of trail.kept) assert.equal(glance, trail.glance[place]);
   assert.equal(trail.settled.length, 2);
-  for (const rank of trail.settled) assert.ok(rank >= 0 && rank < trail.kept, String(rank));
-  assert.ok(trail.settled.includes(trail.chosen));
+  for (const { rank, score: settled } of trail.settled) {
+    assert.ok(rank >= 0 && rank < trail.kept.length, String(rank));
+    assert.ok(settled >= trail.kept[rank].score, "settling only raises a score");
+  }
+  assert.ok(trail.settled.some(({ rank }) => rank === trail.chosen));
   // the best pair at a glance is b and d, and it stays the best: chosen at rank 0
   assert.equal(trail.chosen, 0);
   assert.deepEqual(composition.heroes.map(({ id }) => id).sort(), ["b", "d"]);
+});
+
+test("SIM-27 DEF-059 the trios kept varied: the best at a glance, each pair of heroes in a few of them at most", () => {
+  const trio = (ids, score) => ({ composition: { heroes: ids.map((id) => ({ id, level: 1 })) }, score });
+  // a and b lift every army: at a glance they lead beside any third hero
+  const ranked = [
+    trio(["a", "b", "c"], 10),
+    trio(["b", "a", "d"], 9),
+    trio(["a", "b", "e"], 9),
+    trio(["a", "c", "d"], 8),
+    trio(["c", "d", "e"], 7),
+  ];
+  const ids = (kept) => kept.map(({ composition }) => composition.heroes.map(({ id }) => id).join(""));
+  assert.deepEqual(ids(varied(ranked, 3)), ["abc", "bad", "abe"], "without a cap, the best at a glance");
+  // a and b twice at most: "abe" gives its place to "acd", the order at a glance kept
+  assert.deepEqual(ids(varied(ranked, 3, 2)), ["abc", "bad", "acd"]);
+  // once: a pair already kept closes the door to every trio that has it (a and c in "acd")
+  assert.deepEqual(ids(varied(ranked, 4, 1)), ["abc", "cde"]);
 });
 
 test("SIM-23 bonuses grouped: one line per value and troops, the stats that share them together, the largest first", () => {
@@ -83,18 +114,53 @@ function run() {
   return page;
 }
 
-test("SIM-22 the model's map drawn: every trio a dot by stage, the army's power two ways, the path as branches", () => {
+test("SIM-22 DEF-061 the model's map drawn: every trio by its share of the best at each stage, equal shares one mark, the trios named, the army's power two ways, the path as branches", () => {
   const page = run();
   page.click("#opt-tab-map");
-  // 4 heroes: 4 trios, all kept; the dots in one path per stage, the picture named with its figures
-  assert.deepEqual(
-    page.$$("#opt-panel-map .dots").map((path) => path.getAttribute("class")),
-    ["dots stage-tried", "dots stage-kept", "dots stage-settled", "dots stage-chosen"],
+  // 4 heroes: 4 trios at a glance as bars, each bar saying how many; the kept and settled ones as marks, each mark
+  // a share and how many trios stand on it, a line following them from row to row
+  const search = page.$("#opt-panel-map .opt-search");
+  const counted = page
+    .$$("#opt-panel-map .opt-search rect title")
+    .map((title) => Number(title.textContent.split(" ")[0]));
+  assert.equal(
+    counted.reduce((sum, n) => sum + n, 0),
+    4,
+    "every trio in a bar",
+  );
+  // no page-wide style reaches the picture's shapes: a height from one would squash the bars (DEF-061)
+  for (const shape of page.$$("#opt-panel-map .opt-search rect, #opt-panel-map .opt-search circle")) {
+    assert.ok(!/\d/.test(page.window.getComputedStyle(shape).height), shape.getAttribute("class"));
+  }
+  const kept = page.$$("#opt-panel-map .opt-trios tbody tr").length;
+  assert.ok(kept >= 1 && kept <= 4, String(kept));
+  const many = (text) => Number(/· (\d+) trios/.exec(text)?.[1] ?? 1);
+  const keptMarks = page.$$("#opt-panel-map .mark.row-kept").map((mark) => many(mark.textContent));
+  assert.equal(
+    keptMarks.reduce((sum, n) => sum + n, 0),
+    kept,
+    "every kept trio on a mark",
+  );
+  assert.equal(page.$$("#opt-panel-map .mark.row-chosen .ring").length, 1, "the one chosen ringed");
+  assert.match(page.text("#opt-panel-map .mark.row-chosen text"), /^100 % · chosen$/);
+  assert.ok(page.$$("#opt-panel-map .links.row-kept").length >= 1);
+  assert.match(
+    search.getAttribute("aria-label"),
+    /^4 trios of heroes by their score at a glance; the \d kept placed again .*; the one chosen ranked \d at a glance$/,
   );
   assert.match(
-    page.$("#opt-panel-map .opt-search").getAttribute("aria-label"),
-    /^4 trios of heroes as dots: 4 kept, 4 settled, 1 chosen$/,
+    page.text("#opt-panel-map .opt-search"),
+    /^At a glance4 trios.*Talents chosen\d kept.*Troops moved\d settled/,
   );
+  // the axis says what a share is
+  assert.match(
+    page.text("#opt-panel-map .axis-title"),
+    /^Each army's score for the goal, in % of the best army found \(= 100 %\)$/,
+  );
+  // the trios kept named, the one chosen first with its word, its share 100 % once its troops have moved
+  const first = page.$$("#opt-panel-map .opt-trios tbody tr")[0];
+  assert.match(first.textContent, /chosen/);
+  assert.match(first.textContent, /100 %$/);
   // the stages as cards, the picture's legend
   assert.match(
     page.text("#opt-panel-map .opt-stages"),

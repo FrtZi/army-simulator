@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **58 defects**: 58 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **61 defects**: 61 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -71,6 +71,9 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-056](#def-056) | 2026-11-17 | The Keep and the Conclave gave no march places | third party | major | ✓ fixed |
 | [DEF-057](#def-057) | 2026-11-17 | A champion's pieces read from their icons were the wrong pieces | process | major | ✓ fixed |
 | [DEF-058](#def-058) | 2026-11-17 | Settled again with other talents, an army kept troops beyond its capacity | code | major | ✓ fixed |
+| [DEF-059](#def-059) | 2026-11-17 | The search kept one pair of heroes beside every third: its places spent on one army | code | minor | ✓ fixed |
+| [DEF-060](#def-060) | 2026-11-17 | A prototype stated a figure misread from its own histogram (406 trios tied, where 29 were) | process | minor | ✓ fixed |
+| [DEF-061](#def-061) | 2026-11-17 | A page-wide style squashed the search picture's bars | code | minor | ✓ fixed |
 
 ## Entries
 
@@ -812,3 +815,42 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A score that does not check a limit cannot be trusted to choose what sets the limit: fit the army to its limit before scoring a change to that limit.
 - **Proof:** `tests/optimiser-free.test.js`
 - **Links:** SIM-05, SIM-26
+
+<a id="def-059"></a>
+### DEF-059 · The search kept one pair of heroes beside every third: its places spent on one army
+
+`2026-11-17` · code · minor · ✓ fixed · tags: `engine`
+
+- **Finding:** Naming the trios kept on the model's map, on a real account's setup: 18 of the 20 trios kept were the same two heroes beside any third, all within a tenth of a percent of one another, so twenty places studied one army.
+- **Cause:** The trios were kept by their score at a glance only: a pair that lifts every army leads beside any third hero, and every such trio scores alike, so they filled the beam.
+- **Solution:** The trios kept are the best at a glance with each pair of heroes in three of them at most (perPair, a setting); measured on that setup for the four goals, never worse, as fast, and once a better army (D-53).
+- **Result:** On a made-up ranking the test keeps the trios in their order at a glance and turns away a pair's third and fourth; it fails without the cap (the pair kept every time).
+- **Lesson:** A beam kept by score alone fills with near-copies when one part of a branch dominates: keep the branches different where they are alike at a glance.
+- **Proof:** `tests/optimiser-pictures.test.js`
+- **Links:** SIM-05, SIM-27
+
+<a id="def-060"></a>
+### DEF-060 · A prototype stated a figure misread from its own histogram (406 trios tied, where 29 were)
+
+`2026-11-17` · process · minor · ✓ fixed · tags: `charts`, `tooling`
+
+- **Finding:** The single-graph prototype shown to Frantz said 406 trios were tied at 94.3 % where the kept ones were taken; drawing it again from the trail, 29 trios stood there, the 406 at about 90 %.
+- **Cause:** The probe binned the shares with an offset the prototype did not share, and the figure was read from a bin's count instead of counted from the scores themselves.
+- **Solution:** Every figure a prototype states is counted from the data it draws, by the same code that places it; the prototype was drawn again from the trail, every point computed beforehand.
+- **Result:** The prototype redrawn says 29 trios at 94.3 %, counted from the scores; the map built in the page counts its marks from the trail the same way.
+- **Lesson:** A figure said to the user is checked against the data it comes from, not against a summary of it.
+- **Proof:** Rule: a figure stated beside a picture is counted by the code that draws it, never read off another output.
+- **Links:** SIM-22
+
+<a id="def-061"></a>
+### DEF-061 · A page-wide style squashed the search picture's bars
+
+`2026-11-17` · code · minor · ✓ fixed · tags: `charts`, `page`
+
+- **Finding:** In the browser, the search picture's bars stood as small blocks at every height instead of rising from their line; in the tests they looked right.
+- **Cause:** The bars took the class bar, which the forms' style already sizes (height 0.6rem): a browser applies a CSS height to an SVG rectangle over its own height attribute; jsdom draws nothing, so no test saw it.
+- **Solution:** The picture's bars take a class of their own (glance-bar); the test checks that no page-wide style gives a height to any of the picture's shapes.
+- **Result:** The bars rise from their line in the browser; the test fails with the old class (a height reaches the bar) and passes with the new one.
+- **Lesson:** An SVG shape's size can be taken by any page-wide class of the same name: name a picture's classes by the picture, and test that no style reaches its shapes.
+- **Proof:** `tests/optimiser-pictures.test.js`
+- **Links:** SIM-22
