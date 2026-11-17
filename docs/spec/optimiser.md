@@ -125,3 +125,19 @@ and the gods' colours mark troops, heroes, talents and steps (with a word beside
 4. **To improve**: the path, each step with its kind's icon, its gain, its cost folded under it.
 
 The weight of a source or a bonus is what the army's score would lose without it, everything else kept.
+
+## The champion's pieces owned (SIM-26, Frantz, 2026-11-17; to agree)
+
+Today Your setup holds the pieces the champion wears, one per slot, and the optimiser keeps them as they are: a Nurgle
+army led by a champion in Khorne's and Undivided's pieces gets nothing from them, though Frantz owns pieces that lift
+Nurgle. The setup gains **the pieces owned**, each with its level (a piece owned twice, at two levels, listed twice);
+the pieces worn stay as they are, for the battle lab and the guides.
+
+The optimiser then chooses the champion's gear as one more linked branch: for the army it settles, each slot takes the
+piece owned that raises the score most, the sets counted as they fill (a set's tier can be worth more than a better
+piece alone), a piece raising the march capacity worth the troops it lets in. "With what I have" shows the gear chosen
+beside the gear worn, each change named ("put on Maggot Plate of Rot instead of Breastplate of Fury: +x %"); the path
+keeps suggesting a level up or a piece to forge, now against the gear chosen.
+
+- To agree: the pieces owned read from the forge's screens (a file section, as the troops); the choice per slot made
+  after the troops are settled, then the troops settled again (the order the talents already follow).

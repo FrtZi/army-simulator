@@ -662,3 +662,20 @@ tasks = [
   "[ ] Spec: what the battle says (wiped out, or survivors by troop), to agree",
 ]
 
+[[item]]
+id = "BL-40"
+title = "The champion's pieces owned: the best per slot chosen for each army"
+moscow = "should"
+milestone = "v1.3"
+module = "engine"
+status = "to do"
+added = 2026-11-17
+depends_on = ["BL-31"]
+features = ["SIM-26"]
+note = "Frantz, 2026-11-17: the armour sets I have, those that improve the Nurgle buffs, were not taken into account. Plan to add the best pieces; he will show what he owns."
+tasks = [
+  "[ ] The pieces owned from the forge's screens (Frantz to send them)",
+  "[ ] Spec agreed: the pieces owned in Your setup, the gear chosen per army beside the gear worn",
+  "[ ] The optimiser chooses the gear per slot among the pieces owned, sets counted, troops settled again",
+]
+
