@@ -15,6 +15,13 @@ function show(name) {
   byId(`opt-tab-${name}`).focus();
 }
 
+/** Draws the page with the search's picture playing, once: the next draws show it still (SIM-22). */
+function played() {
+  state.optimiserView.play = true;
+  renderAll();
+  state.optimiserView.play = false;
+}
+
 export function bindOptimiser() {
   bindTablist(byId("optimiser-tabs"), Object.keys(TABS), () => state.optimiserView.tab, show, "opt");
   // a block opened or closed is remembered ("toggle" does not bubble: caught on its way down, D-24)
@@ -44,7 +51,7 @@ export function bindOptimiser() {
   });
   byId("optimiser-run").addEventListener("click", () => {
     state.optimiser = { ...state.optimiser, result: runOptimiser() ?? false, applied: false };
-    renderAll();
+    played();
   });
   // X or Y (SIM-21): a side's aim ticked clears the comparison; the button runs both sides
   byId("optimiser-result").addEventListener("change", (event) => {
@@ -55,6 +62,10 @@ export function bindOptimiser() {
     renderAll();
   });
   byId("optimiser").addEventListener("click", (event) => {
+    if (event.target.closest?.("#opt-map-replay")) {
+      played();
+      return;
+    }
     if (event.target.id === "optimiser-xy-run") {
       state.optimiserXY.result = runAims(state.optimiserXY.aims);
       renderAll();

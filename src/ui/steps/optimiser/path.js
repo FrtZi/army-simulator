@@ -24,10 +24,10 @@ const ENTRIES = {
 };
 
 /** A step's entry: a hero, a ritual, a building, a gear piece or a skill, as the game's data holds it. */
-const entryOf = ({ kind, id }) => ENTRIES[kind](currentGame(), id);
+export const entryOf = ({ kind, id }) => ENTRIES[kind](currentGame(), id);
 
 /** A step's gain in words: by how much the goal's score rises, or the battle's margin in power. */
-function gainText(result, gain) {
+export function gainText(result, gain) {
   if (goalOf(result.goal).battle) return t("optimiser.pathPower", { gain: number(gain) });
   const percent = (gain / result.score) * 100;
   // below what one decimal shows: said so, not "+0 %"
@@ -35,7 +35,7 @@ function gainText(result, gain) {
 }
 
 /** What a step costs, each item in the player's language. */
-function costText(step) {
+export function costText(step) {
   if (step.kind === "skill") return t("optimiser.pathPoint");
   const items = Object.entries(costBetween(entryOf(step), step.from, step.to));
   if (!items.length) return t("guides.free");
@@ -45,7 +45,7 @@ function costText(step) {
 }
 
 /** What the step does: a hero got or raised, a ritual, a building, a piece or a skill one level up, a piece put on. */
-function whatText(step) {
+export function whatText(step) {
   const name = label(entryOf(step));
   if (step.kind === "gear" && !step.from) return t("optimiser.pathPutOn", { name });
   if (step.kind !== "hero") return t(`optimiser.path-${step.kind}`, { name, from: step.from, to: step.to });

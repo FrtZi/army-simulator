@@ -67,7 +67,7 @@ export const state = {
   // index or "pve"), the army found (false: none placed), put in the composition; then the tab shown and the blocks
   // closed (SIM-18), kept across runs
   optimiser: { goal: CONFIG.optimiser.goals[0].id, aim: {}, opponent: "", result: null, applied: false },
-  optimiserView: { tab: "have", closed: new Set() },
+  optimiserView: { tab: "have", closed: new Set(), play: false }, // play: the search drawn plays once (SIM-22)
   optimiserXY: { aims: { x: {}, y: {} }, result: null }, // X or Y: two aims ticked, their armies (SIM-21)
   dashboard: "efficiency", // the dashboard tab shown
   efficiencyFilters: {}, // the charts' filters: building, tier, alignment → the values ticked

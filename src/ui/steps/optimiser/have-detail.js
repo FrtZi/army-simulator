@@ -2,12 +2,14 @@
 // its stats and set, the rituals acting on the army, the bonuses summed by stat and source, the power two ways.
 import { escape } from "../../dom.js";
 import { label, nameOf, number } from "../../format.js";
-import { championFiguresHtml } from "../../champion-figures.js";
+import { championStatsHtml } from "../../champion-figures.js";
 import { championInPlay } from "../../lab-setup.js";
 import { SOURCES } from "../../optimiser-detail.js";
 import { currentGame, state } from "../../state.js";
 import { t } from "../../texts/index.js";
 import { block, godClass } from "./blocks.js";
+import { effectLines } from "./effect-lines.js";
+import { gearPicture } from "./champion-gear.js";
 
 const percent = (share) => number(share * 100, 1);
 const signed = (value) => `${value > 0 ? "+" : ""}${number(value, 1)} %`;
@@ -40,27 +42,31 @@ function weightsBlock({ weights }) {
   return block("weights", t("optimiser.weightsTitle"), line || t("optimiser.weightsNone"), body);
 }
 
-function championBlock({ weights }) {
+function championBlock({ weights }, result) {
   const champion = championInPlay(state);
   if (!champion.level && !champion.gear?.length) {
     return block("champion", t("optimiser.championTitle"), t("optimiser.championNone"), "");
   }
   const line = t("optimiser.championLine", { level: champion.level ?? "—", weight: percent(weights.champion) });
-  return block("champion", t("optimiser.championTitle"), line, championFiguresHtml(champion));
+  // its gear drawn by slot and set (SIM-24), then its own stats at its level
+  const body = `${gearPicture(champion, result)}${champion.level ? championStatsHtml(champion.level) : ""}`;
+  return block("champion", t("optimiser.championTitle"), line, body);
 }
 
 /** A ritual's god, for its mark: the god its effects target, else none (a ritual for every troop). */
 const ritualGod = (ritual) => ritual.effects.find((effect) => effect.target?.alignments)?.target.alignments[0];
 
+/** A ritual's row (SIM-23): its name and level, its weight as a bar, its effects grouped under it. */
+function ritualRow(ritual, entry) {
+  const god = ritualGod(ritual);
+  const share = Math.round(Math.max(0, ritual.weight) * 1000) / 10;
+  return `<li class="opt-ritual${god ? ` ${godClass(god)}` : ""}"><div class="share"><span><span class="opt-name">${escape(label(entry))}</span> <span class="opt-level">${escape(t("optimiser.ritualLevel", { level: ritual.level }))}</span></span>
+    <span class="share-bar" aria-hidden="true"><span data-share="${share}"></span></span><span class="share-value">${escape(`−${percent(Math.max(0, ritual.weight))} %`)}</span></div>${effectLines(ritual.effects)}</li>`;
+}
+
 function ritualsBlock({ rituals, weights }) {
   const entries = new Map(currentGame().rituals.rituals.map((entry) => [entry.id, entry]));
-  const rows = rituals.map((ritual) => {
-    const name = `${label(entries.get(ritual.id))} · ${t("optimiser.ritualLevel", { level: ritual.level })} · ${ritual.effects
-      .map((effect) => `${effectLabel(effect)} ${signed(effect.percent)}`)
-      .join(", ")}`;
-    const god = ritualGod(ritual);
-    return weightRow(name, ritual.weight, god ? godClass(god) : "");
-  });
+  const rows = rituals.map((ritual) => ritualRow(ritual, entries.get(ritual.id)));
   const held = state.savedPlayerSetup.rituals.length;
   const line = t("optimiser.ritualsLine", { n: rituals.length, held, weight: percent(weights.rituals) });
   const body = rows.length
@@ -86,6 +92,6 @@ function synthesisBlock({ synthesis }) {
   );
 }
 
-/** The detail's blocks, in the agreed order: what weighs most, the champion, the rituals, the synthesis. */
-export const detailBlocks = (detail) =>
-  `${weightsBlock(detail)}${championBlock(detail)}${ritualsBlock(detail)}${synthesisBlock(detail)}`;
+/** The detail's blocks, in the agreed order: what weighs most, the champion, the rituals, the synthesis; `result`: the optimiser's. */
+export const detailBlocks = (result) =>
+  `${weightsBlock(result.detail)}${championBlock(result.detail, result)}${ritualsBlock(result.detail)}${synthesisBlock(result.detail)}`;

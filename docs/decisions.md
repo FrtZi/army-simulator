@@ -695,3 +695,23 @@ the appearance and the prestige come within a few dozen places of the base the p
 
 - _Set aside:_ the base worked out from the buildings when the setup gives none (the appearance and the prestige are
   missing, so it would read low); the appearance and the prestige themselves (BL-36, and the bonus rows in Your setup).
+
+## D-51 · The optimiser's pictures: the search, the army, the path, the bonus lines, the champion's gear (2026-11-17)
+
+Frantz asked for the model's map to be graphic again, and for the bonuses and the champion's gear to read at a glance;
+he chose on prototypes (the colours of the search's stages made distinct). **The search**: the engine now returns its
+trail (the trios tried, how many kept, the ranks at a glance of those settled and of the one chosen), and the page draws
+every trio as a dot, scattered in a fixed order: tried in grey, kept in blue, settled in amber, the one chosen larger in
+green with a ring; size tells them apart too, and each stage is named in a legend and in words under the picture. The
+dots are one SVG path per stage (thousands of dots in four elements); the picture plays stage by stage after a run or on
+"Replay", for one draw only, and not at all when the player asks for less motion. **The army chosen**: its heroes, its
+troops as one bar by god, its power two ways as two bars (SIM-20), what weighs most as one bar by source. **The path**:
+branches from the army chosen to each step, thicker for a larger gain, coloured by kind; each leaf its name and levels.
+**Bonus lines** (rituals now, any list of effects later): grouped by value, the stats that touch the same troops on one
+line, the troops as tags, the value in bold. **The champion's gear**: a card per slot, rarity, level as pips, its bonuses
+in battle as bonus lines (the march's apart), how many act outside battle, the next level's gain or the best piece for an
+empty slot from the path; each set begun as a track of its pieces, the tiers that act in battle outlined, each tier in
+words. New colour tokens for the stages and kinds, checked at 3:1 in both themes like the gods'.
+
+- _Set aside:_ the dots placed by score (all the kept trios would sit in one corner: scattered reads better, the rank is
+  said in words); a picture redrawn live while the search runs (SIM-14, later).

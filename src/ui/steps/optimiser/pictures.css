@@ -1,0 +1,196 @@
+/* The optimiser's pictures (SIM-22, SIM-23, SIM-24): the search's dots, the army's bars, the path's branches, the
+   bonus lines and the champion's gear. Every colour is a mark from the tokens, its words always beside it. */
+.stage-tried {
+  --mark: var(--stage-tried);
+}
+.stage-kept {
+  --mark: var(--stage-kept);
+}
+.stage-settled {
+  --mark: var(--stage-settled);
+}
+.stage-chosen {
+  --mark: var(--stage-chosen);
+}
+.kind-ritual {
+  --mark: var(--kind-ritual);
+}
+.kind-hero {
+  --mark: var(--kind-hero);
+}
+.kind-structure {
+  --mark: var(--kind-structure);
+}
+.kind-champion {
+  --mark: var(--kind-champion);
+}
+.mark-rarity-core {
+  --mark: var(--rarity-core);
+}
+.mark-rarity-uncommon {
+  --mark: var(--rarity-uncommon);
+}
+.mark-rarity-rare {
+  --mark: var(--rarity-rare);
+}
+.mark-rarity-epic {
+  --mark: var(--rarity-epic);
+}
+.mark-rarity-legendary {
+  --mark: var(--rarity-legendary);
+}
+.mark-rarity-eternal {
+  --mark: var(--rarity-eternal);
+}
+
+.opt-metrics,
+.opt-legend,
+.opt-chips,
+.opt-effects,
+.opt-gears,
+.opt-gear-sets,
+.opt-tiers {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.opt-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.5rem;
+}
+
+.opt-metrics li {
+  background: var(--field);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.6rem;
+  display: grid;
+}
+
+.opt-metrics b {
+  font-size: 1.25rem;
+  color: var(--heading);
+}
+
+.opt-metrics span,
+.opt-legend,
+.opt-sub,
+.opt-slot {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.opt-search,
+.opt-tree {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0.5rem;
+}
+
+.dots {
+  fill: none;
+  stroke: var(--mark);
+  stroke-linecap: round;
+}
+
+.dots.stage-tried {
+  opacity: 0.55;
+}
+
+.dots-ring {
+  fill: none;
+  stroke: var(--mark);
+  stroke-width: 2;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .opt-search.play .stage-tried {
+    animation: opt-appear 0.8s both;
+  }
+  .opt-search.play .stage-kept {
+    animation: opt-appear 0.5s 1s both;
+  }
+  .opt-search.play .stage-settled {
+    animation: opt-appear 0.5s 2s both;
+  }
+  .opt-search.play .stage-chosen {
+    animation: opt-appear 0.5s 3s both;
+  }
+}
+
+@keyframes opt-appear {
+  from {
+    opacity: 0;
+  }
+}
+
+.opt-legend,
+.opt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.opt-legend li,
+.opt-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.opt-dot {
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--mark, var(--god, var(--line)));
+}
+
+.opt-chip {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.15rem 0.6rem;
+}
+
+.opt-stack {
+  display: flex;
+  height: 0.8rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  background: var(--field);
+  margin-top: 0.75rem;
+}
+
+.opt-stack span,
+.opt-panel .share-bar span.stage-tried,
+.opt-panel .share-bar span.stage-chosen {
+  background: var(--mark, var(--god, var(--accent)));
+}
+
+.opt-branch .branch {
+  fill: none;
+  stroke: var(--mark);
+  stroke-linecap: round;
+}
+
+.opt-branch .leaf {
+  fill: var(--mark);
+}
+.opt-tree text {
+  fill: var(--text);
+  font-size: 13px;
+}
+.opt-tree .leaf-gain {
+  fill: var(--good);
+  font-weight: 600;
+}
+.opt-root rect {
+  fill: var(--field);
+  stroke: var(--stage-chosen);
+}
+.opt-root text {
+  fill: var(--heading);
+  font-weight: 600;
+}

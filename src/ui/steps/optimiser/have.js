@@ -71,7 +71,7 @@ function heroesBlock(result) {
 
 /** The tab: the summary, the troops, the heroes and talents, and where to put the army found. */
 export const havePanel = (result) => `${summaryBlock(result)}${troopsBlock(result)}${heroesBlock(result)}
-  ${detailBlocks(result.detail)}
+  ${detailBlocks(result)}
   <div class="file-actions">
     <button id="optimiser-use" type="button" class="secondary">${escape(t("optimiser.use", { name: compositionName() }))}</button>
     <button id="optimiser-new" type="button" class="secondary">${escape(t("optimiser.useNew"))}</button>

@@ -635,14 +635,30 @@ module = "ui"
 status = "doing"
 added = 2026-11-16
 depends_on = ["BL-31"]
-features = ["SIM-18", "SIM-19", "SIM-20", "SIM-21"]
+features = ["SIM-18", "SIM-19", "SIM-20", "SIM-21", "SIM-22", "SIM-23", "SIM-24"]
 note = "Frantz, 2026-11-16, on the mockups: the talents under the heroes, the champion with its stats and set in its own block, the rituals acting on the army and the bonuses summed up, the power with every bonus beside the game's; a tab with the model's map; X or Y with any aim, and a path suggested from the troops, heroes and talents; everything opens and closes."
 tasks = [
   "[x] The tabs and the folding blocks; the summary, troops, heroes and talents; the path; the map's figures (D-47)",
   "[x] The champion, the rituals acting on the army, the bonus synthesis, each source's weight (D-48)",
   "[x] The power with every bonus beside the game's (D-48; its definition to confirm)",
   "[x] X or Y with two free aims (D-48)",
+  "[x] The model's map drawn, the bonus lines, the champion's gear by slot and set, as prototyped (D-51)",
   "[ ] The aims suggested from the troops, heroes and talents held (once the search is faster)",
   "[x] The path in its tab, each step's cost folded; the model's map as its figures (D-47; its tree with SIM-14)",
+]
+
+[[item]]
+id = "BL-39"
+title = "A battle's outcome in full: the enemy wiped out in one fight, or its survivors"
+moscow = "should"
+milestone = "v1.3"
+module = "engine"
+status = "to do"
+added = 2026-11-17
+depends_on = []
+features = ["SIM-25"]
+note = "Frantz, 2026-11-17, on the battle simulation against a PvE army: say whether it kills them in one fight, or whether survivors remain."
+tasks = [
+  "[ ] Spec: what the battle says (wiped out, or survivors by troop), to agree",
 ]
 

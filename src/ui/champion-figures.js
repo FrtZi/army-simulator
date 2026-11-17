@@ -56,20 +56,20 @@ const table = (rows, head) =>
     .map(([name, value]) => `<tr><td>${escape(name)}</td><td class="num">${value}</td></tr>`)
     .join("")}</tbody></table>`;
 
+/** The champion's own stats at its level, as a table under its heading. */
+export function championStatsHtml(level) {
+  const stats = Object.entries(data().champion.stats).map(([id, values]) => [
+    nameOf("troopStats", id),
+    number(values[level - 1]),
+  ]);
+  return `<h3>${escape(t("champion.statsAt", { level }))}</h3>${table(stats, [t("guides.stat"), t("guides.now")])}`;
+}
+
 /** The champion's figures, or a hint while it has neither level nor gear. `champion`: { level, gear } or null. */
 export function championFiguresHtml(champion) {
   const { level, gear = [] } = champion ?? {};
   if (!level && !gear.length) return `<p class="hint">${escape(t("champion.nothingYet"))}</p>`;
-  const parts = [];
-  if (level) {
-    const stats = Object.entries(data().champion.stats).map(([id, values]) => [
-      nameOf("troopStats", id),
-      number(values[level - 1]),
-    ]);
-    parts.push(
-      `<h3>${escape(t("champion.statsAt", { level }))}</h3>${table(stats, [t("guides.stat"), t("guides.now")])}`,
-    );
-  }
+  const parts = level ? [championStatsHtml(level)] : [];
   const bonuses = [...summed(gear, "march"), ...summed(gear, "general")].map(([name, percent]) => [
     name,
     `+${number(percent, 2)} %`,

@@ -106,10 +106,12 @@ src/ui/                  the page
                          page (language, theme, the page tabs: tabs.html, tabs.js), game, then the Battle lab's:
                          load (the "Load your setup" switch), bonuses, army (+ compositions), picker, heroes
                          (+ picker.js; heroes.js beside state.js works out a composition's heroes), optimiser (the best army with
-                         your setup: the goal, the aim, the button in draw.js; its tabs: map.js the model's map,
-                         have.js with what I have (have-detail.js its detail), xy.js X or Y, path.js to improve;
-                         blocks.js a folding block, words.js the
-                         results in words; optimiser.css),
+                         your setup: the goal, the aim, the button in draw.js; its tabs: map.js the model's map
+                         (map-search.js the search's dots, map-army.js the army chosen, map-path.js the path's
+                         branches), have.js with what I have (have-detail.js its detail, effect-lines.js the bonus
+                         lines, champion-gear.js the gear by slot and set), xy.js X or Y, path.js to improve;
+                         blocks.js a folding block, words.js the results in words; optimiser.css, pictures.css and
+                         gear.css),
                          profile (+ table.js: key columns and their details), compare, dashboards
                          (one file per tab: efficiency + raiding, rounds, balance, map, pros; dashboards.css), saves;
                          and Your setup's: setup (the summary's tiles and the save state in draw.js, the heroes
@@ -159,6 +161,7 @@ tests/                   node --test; each test names the feature it proves
 ├── optimiser.test.js    the optimiser: against simple armies and every choice, then on the page (SIM-05)
 ├── optimiser-aim.test.js  an aim: only its troops, what it costs now, on the page (SIM-12)
 ├── optimiser-free.test.js the best with no aim never below an aimed one (SIM-12, DEF-054)
+├── optimiser-pictures.test.js the search's trail drawn, bonus lines, the champion's gear (SIM-22 to SIM-24)
 ├── path.test.js         the path: gains counted by hand, then on the page (SIM-12)
 ├── path-levelled.test.js  the path's rituals and buildings: a worked tree, then the page (SIM-12)
 ├── path-champion.test.js  the path's champion: pieces and skills on a worked case, then the page (SIM-12)

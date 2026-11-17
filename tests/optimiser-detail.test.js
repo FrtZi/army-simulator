@@ -26,7 +26,7 @@ function run(setup) {
 }
 const blockText = (page, id) => page.text(`#opt-panel-have [data-block="${id}"]`);
 
-test("SIM-19 what weighs, the rituals acting on the army, the bonuses summed by stat and source", () => {
+test("SIM-19 SIM-23 what weighs, the rituals acting on the army, the bonuses summed by stat and source", () => {
   const page = run({
     // Brutal Strength raises Khorne's melee attack; the Tallyman's Dirge, Nurgle's morale only
     rituals: [
@@ -40,8 +40,9 @@ test("SIM-19 what weighs, the rituals acting on the army, the bonuses summed by 
   assert.match(weights, /^What weighs most .*Champion −[\d.]+ %/);
   // the Dirge touches the Pestigor's morale, which damage × health does not count: listed, weighing nothing
   const rituals = blockText(page, "rituals");
-  assert.match(rituals, /Brutal Strength · level 4 · Melee Attack, Khorne \+6 %/);
-  assert.match(rituals, /Tallymans Dirge · level 3 · Morale, Nurgle \+7 % ?−0 %/);
+  // each ritual its name and level, its weight, then its effects grouped: stats, troops' tags, value (SIM-23)
+  assert.match(rituals, /Brutal Strength level 4 −[\d.]+ %Melee AttackKhorne\+6 %/);
+  assert.match(rituals, /Tallymans Dirge level 3 −0 %MoraleNurgle\+7 %/);
   // the Breastplate of Fury at rare: Khorne's health +10.5 %, in the champion's column
   assert.match(blockText(page, "synthesis"), /Health, Khorne—\+10\.5 %———Melee Attack, Khorne——\+6 %——/);
   assert.match(blockText(page, "champion"), /^Champion level 40 · −[\d.]+ % without it/);

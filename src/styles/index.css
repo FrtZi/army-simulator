@@ -11,4 +11,6 @@
 @import "../ui/steps/load/load.css";
 @import "../ui/steps/guides/guides.css";
 @import "../ui/steps/optimiser/optimiser.css";
+@import "../ui/steps/optimiser/pictures.css";
+@import "../ui/steps/optimiser/gear.css";
 @import "./responsive.css";

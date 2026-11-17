@@ -105,6 +105,17 @@ const contrast = (tokens, one, two) => {
 const GODS = ["undivided", "khorne", "nurgle", "slaanesh", "tzeentch"];
 // a rarity's name is written in its colour (GUIDE-05): text, so 4.5:1
 const RARITIES = ["core", "uncommon", "rare", "epic", "legendary", "eternal"].map((id) => `rarity-${id}`);
+// the optimiser's pictures (SIM-22): marks on the cards, each named beside it, so 3:1
+const PICTURES = [
+  "stage-tried",
+  "stage-kept",
+  "stage-settled",
+  "stage-chosen",
+  "kind-ritual",
+  "kind-hero",
+  "kind-structure",
+  "kind-champion",
+];
 
 for (const [theme, tokens] of Object.entries(THEMES)) {
   const check = (pairs, minimum) => {
@@ -128,8 +139,8 @@ for (const [theme, tokens] of Object.entries(THEMES)) {
     );
   });
 
-  test(`ACC-01 [${theme}] focus ring, capacity bar and troop icons stand out from their surfaces (3:1)`, () => {
-    check([...on(["focus"]), ["good", "field"], ["critical", "field"], ...on(GODS)], AA_NON_TEXT);
+  test(`ACC-01 [${theme}] focus ring, capacity bar, troop icons and the optimiser's pictures stand out from their surfaces (3:1)`, () => {
+    check([...on(["focus"]), ["good", "field"], ["critical", "field"], ...on(GODS), ...on(PICTURES)], AA_NON_TEXT);
   });
 }
 

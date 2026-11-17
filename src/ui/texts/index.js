@@ -10,6 +10,7 @@ import { EN_SETUP_FILES } from "./en-setup-files.js";
 import { EN_GUIDES } from "./en-guides.js";
 import { EN_CLAB } from "./en-clab.js";
 import { EN_OPTIMISER } from "./en-optimiser.js";
+import { EN_PICTURES } from "./en-pictures.js";
 import { FR } from "./fr.js";
 import { FR_MORE } from "./fr-more.js";
 import { FR_DASH } from "./fr-dash.js";
@@ -19,6 +20,7 @@ import { FR_SETUP_FILES } from "./fr-setup-files.js";
 import { FR_GUIDES } from "./fr-guides.js";
 import { FR_CLAB } from "./fr-clab.js";
 import { FR_OPTIMISER } from "./fr-optimiser.js";
+import { FR_PICTURES } from "./fr-pictures.js";
 
 export const TEXTS = {
   en: {
@@ -31,6 +33,7 @@ export const TEXTS = {
     ...EN_GUIDES,
     ...EN_CLAB,
     ...EN_OPTIMISER,
+    ...EN_PICTURES,
   },
   fr: {
     ...FR,
@@ -42,6 +45,7 @@ export const TEXTS = {
     ...FR_GUIDES,
     ...FR_CLAB,
     ...FR_OPTIMISER,
+    ...FR_PICTURES,
   },
 };
 
