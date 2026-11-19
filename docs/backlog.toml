@@ -288,10 +288,11 @@ added = 2026-10-22
 features = ["SIM-04"]
 tasks = [
   "[x] The spec, agreed with Frantz on 2026-11-19 (docs/spec/calibration.md): every value of it in a data table",
-  "[ ] data/<game>/calibration.json, the parameter table, and the reports' format in data-model.md",
+  "[x] data/<game>/calibration.json, the parameter table, and the reports' format in data-model.md",
   "[ ] Battle reports from Frantz, the army sent known exactly (as many as calibration.json asks)",
-  "[ ] The backtest: every report replayed, its gaps shown",
-  "[ ] The fit, one parameter at a time, kept only if it holds out of sample; open questions 1 to 4 settled",
+  "[x] The backtest: every report replayed, its gaps shown (scripts/backtest.mjs)",
+  "[x] The fit's tool: one parameter at a time, kept only if it holds out of sample (--fit)",
+  "[ ] The fit run on the reports; open questions 1 to 4 settled",
 ]
 
 [[item]]

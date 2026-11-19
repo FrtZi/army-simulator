@@ -19,7 +19,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 5/11 | 30/39 | ○ not yet: 1 Must left |
-| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/9 | 3/15 | — |
+| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/9 | 6/16 | — |
 
 ## Ready to start
 
@@ -509,7 +509,7 @@ Validated as ideas, not planned yet: each one is reprioritised when a version is
 | ID | Item | MoSCoW | Module | Status | Tasks |
 |---|---|---|---|---|---|
 | [BL-09](#bl-09) | Credit cctools.cc and tell its author | could | framework | ◐ doing | 2/3 |
-| [BL-15](#bl-15) | Calibration on battle reports: tier modifier, broken bonus, morale per squad | should | [engine](../src/engine) | ◐ doing | 1/5 |
+| [BL-15](#bl-15) | Calibration on battle reports: tier modifier, broken bonus, morale per squad | should | [engine](../src/engine) | ◐ doing | 4/6 |
 | [BL-17](#bl-17) | Read-only share link | could | [storage](../src/storage) | ○ to do | 0/1 |
 | [BL-18](#bl-18) | Food upkeep: settle the factor of 6 with cctools.cc | could | [data](../data) | ○ to do | 0/1 |
 | [BL-19](#bl-19) | The troops' pictures from the game | won't | [ui](../src/ui) | ○ to do | 0/1 |
@@ -535,10 +535,11 @@ A nice-to-have (Frantz, 2026-11-09): it waits on nothing and nothing waits on it
 Should · [engine](../src/engine) · ◐ doing · added `2026-10-22` · features: SIM-04
 
 - [x] The spec, agreed with Frantz on 2026-11-19 (docs/spec/calibration.md): every value of it in a data table
-- [ ] data/<game>/calibration.json, the parameter table, and the reports' format in data-model.md
+- [x] data/<game>/calibration.json, the parameter table, and the reports' format in data-model.md
 - [ ] Battle reports from Frantz, the army sent known exactly (as many as calibration.json asks)
-- [ ] The backtest: every report replayed, its gaps shown
-- [ ] The fit, one parameter at a time, kept only if it holds out of sample; open questions 1 to 4 settled
+- [x] The backtest: every report replayed, its gaps shown (scripts/backtest.mjs)
+- [x] The fit's tool: one parameter at a time, kept only if it holds out of sample (--fit)
+- [ ] The fit run on the reports; open questions 1 to 4 settled
 
 <a id="bl-17"></a>
 #### BL-17 · Read-only share link

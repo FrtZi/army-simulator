@@ -779,3 +779,26 @@ that gap is the engine's.
 
 - _Set aside:_ how many attacks it takes to finish an army (each attack's losses change the next); the wounded the
   Sawbones takes in (the engine counts troops lost, not where they go).
+
+## D-55 · The calibration's backtest: the page's own replay, a log ratio per measure (2026-11-19)
+
+The calibration ([spec](spec/calibration.md)) is built before its reports, so the first one can be replayed the day it
+comes. A report is a JSON file typed in from the game's screens, with the setup file of that day; `scripts/replay.mjs`
+builds both sides **with the page's own state** (the setup loaded, the army as a composition, the PvE place as the
+second side), so the backtest replays exactly the battle the page would show, not a second assembly of it that could
+drift. The gaps and the fit (`src/calibration/`) know neither the page nor the files: they are tested on figures made up
+for the test, in the CI; the real reports stay on the author's computer and their test is skipped elsewhere.
+
+A gap is the **log ratio** of predicted to actual: twice and half the dead weigh the same, and an army of a million and
+one of a thousand compare alike. Each measure (the enemy's dead, yours, your power lost, your dead troop by troop) gets
+its weight from `calibration.json`; a report's score is the weighted mean of its squared gaps. The fit tries each
+candidate of the table, and keeps the best only if, with each report left out in turn and the value fitted on the
+others, the left-out reports score better than with today's value; it is called fitted only with the reports the table
+asks for (six). The tool reads and writes nothing: a fitted value goes into `combat-rules.json` by hand, with its
+decision.
+
+- _Set aside:_ the replay assembled anew from the engine alone (it would have to redo what the page does with a setup:
+  heroes owned, rituals, buildings, the champion; two assemblies drift); a plain difference or a percentage as the gap
+  (a difference lets the biggest battle decide; a percentage weighs twice and half unequally); fitting every parameter
+  at once (with a handful of reports, it would fit the noise); the tool writing the fitted value itself (a model value
+  changes with a decision, read and agreed).

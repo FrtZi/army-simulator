@@ -1,7 +1,7 @@
 # Calibration on battle reports (SIM-04, BL-15, BL-21) — spec
 
 [← Overview](../../ARCHITECTURE.md) · Catalogue: SIM-04 · Rules: `data/<game>/combat-rules.json` · Status: proposed on
-2026-11-19, after the audit of the same day; agreed by Frantz on 2026-11-19
+2026-11-19, after the audit of the same day; agreed by Frantz on 2026-11-19; the table, the backtest and the fit built on 2026-11-19 (D-55), the reports to come
 
 ## The need
 

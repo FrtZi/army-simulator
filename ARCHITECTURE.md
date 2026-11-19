@@ -33,6 +33,7 @@ data/                    each game's facts (JSON), the same for every player (D-
     ├── item-sources.json  where each item drops: imported (scripts/import-item-sources.mjs)
     ├── champion.json    the champion by level, its gear and sets: imported (scripts/import-champion.mjs)
     ├── pve.json         the PvE places and their troops: imported (scripts/import-pve.mjs), not in the page yet
+    ├── calibration.json the calibration's own table: the parameters to fit, their candidates, its settings (SIM-04)
     └── setup.json       the setup file's words: each element's definition, reading examples, the agent brief (D-28)
 src/engine/              pure functions, no DOM, no file access: callers pass the data
 ├── index.js             public API: the only file the page and the tests import
@@ -58,6 +59,8 @@ src/engine/              pure functions, no DOM, no file access: callers pass th
 ├── path.js              the path: each hero to get or raise, by its gain on the army found (SIM-12)
 ├── levelled-steps.js    the path's rituals and buildings: one level up, what it asks first (SIM-12)
 └── champion-steps.js    the path's champion: a piece raised or put on, a skill one level up (SIM-12)
+src/calibration/         no DOM, no file access: measures.js (a report's figures and its replay's, their gaps, a
+                         score), fit.js (one parameter's candidates tried, kept out of sample) (SIM-04)
 src/storage/             no DOM: configuration.js (setup ↔ file format version 2, checks), migrate.js (an older
                          file brought up to date), browser.js (saves, the Champion lab's included); the player's setup file (D-27):
                          setup-file.js (read and checked value by value, written back; setup-checks.js: what its
@@ -142,6 +145,7 @@ scripts/
 ├── import-skills.mjs    champion-skills.json, the champion's two skill trees
 ├── import-champion.mjs  champion.json, the champion, its gear and sets
 ├── import-pve.mjs       pve.json, the PvE places and their troops
+├── replay.mjs, backtest.mjs  a battle report replayed as the page plays it; the backtest and the fit (SIM-04)
 ├── backlog*.mjs         the product backlog: its check and its page docs/backlog.md (npm run backlog)
 └── defects*.mjs         the defects register: its format, its check, its page docs/defects.md (npm run defects)
 examples/
@@ -185,6 +189,7 @@ tests/                   node --test; each test names the feature it proves
 ├── performance.test.js  the worst comparison against a phone's budget (PERF-01)
 ├── warlords.test.js     the warlords: complete at every level, their talents valid bonuses (DATA-05)
 ├── rituals.test.js      the rituals and structures: complete, costs, requirements and bonuses known (DATA-07)
+├── calibration.test.js  the gaps, the fit, a fictitious report replayed; the real reports, local only (SIM-04)
 ├── crosscheck.test.js   data/ against the game's data from cctools.cc (local only, D-25)
 └── catalogue, defects, backlog   the catalogue against the tests (MAINT-02); the defects and backlog checkers
 ```
@@ -208,7 +213,9 @@ flowchart TD
 ```
 
 `render.js` never imports a `bind.js`, and a `draw.js` never imports `render.js`: that keeps the graph free of
-cycles. The engine imports nothing from the page.
+cycles. The engine imports nothing from the page. `src/calibration/` imports nothing either; `scripts/replay.mjs`
+builds a battle report's two sides with the page's own state, so the backtest replays the battle the page shows
+(D-55).
 
 ## The render pipeline
 
@@ -236,17 +243,19 @@ army lines and the profile.
 
 ## Where things live
 
-| Kind of data                              | Place                                    |
-| ----------------------------------------- | ---------------------------------------- |
-| A game fact (unit stat, rule, vocabulary) | `data/*.json`                            |
-| A player's configuration                  | their browser, and the files they export |
-| A player's setup (what they have in game) | their browser, as a setup file (D-27)    |
-| A screenshot                              | `captures/`, on this computer only       |
-| A tunable value of the interface          | `CONFIG` in `src/ui/config.js`           |
-| A text of the page                        | `src/ui/texts/en.js` and `fr.js`         |
-| An in-game name                           | `labels` in `data/<game>/*.json`         |
-| A colour                                  | tokens in `src/styles/tokens.css`        |
-| The page's language choice                | the player's browser (`localStorage`)    |
+| Kind of data                              | Place                                                    |
+| ----------------------------------------- | -------------------------------------------------------- |
+| A game fact (unit stat, rule, vocabulary) | `data/*.json`                                            |
+| A player's configuration                  | their browser, and the files they export                 |
+| A player's setup (what they have in game) | their browser, as a setup file (D-27)                    |
+| A screenshot                              | `captures/`, on this computer only                       |
+| A battle report (SIM-04)                  | `captures/<game>/battle-reports/`, on this computer only |
+| A calibration setting                     | `data/<game>/calibration.json`                           |
+| A tunable value of the interface          | `CONFIG` in `src/ui/config.js`                           |
+| A text of the page                        | `src/ui/texts/en.js` and `fr.js`                         |
+| An in-game name                           | `labels` in `data/<game>/*.json`                         |
+| A colour                                  | tokens in `src/styles/tokens.css`                        |
+| The page's language choice                | the player's browser (`localStorage`)                    |
 
 ## Design principles
 

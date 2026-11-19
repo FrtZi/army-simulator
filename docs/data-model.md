@@ -209,6 +209,35 @@ test at 25 % losses), with their source. Under `model`, the parameters the game 
 damage and health divisors (from the community wiki), the tier modifier and the extra damage on broken troops
 (0 until the calibration measures them).
 
+## Calibration: `data/<game>/calibration.json` and the battle reports (SIM-04)
+
+The calibration's own table ([spec](spec/calibration.md)); the model's values stay in `combat-rules.json`, which the
+calibration changes and nothing else. `reports`: the folder the reports are read from. `parameters`: one per value to
+fit, with its `id`, the open `question` it answers, its `combatRulesKey` (a dotted key in `combat-rules.json`; `null`
+for a choice of rule the engine cannot switch yet, `pending` saying what it needs), its `status` (`estimate` or
+`fitted`), the `reports` behind it, its `order` in the fit and its `candidates`: `values` (each a `name` and a whole
+`value`), or a range (`from`, `to`, `step`). `settings`: the `reportsNeeded` to call a parameter fitted, the
+`noiseGapPercent` (a gap within it matches; an estimate until the same target is fought twice), the `countOffset` added
+to both counts before their log ratio (so a troop with no dead on one side still compares), the `measures` compared
+and their `weight`, and the `suggestedTargets` by their place id in `pve.json`.
+
+A **battle report** is one file per battle in `captures/<game>/battle-reports/`, on the author's computer only (his
+army and levels are personal), typed in from the game's screens:
+
+| Field               | What it holds                                                                                 |
+| ------------------- | --------------------------------------------------------------------------------------------- |
+| `format`, `version` | `"army-simulator/battle-report"`, `1`                                                         |
+| `game`, `date`      | the game's id; the day of the battle (ISO)                                                    |
+| `setup`             | the setup file of that day as the page downloads it, named relative to the folder; `null`     |
+| `target`            | `place`: its id in `pve.json`; `troops`: id → count left when it was already hit, else `null` |
+| `army`              | the army sent as a composition: `troops` (id → count), `heroes`, `talents`, `ledByChampion`   |
+| `figures.attacker`  | `lost`: your dead, troop by troop (id → count); `powerLost`: the power you lost               |
+| `figures.defender`  | `lost`: the enemy's dead, troop by troop (its ids in `pve.json`)                              |
+
+`node scripts/backtest.mjs` replays each report and shows each measure's gap; `--fit <parameter id>` fits one. A gap is
+the log ratio of predicted to actual (0 when they match, log 2 for twice the dead); a report's score is the weighted
+mean of its squared gaps.
+
 ## Resources and items: `data/<game>/items.json` (D-29)
 
 Every resource (iron) and item (Warlord Honour, a warlord's favour) a cost names, written by
