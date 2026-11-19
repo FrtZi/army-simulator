@@ -77,6 +77,20 @@ test("MAINT-04 the hook and the CI run the same checks, on the same Node version
   assert.match(ci, /run: npm run check$/m);
 });
 
+// the docs said version 1.0, dated 23 October, while the page was at 1.2 (DEF-063): the version they state is the one
+// package.json holds, and the status lines carry a date
+test("MAINT-04 DEF-063 the version the docs state is package.json's, in the README's title and both status lines", () => {
+  const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+  const shown = JSON.parse(read("package.json")).version.split(".").slice(0, 2).join(".");
+  const readme = read("README.md");
+  assert.match(readme.split("\n")[0], new RegExp(`— v${shown.replace(".", "\\.")}$`));
+  assert.match(
+    readme,
+    new RegExp(`\\*\\*Status, as of \\d+ \\w+ \\d{4}:\\*\\*[^*]*version ${shown.replace(".", "\\.")}`),
+  );
+  assert.match(read("ARCHITECTURE.md"), new RegExp(`As of \\d+ \\w+ \\d{4}, version ${shown.replace(".", "\\.")}\\b`));
+});
+
 // git-ignored folders hold other people's files (the cctools.cc scan's minified scripts): linting them failed the
 // hook on this computer only, the CI having no such folder (DEF-030)
 test("MAINT-04 DEF-030 the linter skips every folder git ignores", async () => {

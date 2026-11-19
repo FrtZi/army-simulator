@@ -2,9 +2,10 @@
 
 The simulator is a plain-JavaScript page with no framework, no server and no runtime dependency, built like
 the [banking churn demo](https://github.com/FrtZi/banking-churn-demo): small ES modules, bundled with the game
-data into one self-contained `dist/index.html`, published on GitHub Pages. As of 23 October 2026, version 1.0: the game data with their
-checks, the engine (effective stats, armies, power, profile, battle, comparison, dashboards' figures) and the
-page (game, bonuses, compositions, profile, comparison, six dashboards, saves); what comes next is in
+data into one self-contained `dist/index.html`, published on GitHub Pages. As of 19 November 2026, version 1.2, built but not yet reached (1.0
+released): the game data with their checks, the engine (effective stats, armies, power, profile, battle and its
+outcome, comparison, dashboards' figures, the optimiser) and the page (game, bonuses, compositions, heroes, Your
+setup, the PvE armies, profile, comparison, six dashboards, the optimiser, saves); what comes next is in
 [the product backlog](docs/backlog.md).
 
 Three rules hold the structure together:

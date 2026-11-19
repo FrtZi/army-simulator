@@ -1,4 +1,4 @@
-# Army simulator for Warhammer: Chaos & Conquest — v1.0
+# Army simulator for Warhammer: Chaos & Conquest — v1.2
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -10,9 +10,12 @@ A browser page to evaluate an army: pick the troops, enter your bonuses, and see
 power, damage per strike, effective health (its tanking), morale, speed, load and upkeep — within the march
 capacity. In English or French. Everything stays in your browser: no account, no server, nothing sent.
 
-**Status, as of 23 October 2026:** version 1.0 — the troop catalogue (82 troops, 15 defences), the engine
-(effective stats, power, battle), the page with its compositions, comparison, six dashboards and saves. Next:
-calibration on battle reports, the fortress, heroes, skill tree and champion ([docs/roadmap.md](docs/roadmap.md)).
+**Status, as of 19 November 2026:** version 1.0 released (tag `v1.0.0`); the page is at version 1.2, built but
+not yet reached: 1.1 waits on the setup's last bonus rows (prestige, skins, titles), 1.2 on the tier modifier
+confirmed on battle reports. In it: the troop catalogue (82 troops, 15 defences) and the engine (effective stats,
+power, battle and its outcome in full); heroes and talents; Your setup (rituals, buildings, champion and gear); the
+game's PvE armies as opponents; the optimiser and its pictures; compositions, comparison, six dashboards and saves.
+Next: calibration on battle reports, then the keep ([docs/roadmap.md](docs/roadmap.md)).
 
 ## Using it
 
@@ -71,7 +74,6 @@ How it is built: [ARCHITECTURE.md](ARCHITECTURE.md). The data model: [docs/data-
 ## Contributors
 
 - **Frantz Zizzari**: author.
-- **Grimm**, of the warband: cross-checking the figures.
 
 ## Licence
 

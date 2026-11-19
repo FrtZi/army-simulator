@@ -990,3 +990,35 @@ resultat = "The rank 15 Greenskin Army weighs 130,000,000 as in the game; the ba
 preuve = ["tests/pve.test.js"]
 lecon = "A figure imported from a third party is checked against the game's own once it shows it: a battle report gives the power of both sides, and the dead."
 liens = ["SIM-11", "SIM-25"]
+
+[[defaut]]
+id = "DEF-063"
+date = 2026-11-19
+titre = "The docs said version 1.0 of 23 October while the page was at 1.2, and no release tag existed"
+type = "process"
+etiquettes = ["tooling"]
+gravite = "minor"
+statut = "fixed"
+constat = "An audit found the README and ARCHITECTURE stating version 1.0 \"as of 23 October 2026\" while package.json and the page said 1.2, the roadmap naming the milestones of another plan, and no git tag at all although the backlog said version 1.0 was reached with the tag v1.0.0."
+cause = "The rule written after DEF-013 (bring the dated status lines up to date before publishing a version) was a sentence in the project's instructions, checked by nothing: the version was raised on the page (2026-11-11) without the docs, and the tag the backlog names was never set."
+solution = "The status lines of README, ARCHITECTURE and the roadmap brought to 19 November (1.0 released; 1.1 and 1.2 built, each waiting on one Must); a test checks that the version the docs state is package.json's; the tags v1.0.0 and v1.0.1 set on the commits that carried those versions."
+resultat = "The test passes, and fails on the old docs (the README's title still at v1.0); the tags are on GitHub."
+preuve = ["tests/tooling.test.js"]
+lecon = "A rule that is only written down drifts: what can be checked is checked by a test, in the hook and the CI."
+liens = ["MAINT-04"]
+
+[[defaut]]
+id = "DEF-064"
+date = 2026-11-19
+titre = "A person was credited by name in the public README against Frantz's wish"
+type = "process"
+etiquettes = ["tooling"]
+gravite = "major"
+statut = "fixed"
+constat = "An audit read the README's contributors: a member of the warband was named there, in a public repository, while Frantz had asked that this person not be mentioned anywhere in the tool."
+cause = "The line predates the request, and the request was applied to new text only: nobody went back over what was already published."
+solution = "The line is removed; the README credits the author only. The name stays in the git history, which is not rewritten without Frantz's agreement."
+resultat = "No tracked file of the repository names the person (git grep finds nothing)."
+preuve = ["Rule: when a name or a fact must not be published, every tracked file is searched for it at once, not only the text written next."]
+lecon = "A request to withdraw something applies to what is already published, not only to what comes next."
+liens = []

@@ -5,7 +5,7 @@
 
 What broke, why, how it was settled, and what keeps it from coming back. One entry per real defect
 detected (code, configuration, content, tool, environment, third party or the way we work), each
-with its regression test, check or rule. **62 defects**: 62 fixed, 0 worked around, 0 open.
+with its regression test, check or rule. **64 defects**: 64 fixed, 0 worked around, 0 open.
 
 Types: code, configuration, content, tool, environment, third party, process. Tags: accessibility, build, charts, ci, data, dev-server, engine, page, saves, tests, tooling, translation.
 
@@ -75,6 +75,8 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 | [DEF-060](#def-060) | 2026-11-17 | A prototype stated a figure misread from its own histogram (406 trios tied, where 29 were) | process | minor | ✓ fixed |
 | [DEF-061](#def-061) | 2026-11-17 | A page-wide style squashed the search picture's bars | code | minor | ✓ fixed |
 | [DEF-062](#def-062) | 2026-11-17 | The PvE armies weighed about ten times their power: a squad's power taken for a troop's | third party | major | ✓ fixed |
+| [DEF-063](#def-063) | 2026-11-19 | The docs said version 1.0 of 23 October while the page was at 1.2, and no release tag existed | process | minor | ✓ fixed |
+| [DEF-064](#def-064) | 2026-11-19 | A person was credited by name in the public README against Frantz's wish | process | major | ✓ fixed |
 
 ## Entries
 
@@ -868,3 +870,28 @@ Types: code, configuration, content, tool, environment, third party, process. Ta
 - **Lesson:** A figure imported from a third party is checked against the game's own once it shows it: a battle report gives the power of both sides, and the dead.
 - **Proof:** `tests/pve.test.js`
 - **Links:** SIM-11, SIM-25
+
+<a id="def-063"></a>
+### DEF-063 · The docs said version 1.0 of 23 October while the page was at 1.2, and no release tag existed
+
+`2026-11-19` · process · minor · ✓ fixed · tags: `tooling`
+
+- **Finding:** An audit found the README and ARCHITECTURE stating version 1.0 "as of 23 October 2026" while package.json and the page said 1.2, the roadmap naming the milestones of another plan, and no git tag at all although the backlog said version 1.0 was reached with the tag v1.0.0.
+- **Cause:** The rule written after DEF-013 (bring the dated status lines up to date before publishing a version) was a sentence in the project's instructions, checked by nothing: the version was raised on the page (2026-11-11) without the docs, and the tag the backlog names was never set.
+- **Solution:** The status lines of README, ARCHITECTURE and the roadmap brought to 19 November (1.0 released; 1.1 and 1.2 built, each waiting on one Must); a test checks that the version the docs state is package.json's; the tags v1.0.0 and v1.0.1 set on the commits that carried those versions.
+- **Result:** The test passes, and fails on the old docs (the README's title still at v1.0); the tags are on GitHub.
+- **Lesson:** A rule that is only written down drifts: what can be checked is checked by a test, in the hook and the CI.
+- **Proof:** `tests/tooling.test.js`
+- **Links:** MAINT-04
+
+<a id="def-064"></a>
+### DEF-064 · A person was credited by name in the public README against Frantz's wish
+
+`2026-11-19` · process · major · ✓ fixed · tags: `tooling`
+
+- **Finding:** An audit read the README's contributors: a member of the warband was named there, in a public repository, while Frantz had asked that this person not be mentioned anywhere in the tool.
+- **Cause:** The line predates the request, and the request was applied to new text only: nobody went back over what was already published.
+- **Solution:** The line is removed; the README credits the author only. The name stays in the git history, which is not rewritten without Frantz's agreement.
+- **Result:** No tracked file of the repository names the person (git grep finds nothing).
+- **Lesson:** A request to withdraw something applies to what is already published, not only to what comes next.
+- **Proof:** Rule: when a name or a fact must not be published, every tracked file is searched for it at once, not only the text written next.
