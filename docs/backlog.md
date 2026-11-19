@@ -19,7 +19,7 @@ Statuses: ✓ done, ◐ doing, ○ to do.
 | Version 1.1, heroes and the player's setup | `███████████████░░░░░` 3/4 | 4/5 | 19/21 | ○ not yet: 1 Must left |
 | Version 1.2, the tier table, PvE armies, rituals and buildings | `██████████░░░░░░░░░░` 1/2 | 10/11 | 33/34 | ○ not yet: 1 Must left |
 | Version 1.3, champion, gear and the keep | `░░░░░░░░░░░░░░░░░░░░` 0/1 | 5/11 | 30/39 | ○ not yet: 1 Must left |
-| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/9 | 2/12 | — |
+| Later, ideas kept | `░░░░░░░░░░░░░░░░░░░░` 0/0 | 0/9 | 3/15 | — |
 
 ## Ready to start
 
@@ -31,7 +31,7 @@ Not done, and every dependency done:
 - [BL-30](#bl-30) A Champion lab: gear sets compared, stats by level, every bonus, its skill trees (v1.3, should, ◐ doing)
 - [BL-31](#bl-31) An aim and the path to it: pro Nurgle, pro cavalry, what to pick and raise (v1.3, should, ◐ doing)
 - [BL-37](#bl-37) The march capacity from the levels: the keep's base, the capacity rituals applied (v1.3, should, ◐ doing)
-- [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ○ to do)
+- [BL-15](#bl-15) Calibration on battle reports: tier modifier, broken bonus, morale per squad (later, should, ◐ doing)
 - [BL-09](#bl-09) Credit cctools.cc and tell its author (later, could, ◐ doing)
 - [BL-17](#bl-17) Read-only share link (later, could, ○ to do)
 - [BL-18](#bl-18) Food upkeep: settle the factor of 6 with cctools.cc (later, could, ○ to do)
@@ -61,7 +61,7 @@ flowchart LR
   BL11 --> BL12
   BL13["BL-13 ✓ done<br/>Champion: own stats by level, gear and set bonuses"]:::done
   BL14["BL-14 ✓ done<br/>Buildings' bonuses, by level"]:::done
-  BL15["BL-15 ○ to do<br/>Calibration on battle reports: tier modifier, broken bonus, morale per squad"]:::todo
+  BL15["BL-15 ◐ doing<br/>Calibration on battle reports: tier modifier, broken bonus, morale per squad"]:::doing
   BL16["BL-16 ✓ done<br/>Optimiser: the best troop mix within the march capacity"]:::done
   BL17["BL-17 ○ to do<br/>Read-only share link"]:::todo
   BL18["BL-18 ○ to do<br/>Food upkeep: settle the factor of 6 with cctools.cc"]:::todo
@@ -509,7 +509,7 @@ Validated as ideas, not planned yet: each one is reprioritised when a version is
 | ID | Item | MoSCoW | Module | Status | Tasks |
 |---|---|---|---|---|---|
 | [BL-09](#bl-09) | Credit cctools.cc and tell its author | could | framework | ◐ doing | 2/3 |
-| [BL-15](#bl-15) | Calibration on battle reports: tier modifier, broken bonus, morale per squad | should | [engine](../src/engine) | ○ to do | 0/2 |
+| [BL-15](#bl-15) | Calibration on battle reports: tier modifier, broken bonus, morale per squad | should | [engine](../src/engine) | ◐ doing | 1/5 |
 | [BL-17](#bl-17) | Read-only share link | could | [storage](../src/storage) | ○ to do | 0/1 |
 | [BL-18](#bl-18) | Food upkeep: settle the factor of 6 with cctools.cc | could | [data](../data) | ○ to do | 0/1 |
 | [BL-19](#bl-19) | The troops' pictures from the game | won't | [ui](../src/ui) | ○ to do | 0/1 |
@@ -532,10 +532,13 @@ A nice-to-have (Frantz, 2026-11-09): it waits on nothing and nothing waits on it
 <a id="bl-15"></a>
 #### BL-15 · Calibration on battle reports: tier modifier, broken bonus, morale per squad
 
-Should · [engine](../src/engine) · ○ to do · added `2026-10-22` · features: SIM-04
+Should · [engine](../src/engine) · ◐ doing · added `2026-10-22` · features: SIM-04
 
-- [ ] Detailed battle reports from Frantz (troops and losses per round, both sides)
-- [ ] Open questions 1 to 5 settled, the model's parameters fitted
+- [x] The spec, agreed with Frantz on 2026-11-19 (docs/spec/calibration.md): every value of it in a data table
+- [ ] data/<game>/calibration.json, the parameter table, and the reports' format in data-model.md
+- [ ] Battle reports from Frantz, the army sent known exactly (as many as calibration.json asks)
+- [ ] The backtest: every report replayed, its gaps shown
+- [ ] The fit, one parameter at a time, kept only if it holds out of sample; open questions 1 to 4 settled
 
 <a id="bl-17"></a>
 #### BL-17 · Read-only share link

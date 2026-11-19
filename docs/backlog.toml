@@ -283,12 +283,15 @@ title = "Calibration on battle reports: tier modifier, broken bonus, morale per 
 moscow = "should"
 milestone = "later"
 module = "engine"
-status = "to do"
+status = "doing"
 added = 2026-10-22
 features = ["SIM-04"]
 tasks = [
-  "[ ] Detailed battle reports from Frantz (troops and losses per round, both sides)",
-  "[ ] Open questions 1 to 5 settled, the model's parameters fitted",
+  "[x] The spec, agreed with Frantz on 2026-11-19 (docs/spec/calibration.md): every value of it in a data table",
+  "[ ] data/<game>/calibration.json, the parameter table, and the reports' format in data-model.md",
+  "[ ] Battle reports from Frantz, the army sent known exactly (as many as calibration.json asks)",
+  "[ ] The backtest: every report replayed, its gaps shown",
+  "[ ] The fit, one parameter at a time, kept only if it holds out of sample; open questions 1 to 4 settled",
 ]
 
 [[item]]
